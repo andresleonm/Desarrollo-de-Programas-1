@@ -7,3 +7,13 @@ C:\Users\Andres\Documents\Visual Studio 2017\Projects\IncaArt\IncaArt\obj\Debug\
 C:\Users\Andres\Documents\Visual Studio 2017\Projects\IncaArt\IncaArt\obj\Debug\IncaArt.csproj.GenerateResource.Cache
 C:\Users\Andres\Documents\Visual Studio 2017\Projects\IncaArt\IncaArt\obj\Debug\IncaArt.exe
 C:\Users\Andres\Documents\Visual Studio 2017\Projects\IncaArt\IncaArt\obj\Debug\IncaArt.pdb
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\bin\Debug\IncaArt.exe.config
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\bin\Debug\IncaArt.exe
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\bin\Debug\IncaArt.pdb
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.csprojResolveAssemblyReference.cache
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Frm_Login.resources
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.frm_MainMenu.resources
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.csproj.GenerateResource.Cache
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.exe
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.pdb
