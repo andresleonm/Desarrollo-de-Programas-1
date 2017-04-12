@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class Frm_Login : Form
     {
+
         public Frm_Login()
         {
             InitializeComponent();
@@ -27,8 +28,7 @@ namespace WindowsFormsApp1
         {
             Frm_MainMenu frm_MainMenu = new Frm_MainMenu();
             frm_MainMenu.Show();
-            this.Close();
-            
+            this.Hide();
 
         }
     }
