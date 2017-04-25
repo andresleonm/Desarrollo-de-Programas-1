@@ -45,6 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Order.cs" />
+    <Compile Include="Classes\OrderDetail.cs" />
+    <Compile Include="Classes\Ratio.cs" />
+    <Compile Include="Classes\RatioType.cs" />
+    <Compile Include="Classes\Shift.cs" />
+    <Compile Include="Classes\Worker.cs" />
+    <Compile Include="Classes\Person.cs" />
+    <Compile Include="Classes\Product.cs" />
+    <Compile Include="Classes\WorkOrder.cs" />
+    <Compile Include="Classes\WorkOrderDetail.cs" />
+    <Compile Include="Classes\Workstation.cs" />
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
     </Compile>
