@@ -8,13 +8,11 @@ namespace WindowsFormsApp1.Classes
 {
     class OrderDetail
     {
-        private List<Product> products { get; set; }
-        private List<int> quantities { get; set; }
+        internal List<OrderDetailLine> lines { get; set; }
 
-        public OrderDetail(List<Product> products, List<int> quantities)
+        public OrderDetail(List<OrderDetailLine> lines)
         {
-            this.products = products;
-            this.quantities = quantities;
+            this.lines = lines;
         }
     }
 }

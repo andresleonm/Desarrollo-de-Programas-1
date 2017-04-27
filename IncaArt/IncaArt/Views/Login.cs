@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Views;
 
 namespace WindowsFormsApp1
 {
@@ -20,6 +21,12 @@ namespace WindowsFormsApp1
         private void Btn_CancelLogin_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Btn_Login_Click(object sender, EventArgs e)
+        {
+            Algorithm frmAlgorithm = new Algorithm();
+            frmAlgorithm.Show();
         }
     }
 }

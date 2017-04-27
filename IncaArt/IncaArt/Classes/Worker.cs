@@ -8,10 +8,12 @@ namespace WindowsFormsApp1.Classes
 {
     class Worker : Person
     {
-        private List<Ratio> ratios { get; }
+        private List<Ratio> ratios_t { get; set; }
+        private List<Ratio> ratios_e { get; set; }
         public Worker(string name, string last_name) :base(name,last_name)
         {
-            this.ratios = new List<Ratio>();            
+            this.ratios_t = new List<Ratio>();
+            this.ratios_e = new List<Ratio>();      
         }
     }
 }

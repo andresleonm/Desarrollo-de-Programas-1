@@ -45,8 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Assignment.cs" />
     <Compile Include="Classes\Order.cs" />
     <Compile Include="Classes\OrderDetail.cs" />
+    <Compile Include="Classes\OrderDetailLine.cs" />
+    <Compile Include="Classes\ProductLineAssignment.cs" />
     <Compile Include="Classes\Ratio.cs" />
     <Compile Include="Classes\RatioType.cs" />
     <Compile Include="Classes\Shift.cs" />
@@ -56,6 +59,12 @@
     <Compile Include="Classes\WorkOrder.cs" />
     <Compile Include="Classes\WorkOrderDetail.cs" />
     <Compile Include="Classes\Workstation.cs" />
+    <Compile Include="Views\Algorithm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Algorithm.Designer.cs">
+      <DependentUpon>Algorithm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +82,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Algorithm.resx">
+      <DependentUpon>Algorithm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +97,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Workers.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

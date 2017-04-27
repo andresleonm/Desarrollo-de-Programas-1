@@ -10,11 +10,13 @@ namespace WindowsFormsApp1.Classes
     {
         private double value { get; set; }
         private RatioType ratio_type { get; set; }
+        private Workstation workstation { get; set; }
 
-        public Ratio(double value,RatioType ratio_type)
+        public Ratio(double value,RatioType ratio_type, Workstation workstation)
         {
             this.value = value;
             this.ratio_type = ratio_type;
+            this.workstation = workstation;
         }
     }
 }

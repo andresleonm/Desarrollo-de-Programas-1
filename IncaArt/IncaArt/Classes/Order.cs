@@ -8,8 +8,8 @@ namespace WindowsFormsApp1.Classes
 {
     class Order
     {
-        private OrderDetail order_detail { get; set; }
-        private DateTime date { get; set; }
+        internal OrderDetail order_detail { get ; set ; }
+        internal DateTime date { get; set; }
 
         public Order(OrderDetail order_detail,DateTime date)
         {
