@@ -59,6 +59,9 @@
     <Compile Include="Classes\WorkOrder.cs" />
     <Compile Include="Classes\WorkOrderDetail.cs" />
     <Compile Include="Classes\Workstation.cs" />
+    <Compile Include="Genetic\Chromosome.cs" />
+    <Compile Include="Genetic\GeneticAlgorithm.cs" />
+    <Compile Include="Genetic\Population.cs" />
     <Compile Include="Views\Algorithm.cs">
       <SubType>Form</SubType>
     </Compile>
