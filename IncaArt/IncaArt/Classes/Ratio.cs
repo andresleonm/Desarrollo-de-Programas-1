@@ -8,9 +8,9 @@ namespace WindowsFormsApp1.Classes
 {
     class Ratio
     {
-        private double value { get; set; }
-        private RatioType ratio_type { get; set; }
-        private Workstation workstation { get; set; }
+        internal double value { get; set; }
+        internal RatioType ratio_type { get; set; }
+        internal Workstation workstation { get; set; }
 
         public Ratio(double value,RatioType ratio_type, Workstation workstation)
         {

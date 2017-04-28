@@ -36,8 +36,7 @@ namespace WindowsFormsApp1.Classes
             {
                 List<string> line = new List<string>();
                 line.Add("MoldeadoR");
-                line.Add("PintadoR");
-                line.Add("Armado");
+                line.Add("PintadoR");                
                 this.production_line = line;
             }
         }

@@ -13,7 +13,7 @@ namespace WindowsFormsApp1.Classes
         public ProductLineAssignment(Product product)
         {
             assignments = new List<Assignment>(product.production_line.Count());
-            for(int i=1; i< product.production_line.Count(); i++)
+            for(int i=0; i < assignments.Count(); i++)
             {
                 assignments.Add(new Assignment(new Workstation(product, product.production_line.ElementAt(i))));
             }

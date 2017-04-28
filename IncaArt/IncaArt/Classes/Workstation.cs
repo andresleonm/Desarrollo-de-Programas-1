@@ -12,19 +12,21 @@ namespace WindowsFormsApp1.Classes
         internal string name { get; set; }
         internal int quantity { get; set; }
         internal int id;
+        internal double break_cost { get; set; }
 
-        public Workstation(Product product, string name, int quantity,int id)
+        public Workstation(Product product, string name, int quantity,int id,double break_cost)
         {
             this.product = product;
             this.name = name;
             this.quantity = quantity;
             this.id = id;
-        }
-
-        public Workstation(Product product, string name) // Constructor para ProductLineAssignment
+            this.break_cost = break_cost;
+        }     
+        
+        public Workstation(Product product, string name)
         {
             this.product = product;
             this.name = name;
-        }
+        }   
     }
 }

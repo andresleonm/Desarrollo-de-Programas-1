@@ -8,8 +8,8 @@ namespace WindowsFormsApp1.Classes
 {
     class Person
     {
-        private string name { get; set; }
-        private string last_name { get; set; }
+        internal string name { get; set; }
+        internal string last_name { get; set; }
 
         public Person(string name, string last_name)
         {
