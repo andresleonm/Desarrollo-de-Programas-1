@@ -10,47 +10,35 @@ namespace WindowsFormsApp1.Genetic
     class GeneticAlgorithm
     {
         public int numIterations=3000;
-        private double fitness(Chromosome c, List<Tuple<int, Product>> product_quantities) // REFINAR
-        {
-            double total_break = 0;
-            //double total_time = 0;
-
-            foreach (ProductLineAssignment set in c.genes)
-            {
-                double partial_break = 0;
-                //double partial_time = 0;
-                foreach (Assignment assignment in set.assignments)
-                {
-                    foreach (Ratio r in assignment.assigned_worker.ratios_e)
-                    {
-                        if (r.workstation.Equals(assignment.assigned_workstation))
-                        {
-                            foreach (Tuple<int, Product> tuple in product_quantities)
-                            {
-                                if (tuple.Item2.Equals(assignment.assigned_workstation.product))
-                                {
-                                    partial_break = partial_break + (r.value * assignment.assigned_workstation.break_cost * tuple.Item1);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-                total_break = total_break + partial_break;
-            }
-            return total_break;
-        }
+        public int numInitialPopulation = 1000;
+        public int porcCrossover=60;
+        public int porcMutation = 1;
 
         public Population generateInitialPopulation(List<Workstation> workStations,List<Worker> workers)
         {
             Population pI= new Population();
+            for (int i = 0; i < numInitialPopulation; i++)
+            {
+                pI.chromosomes.Add(new Chromosome(workStations, workers));
+            }
             return pI;
-
         }
         public Chromosome getBestSolution(Population p)
         {
-            Chromosome c = new Chromosome();
-            return c;
+            Chromosome best= null;
+            bool flg = true;
+            foreach (Chromosome c in p.chromosomes){
+                if (flg)
+                {
+                    best = c;
+                    flg = false;
+                }else
+                {
+                    if (c < best)
+                        best = c;
+                }
+            }
+            return best;
         }
 
         public Chromosome mutateChromosome(Chromosome c)
@@ -58,16 +46,28 @@ namespace WindowsFormsApp1.Genetic
             return c;
         }
 
-        public List<ProductLineAssignment> GeneticSolve (List<Workstation> workStations, List<Worker> workers, Order order)
+        public List<Workstation> getWorkStations(List<Workstation> ws)
         {
-            //generar poblacion inicial
-            Population population = generateInitialPopulation(workStations,workers);
+            List<Workstation> output = new List<Workstation>();
+            foreach(Workstation w in ws)
+            {
+                //desdoblo los puestos de trabajo, es decir, si tengo en mi lista un puesto de trabajo con capacidad 10
+                //en mi lista que ira para el algoritmo creo 10 puestos de trabajo
+                output.Concat(w.Getworkstations());
+            }
+            return output;
+        }
+        public List<Assignment> GeneticSolve (List<Workstation> workstations, List<Worker> workers, Order order)
+        {
+            List<Workstation> workstationsA = getWorkStations(workstations);
+            //por ahora se genera la poblacion inicial de manera random
+            Population population = generateInitialPopulation(workstationsA, workers);
             
             for (int i= 0; i < numIterations; i++)
             {
-                //eliminar cromosomas
-                //generar nuevos cromosomas
-                // mutar cromosomas
+                //Crossover
+                //Mutar
+                //Elitismo
             }
             return getBestSolution(population).genes;
         }

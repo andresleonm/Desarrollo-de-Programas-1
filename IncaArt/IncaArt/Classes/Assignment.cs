@@ -11,9 +11,10 @@ namespace WindowsFormsApp1.Classes
         internal Worker assigned_worker { get; set; }
         internal Workstation assigned_workstation { get; set; }        
 
-        public Assignment(Workstation assigned_workstation)
+        public Assignment(Workstation assigned_workstation,Worker worker)
         {            
             this.assigned_workstation = assigned_workstation;
+            this.assigned_worker = worker;
         }
     }
 }

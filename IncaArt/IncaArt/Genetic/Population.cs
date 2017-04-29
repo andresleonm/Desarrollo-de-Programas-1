@@ -8,6 +8,6 @@ namespace WindowsFormsApp1.Genetic
 {
     class Population
     {
-        List<Chromosome> chromosomes = new List<Chromosome>();
+        public List<Chromosome> chromosomes = new List<Chromosome>();
     }
 }
