@@ -68,6 +68,17 @@ namespace WindowsFormsApp1.Genetic
             return arrDes;
         }
 
+        public void mutate() {
+            Random rand = new Random();
+            int i = rand.Next(0,genes.Count);
+            int j = rand.Next(0,genes.Count);          
+
+            Worker w1 = genes[i].assigned_worker;
+            Worker w2 = genes[j].assigned_worker;
+            genes[i].assigned_worker = w2;
+            genes[j].assigned_worker = w1;
+        }
+
         private List<int> getArray(int n)
         {
             List<int> a = new List<int>();

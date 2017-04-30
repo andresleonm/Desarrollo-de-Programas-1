@@ -10,21 +10,24 @@ namespace WindowsFormsApp1.Genetic
     {
         public List<Chromosome> chromosomes = new List<Chromosome>();
         List<Chromosome> matingPool = new List<Chromosome>();
+        List<Chromosome> bestSolutions = new List<Chromosome>();
         public int porC;
         public int porM;
+        public int porE;
         public double fitAvg;
         public double lowFit;
         public bool flg=true;
-        public Population(int porC,int porM)
+        public Population(int porC,int porM,int porE)
         {
             this.porC = porC;
             this.porM = porM;
+            this.porE = porE;
         }
 
         public void crossover()
         {
             Chromosome c1,c2,temp;
-            int n = matingPool.Count();
+            int n = matingPool.Count()*porC/100;//Modificacion
             Random rand = new Random();            
             int numAssignments = chromosomes.ElementAt(0).genes.Count();
             for (int i = 0; i < n; i+=2)
@@ -35,13 +38,48 @@ namespace WindowsFormsApp1.Genetic
                 temp = c1.cut(0, cut);
                 c1 = c2.cut(0, cut) + c1.cut(cut);
                 c2 = temp + c2.cut(cut);
-                chromosomes[i]=c1;
-                chromosomes[i + 1] = c2;
+                //chromosomes[i]=c1;
+                //chromosomes[i + 1] = c2;
+                matingPool[i] = c1;
+                matingPool[i + 1] = c2;
+            }
+        }
+
+        public void createNewGeneration() {
+            chromosomes.Clear();
+            //elitism
+            foreach(Chromosome c in bestSolutions)
+            {
+                chromosomes.Add(c);
+            }
+            //croosover y mutacion
+            foreach(Chromosome c in matingPool)
+            {
+                chromosomes.Add(c);
             }
         }
 
         public void mutate()
         {
+            int numMutation = porM /100 * matingPool.Count;
+            Random rand = new Random();
+            int index;
+            for(int i = 0; i < numMutation; i++)
+            {
+                index = rand.Next(0, matingPool.Count);
+                matingPool[index].mutate();
+            }
+        }
+
+        public void elitism()
+        {
+            List<Chromosome> array = chromosomes;
+            int numElitism = chromosomes.Count * porE/100;
+            array.Sort();
+            for(int i = 0; i < numElitism; i++)
+            {
+                bestSolutions.Add(array[i]);
+            }
 
         }
 

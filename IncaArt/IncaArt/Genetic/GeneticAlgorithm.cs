@@ -11,12 +11,13 @@ namespace WindowsFormsApp1.Genetic
     {
         public int numIterations=3000;
         public int numInitialPopulation = 1000;
-        public int porcCrossover=60;
+        public int porcCrossover=0;
         public int porcMutation = 1;
+        public int porcE = 1;
 
         public Population generateInitialPopulation(List<Workstation> workStations,List<Worker> workers)
         {
-            Population pI= new Population(porcCrossover,porcMutation);
+            Population pI = new Population(porcCrossover, porcMutation, porcE);
             for (int i = 0; i < numInitialPopulation; i++)
             {
                 pI.chromosomes.Add(new Chromosome(workStations, workers));
@@ -63,9 +64,11 @@ namespace WindowsFormsApp1.Genetic
             
             for (int i= 0; i < numIterations; i++)
             {
+                population.elitism();
                 population.roulette();
                 population.crossover();
-                population.mutate();//falta implementar
+                population.mutate();
+                population.createNewGeneration();
             }
             return getBestSolution(population).genes;
         }
