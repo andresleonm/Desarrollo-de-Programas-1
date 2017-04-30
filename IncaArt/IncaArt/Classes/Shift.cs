@@ -8,5 +8,9 @@ namespace WindowsFormsApp1.Classes
 {
     class Shift
     {
+        public Shift()
+        {
+
+        }
     }
 }

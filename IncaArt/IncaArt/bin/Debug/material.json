@@ -1,0 +1,37 @@
+[
+  {
+    "Id": 1,
+    "Name":"Arcilla",
+    "Stock":655000
+  },
+  {
+    "Id": 2,
+    "Name":"Barniz para ceramica Crema",
+    "Stock":200000
+  },
+  {
+    "Id": 3,
+    "Name":"Barniz para ceramica Pardo",
+    "Stock":200000
+  },
+  {
+    "Id": 4,
+    "Name":"Piedra de Huamanga",
+    "Stock":1500000
+  },
+  {
+    "Id": 5,
+    "Name":"Madera",
+    "Stock":1500000
+  },
+  {
+    "Id": 6,
+    "Name":"Pintura Blanca",
+    "Stock":200000
+  },
+  {
+    "Id": 7 ,
+    "Name":"Pintura Roja",
+    "Stock":200000
+  }
+]

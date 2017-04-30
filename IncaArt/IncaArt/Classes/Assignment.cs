@@ -8,8 +8,13 @@ namespace WindowsFormsApp1.Classes
 {
     class Assignment
     {
-        internal Worker assigned_worker { get; set; }
-        internal Workstation assigned_workstation { get; set; }        
+        public Worker assigned_worker { get; set; }
+        public Workstation assigned_workstation { get; set; }        
+
+        public Assignment()
+        {
+
+        }
 
         public Assignment(Workstation assigned_workstation)
         {            

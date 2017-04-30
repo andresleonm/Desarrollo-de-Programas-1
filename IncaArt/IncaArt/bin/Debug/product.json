@@ -1,0 +1,54 @@
+[
+  {
+    "Name":"Ceramico",
+    "Id": 1,
+    "AverageCost":75.6,
+    "AverageUnitPrice":150,
+    "Recipe":[
+      {
+        "MaterialId":1,
+        "Quantity":51
+      },
+      {
+        "MaterialId":2,
+        "Quantity":0.5
+      },
+      {
+        "MaterialId":3,
+        "Quantity":0.5
+      }
+    ]
+  },
+  {
+    "Name":"Tallado en Piedra",
+    "Id": 2,
+    "AverageCost":100,
+    "AverageUnitPrice":250,
+    "Recipe":[
+      {
+        "MaterialId":4,
+        "Quantity":1
+      }
+    ]
+  },
+  {
+    "Name":"Retablo",
+    "Id": 3,
+    "AverageCost":100,
+    "AverageUnitPrice":250,
+    "Recipe":[
+      {
+        "MaterialId":5,
+        "Quantity":2
+      },
+      {
+        "MaterialId":8,
+        "Quantity":0.5
+      },
+      {
+        "MaterialId":9,
+        "Quantity":0.5
+      }
+    ]
+  }
+]

@@ -8,7 +8,12 @@ namespace WindowsFormsApp1.Classes
 {
     class OrderDetail
     {
-        internal List<OrderDetailLine> lines { get; set; }
+        public List<OrderDetailLine> lines { get; set; }
+
+        public OrderDetail()
+        {
+
+        }
 
         public OrderDetail(List<OrderDetailLine> lines)
         {

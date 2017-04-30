@@ -8,14 +8,21 @@ namespace WindowsFormsApp1.Classes
 {
     class Ratio
     {
-        internal double value { get; set; }
-        internal RatioType ratio_type { get; set; }
-        internal Workstation workstation { get; set; }
+        public double value { get; set; }
+        public int workstationid;
+        public string type { get; set; }
+        public string unit { get; set; }
+        public Workstation workstation { get; set; }
 
-        public Ratio(double value,RatioType ratio_type, Workstation workstation)
+        public Ratio()
+        {
+
+        }
+
+        public Ratio(double value,string ratio_type, Workstation workstation)
         {
             this.value = value;
-            this.ratio_type = ratio_type;
+            this.type = ratio_type;
             this.workstation = workstation;
         }
     }

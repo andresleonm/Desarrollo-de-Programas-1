@@ -7,22 +7,33 @@ using System.Threading.Tasks;
 namespace WindowsFormsApp1.Classes
 {
     class Workstation
-    {
-        internal Product product { get; set; }
-        internal string name { get; set; }
-        internal int quantity { get; set; }
-        internal int id;
-        internal double break_cost { get; set; }
+    {        
+        public string name { get; set; }
+        public int quantity { get; set; }        
+        public double break_cost { get; set; }
+        public int id { get; set; }
+        public Product product { get; set; }
 
-        public Workstation(Product product, string name, int quantity,int id,double break_cost)
+        public Workstation()
+        {
+
+        }
+
+        public Workstation(Product product, string name, int quantity,double break_cost)
         {
             this.product = product;
             this.name = name;
-            this.quantity = quantity;
-            this.id = id;
+            this.quantity = quantity;            
             this.break_cost = break_cost;
-        }     
-        
+        }
+
+        public Workstation(string name, int quantity, double break_cost)
+        {            
+            this.name = name;
+            this.quantity = quantity;
+            this.break_cost = break_cost;
+        }
+
         public Workstation(Product product, string name)
         {
             this.product = product;
