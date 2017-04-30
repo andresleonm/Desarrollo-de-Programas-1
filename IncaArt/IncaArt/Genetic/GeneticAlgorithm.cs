@@ -13,11 +13,11 @@ namespace WindowsFormsApp1.Genetic
         public int numInitialPopulation = 1000;
         public int porcCrossover=0;
         public int porcMutation = 1;
-        public int porcE = 1;
+        public int porcElitism = 1;
 
         public Population generateInitialPopulation(List<Workstation> workStations,List<Worker> workers)
         {
-            Population pI = new Population(porcCrossover, porcMutation, porcE);
+            Population pI = new Population(porcCrossover, porcMutation, porcElitism);
             for (int i = 0; i < numInitialPopulation; i++)
             {
                 pI.chromosomes.Add(new Chromosome(workStations, workers));

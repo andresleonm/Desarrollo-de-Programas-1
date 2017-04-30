@@ -21,13 +21,22 @@ namespace WindowsFormsApp1.Genetic
 
             foreach (Assignment assignment in genes)
             {
-                foreach (Ratio r in assignment.assigned_worker.ratios_e)
+                try
                 {
-                    if (r.workstation == assignment.assigned_workstation)
+                    foreach (Ratio r in assignment.assigned_worker.ratios_e)
                     {
-                        total_break = total_break + r.value * assignment.assigned_workstation.break_cost;
+                        if (r.workstation.id == assignment.assigned_workstation.id)
+                        {
+                            total_break = total_break + r.value * assignment.assigned_workstation.break_cost;
+                        }
                     }
+
                 }
+                catch
+                {
+
+                }
+                
             }          
             return total_break;
         }
