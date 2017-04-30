@@ -16,7 +16,7 @@ namespace WindowsFormsApp1.Genetic
 
         public Population generateInitialPopulation(List<Workstation> workStations,List<Worker> workers)
         {
-            Population pI= new Population();
+            Population pI= new Population(porcCrossover,porcMutation);
             for (int i = 0; i < numInitialPopulation; i++)
             {
                 pI.chromosomes.Add(new Chromosome(workStations, workers));
@@ -60,13 +60,14 @@ namespace WindowsFormsApp1.Genetic
         public List<Assignment> GeneticSolve (List<Workstation> workstations, List<Worker> workers, Order order)
         {
             List<Workstation> workstationsA = getWorkStations(workstations);
-            //por ahora se genera la poblacion inicial de manera random
+            
             Population population = generateInitialPopulation(workstationsA, workers);
             
             for (int i= 0; i < numIterations; i++)
             {
-                //Crossover
-                //Mutar
+                population.roulette();
+                population.crossover();
+                population.mutate();
                 //Elitismo
             }
             return getBestSolution(population).genes;
