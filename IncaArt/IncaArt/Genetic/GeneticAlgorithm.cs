@@ -41,10 +41,7 @@ namespace WindowsFormsApp1.Genetic
             return best;
         }
 
-        public Chromosome mutateChromosome(Chromosome c)
-        {
-            return c;
-        }
+       
 
         public List<Workstation> getWorkStations(List<Workstation> ws)
         {
@@ -57,6 +54,7 @@ namespace WindowsFormsApp1.Genetic
             }
             return output;
         }
+
         public List<Assignment> GeneticSolve (List<Workstation> workstations, List<Worker> workers, Order order)
         {
             List<Workstation> workstationsA = getWorkStations(workstations);
@@ -67,8 +65,7 @@ namespace WindowsFormsApp1.Genetic
             {
                 population.roulette();
                 population.crossover();
-                population.mutate();
-                //Elitismo
+                population.mutate();//falta implementar
             }
             return getBestSolution(population).genes;
         }

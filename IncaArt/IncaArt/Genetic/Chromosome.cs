@@ -11,7 +11,11 @@ namespace WindowsFormsApp1.Genetic
     {
         public List<Assignment> genes = new List<Assignment>();
 
-        private double getFitness()
+        public Chromosome()
+        {
+
+        }
+        public double getFitness()
         {
             double total_break = 0;                
 
@@ -26,6 +30,27 @@ namespace WindowsFormsApp1.Genetic
                 }
             }          
             return total_break;
+        }
+
+        public Chromosome cut(int ini,int fin)
+        {
+            Chromosome c= new Chromosome();
+            for (int i = ini; i < fin; i++)
+            {
+                c.genes.Add(genes.ElementAt(i));
+            }
+            return c;
+
+        }
+        public Chromosome cut(int ini)
+        {
+            Chromosome c = new Chromosome();
+            int n = genes.Count();
+            for (int i = ini; i < n; i++)
+            {
+                c.genes.Add(genes.ElementAt(i));
+            }
+            return c;
         }
 
         private  List<int> DesordenarLista(List<int> input)
@@ -88,6 +113,14 @@ namespace WindowsFormsApp1.Genetic
             if (a.getFitness() < b.getFitness())
                 return true;
             return false;
+        }
+
+        public static Chromosome operator +(Chromosome a, Chromosome b)
+        {
+            Chromosome c= new Chromosome();
+            c.genes.Concat(a.genes);
+            c.genes.Concat(b.genes);
+            return c;
         }
     }
 }
