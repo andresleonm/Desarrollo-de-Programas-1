@@ -23,7 +23,7 @@ namespace WindowsFormsApp1.Genetic
             {
                 try
                 {
-                    foreach (Ratio r in assignment.assigned_worker.ratios_e)
+                    foreach (Ratio r in assignment.assigned_worker.ratios)
                     {
                         if (r.workstation.id == assignment.assigned_workstation.id)
                         {
@@ -98,11 +98,18 @@ namespace WindowsFormsApp1.Genetic
         public Chromosome(List<Workstation> workstations, List<Worker> workers) {
             List<int> indexa= getArray(workstations.Count());
             List<int> indexb = getArray(workers.Count());
-            int n=0;
+            int n=0,numWorkers=workers.Count();
+            
             foreach (int indexWorkstation in indexa)
             {
-                int indexWorker = indexb.ElementAt(n);
-                genes.Add(new Assignment(workstations.ElementAt(indexWorkstation), workers.ElementAt(indexWorker)));
+                if (n>= numWorkers)
+                {
+                    genes.Add(new Assignment(workstations.ElementAt(indexWorkstation),null));
+                }else
+                {
+                    int indexWorker = indexb.ElementAt(n);
+                    genes.Add(new Assignment(workstations.ElementAt(indexWorkstation), workers.ElementAt(indexWorker)));
+                }               
                 n++;
             }
         }
@@ -138,8 +145,8 @@ namespace WindowsFormsApp1.Genetic
         public static Chromosome operator +(Chromosome a, Chromosome b)
         {
             Chromosome c= new Chromosome();
-            c.genes.Concat(a.genes);
-            c.genes.Concat(b.genes);
+            c.genes=c.genes.Concat(a.genes).ToList();
+            c.genes=c.genes.Concat(b.genes).ToList();
             return c;
         }
     }

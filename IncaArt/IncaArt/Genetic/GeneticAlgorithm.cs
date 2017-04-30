@@ -9,13 +9,22 @@ namespace WindowsFormsApp1.Genetic
 {
     class GeneticAlgorithm
     {
-        public int numIterations=3000;
-        public int numInitialPopulation = 1000;
-        public int porcCrossover=0;
-        public int porcMutation = 1;
-        public int porcElitism = 1;
+        private int numIterations=3000;
+        private int numInitialPopulation = 1000;
+        private int porcCrossover=0;
+        private int porcMutation = 1;
+        private int porcElitism = 1;
 
-        public Population generateInitialPopulation(List<Workstation> workStations,List<Worker> workers)
+        public GeneticAlgorithm(int numIterations, int numInitialPopulation, int porcCrossover,int porcMutation,int porcElitism)
+        {
+            this.numIterations = numIterations;
+            this.numInitialPopulation = numInitialPopulation;
+            this.porcCrossover = porcCrossover;
+            this.porcMutation = porcMutation;
+            this.porcElitism = porcElitism;
+            
+        }
+        private Population generateInitialPopulation(List<Workstation> workStations,List<Worker> workers)
         {
             Population pI = new Population(porcCrossover, porcMutation, porcElitism);
             for (int i = 0; i < numInitialPopulation; i++)
@@ -24,7 +33,7 @@ namespace WindowsFormsApp1.Genetic
             }
             return pI;
         }
-        public Chromosome getBestSolution(Population p)
+        private Chromosome getBestSolution(Population p)
         {
             Chromosome best= null;
             bool flg = true;
@@ -44,19 +53,19 @@ namespace WindowsFormsApp1.Genetic
 
        
 
-        public List<Workstation> getWorkStations(List<Workstation> ws)
+        private List<Workstation> getWorkStations(List<Workstation> ws)
         {
             List<Workstation> output = new List<Workstation>();
             foreach(Workstation w in ws)
             {
                 //desdoblo los puestos de trabajo, es decir, si tengo en mi lista un puesto de trabajo con capacidad 10
                 //en mi lista que ira para el algoritmo creo 10 puestos de trabajo
-                output.Concat(w.Getworkstations());
+                output=output.Concat(w.Getworkstations()).ToList();
             }
             return output;
         }
 
-        public List<Assignment> GeneticSolve (List<Workstation> workstations, List<Worker> workers, Order order)
+        public List<Assignment> GeneticSolve (List<Workstation> workstations, List<Worker> workers)
         {
             List<Workstation> workstationsA = getWorkStations(workstations);
             

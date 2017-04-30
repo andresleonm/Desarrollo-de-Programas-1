@@ -71,10 +71,20 @@ namespace WindowsFormsApp1.Genetic
             }
         }
 
+        public void printFitness()
+        {
+            foreach(Chromosome c in chromosomes)
+            {
+                Console.WriteLine(c.getFitness());
+            }
+
+        }
+
         public void elitism()
         {
             List<Chromosome> array = chromosomes;
             int numElitism = chromosomes.Count * porE/100;
+            printFitness();
             array.Sort();
             for(int i = 0; i < numElitism; i++)
             {

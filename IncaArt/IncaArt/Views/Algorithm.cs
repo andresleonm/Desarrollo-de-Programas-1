@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using WindowsFormsApp1.Classes;
 using Newtonsoft.Json;
 using System.IO;
+using WindowsFormsApp1.Genetic;
 
 namespace WindowsFormsApp1.Views
 {
@@ -401,6 +402,22 @@ namespace WindowsFormsApp1.Views
                 }
                 pla1.Add(aux);                
             }                       
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            List<Worker> workers = new List<Worker>();
+            List<Workstation> workstations = new List<Workstation>(); 
+            Product product1 = new Product("Retablo", 0, 2.5);
+            Product product2 = new Product("Ceramico", 0, 3.0);
+            Product product3 = new Product("Piedra", 0, 5.0);       
+          
+            readWorkstations(ref workstations, product1, product2, product3);
+            readWorkers(ref workers, workstations);
+            GeneticAlgorithm g = new GeneticAlgorithm(3000,1000,40,2,10);
+            List<Assignment> solucion = g.GeneticSolve(workstations, workers);
+
         }
     }
 }

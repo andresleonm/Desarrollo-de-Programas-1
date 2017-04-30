@@ -16,6 +16,11 @@ namespace WindowsFormsApp1.Classes
 
         }
 
+        public Assignment(Workstation assigned_workstation)
+        {
+            this.assigned_workstation = assigned_workstation;
+        }
+
         public Assignment(Workstation assigned_workstation,Worker worker)
         {            
             this.assigned_workstation = assigned_workstation;
