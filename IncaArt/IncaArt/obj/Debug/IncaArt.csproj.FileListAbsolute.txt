@@ -10,6 +10,7 @@ C:\Users\Andres\Documents\Visual Studio 2017\Projects\IncaArt\IncaArt\obj\Debug\
 C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\bin\Debug\IncaArt.exe.config
 C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.exe
 C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.pdb
+<<<<<<< HEAD
 C:\Users\Alexandra\Desktop\dp1\Desarrollo-de-Programas-1\IncaArt\IncaArt\bin\Debug\IncaArt.exe.config
 C:\Users\Alexandra\Desktop\dp1\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.exe
 C:\Users\Alexandra\Desktop\dp1\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.pdb
@@ -20,3 +21,14 @@ C:\Users\Alexandra\Desktop\dp1\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Deb
 C:\Users\Alexandra\Desktop\dp1\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.Algorithm.resources
 C:\Users\Alexandra\Desktop\dp1\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Frm_Login.resources
 C:\Users\Alexandra\Desktop\dp1\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.csproj.GenerateResource.Cache
+=======
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\bin\Debug\IncaArt.exe
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\bin\Debug\IncaArt.pdb
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.csprojResolveAssemblyReference.cache
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.Algorithm.resources
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Frm_Login.resources
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.csproj.GenerateResource.Cache
+>>>>>>> c3f9ff92e2a6c1a94f51a96fc0965f7b2c39f391

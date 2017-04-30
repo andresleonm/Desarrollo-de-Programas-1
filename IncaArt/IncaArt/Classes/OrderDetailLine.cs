@@ -8,8 +8,13 @@ namespace WindowsFormsApp1.Classes
 {
     class OrderDetailLine
     {
-        internal Product product { get; set; }
-        internal int quantity { get; set; }
+        public Product product { get; set; }
+        public int quantity { get; set; }
+
+        public OrderDetailLine()
+        {
+
+        }
 
         public OrderDetailLine(Product product, int quantity)
         {

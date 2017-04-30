@@ -8,6 +8,7 @@ using WindowsFormsApp1.Genetic;
 namespace WindowsFormsApp1.Classes
 {
     class Workstation
+<<<<<<< HEAD
     {
         internal Product product { get; set; }
         internal string name { get; set; }
@@ -19,14 +20,35 @@ namespace WindowsFormsApp1.Classes
    
 
         public Workstation(Product product, string name, int quantity,int id,double break_cost)
+=======
+    {        
+        public string name { get; set; }
+        public int quantity { get; set; }        
+        public double break_cost { get; set; }
+        public int id { get; set; }
+        public Product product { get; set; }
+
+        public Workstation()
+        {
+
+        }
+
+        public Workstation(Product product, string name, int quantity,double break_cost)
+>>>>>>> c3f9ff92e2a6c1a94f51a96fc0965f7b2c39f391
         {
             this.product = product;
             this.name = name;
-            this.quantity = quantity;
-            this.id = id;
+            this.quantity = quantity;            
             this.break_cost = break_cost;
-        }     
-        
+        }
+
+        public Workstation(string name, int quantity, double break_cost)
+        {            
+            this.name = name;
+            this.quantity = quantity;
+            this.break_cost = break_cost;
+        }
+
         public Workstation(Product product, string name)
         {
             this.product = product;

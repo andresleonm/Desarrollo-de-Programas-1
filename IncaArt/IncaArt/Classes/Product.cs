@@ -8,10 +8,15 @@ namespace WindowsFormsApp1.Classes
 {
     class Product
     {
-        internal string name { get; set; }
-        internal int stock { get; set; }
-        internal double unit_price { get; set; }
-        internal List<string> production_line { get; set; }
+        public string name { get; set; }
+        public int stock { get; set; }
+        public double unit_price { get; set; }
+        public List<string> production_line { get; set; }
+
+        public Product()
+        {
+
+        }
 
         public Product(string name,int stock,double unit_price)
         {
