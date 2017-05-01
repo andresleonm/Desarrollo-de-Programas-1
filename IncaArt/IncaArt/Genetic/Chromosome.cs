@@ -7,6 +7,7 @@ using WindowsFormsApp1.Classes;
 
 namespace WindowsFormsApp1.Genetic
 {
+
     class Chromosome
     {
         public List<Assignment> genes = new List<Assignment>();
@@ -159,6 +160,19 @@ namespace WindowsFormsApp1.Genetic
             c.genes=c.genes.Concat(a.genes).ToList();
             c.genes=c.genes.Concat(b.genes).ToList();
             return c;
+        }
+    }
+
+    class ChromosomeComparer : IComparer<Chromosome>
+    {
+        public int Compare(Chromosome a, Chromosome b)
+        {
+            if (a.getFitness() == b.getFitness())
+                return 0;
+            if (a.getFitness() < b.getFitness())
+                return -1;
+
+            return 1;
         }
     }
 }
