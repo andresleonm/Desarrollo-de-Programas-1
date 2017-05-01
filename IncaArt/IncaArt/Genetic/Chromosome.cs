@@ -22,19 +22,21 @@ namespace WindowsFormsApp1.Genetic
         {
             int rep = 0;
             List<string> names = new List<string>();
-            foreach(Assignment a in genes)
+            foreach (Assignment a in genes)
             {
-                if (!(names.Contains(a.assigned_worker.name+ a.assigned_worker.lastname))){
+                if (!(names.Contains(a.assigned_worker.name + a.assigned_worker.lastname)))
+                {
                     names.Add(a.assigned_worker.name + a.assigned_worker.lastname);
-                }else
+                }
+                else
                 {
                     rep++;
                 }
-            }            
+            }
             if (rep == 0)
                 return false;
             return true;
-            
+
         }
         public void print()
         {
@@ -175,11 +177,28 @@ namespace WindowsFormsApp1.Genetic
             return false;
         }
 
+
         public static Chromosome operator +(Chromosome a, Chromosome b)
         {
             Chromosome c= new Chromosome();
-            c.genes=c.genes.Concat(a.genes).ToList();
-            c.genes=c.genes.Concat(b.genes).ToList();
+            Random rand = new Random();
+            int numAssignments = a.genes.Count();
+            int cut = rand.Next() % numAssignments;
+            //Agregar primera parte del primer cromosoma
+            c = a.cut(0, cut);
+            //Lista para verificar que no se repita el trabajador
+            List<string> names = new List<string>();
+            foreach (Assignment i in c.genes) {
+                names.Add(i.assigned_worker.name + i.assigned_worker.lastname);
+            }
+           //Agregar parte del segundo cromosoma
+            foreach (Assignment i in b.genes) {
+                if (!(names.Contains(i.assigned_worker.name + i.assigned_worker.lastname)))
+                {
+                    c.genes.Add(i);
+                }
+            }
+            
             return c;
         }
     }

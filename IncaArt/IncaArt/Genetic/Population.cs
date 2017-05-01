@@ -26,21 +26,23 @@ namespace WindowsFormsApp1.Genetic
             this.porE = porE;
         }
 
+        
         public void crossover()
         {
             List<Chromosome> arrAux = new List<Chromosome>();
             Chromosome c1,c2,temp;
-            int n = matingPool.Count()*porC/100;
-            Random rand = new Random();            
-            int numAssignments = chromosomes.ElementAt(0).genes.Count();
+            int n = matingPool.Count()*porC/100;                    
+           
             for (int i = 0; i < n; i+=2)
             {
                 c1 = matingPool.ElementAt(i);
-                c2 = matingPool.ElementAt(i + 1);                
-                int cut = rand.Next() % numAssignments;
-                temp = c1.cut(0, cut);
-                c1 = c2.cut(0, cut) + c1.cut(cut);
-                c2 = temp + c2.cut(cut);
+                c2 = matingPool.ElementAt(i + 1);
+
+                //Single point crossover
+                temp = c1+c2;
+                c1= c2+c1;
+                c2 = temp;
+               
                 arrAux.Add(c1);
                 arrAux.Add(c2);
             }
