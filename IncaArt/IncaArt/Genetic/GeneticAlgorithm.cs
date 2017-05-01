@@ -28,7 +28,9 @@ namespace WindowsFormsApp1.Genetic
         {
             Population pI = new Population(porcCrossover, porcMutation, porcElitism);
             List<double> fitness= new List<double>();
-            long n=0; 
+            long n=0;
+            pI.workers = workers;
+
             for (int i = 0; i < numInitialPopulation; )
             {
                 Chromosome c = new Chromosome(workStations, workers);
@@ -79,9 +81,11 @@ namespace WindowsFormsApp1.Genetic
         public Chromosome GeneticSolve (List<Workstation> workstations, List<Worker> workers)
         {
             List<Workstation> workstationsA = getWorkStations(workstations);
-            
+            Chromosome bestSolution = new Chromosome();
             Population population = generateInitialPopulation(workstationsA, workers);
+          
             Console.WriteLine("Fitness de poblacion inicial: "+getBestSolution(population).getFitness());
+            Console.WriteLine("Tiene repeticiones la poblacion inicial: " + getBestSolution(population).hasRepetitions());
             for (int i= 0; i < numIterations; i++)
             {
                 population.elitism();
@@ -90,8 +94,11 @@ namespace WindowsFormsApp1.Genetic
                 population.mutate();
                 population.createNewGeneration();
             }
-            Console.WriteLine("Fitness de mejor solucion: "+getBestSolution(population).getFitness());
-            return getBestSolution(population);
+
+            bestSolution = getBestSolution(population);
+            Console.WriteLine("Fitness de mejor solucion: "+bestSolution.getFitness());
+            Console.WriteLine("Posee repeticiones:" + bestSolution.hasRepetitions());
+            return bestSolution;
         }
     }
 }

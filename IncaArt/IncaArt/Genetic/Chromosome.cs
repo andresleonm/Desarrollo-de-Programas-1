@@ -177,31 +177,76 @@ namespace WindowsFormsApp1.Genetic
             return false;
         }
 
+        public List<int> indexRepeated() {
+            List<string> names = new List<string>();
+            List<int> repetidos = new List<int>();
+          
+            for (int i = 0; i < genes.Count; i++)
+            {
+                  String name = genes[i].assigned_worker.name + genes[i].assigned_worker.lastname;
+                  if ((names.Contains(name))){
+                   repetidos.Add(i);
+                  }else{
+                    names.Add(name);
+                  }
+            }
+            return repetidos;
+         }
 
+        public List<Worker> missingWorkers(List<Worker> w) {
+            List<Worker> workers = new List<Worker>();
+            List<string> names = new List<string>();
+            //Los nombres de todos los trabajadores en el cromosoma actual
+
+            foreach (Assignment a in genes)
+            {
+                String name = a.assigned_worker.name + a.assigned_worker.lastname;
+                if (!(names.Contains(name)))
+                {
+                    names.Add(name);
+                }
+            }
+            //Busco si falta algun nombre con otro cromosoma como referencia
+            for (int i = 0; i < w.Count; i++)
+            {
+                String name = w[i].name + w[i].lastname;
+                if (!(names.Contains(name)))
+                {
+                    workers.Add(w[i]);
+                }              
+            }
+            return workers;
+        }
+
+        /*
         public static Chromosome operator +(Chromosome a, Chromosome b)
         {
-            Chromosome c= new Chromosome();
+            Chromosome c,temp= new Chromosome();
+   
             Random rand = new Random();
             int numAssignments = a.genes.Count();
             int cut = rand.Next() % numAssignments;
             //Agregar primera parte del primer cromosoma
             c = a.cut(0, cut);
-            //Lista para verificar que no se repita el trabajador
-            List<string> names = new List<string>();
-            foreach (Assignment i in c.genes) {
-                names.Add(i.assigned_worker.name + i.assigned_worker.lastname);
-            }
-           //Agregar parte del segundo cromosoma
-            foreach (Assignment i in b.genes) {
-                if (!(names.Contains(i.assigned_worker.name + i.assigned_worker.lastname)))
-                {
-                    c.genes.Add(i);
+
+            ////Agregar parte del segundo cromosoma
+            temp = b.cut(cut);
+            c.genes = c.genes.Concat(temp.genes).ToList();
+            if (c.hasRepetitions())
+            {
+                List<int> repeated = c.indexRepeated();
+               // Console.WriteLine("El padre tiene repeticioes?:" + a.hasRepetitions()+"el otro"+b.hasRepetitions());
+                //List<Worker> missingW = c.missingWorkers(a);
+                for(int i=0;i<repeated.Count;i++) {
+                    //c.genes[repeated[i]].assigned_worker = missingW[i];
                 }
             }
-            
-            return c;
-        }
+            //Console.WriteLine("Tiene repeticiones despues de correciones?"+c.hasRepetitions());             
+
+                return c;
+        }*/
     }
+
 
     class ChromosomeComparer : IComparer<Chromosome>
     {

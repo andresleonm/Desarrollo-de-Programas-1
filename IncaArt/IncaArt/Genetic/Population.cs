@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApp1.Classes;
 
 namespace WindowsFormsApp1.Genetic
 {
@@ -13,6 +14,8 @@ namespace WindowsFormsApp1.Genetic
         public List<Chromosome> chromosomes = new List<Chromosome>();
         List<Chromosome> matingPool = new List<Chromosome>();
         List<Chromosome> bestSolutions = new List<Chromosome>();
+        //QUITAR
+        public List<Worker> workers = new List<Worker>();
         public int porC;
         public int porM;
         public int porE;
@@ -26,11 +29,38 @@ namespace WindowsFormsApp1.Genetic
             this.porE = porE;
         }
 
+        public Chromosome singlePointCrossover(Chromosome a, Chromosome b) {
+            Chromosome c, temp = new Chromosome();
+
+            Random rand = new Random();
+            int numAssignments = a.genes.Count();
+            int cut = rand.Next() % numAssignments;
+            //Agregar primera parte del primer cromosoma
+            c = a.cut(0, cut);
+
+            ////Agregar parte del segundo cromosoma
+            temp = b.cut(cut);
+            c.genes = c.genes.Concat(temp.genes).ToList();
+            if (c.hasRepetitions())
+            {
+                List<int> repeated = c.indexRepeated();
+                //Console.WriteLine("El padre tiene repeticioes?:" + a.hasRepetitions() + "el otro" + b.hasRepetitions());
+                List<Worker> missingW = c.missingWorkers(this.workers);
+                for (int i = 0; i < repeated.Count; i++)
+                {
+                    c.genes[repeated[i]].assigned_worker = missingW[i];
+                }
+            }
+            //Console.WriteLine("Tiene repeticiones despues de correciones?" + c.hasRepetitions());
+
+            return c;
+        }
         
         public void crossover()
         {
+           
             List<Chromosome> arrAux = new List<Chromosome>();
-            Chromosome c1,c2,temp;
+            Chromosome c1,c2,aux1,aux2;
             int n = matingPool.Count()*porC/100;                    
            
             for (int i = 0; i < n; i+=2)
@@ -39,12 +69,14 @@ namespace WindowsFormsApp1.Genetic
                 c2 = matingPool.ElementAt(i + 1);
 
                 //Single point crossover
-                temp = c1+c2;
-                c1= c2+c1;
-                c2 = temp;
-               
-                arrAux.Add(c1);
-                arrAux.Add(c2);
+                //aux2 = c2 + c1;
+                //aux1 = c1+c2;
+                aux2 = singlePointCrossover(c2, c1);
+                aux1 = singlePointCrossover(c1, c2);
+
+
+                arrAux.Add(aux1);
+                arrAux.Add(aux2);
             }
             matingPool.Clear();
             foreach (Chromosome c in arrAux)

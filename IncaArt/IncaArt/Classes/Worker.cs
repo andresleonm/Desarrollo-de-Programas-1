@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Classes
 {
-    class Worker : Person
+     class Worker : Person
     {
         public int shift_id { get; set; }
         public List<Ratio> ratios { get; set; }        
