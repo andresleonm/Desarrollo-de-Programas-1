@@ -27,7 +27,7 @@ namespace WindowsFormsApp1.Classes
         }
         public void print(Workstation ws, string ratio_type)
         {
-            Console.WriteLine("Nombre: " + name);
+            Console.WriteLine("Nombre: " + name +' '+lastname);
             Console.WriteLine("Ratio:  "+ getRatio(ws,ratio_type).ToString());
         }
         public Worker()

@@ -18,6 +18,24 @@ namespace WindowsFormsApp1.Genetic
 
         }
 
+        public bool hasRepetitions()
+        {
+            int rep = 0;
+            List<string> names = new List<string>();
+            foreach(Assignment a in genes)
+            {
+                if (!(names.Contains(a.assigned_worker.name+ a.assigned_worker.lastname))){
+                    names.Add(a.assigned_worker.name + a.assigned_worker.lastname);
+                }else
+                {
+                    rep++;
+                }
+            }            
+            if (rep == 0)
+                return false;
+            return true;
+            
+        }
         public void print()
         {
             AssignmentComparer comparer = new AssignmentComparer();
