@@ -36,10 +36,8 @@ namespace WindowsFormsApp1.Genetic
                 if (!fitness.Contains(tempfit))
                 {
                     pI.chromosomes.Add(c);
-                    fitness.Add(c.getFitness());
-                
-                Console.WriteLine(i);
-                i +=1;                    
+                    fitness.Add(c.getFitness());                
+                    i +=1;                    
                 }
 
                 n++;
@@ -85,7 +83,7 @@ namespace WindowsFormsApp1.Genetic
             List<Workstation> workstationsA = getWorkStations(workstations);
             
             Population population = generateInitialPopulation(workstationsA, workers);
-            Console.WriteLine(getBestSolution(population).getFitness());
+            Console.WriteLine("Fitness de poblacion inicial: "+getBestSolution(population).getFitness());
             for (int i= 0; i < numIterations; i++)
             {
                 population.elitism();
@@ -93,9 +91,8 @@ namespace WindowsFormsApp1.Genetic
                 population.crossover();
                 population.mutate();
                 population.createNewGeneration();
-                Console.WriteLine(i);
             }
-            Console.WriteLine(getBestSolution(population).getFitness());
+            Console.WriteLine("Fitness de mejor solucion: "+getBestSolution(population).getFitness());
             return getBestSolution(population);
         }
     }

@@ -35,7 +35,7 @@ namespace WindowsFormsApp1.Genetic
                 {
                     foreach (Ratio r in assignment.assigned_worker.ratios)
                     {
-                        if (r.workstation.id == assignment.assigned_workstation.id && (r.type == "Efficiency"))
+                        if (r.workstation.id == assignment.assigned_workstation.id && (r.type=="Efficiency"))
                         {
                             total_break = total_break + (1 - r.value) * assignment.assigned_workstation.break_cost;
                             break;
