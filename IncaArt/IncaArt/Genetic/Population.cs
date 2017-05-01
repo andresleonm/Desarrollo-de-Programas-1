@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Genetic
 {
+    
+
     class Population
     {
         public List<Chromosome> chromosomes = new List<Chromosome>();
@@ -89,6 +91,9 @@ namespace WindowsFormsApp1.Genetic
         {
             List<Chromosome> array = chromosomes;
             int numElitism = chromosomes.Count * porE/100;
+            ChromosomeComparer comparer=new ChromosomeComparer();
+            array.Sort(comparer);
+            bestSolutions.Clear();
             for(int i = 0; i < numElitism; i++)
             {
                 bestSolutions.Add(array[i]);
