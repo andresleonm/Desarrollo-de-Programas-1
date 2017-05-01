@@ -11,9 +11,24 @@ namespace WindowsFormsApp1.Classes
         public int shift_id { get; set; }
         public List<Ratio> ratios { get; set; }        
 
+        public double getRatio(Workstation ws,string ratio_type)
+        {
+            foreach(Ratio r in ratios)
+            {
+                if (r.workstation.id == ws.id && r.type == "Efficiency")
+                    return r.value;
+            }
+            Console.WriteLine("No existe ratio " + ratio_type+ " para el trabajador "+name);
+            return 1;
+        }
         public void print()
         {          
-            Console.Write("Nombre  " + name + "-----");
+            Console.WriteLine("Nombre: " + name );
+        }
+        public void print(Workstation ws, string ratio_type)
+        {
+            Console.WriteLine("Nombre: " + name);
+            Console.WriteLine("Ratio:  "+ getRatio(ws,ratio_type).ToString());
         }
         public Worker()
         {

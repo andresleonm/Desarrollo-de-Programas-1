@@ -39,11 +39,8 @@ namespace WindowsFormsApp1.Genetic
                     fitness.Add(c.getFitness());                
                     i +=1;                    
                 }
-
-                n++;
-                         
+                n++;                         
             }
-            Console.WriteLine(n);
             return pI;
         }
         private Chromosome getBestSolution(Population p)

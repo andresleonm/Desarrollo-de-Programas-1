@@ -417,8 +417,9 @@ namespace WindowsFormsApp1.Views
             readWorkstations(ref workstations, product1, product2, product3);
             readWorkers(ref workers, workstations);
 
-            GeneticAlgorithm g = new GeneticAlgorithm(3000,100,90,1,10);
-            Chromosome solucion = g.GeneticSolve( workstations, workers);            
+            GeneticAlgorithm g = new GeneticAlgorithm(100,100,90,1,10);
+            Chromosome solution = g.GeneticSolve( workstations, workers);
+            solution.print();          
         }
     }
 }

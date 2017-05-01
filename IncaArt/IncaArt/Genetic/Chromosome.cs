@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WindowsFormsApp1.Classes;
+using static WindowsFormsApp1.Classes.Assignment;
 
 namespace WindowsFormsApp1.Genetic
 {
@@ -19,7 +20,9 @@ namespace WindowsFormsApp1.Genetic
 
         public void print()
         {
-            foreach(Assignment a in genes)
+            AssignmentComparer comparer = new AssignmentComparer();
+            genes.Sort(comparer);
+            foreach (Assignment a in genes)
             {
                 a.print();
                 Console.WriteLine();

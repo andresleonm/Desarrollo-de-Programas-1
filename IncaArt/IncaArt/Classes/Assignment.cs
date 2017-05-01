@@ -13,8 +13,8 @@ namespace WindowsFormsApp1.Classes
        
         public void print()
         {
-            assigned_worker.print();
             assigned_workstation.print();
+            assigned_worker.print(assigned_workstation, "Efficiency");               
         }
         public Assignment()
         {
@@ -30,6 +30,28 @@ namespace WindowsFormsApp1.Classes
         {            
             this.assigned_workstation = assigned_workstation;
             this.assigned_worker = worker;
+        }
+
+        public class AssignmentComparer : IComparer<Assignment>
+        {
+            public int Compare(Assignment a, Assignment b)
+            {
+                if (a.assigned_workstation.id == b.assigned_workstation.id)
+                {
+                    double ra = a.assigned_worker.getRatio(a.assigned_workstation, "Efficiency");
+                    double rb = b.assigned_worker.getRatio(b.assigned_workstation, "Efficiency");
+                    if (ra == rb)
+                        return 0;
+                    if (ra < rb)
+                        return -1;
+                    return 1;
+                }
+                if (a.assigned_workstation.id < b.assigned_workstation.id)
+                    return -1;
+                return 1;
+
+
+            }
         }
     }
 }
