@@ -94,7 +94,7 @@ namespace WindowsFormsApp1.Genetic
             }
             return c;
         }
-
+        
         private  List<int> DesordenarLista(List<int> input)
         {
             List<int> arr = input;

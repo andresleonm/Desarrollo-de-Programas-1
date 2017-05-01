@@ -134,7 +134,6 @@ namespace WindowsFormsApp1.Genetic
                 else
                     roulette.Add(roulette[i - 1] + fitArray[i] / fitness);
             }
-            roulette[size - 1] = 1;
             if (flg)
             {
                 lowFit = lowestfit;
@@ -142,11 +141,11 @@ namespace WindowsFormsApp1.Genetic
                 flg = false;
             }else
             {
-                if (lowestfit > lowFit)
+                if (lowestfit < lowFit)
                 {
                     lowFit = lowestfit;
                 }
-                if ((fitness / size) > fitAvg)
+                if ((fitness / size) < fitAvg)
                 {
                     fitAvg = fitness / size;
                 }

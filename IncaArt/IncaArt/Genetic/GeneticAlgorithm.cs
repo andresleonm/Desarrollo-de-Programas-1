@@ -40,8 +40,9 @@ namespace WindowsFormsApp1.Genetic
                     i +=1;
                     //Console.WriteLine(c.hasRepetitions());                
                 }
-                n++;                         
+                n++;                
             }
+            Console.WriteLine(n);
             return pI;
         }
         private Chromosome getBestSolution(Population p)
@@ -90,8 +91,9 @@ namespace WindowsFormsApp1.Genetic
                 population.mutate();
                 population.createNewGeneration();
             }
-            Console.WriteLine("Fitness de mejor solucion: "+getBestSolution(population).getFitness());
+          Console.WriteLine("Fitness de mejor solucion: "+getBestSolution(population).getFitness());
             return getBestSolution(population);
         }
     }
 }
+ 
