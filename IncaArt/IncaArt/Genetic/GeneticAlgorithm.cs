@@ -37,9 +37,11 @@ namespace WindowsFormsApp1.Genetic
                 {
                     pI.chromosomes.Add(c);
                     fitness.Add(c.getFitness());
-                  
-                    i +=1;                    
+                
+                Console.WriteLine(i);
+                i +=1;                    
                 }
+
                 n++;
                          
             }
