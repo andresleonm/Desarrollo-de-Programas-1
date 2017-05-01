@@ -16,7 +16,10 @@ namespace WindowsFormsApp1.Classes
         public Product product { get; set; }
 
 
-
+        public void print()
+        {
+            Console.Write("Nombre  " + name + "-----");
+        }
         public Workstation(Product product, string name, int quantity, int id, double break_cost)
 
         {

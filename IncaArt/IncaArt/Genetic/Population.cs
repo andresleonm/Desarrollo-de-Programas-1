@@ -75,6 +75,7 @@ namespace WindowsFormsApp1.Genetic
         {
             foreach(Chromosome c in chromosomes)
             {
+                //c.print();
                 Console.WriteLine(c.getFitness());
             }
 
@@ -84,8 +85,6 @@ namespace WindowsFormsApp1.Genetic
         {
             List<Chromosome> array = chromosomes;
             int numElitism = chromosomes.Count * porE/100;
-            printFitness();
-            array.Sort();
             for(int i = 0; i < numElitism; i++)
             {
                 bestSolutions.Add(array[i]);

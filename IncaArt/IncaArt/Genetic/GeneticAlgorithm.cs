@@ -9,11 +9,11 @@ namespace WindowsFormsApp1.Genetic
 {
     class GeneticAlgorithm
     {
-        private int numIterations=3000;
-        private int numInitialPopulation = 1000;
-        private int porcCrossover=0;
-        private int porcMutation = 1;
-        private int porcElitism = 1;
+        private int numIterations;
+        private int numInitialPopulation;
+        private int porcCrossover;
+        private int porcMutation;
+        private int porcElitism;
 
         public GeneticAlgorithm(int numIterations, int numInitialPopulation, int porcCrossover,int porcMutation,int porcElitism)
         {
@@ -27,10 +27,23 @@ namespace WindowsFormsApp1.Genetic
         private Population generateInitialPopulation(List<Workstation> workStations,List<Worker> workers)
         {
             Population pI = new Population(porcCrossover, porcMutation, porcElitism);
-            for (int i = 0; i < numInitialPopulation; i++)
+            List<double> fitness= new List<double>();
+            long n=0; 
+            for (int i = 0; i < numInitialPopulation; )
             {
-                pI.chromosomes.Add(new Chromosome(workStations, workers));
+                Chromosome c = new Chromosome(workStations, workers);
+                double tempfit = c.getFitness();
+                if (!fitness.Contains(tempfit))
+                {
+                    pI.chromosomes.Add(c);
+                    fitness.Add(c.getFitness());
+                  
+                    i +=1;                    
+                }
+                n++;
+                         
             }
+            Console.WriteLine(n);
             return pI;
         }
         private Chromosome getBestSolution(Population p)
@@ -65,12 +78,12 @@ namespace WindowsFormsApp1.Genetic
             return output;
         }
 
-        public List<Assignment> GeneticSolve (List<Workstation> workstations, List<Worker> workers)
+        public Chromosome GeneticSolve (List<Workstation> workstations, List<Worker> workers)
         {
             List<Workstation> workstationsA = getWorkStations(workstations);
             
             Population population = generateInitialPopulation(workstationsA, workers);
-            
+            Console.WriteLine(getBestSolution(population).getFitness());
             for (int i= 0; i < numIterations; i++)
             {
                 population.elitism();
@@ -78,8 +91,10 @@ namespace WindowsFormsApp1.Genetic
                 population.crossover();
                 population.mutate();
                 population.createNewGeneration();
+                Console.WriteLine(i);
             }
-            return getBestSolution(population).genes;
+            Console.WriteLine(getBestSolution(population).getFitness());
+            return getBestSolution(population);
         }
     }
 }

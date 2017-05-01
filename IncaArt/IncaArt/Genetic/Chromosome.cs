@@ -15,6 +15,16 @@ namespace WindowsFormsApp1.Genetic
         {
 
         }
+
+        public void print()
+        {
+            foreach(Assignment a in genes)
+            {
+                a.print();
+                Console.WriteLine();
+            }
+            
+        }
         public double getFitness()
         {
             double total_break = 0;                
@@ -28,6 +38,7 @@ namespace WindowsFormsApp1.Genetic
                         if (r.workstation.id == assignment.assigned_workstation.id)
                         {
                             total_break = total_break + r.value * assignment.assigned_workstation.break_cost;
+                            break;
                         }
                     }
 

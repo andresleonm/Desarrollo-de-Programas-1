@@ -11,6 +11,10 @@ namespace WindowsFormsApp1.Classes
         public int shift_id { get; set; }
         public List<Ratio> ratios { get; set; }        
 
+        public void print()
+        {          
+            Console.Write("Nombre  " + name + "-----");
+        }
         public Worker()
         {
 

@@ -9,8 +9,13 @@ namespace WindowsFormsApp1.Classes
     class Assignment
     {
         public Worker assigned_worker { get; set; }
-        public Workstation assigned_workstation { get; set; }        
-
+        public Workstation assigned_workstation { get; set; }
+       
+        public void print()
+        {
+            assigned_worker.print();
+            assigned_workstation.print();
+        }
         public Assignment()
         {
 

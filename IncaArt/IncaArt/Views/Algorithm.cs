@@ -412,12 +412,11 @@ namespace WindowsFormsApp1.Views
             Product product1 = new Product("Retablo", 0, 2.5);
             Product product2 = new Product("Ceramico", 0, 3.0);
             Product product3 = new Product("Piedra", 0, 5.0);       
-          
+            
             readWorkstations(ref workstations, product1, product2, product3);
             readWorkers(ref workers, workstations);
-            GeneticAlgorithm g = new GeneticAlgorithm(3000,1000,40,2,10);
-            List<Assignment> solucion = g.GeneticSolve(workstations, workers);
-
+            GeneticAlgorithm g = new GeneticAlgorithm(3000,100,40,2,10);
+            Chromosome solucion = g.GeneticSolve(   workstations, workers);            
         }
     }
 }
