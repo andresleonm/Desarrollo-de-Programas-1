@@ -17,8 +17,11 @@ namespace WindowsFormsApp1.Views
     {
         public Random rnd = new Random();
         public int MAX_ITER = 5000;
-        public int TABU_SIZE = 10;
-        public int NEIGHBORHOOD_SIZE = 30;
+        public int TABU_SIZE = 12;
+        public int NEIGHBORHOOD_SIZE = 25;
+        public int needed_piedra = 0;
+        public int needed_ceramico = 0;
+        public int needed_retablo = 0;
         public Algorithm()
         {
             InitializeComponent();
@@ -58,8 +61,7 @@ namespace WindowsFormsApp1.Views
         {
             List<Workstation> admissible_workstations = new List<Workstation>();
             List<ProductLineAssignment> solution = new List<ProductLineAssignment>();
-            List<Tuple<int, Product>> products_quantities;
-            int max_iterations = 5000;
+            List<Tuple<int, Product>> products_quantities;            
             int retablo_sets = 0;
             int piedra_sets = 0;
             int ceramico_sets = 0;
@@ -83,16 +85,15 @@ namespace WindowsFormsApp1.Views
                         admissible_workstations.Add(workstation);
                         if (workstation.name == "MoldeadoR")
                         {
-                            retablo_sets = workstation.quantity;
-                            int needed_workstation = 0;                            
+                            retablo_sets = workstation.quantity;                                                        
                             foreach(Tuple<int,Product> tuple in products_quantities)
                             {
                                 if (tuple.Item2.name == "Retablo")
                                 {
-                                    needed_workstation = Math.Min(retablo_sets, tuple.Item1);
+                                    needed_retablo = Math.Min(retablo_sets, tuple.Item1);
                                 }
                             }
-                            for (int i = 0; i < needed_workstation; i++)
+                            for (int i = 0; i < needed_retablo; i++)
                             {
                                 ProductLineAssignment pla = new ProductLineAssignment(workstation.product);
                                 solution.Add(pla);
@@ -100,16 +101,15 @@ namespace WindowsFormsApp1.Views
                         }
                         else if (workstation.name == "Tallado")
                         {
-                            piedra_sets = workstation.quantity;
-                            int needed_workstation = 0;
+                            piedra_sets = workstation.quantity;                            
                             foreach (Tuple<int, Product> tuple in products_quantities)
                             {
                                 if (tuple.Item2.name == "Piedra")
                                 {
-                                    needed_workstation = Math.Min(piedra_sets, tuple.Item1);
+                                    needed_piedra = Math.Min(piedra_sets, tuple.Item1);
                                 }
                             }
-                            for (int i = 0; i < needed_workstation; i++)
+                            for (int i = 0; i < needed_piedra; i++)
                             {
                                 ProductLineAssignment pla = new ProductLineAssignment(workstation.product);
                                 solution.Add(pla);
@@ -117,16 +117,15 @@ namespace WindowsFormsApp1.Views
                         }
                         else if (workstation.name == "MoldeadoC")
                         {
-                            ceramico_sets = workstation.quantity;
-                            int needed_workstation = 0;
+                            ceramico_sets = workstation.quantity;                            
                             foreach (Tuple<int, Product> tuple in products_quantities)
                             {
                                 if (tuple.Item2.name == "Ceramico")
                                 {
-                                    needed_workstation = Math.Min(ceramico_sets, tuple.Item1);
+                                    needed_ceramico = Math.Min(ceramico_sets, tuple.Item1);
                                 }
                             }
-                            for (int i = 0; i < needed_workstation; i++)
+                            for (int i = 0; i < needed_ceramico; i++)
                             {
                                 ProductLineAssignment pla = new ProductLineAssignment(workstation.product);
                                 solution.Add(pla);
@@ -315,7 +314,9 @@ namespace WindowsFormsApp1.Views
                                 {
                                     //partial_break = partial_break + ((1-r.value) * assignment.assigned_workstation.break_cost*tuple.Item1);
                                     partial_break = partial_break + (1 - r.value) * assignment.assigned_workstation.break_cost;
-                                    product_quantity = tuple.Item1;
+                                    if(tuple.Item2.name == "Retablo") product_quantity = tuple.Item1/needed_retablo;
+                                    else if(tuple.Item2.name == "Ceramico") product_quantity = tuple.Item1 / needed_ceramico;
+                                    else if(tuple.Item2.name == "Piedra") product_quantity = tuple.Item1 / needed_piedra;
                                     break;
                                 }
                             }
