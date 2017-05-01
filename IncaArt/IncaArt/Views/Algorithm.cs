@@ -16,9 +16,9 @@ namespace WindowsFormsApp1.Views
     public partial class Algorithm : Form
     {
         public Random rnd = new Random();
-        public int MAX_ITER = 5000;
-        public int TABU_SIZE = 12;
-        public int NEIGHBORHOOD_SIZE = 25;
+        public int MAX_ITER = 7000;
+        public int TABU_SIZE = 10;
+        public int NEIGHBORHOOD_SIZE = 30;
         public int needed_piedra = 0;
         public int needed_ceramico = 0;
         public int needed_retablo = 0;
@@ -340,7 +340,16 @@ namespace WindowsFormsApp1.Views
                 Console.WriteLine("LINEA DE PRODUCCION " + i);
                 foreach(Assignment assignment in solution.ElementAt(i).assignments)
                 {
-                    Console.WriteLine("Trabajador: " + assignment.assigned_worker.name + " " + assignment.assigned_worker.lastname);
+                    Console.Write("Trabajador: " + assignment.assigned_worker.name + " " + assignment.assigned_worker.lastname);
+                    for(int j=0; j < assignment.assigned_worker.ratios.Count(); j++)
+                    {
+                        if(assignment.assigned_worker.ratios.ElementAt(j).workstation.name == assignment.assigned_workstation.name)
+                        {
+                            Console.Write(" Eficiencia: " + assignment.assigned_worker.ratios.ElementAt(j).value);
+                            Console.WriteLine(" (" + assignment.assigned_worker.ratios.ElementAt(j).workstation.name + ")");
+                            break;
+                        }
+                    }                    
                     Console.WriteLine("Puesto de trabajo: " + assignment.assigned_workstation.name);
                     Console.WriteLine();
                 }
