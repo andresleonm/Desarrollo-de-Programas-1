@@ -12,7 +12,7 @@ namespace WindowsFormsApp1.Genetic
     class Chromosome
     {
         public List<Assignment> genes = new List<Assignment>();
-
+        public OrderDetail order; 
         public Chromosome()
         {
 
