@@ -26,8 +26,9 @@ namespace WindowsFormsApp1.Genetic
 
         public void crossover()
         {
+            List<Chromosome> arrAux = new List<Chromosome>();
             Chromosome c1,c2,temp;
-            int n = matingPool.Count()*porC/100;//Modificacion
+            int n = matingPool.Count()*porC/100;
             Random rand = new Random();            
             int numAssignments = chromosomes.ElementAt(0).genes.Count();
             for (int i = 0; i < n; i+=2)
@@ -38,10 +39,13 @@ namespace WindowsFormsApp1.Genetic
                 temp = c1.cut(0, cut);
                 c1 = c2.cut(0, cut) + c1.cut(cut);
                 c2 = temp + c2.cut(cut);
-                //chromosomes[i]=c1;
-                //chromosomes[i + 1] = c2;
-                matingPool[i] = c1;
-                matingPool[i + 1] = c2;
+                arrAux.Add(c1);
+                arrAux.Add(c2);
+            }
+            matingPool.Clear();
+            foreach (Chromosome c in arrAux)
+            {
+                matingPool.Add(c);
             }
         }
 
@@ -61,7 +65,7 @@ namespace WindowsFormsApp1.Genetic
 
         public void mutate()
         {
-            int numMutation = porM /100 * matingPool.Count;
+            int numMutation = porM * matingPool.Count/100;
             Random rand = new Random();
             int index;
             for(int i = 0; i < numMutation; i++)
