@@ -36,6 +36,51 @@ namespace WindowsFormsApp1.Genetic
             if (rep == 0)
                 return false;
             return true;
+        }
+
+        public bool hasRepetitionsW()
+        {
+            int rep = 0;
+            List<string> names = new List<string>();
+            foreach (Assignment a in genes)
+            {
+                if (!(names.Contains(a.assigned_workstation.name )))
+                {
+                    names.Add(a.assigned_workstation.name );
+                }
+                else
+                {
+                    rep++;
+                }
+            }
+            if (rep == 0)
+                return false;
+            return true;
+        }
+
+        public void hasSameWorkstations()
+        {
+            
+            List<string> names = new List<string>();
+            List<int> rep = new List<int>();
+            foreach (Assignment a in genes)
+            {
+                if (!(names.Contains(a.assigned_workstation.name)))
+                {
+                    names.Add(a.assigned_workstation.name );
+                    rep.Add(1);
+                }
+                else
+                {
+                    int index = names.IndexOf(a.assigned_workstation.name);
+                    rep[index]++;
+                }
+            }
+            int n = rep.Count();
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine(names[i] + " " + rep[i].ToString());
+            }          
 
         }
         public void print()
@@ -205,6 +250,26 @@ namespace WindowsFormsApp1.Genetic
             return repetidos;
          }
 
+        public List<int> indexRepeatedW()
+        {
+            List<string> names = new List<string>();
+            List<int> repetidos = new List<int>();
+
+            for (int i = 0; i < genes.Count; i++)
+            {
+                String name = genes[i].assigned_workstation.name ;
+                if ((names.Contains(name)))
+                {
+                    repetidos.Add(i);
+                }
+                else
+                {
+                    names.Add(name);
+                }
+            }
+            return repetidos;
+        }
+
         public List<Worker> missingWorkers(List<Worker> w) {
             List<Worker> workers = new List<Worker>();
             List<string> names = new List<string>();
@@ -228,6 +293,31 @@ namespace WindowsFormsApp1.Genetic
                 }              
             }
             return workers;
+        }
+
+        public List<Workstation> missingWorkstations(List<Workstation> w)
+        {
+            List<Workstation> workstations = new List<Workstation>();
+            List<string> names = new List<string>();
+
+            foreach (Assignment a in genes)
+            {
+                String name = a.assigned_workstation.name;
+                if (!(names.Contains(name)))
+                {
+                    names.Add(name);
+                }
+            }
+            //Busco si falta algun nombre con otro cromosoma como referencia
+            for (int i = 0; i < w.Count; i++)
+            {
+                String name = w[i].name ;
+                if (!(names.Contains(name)))
+                {
+                    workstations.Add(w[i]);
+                }
+            }
+            return workstations;
         }
 
         /*

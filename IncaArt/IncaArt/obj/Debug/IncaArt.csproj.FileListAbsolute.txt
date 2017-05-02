@@ -21,3 +21,4 @@ C:\Users\MAYRA\Documents\GitHub\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\De
 C:\Users\MAYRA\Documents\GitHub\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.Algorithm.resources
 C:\Users\MAYRA\Documents\GitHub\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Frm_Login.resources
 C:\Users\MAYRA\Documents\GitHub\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.csproj.GenerateResource.Cache
+C:\Users\Alexandra\Desktop\dp1\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.csprojResolveAssemblyReference.cache

@@ -427,7 +427,7 @@ namespace WindowsFormsApp1.Views
             
             readWorkstations(ref workstations, product1, product2, product3);
             readWorkers(ref workers, workstations);           
-            GeneticAlgorithm g = new GeneticAlgorithm(1000, 300, 80, 5, 20);
+            GeneticAlgorithm g = new GeneticAlgorithm(1000, 300, 80, 1, 20);
 
             
             for(int i=0;i<30;i++)

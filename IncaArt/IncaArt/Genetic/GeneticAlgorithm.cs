@@ -24,16 +24,16 @@ namespace WindowsFormsApp1.Genetic
             this.porcElitism = porcElitism;
             
         }
-        private Population generateInitialPopulation(List<Workstation> workStations,List<Worker> workers)
+        private Population generateInitialPopulation(List<Workstation> workstations,List<Worker> workers)
         {
             Population pI = new Population(porcCrossover, porcMutation, porcElitism);
             List<double> fitness= new List<double>();
             long n=0;
             pI.workers = workers;
-
+            pI.workstations = workstations;
             for (int i = 0; i < numInitialPopulation; )
             {
-                Chromosome c = new Chromosome(workStations, workers);
+                Chromosome c = new Chromosome(workstations, workers);
                 double tempfit = c.getFitness();
                 if (!fitness.Contains(tempfit))
                 {
@@ -82,15 +82,16 @@ namespace WindowsFormsApp1.Genetic
         public Chromosome GeneticSolve (List<Workstation> workstations, List<Worker> workers, System.IO.StreamWriter file )
         {
             List<Workstation> workstationsA = getWorkStations(workstations);
-            Chromosome bestSolution = new Chromosome();
+        
             Population population = generateInitialPopulation(workstationsA, workers);
-          
+            Chromosome bestSolution = getBestSolution(population);
+            bestSolution.hasSameWorkstations();
             file.WriteLine("Fitness de poblacion inicial: "+getBestSolution(population).getFitness());
             Console.WriteLine("Tiene repeticiones la poblacion inicial: " + getBestSolution(population).hasRepetitions());
 
             for (int i= 0; i < numIterations; i++)
             {
-                population.elitism();
+                population.elitism();               
                 population.roulette();
                 population.crossover();
                 population.mutate();
