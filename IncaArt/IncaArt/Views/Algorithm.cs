@@ -27,6 +27,100 @@ namespace WindowsFormsApp1.Views
         public int needed_ceramico = 0;
         public int needed_retablo = 0;
 
+        int[,] quantityW = new int[30, 6] { { 18,18,18,16,15,15},
+                                            {10,10,10,8,13,13 },
+                                            { 5,5,5,10,10,10},
+                                            {4,4,4,6,5,5 },
+                                            { 8,8,8,8,2,2},
+                                            {6,6,6,2,8,8 },
+                                            {9,9,9,16,15,15},
+                                            {3,3,3,7,11,11 },
+                                            { 7,7,7,5,9,9},
+                                            {4,4,4,6,7,7 },
+                                            { 9,9,9,13,12,12},
+                                            {10,10,10,6,4,4 },
+                                            { 1,1,1,1,1,1},
+                                            {2,2,2,2,2,2 },
+                                            { 2,2,2,4,3,3},
+                                            {3,3,3,5,4,4 },
+                                            {8,8,8,2,1,1 },
+                                            {13,13,13,6,3,3 },
+                                            {4,4,4,3,13,13 },
+                                            { 6,6,6,3,7,7},
+                                            {20,20,20,10,15,15 },
+                                            { 10,10,10,25,20,20},
+                                            {12,12,12,16,14,14 },
+                                            {14,14,14,18,15,15 },
+                                            {11,11,11,13,16,16 },
+                                            {8,8,8,20,20,20 },
+                                            {9,9,9,14,18,18},
+                                            {13,13,13,16,15,15 },
+                                            {14,14,14,12,10,10 },
+                                            {6,6,6,10,25,25 }};
+
+        int[,] quantityP = new int[30, 3] { { 250,150,100},
+                                            {200,100,50 },
+                                            {150,250,100},
+                                            {100,250,150 },
+                                            {50,25,30},
+                                            {22,10,15 },
+                                            {10,13,16},
+                                            {20,20,20 },
+                                            {25,30,45},
+                                            {100,20,25 },
+                                            { 80,60,40},
+                                            {40,40,30 },
+                                            { 5,5,5},
+                                            {10,10,10 },
+                                            { 1,3,2},
+                                            {3,4,4 },
+                                            {6,3,2 },
+                                            {10,10,10 },
+                                            {6,5,14 },
+                                            {8,12,16},
+                                            {100,100,100 },
+                                            {200,100,300},
+                                            {80,90,120 },
+                                            {60,100,70 },
+                                            {30,60,20 },
+                                            {90,20,70 },
+                                            {10,80,80},
+                                            {30,100,20 },
+                                            {200,30,150 },
+                                            {60,60,20 }};
+
+
+        private int getQuantityP(string name, int ind)
+        {
+            int indx = 0;
+            if (name == "Retablo")
+                indx = 0;
+            if (name == "Ceramico")
+                indx = 1;
+            if (name == "Piedra")
+                indx = 2;           
+            return quantityP[ind, indx];
+
+        }
+
+        private int getQuantityW(string name, int ind)
+        {
+            int indx = 0;
+            if (name == "MoldeadoC")
+                indx = 0;
+            if (name == "PintadoC")
+                indx = 1;
+            if (name == "Horneado")
+                indx = 2;
+            if (name == "Tallado")
+                indx = 3;
+            if (name == "MoldeadoR")
+                indx = 4;
+            if (name == "PintadoR")
+                indx = 5;            
+            return quantityW[ind, indx];
+        }
+
         public Algorithm()
         {
             InitializeComponent();
@@ -34,35 +128,45 @@ namespace WindowsFormsApp1.Views
 
         private void button1_Click(object sender, EventArgs e)
         {            
-            initializeParameters();            
+            for (int i = 0; i < 30; i++)
+            {
+                initializeParameters(i);
+            }
+                      
         }
 
-        public void initializeParameters()
+        public void initializeParameters(int i)
         {
             List<ProductLineAssignment> initial_s = new List<ProductLineAssignment>(); // solución inicial
             List<Worker> workers = new List<Worker>(); // lista de trabajadores
-            List<Workstation> workstations = new List<Workstation>(); // lista de puestos de trabajo
+            //List<Workstation> workstations = new List<Workstation>(); // lista de puestos de trabajo
             //-------------------------------------------------- HARDCODED!!
             Product product1 = new Product("Retablo", 0, 2.5);
             Product product2 = new Product("Ceramico", 0, 3.0);
             Product product3 = new Product("Piedra", 0, 5.0);
-            OrderDetailLine line1 = new OrderDetailLine(product1, 250);
-            OrderDetailLine line2 = new OrderDetailLine(product2, 150);
-            OrderDetailLine line3 = new OrderDetailLine(product3, 100);
+            OrderDetailLine line1 = new OrderDetailLine(product1, getQuantityP("Retablo", i));
+            OrderDetailLine line2 = new OrderDetailLine(product2, getQuantityP("Ceramico", i));
+            OrderDetailLine line3 = new OrderDetailLine(product3, getQuantityP("Piedra", i));
             List<OrderDetailLine> lines = new List<OrderDetailLine>();
             lines.Add(line1);
             lines.Add(line2);
             lines.Add(line3);
             OrderDetail order_detail = new OrderDetail(lines);
-            Order order = new Order(order_detail,new DateTime(2017,4,26));
+            Order order = new Order(order_detail, new DateTime(2017, 4, 26));
+            List<Workstation> workstations = new List<Workstation>();
+            readWorkstations(ref workstations, product1, product2, product3);
+            foreach (Workstation ws in workstations)
+            {
+                ws.quantity = getQuantityW(ws.name, i);
+            }
             //-------------------------------------------------- HARDCODED!!
-            
-            readWorkstations(ref workstations,product1,product2,product3);
+
+            //readWorkstations(ref workstations,product1,product2,product3);
             readWorkers(ref workers,workstations);
-            generateSolution(workers,workstations,order);            
+            generateSolution(workers,workstations,order,i);            
         }
 
-        private void generateSolution(List<Worker> workers, List<Workstation> workstations, Order order)
+        private void generateSolution(List<Worker> workers, List<Workstation> workstations, Order order,int numA)
         {
             List<Workstation> admissible_workstations = new List<Workstation>();
             List<ProductLineAssignment> solution = new List<ProductLineAssignment>();
@@ -213,7 +317,7 @@ namespace WindowsFormsApp1.Views
             DateTime tiempo2 = DateTime.Now;
             TimeSpan total = new TimeSpan(tiempo2.Ticks - tiempo1.Ticks);
             double ahorro = Math.Round((((fitness(final_solution, products_quantities)) - fitness(solution, products_quantities)) / fitness(final_solution, products_quantities)) * 100, 2);
-            generateReport(solution,final_solution, products_quantities, total, ahorro);
+            generateReport(solution,final_solution, products_quantities, total, ahorro,numA);
                      
 
         }
@@ -358,11 +462,11 @@ namespace WindowsFormsApp1.Views
             return 1/total_break;
         }
 
-        private void generateReport(List<ProductLineAssignment> ini_solution, List<ProductLineAssignment> solution,List<Tuple<int,Product>> product_quantities,TimeSpan time, double ahorro)
+        private void generateReport(List<ProductLineAssignment> ini_solution, List<ProductLineAssignment> solution,List<Tuple<int,Product>> product_quantities,TimeSpan time, double ahorro,int numA)
         {
 
             double fit = Math.Round(1 / fitness(solution, product_quantities), 2);
-            StreamWriter file = new System.IO.StreamWriter("TabuSearch_"+fit+".txt");
+            StreamWriter file = new System.IO.StreamWriter("TabuSearch_"+numA.ToString()+"_"+fit.ToString()+".txt");
 
             file.WriteLine("RESULTADOS DE LA SOLUCIÓN INICIAL");
             file.WriteLine("----------------------------");
