@@ -21,6 +21,7 @@ namespace WindowsFormsApp1.Views
         public int MAX_ITER = 8000;
         public int TABU_SIZE = 10;
         public int NEIGHBORHOOD_SIZE = 50;
+        public int COMBINATION_QUANTITY = 100;
 
         public int needed_piedra = 0;
         public int needed_ceramico = 0;
@@ -45,9 +46,9 @@ namespace WindowsFormsApp1.Views
             Product product1 = new Product("Retablo", 0, 2.5);
             Product product2 = new Product("Ceramico", 0, 3.0);
             Product product3 = new Product("Piedra", 0, 5.0);
-            OrderDetailLine line1 = new OrderDetailLine(product1, 5);
-            OrderDetailLine line2 = new OrderDetailLine(product2, 5);
-            OrderDetailLine line3 = new OrderDetailLine(product3, 5);
+            OrderDetailLine line1 = new OrderDetailLine(product1, 250);
+            OrderDetailLine line2 = new OrderDetailLine(product2, 150);
+            OrderDetailLine line3 = new OrderDetailLine(product3, 100);
             List<OrderDetailLine> lines = new List<OrderDetailLine>();
             lines.Add(line1);
             lines.Add(line2);
@@ -149,7 +150,7 @@ namespace WindowsFormsApp1.Views
 
             List<Assignment> assignments = new List<Assignment>(); // REAL
 
-            if (workers.Count() >= (retablo_sets * 2 + piedra_sets + ceramico_sets * 3)) // si hay más trabajadores que puestos de trabajo
+            if (workers.Count() >= (needed_retablo * 2 + needed_piedra + needed_ceramico * 3)) // si hay más trabajadores que puestos de trabajo
             {
                 List<int> workers_index = new List<int>(workers.Count());
                 for(int j = 0; j< workers_index.Capacity; j++)
@@ -263,7 +264,7 @@ namespace WindowsFormsApp1.Views
             List<List<ProductLineAssignment>> neighborhood = new List<List<ProductLineAssignment>>();
             for(int i=0; i<NEIGHBORHOOD_SIZE;i++) // REFINAR            
             {
-                /*if ((iteration%300)==0)
+                if (((iteration%COMBINATION_QUANTITY)==0) && ((needed_ceramico*3 + needed_piedra + needed_retablo*2)!= workers.Count()))
                 {
                     List<ProductLineAssignment> neighbor = new List<ProductLineAssignment>();
                     copyElements(ref neighbor, solution);
@@ -272,12 +273,31 @@ namespace WindowsFormsApp1.Views
                     bool continue_iter = true;
                     while (continue_iter)
                     {
-                        for(int i=0; i<)
+                        for(int j=0; j < neighbor.Count(); j++)
+                        {
+                            for(int k=0; k< neighbor.ElementAt(j).assignments.Count(); k++)
+                            {
+                                if (neighbor.ElementAt(j).assignments.ElementAt(k).assigned_worker.Equals(workers.ElementAt(index2)))
+                                {
+                                    continue_iter = true; // Si ya está sigo iterando                                    
+                                    break;
+                                }else
+                                {
+                                    continue_iter = false;
+                                }
+                            }
+                            if (continue_iter)
+                            {
+                                index2 = rnd.Next(0, workers.Count());
+                                break;
+                            }
+                        }                        
                     }
-                    neighbor.ElementAt(0).assignments.ElementAt(i).
+                    neighbor.ElementAt(i % solution.Count()).assignments.ElementAt(index1).assigned_worker = workers.ElementAt(index2);
+                    neighborhood.Add(neighbor);
                 }
                 else
-                {*/
+                {
                     List<ProductLineAssignment> neighbor = new List<ProductLineAssignment>();
                     copyElements(ref neighbor, solution);
                     int index1 = (rnd.Next(0, neighbor.ElementAt(i % solution.Count()).assignments.Count()));
@@ -293,7 +313,7 @@ namespace WindowsFormsApp1.Views
 
                     switch_candidate2.assigned_worker = aux_worker;
                     neighborhood.Add(neighbor);
-                //}
+                }
                
             }
             return neighborhood;
