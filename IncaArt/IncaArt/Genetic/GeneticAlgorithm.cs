@@ -30,7 +30,7 @@ namespace WindowsFormsApp1.Genetic
             List<double> fitness= new List<double>();
             long n=0;
             pI.workers = workers;
-            pI.workstations = workstations;
+           
             for (int i = 0; i < numInitialPopulation; )
             {
                 Chromosome c = new Chromosome(workstations, workers);

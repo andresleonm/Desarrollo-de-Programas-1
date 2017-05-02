@@ -250,25 +250,7 @@ namespace WindowsFormsApp1.Genetic
             return repetidos;
          }
 
-        public List<int> indexRepeatedW()
-        {
-            List<string> names = new List<string>();
-            List<int> repetidos = new List<int>();
-
-            for (int i = 0; i < genes.Count; i++)
-            {
-                String name = genes[i].assigned_workstation.name ;
-                if ((names.Contains(name)))
-                {
-                    repetidos.Add(i);
-                }
-                else
-                {
-                    names.Add(name);
-                }
-            }
-            return repetidos;
-        }
+    
 
         public List<Worker> missingWorkers(List<Worker> w) {
             List<Worker> workers = new List<Worker>();
@@ -295,30 +277,6 @@ namespace WindowsFormsApp1.Genetic
             return workers;
         }
 
-        public List<Workstation> missingWorkstations(List<Workstation> w)
-        {
-            List<Workstation> workstations = new List<Workstation>();
-            List<string> names = new List<string>();
-
-            foreach (Assignment a in genes)
-            {
-                String name = a.assigned_workstation.name;
-                if (!(names.Contains(name)))
-                {
-                    names.Add(name);
-                }
-            }
-            //Busco si falta algun nombre con otro cromosoma como referencia
-            for (int i = 0; i < w.Count; i++)
-            {
-                String name = w[i].name ;
-                if (!(names.Contains(name)))
-                {
-                    workstations.Add(w[i]);
-                }
-            }
-            return workstations;
-        }
 
         /*
         public static Chromosome operator +(Chromosome a, Chromosome b)

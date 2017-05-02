@@ -15,7 +15,6 @@ namespace WindowsFormsApp1.Genetic
         List<Chromosome> matingPool = new List<Chromosome>();
         List<Chromosome> bestSolutions = new List<Chromosome>();
         public List<Worker> workers = new List<Worker>();
-        public List<Workstation> workstations = new List<Workstation>();
         public int porC;
         public int porM;
         public int porE;
@@ -49,16 +48,6 @@ namespace WindowsFormsApp1.Genetic
                 for (int i = 0; i < repeated.Count; i++)
                 {
                     c.genes[repeated[i]].assigned_worker = missingW[i];
-                }
-            }
-            if (c.hasRepetitionsW())
-            {
-                List<int> repeated = c.indexRepeatedW();
-                //Console.WriteLine("El padre tiene repeticioes?:" + a.hasRepetitions() + "el otro" + b.hasRepetitions());
-                List<Workstation> missingW = c.missingWorkstations(this.workstations);
-                for (int i = 0; i < repeated.Count; i++)
-                {
-                    c.genes[repeated[i]].assigned_workstation = missingW[i];
                 }
             }
             //Console.WriteLine("Tiene repeticiones despues de correciones?" + c.hasRepetitions());
