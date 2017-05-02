@@ -1,25 +1,25 @@
 [
   {
     "name": "MoldeadoC",
-    "quantity": 12,    
+    "quantity": 18,    
     "break_cost": 1,
     "id":1
   },
   {
     "name": "PintadoC",
-    "quantity": 12,    
+    "quantity": 18,    
     "break_cost": 2,
     "id":2
   },
   {
     "name": "Horneado",
-    "quantity": 12,  
+    "quantity": 18,  
     "break_cost": 2.5,
     "id":3
   },
   {
     "name": "Tallado",
-    "quantity": 10,    
+    "quantity": 16,    
     "break_cost": 3,
     "id":4
   },

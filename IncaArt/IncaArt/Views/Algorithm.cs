@@ -10,18 +10,22 @@ using System.Windows.Forms;
 using WindowsFormsApp1.Classes;
 using Newtonsoft.Json;
 using System.IO;
+using System.Diagnostics;
 
 namespace WindowsFormsApp1.Views
 {
     public partial class Algorithm : Form
     {
         public Random rnd = new Random();
-        public int MAX_ITER = 7000;
+
+        public int MAX_ITER = 8000;
         public int TABU_SIZE = 10;
-        public int NEIGHBORHOOD_SIZE = 30;
+        public int NEIGHBORHOOD_SIZE = 50;
+
         public int needed_piedra = 0;
         public int needed_ceramico = 0;
         public int needed_retablo = 0;
+
         public Algorithm()
         {
             InitializeComponent();
@@ -159,6 +163,9 @@ namespace WindowsFormsApp1.Views
                 }
                 int worker_index = 0;
 
+                WorkerComparer wc = new WorkerComparer();
+                workers.Sort(wc);
+
                 foreach (Workstation w in admissible_workstations)
                 {
                     for (int i = 0; i < w.quantity; i++)
@@ -197,13 +204,18 @@ namespace WindowsFormsApp1.Views
             {
 
             }
-            generateReport(solution,products_quantities);
-                
-                List<ProductLineAssignment> final_solution = tabuSearch(solution,products_quantities, workers);
-                generateReport(final_solution,products_quantities);
-            Console.WriteLine("Ahorro: " + Math.Floor((((fitness(final_solution, products_quantities)) - fitness(solution, products_quantities))/ fitness(final_solution, products_quantities))*100),2);
-            
-            }
+            //generateReport(solution,products_quantities);
+            for (int i = 0; i < 30; i++)
+            {
+                DateTime tiempo1 = DateTime.Now;
+                List<ProductLineAssignment> final_solution = tabuSearch(solution, products_quantities, workers);
+                DateTime tiempo2 = DateTime.Now;
+                TimeSpan total = new TimeSpan(tiempo2.Ticks - tiempo1.Ticks);
+                double ahorro = Math.Round((((fitness(final_solution, products_quantities)) - fitness(solution, products_quantities)) / fitness(final_solution, products_quantities)) * 100, 2);
+                generateReport(final_solution, products_quantities, total, ahorro,i);
+            }         
+
+        }
         
 
         private List<ProductLineAssignment> tabuSearch(List<ProductLineAssignment> initial_s,List<Tuple<int,Product>> product_quantities,List<Worker> workers)
@@ -330,31 +342,35 @@ namespace WindowsFormsApp1.Views
             return 1/total_break;
         }
 
-        private void generateReport(List<ProductLineAssignment> solution,List<Tuple<int,Product>> product_quantities)
+        private void generateReport(List<ProductLineAssignment> solution,List<Tuple<int,Product>> product_quantities,TimeSpan time, double ahorro,int iter)
         {
-            Console.WriteLine("RESULTADOS DE LA ASIGNACIÓN");
-            Console.WriteLine("----------------------------");
+            StreamWriter file = new System.IO.StreamWriter("TabuSearch_"+(iter+1)+".txt");
+           
+            file.WriteLine("RESULTADOS DE LA ASIGNACIÓN");
+            file.WriteLine("----------------------------");
 
             for(int i=0; i<solution.Count();i++)
             {
-                Console.WriteLine("LINEA DE PRODUCCION " + i);
+                file.WriteLine("LINEA DE PRODUCCION " + (i+1));
                 foreach(Assignment assignment in solution.ElementAt(i).assignments)
                 {
-                    Console.Write("Trabajador: " + assignment.assigned_worker.name + " " + assignment.assigned_worker.lastname);
+                    file.Write("Trabajador: " + assignment.assigned_worker.name + " " + assignment.assigned_worker.lastname);
                     for(int j=0; j < assignment.assigned_worker.ratios.Count(); j++)
                     {
                         if(assignment.assigned_worker.ratios.ElementAt(j).workstation.name == assignment.assigned_workstation.name)
                         {
-                            Console.Write(" Eficiencia: " + assignment.assigned_worker.ratios.ElementAt(j).value);
-                            Console.WriteLine(" (" + assignment.assigned_worker.ratios.ElementAt(j).workstation.name + ")");
+                            file.Write(" Eficiencia: " + assignment.assigned_worker.ratios.ElementAt(j).value);
+                            file.WriteLine(" (" + assignment.assigned_worker.ratios.ElementAt(j).workstation.name + ")");
                             break;
                         }
-                    }                    
-                    Console.WriteLine("Puesto de trabajo: " + assignment.assigned_workstation.name);
-                    Console.WriteLine();
+                    }
+                    file.WriteLine("Puesto de trabajo: " + assignment.assigned_workstation.name);
+                    file.WriteLine();
                 }
             }
-            Console.WriteLine("Fitness: " + Math.Floor(1/fitness(solution,product_quantities)));
+            file.WriteLine("Fitness: " + Math.Round(1/fitness(solution,product_quantities),2));
+            file.WriteLine("Ahorro: " + ahorro);
+            file.WriteLine("Tiempo de Ejecución: " + time.ToString());
         }
 
         private void readWorkers(ref List<Worker> workers,List<Workstation> workstations)
