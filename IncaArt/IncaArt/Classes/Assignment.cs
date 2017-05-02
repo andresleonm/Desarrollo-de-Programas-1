@@ -16,6 +16,12 @@ namespace WindowsFormsApp1.Classes
             assigned_workstation.print();
             assigned_worker.print(assigned_workstation, "Efficiency");               
         }
+
+        public void print(System.IO.StreamWriter file)
+        {
+            assigned_workstation.print(file);
+            assigned_worker.print(assigned_workstation, "Efficiency",file);
+        }
         public Assignment()
         {
 

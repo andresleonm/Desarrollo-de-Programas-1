@@ -11,6 +11,7 @@ using WindowsFormsApp1.Classes;
 using Newtonsoft.Json;
 using System.IO;
 using WindowsFormsApp1.Genetic;
+using System.Diagnostics;
 
 namespace WindowsFormsApp1.Views
 {
@@ -425,11 +426,27 @@ namespace WindowsFormsApp1.Views
             Product product3 = new Product("Piedra", 0, 5.0);       
             
             readWorkstations(ref workstations, product1, product2, product3);
-            readWorkers(ref workers, workstations);
+            readWorkers(ref workers, workstations);           
+            GeneticAlgorithm g = new GeneticAlgorithm(1000, 300, 80, 5, 20);
 
-            GeneticAlgorithm g = new GeneticAlgorithm(1000,100,90,1,10);
-            Chromosome solution = g.GeneticSolve( workstations, workers);
-            solution.print();          
+            
+            for(int i=0;i<30;i++)
+            {
+                using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter(@"Genetico_"+i.ToString()+".txt"))
+                {
+                    DateTime tiempo1 = DateTime.Now;
+                    Chromosome solution = g.GeneticSolve(workstations, workers,file);
+                    DateTime tiempo2 = DateTime.Now;
+                    TimeSpan total = new TimeSpan(tiempo2.Ticks - tiempo1.Ticks);
+                    file.WriteLine("TIEMPO: " + total.ToString());
+                    solution.print(file);
+                }
+            }
+            
+            
+            
+                      
         }
     }
 }

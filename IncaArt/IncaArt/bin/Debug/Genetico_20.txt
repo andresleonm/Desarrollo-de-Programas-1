@@ -1,0 +1,403 @@
+Fitness de poblacion inicial: 43,405731792976
+Fitness de mejor solucion: 30,8275247672399
+TIEMPO: 00:01:48.0295064
+Estacion:  MoldeadoC
+Nombre: Eric Graham
+Ratio:  0,509696774011429
+
+Estacion:  MoldeadoC
+Nombre: Andre Ritchie
+Ratio:  0,518370561553708
+
+Estacion:  MoldeadoC
+Nombre: Elyse Collier
+Ratio:  0,521668059973342
+
+Estacion:  MoldeadoC
+Nombre: Ned Beier
+Ratio:  0,52167784015248
+
+Estacion:  MoldeadoC
+Nombre: Maudie Douglas
+Ratio:  0,526395527484152
+
+Estacion:  MoldeadoC
+Nombre: Tracy Kris
+Ratio:  0,535879451421653
+
+Estacion:  MoldeadoC
+Nombre: Keeley Bradtke
+Ratio:  0,540435477598591
+
+Estacion:  MoldeadoC
+Nombre: Albin Bins
+Ratio:  0,555630835767036
+
+Estacion:  MoldeadoC
+Nombre: Kailey Tremblay
+Ratio:  0,56174253180124
+
+Estacion:  MoldeadoC
+Nombre: Aurelia Heathcote
+Ratio:  0,608661105148395
+
+Estacion:  MoldeadoC
+Nombre: Melvina Davis
+Ratio:  0,623960157316416
+
+Estacion:  MoldeadoC
+Nombre: Orland Krajcik
+Ratio:  0,640754833491263
+
+Estacion:  MoldeadoC
+Nombre: Webster Paucek
+Ratio:  0,665429866345723
+
+Estacion:  MoldeadoC
+Nombre: Alphonso Ebert
+Ratio:  0,675988569191532
+
+Estacion:  MoldeadoC
+Nombre: Emilia Upton
+Ratio:  0,681975442940796
+
+Estacion:  MoldeadoC
+Nombre: Bernadine Aufderhar
+Ratio:  0,695126238668139
+
+Estacion:  MoldeadoC
+Nombre: Milan Dibbert
+Ratio:  0,699772294530406
+
+Estacion:  MoldeadoC
+Nombre: Henderson Schinner
+Ratio:  0,70882631834711
+
+Estacion:  MoldeadoC
+Nombre: Jerrod Goldner
+Ratio:  0,7143678239886
+
+Estacion:  MoldeadoC
+Nombre: Corrine Hackett
+Ratio:  0,726121621704452
+
+Estacion:  MoldeadoC
+Nombre: Lavonne Mann
+Ratio:  0,73391783648875
+
+Estacion:  MoldeadoC
+Nombre: Nellie Olson
+Ratio:  0,739439232438231
+
+Estacion:  MoldeadoC
+Nombre: Stan Friesen
+Ratio:  0,750692421985589
+
+Estacion:  MoldeadoC
+Nombre: Roy Leffler
+Ratio:  0,75262215818191
+
+Estacion:  MoldeadoC
+Nombre: Chasity Ortiz
+Ratio:  0,764020475385906
+
+Estacion:  MoldeadoC
+Nombre: Adaline Collins
+Ratio:  0,7650021845557
+
+Estacion:  MoldeadoC
+Nombre: Berniece Kreiger
+Ratio:  0,78783923680783
+
+Estacion:  MoldeadoC
+Nombre: Kay Connelly
+Ratio:  0,790861207478631
+
+Estacion:  MoldeadoC
+Nombre: Warren Jerde
+Ratio:  0,800603952704589
+
+Estacion:  MoldeadoC
+Nombre: Thomas MacGyver
+Ratio:  0,803454832093452
+
+Estacion:  MoldeadoC
+Nombre: Cornelius Hodkiewicz
+Ratio:  0,818184055718581
+
+Estacion:  MoldeadoC
+Nombre: Marcelle Bergnaum
+Ratio:  0,851109383728963
+
+Estacion:  MoldeadoC
+Nombre: Akeem Lemke
+Ratio:  0,86212546741724
+
+Estacion:  MoldeadoC
+Nombre: Candelario Mertz
+Ratio:  0,86640205904216
+
+Estacion:  MoldeadoC
+Nombre: Lourdes Fay
+Ratio:  0,873280141236872
+
+Estacion:  MoldeadoC
+Nombre: Ellis Blanda
+Ratio:  0,875841700597971
+
+Estacion:  MoldeadoC
+Nombre: Samantha Kozey
+Ratio:  0,89560813894359
+
+Estacion:  MoldeadoC
+Nombre: Adan Howell
+Ratio:  0,909619957058669
+
+Estacion:  MoldeadoC
+Nombre: Van Welch
+Ratio:  0,91321964524076
+
+Estacion:  MoldeadoC
+Nombre: Nigel Gorczany
+Ratio:  0,914188836124636
+
+Estacion:  MoldeadoC
+Nombre: Neal Dibbert
+Ratio:  0,925994540359244
+
+Estacion:  MoldeadoC
+Nombre: Hailey Parisian
+Ratio:  0,938002358243742
+
+Estacion:  MoldeadoC
+Nombre: Elwyn Kiehn
+Ratio:  0,938549784069859
+
+Estacion:  MoldeadoC
+Nombre: Oswald Wolff
+Ratio:  0,93912993867181
+
+Estacion:  MoldeadoC
+Nombre: Kelvin Schumm
+Ratio:  0,947375505183824
+
+Estacion:  MoldeadoC
+Nombre: Maye Funk
+Ratio:  0,971388572942751
+
+Estacion:  MoldeadoC
+Nombre: Cristal Bradtke
+Ratio:  0,978399807397626
+
+Estacion:  MoldeadoC
+Nombre: Myrl Collins
+Ratio:  0,988741482556058
+
+Estacion:  MoldeadoC
+Nombre: Madisen Hagenes
+Ratio:  0,995557259409671
+
+Estacion:  PintadoC
+Nombre: Geovany Stiedemann
+Ratio:  0,506027689294802
+
+Estacion:  PintadoC
+Nombre: Teagan Dare
+Ratio:  0,595878668090511
+
+Estacion:  PintadoC
+Nombre: Millie Graham
+Ratio:  0,602846008284285
+
+Estacion:  PintadoC
+Nombre: Liliane West
+Ratio:  0,636886276182935
+
+Estacion:  PintadoC
+Nombre: Milford Lindgren
+Ratio:  0,665128206178105
+
+Estacion:  PintadoC
+Nombre: Anya Grimes
+Ratio:  0,811168007278171
+
+Estacion:  PintadoC
+Nombre: Taryn Johnson
+Ratio:  0,84634517021256
+
+Estacion:  PintadoC
+Nombre: Dora Moen
+Ratio:  0,863652699212034
+
+Estacion:  PintadoC
+Nombre: Genoveva Corwin
+Ratio:  0,908619390683528
+
+Estacion:  PintadoC
+Nombre: Shyann Parker
+Ratio:  0,912686922043713
+
+Estacion:  Horneado
+Nombre: Sincere Carter
+Ratio:  0,547682158324089
+
+Estacion:  Horneado
+Nombre: Damian Goyette
+Ratio:  0,851950950536097
+
+Estacion:  Horneado
+Nombre: Jarrod Koepp
+Ratio:  0,949381501748952
+
+Estacion:  Tallado
+Nombre: Lexi Beahan
+Ratio:  0,862279220423202
+
+Estacion:  Tallado
+Nombre: Amie Brakus
+Ratio:  0,920562173328824
+
+Estacion:  Tallado
+Nombre: Cordie Morar
+Ratio:  0,934850606684221
+
+Estacion:  Tallado
+Nombre: Krista Conroy
+Ratio:  0,948209377472295
+
+Estacion:  Tallado
+Nombre: Gabriel Hessel
+Ratio:  0,957266166824709
+
+Estacion:  Tallado
+Nombre: Ansel Metz
+Ratio:  0,983077827383059
+
+Estacion:  MoldeadoR
+Nombre: Omer Murphy
+Ratio:  0,542967339808128
+
+Estacion:  MoldeadoR
+Nombre: Liliane Kessler
+Ratio:  0,554235160277909
+
+Estacion:  MoldeadoR
+Nombre: Tyrese Waelchi
+Ratio:  0,589603960287797
+
+Estacion:  MoldeadoR
+Nombre: Catharine Spinka
+Ratio:  0,605516094741817
+
+Estacion:  MoldeadoR
+Nombre: Denis Kemmer
+Ratio:  0,715012203838576
+
+Estacion:  MoldeadoR
+Nombre: Gregory Cole
+Ratio:  0,722499897769307
+
+Estacion:  MoldeadoR
+Nombre: Gerson Senger
+Ratio:  0,729070681103392
+
+Estacion:  MoldeadoR
+Nombre: Saul Roob
+Ratio:  0,732172102006311
+
+Estacion:  MoldeadoR
+Nombre: Ludie Cruickshank
+Ratio:  0,735736617773206
+
+Estacion:  MoldeadoR
+Nombre: Casandra King
+Ratio:  0,84638102933726
+
+Estacion:  MoldeadoR
+Nombre: Misty Abbott
+Ratio:  0,859020041402477
+
+Estacion:  MoldeadoR
+Nombre: Nyasia Ward
+Ratio:  0,86149492225164
+
+Estacion:  MoldeadoR
+Nombre: Ettie Jacobson
+Ratio:  0,884600744479658
+
+Estacion:  MoldeadoR
+Nombre: Pierre Mertz
+Ratio:  0,898793947599509
+
+Estacion:  MoldeadoR
+Nombre: Deborah Ullrich
+Ratio:  0,913218222846083
+
+Estacion:  MoldeadoR
+Nombre: Alba Bradtke
+Ratio:  0,925481931961156
+
+Estacion:  MoldeadoR
+Nombre: Cathy Robel
+Ratio:  0,938614954097779
+
+Estacion:  MoldeadoR
+Nombre: Charlie Mueller
+Ratio:  0,95638897474689
+
+Estacion:  PintadoR
+Nombre: Juanita Heaney
+Ratio:  0,615336971260413
+
+Estacion:  PintadoR
+Nombre: Gabriella Tremblay
+Ratio:  0,642853365463694
+
+Estacion:  PintadoR
+Nombre: Elouise Hansen
+Ratio:  0,66551072392019
+
+Estacion:  PintadoR
+Nombre: Leila Quigley
+Ratio:  0,674637300846241
+
+Estacion:  PintadoR
+Nombre: Harry Grady
+Ratio:  0,701112655707048
+
+Estacion:  PintadoR
+Nombre: Finn Gleason
+Ratio:  0,788572724592691
+
+Estacion:  PintadoR
+Nombre: Violet Parisian
+Ratio:  0,837540497820222
+
+Estacion:  PintadoR
+Nombre: Chauncey Boehm
+Ratio:  0,848050058826207
+
+Estacion:  PintadoR
+Nombre: Abbie Smith
+Ratio:  0,905792065081198
+
+Estacion:  PintadoR
+Nombre: Estel White
+Ratio:  0,921753247923163
+
+Estacion:  PintadoR
+Nombre: Veda Hermiston
+Ratio:  0,935018263689593
+
+Estacion:  PintadoR
+Nombre: Chadrick Auer
+Ratio:  0,970619039424704
+
+Estacion:  PintadoR
+Nombre: Jose Powlowski
+Ratio:  0,979706284666436
+
+Estacion:  PintadoR
+Nombre: Leilani Wunsch
+Ratio:  0,98492568676451
+

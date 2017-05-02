@@ -20,6 +20,11 @@ namespace WindowsFormsApp1.Classes
         {
             Console.WriteLine("Estacion:  " + name );
         }
+
+        public void print(System.IO.StreamWriter file)
+        {
+            file.WriteLine("Estacion:  " + name);
+        }
         public Workstation(Product product, string name, int quantity, int id, double break_cost)
 
         {

@@ -30,6 +30,12 @@ namespace WindowsFormsApp1.Classes
             Console.WriteLine("Nombre: " + name +' '+lastname);
             Console.WriteLine("Ratio:  "+ getRatio(ws,ratio_type).ToString());
         }
+
+        public void print(Workstation ws, string ratio_type, System.IO.StreamWriter file)
+        {
+            file.WriteLine("Nombre: " + name + ' ' + lastname);
+            file.WriteLine("Ratio:  " + getRatio(ws, ratio_type).ToString());
+        }
         public Worker()
         {
 
