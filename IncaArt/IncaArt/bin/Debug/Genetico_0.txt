@@ -1,403 +1,403 @@
-Fitness de poblacion inicial: 42,0335441689243
-Fitness de mejor solucion: 28,7531582700043
-TIEMPO: 00:01:49.4337486
-Estacion:  MoldeadoC
-Nombre: Eric Graham
-Ratio:  0,509696774011429
-
-Estacion:  MoldeadoC
-Nombre: Elyse Collier
-Ratio:  0,521668059973342
-
-Estacion:  MoldeadoC
-Nombre: Ned Beier
-Ratio:  0,52167784015248
-
-Estacion:  MoldeadoC
-Nombre: Tracy Kris
-Ratio:  0,535879451421653
-
-Estacion:  MoldeadoC
-Nombre: Albin Bins
-Ratio:  0,555630835767036
-
-Estacion:  MoldeadoC
-Nombre: Ettie Jacobson
-Ratio:  0,571673791832309
-
-Estacion:  MoldeadoC
-Nombre: Jose Powlowski
-Ratio:  0,576007534876887
-
+Fitness de poblacion inicial: 43.7628603092571
+Fitness de mejor solucion: 16.984203365515
+TIEMPO: 00:01:04.6267913
 Estacion:  MoldeadoC
 Nombre: Omer Murphy
-Ratio:  0,584857505528451
+Ratio:  0.584857505528451
 
 Estacion:  MoldeadoC
-Nombre: Veda Hermiston
-Ratio:  0,590833396586525
-
-Estacion:  MoldeadoC
-Nombre: Aurelia Heathcote
-Ratio:  0,608661105148395
-
-Estacion:  MoldeadoC
-Nombre: Melvina Davis
-Ratio:  0,623960157316416
-
-Estacion:  MoldeadoC
-Nombre: Geovany Stiedemann
-Ratio:  0,638271997605881
-
-Estacion:  MoldeadoC
-Nombre: Damian Goyette
-Ratio:  0,649499919374835
+Nombre: Alphonso Ebert
+Ratio:  0.675988569191532
 
 Estacion:  MoldeadoC
 Nombre: Henderson Schinner
-Ratio:  0,70882631834711
+Ratio:  0.70882631834711
 
 Estacion:  MoldeadoC
-Nombre: Jerrod Goldner
-Ratio:  0,7143678239886
+Nombre: Kay Connelly
+Ratio:  0.790861207478631
 
 Estacion:  MoldeadoC
-Nombre: Juanita Heaney
-Ratio:  0,714586763354018
+Nombre: Gregory Cole
+Ratio:  0.839300320328756
 
 Estacion:  MoldeadoC
-Nombre: Misty Abbott
-Ratio:  0,727022582878368
+Nombre: Akeem Lemke
+Ratio:  0.86212546741724
 
 Estacion:  MoldeadoC
-Nombre: Lavonne Mann
-Ratio:  0,73391783648875
+Nombre: Catharine Spinka
+Ratio:  0.868689576494216
 
 Estacion:  MoldeadoC
-Nombre: Stan Friesen
-Ratio:  0,750692421985589
+Nombre: Lourdes Fay
+Ratio:  0.873280141236872
 
 Estacion:  MoldeadoC
-Nombre: Lexi Beahan
-Ratio:  0,76111714060627
-
-Estacion:  MoldeadoC
-Nombre: Chasity Ortiz
-Ratio:  0,764020475385906
-
-Estacion:  MoldeadoC
-Nombre: Berniece Kreiger
-Ratio:  0,78783923680783
-
-Estacion:  MoldeadoC
-Nombre: Thomas MacGyver
-Ratio:  0,803454832093452
-
-Estacion:  MoldeadoC
-Nombre: Krista Conroy
-Ratio:  0,806352374420211
-
-Estacion:  MoldeadoC
-Nombre: Cornelius Hodkiewicz
-Ratio:  0,818184055718581
-
-Estacion:  MoldeadoC
-Nombre: Ludie Cruickshank
-Ratio:  0,825420737368179
-
-Estacion:  MoldeadoC
-Nombre: Elouise Hansen
-Ratio:  0,825718597249676
-
-Estacion:  MoldeadoC
-Nombre: Gabriella Tremblay
-Ratio:  0,834770361190498
-
-Estacion:  MoldeadoC
-Nombre: Anya Grimes
-Ratio:  0,861354644219673
-
-Estacion:  MoldeadoC
-Nombre: Cordie Morar
-Ratio:  0,886230665268411
-
-Estacion:  MoldeadoC
-Nombre: Samantha Kozey
-Ratio:  0,89560813894359
+Nombre: Ellis Blanda
+Ratio:  0.875841700597971
 
 Estacion:  MoldeadoC
 Nombre: Casandra King
-Ratio:  0,901199419972276
+Ratio:  0.901199419972276
+
+Estacion:  MoldeadoC
+Nombre: Van Welch
+Ratio:  0.91321964524076
 
 Estacion:  MoldeadoC
 Nombre: Nigel Gorczany
-Ratio:  0,914188836124636
+Ratio:  0.914188836124636
 
 Estacion:  MoldeadoC
 Nombre: Neal Dibbert
-Ratio:  0,925994540359244
-
-Estacion:  MoldeadoC
-Nombre: Hailey Parisian
-Ratio:  0,938002358243742
-
-Estacion:  MoldeadoC
-Nombre: Elwyn Kiehn
-Ratio:  0,938549784069859
+Ratio:  0.925994540359244
 
 Estacion:  MoldeadoC
 Nombre: Kelvin Schumm
-Ratio:  0,947375505183824
+Ratio:  0.947375505183824
 
 Estacion:  MoldeadoC
 Nombre: Teagan Dare
-Ratio:  0,956143458827474
+Ratio:  0.956143458827474
 
 Estacion:  MoldeadoC
-Nombre: Cristal Bradtke
-Ratio:  0,978399807397626
+Nombre: Leila Quigley
+Ratio:  0.962040820160904
 
 Estacion:  MoldeadoC
-Nombre: Harry Grady
-Ratio:  0,987269491181892
+Nombre: Maye Funk
+Ratio:  0.971388572942751
 
 Estacion:  MoldeadoC
-Nombre: Saul Roob
-Ratio:  0,993393802010393
-
-Estacion:  MoldeadoC
-Nombre: Denis Kemmer
-Ratio:  0,994117799568757
+Nombre: Madisen Hagenes
+Ratio:  0.995557259409671
 
 Estacion:  PintadoC
-Nombre: Chadrick Auer
-Ratio:  0,577539491497464
-
-Estacion:  PintadoC
-Nombre: Kay Connelly
-Ratio:  0,63442297265573
-
-Estacion:  PintadoC
-Nombre: Tyrese Waelchi
-Ratio:  0,707908377149228
+Nombre: Cornelius Hodkiewicz
+Ratio:  0.676988387451596
 
 Estacion:  PintadoC
 Nombre: Webster Paucek
-Ratio:  0,720335506638446
+Ratio:  0.720335506638446
 
 Estacion:  PintadoC
-Nombre: Akeem Lemke
-Ratio:  0,767346652599157
+Nombre: Ettie Jacobson
+Ratio:  0.763335049840805
 
 Estacion:  PintadoC
-Nombre: Violet Parisian
-Ratio:  0,82172713104549
+Nombre: Stan Friesen
+Ratio:  0.799750897907533
 
 Estacion:  PintadoC
-Nombre: Taryn Johnson
-Ratio:  0,84634517021256
+Nombre: Harry Grady
+Ratio:  0.849571708413974
+
+Estacion:  PintadoC
+Nombre: Genoveva Corwin
+Ratio:  0.908619390683528
+
+Estacion:  PintadoC
+Nombre: Shyann Parker
+Ratio:  0.912686922043713
+
+Estacion:  PintadoC
+Nombre: Bernadine Aufderhar
+Ratio:  0.923796792559597
+
+Estacion:  PintadoC
+Nombre: Cristal Bradtke
+Ratio:  0.932227086648675
 
 Estacion:  PintadoC
 Nombre: Chauncey Boehm
-Ratio:  0,937705202501426
+Ratio:  0.937705202501426
 
 Estacion:  PintadoC
-Nombre: Leilani Wunsch
-Ratio:  0,952616507692015
+Nombre: Ansel Metz
+Ratio:  0.943868493228347
 
 Estacion:  PintadoC
-Nombre: Maye Funk
-Ratio:  0,957172727901374
+Nombre: Melvina Davis
+Ratio:  0.951709187644438
 
 Estacion:  PintadoC
 Nombre: Oswald Wolff
-Ratio:  0,959319396604533
+Ratio:  0.959319396604533
 
 Estacion:  PintadoC
-Nombre: Corrine Hackett
-Ratio:  0,973935337797163
+Nombre: Saul Roob
+Ratio:  0.95983159171536
 
 Estacion:  PintadoC
-Nombre: Adan Howell
-Ratio:  0,992182040127803
+Nombre: Elwyn Kiehn
+Ratio:  0.964826912595396
+
+Estacion:  PintadoC
+Nombre: Myrl Collins
+Ratio:  0.977283017968469
 
 Estacion:  PintadoC
 Nombre: Milan Dibbert
-Ratio:  0,993148690412179
+Ratio:  0.993148690412179
+
+Estacion:  PintadoC
+Nombre: Kailey Tremblay
+Ratio:  0.998575694330477
 
 Estacion:  Horneado
-Nombre: Sincere Carter
-Ratio:  0,547682158324089
+Nombre: Samantha Kozey
+Ratio:  0.751567830213042
 
 Estacion:  Horneado
-Nombre: Catharine Spinka
-Ratio:  0,556557884461495
+Nombre: Keeley Bradtke
+Ratio:  0.789296512188397
 
 Estacion:  Horneado
-Nombre: Leila Quigley
-Ratio:  0,734000627452961
+Nombre: Juanita Heaney
+Ratio:  0.819582031613606
 
 Estacion:  Horneado
-Nombre: Pierre Mertz
-Ratio:  0,770228163380504
+Nombre: Milford Lindgren
+Ratio:  0.853181422126028
 
 Estacion:  Horneado
-Nombre: Shyann Parker
-Ratio:  0,900643156943624
+Nombre: Lavonne Mann
+Ratio:  0.866210940747385
+
+Estacion:  Horneado
+Nombre: Ludie Cruickshank
+Ratio:  0.890111676097813
+
+Estacion:  Horneado
+Nombre: Tyrese Waelchi
+Ratio:  0.914455112854776
+
+Estacion:  Horneado
+Nombre: Violet Parisian
+Ratio:  0.930398406294821
+
+Estacion:  Horneado
+Nombre: Berniece Kreiger
+Ratio:  0.947504666797493
 
 Estacion:  Horneado
 Nombre: Jarrod Koepp
-Ratio:  0,949381501748952
+Ratio:  0.949381501748952
 
 Estacion:  Horneado
-Nombre: Liliane West
-Ratio:  0,975568560474865
+Nombre: Hailey Parisian
+Ratio:  0.953933901156625
+
+Estacion:  Horneado
+Nombre: Geovany Stiedemann
+Ratio:  0.964701871291289
+
+Estacion:  Horneado
+Nombre: Gabriella Tremblay
+Ratio:  0.969080297150263
+
+Estacion:  Horneado
+Nombre: Corrine Hackett
+Ratio:  0.970451448351292
+
+Estacion:  Horneado
+Nombre: Gerson Senger
+Ratio:  0.980222872446927
+
+Estacion:  Horneado
+Nombre: Nyasia Ward
+Ratio:  0.984859917041707
+
+Estacion:  Horneado
+Nombre: Misty Abbott
+Ratio:  0.987720176576037
+
+Estacion:  Horneado
+Nombre: Jose Powlowski
+Ratio:  0.995296082337119
 
 Estacion:  Tallado
-Nombre: Dora Moen
-Ratio:  0,751143877787167
+Nombre: Finn Gleason
+Ratio:  0.784458636621694
 
 Estacion:  Tallado
-Nombre: Charlie Mueller
-Ratio:  0,778612942073296
+Nombre: Tracy Kris
+Ratio:  0.868258095332659
 
 Estacion:  Tallado
-Nombre: Lourdes Fay
-Ratio:  0,86788104480114
+Nombre: Jerrod Goldner
+Ratio:  0.878353380963474
+
+Estacion:  Tallado
+Nombre: Adan Howell
+Ratio:  0.901491475424447
+
+Estacion:  Tallado
+Nombre: Millie Graham
+Ratio:  0.917894939846353
+
+Estacion:  Tallado
+Nombre: Amie Brakus
+Ratio:  0.920562173328824
+
+Estacion:  Tallado
+Nombre: Denis Kemmer
+Ratio:  0.934534255156481
+
+Estacion:  Tallado
+Nombre: Cordie Morar
+Ratio:  0.934850606684221
+
+Estacion:  Tallado
+Nombre: Thomas MacGyver
+Ratio:  0.937500861362266
+
+Estacion:  Tallado
+Nombre: Krista Conroy
+Ratio:  0.948209377472295
+
+Estacion:  Tallado
+Nombre: Gabriel Hessel
+Ratio:  0.957266166824709
+
+Estacion:  Tallado
+Nombre: Sincere Carter
+Ratio:  0.95729145237385
+
+Estacion:  Tallado
+Nombre: Orland Krajcik
+Ratio:  0.97033554059355
 
 Estacion:  Tallado
 Nombre: Warren Jerde
-Ratio:  0,975383172715411
+Ratio:  0.975383172715411
 
 Estacion:  Tallado
 Nombre: Estel White
-Ratio:  0,97546016946514
+Ratio:  0.97546016946514
 
-Estacion:  MoldeadoR
-Nombre: Bernadine Aufderhar
-Ratio:  0,511382198041392
-
-Estacion:  MoldeadoR
-Nombre: Ansel Metz
-Ratio:  0,527382272643959
-
-Estacion:  MoldeadoR
-Nombre: Amie Brakus
-Ratio:  0,655839329953133
-
-Estacion:  MoldeadoR
-Nombre: Gregory Cole
-Ratio:  0,722499897769307
+Estacion:  Tallado
+Nombre: Damian Goyette
+Ratio:  0.983894934402054
 
 Estacion:  MoldeadoR
 Nombre: Roy Leffler
-Ratio:  0,780945352098562
+Ratio:  0.780945352098562
 
 Estacion:  MoldeadoR
-Nombre: Kailey Tremblay
-Ratio:  0,788081175710594
+Nombre: Taryn Johnson
+Ratio:  0.870809387582768
 
 Estacion:  MoldeadoR
-Nombre: Millie Graham
-Ratio:  0,790619117379638
+Nombre: Veda Hermiston
+Ratio:  0.894371835998125
 
 Estacion:  MoldeadoR
-Nombre: Milford Lindgren
-Ratio:  0,84271800224466
+Nombre: Ned Beier
+Ratio:  0.898165289421308
 
 Estacion:  MoldeadoR
-Nombre: Nyasia Ward
-Ratio:  0,86149492225164
-
-Estacion:  MoldeadoR
-Nombre: Abbie Smith
-Ratio:  0,877086785798209
-
-Estacion:  MoldeadoR
-Nombre: Myrl Collins
-Ratio:  0,906500906756285
-
-Estacion:  MoldeadoR
-Nombre: Madisen Hagenes
-Ratio:  0,908586999534541
+Nombre: Pierre Mertz
+Ratio:  0.898793947599509
 
 Estacion:  MoldeadoR
 Nombre: Deborah Ullrich
-Ratio:  0,913218222846083
-
-Estacion:  MoldeadoR
-Nombre: Gabriel Hessel
-Ratio:  0,921703119950343
+Ratio:  0.913218222846083
 
 Estacion:  MoldeadoR
 Nombre: Alba Bradtke
-Ratio:  0,925481931961156
+Ratio:  0.925481931961156
 
 Estacion:  MoldeadoR
-Nombre: Orland Krajcik
-Ratio:  0,927320266146658
+Nombre: Lexi Beahan
+Ratio:  0.932548398863866
 
 Estacion:  MoldeadoR
 Nombre: Adaline Collins
-Ratio:  0,936492172747242
+Ratio:  0.936492172747242
 
 Estacion:  MoldeadoR
 Nombre: Cathy Robel
-Ratio:  0,938614954097779
+Ratio:  0.938614954097779
 
 Estacion:  MoldeadoR
 Nombre: Marcelle Bergnaum
-Ratio:  0,93928014951459
+Ratio:  0.93928014951459
+
+Estacion:  MoldeadoR
+Nombre: Chasity Ortiz
+Ratio:  0.945082084094332
+
+Estacion:  MoldeadoR
+Nombre: Charlie Mueller
+Ratio:  0.95638897474689
 
 Estacion:  MoldeadoR
 Nombre: Candelario Mertz
-Ratio:  0,990206744216763
+Ratio:  0.990206744216763
+
+Estacion:  MoldeadoR
+Nombre: Elouise Hansen
+Ratio:  0.993643338125458
 
 Estacion:  PintadoR
-Nombre: Keeley Bradtke
-Ratio:  0,625199841248563
+Nombre: Aurelia Heathcote
+Ratio:  0.829511143688013
 
 Estacion:  PintadoR
-Nombre: Van Welch
-Ratio:  0,729421047840353
+Nombre: Albin Bins
+Ratio:  0.869948270819764
 
 Estacion:  PintadoR
-Nombre: Alphonso Ebert
-Ratio:  0,754547491944036
-
-Estacion:  PintadoR
-Nombre: Gerson Senger
-Ratio:  0,764793746160174
-
-Estacion:  PintadoR
-Nombre: Finn Gleason
-Ratio:  0,788572724592691
-
-Estacion:  PintadoR
-Nombre: Ellis Blanda
-Ratio:  0,860970352596234
-
-Estacion:  PintadoR
-Nombre: Genoveva Corwin
-Ratio:  0,86907092859425
+Nombre: Abbie Smith
+Ratio:  0.905792065081198
 
 Estacion:  PintadoR
 Nombre: Nellie Olson
-Ratio:  0,916114762045815
+Ratio:  0.916114762045815
+
+Estacion:  PintadoR
+Nombre: Eric Graham
+Ratio:  0.923613663003673
+
+Estacion:  PintadoR
+Nombre: Anya Grimes
+Ratio:  0.92764824370847
 
 Estacion:  PintadoR
 Nombre: Andre Ritchie
-Ratio:  0,93736279566694
+Ratio:  0.93736279566694
 
 Estacion:  PintadoR
 Nombre: Maudie Douglas
-Ratio:  0,948007597983882
+Ratio:  0.948007597983882
 
 Estacion:  PintadoR
 Nombre: Liliane Kessler
-Ratio:  0,950011347885877
+Ratio:  0.950011347885877
+
+Estacion:  PintadoR
+Nombre: Dora Moen
+Ratio:  0.952973658334805
+
+Estacion:  PintadoR
+Nombre: Liliane West
+Ratio:  0.954086465467433
+
+Estacion:  PintadoR
+Nombre: Chadrick Auer
+Ratio:  0.970619039424704
+
+Estacion:  PintadoR
+Nombre: Elyse Collier
+Ratio:  0.971634769492681
 
 Estacion:  PintadoR
 Nombre: Emilia Upton
-Ratio:  0,982033666686174
+Ratio:  0.982033666686174
+
+Estacion:  PintadoR
+Nombre: Leilani Wunsch
+Ratio:  0.98492568676451
 

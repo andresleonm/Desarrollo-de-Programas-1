@@ -16,6 +16,7 @@ namespace WindowsFormsApp1.Genetic
         List<Chromosome> bestSolutions = new List<Chromosome>();
         //QUITAR
         public List<Worker> workers = new List<Worker>();
+        public List<Workstation> workstation = new List<Workstation>();
         public int porC;
         public int porM;
         public int porE;
@@ -37,8 +38,40 @@ namespace WindowsFormsApp1.Genetic
             int cut = rand.Next() % numAssignments;
             //Agregar primera parte del primer cromosoma
             c = a.cut(0, cut);
-
-            ////Agregar parte del segundo cromosoma
+            /*
+            ////Agregar parte del segundo cromosoma con las asignaciones de los puestos de trabajo faltantes
+            //Inicializar arreglo con cantidad 0 de workstation presentes en cromosoma
+            List<int> cantWorkstation = new List<int>();
+            for(int i=0;i< workstation.Count;i++)
+            {
+                cantWorkstation.Add(0);
+            }
+            //Aumentar la cantidad de workstation presentes en el cromosoma con los puestos de trabajo del primer padre
+            foreach(Assignment assig in c.genes)
+            {
+                for(int j=0;j<workstation.Count;j++)
+                {
+                    if (workstation[j].name == assig.assigned_workstation.name) {
+                        cantWorkstation[j]= cantWorkstation[j]+1;
+                    }
+                }
+            }
+            //agregar los puestos de trabajo faltantes con asignaciones del segundo padre
+            foreach(Assignment assig in b.genes)
+            {
+                for (int j = 0; j < workstation.Count; j++)
+                {
+                    if (workstation[j].name == assig.assigned_workstation.name)
+                    {
+                        if (cantWorkstation[j] < workstation[j].quantity) {
+                            cantWorkstation[j] = cantWorkstation[j] + 1;
+                            c.genes.Add(assig);
+                            j = workstation.Count;
+                        }
+                    }
+                }
+            }
+            */
             temp = b.cut(cut);
             c.genes = c.genes.Concat(temp.genes).ToList();
             if (c.hasRepetitions())
@@ -51,7 +84,7 @@ namespace WindowsFormsApp1.Genetic
                     c.genes[repeated[i]].assigned_worker = missingW[i];
                 }
             }
-            //Console.WriteLine("Tiene repeticiones despues de correciones?" + c.hasRepetitions());
+           //Console.WriteLine("Tiene repeticiones despues de correciones?" + c.hasRepetitions());
 
             return c;
         }
@@ -90,6 +123,7 @@ namespace WindowsFormsApp1.Genetic
             //elitism
             foreach(Chromosome c in bestSolutions)
             {
+               // Console.WriteLine("Elitismo:" + c.getFitness() + "repetidos?" + c.hasRepetitions());
                 chromosomes.Add(c);
             }
             //croosover y mutacion
@@ -128,10 +162,19 @@ namespace WindowsFormsApp1.Genetic
             int numElitism = chromosomes.Count * porE/100;
             ChromosomeComparer comparer=new ChromosomeComparer();
             array.Sort(comparer);
-            bestSolutions.Clear();
+           
             for(int i = 0; i < numElitism; i++)
             {
-                bestSolutions.Add(array[i]);
+                Chromosome c= new Chromosome();
+                for(int j=0;j<array[i].genes.Count;j++) {
+                    Assignment a = new Assignment();             
+                    a.assigned_worker = array[i].genes[j].assigned_worker;
+                    a.assigned_workstation = array[i].genes[j].assigned_workstation;
+                    c.genes.Add(a);
+
+                }
+                bestSolutions.Add(c);
+                //Console.WriteLine("Dentro de funcion elitismo:" + c.getFitness() +" tiene repeticiones?"+c.hasRepetitions());
             }
 
         }

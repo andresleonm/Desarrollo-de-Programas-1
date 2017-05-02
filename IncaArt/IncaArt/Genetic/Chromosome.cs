@@ -93,7 +93,10 @@ namespace WindowsFormsApp1.Genetic
             Chromosome c= new Chromosome();
             for (int i = ini; i < fin; i++)
             {
-                c.genes.Add(genes.ElementAt(i));
+                Assignment a = new Assignment();
+                a.assigned_worker = genes.ElementAt(i).assigned_worker;
+                a.assigned_workstation = genes.ElementAt(i).assigned_workstation;
+                c.genes.Add(a);
             }
             return c;
 
@@ -104,7 +107,11 @@ namespace WindowsFormsApp1.Genetic
             int n = genes.Count();
             for (int i = ini; i < n; i++)
             {
-                c.genes.Add(genes.ElementAt(i));
+                Assignment a = new Assignment();
+                a.assigned_worker = genes.ElementAt(i).assigned_worker;
+                a.assigned_workstation = genes.ElementAt(i).assigned_workstation;
+                c.genes.Add(a);
+               
             }
             return c;
         }
@@ -145,9 +152,10 @@ namespace WindowsFormsApp1.Genetic
         public Chromosome(List<Workstation> workstations, List<Worker> workers) {
             List<int> indexa= getArray(workstations.Count());
             List<int> indexb = getArray(workers.Count());
+           
             int n=0,numWorkers=workers.Count();
             
-            foreach (int indexWorkstation in indexa)
+           foreach (int indexWorkstation in indexa)
             {
                 if (n>= numWorkers)
                 {
@@ -159,6 +167,8 @@ namespace WindowsFormsApp1.Genetic
                 }               
                 n++;
             }
+            GenesComparer comparer = new GenesComparer();
+            genes.Sort(comparer);
         }
 
         public static bool operator ==(Chromosome a, Chromosome b)
@@ -271,6 +281,14 @@ namespace WindowsFormsApp1.Genetic
                 return -1;
 
             return 1;
+        }
+    }
+    class GenesComparer : IComparer<Assignment>
+    {
+        public int Compare(Assignment a, Assignment b)
+        {
+            String name1 = a.assigned_workstation.name, name2 = b.assigned_workstation.name;
+            return String.Compare(name1,name2);
         }
     }
 }

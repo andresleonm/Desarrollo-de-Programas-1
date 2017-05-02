@@ -29,7 +29,7 @@ namespace WindowsFormsApp1.Genetic
             Population pI = new Population(porcCrossover, porcMutation, porcElitism);
             List<double> fitness= new List<double>();
             long n=0;
-            pI.workers = workers;
+           
 
             for (int i = 0; i < numInitialPopulation; )
             {
@@ -84,6 +84,8 @@ namespace WindowsFormsApp1.Genetic
             List<Workstation> workstationsA = getWorkStations(workstations);
             Chromosome bestSolution = new Chromosome();
             Population population = generateInitialPopulation(workstationsA, workers);
+            population.workstation = workstations;
+            population.workers = workers;
           
             file.WriteLine("Fitness de poblacion inicial: "+getBestSolution(population).getFitness());
             Console.WriteLine("Tiene repeticiones la poblacion inicial: " + getBestSolution(population).hasRepetitions());

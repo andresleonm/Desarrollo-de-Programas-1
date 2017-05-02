@@ -427,10 +427,10 @@ namespace WindowsFormsApp1.Views
             
             readWorkstations(ref workstations, product1, product2, product3);
             readWorkers(ref workers, workstations);           
-            GeneticAlgorithm g = new GeneticAlgorithm(1000, 300, 80, 5, 20);
+            GeneticAlgorithm g = new GeneticAlgorithm(1000, 100, 80, 5, 20);
 
             
-            for(int i=0;i<30;i++)
+            for(int i=0;i<1;i++)
             {
                 using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(@"Genetico_"+i.ToString()+".txt"))
