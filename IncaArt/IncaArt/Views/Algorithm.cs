@@ -45,9 +45,9 @@ namespace WindowsFormsApp1.Views
             Product product1 = new Product("Retablo", 0, 2.5);
             Product product2 = new Product("Ceramico", 0, 3.0);
             Product product3 = new Product("Piedra", 0, 5.0);
-            OrderDetailLine line1 = new OrderDetailLine(product1, 200);
-            OrderDetailLine line2 = new OrderDetailLine(product2, 150);
-            OrderDetailLine line3 = new OrderDetailLine(product3, 100);
+            OrderDetailLine line1 = new OrderDetailLine(product1, 5);
+            OrderDetailLine line2 = new OrderDetailLine(product2, 5);
+            OrderDetailLine line3 = new OrderDetailLine(product3, 5);
             List<OrderDetailLine> lines = new List<OrderDetailLine>();
             lines.Add(line1);
             lines.Add(line2);
@@ -171,33 +171,17 @@ namespace WindowsFormsApp1.Views
                     for (int i = 0; i < w.quantity; i++)
                     {
                         Assignment assignment = new Assignment(w);
-                        //assignment.assigned_worker = workers.ElementAt(workers_index.ElementAt(worker_index));
-                        assignment.assigned_worker = workers.ElementAt(worker_index);
+                        assignment.assigned_worker = workers.ElementAt(workers_index.ElementAt(worker_index));
+                        //assignment.assigned_worker = workers.ElementAt(worker_index);
                         worker_index++;
                         assignments.Add(assignment);
                     }
                 }
-
-                //List<bool> Array_aux = new List<bool>();
-                //for (int i = 0; i < assignments.Count(); i++) {
-                //    Array_aux.Add(false);
-                //}
                                               
                 for (int x = 0; x < solution.Count(); x++) // MAQUETA (puestos de trabajos vacios)                 
                 {
                     for (int y = 0; y < solution.ElementAt(x).assignments.Capacity; y++)
-                    {
-
-                        //for (int z = 0; z < assignments.Count(); z++) {
-                        //    if (!Array_aux.ElementAt(z) && assignments.ElementAt(z).assigned_workstation.name == solution.ElementAt(x).assignments.ElementAt(y).assigned_workstation.name)
-                        //    {
-                        //        solution.ElementAt(x).assignments.ElementAt(y).assigned_workstation = assignments.ElementAt(z).assigned_workstation;
-                        //        solution.ElementAt(x).assignments.ElementAt(y).assigned_worker = assignments.ElementAt(z).assigned_worker;
-                        //        Array_aux[z] = true;
-                        //    }
-
-                        //}
-
+                    {                  
                         try
                         {
                             foreach (Assignment a in assignments) // REAL
@@ -222,15 +206,14 @@ namespace WindowsFormsApp1.Views
 
             }
             //generateReport(solution,products_quantities);
-            for (int i = 0; i < 30; i++)
-            {
-                DateTime tiempo1 = DateTime.Now;
-                List<ProductLineAssignment> final_solution = tabuSearch(solution, products_quantities, workers);
-                DateTime tiempo2 = DateTime.Now;
-                TimeSpan total = new TimeSpan(tiempo2.Ticks - tiempo1.Ticks);
-                double ahorro = Math.Round((((fitness(final_solution, products_quantities)) - fitness(solution, products_quantities)) / fitness(final_solution, products_quantities)) * 100, 2);
-                generateReport(solution,final_solution, products_quantities, total, ahorro,i);
-            }         
+            
+            DateTime tiempo1 = DateTime.Now;
+            List<ProductLineAssignment> final_solution = tabuSearch(solution, products_quantities, workers);
+            DateTime tiempo2 = DateTime.Now;
+            TimeSpan total = new TimeSpan(tiempo2.Ticks - tiempo1.Ticks);
+            double ahorro = Math.Round((((fitness(final_solution, products_quantities)) - fitness(solution, products_quantities)) / fitness(final_solution, products_quantities)) * 100, 2);
+            generateReport(solution,final_solution, products_quantities, total, ahorro);
+                     
 
         }
         
@@ -252,7 +235,7 @@ namespace WindowsFormsApp1.Views
             while (iteration <= MAX_ITER)
             {
                 best_candidate = null;
-                neighborhood = generateNeighborhood(s, workers);
+                neighborhood = generateNeighborhood(s, workers,iteration);
                 foreach (List<ProductLineAssignment> candidate in neighborhood)
                 {
                     if ((!tabu_list.Contains(candidate)) && (fitness(candidate,product_quantities) > fitness(best_candidate,product_quantities)))
@@ -275,36 +258,32 @@ namespace WindowsFormsApp1.Views
             return s_best;
         }
 
-        private List<List<ProductLineAssignment>> generateNeighborhood(List<ProductLineAssignment> solution,List<Worker> workers)
+        private List<List<ProductLineAssignment>> generateNeighborhood(List<ProductLineAssignment> solution,List<Worker> workers,int iteration)
         {
             List<List<ProductLineAssignment>> neighborhood = new List<List<ProductLineAssignment>>();
             for(int i=0; i<NEIGHBORHOOD_SIZE;i++) // REFINAR            
             {
-                List<ProductLineAssignment> neighbor = new List<ProductLineAssignment>();
-                //if (i < NEIGHBORHOOD_SIZE - 1)
-                //{
-                    copyElements(ref neighbor, solution);
-                    int index1 = (rnd.Next(0, neighbor.ElementAt(i%solution.Count()).assignments.Count()));
-                    int index2 = (rnd.Next(0, neighbor.ElementAt((i+1)%solution.Count()).assignments.Count()));
-                    List <Assignment> assignments1 = neighbor.ElementAt(i%solution.Count()).assignments;
-                    List<Assignment> assignments2 = neighbor.ElementAt((i + 1)%solution.Count()).assignments;
-                    Assignment switch_candidate1 = assignments1.ElementAt(index1);
-                    Assignment switch_candidate2 = assignments2.ElementAt(index2);
-
-                    Worker aux_worker = switch_candidate1.assigned_worker;
-
-                    switch_candidate1.assigned_worker = switch_candidate2.assigned_worker;
-
-                    switch_candidate2.assigned_worker = aux_worker;
-                    neighborhood.Add(neighbor);                    
-                //}
-                /*else if (i == NEIGHBORHOOD_SIZE - 1)
+                /*if ((iteration%300)==0)
                 {
-                    neighbor = solution;
-                    int index1 = (rnd.Next(0, neighbor.ElementAt(i).assignments.Count()));
-                    int index2 = (rnd.Next(0, neighbor.ElementAt(0).assignments.Count()));
-                    List<Assignment> assignments1 = neighbor.ElementAt(i).assignments;
-                    List<Assignment> assignments2 = neighbor.ElementAt(0).assignments;
+                    List<ProductLineAssignment> neighbor = new List<ProductLineAssignment>();
+                    copyElements(ref neighbor, solution);
+                    int index1 = (rnd.Next(0, neighbor.ElementAt(i % solution.Count()).assignments.Count()));
+                    int index2 = rnd.Next(0, workers.Count());
+                    bool continue_iter = true;
+                    while (continue_iter)
+                    {
+                        for(int i=0; i<)
+                    }
+                    neighbor.ElementAt(0).assignments.ElementAt(i).
+                }
+                else
+                {*/
+                    List<ProductLineAssignment> neighbor = new List<ProductLineAssignment>();
+                    copyElements(ref neighbor, solution);
+                    int index1 = (rnd.Next(0, neighbor.ElementAt(i % solution.Count()).assignments.Count()));
+                    int index2 = (rnd.Next(0, neighbor.ElementAt((i + 1) % solution.Count()).assignments.Count()));
+                    List<Assignment> assignments1 = neighbor.ElementAt(i % solution.Count()).assignments;
+                    List<Assignment> assignments2 = neighbor.ElementAt((i + 1) % solution.Count()).assignments;
                     Assignment switch_candidate1 = assignments1.ElementAt(index1);
                     Assignment switch_candidate2 = assignments2.ElementAt(index2);
 
@@ -314,7 +293,8 @@ namespace WindowsFormsApp1.Views
 
                     switch_candidate2.assigned_worker = aux_worker;
                     neighborhood.Add(neighbor);
-                }*/
+                //}
+               
             }
             return neighborhood;
         }
@@ -340,8 +320,7 @@ namespace WindowsFormsApp1.Views
                             foreach(Tuple<int,Product> tuple in product_quantities)
                             {
                                 if (tuple.Item2.Equals(assignment.assigned_workstation.product))
-                                {
-                                    //partial_break = partial_break + ((1-r.value) * assignment.assigned_workstation.break_cost*tuple.Item1);
+                                {                                    
                                     partial_break = partial_break + (1 - r.value) * assignment.assigned_workstation.break_cost;
                                     if(tuple.Item2.name == "Retablo") product_quantity = tuple.Item1/needed_retablo;
                                     else if(tuple.Item2.name == "Ceramico") product_quantity = tuple.Item1 / needed_ceramico;
@@ -359,11 +338,11 @@ namespace WindowsFormsApp1.Views
             return 1/total_break;
         }
 
-        private void generateReport(List<ProductLineAssignment> ini_solution, List<ProductLineAssignment> solution,List<Tuple<int,Product>> product_quantities,TimeSpan time, double ahorro,int iter)
+        private void generateReport(List<ProductLineAssignment> ini_solution, List<ProductLineAssignment> solution,List<Tuple<int,Product>> product_quantities,TimeSpan time, double ahorro)
         {
 
             double fit = Math.Round(1 / fitness(solution, product_quantities), 2);
-            StreamWriter file = new System.IO.StreamWriter("TabuSearch_"+fit+"_"+".txt");
+            StreamWriter file = new System.IO.StreamWriter("TabuSearch_"+fit+".txt");
 
             file.WriteLine("RESULTADOS DE LA SOLUCIÓN INICIAL");
             file.WriteLine("----------------------------");
