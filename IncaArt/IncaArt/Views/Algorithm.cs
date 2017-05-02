@@ -178,10 +178,26 @@ namespace WindowsFormsApp1.Views
                     }
                 }
 
+                //List<bool> Array_aux = new List<bool>();
+                //for (int i = 0; i < assignments.Count(); i++) {
+                //    Array_aux.Add(false);
+                //}
+                                              
                 for (int x = 0; x < solution.Count(); x++) // MAQUETA (puestos de trabajos vacios)                 
                 {
                     for (int y = 0; y < solution.ElementAt(x).assignments.Capacity; y++)
                     {
+
+                        //for (int z = 0; z < assignments.Count(); z++) {
+                        //    if (!Array_aux.ElementAt(z) && assignments.ElementAt(z).assigned_workstation.name == solution.ElementAt(x).assignments.ElementAt(y).assigned_workstation.name)
+                        //    {
+                        //        solution.ElementAt(x).assignments.ElementAt(y).assigned_workstation = assignments.ElementAt(z).assigned_workstation;
+                        //        solution.ElementAt(x).assignments.ElementAt(y).assigned_worker = assignments.ElementAt(z).assigned_worker;
+                        //        Array_aux[z] = true;
+                        //    }
+
+                        //}
+
                         try
                         {
                             foreach (Assignment a in assignments) // REAL
@@ -193,7 +209,8 @@ namespace WindowsFormsApp1.Views
                                     assignments.Remove(a);
                                 }
                             }
-                        }catch(System.InvalidOperationException e)
+                        }
+                        catch (System.InvalidOperationException e)
                         {
 
                         }
@@ -212,7 +229,7 @@ namespace WindowsFormsApp1.Views
                 DateTime tiempo2 = DateTime.Now;
                 TimeSpan total = new TimeSpan(tiempo2.Ticks - tiempo1.Ticks);
                 double ahorro = Math.Round((((fitness(final_solution, products_quantities)) - fitness(solution, products_quantities)) / fitness(final_solution, products_quantities)) * 100, 2);
-                generateReport(final_solution, products_quantities, total, ahorro,i);
+                generateReport(solution,final_solution, products_quantities, total, ahorro,i);
             }         
 
         }
@@ -342,11 +359,25 @@ namespace WindowsFormsApp1.Views
             return 1/total_break;
         }
 
-        private void generateReport(List<ProductLineAssignment> solution,List<Tuple<int,Product>> product_quantities,TimeSpan time, double ahorro,int iter)
+        private void generateReport(List<ProductLineAssignment> ini_solution, List<ProductLineAssignment> solution,List<Tuple<int,Product>> product_quantities,TimeSpan time, double ahorro,int iter)
         {
-            StreamWriter file = new System.IO.StreamWriter("TabuSearch_"+(iter+1)+".txt");
-           
-            file.WriteLine("RESULTADOS DE LA ASIGNACIÓN");
+
+            double fit = Math.Round(1 / fitness(solution, product_quantities), 2);
+            StreamWriter file = new System.IO.StreamWriter("TabuSearch_"+fit+"_"+".txt");
+
+            file.WriteLine("RESULTADOS DE LA SOLUCIÓN INICIAL");
+            file.WriteLine("----------------------------");
+            file.WriteLine("Fitness: " + Math.Round(1 / fitness(ini_solution, product_quantities), 2));
+            file.WriteLine("");
+
+            file.WriteLine("RESULTADOS DE LA SOLUCIÓN FINAL");
+            file.WriteLine("----------------------------");
+            file.WriteLine("Fitness: " + fit);
+            file.WriteLine("Ahorro: " + ahorro);
+            file.WriteLine("Tiempo de Ejecución: " + time.ToString());
+            file.WriteLine("");
+
+            file.WriteLine("ASIGNACIÓN");
             file.WriteLine("----------------------------");
 
             for(int i=0; i<solution.Count();i++)
@@ -368,9 +399,7 @@ namespace WindowsFormsApp1.Views
                     file.WriteLine();
                 }
             }
-            file.WriteLine("Fitness: " + Math.Round(1/fitness(solution,product_quantities),2));
-            file.WriteLine("Ahorro: " + ahorro);
-            file.WriteLine("Tiempo de Ejecución: " + time.ToString());
+            file.Close();
         }
 
         private void readWorkers(ref List<Worker> workers,List<Workstation> workstations)
