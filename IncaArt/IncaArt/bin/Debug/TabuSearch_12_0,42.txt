@@ -1,0 +1,33 @@
+RESULTADOS DE LA SOLUCIÓN INICIAL
+----------------------------
+Fitness: 10,04
+
+RESULTADOS DE LA SOLUCIÓN FINAL
+----------------------------
+Fitness: 0,42
+Ahorro: 95,86
+Tiempo de Ejecución: 00:00:03.0140006
+
+ASIGNACIÓN
+----------------------------
+LINEA DE PRODUCCION 1
+Trabajador: Madisen Hagenes Eficiencia: 0,995557259409671 (MoldeadoC)
+Puesto de trabajo: MoldeadoC
+
+Trabajador: Kailey Tremblay Eficiencia: 0,998575694330477 (PintadoC)
+Puesto de trabajo: PintadoC
+
+Trabajador: Ettie Jacobson Eficiencia: 0,985309840631367 (Horneado)
+Puesto de trabajo: Horneado
+
+LINEA DE PRODUCCION 2
+Trabajador: Damian Goyette Eficiencia: 0,983894934402054 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 3
+Trabajador: Elouise Hansen Eficiencia: 0,993643338125458 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Deborah Ullrich Eficiencia: 0,984674221020881 (PintadoR)
+Puesto de trabajo: PintadoR
+

@@ -1,53 +1,37 @@
 [
   {
     "name": "MoldeadoC",
-<<<<<<< HEAD
     "quantity": 18,    
-=======
-    "quantity": 1,    
->>>>>>> 86a11bfa986362c97a09319f36225b09c89be560
     "break_cost": 1,
     "id":1
   },
   {
     "name": "PintadoC",
-<<<<<<< HEAD
     "quantity": 18,    
-=======
-    "quantity": 1,    
->>>>>>> 86a11bfa986362c97a09319f36225b09c89be560
     "break_cost": 2,
     "id":2
   },
   {
     "name": "Horneado",
-<<<<<<< HEAD
     "quantity": 18,  
-=======
-    "quantity": 1,  
->>>>>>> 86a11bfa986362c97a09319f36225b09c89be560
     "break_cost": 2.5,
     "id":3
   },
   {
     "name": "Tallado",
-<<<<<<< HEAD
     "quantity": 16,    
-=======
-    "quantity": 1,    
->>>>>>> 86a11bfa986362c97a09319f36225b09c89be560
     "break_cost": 3,
     "id":4
   },
   {
     "name": "MoldeadoR",
-    "quantity": 1,    
+    "quantity": 15,    
     "break_cost": 1.5,
     "id":5
   },
   {
     "name": "PintadoR",
-    "quantity": 1,    
+    "quantity": 15,    
     "break_cost": 2,
     "id":6
   }

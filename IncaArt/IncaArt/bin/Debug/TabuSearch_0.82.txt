@@ -1,0 +1,54 @@
+RESULTADOS DE LA SOLUCIÓN INICIAL
+----------------------------
+Fitness: 9.79
+
+RESULTADOS DE LA SOLUCIÓN FINAL
+----------------------------
+Fitness: 0.82
+Ahorro: 91.63
+Tiempo de Ejecución: 00:00:14.4054224
+
+ASIGNACIÓN
+----------------------------
+LINEA DE PRODUCCION 1
+Trabajador: Denis Kemmer Eficiencia: 0.994117799568757 (MoldeadoC)
+Puesto de trabajo: MoldeadoC
+
+Trabajador: Myrl Collins Eficiencia: 0.977283017968469 (PintadoC)
+Puesto de trabajo: PintadoC
+
+Trabajador: Nyasia Ward Eficiencia: 0.984859917041707 (Horneado)
+Puesto de trabajo: Horneado
+
+LINEA DE PRODUCCION 2
+Trabajador: Madisen Hagenes Eficiencia: 0.995557259409671 (MoldeadoC)
+Puesto de trabajo: MoldeadoC
+
+Trabajador: Kailey Tremblay Eficiencia: 0.998575694330477 (PintadoC)
+Puesto de trabajo: PintadoC
+
+Trabajador: Jose Powlowski Eficiencia: 0.995296082337119 (Horneado)
+Puesto de trabajo: Horneado
+
+LINEA DE PRODUCCION 3
+Trabajador: Ansel Metz Eficiencia: 0.983077827383059 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 4
+Trabajador: Damian Goyette Eficiencia: 0.983894934402054 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 5
+Trabajador: Adan Howell Eficiencia: 0.999506740447992 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Maye Funk Eficiencia: 0.991514572673032 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 6
+Trabajador: Elouise Hansen Eficiencia: 0.993643338125458 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Leilani Wunsch Eficiencia: 0.98492568676451 (PintadoR)
+Puesto de trabajo: PintadoR
+

@@ -120,7 +120,7 @@ namespace WindowsFormsApp1.Genetic
         }
         public double getFitness()
         {
-            return getFitnessR();
+            //return getFitnessR();
             double total_break = 0;
 
             foreach (Assignment assignment in genes)
@@ -365,7 +365,7 @@ namespace WindowsFormsApp1.Genetic
             List<Assignment> assignments = DeepCopy();
             List<int> states = new List<int>();
             //int numgenes=
-            for (int i=0;i<)
+            //for (int i=0;i<)
             for (int x = 0; x<solution.Count(); x++) // MAQUETA (puestos de trabajos vacios)                 
             {
                 for (int y = 0; y<solution.ElementAt(x).assignments.Capacity; y++)

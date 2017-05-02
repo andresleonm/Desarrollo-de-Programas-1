@@ -1,0 +1,352 @@
+RESULTADOS DE LA SOLUCIÓN INICIAL
+----------------------------
+Fitness: 344,07
+
+RESULTADOS DE LA SOLUCIÓN FINAL
+----------------------------
+Fitness: 139,57
+Ahorro: 59,44
+Tiempo de Ejecución: 00:00:46.9341045
+
+ASIGNACIÓN
+----------------------------
+LINEA DE PRODUCCION 1
+Trabajador: Catharine Spinka Eficiencia: 0,868689576494216 (MoldeadoC)
+Puesto de trabajo: MoldeadoC
+
+Trabajador: Krista Conroy Eficiencia: 0,889067204981753 (PintadoC)
+Puesto de trabajo: PintadoC
+
+Trabajador: Gregory Cole Eficiencia: 0,769219608711828 (Horneado)
+Puesto de trabajo: Horneado
+
+LINEA DE PRODUCCION 2
+Trabajador: Kay Connelly Eficiencia: 0,790861207478631 (MoldeadoC)
+Puesto de trabajo: MoldeadoC
+
+Trabajador: Elwyn Kiehn Eficiencia: 0,964826912595396 (PintadoC)
+Puesto de trabajo: PintadoC
+
+Trabajador: Veda Hermiston Eficiencia: 0,935917436780232 (Horneado)
+Puesto de trabajo: Horneado
+
+LINEA DE PRODUCCION 3
+Trabajador: Kelvin Schumm Eficiencia: 0,947375505183824 (MoldeadoC)
+Puesto de trabajo: MoldeadoC
+
+Trabajador: Oswald Wolff Eficiencia: 0,959319396604533 (PintadoC)
+Puesto de trabajo: PintadoC
+
+Trabajador: Jose Powlowski Eficiencia: 0,995296082337119 (Horneado)
+Puesto de trabajo: Horneado
+
+LINEA DE PRODUCCION 4
+Trabajador: Leila Quigley Eficiencia: 0,962040820160904 (MoldeadoC)
+Puesto de trabajo: MoldeadoC
+
+Trabajador: Leilani Wunsch Eficiencia: 0,952616507692015 (PintadoC)
+Puesto de trabajo: PintadoC
+
+Trabajador: Ned Beier Eficiencia: 0,782718255413581 (Horneado)
+Puesto de trabajo: Horneado
+
+LINEA DE PRODUCCION 5
+Trabajador: Neal Dibbert Eficiencia: 0,925994540359244 (MoldeadoC)
+Puesto de trabajo: MoldeadoC
+
+Trabajador: Saul Roob Eficiencia: 0,95983159171536 (PintadoC)
+Puesto de trabajo: PintadoC
+
+Trabajador: Nyasia Ward Eficiencia: 0,984859917041707 (Horneado)
+Puesto de trabajo: Horneado
+
+LINEA DE PRODUCCION 6
+Trabajador: Ellis Blanda Eficiencia: 0,875841700597971 (MoldeadoC)
+Puesto de trabajo: MoldeadoC
+
+Trabajador: Maye Funk Eficiencia: 0,957172727901374 (PintadoC)
+Puesto de trabajo: PintadoC
+
+Trabajador: Berniece Kreiger Eficiencia: 0,947504666797493 (Horneado)
+Puesto de trabajo: Horneado
+
+LINEA DE PRODUCCION 7
+Trabajador: Cornelius Hodkiewicz Eficiencia: 0,818184055718581 (MoldeadoC)
+Puesto de trabajo: MoldeadoC
+
+Trabajador: Melvina Davis Eficiencia: 0,951709187644438 (PintadoC)
+Puesto de trabajo: PintadoC
+
+Trabajador: Tyrese Waelchi Eficiencia: 0,914455112854776 (Horneado)
+Puesto de trabajo: Horneado
+
+LINEA DE PRODUCCION 8
+Trabajador: Cristal Bradtke Eficiencia: 0,978399807397626 (MoldeadoC)
+Puesto de trabajo: MoldeadoC
+
+Trabajador: Ludie Cruickshank Eficiencia: 0,922718191708372 (PintadoC)
+Puesto de trabajo: PintadoC
+
+Trabajador: Hailey Parisian Eficiencia: 0,953933901156625 (Horneado)
+Puesto de trabajo: Horneado
+
+LINEA DE PRODUCCION 9
+Trabajador: Harry Grady Eficiencia: 0,987269491181892 (MoldeadoC)
+Puesto de trabajo: MoldeadoC
+
+Trabajador: Corrine Hackett Eficiencia: 0,973935337797163 (PintadoC)
+Puesto de trabajo: PintadoC
+
+Trabajador: Geovany Stiedemann Eficiencia: 0,964701871291289 (Horneado)
+Puesto de trabajo: Horneado
+
+LINEA DE PRODUCCION 10
+Trabajador: Samantha Kozey Eficiencia: 0,89560813894359 (MoldeadoC)
+Puesto de trabajo: MoldeadoC
+
+Trabajador: Genoveva Corwin Eficiencia: 0,908619390683528 (PintadoC)
+Puesto de trabajo: PintadoC
+
+Trabajador: Misty Abbott Eficiencia: 0,987720176576037 (Horneado)
+Puesto de trabajo: Horneado
+
+LINEA DE PRODUCCION 11
+Trabajador: Gerson Senger Eficiencia: 0,913698674973144 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 12
+Trabajador: Damian Goyette Eficiencia: 0,983894934402054 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 13
+Trabajador: Orland Krajcik Eficiencia: 0,97033554059355 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 14
+Trabajador: Tracy Kris Eficiencia: 0,868258095332659 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 15
+Trabajador: Estel White Eficiencia: 0,97546016946514 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 16
+Trabajador: Jarrod Koepp Eficiencia: 0,85736783443835 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 17
+Trabajador: Warren Jerde Eficiencia: 0,975383172715411 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 18
+Trabajador: Jerrod Goldner Eficiencia: 0,878353380963474 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 19
+Trabajador: Shyann Parker Eficiencia: 0,95748569883132 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 20
+Trabajador: Abbie Smith Eficiencia: 0,900095224034424 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 21
+Trabajador: Lourdes Fay Eficiencia: 0,86788104480114 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 22
+Trabajador: Cordie Morar Eficiencia: 0,934850606684221 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 23
+Trabajador: Kailey Tremblay Eficiencia: 0,787964498100577 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 24
+Trabajador: Lexi Beahan Eficiencia: 0,862279220423202 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 25
+Trabajador: Roy Leffler Eficiencia: 0,799073914324884 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 26
+Trabajador: Adan Howell Eficiencia: 0,901491475424447 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 27
+Trabajador: Denis Kemmer Eficiencia: 0,934534255156481 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 28
+Trabajador: Eric Graham Eficiencia: 0,880801325062803 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 29
+Trabajador: Finn Gleason Eficiencia: 0,784458636621694 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 30
+Trabajador: Gabriel Hessel Eficiencia: 0,957266166824709 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 31
+Trabajador: Ansel Metz Eficiencia: 0,983077827383059 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 32
+Trabajador: Sincere Carter Eficiencia: 0,95729145237385 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 33
+Trabajador: Chadrick Auer Eficiencia: 0,861900442577281 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 34
+Trabajador: Cathy Robel Eficiencia: 0,851465329328977 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 35
+Trabajador: Webster Paucek Eficiencia: 0,878426521110608 (Tallado)
+Puesto de trabajo: Tallado
+
+LINEA DE PRODUCCION 36
+Trabajador: Candelario Mertz Eficiencia: 0,990206744216763 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Dora Moen Eficiencia: 0,952973658334805 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 37
+Trabajador: Milford Lindgren Eficiencia: 0,84271800224466 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Andre Ritchie Eficiencia: 0,93736279566694 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 38
+Trabajador: Pierre Mertz Eficiencia: 0,898793947599509 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Liliane Kessler Eficiencia: 0,950011347885877 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 39
+Trabajador: Ettie Jacobson Eficiencia: 0,884600744479658 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Alphonso Ebert Eficiencia: 0,754547491944036 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 40
+Trabajador: Alba Bradtke Eficiencia: 0,925481931961156 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Deborah Ullrich Eficiencia: 0,984674221020881 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 41
+Trabajador: Lavonne Mann Eficiencia: 0,96825105788592 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Madisen Hagenes Eficiencia: 0,957294516447834 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 42
+Trabajador: Adaline Collins Eficiencia: 0,936492172747242 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Nigel Gorczany Eficiencia: 0,907826267533723 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 43
+Trabajador: Millie Graham Eficiencia: 0,790619117379638 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Thomas MacGyver Eficiencia: 0,897355806511605 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 44
+Trabajador: Chasity Ortiz Eficiencia: 0,945082084094332 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Elyse Collier Eficiencia: 0,971634769492681 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 45
+Trabajador: Juanita Heaney Eficiencia: 0,940405786502336 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Anya Grimes Eficiencia: 0,92764824370847 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 46
+Trabajador: Casandra King Eficiencia: 0,84638102933726 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Maudie Douglas Eficiencia: 0,948007597983882 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 47
+Trabajador: Taryn Johnson Eficiencia: 0,870809387582768 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Nellie Olson Eficiencia: 0,916114762045815 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 48
+Trabajador: Milan Dibbert Eficiencia: 0,912807836781085 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Bernadine Aufderhar Eficiencia: 0,887476953226515 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 49
+Trabajador: Van Welch Eficiencia: 0,83508960668395 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Marcelle Bergnaum Eficiencia: 0,738672402680098 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 50
+Trabajador: Elouise Hansen Eficiencia: 0,993643338125458 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Teagan Dare Eficiencia: 0,866886845712164 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 51
+Trabajador: Chauncey Boehm Eficiencia: 0,960452058181951 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Emilia Upton Eficiencia: 0,982033666686174 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 52
+Trabajador: Gabriella Tremblay Eficiencia: 0,708675547928906 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Charlie Mueller Eficiencia: 0,906072037435509 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 53
+Trabajador: Akeem Lemke Eficiencia: 0,626283880438717 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Amie Brakus Eficiencia: 0,824589422572209 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 54
+Trabajador: Myrl Collins Eficiencia: 0,906500906756285 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Liliane West Eficiencia: 0,954086465467433 (PintadoR)
+Puesto de trabajo: PintadoR
+
+LINEA DE PRODUCCION 55
+Trabajador: Violet Parisian Eficiencia: 0,751480423885031 (MoldeadoR)
+Puesto de trabajo: MoldeadoR
+
+Trabajador: Albin Bins Eficiencia: 0,869948270819764 (PintadoR)
+Puesto de trabajo: PintadoR
+
