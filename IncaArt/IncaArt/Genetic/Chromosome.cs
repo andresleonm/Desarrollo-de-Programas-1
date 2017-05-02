@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using WindowsFormsApp1.Classes;
@@ -12,10 +14,18 @@ namespace WindowsFormsApp1.Genetic
     class Chromosome
     {
         public List<Assignment> genes = new List<Assignment>();
-        public OrderDetail order; 
-        public Chromosome()
+        public List<Tuple<int, Product>> products_quantities;
+        public int needed_retablo;
+        public int needed_ceramico;
+        public int needed_piedra;
+        List<ProductLineAssignment> solution;
+        public Chromosome( List<Tuple<int, Product>> products_quantities,int needed_retablo,int needed_ceramico,int needed_piedra, List<ProductLineAssignment>  solution)
         {
-
+            this.products_quantities = products_quantities;
+            this.needed_ceramico = needed_ceramico;
+            this.needed_piedra = needed_piedra;
+            this.needed_retablo = needed_retablo;
+            this.solution = solution;
         }
 
         public bool hasRepetitions()
@@ -60,7 +70,8 @@ namespace WindowsFormsApp1.Genetic
 
         public void hasSameWorkstations()
         {
-            
+            return;
+            Console.WriteLine("-------------");
             List<string> names = new List<string>();
             List<int> rep = new List<int>();
             foreach (Assignment a in genes)
@@ -80,7 +91,8 @@ namespace WindowsFormsApp1.Genetic
             for (int i = 0; i < n; i++)
             {
                 Console.WriteLine(names[i] + " " + rep[i].ToString());
-            }          
+            }
+            Console.WriteLine("-------------");
 
         }
         public void print()
@@ -108,7 +120,8 @@ namespace WindowsFormsApp1.Genetic
         }
         public double getFitness()
         {
-            double total_break = 0;            
+            return getFitnessR();
+            double total_break = 0;
 
             foreach (Assignment assignment in genes)
             {
@@ -116,7 +129,7 @@ namespace WindowsFormsApp1.Genetic
                 {
                     foreach (Ratio r in assignment.assigned_worker.ratios)
                     {
-                        if (r.workstation.id == assignment.assigned_workstation.id && (r.type=="Efficiency"))
+                        if (r.workstation.id == assignment.assigned_workstation.id && (r.type == "Efficiency"))
                         {
                             total_break = total_break + (1 - r.value) * assignment.assigned_workstation.break_cost;
                             break;
@@ -128,28 +141,79 @@ namespace WindowsFormsApp1.Genetic
                 {
 
                 }
-                
-            }          
+
+            }
             return total_break;
+        }
+        public double getFitnessR()
+        {            
+            return fitness(Convert(), products_quantities);
+        }
+
+        private double fitness(List<ProductLineAssignment> solution, List<Tuple<int, Product>> product_quantities) // REFINAR
+        {
+            if (solution == null) return -1;
+
+            double total_break = 0;
+            double total_time = 0;
+
+            foreach (ProductLineAssignment set in solution)
+            {
+                double partial_break = 0;
+                double partial_time = 0;
+                double product_quantity = 0;
+                foreach (Assignment assignment in set.assignments)
+                {
+                    foreach (Ratio r in assignment.assigned_worker.ratios)
+                    {
+                        if (r.workstation.id==assignment.assigned_workstation.id  && (r.type == "Efficiency"))
+                        {
+                            foreach (Tuple<int, Product> tuple in product_quantities)
+                            {
+                                if (tuple.Item2.name==assignment.assigned_workstation.product.name)
+                                {
+                                    //partial_break = partial_break + ((1-r.value) * assignment.assigned_workstation.break_cost*tuple.Item1);
+                                    partial_break = partial_break + (1 - r.value) * assignment.assigned_workstation.break_cost;
+                                    if (tuple.Item2.name == "Retablo") product_quantity = tuple.Item1 / needed_retablo;
+                                    else if (tuple.Item2.name == "Ceramico") product_quantity = tuple.Item1 / needed_ceramico;
+                                    else if (tuple.Item2.name == "Piedra") product_quantity = tuple.Item1 / needed_piedra;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+                total_break = total_break + (partial_break / set.assignments.Count()) * product_quantity;
+                //total_break = total_break + partial_break;
+            }
+            return 1 / total_break;
         }
 
         public Chromosome cut(int ini,int fin)
         {
-            Chromosome c= new Chromosome();
+            Chromosome c= new Chromosome(this.products_quantities,this.needed_retablo,this.needed_ceramico,this.needed_piedra,this.solution);
             for (int i = ini; i < fin; i++)
             {
-                c.genes.Add(genes.ElementAt(i));
+                Assignment a = new Assignment();
+                a.assigned_worker = genes.ElementAt(i).assigned_worker;
+                a.assigned_workstation = genes.ElementAt(i).assigned_workstation;
+                c.genes.Add(a);
             }
             return c;
 
         }
         public Chromosome cut(int ini)
         {
-            Chromosome c = new Chromosome();
+            Chromosome c = new Chromosome(this.products_quantities,this.needed_retablo,this.needed_ceramico,this.needed_piedra,this.solution);
             int n = genes.Count();
             for (int i = ini; i < n; i++)
             {
-                c.genes.Add(genes.ElementAt(i));
+                Assignment a = new Assignment();
+                a.assigned_worker = genes.ElementAt(i).assigned_worker;
+                a.assigned_workstation = genes.ElementAt(i).assigned_workstation;
+                c.genes.Add(a);
+               
             }
             return c;
         }
@@ -187,12 +251,13 @@ namespace WindowsFormsApp1.Genetic
                 a.Add(i);
             return DesordenarLista(a);
         }
-        public Chromosome(List<Workstation> workstations, List<Worker> workers) {
+        public Chromosome(List<Workstation> workstations, List<Worker> workers, List<Tuple<int, Product>> products_quantities, int needed_retablo, int needed_ceramico, int needed_piedra, List<ProductLineAssignment> solution) {
             List<int> indexa= getArray(workstations.Count());
             List<int> indexb = getArray(workers.Count());
+           
             int n=0,numWorkers=workers.Count();
             
-            foreach (int indexWorkstation in indexa)
+           foreach (int indexWorkstation in indexa)
             {
                 if (n>= numWorkers)
                 {
@@ -204,6 +269,13 @@ namespace WindowsFormsApp1.Genetic
                 }               
                 n++;
             }
+            GenesComparer comparer = new GenesComparer();
+            genes.Sort(comparer);
+            this.products_quantities = products_quantities;
+            this.needed_ceramico = needed_ceramico;
+            this.needed_piedra = needed_piedra;
+            this.needed_retablo = needed_retablo;
+            this.solution = solution;
         }
 
         public static bool operator ==(Chromosome a, Chromosome b)
@@ -211,6 +283,17 @@ namespace WindowsFormsApp1.Genetic
             if (a.getFitness()==b.getFitness())
                 return true;
             return false;
+        }
+
+        public  List<Assignment> DeepCopy()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(ms, genes);
+                ms.Position = 0;
+                return (List<Assignment>)formatter.Deserialize(ms);
+            }
         }
 
         public static bool operator !=(Chromosome a, Chromosome b)
@@ -277,6 +360,33 @@ namespace WindowsFormsApp1.Genetic
             return workers;
         }
 
+        public List<ProductLineAssignment> Convert()
+        {
+            List<Assignment> assignments = DeepCopy();
+            for (int x = 0; x<solution.Count(); x++) // MAQUETA (puestos de trabajos vacios)                 
+            {
+                for (int y = 0; y<solution.ElementAt(x).assignments.Capacity; y++)
+                {
+                    try
+                    {
+                        foreach (Assignment a in assignments) // REAL
+                        {
+                            if (a.assigned_workstation.name == solution.ElementAt(x).assignments.ElementAt(y).assigned_workstation.name)
+                            {
+                                solution.ElementAt(x).assignments.ElementAt(y).assigned_workstation = a.assigned_workstation;
+                                solution.ElementAt(x).assignments.ElementAt(y).assigned_worker = a.assigned_worker;
+                                assignments.Remove(a);
+                            }
+                        }
+                    }catch(System.InvalidOperationException e)
+                    {
+
+                    }
+                }
+            }
+            return solution;
+        }
+
 
         /*
         public static Chromosome operator +(Chromosome a, Chromosome b)
@@ -319,6 +429,14 @@ namespace WindowsFormsApp1.Genetic
                 return -1;
 
             return 1;
+        }
+    }
+    class GenesComparer : IComparer<Assignment>
+    {
+        public int Compare(Assignment a, Assignment b)
+        {
+            String name1 = a.assigned_workstation.name, name2 = b.assigned_workstation.name;
+            return String.Compare(name1,name2);
         }
     }
 }

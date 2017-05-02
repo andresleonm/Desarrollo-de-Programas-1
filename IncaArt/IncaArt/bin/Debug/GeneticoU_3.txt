@@ -1,0 +1,114 @@
+Fitness de poblacion inicial: 10,7136612066784
+Fitness de mejor solucion: 3,57791699676974
+Estacion:  MoldeadoC
+Nombre: Adaline Collins
+Ratio:  0,7650021845557
+
+Estacion:  MoldeadoC
+Nombre: Akeem Lemke
+Ratio:  0,86212546741724
+
+Estacion:  MoldeadoC
+Nombre: Saul Roob
+Ratio:  0,993393802010393
+
+Estacion:  MoldeadoC
+Nombre: Madisen Hagenes
+Ratio:  0,995557259409671
+
+Estacion:  PintadoC
+Nombre: Harry Grady
+Ratio:  0,849571708413974
+
+Estacion:  PintadoC
+Nombre: Bernadine Aufderhar
+Ratio:  0,923796792559597
+
+Estacion:  PintadoC
+Nombre: Lavonne Mann
+Ratio:  0,928284834441573
+
+Estacion:  PintadoC
+Nombre: Elwyn Kiehn
+Ratio:  0,964826912595396
+
+Estacion:  Horneado
+Nombre: Damian Goyette
+Ratio:  0,851950950536097
+
+Estacion:  Horneado
+Nombre: Shyann Parker
+Ratio:  0,900643156943624
+
+Estacion:  Horneado
+Nombre: Gabriella Tremblay
+Ratio:  0,969080297150263
+
+Estacion:  Horneado
+Nombre: Corrine Hackett
+Ratio:  0,970451448351292
+
+Estacion:  Tallado
+Nombre: Adan Howell
+Ratio:  0,901491475424447
+
+Estacion:  Tallado
+Nombre: Millie Graham
+Ratio:  0,917894939846353
+
+Estacion:  Tallado
+Nombre: Gabriel Hessel
+Ratio:  0,957266166824709
+
+Estacion:  Tallado
+Nombre: Warren Jerde
+Ratio:  0,975383172715411
+
+Estacion:  Tallado
+Nombre: Estel White
+Ratio:  0,97546016946514
+
+Estacion:  Tallado
+Nombre: Ansel Metz
+Ratio:  0,983077827383059
+
+Estacion:  MoldeadoR
+Nombre: Lexi Beahan
+Ratio:  0,932548398863866
+
+Estacion:  MoldeadoR
+Nombre: Liliane West
+Ratio:  0,93365347977926
+
+Estacion:  MoldeadoR
+Nombre: Juanita Heaney
+Ratio:  0,940405786502336
+
+Estacion:  MoldeadoR
+Nombre: Chasity Ortiz
+Ratio:  0,945082084094332
+
+Estacion:  MoldeadoR
+Nombre: Chauncey Boehm
+Ratio:  0,960452058181951
+
+Estacion:  PintadoR
+Nombre: Eric Graham
+Ratio:  0,923613663003673
+
+Estacion:  PintadoR
+Nombre: Cordie Morar
+Ratio:  0,925823841039014
+
+Estacion:  PintadoR
+Nombre: Chadrick Auer
+Ratio:  0,970619039424704
+
+Estacion:  PintadoR
+Nombre: Elyse Collier
+Ratio:  0,971634769492681
+
+Estacion:  PintadoR
+Nombre: Jose Powlowski
+Ratio:  0,979706284666436
+

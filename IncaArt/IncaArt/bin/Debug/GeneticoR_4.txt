@@ -1,0 +1,147 @@
+Fitness de poblacion inicial: 46,8962019794812
+Fitness de mejor solucion: 15,2883993475878
+TIEMPO: 00:00:27.4925297
+Estacion:  MoldeadoC
+Nombre: Orland Krajcik
+Ratio:  0,640754833491263
+
+Estacion:  MoldeadoC
+Nombre: Bernadine Aufderhar
+Ratio:  0,695126238668139
+
+Estacion:  MoldeadoC
+Nombre: Warren Jerde
+Ratio:  0,800603952704589
+
+Estacion:  MoldeadoC
+Nombre: Gabriella Tremblay
+Ratio:  0,834770361190498
+
+Estacion:  MoldeadoC
+Nombre: Gregory Cole
+Ratio:  0,839300320328756
+
+Estacion:  MoldeadoC
+Nombre: Akeem Lemke
+Ratio:  0,86212546741724
+
+Estacion:  MoldeadoC
+Nombre: Van Welch
+Ratio:  0,91321964524076
+
+Estacion:  MoldeadoC
+Nombre: Saul Roob
+Ratio:  0,993393802010393
+
+Estacion:  PintadoC
+Nombre: Andre Ritchie
+Ratio:  0,748122048501471
+
+Estacion:  PintadoC
+Nombre: Eric Graham
+Ratio:  0,856650614332624
+
+Estacion:  PintadoC
+Nombre: Ludie Cruickshank
+Ratio:  0,922718191708372
+
+Estacion:  PintadoC
+Nombre: Lavonne Mann
+Ratio:  0,928284834441573
+
+Estacion:  PintadoC
+Nombre: Melvina Davis
+Ratio:  0,951709187644438
+
+Estacion:  PintadoC
+Nombre: Elwyn Kiehn
+Ratio:  0,964826912595396
+
+Estacion:  PintadoC
+Nombre: Corrine Hackett
+Ratio:  0,973935337797163
+
+Estacion:  PintadoC
+Nombre: Milan Dibbert
+Ratio:  0,993148690412179
+
+Estacion:  Horneado
+Nombre: Adaline Collins
+Ratio:  0,936885656610594
+
+Estacion:  Horneado
+Nombre: Hailey Parisian
+Ratio:  0,953933901156625
+
+Estacion:  Horneado
+Nombre: Cordie Morar
+Ratio:  0,956334960049419
+
+Estacion:  Horneado
+Nombre: Liliane West
+Ratio:  0,975568560474865
+
+Estacion:  Horneado
+Nombre: Gerson Senger
+Ratio:  0,980222872446927
+
+Estacion:  Horneado
+Nombre: Ettie Jacobson
+Ratio:  0,985309840631367
+
+Estacion:  Horneado
+Nombre: Misty Abbott
+Ratio:  0,987720176576037
+
+Estacion:  Horneado
+Nombre: Jose Powlowski
+Ratio:  0,995296082337119
+
+Estacion:  Tallado
+Nombre: Tracy Kris
+Ratio:  0,868258095332659
+
+Estacion:  Tallado
+Nombre: Millie Graham
+Ratio:  0,917894939846353
+
+Estacion:  Tallado
+Nombre: Thomas MacGyver
+Ratio:  0,937500861362266
+
+Estacion:  Tallado
+Nombre: Gabriel Hessel
+Ratio:  0,957266166824709
+
+Estacion:  Tallado
+Nombre: Shyann Parker
+Ratio:  0,95748569883132
+
+Estacion:  Tallado
+Nombre: Estel White
+Ratio:  0,97546016946514
+
+Estacion:  Tallado
+Nombre: Ansel Metz
+Ratio:  0,983077827383059
+
+Estacion:  Tallado
+Nombre: Damian Goyette
+Ratio:  0,983894934402054
+
+Estacion:  MoldeadoR
+Nombre: Chasity Ortiz
+Ratio:  0,945082084094332
+
+Estacion:  MoldeadoR
+Nombre: Harry Grady
+Ratio:  0,969522805084248
+
+Estacion:  PintadoR
+Nombre: Teagan Dare
+Ratio:  0,866886845712164
+
+Estacion:  PintadoR
+Nombre: Genoveva Corwin
+Ratio:  0,86907092859425
+

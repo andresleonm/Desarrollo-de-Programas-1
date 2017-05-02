@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Classes
 {
+    [Serializable]
     class Assignment
     {
         public Worker assigned_worker { get; set; }

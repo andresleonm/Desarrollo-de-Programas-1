@@ -7,6 +7,7 @@ using WindowsFormsApp1.Genetic;
 
 namespace WindowsFormsApp1.Classes
 {
+    [Serializable]
     class Workstation
     {
         public string name { get; set; }
