@@ -11,6 +11,7 @@ using WindowsFormsApp1.Classes;
 using Newtonsoft.Json;
 using System.IO;
 using System.Diagnostics;
+using WindowsFormsApp1.Genetic;
 
 namespace WindowsFormsApp1.Views
 {
@@ -128,7 +129,7 @@ namespace WindowsFormsApp1.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            for (int i = 25; i < 30; i++)
+            for (int i = 0; i < 30; i++)
             {
                 initializeParameters(i);
             }
@@ -560,6 +561,54 @@ namespace WindowsFormsApp1.Views
                 }
                 pla1.Add(aux);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            GeneticAlgorithm g = new GeneticAlgorithm(1000, 100, 80, 5, 20);
+            for (int i = 0; i < 30; i++)
+            {
+                using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter(@"GeneticoR_" + i.ToString() + ".txt"))
+                {
+                    Product product1 = new Product("Retablo", 0, 2.5);
+                    Product product2 = new Product("Ceramico", 0, 3.0);
+                    Product product3 = new Product("Piedra", 0, 5.0);
+                    OrderDetailLine line1 = new OrderDetailLine(product1, getQuantityP("Retablo", i));
+                    OrderDetailLine line2 = new OrderDetailLine(product2, getQuantityP("Ceramico", i));
+                    OrderDetailLine line3 = new OrderDetailLine(product3, getQuantityP("Piedra", i));
+                    List<OrderDetailLine> lines = new List<OrderDetailLine>();
+                    lines.Add(line1);
+                    lines.Add(line2);
+                    lines.Add(line3);
+                    OrderDetail order_detail = new OrderDetail(lines);
+                    Order order = new Order(order_detail, new DateTime(2017, 4, 26));
+                    List<Workstation> workstations = new List<Workstation>();
+                    readWorkstations(ref workstations, product1, product2, product3);
+                    foreach (Workstation ws in workstations)
+                    {
+                        ws.quantity = getQuantityW(ws.name, i);
+                    }
+                    List<Worker> workers = new List<Worker>();
+                    readWorkers(ref workers, workstations);
+                    DateTime tiempo1 = DateTime.Now;
+                    using (System.IO.StreamWriter file2 =
+                    new System.IO.StreamWriter(@"GeneticoU_" + i.ToString() + ".txt"))
+                    {
+                        Chromosome solution = g.GeneticSolve(workstations, workers, order, file, file2);
+                        DateTime tiempo2 = DateTime.Now;
+                        TimeSpan total = new TimeSpan(tiempo2.Ticks - tiempo1.Ticks);
+                        file.WriteLine("TIEMPO: " + total.ToString());
+                        solution.print(file);
+                        solution.print(file2);
+                    }
+
+                }
+            }
+
+
+
+
         }
     }
 }
