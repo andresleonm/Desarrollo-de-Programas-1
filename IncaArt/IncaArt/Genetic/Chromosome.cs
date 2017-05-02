@@ -363,6 +363,9 @@ namespace WindowsFormsApp1.Genetic
         public List<ProductLineAssignment> Convert()
         {
             List<Assignment> assignments = DeepCopy();
+            List<int> states = new List<int>();
+            //int numgenes=
+            for (int i=0;i<)
             for (int x = 0; x<solution.Count(); x++) // MAQUETA (puestos de trabajos vacios)                 
             {
                 for (int y = 0; y<solution.ElementAt(x).assignments.Capacity; y++)
