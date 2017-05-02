@@ -535,15 +535,8 @@ namespace WindowsFormsApp1.Views
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
-           
-         
-             
-                 
-
             GeneticAlgorithm g = new GeneticAlgorithm(1000, 100, 80, 5, 20);
-
-          
+                 
 
             for (int i=0;i<5;i++)
             {
