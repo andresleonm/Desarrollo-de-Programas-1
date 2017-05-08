@@ -18,3 +18,17 @@ C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug
 C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.MainForm.resources
 C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.csproj.GenerateResource.Cache
 C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.Purchase_Module.Register.resources
+C:\Users\Seven\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\bin\Debug\IncaArt.exe.config
+C:\Users\Seven\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.exe
+C:\Users\Seven\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.pdb
+C:\Users\Seven\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\bin\Debug\IncaArt.exe
+C:\Users\Seven\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\bin\Debug\IncaArt.pdb
+C:\Users\Seven\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.csprojResolveAssemblyReference.cache
+C:\Users\Seven\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Seven\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Frm_Login.resources
+C:\Users\Seven\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.MainForm.resources
+C:\Users\Seven\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.Purchase_Module.Register.resources
+C:\Users\Seven\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.csproj.GenerateResource.Cache
+C:\Users\Seven\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.CRUD.Worker.resources
+C:\Users\Seven\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.CRUD.Material.resources
+C:\Users\Seven\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.CRUD.User.resources

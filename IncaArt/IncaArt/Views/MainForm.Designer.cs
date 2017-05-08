@@ -35,8 +35,11 @@
             this.btn_Ventas = new System.Windows.Forms.ToolStripButton();
             this.btn_Compras = new System.Windows.Forms.ToolStripButton();
             this.ts_mant = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.btn_crud_user = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.btn_crud_worker = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btn_crud_material = new System.Windows.Forms.ToolStripButton();
             this.ts_almacen = new System.Windows.Forms.ToolStrip();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
@@ -89,7 +92,7 @@
             this.btn_Ventas.Image = ((System.Drawing.Image)(resources.GetObject("btn_Ventas.Image")));
             this.btn_Ventas.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Ventas.Name = "btn_Ventas";
-            this.btn_Ventas.Size = new System.Drawing.Size(61, 22);
+            this.btn_Ventas.Size = new System.Drawing.Size(62, 22);
             this.btn_Ventas.Text = "Ventas";
             this.btn_Ventas.Click += new System.EventHandler(this.btn_Ventas_Click);
             // 
@@ -107,22 +110,26 @@
             this.ts_mant.Dock = System.Windows.Forms.DockStyle.Left;
             this.ts_mant.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.ts_mant.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton5,
-            this.toolStripButton6});
+            this.btn_crud_user,
+            this.toolStripButton6,
+            this.btn_crud_worker,
+            this.toolStripButton1,
+            this.btn_crud_material});
             this.ts_mant.Location = new System.Drawing.Point(0, 25);
             this.ts_mant.Name = "ts_mant";
-            this.ts_mant.Size = new System.Drawing.Size(57, 447);
+            this.ts_mant.Size = new System.Drawing.Size(91, 447);
             this.ts_mant.TabIndex = 2;
             this.ts_mant.Text = "toolStrip2";
             // 
-            // toolStripButton5
+            // btn_crud_user
             // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(54, 19);
-            this.toolStripButton5.Text = "Usuarios";
+            this.btn_crud_user.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_crud_user.Image = ((System.Drawing.Image)(resources.GetObject("btn_crud_user.Image")));
+            this.btn_crud_user.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_crud_user.Name = "btn_crud_user";
+            this.btn_crud_user.Size = new System.Drawing.Size(88, 19);
+            this.btn_crud_user.Text = "Usuarios";
+            this.btn_crud_user.Click += new System.EventHandler(this.btn_crud_user_Click);
             // 
             // toolStripButton6
             // 
@@ -130,8 +137,38 @@
             this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(54, 19);
+            this.toolStripButton6.Size = new System.Drawing.Size(88, 19);
             this.toolStripButton6.Text = "Clientes";
+            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
+            // 
+            // btn_crud_worker
+            // 
+            this.btn_crud_worker.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_crud_worker.Image = ((System.Drawing.Image)(resources.GetObject("btn_crud_worker.Image")));
+            this.btn_crud_worker.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_crud_worker.Name = "btn_crud_worker";
+            this.btn_crud_worker.Size = new System.Drawing.Size(88, 19);
+            this.btn_crud_worker.Text = "Trabajadores";
+            this.btn_crud_worker.Click += new System.EventHandler(this.btn_crud_worker_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(88, 4);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // btn_crud_material
+            // 
+            this.btn_crud_material.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_crud_material.Image = ((System.Drawing.Image)(resources.GetObject("btn_crud_material.Image")));
+            this.btn_crud_material.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_crud_material.Name = "btn_crud_material";
+            this.btn_crud_material.Size = new System.Drawing.Size(88, 19);
+            this.btn_crud_material.Text = "Materias Prima";
+            this.btn_crud_material.Click += new System.EventHandler(this.btn_crud_material_Click);
             // 
             // ts_almacen
             // 
@@ -140,7 +177,7 @@
             this.ts_almacen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton7,
             this.toolStripButton8});
-            this.ts_almacen.Location = new System.Drawing.Point(173, 25);
+            this.ts_almacen.Location = new System.Drawing.Point(207, 25);
             this.ts_almacen.Name = "ts_almacen";
             this.ts_almacen.Size = new System.Drawing.Size(57, 447);
             this.ts_almacen.TabIndex = 3;
@@ -170,7 +207,7 @@
             this.ts_ventas.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.ts_ventas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_register_sale});
-            this.ts_ventas.Location = new System.Drawing.Point(57, 25);
+            this.ts_ventas.Location = new System.Drawing.Point(91, 25);
             this.ts_ventas.Name = "ts_ventas";
             this.ts_ventas.Size = new System.Drawing.Size(58, 447);
             this.ts_ventas.TabIndex = 4;
@@ -191,7 +228,7 @@
             this.ts_compras.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.ts_compras.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_register_purchase});
-            this.ts_compras.Location = new System.Drawing.Point(115, 25);
+            this.ts_compras.Location = new System.Drawing.Point(149, 25);
             this.ts_compras.Name = "ts_compras";
             this.ts_compras.Size = new System.Drawing.Size(58, 447);
             this.ts_compras.TabIndex = 5;
@@ -247,7 +284,7 @@
         private System.Windows.Forms.ToolStripButton btn_Almacen;
         private System.Windows.Forms.ToolStripButton btn_Ventas;
         private System.Windows.Forms.ToolStripButton btn_Compras;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton btn_crud_user;
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.ToolStrip ts_almacen;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
@@ -256,5 +293,8 @@
         private System.Windows.Forms.ToolStripButton btn_register_sale;
         private System.Windows.Forms.ToolStrip ts_compras;
         private System.Windows.Forms.ToolStripButton btn_register_purchase;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton btn_crud_worker;
+        private System.Windows.Forms.ToolStripButton btn_crud_material;
     }
 }
