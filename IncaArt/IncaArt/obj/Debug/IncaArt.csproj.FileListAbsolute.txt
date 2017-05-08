@@ -17,4 +17,4 @@ C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug
 C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Frm_Login.resources
 C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.MainForm.resources
 C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.csproj.GenerateResource.Cache
-C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.Purchase_Module.Register.resources
+C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.Purchase_Module.PurchaseOrder.resources

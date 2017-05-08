@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Views.Purchase_Module
 {
-    public partial class Register : Form
+    public partial class PurchaseOrder : Form
     {
-        public Register()
+        public PurchaseOrder()
         {
             InitializeComponent();
         }

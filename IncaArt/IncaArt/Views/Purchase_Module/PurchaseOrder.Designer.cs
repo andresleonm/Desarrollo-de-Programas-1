@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Views.Purchase_Module
 {
-    partial class Register
+    partial class PurchaseOrder
     {
         /// <summary>
         /// Required designer variable.
@@ -30,18 +30,18 @@
         {
             this.SuspendLayout();
             // 
-            // Register
+            // PurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(446, 370);
-            this.Name = "Register";
+            this.ClientSize = new System.Drawing.Size(933, 454);
+            this.Name = "PurchaseOrder";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Register";
+            this.Text = "Orden de compra";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 

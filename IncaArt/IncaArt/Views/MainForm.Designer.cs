@@ -140,7 +140,7 @@
             this.ts_almacen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton7,
             this.toolStripButton8});
-            this.ts_almacen.Location = new System.Drawing.Point(173, 25);
+            this.ts_almacen.Location = new System.Drawing.Point(220, 25);
             this.ts_almacen.Name = "ts_almacen";
             this.ts_almacen.Size = new System.Drawing.Size(57, 447);
             this.ts_almacen.TabIndex = 3;
@@ -193,7 +193,7 @@
             this.btn_register_purchase});
             this.ts_compras.Location = new System.Drawing.Point(115, 25);
             this.ts_compras.Name = "ts_compras";
-            this.ts_compras.Size = new System.Drawing.Size(58, 447);
+            this.ts_compras.Size = new System.Drawing.Size(105, 447);
             this.ts_compras.TabIndex = 5;
             this.ts_compras.Text = "toolStrip5";
             // 
@@ -203,8 +203,8 @@
             this.btn_register_purchase.Image = ((System.Drawing.Image)(resources.GetObject("btn_register_purchase.Image")));
             this.btn_register_purchase.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_register_purchase.Name = "btn_register_purchase";
-            this.btn_register_purchase.Size = new System.Drawing.Size(55, 19);
-            this.btn_register_purchase.Text = "Registrar";
+            this.btn_register_purchase.Size = new System.Drawing.Size(102, 19);
+            this.btn_register_purchase.Text = "Orden de compra";
             this.btn_register_purchase.Click += new System.EventHandler(this.btn_register_purchase_Click);
             // 
             // MainForm
@@ -220,7 +220,7 @@
             this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
+            this.Text = "Inca Art";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
