@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -44,16 +44,16 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button5 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -79,6 +79,30 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Puesto";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 176);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 13);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Descripción:";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(122, 173);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(225, 103);
+            this.richTextBox1.TabIndex = 26;
+            this.richTextBox1.Text = "";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(122, 39);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(225, 20);
+            this.textBox2.TabIndex = 25;
             // 
             // textBox1
             // 
@@ -121,30 +145,6 @@
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(122, 39);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(225, 20);
-            this.textBox2.TabIndex = 25;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(122, 173);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(225, 103);
-            this.richTextBox1.TabIndex = 26;
-            this.richTextBox1.Text = "";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 176);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 13);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "Descripción:";
             // 
             // button3
             // 
@@ -233,6 +233,26 @@
             this.dataGridView1.Size = new System.Drawing.Size(427, 235);
             this.dataGridView1.TabIndex = 1;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Nombre";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Producto";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Cantidad";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Descripción";
+            this.Column4.Name = "Column4";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.textBox3);
@@ -248,6 +268,30 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(78, 27);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(119, 20);
+            this.textBox3.TabIndex = 25;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(277, 27);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(123, 21);
+            this.comboBox4.TabIndex = 22;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(215, 32);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(62, 13);
+            this.label12.TabIndex = 18;
+            this.label12.Text = "Producto:";
             // 
             // label11
             // 
@@ -271,50 +315,6 @@
             this.button4.Text = "Buscar";
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(215, 32);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(62, 13);
-            this.label12.TabIndex = 18;
-            this.label12.Text = "Producto:";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(277, 27);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(123, 21);
-            this.comboBox4.TabIndex = 22;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(78, 27);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(119, 20);
-            this.textBox3.TabIndex = 25;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Nombre";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Producto";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Cantidad";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Descripción";
-            this.Column4.Name = "Column4";
-            // 
             // Workstation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,7 +327,9 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Workstation";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Puesto de Trabajo";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);

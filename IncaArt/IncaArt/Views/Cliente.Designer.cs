@@ -51,13 +51,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
@@ -297,6 +297,19 @@
             this.tabPage1.Text = "Listado de Clientes";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.SteelBlue;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(330, 399);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(103, 27);
+            this.button5.TabIndex = 20;
+            this.button5.Text = "Eliminar";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -345,19 +358,6 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos";
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.SteelBlue;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(330, 399);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(103, 27);
-            this.button5.TabIndex = 20;
-            this.button5.Text = "Eliminar";
-            this.button5.UseVisualStyleBackColor = false;
             // 
             // textBox9
             // 
@@ -464,7 +464,9 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Cliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cliente";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
