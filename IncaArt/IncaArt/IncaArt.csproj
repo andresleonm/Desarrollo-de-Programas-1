@@ -71,9 +71,11 @@
     <Compile Include="Views\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Purchase_Module\Register.cs" />
-    <Compile Include="Views\Purchase_Module\Register.Designer.cs">
-      <DependentUpon>Register.cs</DependentUpon>
+    <Compile Include="Views\Purchase_Module\PurchaseOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Purchase_Module\PurchaseOrder.Designer.cs">
+      <DependentUpon>PurchaseOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Workstation.cs">
       <SubType>Form</SubType>
@@ -102,8 +104,8 @@
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Purchase_Module\Register.resx">
-      <DependentUpon>Register.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrder.resx">
+      <DependentUpon>PurchaseOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Workstation.resx">
       <DependentUpon>Workstation.cs</DependentUpon>

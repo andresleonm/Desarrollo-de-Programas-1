@@ -155,11 +155,7 @@
             this.ts_almacen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton7,
             this.toolStripButton8});
-<<<<<<< HEAD
             this.ts_almacen.Location = new System.Drawing.Point(228, 25);
-=======
-            this.ts_almacen.Location = new System.Drawing.Point(220, 25);
->>>>>>> f02de8c7a278972e5d2efed11c06e5481607ec0e
             this.ts_almacen.Name = "ts_almacen";
             this.ts_almacen.Size = new System.Drawing.Size(57, 447);
             this.ts_almacen.TabIndex = 3;
