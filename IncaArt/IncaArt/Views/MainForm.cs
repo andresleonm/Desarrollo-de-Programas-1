@@ -75,14 +75,40 @@ namespace WindowsFormsApp1.Views
 
         private void btn_register_purchase_Click(object sender, EventArgs e)
         {
-            Purchase_Module.Register frm_register_purchase = new Purchase_Module.Register();
-            frm_register_purchase.MdiParent = this;            
-            frm_register_purchase.Show();
+                Purchase_Module.Register frm_register_purchase = new Purchase_Module.Register();
+                frm_register_purchase.MdiParent = this;            
+                frm_register_purchase.Show();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ts_compras_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            Cliente frm_client = new Cliente();
+            frm_client.MdiParent = this;
+            frm_client.Show();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            BOM frm_bom = new BOM();
+            frm_bom.MdiParent = this;
+            frm_bom.Show();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            Workstation frm_workstation = new Workstation();
+            frm_workstation.MdiParent = this;
+            frm_workstation.Show();
         }
     }
 }

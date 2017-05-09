@@ -18,3 +18,17 @@ C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug
 C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.MainForm.resources
 C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.csproj.GenerateResource.Cache
 C:\Users\Andres\Source\Repos\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.Purchase_Module.Register.resources
+C:\Users\jehu-pc\Code\.NET\Desarrollo-de-Programas-1\IncaArt\IncaArt\bin\Debug\IncaArt.exe.config
+C:\Users\jehu-pc\Code\.NET\Desarrollo-de-Programas-1\IncaArt\IncaArt\bin\Debug\IncaArt.exe
+C:\Users\jehu-pc\Code\.NET\Desarrollo-de-Programas-1\IncaArt\IncaArt\bin\Debug\IncaArt.pdb
+C:\Users\jehu-pc\Code\.NET\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.csprojResolveAssemblyReference.cache
+C:\Users\jehu-pc\Code\.NET\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\jehu-pc\Code\.NET\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.Cliente.resources
+C:\Users\jehu-pc\Code\.NET\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Frm_Login.resources
+C:\Users\jehu-pc\Code\.NET\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.MainForm.resources
+C:\Users\jehu-pc\Code\.NET\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.Purchase_Module.Register.resources
+C:\Users\jehu-pc\Code\.NET\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.csproj.GenerateResource.Cache
+C:\Users\jehu-pc\Code\.NET\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.exe
+C:\Users\jehu-pc\Code\.NET\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\IncaArt.pdb
+C:\Users\jehu-pc\Code\.NET\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.BOM.resources
+C:\Users\jehu-pc\Code\.NET\Desarrollo-de-Programas-1\IncaArt\IncaArt\obj\Debug\WindowsFormsApp1.Views.Workstation.resources
