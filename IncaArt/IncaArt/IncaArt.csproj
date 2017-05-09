@@ -45,6 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\WarehouseMovementM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseMovementM.Designer.cs">
+      <DependentUpon>WarehouseMovementM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WarehouseMovementP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseMovementP.Designer.cs">
+      <DependentUpon>WarehouseMovementP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\BOM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +134,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\WarehouseMovementM.resx">
+      <DependentUpon>WarehouseMovementM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseMovementP.resx">
+      <DependentUpon>WarehouseMovementP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\BOM.resx">
       <DependentUpon>BOM.cs</DependentUpon>
     </EmbeddedResource>

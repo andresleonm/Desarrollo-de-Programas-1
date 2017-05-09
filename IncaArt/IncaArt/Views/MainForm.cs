@@ -131,5 +131,21 @@ namespace WindowsFormsApp1.Views
             frm_material.MdiParent = this;
             frm_material.Show();
         }
+
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+            WarehouseMovementP frm_material = new WarehouseMovementP();
+            frm_material.MdiParent = this;
+            frm_material.Show();
+
+        }
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+            WarehouseMovementM frm_material = new WarehouseMovementM();
+            frm_material.MdiParent = this;
+            frm_material.Show();
+
+        }
     }
 }
