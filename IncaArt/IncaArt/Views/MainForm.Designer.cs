@@ -41,6 +41,9 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.ts_almacen = new System.Windows.Forms.ToolStrip();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripButton();
@@ -48,9 +51,6 @@
             this.btn_register_sale = new System.Windows.Forms.ToolStripButton();
             this.ts_compras = new System.Windows.Forms.ToolStrip();
             this.btn_register_purchase = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.ts_main.SuspendLayout();
             this.ts_mant.SuspendLayout();
             this.ts_almacen.SuspendLayout();
@@ -96,7 +96,7 @@
             this.btn_Ventas.Image = ((System.Drawing.Image)(resources.GetObject("btn_Ventas.Image")));
             this.btn_Ventas.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Ventas.Name = "btn_Ventas";
-            this.btn_Ventas.Size = new System.Drawing.Size(62, 22);
+            this.btn_Ventas.Size = new System.Drawing.Size(61, 22);
             this.btn_Ventas.Text = "Ventas";
             this.btn_Ventas.Click += new System.EventHandler(this.btn_Ventas_Click);
             // 
@@ -125,7 +125,7 @@
             this.toolStripButton10});
             this.ts_mant.Location = new System.Drawing.Point(0, 25);
             this.ts_mant.Name = "ts_mant";
-            this.ts_mant.Size = new System.Drawing.Size(112, 447);
+            this.ts_mant.Size = new System.Drawing.Size(111, 447);
             this.ts_mant.TabIndex = 2;
             this.ts_mant.Text = "toolStrip2";
             // 
@@ -135,7 +135,7 @@
             this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(109, 19);
+            this.toolStripButton5.Size = new System.Drawing.Size(108, 19);
             this.toolStripButton5.Text = "Usuarios";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
@@ -145,7 +145,7 @@
             this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(109, 19);
+            this.toolStripButton6.Size = new System.Drawing.Size(108, 19);
             this.toolStripButton6.Text = "Clientes";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
@@ -155,7 +155,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(109, 19);
+            this.toolStripButton1.Size = new System.Drawing.Size(108, 19);
             this.toolStripButton1.Text = "Receta";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -165,7 +165,7 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(109, 19);
+            this.toolStripButton2.Size = new System.Drawing.Size(108, 19);
             this.toolStripButton2.Text = "Puestos de Trabajo";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
@@ -175,7 +175,7 @@
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(109, 19);
+            this.toolStripButton3.Size = new System.Drawing.Size(108, 19);
             this.toolStripButton3.Text = "Trabajadores";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
@@ -185,9 +185,39 @@
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(109, 19);
+            this.toolStripButton4.Size = new System.Drawing.Size(108, 19);
             this.toolStripButton4.Text = "Materiales";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
+            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.Size = new System.Drawing.Size(108, 19);
+            this.toolStripButton8.Text = "Productos";
+            this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
+            // 
+            // toolStripButton9
+            // 
+            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton9.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton9.Image")));
+            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton9.Name = "toolStripButton9";
+            this.toolStripButton9.Size = new System.Drawing.Size(108, 19);
+            this.toolStripButton9.Text = "Perfiles";
+            this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
+            // 
+            // toolStripButton10
+            // 
+            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton10.Image")));
+            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton10.Name = "toolStripButton10";
+            this.toolStripButton10.Size = new System.Drawing.Size(108, 19);
+            this.toolStripButton10.Text = "Turnos de trabajo";
+            this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
             // 
             // ts_almacen
             // 
@@ -196,7 +226,7 @@
             this.ts_almacen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton7,
             this.toolStripLabel1});
-            this.ts_almacen.Location = new System.Drawing.Point(275, 25);
+            this.ts_almacen.Location = new System.Drawing.Point(306, 25);
             this.ts_almacen.Name = "ts_almacen";
             this.ts_almacen.Size = new System.Drawing.Size(88, 447);
             this.ts_almacen.TabIndex = 3;
@@ -228,9 +258,9 @@
             this.ts_ventas.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.ts_ventas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_register_sale});
-            this.ts_ventas.Location = new System.Drawing.Point(112, 25);
+            this.ts_ventas.Location = new System.Drawing.Point(111, 25);
             this.ts_ventas.Name = "ts_ventas";
-            this.ts_ventas.Size = new System.Drawing.Size(58, 447);
+            this.ts_ventas.Size = new System.Drawing.Size(90, 447);
             this.ts_ventas.TabIndex = 4;
             this.ts_ventas.Text = "toolStrip4";
             // 
@@ -240,8 +270,9 @@
             this.btn_register_sale.Image = ((System.Drawing.Image)(resources.GetObject("btn_register_sale.Image")));
             this.btn_register_sale.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_register_sale.Name = "btn_register_sale";
-            this.btn_register_sale.Size = new System.Drawing.Size(55, 19);
-            this.btn_register_sale.Text = "Registrar";
+            this.btn_register_sale.Size = new System.Drawing.Size(87, 19);
+            this.btn_register_sale.Text = "Registrar venta";
+            this.btn_register_sale.Click += new System.EventHandler(this.btn_register_sale_Click);
             // 
             // ts_compras
             // 
@@ -249,7 +280,7 @@
             this.ts_compras.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.ts_compras.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_register_purchase});
-            this.ts_compras.Location = new System.Drawing.Point(170, 25);
+            this.ts_compras.Location = new System.Drawing.Point(201, 25);
             this.ts_compras.Name = "ts_compras";
             this.ts_compras.Size = new System.Drawing.Size(105, 447);
             this.ts_compras.TabIndex = 5;
@@ -265,36 +296,6 @@
             this.btn_register_purchase.Size = new System.Drawing.Size(102, 19);
             this.btn_register_purchase.Text = "Orden de compra";
             this.btn_register_purchase.Click += new System.EventHandler(this.btn_register_purchase_Click);
-            // 
-            // toolStripButton8
-            // 
-            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
-            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(109, 19);
-            this.toolStripButton8.Text = "Productos";
-            this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
-            // 
-            // toolStripButton9
-            // 
-            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton9.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton9.Image")));
-            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(109, 19);
-            this.toolStripButton9.Text = "Perfiles";
-            this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
-            // 
-            // toolStripButton10
-            // 
-            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton10.Image")));
-            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(109, 19);
-            this.toolStripButton10.Text = "Turnos de trabajo";
-            this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
             // 
             // MainForm
             // 
