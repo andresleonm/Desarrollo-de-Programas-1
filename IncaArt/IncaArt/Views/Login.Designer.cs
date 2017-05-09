@@ -80,6 +80,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(134, 117);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(142, 20);
             this.textBox2.TabIndex = 4;
             // 
@@ -91,6 +92,7 @@
             this.Btn_Login.TabIndex = 5;
             this.Btn_Login.Text = "Ingresar";
             this.Btn_Login.UseVisualStyleBackColor = true;
+            this.Btn_Login.Click += new System.EventHandler(this.Btn_Login_Click);
             // 
             // Btn_CancelLogin
             // 
@@ -118,6 +120,7 @@
             this.AcceptButton = this.Btn_Login;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.Btn_CancelLogin;
             this.ClientSize = new System.Drawing.Size(352, 219);
             this.Controls.Add(this.linkLabel1);
