@@ -71,11 +71,29 @@
     <Compile Include="Views\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Material.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Material.designer.cs">
+      <DependentUpon>Material.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Purchase_Module\PurchaseOrder.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Purchase_Module\PurchaseOrder.Designer.cs">
       <DependentUpon>PurchaseOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\User.designer.cs">
+      <DependentUpon>User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Worker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Worker.designer.cs">
+      <DependentUpon>Worker.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Workstation.cs">
       <SubType>Form</SubType>
@@ -104,8 +122,17 @@
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Material.resx">
+      <DependentUpon>Material.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrder.resx">
       <DependentUpon>PurchaseOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\User.resx">
+      <DependentUpon>User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Worker.resx">
+      <DependentUpon>Worker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Workstation.resx">
       <DependentUpon>Workstation.cs</DependentUpon>

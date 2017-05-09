@@ -110,5 +110,26 @@ namespace WindowsFormsApp1.Views
             frm_workstation.MdiParent = this;
             frm_workstation.Show();
         }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            CRUD.User frm_user = new CRUD.User();
+            frm_user.MdiParent = this;
+            frm_user.Show();
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            CRUD.Worker frm_worker = new CRUD.Worker();
+            frm_worker.MdiParent = this;
+            frm_worker.Show();
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            CRUD.Material frm_material = new CRUD.Material();
+            frm_material.MdiParent = this;
+            frm_material.Show();
+        }
     }
 }

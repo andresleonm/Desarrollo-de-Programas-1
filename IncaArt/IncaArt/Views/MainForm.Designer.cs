@@ -38,6 +38,7 @@
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.ts_almacen = new System.Windows.Forms.ToolStrip();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
@@ -45,7 +46,8 @@
             this.btn_register_sale = new System.Windows.Forms.ToolStripButton();
             this.ts_compras = new System.Windows.Forms.ToolStrip();
             this.btn_register_purchase = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.ts_main.SuspendLayout();
             this.ts_mant.SuspendLayout();
             this.ts_almacen.SuspendLayout();
@@ -112,7 +114,9 @@
             this.toolStripButton5,
             this.toolStripButton6,
             this.toolStripButton1,
-            this.toolStripButton2});
+            this.toolStripButton2,
+            this.toolStripButton3,
+            this.toolStripButton4});
             this.ts_mant.Location = new System.Drawing.Point(0, 25);
             this.ts_mant.Name = "ts_mant";
             this.ts_mant.Size = new System.Drawing.Size(112, 447);
@@ -127,6 +131,7 @@
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(109, 19);
             this.toolStripButton5.Text = "Usuarios";
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // toolStripButton6
             // 
@@ -148,6 +153,16 @@
             this.toolStripButton1.Text = "Receta";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(109, 19);
+            this.toolStripButton2.Text = "Puestos de Trabajo";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
             // ts_almacen
             // 
             this.ts_almacen.Dock = System.Windows.Forms.DockStyle.Left;
@@ -155,7 +170,7 @@
             this.ts_almacen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton7,
             this.toolStripButton8});
-            this.ts_almacen.Location = new System.Drawing.Point(228, 25);
+            this.ts_almacen.Location = new System.Drawing.Point(275, 25);
             this.ts_almacen.Name = "ts_almacen";
             this.ts_almacen.Size = new System.Drawing.Size(57, 447);
             this.ts_almacen.TabIndex = 3;
@@ -223,15 +238,25 @@
             this.btn_register_purchase.Text = "Orden de compra";
             this.btn_register_purchase.Click += new System.EventHandler(this.btn_register_purchase_Click);
             // 
-            // toolStripButton2
+            // toolStripButton3
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(109, 19);
-            this.toolStripButton2.Text = "Puestos de Trabajo";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(109, 19);
+            this.toolStripButton3.Text = "Trabajadores";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(109, 19);
+            this.toolStripButton4.Text = "Materiales";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // MainForm
             // 
@@ -284,5 +309,7 @@
         private System.Windows.Forms.ToolStripButton btn_register_purchase;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
     }
 }
