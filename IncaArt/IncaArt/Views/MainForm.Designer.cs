@@ -43,11 +43,11 @@
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.ts_almacen = new System.Windows.Forms.ToolStrip();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripButton();
             this.ts_ventas = new System.Windows.Forms.ToolStrip();
             this.btn_register_sale = new System.Windows.Forms.ToolStripButton();
             this.ts_compras = new System.Windows.Forms.ToolStrip();
             this.btn_register_purchase = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripButton();
             this.ts_main.SuspendLayout();
             this.ts_mant.SuspendLayout();
             this.ts_almacen.SuspendLayout();
@@ -190,7 +190,7 @@
             this.ts_almacen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton7,
             this.toolStripLabel1});
-            this.ts_almacen.Location = new System.Drawing.Point(274, 25);
+            this.ts_almacen.Location = new System.Drawing.Point(306, 25);
             this.ts_almacen.Name = "ts_almacen";
             this.ts_almacen.Size = new System.Drawing.Size(88, 447);
             this.ts_almacen.TabIndex = 3;
@@ -206,6 +206,16 @@
             this.toolStripButton7.Text = "Mov Producto";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripLabel1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripLabel1.Image")));
+            this.toolStripLabel1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(85, 19);
+            this.toolStripLabel1.Text = "Mov Material";
+            this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
+            // 
             // ts_ventas
             // 
             this.ts_ventas.Dock = System.Windows.Forms.DockStyle.Left;
@@ -214,7 +224,7 @@
             this.btn_register_sale});
             this.ts_ventas.Location = new System.Drawing.Point(111, 25);
             this.ts_ventas.Name = "ts_ventas";
-            this.ts_ventas.Size = new System.Drawing.Size(58, 447);
+            this.ts_ventas.Size = new System.Drawing.Size(90, 447);
             this.ts_ventas.TabIndex = 4;
             this.ts_ventas.Text = "toolStrip4";
             // 
@@ -224,8 +234,9 @@
             this.btn_register_sale.Image = ((System.Drawing.Image)(resources.GetObject("btn_register_sale.Image")));
             this.btn_register_sale.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_register_sale.Name = "btn_register_sale";
-            this.btn_register_sale.Size = new System.Drawing.Size(55, 19);
-            this.btn_register_sale.Text = "Registrar";
+            this.btn_register_sale.Size = new System.Drawing.Size(87, 19);
+            this.btn_register_sale.Text = "Registrar Venta";
+            this.btn_register_sale.Click += new System.EventHandler(this.btn_register_sale_Click);
             // 
             // ts_compras
             // 
@@ -233,7 +244,7 @@
             this.ts_compras.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.ts_compras.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_register_purchase});
-            this.ts_compras.Location = new System.Drawing.Point(169, 25);
+            this.ts_compras.Location = new System.Drawing.Point(201, 25);
             this.ts_compras.Name = "ts_compras";
             this.ts_compras.Size = new System.Drawing.Size(105, 447);
             this.ts_compras.TabIndex = 5;
@@ -249,16 +260,6 @@
             this.btn_register_purchase.Size = new System.Drawing.Size(102, 19);
             this.btn_register_purchase.Text = "Orden de compra";
             this.btn_register_purchase.Click += new System.EventHandler(this.btn_register_purchase_Click);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripLabel1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripLabel1.Image")));
-            this.toolStripLabel1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(85, 19);
-            this.toolStripLabel1.Text = "Mov Material";
-            this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
             // 
             // MainForm
             // 

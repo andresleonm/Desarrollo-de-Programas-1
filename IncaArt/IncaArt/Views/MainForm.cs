@@ -147,5 +147,12 @@ namespace WindowsFormsApp1.Views
             frm_material.Show();
 
         }
+
+        private void btn_register_sale_Click(object sender, EventArgs e)
+        {
+            Sales_Module.SalesOrder frm_salesOrder = new Sales_Module.SalesOrder();
+            frm_salesOrder.MdiParent = this;
+            frm_salesOrder.Show();
+        }
     }
 }

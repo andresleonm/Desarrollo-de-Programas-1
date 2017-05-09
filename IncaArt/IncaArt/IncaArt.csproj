@@ -45,6 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\Sales_Module\SalesOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales_Module\SalesOrder.Designer.cs">
+      <DependentUpon>SalesOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales_Module\SalesOrderLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales_Module\SalesOrderLine.Designer.cs">
+      <DependentUpon>SalesOrderLine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\WarehouseMovementM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,7 +199,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Sales_Module\" />
     <Folder Include="Views\Warehouse_Module\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
