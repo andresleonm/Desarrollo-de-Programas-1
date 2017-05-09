@@ -75,9 +75,9 @@ namespace WindowsFormsApp1.Views
 
         private void btn_register_purchase_Click(object sender, EventArgs e)
         {
-                Purchase_Module.Register frm_register_purchase = new Purchase_Module.Register();
-                frm_register_purchase.MdiParent = this;            
-                frm_register_purchase.Show();
+            Purchase_Module.PurchaseOrder frm_register_purchase = new Purchase_Module.PurchaseOrder();
+            frm_register_purchase.MdiParent = this;            
+            frm_register_purchase.Show();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
