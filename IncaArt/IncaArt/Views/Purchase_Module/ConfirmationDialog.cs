@@ -10,17 +10,17 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Views.Purchase_Module
 {
-    public partial class PurchaseOrder : Form
+    public partial class ConfirmationDialog : Form
     {
-        public PurchaseOrder()
+        public ConfirmationDialog()
         {
             InitializeComponent();
+            button1.DialogResult = DialogResult.OK;            
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            PurchaseOrderLine frm_order_line = new PurchaseOrderLine();
-            frm_order_line.Show();
+
         }
     }
 }

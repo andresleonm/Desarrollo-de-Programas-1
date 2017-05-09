@@ -16,5 +16,20 @@ namespace WindowsFormsApp1.Views.Purchase_Module
         {
             InitializeComponent();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ConfirmationDialog confirm_dialog = new ConfirmationDialog();            
+            if (confirm_dialog.ShowDialog(this) == DialogResult.OK)
+            {
+                confirm_dialog.Dispose();
+                this.Close();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }
