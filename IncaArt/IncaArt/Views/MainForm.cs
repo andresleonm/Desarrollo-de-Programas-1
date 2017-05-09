@@ -148,11 +148,25 @@ namespace WindowsFormsApp1.Views
 
         }
 
-        private void btn_register_sale_Click(object sender, EventArgs e)
+        private void toolStripButton8_Click(object sender, EventArgs e)
         {
-            Sales_Module.SalesOrder frm_salesOrder = new Sales_Module.SalesOrder();
-            frm_salesOrder.MdiParent = this;
-            frm_salesOrder.Show();
+            Product frm_Product = new Product();
+            frm_Product.MdiParent = this;
+            frm_Product.Show();
+        }
+
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            Profile frm_Profile = new Profile();
+            frm_Profile.MdiParent = this;
+            frm_Profile.Show();
+        }
+
+        private void toolStripButton10_Click(object sender, EventArgs e)
+        {
+            Shift frm_Shift = new Shift();
+            frm_Shift.MdiParent = this;
+            frm_Shift.Show();
         }
     }
 }
