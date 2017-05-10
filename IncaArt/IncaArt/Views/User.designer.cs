@@ -132,9 +132,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(6, 235);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(26, 13);
+            this.label10.Size = new System.Drawing.Size(33, 13);
             this.label10.TabIndex = 16;
-            this.label10.Text = "Rol:";
+            this.label10.Text = "Perfil:";
             // 
             // textBox6
             // 
@@ -220,18 +220,18 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 85);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.Size = new System.Drawing.Size(89, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Apellido:";
+            this.label3.Text = "Apellido Materno:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Segundo Nombre:";
+            this.label2.Text = "Apellido Paterno:";
             // 
             // label1
             // 

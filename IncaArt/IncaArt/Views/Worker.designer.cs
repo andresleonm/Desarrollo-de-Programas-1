@@ -173,9 +173,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 46);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 13);
+            this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Segundo Nombre:";
+            this.label3.Text = "Apellido Paterno:";
             // 
             // dateTimePicker1
             // 
@@ -190,9 +190,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 71);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.Size = new System.Drawing.Size(89, 13);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Apellido:";
+            this.label4.Text = "Apellido Materno:";
             // 
             // textbox_doi
             // 
