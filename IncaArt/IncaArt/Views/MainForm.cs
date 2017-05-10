@@ -175,5 +175,19 @@ namespace WindowsFormsApp1.Views
             frm_salesOrder.MdiParent = this;
             frm_salesOrder.Show();
         }
+
+        private void toolStripButton9_Click_1(object sender, EventArgs e)
+        {
+            Supplier frm_supplier = new Supplier();
+            frm_supplier.MdiParent = this;
+            frm_supplier.Show();
+        }
+
+        private void toolStripButton12_Click(object sender, EventArgs e)
+        {
+            Almacén frm_almacen = new Almacén();
+            frm_almacen.MdiParent = this;
+            frm_almacen.Show();
+        }
     }
 }

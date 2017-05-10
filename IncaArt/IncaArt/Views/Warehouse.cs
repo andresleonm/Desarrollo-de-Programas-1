@@ -26,5 +26,15 @@ namespace WindowsFormsApp1.Views
         {
 
         }
+
+        private void Almacén_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
