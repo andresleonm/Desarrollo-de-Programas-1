@@ -32,6 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Design.1.2.0.3\lib\net40\MetroFramework.Design.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +57,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\MainDashboard.Designer.cs">
+      <DependentUpon>MainDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Parámetros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,7 +205,14 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainDashboard.resx">
+      <DependentUpon>MainDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Parámetros.resx">
       <DependentUpon>Parámetros.cs</DependentUpon>
     </EmbeddedResource>
@@ -239,6 +270,7 @@
     <EmbeddedResource Include="Views\Workstation.resx">
       <DependentUpon>Workstation.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -254,6 +286,31 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Warehouse_Module\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\American Indians Seminole_50px.png" />
+    <None Include="Resources\Minimize Window_52px.png" />
+    <None Include="Resources\Close Window_52px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MetroFramework.txt" />
+    <None Include="Resources\Circled User Male_40px.png" />
+    <None Include="Resources\Hangar_40px.png" />
+    <None Include="Resources\Product_40px.png" />
+    <None Include="Resources\Overtime_40px.png" />
+    <None Include="Resources\Documents_40px.png" />
+    <None Include="Resources\Crystal_40px.png" />
+    <None Include="Resources\Mortar and Pestle_40px.png" />
+    <None Include="Resources\Construction Worker_40px.png" />
+    <None Include="Resources\Reviewer Male_40px.png" />
+    <None Include="Resources\Workers Male_52px.png" />
+    <None Include="Resources\Webcam Man_48px.png" />
+    <None Include="Resources\User Group Man Man_52px.png" />
+    <None Include="Resources\Shopping Cart_52px.png" />
+    <None Include="Resources\Sales Performance_64px.png" />
+    <None Include="Resources\Hangar_64px.png" />
+    <None Include="Resources\Settings_48px.png" />
+    <None Include="Resources\Menu_64px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
