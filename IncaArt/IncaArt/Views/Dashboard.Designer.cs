@@ -67,7 +67,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1378, 27);
+            this.panel2.Size = new System.Drawing.Size(1370, 27);
             this.panel2.TabIndex = 10;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             // 
@@ -75,7 +75,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Minimize_Window_52px;
-            this.pictureBox2.Location = new System.Drawing.Point(1330, 0);
+            this.pictureBox2.Location = new System.Drawing.Point(1319, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(21, 21);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -89,11 +89,10 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Close_Window_52px;
-            this.pictureBox1.Location = new System.Drawing.Point(1357, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(1346, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(21, 27);
+            this.pictureBox1.Size = new System.Drawing.Size(21, 21);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -113,7 +112,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(157, 521);
+            this.panel1.Size = new System.Drawing.Size(132, 521);
             this.panel1.TabIndex = 11;
             // 
             // btn_purchase
@@ -124,15 +123,17 @@
             this.btn_purchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_purchase.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_purchase.ForeColor = System.Drawing.Color.White;
+            this.btn_purchase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_purchase.ImageIndex = 1;
             this.btn_purchase.ImageList = this.purchase_imagelist;
             this.btn_purchase.Location = new System.Drawing.Point(0, 171);
             this.btn_purchase.Name = "btn_purchase";
-            this.btn_purchase.Size = new System.Drawing.Size(157, 42);
+            this.btn_purchase.Size = new System.Drawing.Size(132, 42);
             this.btn_purchase.TabIndex = 5;
             this.btn_purchase.Text = "Compras";
             this.btn_purchase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_purchase.UseVisualStyleBackColor = false;
+            this.btn_purchase.Click += new System.EventHandler(this.btn_purchase_Click);
             this.btn_purchase.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
             // 
             // purchase_imagelist
@@ -150,11 +151,12 @@
             this.btn_sales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_sales.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_sales.ForeColor = System.Drawing.Color.White;
+            this.btn_sales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_sales.ImageIndex = 1;
             this.btn_sales.ImageList = this.sales_imagelist;
             this.btn_sales.Location = new System.Drawing.Point(0, 129);
             this.btn_sales.Name = "btn_sales";
-            this.btn_sales.Size = new System.Drawing.Size(157, 42);
+            this.btn_sales.Size = new System.Drawing.Size(132, 42);
             this.btn_sales.TabIndex = 4;
             this.btn_sales.Text = "Ventas";
             this.btn_sales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -176,11 +178,12 @@
             this.btn_warehouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_warehouse.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_warehouse.ForeColor = System.Drawing.Color.White;
+            this.btn_warehouse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_warehouse.ImageIndex = 1;
             this.btn_warehouse.ImageList = this.warehouse_imagelist;
             this.btn_warehouse.Location = new System.Drawing.Point(0, 87);
             this.btn_warehouse.Name = "btn_warehouse";
-            this.btn_warehouse.Size = new System.Drawing.Size(157, 42);
+            this.btn_warehouse.Size = new System.Drawing.Size(132, 42);
             this.btn_warehouse.TabIndex = 3;
             this.btn_warehouse.Text = "Almacén";
             this.btn_warehouse.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -202,11 +205,12 @@
             this.btn_config.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_config.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_config.ForeColor = System.Drawing.Color.White;
+            this.btn_config.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_config.ImageIndex = 1;
             this.btn_config.ImageList = this.config_imagelist;
             this.btn_config.Location = new System.Drawing.Point(0, 45);
             this.btn_config.Name = "btn_config";
-            this.btn_config.Size = new System.Drawing.Size(157, 42);
+            this.btn_config.Size = new System.Drawing.Size(132, 42);
             this.btn_config.TabIndex = 2;
             this.btn_config.Text = "Mantenimiento";
             this.btn_config.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -228,7 +232,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(157, 45);
+            this.panel3.Size = new System.Drawing.Size(132, 45);
             this.panel3.TabIndex = 0;
             // 
             // btn_logo
@@ -243,7 +247,7 @@
             this.btn_logo.Image = global::WindowsFormsApp1.Properties.Resources.American_Indians_Seminole_50px;
             this.btn_logo.Location = new System.Drawing.Point(0, 0);
             this.btn_logo.Name = "btn_logo";
-            this.btn_logo.Size = new System.Drawing.Size(157, 45);
+            this.btn_logo.Size = new System.Drawing.Size(132, 45);
             this.btn_logo.TabIndex = 6;
             this.btn_logo.Text = "INCA ART";
             this.btn_logo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -258,9 +262,9 @@
             this.panel4.Controls.Add(this.metroLabel1);
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(157, 27);
+            this.panel4.Location = new System.Drawing.Point(132, 27);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1221, 45);
+            this.panel4.Size = new System.Drawing.Size(1238, 45);
             this.panel4.TabIndex = 12;
             // 
             // metroLabel2
@@ -287,7 +291,7 @@
             // 
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox3.Image = global::WindowsFormsApp1.Properties.Resources.Circled_User_Male_40px;
-            this.pictureBox3.Location = new System.Drawing.Point(1190, 0);
+            this.pictureBox3.Location = new System.Drawing.Point(1207, 0);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(31, 45);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -297,18 +301,18 @@
             // uC_PurchaseOrder1
             // 
             this.uC_PurchaseOrder1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_PurchaseOrder1.Location = new System.Drawing.Point(157, 72);
+            this.uC_PurchaseOrder1.Location = new System.Drawing.Point(132, 72);
             this.uC_PurchaseOrder1.Name = "uC_PurchaseOrder1";
-            this.uC_PurchaseOrder1.Size = new System.Drawing.Size(1221, 476);
+            this.uC_PurchaseOrder1.Size = new System.Drawing.Size(1238, 476);
             this.uC_PurchaseOrder1.TabIndex = 14;
             // 
             // mainDashboard1
             // 
             this.mainDashboard1.BackColor = System.Drawing.Color.White;
             this.mainDashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainDashboard1.Location = new System.Drawing.Point(157, 72);
+            this.mainDashboard1.Location = new System.Drawing.Point(132, 72);
             this.mainDashboard1.Name = "mainDashboard1";
-            this.mainDashboard1.Size = new System.Drawing.Size(1221, 476);
+            this.mainDashboard1.Size = new System.Drawing.Size(1238, 476);
             this.mainDashboard1.TabIndex = 13;
             // 
             // Dashboard
@@ -316,15 +320,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1378, 548);
+            this.ClientSize = new System.Drawing.Size(1370, 548);
             this.Controls.Add(this.uC_PurchaseOrder1);
             this.Controls.Add(this.mainDashboard1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.IsMdiContainer = true;
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

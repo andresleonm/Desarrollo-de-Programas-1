@@ -20,7 +20,7 @@ namespace WindowsFormsApp1.Views
 
         private void menuButton_Click(object sender, MouseEventArgs e)
         {
-            highlightButtons(sender);                           
+            highlightButtons(sender);
         }
 
         private void highlightButtons(object sender)
@@ -37,10 +37,10 @@ namespace WindowsFormsApp1.Views
             btn_purchase.BackColor = Color.RoyalBlue;
             btn_purchase.ForeColor = Color.White;
             btn_purchase.ImageIndex = 1;
-            
+
             ((Button)sender).BackColor = Color.White;
             ((Button)sender).ForeColor = Color.RoyalBlue;
-            ((Button)sender).ImageIndex = Math.Abs(((Button)sender).ImageIndex -1);
+            ((Button)sender).ImageIndex = Math.Abs(((Button)sender).ImageIndex - 1);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace WindowsFormsApp1.Views
 
         private void pictureBox_MouseHover(object sender, EventArgs e)
         {
-            ((PictureBox)sender).BackColor = Color.RoyalBlue;            
+            ((PictureBox)sender).BackColor = Color.RoyalBlue;
         }
 
         private void pictureBox_MouseLeave(object sender, EventArgs e)
@@ -79,14 +79,27 @@ namespace WindowsFormsApp1.Views
 
         private void btn_config_Click(object sender, EventArgs e)
         {
-            mainDashboard1.Visible = false;
-            uC_PurchaseOrder1.Visible = true;
+            hide_UserControls();
+            mainDashboard1.Visible = true;
         }
 
         private void btn_logo_Click(object sender, EventArgs e)
         {
-            uC_PurchaseOrder1.Visible = false;
+            hide_UserControls();
             mainDashboard1.Visible = true;
+        }
+
+        private void btn_purchase_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            uC_PurchaseOrder1.Visible = true;
+        }
+
+        private void hide_UserControls()
+        {
+            foreach (UserControl uc in this.Controls.OfType<UserControl>()){
+                uc.Visible = false;
+            }
         }
     }
 }
