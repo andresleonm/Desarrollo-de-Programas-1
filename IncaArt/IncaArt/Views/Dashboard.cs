@@ -25,18 +25,22 @@ namespace WindowsFormsApp1.Views
 
         private void highlightButtons(object sender)
         {
-            button3.BackColor = Color.RoyalBlue;
-            button3.ForeColor = Color.White;
-            button4.BackColor = Color.RoyalBlue;
-            button4.ForeColor = Color.White;
-            button5.BackColor = Color.RoyalBlue;
-            button5.ForeColor = Color.White;
-            button6.BackColor = Color.RoyalBlue;
-            button6.ForeColor = Color.White;            
-
+            btn_config.BackColor = Color.RoyalBlue;
+            btn_config.ForeColor = Color.White;
+            btn_config.ImageIndex = 1;
+            btn_warehouse.BackColor = Color.RoyalBlue;
+            btn_warehouse.ForeColor = Color.White;
+            btn_warehouse.ImageIndex = 1;
+            btn_sales.BackColor = Color.RoyalBlue;
+            btn_sales.ForeColor = Color.White;
+            btn_sales.ImageIndex = 1;
+            btn_purchase.BackColor = Color.RoyalBlue;
+            btn_purchase.ForeColor = Color.White;
+            btn_purchase.ImageIndex = 1;
+            
             ((Button)sender).BackColor = Color.White;
             ((Button)sender).ForeColor = Color.RoyalBlue;
-            ((Button)sender).ImageIndex = 0;
+            ((Button)sender).ImageIndex = Math.Abs(((Button)sender).ImageIndex -1);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -72,6 +76,17 @@ namespace WindowsFormsApp1.Views
                 SendMessage(Handle, 0xA1, 0x2, 0);
             }
         }
-        
+
+        private void btn_config_Click(object sender, EventArgs e)
+        {
+            mainDashboard1.Visible = false;
+            uC_PurchaseOrder1.Visible = true;
+        }
+
+        private void btn_logo_Click(object sender, EventArgs e)
+        {
+            uC_PurchaseOrder1.Visible = false;
+            mainDashboard1.Visible = true;
+        }
     }
 }

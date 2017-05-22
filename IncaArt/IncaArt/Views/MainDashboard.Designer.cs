@@ -45,13 +45,14 @@
             // 
             this.metroTile10.BackColor = System.Drawing.Color.RoyalBlue;
             this.metroTile10.CustomBackground = true;
-            this.metroTile10.Location = new System.Drawing.Point(291, 238);
+            this.metroTile10.Location = new System.Drawing.Point(468, 304);
             this.metroTile10.Name = "metroTile10";
-            this.metroTile10.Size = new System.Drawing.Size(132, 74);
+            this.metroTile10.Size = new System.Drawing.Size(177, 81);
             this.metroTile10.TabIndex = 35;
             this.metroTile10.Text = "Almacenes";
             this.metroTile10.TileImage = global::WindowsFormsApp1.Properties.Resources.Hangar_40px;
             this.metroTile10.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile10.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile10.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile10.UseTileImage = true;
             // 
@@ -59,13 +60,14 @@
             // 
             this.metroTile11.BackColor = System.Drawing.Color.RoyalBlue;
             this.metroTile11.CustomBackground = true;
-            this.metroTile11.Location = new System.Drawing.Point(147, 238);
+            this.metroTile11.Location = new System.Drawing.Point(247, 304);
             this.metroTile11.Name = "metroTile11";
-            this.metroTile11.Size = new System.Drawing.Size(132, 74);
+            this.metroTile11.Size = new System.Drawing.Size(177, 81);
             this.metroTile11.TabIndex = 34;
             this.metroTile11.Text = "Proveedores";
             this.metroTile11.TileImage = global::WindowsFormsApp1.Properties.Resources.Product_40px;
             this.metroTile11.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile11.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile11.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile11.UseTileImage = true;
             // 
@@ -73,13 +75,14 @@
             // 
             this.metroTile12.BackColor = System.Drawing.Color.RoyalBlue;
             this.metroTile12.CustomBackground = true;
-            this.metroTile12.Location = new System.Drawing.Point(3, 238);
+            this.metroTile12.Location = new System.Drawing.Point(26, 304);
             this.metroTile12.Name = "metroTile12";
-            this.metroTile12.Size = new System.Drawing.Size(132, 74);
+            this.metroTile12.Size = new System.Drawing.Size(177, 81);
             this.metroTile12.TabIndex = 33;
             this.metroTile12.Text = "Turnos de Trabajo";
             this.metroTile12.TileImage = global::WindowsFormsApp1.Properties.Resources.Overtime_40px;
             this.metroTile12.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile12.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile12.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile12.UseTileImage = true;
             // 
@@ -87,14 +90,15 @@
             // 
             this.metroTile5.BackColor = System.Drawing.Color.RoyalBlue;
             this.metroTile5.CustomBackground = true;
-            this.metroTile5.Location = new System.Drawing.Point(435, 137);
+            this.metroTile5.Location = new System.Drawing.Point(689, 203);
             this.metroTile5.Name = "metroTile5";
-            this.metroTile5.Size = new System.Drawing.Size(132, 74);
+            this.metroTile5.Size = new System.Drawing.Size(177, 81);
             this.metroTile5.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTile5.TabIndex = 32;
             this.metroTile5.Text = "Recetas";
             this.metroTile5.TileImage = global::WindowsFormsApp1.Properties.Resources.Documents_40px;
             this.metroTile5.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile5.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile5.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile5.UseTileImage = true;
             // 
@@ -102,13 +106,14 @@
             // 
             this.metroTile6.BackColor = System.Drawing.Color.RoyalBlue;
             this.metroTile6.CustomBackground = true;
-            this.metroTile6.Location = new System.Drawing.Point(291, 137);
+            this.metroTile6.Location = new System.Drawing.Point(468, 203);
             this.metroTile6.Name = "metroTile6";
-            this.metroTile6.Size = new System.Drawing.Size(132, 74);
+            this.metroTile6.Size = new System.Drawing.Size(177, 81);
             this.metroTile6.TabIndex = 31;
             this.metroTile6.Text = "Productos";
             this.metroTile6.TileImage = global::WindowsFormsApp1.Properties.Resources.Crystal_40px;
             this.metroTile6.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile6.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile6.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile6.UseTileImage = true;
             // 
@@ -116,13 +121,14 @@
             // 
             this.metroTile7.BackColor = System.Drawing.Color.RoyalBlue;
             this.metroTile7.CustomBackground = true;
-            this.metroTile7.Location = new System.Drawing.Point(147, 137);
+            this.metroTile7.Location = new System.Drawing.Point(247, 203);
             this.metroTile7.Name = "metroTile7";
-            this.metroTile7.Size = new System.Drawing.Size(132, 74);
+            this.metroTile7.Size = new System.Drawing.Size(177, 81);
             this.metroTile7.TabIndex = 30;
             this.metroTile7.Text = "Materiales";
             this.metroTile7.TileImage = global::WindowsFormsApp1.Properties.Resources.Mortar_and_Pestle_40px;
             this.metroTile7.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile7.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile7.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile7.UseTileImage = true;
             // 
@@ -130,13 +136,14 @@
             // 
             this.metroTile8.BackColor = System.Drawing.Color.RoyalBlue;
             this.metroTile8.CustomBackground = true;
-            this.metroTile8.Location = new System.Drawing.Point(3, 137);
+            this.metroTile8.Location = new System.Drawing.Point(26, 203);
             this.metroTile8.Name = "metroTile8";
-            this.metroTile8.Size = new System.Drawing.Size(132, 74);
+            this.metroTile8.Size = new System.Drawing.Size(177, 81);
             this.metroTile8.TabIndex = 29;
             this.metroTile8.Text = "Puestos de Trabajo";
             this.metroTile8.TileImage = global::WindowsFormsApp1.Properties.Resources.Construction_Worker_40px;
             this.metroTile8.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile8.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile8.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile8.UseTileImage = true;
             // 
@@ -144,13 +151,14 @@
             // 
             this.metroTile4.BackColor = System.Drawing.Color.RoyalBlue;
             this.metroTile4.CustomBackground = true;
-            this.metroTile4.Location = new System.Drawing.Point(435, 37);
+            this.metroTile4.Location = new System.Drawing.Point(689, 102);
             this.metroTile4.Name = "metroTile4";
-            this.metroTile4.Size = new System.Drawing.Size(132, 74);
+            this.metroTile4.Size = new System.Drawing.Size(177, 81);
             this.metroTile4.TabIndex = 28;
             this.metroTile4.Text = "Perfiles";
             this.metroTile4.TileImage = global::WindowsFormsApp1.Properties.Resources.Reviewer_Male_40px;
             this.metroTile4.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile4.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile4.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile4.UseTileImage = true;
             // 
@@ -158,13 +166,14 @@
             // 
             this.metroTile3.BackColor = System.Drawing.Color.RoyalBlue;
             this.metroTile3.CustomBackground = true;
-            this.metroTile3.Location = new System.Drawing.Point(291, 36);
+            this.metroTile3.Location = new System.Drawing.Point(468, 102);
             this.metroTile3.Name = "metroTile3";
-            this.metroTile3.Size = new System.Drawing.Size(132, 74);
+            this.metroTile3.Size = new System.Drawing.Size(177, 81);
             this.metroTile3.TabIndex = 27;
             this.metroTile3.Text = "Trabajadores";
             this.metroTile3.TileImage = global::WindowsFormsApp1.Properties.Resources.Workers_Male_52px;
             this.metroTile3.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile3.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile3.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile3.UseTileImage = true;
             // 
@@ -172,13 +181,14 @@
             // 
             this.metroTile2.BackColor = System.Drawing.Color.RoyalBlue;
             this.metroTile2.CustomBackground = true;
-            this.metroTile2.Location = new System.Drawing.Point(147, 36);
+            this.metroTile2.Location = new System.Drawing.Point(247, 102);
             this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(132, 74);
+            this.metroTile2.Size = new System.Drawing.Size(177, 81);
             this.metroTile2.TabIndex = 26;
             this.metroTile2.Text = "Clientes";
             this.metroTile2.TileImage = global::WindowsFormsApp1.Properties.Resources.Webcam_Man_48px;
             this.metroTile2.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile2.UseTileImage = true;
             // 
@@ -186,14 +196,15 @@
             // 
             this.metroTile1.BackColor = System.Drawing.Color.RoyalBlue;
             this.metroTile1.CustomBackground = true;
-            this.metroTile1.Location = new System.Drawing.Point(3, 36);
+            this.metroTile1.Location = new System.Drawing.Point(26, 102);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.PaintTileCount = false;
-            this.metroTile1.Size = new System.Drawing.Size(132, 74);
+            this.metroTile1.Size = new System.Drawing.Size(177, 81);
             this.metroTile1.TabIndex = 25;
             this.metroTile1.Text = "Usuarios";
             this.metroTile1.TileImage = global::WindowsFormsApp1.Properties.Resources.User_Group_Man_Man_52px;
             this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile1.UseTileImage = true;
             // 
@@ -214,7 +225,7 @@
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.metroTile1);
             this.Name = "MainDashboard";
-            this.Size = new System.Drawing.Size(585, 342);
+            this.Size = new System.Drawing.Size(894, 502);
             this.ResumeLayout(false);
 
         }
