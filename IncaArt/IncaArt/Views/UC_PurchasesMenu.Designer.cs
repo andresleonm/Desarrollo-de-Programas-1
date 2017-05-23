@@ -88,8 +88,8 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.uC_PurchaseOrder1);
             this.panel2.Controls.Add(this.uC_PurchaseOrderGrid1);
+            this.panel2.Controls.Add(this.uC_PurchaseOrder1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 37);
             this.panel2.Name = "panel2";
@@ -103,6 +103,14 @@
             this.uC_PurchaseOrder1.Name = "uC_PurchaseOrder1";
             this.uC_PurchaseOrder1.Size = new System.Drawing.Size(771, 482);
             this.uC_PurchaseOrder1.TabIndex = 1;
+            this.uC_PurchaseOrder1.Visible = false;
+            // 
+            // uC_PurchaseOrderGrid1
+            // 
+            this.uC_PurchaseOrderGrid1.Location = new System.Drawing.Point(0, 0);
+            this.uC_PurchaseOrderGrid1.Name = "uC_PurchaseOrderGrid1";
+            this.uC_PurchaseOrderGrid1.Size = new System.Drawing.Size(593, 485);
+            this.uC_PurchaseOrderGrid1.TabIndex = 0;
             // 
             // uC_PurchaseOrderGrid1
             // 

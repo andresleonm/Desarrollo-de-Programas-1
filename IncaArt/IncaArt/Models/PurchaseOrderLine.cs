@@ -7,10 +7,16 @@ using System.Threading.Tasks;
 namespace WindowsFormsApp1.Models
 {
     class PurchaseOrderLine
-    {
-        UnitOfMeasure measure_unit;
+    {        
         Material material;
         int quantity;
         double price;
+
+        public PurchaseOrderLine(Material material, int quantity, double price)
+        {            
+            this.material = material;
+            this.quantity = quantity;
+            this.price = price;            
+        }
     }
 }
