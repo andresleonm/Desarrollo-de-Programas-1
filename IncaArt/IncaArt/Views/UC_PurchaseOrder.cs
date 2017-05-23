@@ -19,7 +19,8 @@ namespace WindowsFormsApp1.Views
 
         private void button4_Click(object sender, EventArgs e)
         {
-                        
+            Purchase_Module.PurchaseOrderLine order_line = new Purchase_Module.PurchaseOrderLine();
+            order_line.Show();
         }
     }
 }

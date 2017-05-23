@@ -143,12 +143,6 @@
     <Compile Include="Views\UC_PurchaseOrderGrid.Designer.cs">
       <DependentUpon>UC_PurchaseOrderGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UC_PurchaseOrderLine.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\UC_PurchaseOrderLine.Designer.cs">
-      <DependentUpon>UC_PurchaseOrderLine.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\UC_PurchasesMenu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -273,9 +267,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_PurchaseOrderGrid.resx">
       <DependentUpon>UC_PurchaseOrderGrid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_PurchaseOrderLine.resx">
-      <DependentUpon>UC_PurchaseOrderLine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_PurchasesMenu.resx">
       <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>

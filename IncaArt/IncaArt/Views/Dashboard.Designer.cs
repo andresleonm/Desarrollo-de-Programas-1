@@ -55,10 +55,6 @@
             this.workstation1 = new WindowsFormsApp1.Views.Workstation();
             this.supplier1 = new WindowsFormsApp1.Views.Supplier();
             this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
-            this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
-            this.supplier1 = new WindowsFormsApp1.Views.Supplier();
-            this.uC_PurchasesMenu1 = new WindowsFormsApp1.Views.UC_PurchasesMenu();
-            this.mainDashboard1 = new WindowsFormsApp1.Views.MainDashboard();
             this.parameters1 = new WindowsFormsApp1.Views.Parameters();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -319,20 +315,6 @@
             this.client1.Size = new System.Drawing.Size(898, 532);
             this.client1.TabIndex = 18;
             // 
-            // warehouse1
-            // 
-            this.warehouse1.Location = new System.Drawing.Point(132, 72);
-            this.warehouse1.Name = "warehouse1";
-            this.warehouse1.Size = new System.Drawing.Size(1023, 531);
-            this.warehouse1.TabIndex = 20;
-            // 
-            // supplier1
-            // 
-            this.supplier1.Location = new System.Drawing.Point(132, 72);
-            this.supplier1.Name = "supplier1";
-            this.supplier1.Size = new System.Drawing.Size(1064, 652);
-            this.supplier1.TabIndex = 18;
-            // 
             // uC_PurchasesMenu1
             // 
             this.uC_PurchasesMenu1.BackColor = System.Drawing.SystemColors.Control;
@@ -352,13 +334,6 @@
             this.mainDashboard1.Size = new System.Drawing.Size(819, 514);
             this.mainDashboard1.TabIndex = 13;
             // 
-            // parameters1
-            // 
-            this.supplier1.Location = new System.Drawing.Point(132, 72);
-            this.supplier1.Name = "supplier1";
-            this.supplier1.Size = new System.Drawing.Size(1064, 652);
-            this.supplier1.TabIndex = 18;
-            //
             // bom1
             // 
             this.bom1.Location = new System.Drawing.Point(132, 72);
@@ -373,14 +348,22 @@
             this.workstation1.Size = new System.Drawing.Size(850, 489);
             this.workstation1.TabIndex = 20;
             // 
+            // supplier1
+            // 
+            this.supplier1.Location = new System.Drawing.Point(132, 72);
+            this.supplier1.Name = "supplier1";
+            this.supplier1.Size = new System.Drawing.Size(1064, 652);
+            this.supplier1.TabIndex = 18;
+            // 
             // warehouse1
             // 
             this.warehouse1.Location = new System.Drawing.Point(132, 72);
             this.warehouse1.Name = "warehouse1";
             this.warehouse1.Size = new System.Drawing.Size(1023, 531);
             this.warehouse1.TabIndex = 20;
-            
-            //parameters
+            // 
+            // parameters1
+            // 
             this.parameters1.Location = new System.Drawing.Point(132, 72);
             this.parameters1.Name = "parameters1";
             this.parameters1.Size = new System.Drawing.Size(819, 514);
