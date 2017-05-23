@@ -310,7 +310,6 @@
             this.toolStripButton9.Name = "toolStripButton9";
             this.toolStripButton9.Size = new System.Drawing.Size(109, 19);
             this.toolStripButton9.Text = "Proveedor";
-            this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click_1);
             // 
             // toolStripButton13
             // 

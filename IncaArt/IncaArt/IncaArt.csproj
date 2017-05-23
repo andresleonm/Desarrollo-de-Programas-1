@@ -113,7 +113,7 @@
       <DependentUpon>Shift.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Supplier.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\Supplier.Designer.cs">
       <DependentUpon>Supplier.cs</DependentUpon>
