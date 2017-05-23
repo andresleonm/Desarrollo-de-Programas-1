@@ -48,8 +48,11 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.client1 = new WindowsFormsApp1.Views.Client();
             this.uC_PurchasesMenu1 = new WindowsFormsApp1.Views.UC_PurchasesMenu();
             this.mainDashboard1 = new WindowsFormsApp1.Views.MainDashboard();
+            this.bom1 = new WindowsFormsApp1.Views.BOM();
+            this.workstation1 = new WindowsFormsApp1.Views.Workstation();
             this.supplier1 = new WindowsFormsApp1.Views.Supplier();
             this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
             this.panel2.SuspendLayout();
@@ -304,6 +307,14 @@
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             // 
+            // client1
+            // 
+            this.client1.Location = new System.Drawing.Point(132, 72);
+            this.client1.Name = "client1";
+            this.client1.Size = new System.Drawing.Size(898, 532);
+            this.client1.TabIndex = 18;
+            // 
+
             // uC_PurchasesMenu1
             // 
             this.uC_PurchasesMenu1.BackColor = System.Drawing.SystemColors.Control;
@@ -329,6 +340,20 @@
             this.supplier1.Name = "supplier1";
             this.supplier1.Size = new System.Drawing.Size(1064, 652);
             this.supplier1.TabIndex = 18;
+            //
+            // bom1
+            // 
+            this.bom1.Location = new System.Drawing.Point(132, 72);
+            this.bom1.Name = "bom1";
+            this.bom1.Size = new System.Drawing.Size(882, 489);
+            this.bom1.TabIndex = 19;
+            // 
+            // workstation1
+            // 
+            this.workstation1.Location = new System.Drawing.Point(132, 72);
+            this.workstation1.Name = "workstation1";
+            this.workstation1.Size = new System.Drawing.Size(850, 489);
+            this.workstation1.TabIndex = 20;
             // 
             // warehouse1
             // 
@@ -345,6 +370,9 @@
             this.ClientSize = new System.Drawing.Size(951, 586);
             this.Controls.Add(this.warehouse1);
             this.Controls.Add(this.supplier1);
+            this.Controls.Add(this.workstation1);
+            this.Controls.Add(this.bom1);
+            this.Controls.Add(this.client1);
             this.Controls.Add(this.uC_PurchasesMenu1);
             this.Controls.Add(this.mainDashboard1);
             this.Controls.Add(this.panel4);
@@ -390,5 +418,8 @@
         private UC_PurchasesMenu uC_PurchasesMenu1;
         private Supplier supplier1;
         private Warehouse warehouse1;
+        private Client client1;
+        private BOM bom1;
+        private Workstation workstation1;
     }
 }
