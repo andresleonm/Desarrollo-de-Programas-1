@@ -95,11 +95,14 @@ namespace WindowsFormsApp1.Views
                 if (max < min)
                 {
                     isCorrect = false;
-                    message += "-El stock mínimo debe ser menor al stock máximo\n";
+                    message += "- El stock mínimo debe ser menor al stock máximo\n";
                 }
             }
 
-            MessageBox.Show(message, "Error al registrar un nuevo almacén", MessageBoxButtons.OK);
+            if (!isCorrect)
+            {
+                MessageBox.Show(message, "Error al registrar material", MessageBoxButtons.OK);
+            }
             return isCorrect;
         }
 
@@ -180,9 +183,9 @@ namespace WindowsFormsApp1.Views
         //Registrar
         private void btn_new_Click(object sender, EventArgs e)
         {
-            
+
             String name, unit;
-            
+
 
             name = textbox_name.Text;
             unit = combobox_unit.Text;
@@ -212,7 +215,7 @@ namespace WindowsFormsApp1.Views
                 Load_DataGridView("", "");
                 Clean();
             }
-                
+
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -242,7 +245,7 @@ namespace WindowsFormsApp1.Views
         {
             String name, unit;
             unit = combobox_unit.Text;
-            
+
             name = textbox_name.Text;
             unit = combobox_unit.Text;
             if (validate_data(name, unit, textbox_max_stock.Text, textbox_min_stock.Text))
@@ -278,7 +281,7 @@ namespace WindowsFormsApp1.Views
                 Load_DataGridView("", "");
                 Clean();
             }
-            
+
 
         }
 
