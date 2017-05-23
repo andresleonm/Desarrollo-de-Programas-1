@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class Worker : UserControl
+    public partial class UC_Worker : UserControl
     {
         int last_id;
         int cur_row;
         List<Models.Worker> worker_list;
         List<String> shift_list;
-        public Worker()
+        public UC_Worker()
         {
             InitializeComponent();
         }

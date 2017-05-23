@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Views
 {
-    partial class Worker
+    partial class UC_Worker
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

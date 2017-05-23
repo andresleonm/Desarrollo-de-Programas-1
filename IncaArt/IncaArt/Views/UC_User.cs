@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class User : UserControl
+    public partial class UC_User : UserControl
     {
         int last_id;
         int cur_row;
         List<Models.User> user_list;
         List<String> profile_list;
-        public User()
+        public UC_User()
         {
             InitializeComponent();
         }

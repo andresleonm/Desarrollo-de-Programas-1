@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Views
 {
-    partial class User
+    partial class UC_User
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -92,7 +92,7 @@
             this.tabControl1.Location = new System.Drawing.Point(334, 16);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(520, 334);
+            this.tabControl1.Size = new System.Drawing.Size(583, 334);
             this.tabControl1.TabIndex = 21;
             // 
             // tabPage1
@@ -102,7 +102,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(512, 308);
+            this.tabPage1.Size = new System.Drawing.Size(575, 308);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado de Usuarios";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@
             this.user_profile});
             this.dataGridView1.Location = new System.Drawing.Point(3, 123);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(503, 174);
+            this.dataGridView1.Size = new System.Drawing.Size(543, 174);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
@@ -163,7 +163,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox3.Location = new System.Drawing.Point(3, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(503, 114);
+            this.groupBox3.Size = new System.Drawing.Size(543, 114);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos";
@@ -171,7 +171,7 @@
             // combobox_profile_s
             // 
             this.combobox_profile_s.FormattingEnabled = true;
-            this.combobox_profile_s.Location = new System.Drawing.Point(386, 41);
+            this.combobox_profile_s.Location = new System.Drawing.Point(316, 42);
             this.combobox_profile_s.Name = "combobox_profile_s";
             this.combobox_profile_s.Size = new System.Drawing.Size(100, 21);
             this.combobox_profile_s.TabIndex = 24;
@@ -179,7 +179,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(291, 44);
+            this.label12.Location = new System.Drawing.Point(221, 45);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(33, 13);
             this.label12.TabIndex = 23;
@@ -187,7 +187,7 @@
             // 
             // textbox_maternal_s
             // 
-            this.textbox_maternal_s.Location = new System.Drawing.Point(386, 13);
+            this.textbox_maternal_s.Location = new System.Drawing.Point(316, 14);
             this.textbox_maternal_s.Name = "textbox_maternal_s";
             this.textbox_maternal_s.Size = new System.Drawing.Size(100, 20);
             this.textbox_maternal_s.TabIndex = 22;
@@ -195,7 +195,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(291, 17);
+            this.label11.Location = new System.Drawing.Point(221, 18);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(89, 13);
             this.label11.TabIndex = 21;
@@ -206,7 +206,7 @@
             this.btn_delete.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_delete.Enabled = false;
             this.btn_delete.ForeColor = System.Drawing.Color.White;
-            this.btn_delete.Location = new System.Drawing.Point(414, 83);
+            this.btn_delete.Location = new System.Drawing.Point(454, 83);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(83, 25);
             this.btn_delete.TabIndex = 20;
@@ -217,7 +217,7 @@
             // 
             this.btn_search.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_search.ForeColor = System.Drawing.Color.White;
-            this.btn_search.Location = new System.Drawing.Point(325, 83);
+            this.btn_search.Location = new System.Drawing.Point(365, 83);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(83, 25);
             this.btn_search.TabIndex = 19;
@@ -453,7 +453,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
-            // User
+            // UC_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -462,8 +462,8 @@
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_new);
             this.Controls.Add(this.groupBox1);
-            this.Name = "User";
-            this.Size = new System.Drawing.Size(876, 367);
+            this.Name = "UC_User";
+            this.Size = new System.Drawing.Size(933, 371);
             this.Load += new System.EventHandler(this.User_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
