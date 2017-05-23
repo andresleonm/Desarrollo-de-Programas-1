@@ -267,7 +267,7 @@ namespace WindowsFormsApp1.Views
                 Models.Person person = new Models.Person(last_id, dni, name, paternal_last_name, maternal_last_name, phone, email, gender, address, birthday);
 
                 Models.Worker worker = new Models.Worker();
-                worker.Id = int.Parse(dataGridView1.Rows[cur_row].Cells[0].Value.ToString()); ;
+                worker.Id = int.Parse(dataGridView1.Rows[cur_row].Cells[0].Value.ToString());
                 worker.Person = person;
                 worker.Shift = shift;
                 worker.Status = 1;

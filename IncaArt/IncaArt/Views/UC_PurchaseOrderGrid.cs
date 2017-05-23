@@ -21,7 +21,7 @@ namespace WindowsFormsApp1.Views
         private void fillGrid()
         {
             
-            foreach(Models.PurchaseOrder order in ((Dashboard)Parent.Parent).purchase_order_list)
+            foreach(Models.PurchaseOrder order in ((Dashboard)(FindForm().FindForm())).purchase_order_list)
             {
                 string[] gridline = new string[5];
                 gridline[0] = order.Id.ToString();
