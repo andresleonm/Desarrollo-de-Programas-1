@@ -16,5 +16,11 @@ namespace WindowsFormsApp1.Views
         {
             InitializeComponent();
         }
+
+        private void add_Click(object sender, EventArgs e)
+        {
+            Sales_Module.SalesOrderLine order_line = new Sales_Module.SalesOrderLine();
+            order_line.Show();
+        }
     }
 }

@@ -132,6 +132,7 @@
             this.add.TabIndex = 18;
             this.add.Text = "Agregar";
             this.add.UseVisualStyleBackColor = false;
+            this.add.Click += new System.EventHandler(this.add_Click);
             // 
             // label10
             // 
