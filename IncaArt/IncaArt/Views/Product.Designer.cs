@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox_Product = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.comboBox_Currency = new System.Windows.Forms.ComboBox();
+            this.comboBox_UnitMeasure = new System.Windows.Forms.ComboBox();
+            this.textBox_Price = new System.Windows.Forms.TextBox();
             this.label_Price = new System.Windows.Forms.Label();
             this.label_StockMax = new System.Windows.Forms.Label();
             this.label_StockMin = new System.Windows.Forms.Label();
             this.label_UnitMeasure = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_StockMax = new System.Windows.Forms.TextBox();
+            this.textBox_StockMin = new System.Windows.Forms.TextBox();
             this.textBox_Name = new System.Windows.Forms.TextBox();
             this.label_Name = new System.Windows.Forms.Label();
             this.tabControl_List = new System.Windows.Forms.TabControl();
@@ -67,15 +67,15 @@
             // 
             // groupBox_Product
             // 
-            this.groupBox_Product.Controls.Add(this.comboBox2);
-            this.groupBox_Product.Controls.Add(this.comboBox1);
-            this.groupBox_Product.Controls.Add(this.textBox3);
+            this.groupBox_Product.Controls.Add(this.comboBox_Currency);
+            this.groupBox_Product.Controls.Add(this.comboBox_UnitMeasure);
+            this.groupBox_Product.Controls.Add(this.textBox_Price);
             this.groupBox_Product.Controls.Add(this.label_Price);
             this.groupBox_Product.Controls.Add(this.label_StockMax);
             this.groupBox_Product.Controls.Add(this.label_StockMin);
             this.groupBox_Product.Controls.Add(this.label_UnitMeasure);
-            this.groupBox_Product.Controls.Add(this.textBox2);
-            this.groupBox_Product.Controls.Add(this.textBox1);
+            this.groupBox_Product.Controls.Add(this.textBox_StockMax);
+            this.groupBox_Product.Controls.Add(this.textBox_StockMin);
             this.groupBox_Product.Controls.Add(this.textBox_Name);
             this.groupBox_Product.Controls.Add(this.label_Name);
             this.groupBox_Product.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -87,34 +87,35 @@
             this.groupBox_Product.TabStop = false;
             this.groupBox_Product.Text = "Datos del producto";
             // 
-            // comboBox2
+            // comboBox_Currency
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.comboBox_Currency.FormattingEnabled = true;
+            this.comboBox_Currency.Items.AddRange(new object[] {
             "soles",
             "dólares"});
-            this.comboBox2.Location = new System.Drawing.Point(254, 124);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(75, 21);
-            this.comboBox2.TabIndex = 12;
+            this.comboBox_Currency.Location = new System.Drawing.Point(254, 124);
+            this.comboBox_Currency.Name = "comboBox_Currency";
+            this.comboBox_Currency.Size = new System.Drawing.Size(75, 21);
+            this.comboBox_Currency.TabIndex = 12;
             // 
-            // comboBox1
+            // comboBox_UnitMeasure
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBox_UnitMeasure.FormattingEnabled = true;
+            this.comboBox_UnitMeasure.Items.AddRange(new object[] {
             "kilos",
             "metros cuadrados"});
-            this.comboBox1.Location = new System.Drawing.Point(162, 92);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(167, 21);
-            this.comboBox1.TabIndex = 11;
+            this.comboBox_UnitMeasure.Location = new System.Drawing.Point(162, 92);
+            this.comboBox_UnitMeasure.Name = "comboBox_UnitMeasure";
+            this.comboBox_UnitMeasure.Size = new System.Drawing.Size(167, 21);
+            this.comboBox_UnitMeasure.TabIndex = 11;
             // 
-            // textBox3
+            // textBox_Price
             // 
-            this.textBox3.Location = new System.Drawing.Point(162, 124);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(86, 20);
-            this.textBox3.TabIndex = 9;
+            this.textBox_Price.Location = new System.Drawing.Point(162, 124);
+            this.textBox_Price.Name = "textBox_Price";
+            this.textBox_Price.Size = new System.Drawing.Size(86, 20);
+            this.textBox_Price.TabIndex = 9;
+            this.textBox_Price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Price_KeyPress);
             // 
             // label_Price
             // 
@@ -152,19 +153,21 @@
             this.label_UnitMeasure.TabIndex = 5;
             this.label_UnitMeasure.Text = "Unidad de medida:";
             // 
-            // textBox2
+            // textBox_StockMax
             // 
-            this.textBox2.Location = new System.Drawing.Point(162, 193);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(167, 20);
-            this.textBox2.TabIndex = 3;
+            this.textBox_StockMax.Location = new System.Drawing.Point(162, 193);
+            this.textBox_StockMax.Name = "textBox_StockMax";
+            this.textBox_StockMax.Size = new System.Drawing.Size(167, 20);
+            this.textBox_StockMax.TabIndex = 3;
+            this.textBox_StockMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_StockMax_KeyPress);
             // 
-            // textBox1
+            // textBox_StockMin
             // 
-            this.textBox1.Location = new System.Drawing.Point(162, 160);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(167, 20);
-            this.textBox1.TabIndex = 2;
+            this.textBox_StockMin.Location = new System.Drawing.Point(162, 160);
+            this.textBox_StockMin.Name = "textBox_StockMin";
+            this.textBox_StockMin.Size = new System.Drawing.Size(167, 20);
+            this.textBox_StockMin.TabIndex = 2;
+            this.textBox_StockMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_StockMin_KeyPress);
             // 
             // textBox_Name
             // 
@@ -355,6 +358,7 @@
             this.button_New.TabIndex = 19;
             this.button_New.Text = "Nuevo";
             this.button_New.UseVisualStyleBackColor = false;
+            this.button_New.Click += new System.EventHandler(this.button_New_Click);
             // 
             // Product
             // 
@@ -381,15 +385,15 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox_Product;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ComboBox comboBox_Currency;
+        private System.Windows.Forms.ComboBox comboBox_UnitMeasure;
+        private System.Windows.Forms.TextBox textBox_Price;
         private System.Windows.Forms.Label label_Price;
         private System.Windows.Forms.Label label_StockMax;
         private System.Windows.Forms.Label label_StockMin;
         private System.Windows.Forms.Label label_UnitMeasure;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_StockMax;
+        private System.Windows.Forms.TextBox textBox_StockMin;
         private System.Windows.Forms.TextBox textBox_Name;
         private System.Windows.Forms.Label label_Name;
         private System.Windows.Forms.TabControl tabControl_List;

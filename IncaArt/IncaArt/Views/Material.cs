@@ -60,6 +60,49 @@ namespace WindowsFormsApp1.Views
             Load_DataGridView("", "");
         }
 
+        private bool validate_data(String name, String unit, String max_stock, String min_stock)
+        {
+            bool isCorrect = true;
+            int max, min;
+            String message = "";
+            if (name == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar el nombre del material.\n";
+            }
+            if (unit == "")
+            {
+                isCorrect = false;
+                message += "- Debe seleccionar la unidad del material. \n";
+            }
+
+            if (max_stock == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar stock máximo. \n";
+            }
+
+            if (min_stock == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar stock mínimo. \n";
+            }
+
+            if (max_stock != "" && min_stock != "")
+            {
+                max = int.Parse(max_stock);
+                min = int.Parse(min_stock);
+                if (max < min)
+                {
+                    isCorrect = false;
+                    message += "-El stock mínimo debe ser menor al stock máximo\n";
+                }
+            }
+
+            MessageBox.Show(message, "Error al registrar un nuevo almacén", MessageBoxButtons.OK);
+            return isCorrect;
+        }
+
         int Search_condition(String name, String unit)
         {
             if (name == "" && unit == "")
@@ -137,34 +180,39 @@ namespace WindowsFormsApp1.Views
         //Registrar
         private void btn_new_Click(object sender, EventArgs e)
         {
+            
             String name, unit;
-            int min_stock, max_stock;
+            
 
             name = textbox_name.Text;
             unit = combobox_unit.Text;
-
-            min_stock = int.Parse(textbox_min_stock.Text);
-            max_stock = int.Parse(textbox_max_stock.Text);
-
-            Models.Material mat = new Models.Material();
-            mat.Id = last_id;
-            last_id++;
-            mat.Name = name;
-            foreach (var item in unit_list)
+            if (validate_data(name, unit, textbox_max_stock.Text, textbox_min_stock.Text))
             {
-                if (unit == item.Symbol)
-                {
-                    mat.Unit = item;
-                    break;
-                }
-            }
-            mat.Min_stock = min_stock;
-            mat.Max_stock = max_stock;
-            mat.Status = 1;
+                int min_stock, max_stock;
+                min_stock = int.Parse(textbox_min_stock.Text);
+                max_stock = int.Parse(textbox_max_stock.Text);
 
-            material_list.Add(mat);
-            Load_DataGridView("", "");
-            Clean();
+                Models.Material mat = new Models.Material();
+                mat.Id = last_id;
+                last_id++;
+                mat.Name = name;
+                foreach (var item in unit_list)
+                {
+                    if (unit == item.Symbol)
+                    {
+                        mat.Unit = item;
+                        break;
+                    }
+                }
+                mat.Min_stock = min_stock;
+                mat.Max_stock = max_stock;
+                mat.Status = 1;
+
+                material_list.Add(mat);
+                Load_DataGridView("", "");
+                Clean();
+            }
+                
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -194,40 +242,43 @@ namespace WindowsFormsApp1.Views
         {
             String name, unit;
             unit = combobox_unit.Text;
-
+            
             name = textbox_name.Text;
             unit = combobox_unit.Text;
-
-            int min_stock = int.Parse(textbox_min_stock.Text);
-            int max_stock = int.Parse(textbox_max_stock.Text);
-
-            Models.Material mat = new Models.Material();
-            mat.Id = int.Parse(dataGridView1.Rows[cur_row].Cells[0].Value.ToString());
-            mat.Name = name;
-            foreach (var item in unit_list)
+            if (validate_data(name, unit, textbox_max_stock.Text, textbox_min_stock.Text))
             {
-                if (unit == item.Symbol)
-                {
-                    mat.Unit = item;
-                    break;
-                }
-            }
-            mat.Min_stock = min_stock;
-            mat.Max_stock = max_stock;
+                int min_stock = int.Parse(textbox_min_stock.Text);
+                int max_stock = int.Parse(textbox_max_stock.Text);
 
-            for (int i = 0; i < material_list.Count(); i++)
-            {
-                if (mat.Id == material_list[i].Id)
+                Models.Material mat = new Models.Material();
+                mat.Id = int.Parse(dataGridView1.Rows[cur_row].Cells[0].Value.ToString());
+                mat.Name = name;
+                foreach (var item in unit_list)
                 {
-                    material_list[i].Name = mat.Name;
-                    material_list[i].Max_stock = mat.Max_stock;
-                    material_list[i].Min_stock = mat.Min_stock;
-                    material_list[i].Unit = mat.Unit;
-                    break;
+                    if (unit == item.Symbol)
+                    {
+                        mat.Unit = item;
+                        break;
+                    }
                 }
+                mat.Min_stock = min_stock;
+                mat.Max_stock = max_stock;
+
+                for (int i = 0; i < material_list.Count(); i++)
+                {
+                    if (mat.Id == material_list[i].Id)
+                    {
+                        material_list[i].Name = mat.Name;
+                        material_list[i].Max_stock = mat.Max_stock;
+                        material_list[i].Min_stock = mat.Min_stock;
+                        material_list[i].Unit = mat.Unit;
+                        break;
+                    }
+                }
+                Load_DataGridView("", "");
+                Clean();
             }
-            Load_DataGridView("", "");
-            Clean();
+            
 
         }
 
