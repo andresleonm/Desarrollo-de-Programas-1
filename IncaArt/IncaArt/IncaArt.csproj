@@ -173,12 +173,6 @@
     <Compile Include="Views\WarehouseMovementP.Designer.cs">
       <DependentUpon>WarehouseMovementP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Cliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Cliente.Designer.cs">
-      <DependentUpon>Cliente.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,9 +282,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\WarehouseMovementP.resx">
       <DependentUpon>WarehouseMovementP.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Cliente.resx">
-      <DependentUpon>Cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
