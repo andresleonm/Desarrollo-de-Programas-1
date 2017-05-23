@@ -16,6 +16,7 @@ namespace WindowsFormsApp1.Views
         int cur_row;
         List<Models.User> user_list;
         List<String> profile_list;
+
         public UC_User()
         {
             InitializeComponent();
@@ -101,6 +102,7 @@ namespace WindowsFormsApp1.Views
             user.Name = "Jose";
             user.Paternal_last_name = "Castillo";
             user.Maternal_last_name = "Perez";
+            user.Username = "jjj";
             user.Profile = "Admin";
             user.Status = 1;
 
@@ -124,16 +126,16 @@ namespace WindowsFormsApp1.Views
             {
                 if ((name == "" || name.ToUpper() == user_list[i].Name.ToUpper()) && (paternal == "" || paternal.ToUpper() == user_list[i].Paternal_last_name.ToUpper()) &&
                     (maternal == "" || maternal.ToUpper() == user_list[i].Maternal_last_name.ToUpper()) && (username == "" || username.ToUpper() == user_list[i].Username.ToUpper()) &&
-                    (name == "" || profile.ToUpper() == user_list[i].Profile.ToUpper()) && user_list[i].Status == 1)
+                    (profile == "" || profile.ToUpper() == user_list[i].Profile.ToUpper()) && user_list[i].Status == 1)
                 {
-                    String[] row = new String[5];
+                    String[] row = new String[6];
                     row[0] = user_list[i].Id.ToString();
                     row[1] = user_list[i].Name;
                     row[2] = user_list[i].Paternal_last_name;
                     row[3] = user_list[i].Maternal_last_name;
-                    row[4] = user_list[i].Profile;
+                    row[4] = user_list[i].Username;
+                    row[5] = user_list[i].Profile;
                     this.dataGridView1.Rows.Add(row);
-
                 }
             }
         }
@@ -171,6 +173,7 @@ namespace WindowsFormsApp1.Views
             String phone = textbox_phone.Text;
             String password = textbox_password.Text;
             String profile = combobox_profile.Text;
+            String username = textbox_username.Text;
             char gender = 'M';
             if (radioButton1.Checked)
             {
@@ -180,22 +183,27 @@ namespace WindowsFormsApp1.Views
             {
                 gender = 'F';
             }
-            Models.User user = new Models.User();
-            user.Id = last_id;
-            user.Name = name;
-            user.Paternal_last_name = paternal;
-            user.Maternal_last_name = maternal;
-            user.Gender = gender;
-            user.Phone = phone;
-            user.Profile = profile;
-            user.Email = email;
-            user.Password = password;
-            user.Status = 1;
 
-            last_id++;
-            user_list.Add(user);
-            Clean();
-            Load_DataGridView("", "", "", "", "");
+            if (validate_data(name, paternal, maternal, gender, phone, email, username, password, profile)){
+                Models.User user = new Models.User();
+                user.Id = last_id;
+                user.Name = name;
+                user.Paternal_last_name = paternal;
+                user.Maternal_last_name = maternal;
+                user.Gender = gender;
+                user.Phone = phone;
+                user.Profile = profile;
+                user.Email = email;
+                user.Username = username;
+                user.Password = password;
+                user.Status = 1;
+
+                last_id++;
+                user_list.Add(user);
+                Clean();
+                Load_DataGridView("", "", "", "", "");
+            }
+            
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -213,7 +221,113 @@ namespace WindowsFormsApp1.Views
             if (dataGridView1.Rows[e.RowIndex].Cells[1].Value != null)
             {
                 int id = int.Parse(dataGridView1.Rows[cur_row].Cells[0].Value.ToString());
+                for (int i = 0; i < user_list.Count(); i++)
+                {
+                    if (id == user_list[i].Id) {
+                        textbox_name.Text = user_list[i].Name;
+                        textbox_paternal.Text = user_list[i].Paternal_last_name;
+                        textbox_maternal.Text = user_list[i].Maternal_last_name;
+                        if (user_list[i].Gender == 'M')
+                        {
+                            radioButton1.Checked = true;
+                        }
+                        else
+                        {
+                            radioButton2.Checked = true;
+                        }
+                        textbox_phone.Text = user_list[i].Phone;
+                        textbox_email.Text = user_list[i].Email;
+                        textbox_username.Text = user_list[i].Username;
+                        textbox_password.Text = user_list[i].Password;
+                        combobox_profile.Text = user_list[i].Profile;
+                        break;
+                    }
+                }
             }
+        }
+
+        //Modificar Datos
+        private void btm_edit_Click(object sender, EventArgs e)
+        {
+            String email = textbox_email.Text;
+            String maternal = textbox_maternal.Text;
+            String name = textbox_name.Text;
+            String paternal = textbox_paternal.Text;
+            String phone = textbox_phone.Text;
+            String password = textbox_password.Text;
+            String profile = combobox_profile.Text;
+            String username = textbox_username.Text;
+            char gender = 'M';
+            if (radioButton1.Checked)
+            {
+                gender = 'M';
+            }
+            else if (radioButton2.Checked)
+            {
+                gender = 'F';
+            }
+
+            if (validate_data(name, paternal, maternal, gender, phone, email, username, password, profile))
+            {
+                Models.User user = new Models.User();
+                user.Id = int.Parse(dataGridView1.Rows[cur_row].Cells[0].Value.ToString());
+                user.Name = name;
+                user.Paternal_last_name = paternal;
+                user.Maternal_last_name = maternal;
+                user.Gender = gender;
+                user.Phone = phone;
+                user.Profile = profile;
+                user.Email = email;
+                user.Username = username;
+                user.Password = password;
+                user.Status = 1;
+
+                for (int i = 0; i < user_list.Count(); i++)
+                {
+                    if (user_list[i].Id == user.Id)
+                    {
+                        user_list[i].Name = user.Name;
+                        user_list[i].Paternal_last_name = user.Paternal_last_name;
+                        user_list[i].Maternal_last_name = user.Maternal_last_name;
+                        user_list[i].Gender = user.Gender;
+                        user_list[i].Phone = user.Phone;
+                        user_list[i].Profile = user.Profile;
+                        user_list[i].Email = user.Email;
+                        user_list[i].Username = user.Username;
+                        user_list[i].Password = user.Password;
+                        break;
+                    }
+                }
+                Clean();
+                Load_DataGridView("", "", "", "", "");
+            }
+        }
+
+        //Buscar
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            String name = textbox_name_s.Text;
+            String paternal = textbox_paternal_s.Text;
+            String maternal = textbox_maternal_s.Text;
+            String username = textbox_username_s.Text;
+            String profile = combobox_profile_s.Text;
+            Load_DataGridView(name, paternal, maternal, username, profile);
+        }
+
+        //Eliminar
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(dataGridView1.Rows[cur_row].Cells[0].Value.ToString());
+            for (int i = 0; i < user_list.Count(); i++)
+            {
+                if (id == user_list[i].Id)
+                {
+                    user_list.Remove(user_list[i]);
+                    break;
+                }
+            }
+            btn_delete.Enabled = false;
+            Load_DataGridView("", "", "", "", "");
         }
     }
 }

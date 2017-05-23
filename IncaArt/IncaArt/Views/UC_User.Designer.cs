@@ -33,7 +33,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textbox_username_s = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.combobox_profile_s = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -49,7 +49,6 @@
             this.btn_new = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.textbox_username = new System.Windows.Forms.TextBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -91,6 +90,7 @@
             this.btm_edit.TabIndex = 24;
             this.btm_edit.Text = "Editar";
             this.btm_edit.UseVisualStyleBackColor = false;
+            this.btm_edit.Click += new System.EventHandler(this.btm_edit_Click);
             // 
             // tabControl1
             // 
@@ -132,7 +132,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.textbox_username_s);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.combobox_profile_s);
             this.groupBox3.Controls.Add(this.label12);
@@ -152,12 +152,12 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos";
             // 
-            // textBox1
+            // textbox_username_s
             // 
-            this.textBox1.Location = new System.Drawing.Point(273, 14);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 25;
+            this.textbox_username_s.Location = new System.Drawing.Point(273, 14);
+            this.textbox_username_s.Name = "textbox_username_s";
+            this.textbox_username_s.Size = new System.Drawing.Size(100, 20);
+            this.textbox_username_s.TabIndex = 25;
             // 
             // label15
             // 
@@ -212,6 +212,7 @@
             this.btn_delete.TabIndex = 20;
             this.btn_delete.Text = "Eliminar";
             this.btn_delete.UseVisualStyleBackColor = false;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_search
             // 
@@ -223,6 +224,7 @@
             this.btn_search.TabIndex = 19;
             this.btn_search.Text = "Buscar";
             this.btn_search.UseVisualStyleBackColor = false;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // label9
             // 
@@ -284,7 +286,6 @@
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.textbox_username);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
@@ -319,15 +320,6 @@
             this.label14.Size = new System.Drawing.Size(46, 13);
             this.label14.TabIndex = 22;
             this.label14.Text = "Usuario:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 16);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(41, 13);
-            this.label13.TabIndex = 21;
-            this.label13.Text = "label13";
             // 
             // textbox_username
             // 
@@ -572,10 +564,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textbox_username;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textbox_username_s;
         private System.Windows.Forms.DataGridViewTextBoxColumn user_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn user_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn user_paternal;
