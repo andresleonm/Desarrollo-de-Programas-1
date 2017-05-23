@@ -45,23 +45,23 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cancelA = new System.Windows.Forms.Button();
+            this.editA = new System.Windows.Forms.Button();
+            this.newA = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.type = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.Producto = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.unity2 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.textBox_Name = new System.Windows.Forms.TextBox();
+            this.actual_capacity = new System.Windows.Forms.TextBox();
+            this.unity1 = new System.Windows.Forms.ComboBox();
+            this.name = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.max_capacity = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -226,60 +226,61 @@
             this.label4.TabIndex = 25;
             this.label4.Text = "Capacidad Actual :";
             // 
-            // button3
+            // cancelA
             // 
-            this.button3.BackColor = System.Drawing.Color.SteelBlue;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(300, 388);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(103, 27);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = false;
+            this.cancelA.BackColor = System.Drawing.Color.SteelBlue;
+            this.cancelA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cancelA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelA.ForeColor = System.Drawing.Color.White;
+            this.cancelA.Location = new System.Drawing.Point(300, 388);
+            this.cancelA.Name = "cancelA";
+            this.cancelA.Size = new System.Drawing.Size(103, 27);
+            this.cancelA.TabIndex = 17;
+            this.cancelA.Text = "Cancelar";
+            this.cancelA.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // editA
             // 
-            this.button2.BackColor = System.Drawing.Color.SteelBlue;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(176, 388);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 27);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Editar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.editA.BackColor = System.Drawing.Color.SteelBlue;
+            this.editA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.editA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editA.ForeColor = System.Drawing.Color.White;
+            this.editA.Location = new System.Drawing.Point(176, 388);
+            this.editA.Name = "editA";
+            this.editA.Size = new System.Drawing.Size(103, 27);
+            this.editA.TabIndex = 16;
+            this.editA.Text = "Editar";
+            this.editA.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // newA
             // 
-            this.button1.BackColor = System.Drawing.Color.SteelBlue;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(51, 388);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 27);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Nuevo";
-            this.button1.UseVisualStyleBackColor = false;
+            this.newA.BackColor = System.Drawing.Color.SteelBlue;
+            this.newA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.newA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newA.ForeColor = System.Drawing.Color.White;
+            this.newA.Location = new System.Drawing.Point(51, 388);
+            this.newA.Name = "newA";
+            this.newA.Size = new System.Drawing.Size(103, 27);
+            this.newA.TabIndex = 15;
+            this.newA.Text = "Nuevo";
+            this.newA.UseVisualStyleBackColor = false;
+            this.newA.Click += new System.EventHandler(this.newA_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.type);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.Producto);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.unity2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.comboBox5);
-            this.groupBox1.Controls.Add(this.textBox_Name);
+            this.groupBox1.Controls.Add(this.actual_capacity);
+            this.groupBox1.Controls.Add(this.unity1);
+            this.groupBox1.Controls.Add(this.name);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.max_capacity);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox1.Location = new System.Drawing.Point(42, 99);
@@ -298,13 +299,13 @@
             this.label3.TabIndex = 44;
             this.label3.Text = "Producto / Material :";
             // 
-            // comboBox2
+            // type
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(168, 135);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(179, 21);
-            this.comboBox2.TabIndex = 43;
+            this.type.FormattingEnabled = true;
+            this.type.Location = new System.Drawing.Point(168, 135);
+            this.type.Name = "type";
+            this.type.Size = new System.Drawing.Size(179, 21);
+            this.type.TabIndex = 43;
             // 
             // label2
             // 
@@ -346,18 +347,18 @@
             this.label8.TabIndex = 39;
             this.label8.Text = "Nombre :";
             // 
-            // comboBox1
+            // unity2
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.unity2.FormattingEnabled = true;
+            this.unity2.Items.AddRange(new object[] {
             "lts",
             "mls",
             "gal"});
-            this.comboBox1.Location = new System.Drawing.Point(266, 217);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(81, 21);
-            this.comboBox1.TabIndex = 36;
-            this.comboBox1.Text = "und";
+            this.unity2.Location = new System.Drawing.Point(266, 217);
+            this.unity2.Name = "unity2";
+            this.unity2.Size = new System.Drawing.Size(81, 21);
+            this.unity2.TabIndex = 36;
+            this.unity2.Text = "und";
             // 
             // label1
             // 
@@ -368,33 +369,33 @@
             this.label1.TabIndex = 35;
             this.label1.Text = "Capacidad Actual :";
             // 
-            // textBox5
+            // actual_capacity
             // 
-            this.textBox5.Location = new System.Drawing.Point(167, 218);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(84, 20);
-            this.textBox5.TabIndex = 34;
-            this.textBox5.Text = "50";
+            this.actual_capacity.Location = new System.Drawing.Point(167, 218);
+            this.actual_capacity.Name = "actual_capacity";
+            this.actual_capacity.Size = new System.Drawing.Size(84, 20);
+            this.actual_capacity.TabIndex = 34;
+            this.actual_capacity.Text = "50";
             // 
-            // comboBox5
+            // unity1
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
+            this.unity1.FormattingEnabled = true;
+            this.unity1.Items.AddRange(new object[] {
             "lts",
             "mls",
             "gal"});
-            this.comboBox5.Location = new System.Drawing.Point(266, 179);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(81, 21);
-            this.comboBox5.TabIndex = 33;
-            this.comboBox5.Text = "und";
+            this.unity1.Location = new System.Drawing.Point(266, 179);
+            this.unity1.Name = "unity1";
+            this.unity1.Size = new System.Drawing.Size(81, 21);
+            this.unity1.TabIndex = 33;
+            this.unity1.Text = "und";
             // 
-            // textBox_Name
+            // name
             // 
-            this.textBox_Name.Location = new System.Drawing.Point(167, 41);
-            this.textBox_Name.Name = "textBox_Name";
-            this.textBox_Name.Size = new System.Drawing.Size(180, 20);
-            this.textBox_Name.TabIndex = 31;
+            this.name.Location = new System.Drawing.Point(167, 41);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(100, 20);
+            this.name.TabIndex = 45;
             // 
             // label5
             // 
@@ -405,25 +406,26 @@
             this.label5.TabIndex = 27;
             this.label5.Text = "Máxima Capacidad :";
             // 
-            // textBox1
+            // max_capacity
             // 
-            this.textBox1.Location = new System.Drawing.Point(167, 180);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(84, 20);
-            this.textBox1.TabIndex = 24;
-            this.textBox1.Text = "50";
+            this.max_capacity.Location = new System.Drawing.Point(167, 180);
+            this.max_capacity.Name = "max_capacity";
+            this.max_capacity.Size = new System.Drawing.Size(84, 20);
+            this.max_capacity.TabIndex = 24;
+            this.max_capacity.Text = "50";
             // 
-            // Warehouse1
+            // Warehouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cancelA);
+            this.Controls.Add(this.editA);
+            this.Controls.Add(this.newA);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Warehouse1";
+            this.Name = "Warehouse";
             this.Size = new System.Drawing.Size(1023, 531);
+            this.Load += new System.EventHandler(this.Warehouse_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -454,22 +456,22 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cancelA;
+        private System.Windows.Forms.Button editA;
+        private System.Windows.Forms.Button newA;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox type;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox Producto;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox unity2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.TextBox textBox_Name;
+        private System.Windows.Forms.TextBox actual_capacity;
+        private System.Windows.Forms.ComboBox unity1;
+        private System.Windows.Forms.TextBox name;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox max_capacity;
     }
 }

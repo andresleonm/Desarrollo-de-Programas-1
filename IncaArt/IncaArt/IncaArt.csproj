@@ -61,12 +61,14 @@
   <ItemGroup>
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\Material.cs" />
+    <Compile Include="Models\Parameters.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\PurchaseOrder.cs" />
     <Compile Include="Models\PurchaseOrderLine.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\UnitOfMeasure.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Warehouse.cs" />
     <Compile Include="Models\Worker.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
