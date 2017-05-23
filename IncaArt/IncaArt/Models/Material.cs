@@ -14,6 +14,8 @@ namespace WindowsFormsApp1.Models
         int max_stock;
         int min_stock;
         int status;
+        double cost;
+        string description;
 
         public int Id
         {
@@ -90,6 +92,32 @@ namespace WindowsFormsApp1.Models
             set
             {
                 status = value;
+            }
+        }
+
+        public double Cost
+        {
+            get
+            {
+                return cost;
+            }
+
+            set
+            {
+                cost = value;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                description = value;
             }
         }
     }

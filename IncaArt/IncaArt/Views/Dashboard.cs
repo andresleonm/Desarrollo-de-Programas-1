@@ -8,11 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views
 {
     public partial class Dashboard : Form
     {
+        List<PurchaseOrder> purchase_order_list;
+        List<Product> product_list;
+        List<Material> material_list;
+        List<Supplier> supplier_list;
+        List<Warehouse> warehouse_list;
+        List<User> user_list;
         public Dashboard()
         {
             InitializeComponent();
