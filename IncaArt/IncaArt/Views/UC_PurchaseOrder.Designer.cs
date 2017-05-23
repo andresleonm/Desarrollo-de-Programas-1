@@ -32,8 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.combo_warehouse = new System.Windows.Forms.ComboBox();
+            this.txt_id = new System.Windows.Forms.TextBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
@@ -46,11 +46,11 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.combo_state = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_total = new System.Windows.Forms.TextBox();
+            this.txt_taxes = new System.Windows.Forms.TextBox();
+            this.txt_no_taxes = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -61,14 +61,14 @@
             this.udm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.combo_address = new System.Windows.Forms.ComboBox();
+            this.combo_supplier = new System.Windows.Forms.ComboBox();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.date_order_date = new System.Windows.Forms.DateTimePicker();
             this.panel2.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -80,35 +80,35 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.comboBox4);
-            this.panel2.Controls.Add(this.textBox4);
+            this.panel2.Controls.Add(this.combo_warehouse);
+            this.panel2.Controls.Add(this.txt_id);
             this.panel2.Controls.Add(this.metroLabel5);
             this.panel2.Controls.Add(this.metroTabControl1);
             this.panel2.Controls.Add(this.metroLabel2);
             this.panel2.Controls.Add(this.metroLabel1);
-            this.panel2.Controls.Add(this.dateTimePicker1);
+            this.panel2.Controls.Add(this.date_order_date);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(787, 496);
             this.panel2.TabIndex = 22;
             // 
-            // comboBox4
+            // combo_warehouse
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(87, 58);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(153, 21);
-            this.comboBox4.TabIndex = 36;
+            this.combo_warehouse.FormattingEnabled = true;
+            this.combo_warehouse.Location = new System.Drawing.Point(87, 58);
+            this.combo_warehouse.Name = "combo_warehouse";
+            this.combo_warehouse.Size = new System.Drawing.Size(153, 21);
+            this.combo_warehouse.TabIndex = 36;
             // 
-            // textBox4
+            // txt_id
             // 
-            this.textBox4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox4.Location = new System.Drawing.Point(86, 19);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(154, 20);
-            this.textBox4.TabIndex = 35;
+            this.txt_id.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txt_id.Location = new System.Drawing.Point(86, 19);
+            this.txt_id.Name = "txt_id";
+            this.txt_id.ReadOnly = true;
+            this.txt_id.Size = new System.Drawing.Size(154, 20);
+            this.txt_id.TabIndex = 35;
             // 
             // metroLabel5
             // 
@@ -151,16 +151,16 @@
             this.metroTabPage1.Controls.Add(this.metroLabel3);
             this.metroTabPage1.Controls.Add(this.button3);
             this.metroTabPage1.Controls.Add(this.button2);
-            this.metroTabPage1.Controls.Add(this.comboBox3);
+            this.metroTabPage1.Controls.Add(this.combo_state);
             this.metroTabPage1.Controls.Add(this.button1);
-            this.metroTabPage1.Controls.Add(this.textBox3);
-            this.metroTabPage1.Controls.Add(this.textBox2);
-            this.metroTabPage1.Controls.Add(this.textBox1);
+            this.metroTabPage1.Controls.Add(this.txt_total);
+            this.metroTabPage1.Controls.Add(this.txt_taxes);
+            this.metroTabPage1.Controls.Add(this.txt_no_taxes);
             this.metroTabPage1.Controls.Add(this.label3);
             this.metroTabPage1.Controls.Add(this.button4);
             this.metroTabPage1.Controls.Add(this.panel1);
-            this.metroTabPage1.Controls.Add(this.comboBox2);
-            this.metroTabPage1.Controls.Add(this.comboBox1);
+            this.metroTabPage1.Controls.Add(this.combo_address);
+            this.metroTabPage1.Controls.Add(this.combo_supplier);
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 29);
             this.metroTabPage1.Name = "metroTabPage1";
@@ -299,13 +299,13 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // comboBox3
+            // combo_state
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(67, 310);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(191, 21);
-            this.comboBox3.TabIndex = 29;
+            this.combo_state.FormattingEnabled = true;
+            this.combo_state.Location = new System.Drawing.Point(67, 310);
+            this.combo_state.Name = "combo_state";
+            this.combo_state.Size = new System.Drawing.Size(191, 21);
+            this.combo_state.TabIndex = 29;
             // 
             // button1
             // 
@@ -319,29 +319,29 @@
             this.button1.Text = "Calcular";
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // textBox3
+            // txt_total
             // 
-            this.textBox3.Location = new System.Drawing.Point(518, 267);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 27;
+            this.txt_total.Location = new System.Drawing.Point(518, 267);
+            this.txt_total.Name = "txt_total";
+            this.txt_total.ReadOnly = true;
+            this.txt_total.Size = new System.Drawing.Size(100, 20);
+            this.txt_total.TabIndex = 27;
             // 
-            // textBox2
+            // txt_taxes
             // 
-            this.textBox2.Location = new System.Drawing.Point(351, 267);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 25;
+            this.txt_taxes.Location = new System.Drawing.Point(351, 267);
+            this.txt_taxes.Name = "txt_taxes";
+            this.txt_taxes.ReadOnly = true;
+            this.txt_taxes.Size = new System.Drawing.Size(100, 20);
+            this.txt_taxes.TabIndex = 25;
             // 
-            // textBox1
+            // txt_no_taxes
             // 
-            this.textBox1.Location = new System.Drawing.Point(158, 267);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 23;
+            this.txt_no_taxes.Location = new System.Drawing.Point(158, 267);
+            this.txt_no_taxes.Name = "txt_no_taxes";
+            this.txt_no_taxes.ReadOnly = true;
+            this.txt_no_taxes.Size = new System.Drawing.Size(100, 20);
+            this.txt_no_taxes.TabIndex = 23;
             // 
             // label3
             // 
@@ -419,6 +419,7 @@
             this.grid_order_lines.RowHeadersVisible = false;
             this.grid_order_lines.Size = new System.Drawing.Size(734, 171);
             this.grid_order_lines.TabIndex = 2;
+            this.grid_order_lines.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.grid_order_lines_RowsAdded);
             // 
             // due_date
             // 
@@ -462,21 +463,21 @@
             this.subtotal.Name = "subtotal";
             this.subtotal.ReadOnly = true;
             // 
-            // comboBox2
+            // combo_address
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(501, 6);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(237, 21);
-            this.comboBox2.TabIndex = 9;
+            this.combo_address.FormattingEnabled = true;
+            this.combo_address.Location = new System.Drawing.Point(501, 6);
+            this.combo_address.Name = "combo_address";
+            this.combo_address.Size = new System.Drawing.Size(237, 21);
+            this.combo_address.TabIndex = 9;
             // 
-            // comboBox1
+            // combo_supplier
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(86, 6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(237, 21);
-            this.comboBox1.TabIndex = 7;
+            this.combo_supplier.FormattingEnabled = true;
+            this.combo_supplier.Location = new System.Drawing.Point(86, 6);
+            this.combo_supplier.Name = "combo_supplier";
+            this.combo_supplier.Size = new System.Drawing.Size(237, 21);
+            this.combo_supplier.TabIndex = 7;
             // 
             // metroTabPage2
             // 
@@ -534,15 +535,15 @@
             this.metroLabel1.TabIndex = 29;
             this.metroLabel1.Text = "Orden :";
             // 
-            // dateTimePicker1
+            // date_order_date
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(474, 16);
-            this.dateTimePicker1.MinDate = new System.DateTime(2017, 5, 8, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 27;
-            this.dateTimePicker1.Value = new System.DateTime(2017, 5, 8, 0, 0, 0, 0);
+            this.date_order_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.date_order_date.Location = new System.Drawing.Point(474, 16);
+            this.date_order_date.MinDate = new System.DateTime(2017, 5, 8, 0, 0, 0, 0);
+            this.date_order_date.Name = "date_order_date";
+            this.date_order_date.Size = new System.Drawing.Size(200, 20);
+            this.date_order_date.TabIndex = 27;
+            this.date_order_date.Value = new System.DateTime(2017, 5, 8, 0, 0, 0, 0);
             // 
             // UC_PurchaseOrder
             // 
@@ -567,7 +568,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker date_order_date;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroTabControl metroTabControl1;
@@ -576,11 +577,11 @@
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox combo_state;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_total;
+        private System.Windows.Forms.TextBox txt_taxes;
+        private System.Windows.Forms.TextBox txt_no_taxes;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView grid_order_lines;
@@ -590,12 +591,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn udm;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_price;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox combo_address;
+        private System.Windows.Forms.ComboBox combo_supplier;
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ComboBox combo_warehouse;
+        private System.Windows.Forms.TextBox txt_id;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel8;
