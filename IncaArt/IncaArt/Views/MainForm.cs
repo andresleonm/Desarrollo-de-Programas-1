@@ -90,48 +90,6 @@ namespace WindowsFormsApp1.Views
 
         }
 
-        private void toolStripButton6_Click(object sender, EventArgs e)
-        {
-            Cliente frm_client = new Cliente();
-            frm_client.MdiParent = this;
-            frm_client.Show();
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            BOM frm_bom = new BOM();
-            frm_bom.MdiParent = this;
-            frm_bom.Show();
-        }
-
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            Workstation frm_workstation = new Workstation();
-            frm_workstation.MdiParent = this;
-            frm_workstation.Show();
-        }
-
-        private void toolStripButton5_Click(object sender, EventArgs e)
-        {
-            CRUD.User frm_user = new CRUD.User();
-            frm_user.MdiParent = this;
-            frm_user.Show();
-        }
-
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-            CRUD.Worker frm_worker = new CRUD.Worker();
-            frm_worker.MdiParent = this;
-            frm_worker.Show();
-        }
-
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
-            CRUD.Material frm_material = new CRUD.Material();
-            frm_material.MdiParent = this;
-            frm_material.Show();
-        }
-
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
             WarehouseMovementP frm_material = new WarehouseMovementP();
@@ -176,18 +134,5 @@ namespace WindowsFormsApp1.Views
             frm_salesOrder.Show();
         }
 
-        private void toolStripButton9_Click_1(object sender, EventArgs e)
-        {
-            Supplier frm_supplier = new Supplier();
-            frm_supplier.MdiParent = this;
-            frm_supplier.Show();
-        }
-
-        private void toolStripButton12_Click(object sender, EventArgs e)
-        {
-            Almacén frm_almacen = new Almacén();
-            frm_almacen.MdiParent = this;
-            frm_almacen.Show();
-        }
     }
 }

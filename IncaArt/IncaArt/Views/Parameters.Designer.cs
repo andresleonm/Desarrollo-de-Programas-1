@@ -1,16 +1,16 @@
 ﻿namespace WindowsFormsApp1.Views
 {
-    partial class Parámetros
+    partial class Parameters
     {
-        /// <summary>
-        /// Required designer variable.
+        /// <summary> 
+        /// Variable del diseñador necesaria.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
+        /// <summary> 
+        /// Limpiar los recursos que se estén usando.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +20,11 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Código generado por el Diseñador de componentes
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// <summary> 
+        /// Método necesario para admitir el Diseñador. No se puede modificar
+        /// el contenido de este método con el editor de código.
         /// </summary>
         private void InitializeComponent()
         {
@@ -36,16 +36,16 @@
             this.button_Search = new System.Windows.Forms.Button();
             this.button_Delete = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Begin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.groupBox_Shift = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.textBox_Description = new System.Windows.Forms.TextBox();
             this.label_Description = new System.Windows.Forms.Label();
             this.button_Edit = new System.Windows.Forms.Button();
             this.button_New = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Begin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabContr_List.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -56,11 +56,11 @@
             // tabContr_List
             // 
             this.tabContr_List.Controls.Add(this.tabPage1);
-            this.tabContr_List.Location = new System.Drawing.Point(352, 29);
+            this.tabContr_List.Location = new System.Drawing.Point(332, 24);
             this.tabContr_List.Name = "tabContr_List";
             this.tabContr_List.SelectedIndex = 0;
             this.tabContr_List.Size = new System.Drawing.Size(447, 389);
-            this.tabContr_List.TabIndex = 17;
+            this.tabContr_List.TabIndex = 22;
             // 
             // tabPage1
             // 
@@ -141,14 +141,24 @@
             this.dataGridView1.Size = new System.Drawing.Size(389, 204);
             this.dataGridView1.TabIndex = 10;
             // 
+            // Column_Name
+            // 
+            this.Column_Name.HeaderText = "Nombre";
+            this.Column_Name.Name = "Column_Name";
+            // 
+            // Column_Begin
+            // 
+            this.Column_Begin.HeaderText = "Valor";
+            this.Column_Begin.Name = "Column_Begin";
+            // 
             // button_Cancel
             // 
             this.button_Cancel.BackColor = System.Drawing.Color.SteelBlue;
             this.button_Cancel.ForeColor = System.Drawing.SystemColors.Window;
-            this.button_Cancel.Location = new System.Drawing.Point(231, 275);
+            this.button_Cancel.Location = new System.Drawing.Point(211, 270);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.button_Cancel.TabIndex = 16;
+            this.button_Cancel.TabIndex = 21;
             this.button_Cancel.Text = "Cancelar";
             this.button_Cancel.UseVisualStyleBackColor = false;
             // 
@@ -160,12 +170,28 @@
             this.groupBox_Shift.Controls.Add(this.label_Description);
             this.groupBox_Shift.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_Shift.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox_Shift.Location = new System.Drawing.Point(28, 102);
+            this.groupBox_Shift.Location = new System.Drawing.Point(8, 97);
             this.groupBox_Shift.Name = "groupBox_Shift";
             this.groupBox_Shift.Size = new System.Drawing.Size(297, 142);
-            this.groupBox_Shift.TabIndex = 13;
+            this.groupBox_Shift.TabIndex = 18;
             this.groupBox_Shift.TabStop = false;
             this.groupBox_Shift.Text = "Datos del Parámetro";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(131, 80);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(122, 20);
+            this.textBox1.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 83);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Valor:";
             // 
             // textBox_Description
             // 
@@ -188,10 +214,10 @@
             this.button_Edit.BackColor = System.Drawing.Color.SteelBlue;
             this.button_Edit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_Edit.ForeColor = System.Drawing.SystemColors.Menu;
-            this.button_Edit.Location = new System.Drawing.Point(140, 275);
+            this.button_Edit.Location = new System.Drawing.Point(120, 270);
             this.button_Edit.Name = "button_Edit";
             this.button_Edit.Size = new System.Drawing.Size(75, 23);
-            this.button_Edit.TabIndex = 15;
+            this.button_Edit.TabIndex = 20;
             this.button_Edit.Text = "Editar";
             this.button_Edit.UseVisualStyleBackColor = false;
             // 
@@ -200,52 +226,24 @@
             this.button_New.BackColor = System.Drawing.Color.SteelBlue;
             this.button_New.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_New.ForeColor = System.Drawing.SystemColors.Menu;
-            this.button_New.Location = new System.Drawing.Point(48, 275);
+            this.button_New.Location = new System.Drawing.Point(28, 270);
             this.button_New.Name = "button_New";
             this.button_New.Size = new System.Drawing.Size(75, 23);
-            this.button_New.TabIndex = 14;
+            this.button_New.TabIndex = 19;
             this.button_New.Text = "Nuevo";
             this.button_New.UseVisualStyleBackColor = false;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(131, 80);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(122, 20);
-            this.textBox1.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 83);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Valor:";
-            // 
-            // Column_Name
-            // 
-            this.Column_Name.HeaderText = "Nombre";
-            this.Column_Name.Name = "Column_Name";
-            // 
-            // Column_Begin
-            // 
-            this.Column_Begin.HeaderText = "Valor";
-            this.Column_Begin.Name = "Column_Begin";
-            // 
-            // Parámetros
+            // Parameters
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(818, 447);
             this.Controls.Add(this.tabContr_List);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.groupBox_Shift);
             this.Controls.Add(this.button_Edit);
             this.Controls.Add(this.button_New);
-            this.Name = "Parámetros";
-            this.Text = "Parámetros";
+            this.Name = "Parameters";
+            this.Size = new System.Drawing.Size(800, 449);
             this.tabContr_List.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -267,6 +265,8 @@
         private System.Windows.Forms.Button button_Search;
         private System.Windows.Forms.Button button_Delete;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Begin;
         private System.Windows.Forms.Button button_Cancel;
         private System.Windows.Forms.GroupBox groupBox_Shift;
         private System.Windows.Forms.TextBox textBox1;
@@ -275,7 +275,5 @@
         private System.Windows.Forms.Label label_Description;
         private System.Windows.Forms.Button button_Edit;
         private System.Windows.Forms.Button button_New;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Begin;
     }
 }

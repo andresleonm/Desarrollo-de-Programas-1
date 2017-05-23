@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class BOM : UserControl
+    public partial class UC_PurchaseOrder : UserControl
     {
-        public BOM()
+        public UC_PurchaseOrder()
         {
             InitializeComponent();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Purchase_Module.PurchaseOrderLine order_line = new Purchase_Module.PurchaseOrderLine();
+            order_line.Show();
         }
     }
 }

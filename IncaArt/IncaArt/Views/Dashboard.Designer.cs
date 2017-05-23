@@ -34,18 +34,31 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.btn_purchase = new System.Windows.Forms.Button();
+            this.purchase_imagelist = new System.Windows.Forms.ImageList(this.components);
+            this.btn_sales = new System.Windows.Forms.Button();
+            this.sales_imagelist = new System.Windows.Forms.ImageList(this.components);
+            this.btn_warehouse = new System.Windows.Forms.Button();
+            this.warehouse_imagelist = new System.Windows.Forms.ImageList(this.components);
+            this.btn_config = new System.Windows.Forms.Button();
+            this.config_imagelist = new System.Windows.Forms.ImageList(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_logo = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.client1 = new WindowsFormsApp1.Views.Client();
+            this.uC_PurchasesMenu1 = new WindowsFormsApp1.Views.UC_PurchasesMenu();
             this.mainDashboard1 = new WindowsFormsApp1.Views.MainDashboard();
+            this.bom1 = new WindowsFormsApp1.Views.BOM();
+            this.workstation1 = new WindowsFormsApp1.Views.Workstation();
+            this.supplier1 = new WindowsFormsApp1.Views.Supplier();
+            this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
+            this.parameters1 = new WindowsFormsApp1.Views.Parameters();
+            this.user = new WindowsFormsApp1.Views.User();
+            this.material = new WindowsFormsApp1.Views.Material();
+            this.worker = new WindowsFormsApp1.Views.Worker();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -63,17 +76,18 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(730, 27);
+            this.panel2.Size = new System.Drawing.Size(951, 27);
             this.panel2.TabIndex = 10;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Minimize_Window_52px;
-            this.pictureBox2.Location = new System.Drawing.Point(679, 3);
+            this.pictureBox2.Location = new System.Drawing.Point(909, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(21, 21);
+            this.pictureBox2.Size = new System.Drawing.Size(21, 27);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
@@ -85,10 +99,11 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Close_Window_52px;
-            this.pictureBox1.Location = new System.Drawing.Point(706, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(930, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(21, 21);
+            this.pictureBox1.Size = new System.Drawing.Size(21, 27);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -100,125 +115,156 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.btn_purchase);
+            this.panel1.Controls.Add(this.btn_sales);
+            this.panel1.Controls.Add(this.btn_warehouse);
+            this.panel1.Controls.Add(this.btn_config);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(158, 452);
+            this.panel1.Size = new System.Drawing.Size(132, 559);
             this.panel1.TabIndex = 11;
             // 
-            // button6
+            // btn_purchase
             // 
-            this.button6.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Image = global::WindowsFormsApp1.Properties.Resources.Shopping_Cart_52px;
-            this.button6.Location = new System.Drawing.Point(0, 171);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(158, 42);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "Compras";
-            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            this.btn_purchase.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_purchase.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_purchase.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btn_purchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_purchase.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_purchase.ForeColor = System.Drawing.Color.White;
+            this.btn_purchase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_purchase.ImageIndex = 1;
+            this.btn_purchase.ImageList = this.purchase_imagelist;
+            this.btn_purchase.Location = new System.Drawing.Point(0, 171);
+            this.btn_purchase.Name = "btn_purchase";
+            this.btn_purchase.Size = new System.Drawing.Size(132, 42);
+            this.btn_purchase.TabIndex = 5;
+            this.btn_purchase.Text = "Compras";
+            this.btn_purchase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_purchase.UseVisualStyleBackColor = false;
+            this.btn_purchase.Click += new System.EventHandler(this.btn_purchase_Click);
+            this.btn_purchase.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
             // 
-            // button5
+            // purchase_imagelist
             // 
-            this.button5.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Image = global::WindowsFormsApp1.Properties.Resources.Sales_Performance_64px;
-            this.button5.Location = new System.Drawing.Point(0, 129);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(158, 42);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Ventas";
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            this.purchase_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("purchase_imagelist.ImageStream")));
+            this.purchase_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.purchase_imagelist.Images.SetKeyName(0, "blue_Shopping Cart_20px.png");
+            this.purchase_imagelist.Images.SetKeyName(1, "Shopping Cart_52px.png");
             // 
-            // button4
+            // btn_sales
             // 
-            this.button4.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Image = global::WindowsFormsApp1.Properties.Resources.Hangar_64px;
-            this.button4.Location = new System.Drawing.Point(0, 87);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(158, 42);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Almacén";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            this.btn_sales.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_sales.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_sales.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btn_sales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_sales.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_sales.ForeColor = System.Drawing.Color.White;
+            this.btn_sales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_sales.ImageIndex = 1;
+            this.btn_sales.ImageList = this.sales_imagelist;
+            this.btn_sales.Location = new System.Drawing.Point(0, 129);
+            this.btn_sales.Name = "btn_sales";
+            this.btn_sales.Size = new System.Drawing.Size(132, 42);
+            this.btn_sales.TabIndex = 4;
+            this.btn_sales.Text = "Ventas";
+            this.btn_sales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_sales.UseVisualStyleBackColor = false;
+            this.btn_sales.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
             // 
-            // button3
+            // sales_imagelist
             // 
-            this.button3.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.ImageIndex = 1;
-            this.button3.ImageList = this.imageList1;
-            this.button3.Location = new System.Drawing.Point(0, 45);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(158, 42);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Mantenimiento";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            this.sales_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("sales_imagelist.ImageStream")));
+            this.sales_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.sales_imagelist.Images.SetKeyName(0, "blue_Sales Performance_20px.png");
+            this.sales_imagelist.Images.SetKeyName(1, "Sales Performance_64px.png");
             // 
-            // imageList1
+            // btn_warehouse
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "Blue_Settings_40px.png");
-            this.imageList1.Images.SetKeyName(1, "Settings_48px.png");
+            this.btn_warehouse.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_warehouse.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_warehouse.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btn_warehouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_warehouse.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_warehouse.ForeColor = System.Drawing.Color.White;
+            this.btn_warehouse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_warehouse.ImageIndex = 1;
+            this.btn_warehouse.ImageList = this.warehouse_imagelist;
+            this.btn_warehouse.Location = new System.Drawing.Point(0, 87);
+            this.btn_warehouse.Name = "btn_warehouse";
+            this.btn_warehouse.Size = new System.Drawing.Size(132, 42);
+            this.btn_warehouse.TabIndex = 3;
+            this.btn_warehouse.Text = "Almacén";
+            this.btn_warehouse.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_warehouse.UseVisualStyleBackColor = false;
+            this.btn_warehouse.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            // 
+            // warehouse_imagelist
+            // 
+            this.warehouse_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("warehouse_imagelist.ImageStream")));
+            this.warehouse_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.warehouse_imagelist.Images.SetKeyName(0, "blue_Move by Trolley_20px.png");
+            this.warehouse_imagelist.Images.SetKeyName(1, "Hangar_64px.png");
+            // 
+            // btn_config
+            // 
+            this.btn_config.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_config.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_config.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btn_config.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_config.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_config.ForeColor = System.Drawing.Color.White;
+            this.btn_config.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_config.ImageIndex = 1;
+            this.btn_config.ImageList = this.config_imagelist;
+            this.btn_config.Location = new System.Drawing.Point(0, 45);
+            this.btn_config.Name = "btn_config";
+            this.btn_config.Size = new System.Drawing.Size(132, 42);
+            this.btn_config.TabIndex = 2;
+            this.btn_config.Text = "Mantenimiento";
+            this.btn_config.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_config.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_config.UseVisualStyleBackColor = false;
+            this.btn_config.Click += new System.EventHandler(this.btn_config_Click);
+            this.btn_config.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            // 
+            // config_imagelist
+            // 
+            this.config_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("config_imagelist.ImageStream")));
+            this.config_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.config_imagelist.Images.SetKeyName(0, "Blue_Settings_40px.png");
+            this.config_imagelist.Images.SetKeyName(1, "Settings_48px.png");
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.btn_logo);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(158, 45);
+            this.panel3.Size = new System.Drawing.Size(132, 45);
             this.panel3.TabIndex = 0;
             // 
-            // button1
+            // btn_logo
             // 
-            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::WindowsFormsApp1.Properties.Resources.American_Indians_Seminole_50px;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(158, 45);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "INCA ART";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_logo.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_logo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_logo.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_logo.FlatAppearance.BorderSize = 0;
+            this.btn_logo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_logo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_logo.ForeColor = System.Drawing.Color.White;
+            this.btn_logo.Image = global::WindowsFormsApp1.Properties.Resources.American_Indians_Seminole_white_40px;
+            this.btn_logo.Location = new System.Drawing.Point(0, 0);
+            this.btn_logo.Name = "btn_logo";
+            this.btn_logo.Size = new System.Drawing.Size(132, 45);
+            this.btn_logo.TabIndex = 6;
+            this.btn_logo.Text = "INCA ART";
+            this.btn_logo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_logo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_logo.UseVisualStyleBackColor = false;
+            this.btn_logo.Click += new System.EventHandler(this.btn_logo_Click);
             // 
             // panel4
             // 
@@ -227,16 +273,17 @@
             this.panel4.Controls.Add(this.metroLabel1);
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(158, 27);
+            this.panel4.Location = new System.Drawing.Point(132, 27);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(572, 45);
+            this.panel4.Size = new System.Drawing.Size(819, 45);
             this.panel4.TabIndex = 12;
             // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.CustomBackground = true;
-            this.metroLabel2.Location = new System.Drawing.Point(427, 23);
+            this.metroLabel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.metroLabel2.Location = new System.Drawing.Point(609, 0);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(101, 19);
             this.metroLabel2.TabIndex = 2;
@@ -246,7 +293,8 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.CustomBackground = true;
-            this.metroLabel1.Location = new System.Drawing.Point(438, 5);
+            this.metroLabel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.metroLabel1.Location = new System.Drawing.Point(710, 0);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(78, 19);
             this.metroLabel1.TabIndex = 1;
@@ -254,36 +302,126 @@
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox3.Image = global::WindowsFormsApp1.Properties.Resources.Circled_User_Male_40px;
-            this.pictureBox3.Location = new System.Drawing.Point(534, 5);
+            this.pictureBox3.Location = new System.Drawing.Point(788, 0);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(31, 34);
+            this.pictureBox3.Size = new System.Drawing.Size(31, 45);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
+            // 
+            // client1
+            // 
+            this.client1.Location = new System.Drawing.Point(132, 72);
+            this.client1.Name = "client1";
+            this.client1.Size = new System.Drawing.Size(898, 532);
+            this.client1.TabIndex = 18;
+            // 
+            // uC_PurchasesMenu1
+            // 
+            this.uC_PurchasesMenu1.BackColor = System.Drawing.SystemColors.Control;
+            this.uC_PurchasesMenu1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.uC_PurchasesMenu1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_PurchasesMenu1.Location = new System.Drawing.Point(132, 72);
+            this.uC_PurchasesMenu1.Name = "uC_PurchasesMenu1";
+            this.uC_PurchasesMenu1.Size = new System.Drawing.Size(819, 514);
+            this.uC_PurchasesMenu1.TabIndex = 16;
             // 
             // mainDashboard1
             // 
             this.mainDashboard1.BackColor = System.Drawing.Color.White;
             this.mainDashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainDashboard1.Location = new System.Drawing.Point(158, 72);
+            this.mainDashboard1.Location = new System.Drawing.Point(132, 72);
             this.mainDashboard1.Name = "mainDashboard1";
-            this.mainDashboard1.Size = new System.Drawing.Size(572, 407);
+            this.mainDashboard1.Size = new System.Drawing.Size(819, 514);
             this.mainDashboard1.TabIndex = 13;
+            // 
+            // bom1
+            // 
+            this.bom1.Location = new System.Drawing.Point(132, 72);
+            this.bom1.Name = "bom1";
+            this.bom1.Size = new System.Drawing.Size(882, 489);
+            this.bom1.TabIndex = 19;
+            // 
+            // workstation1
+            // 
+            this.workstation1.Location = new System.Drawing.Point(132, 72);
+            this.workstation1.Name = "workstation1";
+            this.workstation1.Size = new System.Drawing.Size(850, 489);
+            this.workstation1.TabIndex = 20;
+            // 
+            // supplier1
+            // 
+            this.supplier1.Location = new System.Drawing.Point(132, 72);
+            this.supplier1.Name = "supplier1";
+            this.supplier1.Size = new System.Drawing.Size(1064, 652);
+            this.supplier1.TabIndex = 18;
+            // 
+            // warehouse1
+            // 
+            this.warehouse1.Location = new System.Drawing.Point(132, 72);
+            this.warehouse1.Name = "warehouse1";
+            this.warehouse1.Size = new System.Drawing.Size(1023, 531);
+            this.warehouse1.TabIndex = 20;
+            // 
+            // parameters1
+            // 
+            this.parameters1.Location = new System.Drawing.Point(132, 72);
+            this.parameters1.Name = "parameters1";
+            this.parameters1.Size = new System.Drawing.Size(819, 514);
+            this.parameters1.TabIndex = 22;
+            this.parameters1.Visible = false;
+            // 
+            // user
+            // 
+            this.user.Location = new System.Drawing.Point(132, 72);
+            this.user.Name = "user";
+            this.user.Size = new System.Drawing.Size(876, 367);
+            this.user.TabIndex = 24;
+            this.user.Visible = false;
+            // 
+            // material
+            // 
+            this.material.Location = new System.Drawing.Point(132, 72);
+            this.material.Name = "material";
+            this.material.Size = new System.Drawing.Size(792, 406);
+            this.material.TabIndex = 25;
+            this.material.Visible = false;
+            // 
+            // worker
+            // 
+            this.worker.Location = new System.Drawing.Point(132, 72);
+            this.worker.Name = "worker";
+            this.worker.Size = new System.Drawing.Size(999, 443);
+            this.worker.TabIndex = 26;
+            this.worker.Visible = false;
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(730, 479);
+            this.ClientSize = new System.Drawing.Size(951, 586);
+            this.Controls.Add(this.parameters1);
+            this.Controls.Add(this.warehouse1);
+            this.Controls.Add(this.supplier1);
+            this.Controls.Add(this.workstation1);
+            this.Controls.Add(this.bom1);
+            this.Controls.Add(this.client1);
+            this.Controls.Add(this.uC_PurchasesMenu1);
             this.Controls.Add(this.mainDashboard1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.user);
+            this.Controls.Add(this.material);
+            this.Controls.Add(this.worker);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.IsMdiContainer = true;
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -301,17 +439,30 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_purchase;
+        private System.Windows.Forms.Button btn_sales;
+        private System.Windows.Forms.Button btn_warehouse;
+        private System.Windows.Forms.Button btn_config;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_logo;
         private System.Windows.Forms.Panel panel4;
         private MainDashboard mainDashboard1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ImageList config_imagelist;
+        private System.Windows.Forms.ImageList warehouse_imagelist;
+        private System.Windows.Forms.ImageList sales_imagelist;
+        private System.Windows.Forms.ImageList purchase_imagelist;
+        private UC_PurchasesMenu uC_PurchasesMenu1;
+        private Supplier supplier1;
+        private Warehouse warehouse1;
+        private Client client1;
+        private BOM bom1;
+        private Workstation workstation1;
+        private Parameters parameters1;
+        private User user;
+        private Material material;
+        private Worker worker;
     }
 }
