@@ -12,6 +12,45 @@ namespace WindowsFormsApp1.Models
         int quantity;
         double price;
 
+        public Material Material
+        {
+            get
+            {
+                return material;
+            }
+
+            set
+            {
+                material = value;
+            }
+        }
+
+        public int Quantity
+        {
+            get
+            {
+                return quantity;
+            }
+
+            set
+            {
+                quantity = value;
+            }
+        }
+
+        public double Price
+        {
+            get
+            {
+                return price;
+            }
+
+            set
+            {
+                price = value;
+            }
+        }
+
         public PurchaseOrderLine(Material material, int quantity, double price)
         {            
             this.material = material;

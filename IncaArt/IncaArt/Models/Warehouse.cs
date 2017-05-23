@@ -9,7 +9,7 @@ namespace WindowsFormsApp1.Models
     public class Warehouse
     {
         int id;
-        int name;
+        string name;
         int max_capacity;
         int actual_capacity;
         int id_material;
@@ -28,7 +28,7 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public int Name
+        public string Name
         {
             get
             {
