@@ -51,6 +51,9 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_new = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textbox_username = new System.Windows.Forms.TextBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.combobox_profile = new System.Windows.Forms.ComboBox();
@@ -68,6 +71,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -92,7 +97,7 @@
             this.tabControl1.Location = new System.Drawing.Point(334, 16);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(583, 334);
+            this.tabControl1.Size = new System.Drawing.Size(628, 422);
             this.tabControl1.TabIndex = 21;
             // 
             // tabPage1
@@ -102,7 +107,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(575, 308);
+            this.tabPage1.Size = new System.Drawing.Size(620, 396);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado de Usuarios";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -116,7 +121,7 @@
             this.user_paternal,
             this.user_maternal,
             this.user_profile});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 123);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 182);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(543, 174);
             this.dataGridView1.TabIndex = 1;
@@ -150,6 +155,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.combobox_profile_s);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.textbox_maternal_s);
@@ -163,7 +170,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox3.Location = new System.Drawing.Point(3, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(543, 114);
+            this.groupBox3.Size = new System.Drawing.Size(611, 160);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos";
@@ -171,7 +178,7 @@
             // combobox_profile_s
             // 
             this.combobox_profile_s.FormattingEnabled = true;
-            this.combobox_profile_s.Location = new System.Drawing.Point(316, 42);
+            this.combobox_profile_s.Location = new System.Drawing.Point(273, 44);
             this.combobox_profile_s.Name = "combobox_profile_s";
             this.combobox_profile_s.Size = new System.Drawing.Size(100, 21);
             this.combobox_profile_s.TabIndex = 24;
@@ -187,7 +194,7 @@
             // 
             // textbox_maternal_s
             // 
-            this.textbox_maternal_s.Location = new System.Drawing.Point(316, 14);
+            this.textbox_maternal_s.Location = new System.Drawing.Point(98, 73);
             this.textbox_maternal_s.Name = "textbox_maternal_s";
             this.textbox_maternal_s.Size = new System.Drawing.Size(100, 20);
             this.textbox_maternal_s.TabIndex = 22;
@@ -195,7 +202,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(221, 18);
+            this.label11.Location = new System.Drawing.Point(3, 77);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(89, 13);
             this.label11.TabIndex = 21;
@@ -206,7 +213,7 @@
             this.btn_delete.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_delete.Enabled = false;
             this.btn_delete.ForeColor = System.Drawing.Color.White;
-            this.btn_delete.Location = new System.Drawing.Point(454, 83);
+            this.btn_delete.Location = new System.Drawing.Point(492, 117);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(83, 25);
             this.btn_delete.TabIndex = 20;
@@ -217,7 +224,7 @@
             // 
             this.btn_search.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_search.ForeColor = System.Drawing.Color.White;
-            this.btn_search.Location = new System.Drawing.Point(365, 83);
+            this.btn_search.Location = new System.Drawing.Point(403, 117);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(83, 25);
             this.btn_search.TabIndex = 19;
@@ -283,6 +290,9 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.textbox_username);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.combobox_profile);
@@ -307,6 +317,31 @@
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Usuario";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 204);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(46, 13);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "Usuario:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 16);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(41, 13);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "label13";
+            // 
+            // textbox_username
+            // 
+            this.textbox_username.Location = new System.Drawing.Point(110, 201);
+            this.textbox_username.Name = "textbox_username";
+            this.textbox_username.Size = new System.Drawing.Size(100, 20);
+            this.textbox_username.TabIndex = 20;
             // 
             // radioButton2
             // 
@@ -333,7 +368,7 @@
             // combobox_profile
             // 
             this.combobox_profile.FormattingEnabled = true;
-            this.combobox_profile.Location = new System.Drawing.Point(110, 232);
+            this.combobox_profile.Location = new System.Drawing.Point(110, 254);
             this.combobox_profile.Name = "combobox_profile";
             this.combobox_profile.Size = new System.Drawing.Size(100, 21);
             this.combobox_profile.TabIndex = 17;
@@ -341,7 +376,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 235);
+            this.label10.Location = new System.Drawing.Point(6, 257);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 13);
             this.label10.TabIndex = 16;
@@ -349,7 +384,7 @@
             // 
             // textbox_password
             // 
-            this.textbox_password.Location = new System.Drawing.Point(110, 205);
+            this.textbox_password.Location = new System.Drawing.Point(110, 227);
             this.textbox_password.Name = "textbox_password";
             this.textbox_password.PasswordChar = '*';
             this.textbox_password.Size = new System.Drawing.Size(100, 20);
@@ -393,7 +428,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 205);
+            this.label7.Location = new System.Drawing.Point(6, 227);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(64, 13);
             this.label7.TabIndex = 6;
@@ -453,6 +488,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(221, 17);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(46, 13);
+            this.label15.TabIndex = 23;
+            this.label15.Text = "Usuario:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(273, 14);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 25;
+            // 
             // UC_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -463,7 +514,7 @@
             this.Controls.Add(this.btn_new);
             this.Controls.Add(this.groupBox1);
             this.Name = "UC_User";
-            this.Size = new System.Drawing.Size(933, 371);
+            this.Size = new System.Drawing.Size(1086, 476);
             this.Load += new System.EventHandler(this.User_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -518,5 +569,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textbox_username;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

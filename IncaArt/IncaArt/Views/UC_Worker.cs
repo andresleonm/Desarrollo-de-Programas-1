@@ -95,7 +95,7 @@ namespace WindowsFormsApp1.Views
             person.Paternal_last_name = "Castillo";
             person.Maternal_last_name = "Perez";
             person.Dni = "12345678";
-
+            
             worker.Id = last_id;
             last_id++;
             worker.Person = person;

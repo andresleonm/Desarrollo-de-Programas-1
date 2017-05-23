@@ -391,7 +391,7 @@
             // 
             this.user.Location = new System.Drawing.Point(132, 72);
             this.user.Name = "user";
-            this.user.Size = new System.Drawing.Size(933, 371);
+            this.user.Size = new System.Drawing.Size(1017, 439);
             this.user.TabIndex = 24;
             this.user.Visible = false;
             // 
