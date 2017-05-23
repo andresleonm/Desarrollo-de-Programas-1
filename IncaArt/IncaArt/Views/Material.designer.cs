@@ -38,10 +38,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.material_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.material_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.max_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_min = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_edit = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_new = new System.Windows.Forms.Button();
@@ -54,6 +50,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.material_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.material_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.material_unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.max_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_min = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -163,6 +164,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.material_id,
             this.material_name,
+            this.material_unit,
             this.max_stock,
             this.stock_min});
             this.dataGridView1.Location = new System.Drawing.Point(6, 123);
@@ -171,26 +173,6 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // material_id
-            // 
-            this.material_id.HeaderText = "ID";
-            this.material_id.Name = "material_id";
-            // 
-            // material_name
-            // 
-            this.material_name.HeaderText = "Nombre";
-            this.material_name.Name = "material_name";
-            // 
-            // max_stock
-            // 
-            this.max_stock.HeaderText = "Stock Máximo";
-            this.max_stock.Name = "max_stock";
-            // 
-            // stock_min
-            // 
-            this.stock_min.HeaderText = "Stock mínimo";
-            this.stock_min.Name = "stock_min";
             // 
             // btn_edit
             // 
@@ -312,6 +294,31 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
+            // material_id
+            // 
+            this.material_id.HeaderText = "ID";
+            this.material_id.Name = "material_id";
+            // 
+            // material_name
+            // 
+            this.material_name.HeaderText = "Nombre";
+            this.material_name.Name = "material_name";
+            // 
+            // material_unit
+            // 
+            this.material_unit.HeaderText = "Unidad";
+            this.material_unit.Name = "material_unit";
+            // 
+            // max_stock
+            // 
+            this.max_stock.HeaderText = "Stock Máximo";
+            this.max_stock.Name = "max_stock";
+            // 
+            // stock_min
+            // 
+            this.stock_min.HeaderText = "Stock mínimo";
+            this.stock_min.Name = "stock_min";
+            // 
             // Material
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -347,10 +354,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn material_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn material_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn max_stock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stock_min;
         internal System.Windows.Forms.Button btn_edit;
         internal System.Windows.Forms.Button btn_cancel;
         internal System.Windows.Forms.Button btn_new;
@@ -363,5 +366,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn material_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn material_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn material_unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn max_stock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stock_min;
     }
 }
