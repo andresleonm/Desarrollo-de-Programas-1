@@ -113,6 +113,7 @@
             // btn_delete
             // 
             this.btn_delete.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_delete.Enabled = false;
             this.btn_delete.ForeColor = System.Drawing.Color.White;
             this.btn_delete.Location = new System.Drawing.Point(361, 83);
             this.btn_delete.Name = "btn_delete";
@@ -315,6 +316,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Material";
             this.Size = new System.Drawing.Size(792, 406);
+            this.Load += new System.EventHandler(this.Material_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

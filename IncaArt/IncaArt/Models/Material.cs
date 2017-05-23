@@ -28,7 +28,7 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public Unit Unit
+        public UnitOfMeasure Unit
         {
             get
             {
