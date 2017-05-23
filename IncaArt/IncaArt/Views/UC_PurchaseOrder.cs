@@ -12,6 +12,8 @@ namespace WindowsFormsApp1.Views
 {
     public partial class UC_PurchaseOrder : UserControl
     {
+        Boolean editing;
+        Models.PurchaseOrder editing_order;
         public UC_PurchaseOrder()
         {
             InitializeComponent();
@@ -29,10 +31,19 @@ namespace WindowsFormsApp1.Views
             {
                 MessageBox.Show("Debe agregar por lo menos una línea a la orden de compra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+            {
+                if (editing)
+                {
+                    //((Dashboard)Parent.Parent).purchase_order_list.Where(Order => Order.Id == editing_order.Id).ElementAt(0) = editing_order;
+                }
+            }
         }
 
         public void fillForm(Models.PurchaseOrder order)
         {
+            editing = true;
+            editing_order = order;
             txt_id.Text = order.Id.ToString();
             date_order_date.Text = order.Creation_date.ToString();
             combo_warehouse.Text = order.Warehouse.Name;
@@ -50,6 +61,7 @@ namespace WindowsFormsApp1.Views
                 grid_line[4] = line.Price.ToString();
                 grid_line[5] = (line.Quantity * line.Price).ToString();
             }
+            
 
         }
 
