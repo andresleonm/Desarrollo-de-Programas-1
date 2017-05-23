@@ -56,14 +56,9 @@ namespace WindowsFormsApp1.Views.Purchase_Module
                 {
                     Models.Material material = new Models.Material();
                     int quantity = int.Parse(this.txt_quantity.Text);
-                    line = new Models.PurchaseOrderLine(material,quantity,material.Cost*quantity);
+                    line = new Models.PurchaseOrderLine(material, 1, 1);
                 }
             }
-        }
-
-        public void returnOderLine(ref Models.PurchaseOrderLine order_line)
-        {
-
         }
 
         private void comboBox1_TextUpdate(object sender, EventArgs e)

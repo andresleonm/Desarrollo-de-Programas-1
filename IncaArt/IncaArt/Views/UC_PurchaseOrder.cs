@@ -14,7 +14,6 @@ namespace WindowsFormsApp1.Views
     {
         Boolean editing;
         Models.PurchaseOrder editing_order;
-        Models.PurchaseOrderLine order_line = new Models.PurchaseOrderLine();
         public UC_PurchaseOrder()
         {
             InitializeComponent();
@@ -22,7 +21,8 @@ namespace WindowsFormsApp1.Views
 
         private void button4_Click(object sender, EventArgs e)
         {
-                       
+            Purchase_Module.PurchaseOrderLine order_line = new Purchase_Module.PurchaseOrderLine();
+            order_line.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)

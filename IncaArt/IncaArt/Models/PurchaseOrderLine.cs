@@ -51,10 +51,6 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public PurchaseOrderLine()
-        {
-
-        }
         public PurchaseOrderLine(Material material, int quantity, double price)
         {            
             this.material = material;
