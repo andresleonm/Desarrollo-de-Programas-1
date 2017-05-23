@@ -62,6 +62,7 @@
             this.profile = new WindowsFormsApp1.Views.Profile();
             this.product = new WindowsFormsApp1.Views.Product();
             this.shift = new WindowsFormsApp1.Views.Shift();
+            this.uC_SalesMain1 = new WindowsFormsApp1.Views.UC_SalesMain();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -175,6 +176,7 @@
             this.btn_sales.Text = "Ventas";
             this.btn_sales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_sales.UseVisualStyleBackColor = false;
+            this.btn_sales.Click += new System.EventHandler(this.btn_sales_Click);
             this.btn_sales.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
             // 
             // sales_imagelist
@@ -421,12 +423,22 @@
             this.shift.Size = new System.Drawing.Size(819, 447);
             this.shift.TabIndex = 28;
             // 
+            // uC_SalesMain1
+            // 
+            this.uC_SalesMain1.BackColor = System.Drawing.Color.White;
+            this.uC_SalesMain1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_SalesMain1.Location = new System.Drawing.Point(132, 72);
+            this.uC_SalesMain1.Name = "uC_SalesMain1";
+            this.uC_SalesMain1.Size = new System.Drawing.Size(819, 514);
+            this.uC_SalesMain1.TabIndex = 31;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(951, 586);
+            this.Controls.Add(this.uC_SalesMain1);
             this.Controls.Add(this.parameters1);
             this.Controls.Add(this.warehouse1);
             this.Controls.Add(this.supplier1);
@@ -494,5 +506,6 @@
         private Profile profile;
         private Product product;
         private Shift shift;
+        private UC_SalesMain uC_SalesMain1;
     }
 }

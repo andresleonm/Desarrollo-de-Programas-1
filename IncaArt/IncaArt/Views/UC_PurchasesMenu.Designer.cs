@@ -112,6 +112,13 @@
             this.uC_PurchaseOrderGrid1.Size = new System.Drawing.Size(593, 485);
             this.uC_PurchaseOrderGrid1.TabIndex = 0;
             // 
+            // uC_PurchaseOrderGrid1
+            // 
+            this.uC_PurchaseOrderGrid1.Location = new System.Drawing.Point(0, 0);
+            this.uC_PurchaseOrderGrid1.Name = "uC_PurchaseOrderGrid1";
+            this.uC_PurchaseOrderGrid1.Size = new System.Drawing.Size(593, 485);
+            this.uC_PurchaseOrderGrid1.TabIndex = 0;
+            // 
             // UC_PurchasesMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

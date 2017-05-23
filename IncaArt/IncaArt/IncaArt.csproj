@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\Material.cs" />
+    <Compile Include="Models\Parameters.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\PurchaseOrder.cs" />
     <Compile Include="Models\PurchaseOrderLine.cs" />

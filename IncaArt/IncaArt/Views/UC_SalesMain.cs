@@ -16,5 +16,10 @@ namespace WindowsFormsApp1.Views
         {
             InitializeComponent();
         }
+
+        private void register_sale_Click(object sender, EventArgs e)
+        {
+            uC_SalesOrder1.Visible = true;
+        }
     }
 }
