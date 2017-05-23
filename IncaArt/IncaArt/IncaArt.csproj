@@ -59,7 +59,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Currency.cs" />
+    <Compile Include="Models\Material.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\PurchaseOrder.cs" />
+    <Compile Include="Models\PurchaseOrderLine.cs" />
+    <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\UnitOfMeasure.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
