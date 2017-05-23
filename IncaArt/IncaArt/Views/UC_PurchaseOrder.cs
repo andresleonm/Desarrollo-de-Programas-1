@@ -35,7 +35,8 @@ namespace WindowsFormsApp1.Views
             {
                 if (editing)
                 {
-                    //((Dashboard)Parent.Parent).purchase_order_list.Where(Order => Order.Id == editing_order.Id).ElementAt(0) = editing_order;
+                    int index = ((Dashboard)(this.FindForm().FindForm())).purchase_order_list.FindIndex(or => or.Id == editing_order.Id);
+                    ((Dashboard)(this.FindForm().FindForm())).purchase_order_list[index] = editing_order;
                 }
             }
         }

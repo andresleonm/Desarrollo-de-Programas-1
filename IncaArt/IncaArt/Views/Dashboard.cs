@@ -132,7 +132,7 @@ namespace WindowsFormsApp1.Views
         private void btn_purchase_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            uC_PurchasesMenu1.Visible = true;
+            uC_PurchasesMenu1.Visible = true;                        
         }
 
         private void btn_client_Click(object sender, EventArgs e)
