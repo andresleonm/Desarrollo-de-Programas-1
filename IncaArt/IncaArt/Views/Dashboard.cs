@@ -17,7 +17,8 @@ namespace WindowsFormsApp1.Views
         {
             InitializeComponent();
             hide_UserControls();
-            mainDashboard1.Visible = true;            
+            mainDashboard1.Visible = true;
+            this.mainDashboard1.Controls.Find("metroTile11", false)[0].Click += btn_supplier_Click;    
         }
 
         private void menuButton_Click(object sender, MouseEventArgs e)
@@ -78,6 +79,13 @@ namespace WindowsFormsApp1.Views
                 ReleaseCapture();
                 SendMessage(Handle, 0xA1, 0x2, 0);
             }
+        }
+
+
+        private void btn_supplier_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            supplier1.Visible = true;
         }
 
         private void btn_config_Click(object sender, EventArgs e)

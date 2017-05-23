@@ -39,6 +39,7 @@
             this.metroTile3 = new MetroFramework.Controls.MetroTile();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroTile9 = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
             // metroTile10
@@ -206,13 +207,30 @@
             this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.metroTile1.UseTileImage = true;            
+            this.metroTile1.UseTileImage = true;
+            // 
+            // metroTile9
+            // 
+            this.metroTile9.BackColor = System.Drawing.Color.RoyalBlue;
+            this.metroTile9.CustomBackground = true;
+            this.metroTile9.Location = new System.Drawing.Point(689, 304);
+            this.metroTile9.Name = "metroTile9";
+            this.metroTile9.Size = new System.Drawing.Size(177, 81);
+            this.metroTile9.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTile9.TabIndex = 36;
+            this.metroTile9.Text = "Parámetros";
+            this.metroTile9.TileImage = global::WindowsFormsApp1.Properties.Resources.Documents_40px;
+            this.metroTile9.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroTile9.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.metroTile9.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.metroTile9.UseTileImage = true;
             // 
             // MainDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.Controls.Add(this.metroTile9);
             this.Controls.Add(this.metroTile10);
             this.Controls.Add(this.metroTile11);
             this.Controls.Add(this.metroTile12);
@@ -226,6 +244,7 @@
             this.Controls.Add(this.metroTile1);
             this.Name = "MainDashboard";
             this.Size = new System.Drawing.Size(894, 502);
+            this.Load += new System.EventHandler(this.MainDashboard_Load);
             this.ResumeLayout(false);
 
         }
@@ -242,5 +261,6 @@
         private MetroFramework.Controls.MetroTile metroTile3;
         private MetroFramework.Controls.MetroTile metroTile2;
         private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile metroTile9;
     }
 }
