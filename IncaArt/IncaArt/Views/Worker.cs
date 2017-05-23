@@ -21,13 +21,55 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
         }
 
+        private bool validate_data(String name, String paternal_last_name, String maternal_last_name, String dni, String birthday,char gender,String address,String phone,String email,String shift)
+        {
+            bool isCorrect = true;
+            int max, min;
+            String message = "";
+            if (name == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar el nombre del material.\n";
+            }
+            if (unit == "")
+            {
+                isCorrect = false;
+                message += "- Debe seleccionar la unidad del material. \n";
+            }
+
+            if (max_stock == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar stock máximo. \n";
+            }
+
+            if (min_stock == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar stock mínimo. \n";
+            }
+
+            if (max_stock != "" && min_stock != "")
+            {
+                max = int.Parse(max_stock);
+                min = int.Parse(min_stock);
+                if (max < min)
+                {
+                    isCorrect = false;
+                    message += "-El stock mínimo debe ser menor al stock máximo\n";
+                }
+            }
+
+            MessageBox.Show(message, "Error al registrar un nuevo almacén", MessageBoxButtons.OK);
+            return isCorrect;
+        }
+
         private void Worker_Load(object sender, EventArgs e)
         {
             worker_list = new List<Models.Worker>();
             shift_list = new List<string>();
 
             last_id = worker_list.Count();
-
             shift_list.Add("Turno 1");
             shift_list.Add("Turno 2");
             shift_list.Add("Turno 3");

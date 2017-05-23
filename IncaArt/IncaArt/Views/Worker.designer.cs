@@ -54,7 +54,6 @@
             this.textbox_email = new System.Windows.Forms.TextBox();
             this.textbox_address = new System.Windows.Forms.TextBox();
             this.combobox_shift = new System.Windows.Forms.ComboBox();
-            this.textbox_cellphone = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -71,7 +70,6 @@
             this.textbox_paternal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textbox_name = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_new = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
@@ -268,7 +266,6 @@
             this.groupBox1.Controls.Add(this.textbox_email);
             this.groupBox1.Controls.Add(this.textbox_address);
             this.groupBox1.Controls.Add(this.combobox_shift);
-            this.groupBox1.Controls.Add(this.textbox_cellphone);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label3);
@@ -285,7 +282,6 @@
             this.groupBox1.Controls.Add(this.textbox_paternal);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textbox_name);
-            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox1.Location = new System.Drawing.Point(12, 16);
             this.groupBox1.Name = "groupBox1";
@@ -318,7 +314,7 @@
             // 
             // textbox_email
             // 
-            this.textbox_email.Location = new System.Drawing.Point(129, 245);
+            this.textbox_email.Location = new System.Drawing.Point(129, 225);
             this.textbox_email.Name = "textbox_email";
             this.textbox_email.Size = new System.Drawing.Size(155, 20);
             this.textbox_email.TabIndex = 5;
@@ -333,17 +329,10 @@
             // combobox_shift
             // 
             this.combobox_shift.FormattingEnabled = true;
-            this.combobox_shift.Location = new System.Drawing.Point(129, 273);
+            this.combobox_shift.Location = new System.Drawing.Point(129, 253);
             this.combobox_shift.Name = "combobox_shift";
             this.combobox_shift.Size = new System.Drawing.Size(155, 21);
             this.combobox_shift.TabIndex = 5;
-            // 
-            // textbox_cellphone
-            // 
-            this.textbox_cellphone.Location = new System.Drawing.Point(129, 219);
-            this.textbox_cellphone.Name = "textbox_cellphone";
-            this.textbox_cellphone.Size = new System.Drawing.Size(155, 20);
-            this.textbox_cellphone.TabIndex = 4;
             // 
             // label2
             // 
@@ -358,7 +347,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label11.Location = new System.Drawing.Point(10, 276);
+            this.label11.Location = new System.Drawing.Point(10, 256);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(38, 13);
             this.label11.TabIndex = 2;
@@ -441,7 +430,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 247);
+            this.label10.Location = new System.Drawing.Point(6, 227);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 13);
             this.label10.TabIndex = 2;
@@ -478,15 +467,6 @@
             this.textbox_name.Name = "textbox_name";
             this.textbox_name.Size = new System.Drawing.Size(155, 20);
             this.textbox_name.TabIndex = 6;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 222);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(42, 13);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Celular:";
             // 
             // btn_cancel
             // 
@@ -563,7 +543,6 @@
         private System.Windows.Forms.TextBox textbox_email;
         private System.Windows.Forms.TextBox textbox_address;
         private System.Windows.Forms.ComboBox combobox_shift;
-        private System.Windows.Forms.TextBox textbox_cellphone;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
@@ -580,7 +559,6 @@
         private System.Windows.Forms.TextBox textbox_paternal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textbox_name;
-        private System.Windows.Forms.Label label9;
         internal System.Windows.Forms.Button btn_cancel;
         internal System.Windows.Forms.Button btn_new;
     }
