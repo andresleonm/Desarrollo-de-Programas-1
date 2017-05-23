@@ -109,6 +109,7 @@
             this.btn_search.TabIndex = 27;
             this.btn_search.Text = "Buscar";
             this.btn_search.UseVisualStyleBackColor = false;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // btn_delete
             // 
@@ -121,6 +122,7 @@
             this.btn_delete.TabIndex = 26;
             this.btn_delete.Text = "Eliminar";
             this.btn_delete.UseVisualStyleBackColor = false;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // combobox_unit_s
             // 
@@ -167,6 +169,8 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(447, 228);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // material_id
             // 
@@ -198,6 +202,7 @@
             this.btn_edit.TabIndex = 35;
             this.btn_edit.Text = "Editar";
             this.btn_edit.UseVisualStyleBackColor = false;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
             // btn_cancel
             // 
@@ -209,6 +214,7 @@
             this.btn_cancel.TabIndex = 34;
             this.btn_cancel.Text = "Cancelar";
             this.btn_cancel.UseVisualStyleBackColor = false;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // btn_new
             // 
@@ -220,6 +226,7 @@
             this.btn_new.TabIndex = 33;
             this.btn_new.Text = "Nuevo";
             this.btn_new.UseVisualStyleBackColor = false;
+            this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
             // 
             // groupBox1
             // 

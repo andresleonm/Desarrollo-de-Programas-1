@@ -33,6 +33,10 @@ namespace WindowsFormsApp1.Models
             this.birthday = birthday;
         }
 
+        public Person()
+        {
+        }
+
         public int Id
         {
             get
