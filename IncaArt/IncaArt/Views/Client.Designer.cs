@@ -464,6 +464,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Client";
             this.Size = new System.Drawing.Size(898, 532);
+            this.Load += new System.EventHandler(this.Client_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
