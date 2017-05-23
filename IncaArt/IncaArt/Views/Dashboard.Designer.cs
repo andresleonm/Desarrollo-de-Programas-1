@@ -48,21 +48,21 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.uC_SalesMain1 = new WindowsFormsApp1.Views.UC_SalesMain();
+            this.parameters1 = new WindowsFormsApp1.Views.Parameters();
+            this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
+            this.supplier1 = new WindowsFormsApp1.Views.Supplier();
+            this.workstation1 = new WindowsFormsApp1.Views.Workstation();
+            this.bom1 = new WindowsFormsApp1.Views.BOM();
             this.client1 = new WindowsFormsApp1.Views.Client();
             this.uC_PurchasesMenu1 = new WindowsFormsApp1.Views.UC_PurchasesMenu();
             this.mainDashboard1 = new WindowsFormsApp1.Views.MainDashboard();
-            this.bom1 = new WindowsFormsApp1.Views.BOM();
-            this.workstation1 = new WindowsFormsApp1.Views.Workstation();
-            this.supplier1 = new WindowsFormsApp1.Views.Supplier();
-            this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
-            this.parameters1 = new WindowsFormsApp1.Views.Parameters();
             this.user = new WindowsFormsApp1.Views.User();
             this.material = new WindowsFormsApp1.Views.Material();
             this.worker = new WindowsFormsApp1.Views.Worker();
             this.profile = new WindowsFormsApp1.Views.Profile();
-            this.product = new WindowsFormsApp1.Views.Product();
             this.shift = new WindowsFormsApp1.Views.Shift();
-            this.uC_SalesMain1 = new WindowsFormsApp1.Views.UC_SalesMain();
+            this.product = new WindowsFormsApp1.Views.Product();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -316,6 +316,51 @@
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             // 
+            // uC_SalesMain1
+            // 
+            this.uC_SalesMain1.BackColor = System.Drawing.Color.White;
+            this.uC_SalesMain1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_SalesMain1.Location = new System.Drawing.Point(132, 72);
+            this.uC_SalesMain1.Name = "uC_SalesMain1";
+            this.uC_SalesMain1.Size = new System.Drawing.Size(819, 514);
+            this.uC_SalesMain1.TabIndex = 31;
+            // 
+            // parameters1
+            // 
+            this.parameters1.Location = new System.Drawing.Point(132, 72);
+            this.parameters1.Name = "parameters1";
+            this.parameters1.Size = new System.Drawing.Size(819, 514);
+            this.parameters1.TabIndex = 22;
+            this.parameters1.Visible = false;
+            // 
+            // warehouse1
+            // 
+            this.warehouse1.Location = new System.Drawing.Point(132, 72);
+            this.warehouse1.Name = "warehouse1";
+            this.warehouse1.Size = new System.Drawing.Size(1023, 531);
+            this.warehouse1.TabIndex = 20;
+            // 
+            // supplier1
+            // 
+            this.supplier1.Location = new System.Drawing.Point(132, 72);
+            this.supplier1.Name = "supplier1";
+            this.supplier1.Size = new System.Drawing.Size(1064, 652);
+            this.supplier1.TabIndex = 18;
+            // 
+            // workstation1
+            // 
+            this.workstation1.Location = new System.Drawing.Point(132, 72);
+            this.workstation1.Name = "workstation1";
+            this.workstation1.Size = new System.Drawing.Size(850, 489);
+            this.workstation1.TabIndex = 20;
+            // 
+            // bom1
+            // 
+            this.bom1.Location = new System.Drawing.Point(132, 72);
+            this.bom1.Name = "bom1";
+            this.bom1.Size = new System.Drawing.Size(882, 489);
+            this.bom1.TabIndex = 19;
+            // 
             // client1
             // 
             this.client1.Location = new System.Drawing.Point(132, 72);
@@ -342,42 +387,6 @@
             this.mainDashboard1.Size = new System.Drawing.Size(819, 514);
             this.mainDashboard1.TabIndex = 13;
             // 
-            // bom1
-            // 
-            this.bom1.Location = new System.Drawing.Point(132, 72);
-            this.bom1.Name = "bom1";
-            this.bom1.Size = new System.Drawing.Size(882, 489);
-            this.bom1.TabIndex = 19;
-            // 
-            // workstation1
-            // 
-            this.workstation1.Location = new System.Drawing.Point(132, 72);
-            this.workstation1.Name = "workstation1";
-            this.workstation1.Size = new System.Drawing.Size(850, 489);
-            this.workstation1.TabIndex = 20;
-            // 
-            // supplier1
-            // 
-            this.supplier1.Location = new System.Drawing.Point(132, 72);
-            this.supplier1.Name = "supplier1";
-            this.supplier1.Size = new System.Drawing.Size(1064, 652);
-            this.supplier1.TabIndex = 18;
-            // 
-            // warehouse1
-            // 
-            this.warehouse1.Location = new System.Drawing.Point(132, 72);
-            this.warehouse1.Name = "warehouse1";
-            this.warehouse1.Size = new System.Drawing.Size(1023, 531);
-            this.warehouse1.TabIndex = 20;
-            // 
-            // parameters1
-            // 
-            this.parameters1.Location = new System.Drawing.Point(132, 72);
-            this.parameters1.Name = "parameters1";
-            this.parameters1.Size = new System.Drawing.Size(819, 514);
-            this.parameters1.TabIndex = 22;
-            this.parameters1.Visible = false;
-            // 
             // user
             // 
             this.user.Location = new System.Drawing.Point(132, 72);
@@ -398,7 +407,7 @@
             // 
             this.worker.Location = new System.Drawing.Point(132, 72);
             this.worker.Name = "worker";
-            this.worker.Size = new System.Drawing.Size(999, 443);
+            this.worker.Size = new System.Drawing.Size(1107, 462);
             this.worker.TabIndex = 26;
             this.worker.Visible = false;
             // 
@@ -409,13 +418,6 @@
             this.profile.Size = new System.Drawing.Size(873, 442);
             this.profile.TabIndex = 27;
             // 
-            // product
-            // 
-            this.product.Location = new System.Drawing.Point(132, 72);
-            this.product.Name = "product";
-            this.product.Size = new System.Drawing.Size(915, 549);
-            this.product.TabIndex = 29;
-            // 
             // shift
             // 
             this.shift.Location = new System.Drawing.Point(132, 72);
@@ -423,14 +425,12 @@
             this.shift.Size = new System.Drawing.Size(819, 447);
             this.shift.TabIndex = 28;
             // 
-            // uC_SalesMain1
+            // product
             // 
-            this.uC_SalesMain1.BackColor = System.Drawing.Color.White;
-            this.uC_SalesMain1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_SalesMain1.Location = new System.Drawing.Point(132, 72);
-            this.uC_SalesMain1.Name = "uC_SalesMain1";
-            this.uC_SalesMain1.Size = new System.Drawing.Size(819, 514);
-            this.uC_SalesMain1.TabIndex = 31;
+            this.product.Location = new System.Drawing.Point(132, 72);
+            this.product.Name = "product";
+            this.product.Size = new System.Drawing.Size(915, 549);
+            this.product.TabIndex = 29;
             // 
             // Dashboard
             // 

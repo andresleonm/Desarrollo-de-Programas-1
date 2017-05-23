@@ -228,7 +228,7 @@ namespace WindowsFormsApp1.Views
                         }
                         else
                         {
-                            radioButton2.Checked = false;
+                            radioButton2.Checked = true;
                         }
                         textbox_address.Text = item.Person.Address;
                         textbox_phone.Text = item.Person.Phone;
