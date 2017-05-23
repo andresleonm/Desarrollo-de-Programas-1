@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Views
 {
-    partial class Shift
+    partial class UC_Shift
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

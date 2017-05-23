@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class Product : UserControl
+    public partial class UC_Product : UserControl
     {
-        public Product()
+        public UC_Product()
         {
             InitializeComponent();
         }

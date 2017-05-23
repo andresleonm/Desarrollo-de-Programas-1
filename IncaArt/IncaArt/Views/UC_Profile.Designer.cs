@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Views
 {
-    partial class Profile
+    partial class UC_Profile
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

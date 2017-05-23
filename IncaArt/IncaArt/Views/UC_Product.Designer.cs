@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Views
 {
-    partial class Product
+    partial class UC_Product
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

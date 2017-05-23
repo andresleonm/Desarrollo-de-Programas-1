@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class Profile : UserControl
+    public partial class UC_Profile : UserControl
     {
-        public Profile()
+        public UC_Profile()
         {
             InitializeComponent();
         }

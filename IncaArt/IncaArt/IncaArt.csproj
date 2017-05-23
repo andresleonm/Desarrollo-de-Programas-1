@@ -130,17 +130,17 @@
     <Compile Include="Views\Parameters.Designer.cs">
       <DependentUpon>Parameters.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Product.cs">
+    <Compile Include="Views\UC_Product.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Product.Designer.cs">
-      <DependentUpon>Product.cs</DependentUpon>
+    <Compile Include="Views\UC_Product.Designer.cs">
+      <DependentUpon>UC_Product.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Profile.cs">
+    <Compile Include="Views\UC_Profile.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Profile.Designer.cs">
-      <DependentUpon>Profile.cs</DependentUpon>
+    <Compile Include="Views\UC_Profile.Designer.cs">
+      <DependentUpon>UC_Profile.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Sales_Module\SalesOrder.cs">
       <SubType>Form</SubType>
@@ -154,11 +154,11 @@
     <Compile Include="Views\Sales_Module\SalesOrderLine.Designer.cs">
       <DependentUpon>SalesOrderLine.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Shift.cs">
+    <Compile Include="Views\UC_Shift.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Shift.Designer.cs">
-      <DependentUpon>Shift.cs</DependentUpon>
+    <Compile Include="Views\UC_Shift.Designer.cs">
+      <DependentUpon>UC_Shift.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Supplier.cs">
       <SubType>UserControl</SubType>
@@ -318,17 +318,17 @@
     <EmbeddedResource Include="Views\Parameters.resx">
       <DependentUpon>Parameters.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Product.resx">
-      <DependentUpon>Product.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UC_Product.resx">
+      <DependentUpon>UC_Product.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Profile.resx">
-      <DependentUpon>Profile.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UC_Profile.resx">
+      <DependentUpon>UC_Profile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\SalesOrderLine.resx">
       <DependentUpon>SalesOrderLine.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Shift.resx">
-      <DependentUpon>Shift.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UC_Shift.resx">
+      <DependentUpon>UC_Shift.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Supplier.resx">
       <DependentUpon>Supplier.cs</DependentUpon>

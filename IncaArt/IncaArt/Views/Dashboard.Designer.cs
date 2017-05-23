@@ -60,9 +60,9 @@
             this.mainDashboard1 = new WindowsFormsApp1.Views.MainDashboard();
             this.user = new WindowsFormsApp1.Views.UC_User();
             this.worker = new WindowsFormsApp1.Views.UC_Worker();
-            this.profile = new WindowsFormsApp1.Views.Profile();
-            this.shift = new WindowsFormsApp1.Views.Shift();
-            this.product = new WindowsFormsApp1.Views.Product();
+            this.profile = new WindowsFormsApp1.Views.UC_Profile();
+            this.shift = new WindowsFormsApp1.Views.UC_Shift();
+            this.product = new WindowsFormsApp1.Views.UC_Product();
             this.material = new WindowsFormsApp1.Views.UC_Material();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -513,9 +513,9 @@
         private Parameters parameters1;
         private UC_User user;
         private UC_Worker worker;
-        private Profile profile;
-        private Product product;
-        private Shift shift;
+        private UC_Profile profile;
+        private UC_Product product;
+        private UC_Shift shift;
         private UC_SalesMain uC_SalesMain1;
         private UC_WarehouseMovement uc_warehousemovement;
         private UC_Material material;
