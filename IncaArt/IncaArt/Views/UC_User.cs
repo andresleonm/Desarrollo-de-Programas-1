@@ -21,47 +21,64 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
         }
 
-        private bool validate_data(String name, String paternal_last_name, String maternal_last_name,char gender, String phone, String email, String password,String profile)
+        private bool validate_data(String name, String paternal_last_name, String maternal_last_name,char gender, String phone, String email, String username,String password,String profile)
         {
             bool isCorrect = true;
             String message = "";
             if (name == "")
             {
                 isCorrect = false;
-                message += "- Debe ingresar el nombre del trabajador.\n";
+                message += "- Debe ingresar el nombre del usuario.\n";
             }
             if (paternal_last_name == "")
             {
                 isCorrect = false;
-                message += "- Debe ingresar el apellido paterno del trabajador.\n";
+                message += "- Debe ingresar el apellido paterno del usuario.\n";
             }
             if (maternal_last_name == "")
             {
                 isCorrect = false;
-                message += "- Debe ingresar el apellido materno del trabajador.\n";
+                message += "- Debe ingresar el apellido materno del usuario.\n";
             }
            
             if (gender == ' ')
             {
                 isCorrect = false;
-                message += "- Debe ingresar el género del trabajador.\n";
+                message += "- Debe ingresar el género del usuario.\n";
             }
             
             if (phone == "")
             {
                 isCorrect = false;
-                message += "- Debe ingresar el teléfono del trabajador.\n";
+                message += "- Debe ingresar el teléfono del usuario.\n";
             }
             if (email == "")
             {
                 isCorrect = false;
-                message += "- Debe ingresar el email del trabajador.\n";
+                message += "- Debe ingresar el email del usuario.\n";
             }
-            
+
+            if (username == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar el nombre de usuario del usuario.\n";
+            }
+
+            if (password == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar la contraseña del usuario.\n";
+            }
+
+            if (profile == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar el perfil del usuario.\n";
+            }
 
             if (!isCorrect)
             {
-                MessageBox.Show(message, "Error al registrar trabajador", MessageBoxButtons.OK);
+                MessageBox.Show(message, "Error al registrar usuario", MessageBoxButtons.OK);
             }
 
             return isCorrect;
