@@ -161,6 +161,7 @@
             this.button_New.TabIndex = 12;
             this.button_New.Text = "Nuevo";
             this.button_New.UseVisualStyleBackColor = false;
+            this.button_New.Click += new System.EventHandler(this.button_New_Click);
             // 
             // tabContr_List
             // 
