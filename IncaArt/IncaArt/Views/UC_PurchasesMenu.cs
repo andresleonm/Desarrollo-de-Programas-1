@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.Views
     {
         public UC_PurchasesMenu()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void btn_purchases_orders_Click(object sender, EventArgs e)

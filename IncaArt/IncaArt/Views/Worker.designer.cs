@@ -43,7 +43,7 @@
             this.textbox_dni_s = new System.Windows.Forms.TextBox();
             this.btn_delete = new System.Windows.Forms.Button();
             this.textbox_paternal_s = new System.Windows.Forms.TextBox();
-            this.txtbox_name_s = new System.Windows.Forms.TextBox();
+            this.textbox_name_s = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -115,6 +115,8 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(551, 260);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // worker_id
             // 
@@ -149,7 +151,7 @@
             this.groupBox5.Controls.Add(this.textbox_dni_s);
             this.groupBox5.Controls.Add(this.btn_delete);
             this.groupBox5.Controls.Add(this.textbox_paternal_s);
-            this.groupBox5.Controls.Add(this.txtbox_name_s);
+            this.groupBox5.Controls.Add(this.textbox_name_s);
             this.groupBox5.Controls.Add(this.label14);
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.label12);
@@ -198,6 +200,7 @@
             // btn_delete
             // 
             this.btn_delete.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_delete.Enabled = false;
             this.btn_delete.ForeColor = System.Drawing.Color.White;
             this.btn_delete.Location = new System.Drawing.Point(462, 86);
             this.btn_delete.Name = "btn_delete";
@@ -213,12 +216,12 @@
             this.textbox_paternal_s.Size = new System.Drawing.Size(100, 20);
             this.textbox_paternal_s.TabIndex = 4;
             // 
-            // txtbox_name_s
+            // textbox_name_s
             // 
-            this.txtbox_name_s.Location = new System.Drawing.Point(101, 19);
-            this.txtbox_name_s.Name = "txtbox_name_s";
-            this.txtbox_name_s.Size = new System.Drawing.Size(100, 20);
-            this.txtbox_name_s.TabIndex = 3;
+            this.textbox_name_s.Location = new System.Drawing.Point(101, 19);
+            this.textbox_name_s.Name = "textbox_name_s";
+            this.textbox_name_s.Size = new System.Drawing.Size(100, 20);
+            this.textbox_name_s.TabIndex = 3;
             // 
             // label14
             // 
@@ -495,6 +498,7 @@
             this.btn_cancel.TabIndex = 31;
             this.btn_cancel.Text = "Cancelar";
             this.btn_cancel.UseVisualStyleBackColor = false;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // btn_new
             // 
@@ -506,6 +510,7 @@
             this.btn_new.TabIndex = 30;
             this.btn_new.Text = "Nuevo";
             this.btn_new.UseVisualStyleBackColor = false;
+            this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
             // 
             // Worker
             // 
@@ -518,6 +523,7 @@
             this.Controls.Add(this.btn_new);
             this.Name = "Worker";
             this.Size = new System.Drawing.Size(999, 443);
+            this.Load += new System.EventHandler(this.Worker_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -546,7 +552,7 @@
         private System.Windows.Forms.TextBox textbox_dni_s;
         internal System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.TextBox textbox_paternal_s;
-        private System.Windows.Forms.TextBox txtbox_name_s;
+        private System.Windows.Forms.TextBox textbox_name_s;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;

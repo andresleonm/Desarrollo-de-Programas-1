@@ -22,5 +22,13 @@ namespace WindowsFormsApp1.Views
             Purchase_Module.PurchaseOrderLine order_line = new Purchase_Module.PurchaseOrderLine();
             order_line.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(grid_order_lines.Rows.Count == 0)
+            {
+                MessageBox.Show("Debe agregar por lo menos una línea a la orden de compra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

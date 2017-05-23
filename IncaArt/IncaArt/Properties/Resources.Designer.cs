@@ -103,6 +103,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Cash_Register_40px {
+            get {
+                object obj = ResourceManager.GetObject("Cash Register_40px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Circled_User_Male_40px {
             get {
                 object obj = ResourceManager.GetObject("Circled User Male_40px", resourceCulture);
@@ -253,9 +263,29 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Shopping_Cart_40px {
+            get {
+                object obj = ResourceManager.GetObject("Shopping Cart_40px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Shopping_Cart_52px {
             get {
                 object obj = ResourceManager.GetObject("Shopping Cart_52px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Undo_40px {
+            get {
+                object obj = ResourceManager.GetObject("Undo_40px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

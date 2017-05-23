@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_purchases_orders = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btn_purchases_orders = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.uC_PurchaseOrderGrid1 = new WindowsFormsApp1.Views.UC_PurchaseOrderGrid();
             this.uC_PurchaseOrder1 = new WindowsFormsApp1.Views.UC_PurchaseOrder();
+            this.uC_PurchaseOrderGrid1 = new WindowsFormsApp1.Views.UC_PurchaseOrderGrid();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -47,25 +47,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(774, 37);
             this.panel1.TabIndex = 0;
-            // 
-            // btn_purchases_orders
-            // 
-            this.btn_purchases_orders.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btn_purchases_orders.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_purchases_orders.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btn_purchases_orders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_purchases_orders.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_purchases_orders.ForeColor = System.Drawing.Color.White;
-            this.btn_purchases_orders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_purchases_orders.ImageIndex = 1;
-            this.btn_purchases_orders.Location = new System.Drawing.Point(0, 0);
-            this.btn_purchases_orders.Name = "btn_purchases_orders";
-            this.btn_purchases_orders.Size = new System.Drawing.Size(140, 37);
-            this.btn_purchases_orders.TabIndex = 3;
-            this.btn_purchases_orders.Text = "Órdenes de Compra";
-            this.btn_purchases_orders.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_purchases_orders.UseVisualStyleBackColor = false;
-            this.btn_purchases_orders.Click += new System.EventHandler(this.btn_purchases_orders_Click);
             // 
             // button1
             // 
@@ -86,22 +67,34 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btn_purchases_orders
+            // 
+            this.btn_purchases_orders.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_purchases_orders.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_purchases_orders.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn_purchases_orders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_purchases_orders.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_purchases_orders.ForeColor = System.Drawing.Color.White;
+            this.btn_purchases_orders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_purchases_orders.ImageIndex = 1;
+            this.btn_purchases_orders.Location = new System.Drawing.Point(0, 0);
+            this.btn_purchases_orders.Name = "btn_purchases_orders";
+            this.btn_purchases_orders.Size = new System.Drawing.Size(140, 37);
+            this.btn_purchases_orders.TabIndex = 3;
+            this.btn_purchases_orders.Text = "Órdenes de Compra";
+            this.btn_purchases_orders.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_purchases_orders.UseVisualStyleBackColor = false;
+            this.btn_purchases_orders.Click += new System.EventHandler(this.btn_purchases_orders_Click);
+            // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.uC_PurchaseOrder1);
             this.panel2.Controls.Add(this.uC_PurchaseOrderGrid1);
+            this.panel2.Controls.Add(this.uC_PurchaseOrder1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 37);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(774, 485);
             this.panel2.TabIndex = 1;
-            // 
-            // uC_PurchaseOrderGrid1
-            // 
-            this.uC_PurchaseOrderGrid1.Location = new System.Drawing.Point(0, 0);
-            this.uC_PurchaseOrderGrid1.Name = "uC_PurchaseOrderGrid1";
-            this.uC_PurchaseOrderGrid1.Size = new System.Drawing.Size(593, 485);
-            this.uC_PurchaseOrderGrid1.TabIndex = 0;
             // 
             // uC_PurchaseOrder1
             // 
@@ -110,6 +103,21 @@
             this.uC_PurchaseOrder1.Name = "uC_PurchaseOrder1";
             this.uC_PurchaseOrder1.Size = new System.Drawing.Size(771, 482);
             this.uC_PurchaseOrder1.TabIndex = 1;
+            this.uC_PurchaseOrder1.Visible = false;
+            // 
+            // uC_PurchaseOrderGrid1
+            // 
+            this.uC_PurchaseOrderGrid1.Location = new System.Drawing.Point(0, 0);
+            this.uC_PurchaseOrderGrid1.Name = "uC_PurchaseOrderGrid1";
+            this.uC_PurchaseOrderGrid1.Size = new System.Drawing.Size(593, 485);
+            this.uC_PurchaseOrderGrid1.TabIndex = 0;
+            // 
+            // uC_PurchaseOrderGrid1
+            // 
+            this.uC_PurchaseOrderGrid1.Location = new System.Drawing.Point(0, 0);
+            this.uC_PurchaseOrderGrid1.Name = "uC_PurchaseOrderGrid1";
+            this.uC_PurchaseOrderGrid1.Size = new System.Drawing.Size(593, 485);
+            this.uC_PurchaseOrderGrid1.TabIndex = 0;
             // 
             // UC_PurchasesMenu
             // 

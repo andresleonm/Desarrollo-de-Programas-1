@@ -8,25 +8,26 @@ namespace WindowsFormsApp1.Models
 {
     public class User
     {
-        public int id;
-        public int profile_id;
-        public string name;
-        public string middle_name;
-        public string last_name;
-        public string phone;
-        public string email;
-        public string gender;
-        public string address;
-        public string password;
+        int id;
+        String name;
+        String paternal_last_name;
+        String maternal_last_name;
+        String phone;
+        String email;
+        char gender;
+        String address;
+        String profile;
+        String password;
+        int status;
 
-        public User( int id,int profile_id,string name,string middle_name,
-                        string last_name, string phone,string email,string gender,string address)
+        public User( int id,string profile_id,string name,string middle_name,
+                        string last_name, string phone,string email,char gender,string address)
         {
             this.id = id;
-            this.profile_id = profile_id;
+            this.profile = profile_id;
             this.name = name;
-            this.middle_name = middle_name;
-            this.last_name = last_name;
+            this.maternal_last_name = middle_name;
+            this.paternal_last_name = last_name;
             this.phone = phone;
             this.email = email;
             this.gender = gender;
@@ -38,13 +39,162 @@ namespace WindowsFormsApp1.Models
         {
             this.id = id;
             this.name = name;
-            this.middle_name = middle_name;
-            this.last_name = last_name;
+            this.maternal_last_name = middle_name;
+            this.paternal_last_name = last_name;
+        }
+
+        public User()
+        {
+
         }
 
         public void print()
         {
-            Console.WriteLine(name + " " + middle_name);
+            Console.WriteLine(name + " " + paternal_last_name);
+        }
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+            }
+        }
+
+        public string Paternal_last_name
+        {
+            get
+            {
+                return paternal_last_name;
+            }
+
+            set
+            {
+                paternal_last_name = value;
+            }
+        }
+
+        public string Maternal_last_name
+        {
+            get
+            {
+                return maternal_last_name;
+            }
+
+            set
+            {
+                maternal_last_name = value;
+            }
+        }
+
+        public string Phone
+        {
+            get
+            {
+                return phone;
+            }
+
+            set
+            {
+                phone = value;
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return email;
+            }
+
+            set
+            {
+                email = value;
+            }
+        }
+
+        public char Gender
+        {
+            get
+            {
+                return gender;
+            }
+
+            set
+            {
+                gender = value;
+            }
+        }
+
+        public string Address
+        {
+            get
+            {
+                return address;
+            }
+
+            set
+            {
+                address = value;
+            }
+        }
+
+        public string Profile
+        {
+            get
+            {
+                return profile;
+            }
+
+            set
+            {
+                profile = value;
+            }
+        }
+
+        public string Password
+        {
+            get
+            {
+                return password;
+            }
+
+            set
+            {
+                password = value;
+            }
+        }
+
+        public int Status
+        {
+            get
+            {
+                return status;
+            }
+
+            set
+            {
+                status = value;
+            }
+
         }
     }
 }

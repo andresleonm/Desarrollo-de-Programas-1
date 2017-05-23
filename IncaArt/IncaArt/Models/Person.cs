@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class Person
+    public class Person
     {
         int id;
         string dni;
@@ -31,6 +31,10 @@ namespace WindowsFormsApp1.Models
             this.gender = gender;
             this.address = address;
             this.birthday = birthday;
+        }
+
+        public Person()
+        {
         }
 
         public int Id

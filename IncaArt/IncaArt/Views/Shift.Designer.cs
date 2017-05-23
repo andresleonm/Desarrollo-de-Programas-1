@@ -2,15 +2,15 @@
 {
     partial class Shift
     {
-        /// <summary>
-        /// Required designer variable.
+        /// <summary> 
+        /// Variable del diseñador necesaria.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
+        /// <summary> 
+        /// Limpiar los recursos que se estén usando.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +20,11 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Código generado por el Diseñador de componentes
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// <summary> 
+        /// Método necesario para admitir el Diseñador. No se puede modificar
+        /// el contenido de este método con el editor de código.
         /// </summary>
         private void InitializeComponent()
         {
@@ -66,10 +66,10 @@
             this.groupBox_Shift.Controls.Add(this.label_Description);
             this.groupBox_Shift.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_Shift.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox_Shift.Location = new System.Drawing.Point(70, 93);
+            this.groupBox_Shift.Location = new System.Drawing.Point(24, 41);
             this.groupBox_Shift.Name = "groupBox_Shift";
             this.groupBox_Shift.Size = new System.Drawing.Size(297, 222);
-            this.groupBox_Shift.TabIndex = 2;
+            this.groupBox_Shift.TabIndex = 3;
             this.groupBox_Shift.TabStop = false;
             this.groupBox_Shift.Text = "Datos de turno";
             // 
@@ -131,10 +131,10 @@
             // 
             this.button_Cancel.BackColor = System.Drawing.Color.SteelBlue;
             this.button_Cancel.ForeColor = System.Drawing.SystemColors.Window;
-            this.button_Cancel.Location = new System.Drawing.Point(268, 352);
+            this.button_Cancel.Location = new System.Drawing.Point(223, 306);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.button_Cancel.TabIndex = 11;
+            this.button_Cancel.TabIndex = 14;
             this.button_Cancel.Text = "Cancelar";
             this.button_Cancel.UseVisualStyleBackColor = false;
             // 
@@ -143,10 +143,10 @@
             this.button_Edit.BackColor = System.Drawing.Color.SteelBlue;
             this.button_Edit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_Edit.ForeColor = System.Drawing.SystemColors.Menu;
-            this.button_Edit.Location = new System.Drawing.Point(177, 352);
+            this.button_Edit.Location = new System.Drawing.Point(132, 306);
             this.button_Edit.Name = "button_Edit";
             this.button_Edit.Size = new System.Drawing.Size(75, 23);
-            this.button_Edit.TabIndex = 10;
+            this.button_Edit.TabIndex = 13;
             this.button_Edit.Text = "Editar";
             this.button_Edit.UseVisualStyleBackColor = false;
             // 
@@ -155,21 +155,22 @@
             this.button_New.BackColor = System.Drawing.Color.SteelBlue;
             this.button_New.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_New.ForeColor = System.Drawing.SystemColors.Menu;
-            this.button_New.Location = new System.Drawing.Point(85, 352);
+            this.button_New.Location = new System.Drawing.Point(40, 306);
             this.button_New.Name = "button_New";
             this.button_New.Size = new System.Drawing.Size(75, 23);
-            this.button_New.TabIndex = 9;
+            this.button_New.TabIndex = 12;
             this.button_New.Text = "Nuevo";
             this.button_New.UseVisualStyleBackColor = false;
+            this.button_New.Click += new System.EventHandler(this.button_New_Click);
             // 
             // tabContr_List
             // 
             this.tabContr_List.Controls.Add(this.tabPage1);
-            this.tabContr_List.Location = new System.Drawing.Point(423, 57);
+            this.tabContr_List.Location = new System.Drawing.Point(345, 31);
             this.tabContr_List.Name = "tabContr_List";
             this.tabContr_List.SelectedIndex = 0;
             this.tabContr_List.Size = new System.Drawing.Size(447, 389);
-            this.tabContr_List.TabIndex = 12;
+            this.tabContr_List.TabIndex = 15;
             // 
             // tabPage1
             // 
@@ -270,15 +271,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(891, 549);
             this.Controls.Add(this.tabContr_List);
             this.Controls.Add(this.button_Cancel);
-            this.Controls.Add(this.groupBox_Shift);
             this.Controls.Add(this.button_Edit);
             this.Controls.Add(this.button_New);
+            this.Controls.Add(this.groupBox_Shift);
             this.Name = "Shift";
-            this.Text = "Turno de trabajo";
+            this.Size = new System.Drawing.Size(819, 447);
             this.groupBox_Shift.ResumeLayout(false);
             this.groupBox_Shift.PerformLayout();
             this.tabContr_List.ResumeLayout(false);

@@ -73,8 +73,19 @@
     <Compile Include="DataService\GenericResult.cs" />
     <Compile Include="DataService\Parameter.cs" />
     <Compile Include="DataService\Row.cs" />
+    <Compile Include="Models\ProductMovement.cs" />
+    <Compile Include="Models\MaterialMovement.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Currency.cs" />
+    <Compile Include="Models\Material.cs" />
+    <Compile Include="Models\Parameters.cs" />
+    <Compile Include="Models\PurchaseOrder.cs" />
+    <Compile Include="Models\PurchaseOrderLine.cs" />
+    <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\UnitOfMeasure.cs" />
+    <Compile Include="Models\Warehouse.cs" />
+    <Compile Include="Models\Worker.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -117,13 +128,13 @@
       <DependentUpon>Parameters.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Product.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\Product.Designer.cs">
       <DependentUpon>Product.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Profile.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\Profile.Designer.cs">
       <DependentUpon>Profile.cs</DependentUpon>
@@ -141,7 +152,7 @@
       <DependentUpon>SalesOrderLine.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Shift.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\Shift.Designer.cs">
       <DependentUpon>Shift.cs</DependentUpon>
@@ -169,6 +180,42 @@
     </Compile>
     <Compile Include="Views\UC_PurchasesMenu.Designer.cs">
       <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_SalesMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_SalesMain.Designer.cs">
+      <DependentUpon>UC_SalesMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_SalesOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_SalesOrder.Designer.cs">
+      <DependentUpon>UC_SalesOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_SalesOrderLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_SalesOrderLine.Designer.cs">
+      <DependentUpon>UC_SalesOrderLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_WarehouseMovement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_WarehouseMovement.Designer.cs">
+      <DependentUpon>UC_WarehouseMovement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_WarehouseMovementP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_WarehouseMovementP.Designer.cs">
+      <DependentUpon>UC_WarehouseMovementP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_WarehouseMovementM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_WarehouseMovementM.Designer.cs">
+      <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\User.cs">
       <SubType>UserControl</SubType>
@@ -268,6 +315,9 @@
     <EmbeddedResource Include="Views\Profile.resx">
       <DependentUpon>Profile.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales_Module\SalesOrderLine.resx">
+      <DependentUpon>SalesOrderLine.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Shift.resx">
       <DependentUpon>Shift.cs</DependentUpon>
     </EmbeddedResource>
@@ -282,6 +332,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_PurchasesMenu.resx">
       <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_SalesMain.resx">
+      <DependentUpon>UC_SalesMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_SalesOrder.resx">
+      <DependentUpon>UC_SalesOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_SalesOrderLine.resx">
+      <DependentUpon>UC_SalesOrderLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_WarehouseMovement.resx">
+      <DependentUpon>UC_WarehouseMovement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_WarehouseMovementP.resx">
+      <DependentUpon>UC_WarehouseMovementP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_WarehouseMovementM.resx">
+      <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\User.resx">
       <DependentUpon>User.cs</DependentUpon>
@@ -339,6 +407,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\Cash Register_40px.png" />
+    <None Include="Resources\Undo_40px.png" />
+    <None Include="Resources\Shopping Cart_40px.png" />
     <None Include="Resources\American Indians Seminole_70px.png" />
     <Content Include="Resources\American Indians Seminole_white_20px.png" />
     <None Include="Resources\American Indians Seminole_white_40px.png" />

@@ -120,6 +120,8 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(503, 174);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // user_id
             // 
@@ -202,6 +204,7 @@
             // btn_delete
             // 
             this.btn_delete.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_delete.Enabled = false;
             this.btn_delete.ForeColor = System.Drawing.Color.White;
             this.btn_delete.Location = new System.Drawing.Point(414, 83);
             this.btn_delete.Name = "btn_delete";
@@ -263,6 +266,7 @@
             this.btn_cancel.TabIndex = 23;
             this.btn_cancel.Text = "Cancelar";
             this.btn_cancel.UseVisualStyleBackColor = false;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // btn_new
             // 
@@ -274,6 +278,7 @@
             this.btn_new.TabIndex = 22;
             this.btn_new.Text = "Nuevo";
             this.btn_new.UseVisualStyleBackColor = false;
+            this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
             // 
             // groupBox1
             // 
@@ -448,7 +453,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
-            // UC_User
+            // User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -457,8 +462,9 @@
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_new);
             this.Controls.Add(this.groupBox1);
-            this.Name = "UC_User";
+            this.Name = "User";
             this.Size = new System.Drawing.Size(876, 367);
+            this.Load += new System.EventHandler(this.User_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

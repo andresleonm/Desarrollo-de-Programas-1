@@ -40,8 +40,8 @@ namespace WindowsFormsApp1.Controller
             if (result.success)
             {
                 var r = result.data[0];
-                User user = new User(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), r.getColumn(2), r.getColumn(3)
-                                        ,r.getColumn(4), r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8));
+                User user = new User(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2), r.getColumn(3)
+                                        ,r.getColumn(4), r.getColumn(5), r.getColumn(6), r.getColumn(7)[0], r.getColumn(8));
                 return new Result(user, true, "");
             }
             return new Result(null, result.success, result.message);
@@ -51,16 +51,16 @@ namespace WindowsFormsApp1.Controller
         {
             //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
-            parameters.Add(new Parameter("id", user.id.ToString()));
-            parameters.Add(new Parameter("name", user.name));
-            parameters.Add(new Parameter("middlename", user.middle_name));
-            parameters.Add(new Parameter("password", user.password));
-            parameters.Add(new Parameter("lastname", user.last_name));
-            parameters.Add(new Parameter("phone", user.phone));
-            parameters.Add(new Parameter("email", user.email));
-            parameters.Add(new Parameter("address", user.address));
-            parameters.Add(new Parameter("gender", user.gender));
-            parameters.Add(new Parameter("profile", user.profile_id.ToString()));
+            parameters.Add(new Parameter("id", user.Id.ToString()));
+            parameters.Add(new Parameter("name", user.Name));
+            parameters.Add(new Parameter("middlename", user.Maternal_last_name));
+            parameters.Add(new Parameter("password", user.Password));
+            parameters.Add(new Parameter("lastname", user.Paternal_last_name));
+            parameters.Add(new Parameter("phone", user.Phone));
+            parameters.Add(new Parameter("email", user.Email));
+            parameters.Add(new Parameter("address", user.Address));
+            parameters.Add(new Parameter("gender", user.Gender.ToString()));
+            parameters.Add(new Parameter("profile", user.Profile));
             GenericResult result = execute_transaction("insert_user", parameters);
             if (result.success)
             {               
