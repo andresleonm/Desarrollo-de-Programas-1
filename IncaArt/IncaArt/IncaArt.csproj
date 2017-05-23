@@ -63,6 +63,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +236,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
@@ -330,6 +336,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\American Indians Seminole_70px.png" />
+    <Content Include="Resources\American Indians Seminole_white_20px.png" />
+    <None Include="Resources\American Indians Seminole_white_40px.png" />
+    <None Include="Resources\American Indians Seminole_white_50px.png" />
     <None Include="Resources\Circled User Male_40px.png" />
     <None Include="Resources\Hangar_40px.png" />
     <None Include="Resources\Product_40px.png" />
