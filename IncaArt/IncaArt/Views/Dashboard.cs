@@ -15,10 +15,12 @@ namespace WindowsFormsApp1.Views
     public partial class Dashboard : Form
     {
         public List<PurchaseOrder> purchase_order_list = new List<PurchaseOrder>();        
-        public List<Models.Material> material_list;
+        public List<Models.Material> material_list = new List<Material>();
         public List<Models.Supplier> supplier_list;
         public List<Models.Warehouse> warehouse_list;
-        //public List<Models.User> user_list;
+        public List<Models.User> user_list = new List<User>();
+        public List<Models.Worker> worker_list = new List<Worker>();
+        public List<Models.UnitOfMeasure> unit_list = new List<UnitOfMeasure>();
         public Dashboard()
         {
             InitializeComponent();

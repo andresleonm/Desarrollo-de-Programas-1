@@ -87,7 +87,7 @@ namespace WindowsFormsApp1.Views
 
         private void User_Load(object sender, EventArgs e)
         {
-            user_list = new List<Models.User>();
+            user_list = ((Dashboard)Parent).user_list;
             profile_list = new List<string>();
 
             last_id = user_list.Count();
@@ -96,19 +96,6 @@ namespace WindowsFormsApp1.Views
             profile_list.Add("Admin");
             profile_list.Add("Usuario");
 
-            Models.User user = new Models.User();
-
-            user.Id = last_id;
-            user.Name = "Jose";
-            user.Paternal_last_name = "Castillo";
-            user.Maternal_last_name = "Perez";
-            user.Username = "jjj";
-            user.Profile = "Admin";
-            user.Status = 1;
-
-            last_id++;
-
-            user_list.Add(user);
 
             //Cargar Combobox
             foreach (var item in profile_list)
@@ -328,6 +315,11 @@ namespace WindowsFormsApp1.Views
             }
             btn_delete.Enabled = false;
             Load_DataGridView("", "", "", "", "");
+        }
+
+        private void UC_User_Leave(object sender, EventArgs e)
+        {
+            ((Dashboard)Parent).user_list = user_list;
         }
     }
 }

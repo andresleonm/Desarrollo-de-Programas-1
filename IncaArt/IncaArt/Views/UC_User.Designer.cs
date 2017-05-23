@@ -32,6 +32,12 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.user_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_paternal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_maternal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_profile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textbox_username_s = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -67,12 +73,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.user_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.user_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.user_paternal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.user_maternal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.user_username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.user_profile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -129,6 +129,36 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // user_id
+            // 
+            this.user_id.HeaderText = "ID";
+            this.user_id.Name = "user_id";
+            // 
+            // user_name
+            // 
+            this.user_name.HeaderText = "Nombre";
+            this.user_name.Name = "user_name";
+            // 
+            // user_paternal
+            // 
+            this.user_paternal.HeaderText = "Apellido Paterno";
+            this.user_paternal.Name = "user_paternal";
+            // 
+            // user_maternal
+            // 
+            this.user_maternal.HeaderText = "Apellido Materno";
+            this.user_maternal.Name = "user_maternal";
+            // 
+            // user_username
+            // 
+            this.user_username.HeaderText = "Usuario";
+            this.user_username.Name = "user_username";
+            // 
+            // user_profile
+            // 
+            this.user_profile.HeaderText = "Perfil";
+            this.user_profile.Name = "user_profile";
             // 
             // groupBox3
             // 
@@ -473,36 +503,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
-            // user_id
-            // 
-            this.user_id.HeaderText = "ID";
-            this.user_id.Name = "user_id";
-            // 
-            // user_name
-            // 
-            this.user_name.HeaderText = "Nombre";
-            this.user_name.Name = "user_name";
-            // 
-            // user_paternal
-            // 
-            this.user_paternal.HeaderText = "Apellido Paterno";
-            this.user_paternal.Name = "user_paternal";
-            // 
-            // user_maternal
-            // 
-            this.user_maternal.HeaderText = "Apellido Materno";
-            this.user_maternal.Name = "user_maternal";
-            // 
-            // user_username
-            // 
-            this.user_username.HeaderText = "Usuario";
-            this.user_username.Name = "user_username";
-            // 
-            // user_profile
-            // 
-            this.user_profile.HeaderText = "Perfil";
-            this.user_profile.Name = "user_profile";
-            // 
             // UC_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -515,6 +515,7 @@
             this.Name = "UC_User";
             this.Size = new System.Drawing.Size(1033, 428);
             this.Load += new System.EventHandler(this.User_Load);
+            this.Leave += new System.EventHandler(this.UC_User_Leave);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

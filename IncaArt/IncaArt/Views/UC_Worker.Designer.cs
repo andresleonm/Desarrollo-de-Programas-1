@@ -31,6 +31,12 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.worker_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worker_doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worker_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worker_paternal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worker_maternal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worker_shift = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.textbox_maternal_s = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -67,12 +73,6 @@
             this.textbox_name = new System.Windows.Forms.TextBox();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_new = new System.Windows.Forms.Button();
-            this.worker_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worker_doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worker_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worker_paternal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worker_maternal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worker_shift = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -117,6 +117,36 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // worker_id
+            // 
+            this.worker_id.HeaderText = "ID";
+            this.worker_id.Name = "worker_id";
+            // 
+            // worker_doi
+            // 
+            this.worker_doi.HeaderText = "DOI";
+            this.worker_doi.Name = "worker_doi";
+            // 
+            // worker_name
+            // 
+            this.worker_name.HeaderText = "Nombre";
+            this.worker_name.Name = "worker_name";
+            // 
+            // worker_paternal
+            // 
+            this.worker_paternal.HeaderText = "Apellido Paterno";
+            this.worker_paternal.Name = "worker_paternal";
+            // 
+            // worker_maternal
+            // 
+            this.worker_maternal.HeaderText = "Apellido Materno";
+            this.worker_maternal.Name = "worker_maternal";
+            // 
+            // worker_shift
+            // 
+            this.worker_shift.HeaderText = "Turno";
+            this.worker_shift.Name = "worker_shift";
             // 
             // groupBox5
             // 
@@ -472,37 +502,7 @@
             this.btn_new.UseVisualStyleBackColor = false;
             this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
             // 
-            // worker_id
-            // 
-            this.worker_id.HeaderText = "ID";
-            this.worker_id.Name = "worker_id";
-            // 
-            // worker_doi
-            // 
-            this.worker_doi.HeaderText = "DOI";
-            this.worker_doi.Name = "worker_doi";
-            // 
-            // worker_name
-            // 
-            this.worker_name.HeaderText = "Nombre";
-            this.worker_name.Name = "worker_name";
-            // 
-            // worker_paternal
-            // 
-            this.worker_paternal.HeaderText = "Apellido Paterno";
-            this.worker_paternal.Name = "worker_paternal";
-            // 
-            // worker_maternal
-            // 
-            this.worker_maternal.HeaderText = "Apellido Materno";
-            this.worker_maternal.Name = "worker_maternal";
-            // 
-            // worker_shift
-            // 
-            this.worker_shift.HeaderText = "Turno";
-            this.worker_shift.Name = "worker_shift";
-            // 
-            // Worker
+            // UC_Worker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -511,9 +511,10 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_new);
-            this.Name = "Worker";
+            this.Name = "UC_Worker";
             this.Size = new System.Drawing.Size(1107, 462);
             this.Load += new System.EventHandler(this.Worker_Load);
+            this.Leave += new System.EventHandler(this.UC_Worker_Leave);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

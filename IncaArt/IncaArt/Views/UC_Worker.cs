@@ -81,27 +81,13 @@ namespace WindowsFormsApp1.Views
 
         private void Worker_Load(object sender, EventArgs e)
         {
-            worker_list = new List<Models.Worker>();
+            worker_list = ((Dashboard)Parent).worker_list;
             shift_list = new List<string>();
 
             last_id = worker_list.Count();
             shift_list.Add("Turno 1");
             shift_list.Add("Turno 2");
             shift_list.Add("Turno 3");
-
-            Models.Worker worker = new Models.Worker();
-            Models.Person person = new Models.Person();
-            person.Name = "Juan";
-            person.Paternal_last_name = "Castillo";
-            person.Maternal_last_name = "Perez";
-            person.Dni = "12345678";
-            
-            worker.Id = last_id;
-            last_id++;
-            worker.Person = person;
-            worker.Shift = "Turno 1";
-            worker.Status = 1;
-            worker_list.Add(worker);
 
             //Cargar Combobox
             foreach (var item in shift_list)
@@ -313,6 +299,11 @@ namespace WindowsFormsApp1.Views
             }
             btn_delete.Enabled = false;
             Load_DataGridView("", "", "", "");
+        }
+
+        private void UC_Worker_Leave(object sender, EventArgs e)
+        {
+            ((Dashboard)Parent).worker_list = worker_list;
         }
     }
 }

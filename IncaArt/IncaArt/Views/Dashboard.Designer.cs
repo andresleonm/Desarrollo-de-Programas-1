@@ -49,9 +49,9 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.uC_SalesMain1 = new WindowsFormsApp1.Views.UC_SalesMain();
+            this.uc_warehousemovement = new WindowsFormsApp1.Views.UC_WarehouseMovement();
             this.parameters1 = new WindowsFormsApp1.Views.Parameters();
             this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
-            this.uc_warehousemovement = new WindowsFormsApp1.Views.UC_WarehouseMovement();
             this.supplier1 = new WindowsFormsApp1.Views.Supplier();
             this.workstation1 = new WindowsFormsApp1.Views.Workstation();
             this.bom1 = new WindowsFormsApp1.Views.BOM();
@@ -59,11 +59,11 @@
             this.uC_PurchasesMenu1 = new WindowsFormsApp1.Views.UC_PurchasesMenu();
             this.mainDashboard1 = new WindowsFormsApp1.Views.MainDashboard();
             this.user = new WindowsFormsApp1.Views.UC_User();
-            this.material = new WindowsFormsApp1.Views.UC_Material();
             this.worker = new WindowsFormsApp1.Views.UC_Worker();
             this.profile = new WindowsFormsApp1.Views.Profile();
             this.shift = new WindowsFormsApp1.Views.Shift();
             this.product = new WindowsFormsApp1.Views.Product();
+            this.material = new WindowsFormsApp1.Views.UC_Material();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -327,6 +327,15 @@
             this.uC_SalesMain1.Size = new System.Drawing.Size(819, 514);
             this.uC_SalesMain1.TabIndex = 31;
             // 
+            // uc_warehousemovement
+            // 
+            this.uc_warehousemovement.BackColor = System.Drawing.Color.White;
+            this.uc_warehousemovement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_warehousemovement.Location = new System.Drawing.Point(132, 72);
+            this.uc_warehousemovement.Name = "uc_warehousemovement";
+            this.uc_warehousemovement.Size = new System.Drawing.Size(819, 514);
+            this.uc_warehousemovement.TabIndex = 31;
+            // 
             // parameters1
             // 
             this.parameters1.Location = new System.Drawing.Point(132, 72);
@@ -341,15 +350,6 @@
             this.warehouse1.Name = "warehouse1";
             this.warehouse1.Size = new System.Drawing.Size(1023, 531);
             this.warehouse1.TabIndex = 20;
-            // 
-            // uc_warehousemovement
-            // 
-            this.uc_warehousemovement.BackColor = System.Drawing.Color.White;
-            this.uc_warehousemovement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_warehousemovement.Location = new System.Drawing.Point(132, 72);
-            this.uc_warehousemovement.Name = "uc_warehousemovement";
-            this.uc_warehousemovement.Size = new System.Drawing.Size(819, 514);
-            this.uc_warehousemovement.TabIndex = 31;
             // 
             // supplier1
             // 
@@ -406,14 +406,6 @@
             this.user.TabIndex = 24;
             this.user.Visible = false;
             // 
-            // material
-            // 
-            this.material.Location = new System.Drawing.Point(132, 72);
-            this.material.Name = "material";
-            this.material.Size = new System.Drawing.Size(889, 400);
-            this.material.TabIndex = 25;
-            this.material.Visible = false;
-            // 
             // worker
             // 
             this.worker.Location = new System.Drawing.Point(132, 72);
@@ -443,6 +435,13 @@
             this.product.Size = new System.Drawing.Size(915, 549);
             this.product.TabIndex = 29;
             // 
+            // material
+            // 
+            this.material.Location = new System.Drawing.Point(132, 72);
+            this.material.Name = "material";
+            this.material.Size = new System.Drawing.Size(889, 400);
+            this.material.TabIndex = 33;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -463,12 +462,11 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.user);
-            this.Controls.Add(this.material);
             this.Controls.Add(this.worker);
             this.Controls.Add(this.profile);
             this.Controls.Add(this.shift);
             this.Controls.Add(this.product);
-            
+            this.Controls.Add(this.material);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.Name = "Dashboard";
@@ -514,12 +512,12 @@
         private Workstation workstation1;
         private Parameters parameters1;
         private UC_User user;
-        private UC_Material material;
         private UC_Worker worker;
         private Profile profile;
         private Product product;
         private Shift shift;
         private UC_SalesMain uC_SalesMain1;
         private UC_WarehouseMovement uc_warehousemovement;
+        private UC_Material material;
     }
 }

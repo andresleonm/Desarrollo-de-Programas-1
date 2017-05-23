@@ -24,8 +24,8 @@ namespace WindowsFormsApp1.Views
 
         private void Material_Load(object sender, EventArgs e)
         {
-            unit_list = new List<Models.UnitOfMeasure>();
-            material_list = new List<Models.Material>();
+            unit_list = ((Dashboard)Parent).unit_list;
+            material_list = ((Dashboard)Parent).material_list;
             last_id = material_list.Count();
 
             Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
@@ -40,16 +40,6 @@ namespace WindowsFormsApp1.Views
             unit.Name = "Listones";
             unit.Symbol = "liston";
             unit_list.Add(unit);
-
-            Models.Material material = new Models.Material();
-            material.Id = last_id;
-            material.Name = "Madera";
-            material.Unit = unit;
-            material.Max_stock = 100;
-            material.Min_stock = 25;
-            material_list.Add(material);
-            material.Status = 1;
-            last_id++;
 
             //Cargar los combobox
             foreach (var item in unit_list)
