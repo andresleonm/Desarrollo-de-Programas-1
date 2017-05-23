@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    public class Supplier
+    public class Warehouse
     {
     }
 }

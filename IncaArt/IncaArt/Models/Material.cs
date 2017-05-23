@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class Material
+    public class Material
     {
         int id;
         UnitOfMeasure unit;

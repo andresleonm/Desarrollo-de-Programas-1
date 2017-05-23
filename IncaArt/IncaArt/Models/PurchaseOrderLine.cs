@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class PurchaseOrderLine
+    public class PurchaseOrderLine
     {        
         Material material;
         int quantity;
