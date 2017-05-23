@@ -16,11 +16,14 @@ namespace WindowsFormsApp1.Views
         public Dashboard()
         {
             InitializeComponent();
+            hide_UserControls();
+            mainDashboard1.Visible = true;            
         }
 
         private void menuButton_Click(object sender, MouseEventArgs e)
         {
             highlightButtons(sender);
+            
         }
 
         private void highlightButtons(object sender)

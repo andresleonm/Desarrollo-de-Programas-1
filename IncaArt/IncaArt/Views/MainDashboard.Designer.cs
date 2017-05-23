@@ -206,7 +206,7 @@
             this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.metroTile1.UseTileImage = true;
+            this.metroTile1.UseTileImage = true;            
             // 
             // MainDashboard
             // 
