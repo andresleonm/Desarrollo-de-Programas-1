@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +20,39 @@ namespace WindowsFormsApp1.Models
         String username;
         String password;
         int status;
+
+        public User(int id, string profile_id, string name, string middle_name,
+                        string last_name, string phone, string email, char gender, string address)
+        {
+            this.id = id;
+            this.profile = profile_id;
+            this.name = name;
+            this.maternal_last_name = middle_name;
+            this.paternal_last_name = last_name;
+            this.phone = phone;
+            this.email = email;
+            this.gender = gender;
+            this.address = address;
+        }
+
+        public User(int id, string name, string middle_name,
+                        string last_name)
+        {
+            this.id = id;
+            this.name = name;
+            this.maternal_last_name = middle_name;
+            this.paternal_last_name = last_name;
+        }
+
+        public User()
+        {
+
+        }
+
+        public void print()
+        {
+            Console.WriteLine(name + " " + paternal_last_name);
+        }
 
         public int Id
         {

@@ -10,17 +10,13 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class UC_SalesOrder : UserControl
+    public partial class UC_WarehouseMovementM : UserControl
     {
-        public UC_SalesOrder()
+        public UC_WarehouseMovementM()
         {
             InitializeComponent();
         }
 
-        private void add_Click(object sender, EventArgs e)
-        {
-            Sales_Module.SalesOrderLine order_line = new Sales_Module.SalesOrderLine();
-            order_line.Show();
-        }
+      
     }
 }
