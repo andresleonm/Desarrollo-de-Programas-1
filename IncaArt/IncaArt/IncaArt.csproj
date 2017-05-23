@@ -163,6 +163,24 @@
     <Compile Include="Views\UC_PurchasesMenu.Designer.cs">
       <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_SalesMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_SalesMain.Designer.cs">
+      <DependentUpon>UC_SalesMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_SalesOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_SalesOrder.Designer.cs">
+      <DependentUpon>UC_SalesOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_SalesOrderLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_SalesOrderLine.Designer.cs">
+      <DependentUpon>UC_SalesOrderLine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\User.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -261,6 +279,9 @@
     <EmbeddedResource Include="Views\Profile.resx">
       <DependentUpon>Profile.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales_Module\SalesOrderLine.resx">
+      <DependentUpon>SalesOrderLine.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Shift.resx">
       <DependentUpon>Shift.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +296,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_PurchasesMenu.resx">
       <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_SalesMain.resx">
+      <DependentUpon>UC_SalesMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_SalesOrder.resx">
+      <DependentUpon>UC_SalesOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_SalesOrderLine.resx">
+      <DependentUpon>UC_SalesOrderLine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\User.resx">
       <DependentUpon>User.cs</DependentUpon>
@@ -332,6 +362,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\Cash Register_40px.png" />
+    <None Include="Resources\Undo_40px.png" />
+    <None Include="Resources\Shopping Cart_40px.png" />
     <None Include="Resources\American Indians Seminole_70px.png" />
     <Content Include="Resources\American Indians Seminole_white_20px.png" />
     <None Include="Resources\American Indians Seminole_white_40px.png" />
