@@ -12,29 +12,50 @@ namespace WindowsFormsApp1.Views.Sales_Module
 {
     public partial class SalesOrderLine : Form
     {
+        Models.SalesOrderLine line;
         public SalesOrderLine()
         {
             InitializeComponent();
-            domainUpDown1.Text = "0";
+            dud_Quantity.Text = "0";
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem.Equals("Cerámico"))
+            if (cbo_Product.SelectedItem.Equals("Cerámico"))
             {
-                textBox2.Text = "5.00";
-            }else if (comboBox1.SelectedItem.Equals("Retablo"))
+                txt_UnitPrice.Text = "5.00";
+            }else if (cbo_Product.SelectedItem.Equals("Retablo"))
             {
-                textBox2.Text = "7.00";
-            }else if (comboBox1.SelectedItem.Equals("Piedra Tallada"))
+                txt_UnitPrice.Text = "7.00";
+            }else if (cbo_Product.SelectedItem.Equals("Piedra Tallada"))
             {
-                textBox2.Text = "10.00";
+                txt_UnitPrice.Text = "10.00";
             }
         }
 
         private void cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void line_register_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(dud_Quantity.Text) || String.IsNullOrWhiteSpace(cbo_Product.Text) || String.IsNullOrWhiteSpace(txt_UnitPrice.Text))
+            {
+                MessageBox.Show(this, "Debe completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show(this, "¿Está seguro que desea realizar esta operación?", "Confirmación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    Models.Product product = new Models.Product();
+                    int quantity = int.Parse(this.dud_Quantity.Text);
+                    string description = this.txt_Description.Text;
+                    double price = double.Parse(this.txt_UnitPrice.Text);
+                    line = new Models.SalesOrderLine(product, description, quantity, price);
+                }
+            }
         }
     }
 }
