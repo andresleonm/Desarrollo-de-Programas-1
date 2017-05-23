@@ -2,15 +2,15 @@
 {
     partial class Product
     {
-        /// <summary>
-        /// Required designer variable.
+        /// <summary> 
+        /// Variable del diseñador necesaria.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
+        /// <summary> 
+        /// Limpiar los recursos que se estén usando.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +20,11 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Código generado por el Diseñador de componentes
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// <summary> 
+        /// Método necesario para admitir el Diseñador. No se puede modificar
+        /// el contenido de este método con el editor de código.
         /// </summary>
         private void InitializeComponent()
         {
@@ -80,10 +80,10 @@
             this.groupBox_Product.Controls.Add(this.label_Name);
             this.groupBox_Product.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_Product.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox_Product.Location = new System.Drawing.Point(12, 96);
+            this.groupBox_Product.Location = new System.Drawing.Point(13, 86);
             this.groupBox_Product.Name = "groupBox_Product";
             this.groupBox_Product.Size = new System.Drawing.Size(347, 258);
-            this.groupBox_Product.TabIndex = 2;
+            this.groupBox_Product.TabIndex = 3;
             this.groupBox_Product.TabStop = false;
             this.groupBox_Product.Text = "Datos del producto";
             // 
@@ -185,11 +185,11 @@
             // tabControl_List
             // 
             this.tabControl_List.Controls.Add(this.tabPage1);
-            this.tabControl_List.Location = new System.Drawing.Point(375, 12);
+            this.tabControl_List.Location = new System.Drawing.Point(379, 33);
             this.tabControl_List.Name = "tabControl_List";
             this.tabControl_List.SelectedIndex = 0;
             this.tabControl_List.Size = new System.Drawing.Size(504, 490);
-            this.tabControl_List.TabIndex = 3;
+            this.tabControl_List.TabIndex = 4;
             // 
             // tabPage1
             // 
@@ -325,10 +325,10 @@
             // 
             this.button_Cancel.BackColor = System.Drawing.Color.SteelBlue;
             this.button_Cancel.ForeColor = System.Drawing.SystemColors.Window;
-            this.button_Cancel.Location = new System.Drawing.Point(234, 393);
+            this.button_Cancel.Location = new System.Drawing.Point(237, 414);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.button_Cancel.TabIndex = 18;
+            this.button_Cancel.TabIndex = 21;
             this.button_Cancel.Text = "Cancelar";
             this.button_Cancel.UseVisualStyleBackColor = false;
             // 
@@ -337,10 +337,10 @@
             this.button_Edit.BackColor = System.Drawing.Color.SteelBlue;
             this.button_Edit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_Edit.ForeColor = System.Drawing.SystemColors.Menu;
-            this.button_Edit.Location = new System.Drawing.Point(143, 393);
+            this.button_Edit.Location = new System.Drawing.Point(146, 414);
             this.button_Edit.Name = "button_Edit";
             this.button_Edit.Size = new System.Drawing.Size(75, 23);
-            this.button_Edit.TabIndex = 17;
+            this.button_Edit.TabIndex = 20;
             this.button_Edit.Text = "Editar";
             this.button_Edit.UseVisualStyleBackColor = false;
             // 
@@ -349,10 +349,10 @@
             this.button_New.BackColor = System.Drawing.Color.SteelBlue;
             this.button_New.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_New.ForeColor = System.Drawing.SystemColors.Menu;
-            this.button_New.Location = new System.Drawing.Point(44, 393);
+            this.button_New.Location = new System.Drawing.Point(47, 414);
             this.button_New.Name = "button_New";
             this.button_New.Size = new System.Drawing.Size(75, 23);
-            this.button_New.TabIndex = 16;
+            this.button_New.TabIndex = 19;
             this.button_New.Text = "Nuevo";
             this.button_New.UseVisualStyleBackColor = false;
             // 
@@ -360,17 +360,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(891, 549);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_Edit);
             this.Controls.Add(this.button_New);
             this.Controls.Add(this.tabControl_List);
             this.Controls.Add(this.groupBox_Product);
             this.Name = "Product";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Producto";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Size = new System.Drawing.Size(915, 549);
             this.groupBox_Product.ResumeLayout(false);
             this.groupBox_Product.PerformLayout();
             this.tabControl_List.ResumeLayout(false);

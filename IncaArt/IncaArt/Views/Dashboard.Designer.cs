@@ -59,6 +59,9 @@
             this.user = new WindowsFormsApp1.Views.User();
             this.material = new WindowsFormsApp1.Views.Material();
             this.worker = new WindowsFormsApp1.Views.Worker();
+            this.profile = new WindowsFormsApp1.Views.Profile();
+            this.product = new WindowsFormsApp1.Views.Product();
+            this.shift = new WindowsFormsApp1.Views.Shift();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -397,6 +400,27 @@
             this.worker.TabIndex = 26;
             this.worker.Visible = false;
             // 
+            // profile
+            // 
+            this.profile.Location = new System.Drawing.Point(132, 72);
+            this.profile.Name = "profile";
+            this.profile.Size = new System.Drawing.Size(873, 442);
+            this.profile.TabIndex = 27;
+            // 
+            // product
+            // 
+            this.product.Location = new System.Drawing.Point(132, 72);
+            this.product.Name = "product";
+            this.product.Size = new System.Drawing.Size(915, 549);
+            this.product.TabIndex = 29;
+            // 
+            // shift
+            // 
+            this.shift.Location = new System.Drawing.Point(132, 72);
+            this.shift.Name = "shift";
+            this.shift.Size = new System.Drawing.Size(819, 447);
+            this.shift.TabIndex = 28;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -417,6 +441,9 @@
             this.Controls.Add(this.user);
             this.Controls.Add(this.material);
             this.Controls.Add(this.worker);
+            this.Controls.Add(this.profile);
+            this.Controls.Add(this.shift);
+            this.Controls.Add(this.product);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.Name = "Dashboard";
@@ -464,5 +491,8 @@
         private User user;
         private Material material;
         private Worker worker;
+        private Profile profile;
+        private Product product;
+        private Shift shift;
     }
 }

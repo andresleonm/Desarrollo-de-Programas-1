@@ -28,6 +28,9 @@ namespace WindowsFormsApp1.Views
             this.mainDashboard1.Controls.Find("metroTile1", false)[0].Click += btn_user_Click;
             this.mainDashboard1.Controls.Find("metroTile3", false)[0].Click += btn_worker_Click;
             this.mainDashboard1.Controls.Find("metroTile7", false)[0].Click += btn_material_Click;
+            this.mainDashboard1.Controls.Find("metroTile4", false)[0].Click += btn_profile_Click;
+            this.mainDashboard1.Controls.Find("metroTile6", false)[0].Click += btn_product_Click;
+            this.mainDashboard1.Controls.Find("metroTile12", false)[0].Click += btn_shift_Click;
         }
 
         private void menuButton_Click(object sender, MouseEventArgs e)
@@ -163,6 +166,23 @@ namespace WindowsFormsApp1.Views
             material.Visible = true;
         }
 
+        private void btn_profile_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            profile.Visible = true;
+        }
+
+        private void btn_product_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            product.Visible = true;
+        }
+
+        private void btn_shift_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            shift.Visible = true;
+        }
         private void hide_UserControls()
         {
             foreach (UserControl uc in this.Controls.OfType<UserControl>()){

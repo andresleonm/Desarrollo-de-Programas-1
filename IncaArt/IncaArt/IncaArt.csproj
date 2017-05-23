@@ -110,13 +110,13 @@
       <DependentUpon>Parameters.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Product.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\Product.Designer.cs">
       <DependentUpon>Product.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Profile.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\Profile.Designer.cs">
       <DependentUpon>Profile.cs</DependentUpon>
@@ -134,7 +134,7 @@
       <DependentUpon>SalesOrderLine.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Shift.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\Shift.Designer.cs">
       <DependentUpon>Shift.cs</DependentUpon>
