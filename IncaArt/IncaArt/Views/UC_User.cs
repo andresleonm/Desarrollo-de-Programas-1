@@ -114,15 +114,17 @@ namespace WindowsFormsApp1.Views
                 combobox_profile.Items.Add(item);
                 combobox_profile_s.Items.Add(item);
             }
-            Load_DataGridView();
+            Load_DataGridView("","","","","");
         }
 
-        private void Load_DataGridView()
+        private void Load_DataGridView(String name, String paternal, String maternal,String username,String profile)
         {
             dataGridView1.Rows.Clear();
             for (int i = 0; i < user_list.Count(); i++)
             {
-                if (user_list[i].Status == 1)
+                if ((name == "" || name.ToUpper() == user_list[i].Name.ToUpper()) && (paternal == "" || paternal.ToUpper() == user_list[i].Paternal_last_name.ToUpper()) &&
+                    (maternal == "" || maternal.ToUpper() == user_list[i].Maternal_last_name.ToUpper()) && (username == "" || username.ToUpper() == user_list[i].Username.ToUpper()) &&
+                    (name == "" || profile.ToUpper() == user_list[i].Profile.ToUpper()) && user_list[i].Status == 1)
                 {
                     String[] row = new String[5];
                     row[0] = user_list[i].Id.ToString();
@@ -193,7 +195,7 @@ namespace WindowsFormsApp1.Views
             last_id++;
             user_list.Add(user);
             Clean();
-            Load_DataGridView();
+            Load_DataGridView("", "", "", "", "");
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
