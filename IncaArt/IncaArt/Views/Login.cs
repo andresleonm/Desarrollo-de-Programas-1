@@ -25,7 +25,7 @@ namespace WindowsFormsApp1
 
         private void Btn_Login_Click(object sender, EventArgs e)
         {
-            MainForm main_form = new MainForm();
+            Dashboard main_form = new Dashboard();
             main_form.Show();
             this.Hide();
         }
