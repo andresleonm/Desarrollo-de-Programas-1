@@ -34,6 +34,7 @@
             this.devolution = new MetroFramework.Controls.MetroTile();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.uC_Sales1 = new WindowsFormsApp1.Views.UC_Sales();
             this.uC_SalesOrder1 = new WindowsFormsApp1.Views.UC_SalesOrder();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -43,7 +44,7 @@
             // 
             this.sales.BackColor = System.Drawing.Color.DarkGreen;
             this.sales.CustomBackground = true;
-            this.sales.Location = new System.Drawing.Point(250, 3);
+            this.sales.Location = new System.Drawing.Point(32, 3);
             this.sales.Name = "sales";
             this.sales.Size = new System.Drawing.Size(177, 62);
             this.sales.TabIndex = 39;
@@ -53,6 +54,7 @@
             this.sales.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.sales.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.sales.UseTileImage = true;
+            this.sales.Click += new System.EventHandler(this.sales_Click);
             // 
             // invoice
             // 
@@ -73,7 +75,7 @@
             // 
             this.register_sale.BackColor = System.Drawing.Color.DarkBlue;
             this.register_sale.CustomBackground = true;
-            this.register_sale.Location = new System.Drawing.Point(31, 3);
+            this.register_sale.Location = new System.Drawing.Point(252, 3);
             this.register_sale.Name = "register_sale";
             this.register_sale.Size = new System.Drawing.Size(177, 62);
             this.register_sale.TabIndex = 38;
@@ -114,19 +116,28 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.uC_Sales1);
             this.panel2.Controls.Add(this.uC_SalesOrder1);
             this.panel2.Location = new System.Drawing.Point(3, 79);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(894, 618);
             this.panel2.TabIndex = 42;
             // 
+            // uC_Sales1
+            // 
+            this.uC_Sales1.BackColor = System.Drawing.Color.White;
+            this.uC_Sales1.Location = new System.Drawing.Point(3, 3);
+            this.uC_Sales1.Name = "uC_Sales1";
+            this.uC_Sales1.Size = new System.Drawing.Size(900, 600);
+            this.uC_Sales1.TabIndex = 1;
+            // 
             // uC_SalesOrder1
             // 
-            this.uC_SalesOrder1.BackColor = System.Drawing.SystemColors.Control;
-            this.uC_SalesOrder1.Location = new System.Drawing.Point(4, 4);
+            this.uC_SalesOrder1.BackColor = System.Drawing.Color.White;
+            this.uC_SalesOrder1.Location = new System.Drawing.Point(3, 3);
             this.uC_SalesOrder1.Name = "uC_SalesOrder1";
             this.uC_SalesOrder1.Size = new System.Drawing.Size(872, 592);
-            this.uC_SalesOrder1.TabIndex = 0;
+            this.uC_SalesOrder1.TabIndex = 2;
             // 
             // UC_SalesMain
             // 
@@ -151,6 +162,7 @@
         private MetroFramework.Controls.MetroTile devolution;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private UC_Sales uC_Sales1;
         private UC_SalesOrder uC_SalesOrder1;
     }
 }

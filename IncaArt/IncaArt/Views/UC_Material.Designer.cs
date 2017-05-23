@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Views
 {
-    partial class Material
+    partial class UC_Material
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -38,6 +38,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.material_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.material_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.material_unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.max_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_min = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_edit = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_new = new System.Windows.Forms.Button();
@@ -50,11 +55,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.material_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.material_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.material_unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.max_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_min = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -68,7 +68,7 @@
             this.tabControl1.Location = new System.Drawing.Point(312, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(467, 383);
+            this.tabControl1.Size = new System.Drawing.Size(563, 383);
             this.tabControl1.TabIndex = 32;
             // 
             // tabPage1
@@ -78,7 +78,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(459, 357);
+            this.tabPage1.Size = new System.Drawing.Size(555, 357);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado de Materias Prima";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -95,7 +95,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(450, 114);
+            this.groupBox3.Size = new System.Drawing.Size(546, 114);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos";
@@ -104,7 +104,7 @@
             // 
             this.btn_search.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_search.ForeColor = System.Drawing.Color.White;
-            this.btn_search.Location = new System.Drawing.Point(272, 83);
+            this.btn_search.Location = new System.Drawing.Point(368, 83);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(83, 25);
             this.btn_search.TabIndex = 27;
@@ -117,7 +117,7 @@
             this.btn_delete.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_delete.Enabled = false;
             this.btn_delete.ForeColor = System.Drawing.Color.White;
-            this.btn_delete.Location = new System.Drawing.Point(361, 83);
+            this.btn_delete.Location = new System.Drawing.Point(457, 83);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(83, 25);
             this.btn_delete.TabIndex = 26;
@@ -169,10 +169,35 @@
             this.stock_min});
             this.dataGridView1.Location = new System.Drawing.Point(6, 123);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(447, 228);
+            this.dataGridView1.Size = new System.Drawing.Size(543, 228);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // material_id
+            // 
+            this.material_id.HeaderText = "ID";
+            this.material_id.Name = "material_id";
+            // 
+            // material_name
+            // 
+            this.material_name.HeaderText = "Nombre";
+            this.material_name.Name = "material_name";
+            // 
+            // material_unit
+            // 
+            this.material_unit.HeaderText = "Unidad";
+            this.material_unit.Name = "material_unit";
+            // 
+            // max_stock
+            // 
+            this.max_stock.HeaderText = "Stock Máximo";
+            this.max_stock.Name = "max_stock";
+            // 
+            // stock_min
+            // 
+            this.stock_min.HeaderText = "Stock mínimo";
+            this.stock_min.Name = "stock_min";
             // 
             // btn_edit
             // 
@@ -294,31 +319,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
-            // material_id
-            // 
-            this.material_id.HeaderText = "ID";
-            this.material_id.Name = "material_id";
-            // 
-            // material_name
-            // 
-            this.material_name.HeaderText = "Nombre";
-            this.material_name.Name = "material_name";
-            // 
-            // material_unit
-            // 
-            this.material_unit.HeaderText = "Unidad";
-            this.material_unit.Name = "material_unit";
-            // 
-            // max_stock
-            // 
-            this.max_stock.HeaderText = "Stock Máximo";
-            this.max_stock.Name = "max_stock";
-            // 
-            // stock_min
-            // 
-            this.stock_min.HeaderText = "Stock mínimo";
-            this.stock_min.Name = "stock_min";
-            // 
             // Material
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -329,7 +329,7 @@
             this.Controls.Add(this.btn_new);
             this.Controls.Add(this.groupBox1);
             this.Name = "Material";
-            this.Size = new System.Drawing.Size(792, 406);
+            this.Size = new System.Drawing.Size(889, 400);
             this.Load += new System.EventHandler(this.Material_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

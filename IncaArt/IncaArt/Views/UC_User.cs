@@ -10,15 +10,61 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class User : UserControl
+    public partial class UC_User : UserControl
     {
         int last_id;
         int cur_row;
         List<Models.User> user_list;
         List<String> profile_list;
-        public User()
+        public UC_User()
         {
             InitializeComponent();
+        }
+
+        private bool validate_data(String name, String paternal_last_name, String maternal_last_name,char gender, String phone, String email, String password,String profile)
+        {
+            bool isCorrect = true;
+            String message = "";
+            if (name == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar el nombre del trabajador.\n";
+            }
+            if (paternal_last_name == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar el apellido paterno del trabajador.\n";
+            }
+            if (maternal_last_name == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar el apellido materno del trabajador.\n";
+            }
+           
+            if (gender == ' ')
+            {
+                isCorrect = false;
+                message += "- Debe ingresar el género del trabajador.\n";
+            }
+            
+            if (phone == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar el teléfono del trabajador.\n";
+            }
+            if (email == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar el email del trabajador.\n";
+            }
+            
+
+            if (!isCorrect)
+            {
+                MessageBox.Show(message, "Error al registrar trabajador", MessageBoxButtons.OK);
+            }
+
+            return isCorrect;
         }
 
         private void User_Load(object sender, EventArgs e)
