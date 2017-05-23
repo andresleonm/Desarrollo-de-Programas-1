@@ -52,7 +52,6 @@
             this.parameters1 = new WindowsFormsApp1.Views.Parameters();
             this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
             this.uc_warehousemovement = new WindowsFormsApp1.Views.UC_WarehouseMovement();
-            
             this.supplier1 = new WindowsFormsApp1.Views.Supplier();
             this.workstation1 = new WindowsFormsApp1.Views.Workstation();
             this.bom1 = new WindowsFormsApp1.Views.BOM();
@@ -206,6 +205,7 @@
             this.btn_warehouse.Text = "Almacén";
             this.btn_warehouse.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_warehouse.UseVisualStyleBackColor = false;
+            this.btn_warehouse.Click += new System.EventHandler(this.btn_warehouse_Click_2);
             this.btn_warehouse.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
             // 
             // warehouse_imagelist
@@ -342,6 +342,15 @@
             this.warehouse1.Size = new System.Drawing.Size(1023, 531);
             this.warehouse1.TabIndex = 20;
             // 
+            // uc_warehousemovement
+            // 
+            this.uc_warehousemovement.BackColor = System.Drawing.Color.White;
+            this.uc_warehousemovement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_warehousemovement.Location = new System.Drawing.Point(132, 72);
+            this.uc_warehousemovement.Name = "uc_warehousemovement";
+            this.uc_warehousemovement.Size = new System.Drawing.Size(819, 514);
+            this.uc_warehousemovement.TabIndex = 31;
+            // 
             // supplier1
             // 
             this.supplier1.Location = new System.Drawing.Point(132, 72);
@@ -434,12 +443,6 @@
             this.product.Size = new System.Drawing.Size(915, 549);
             this.product.TabIndex = 29;
             // 
-            this.uc_warehousemovement.BackColor = System.Drawing.Color.White;
-            this.uc_warehousemovement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_warehousemovement.Location = new System.Drawing.Point(132, 72);
-            this.uc_warehousemovement.Name = "uc_warehousemovement";
-            this.uc_warehousemovement.Size = new System.Drawing.Size(819, 514);
-            this.uc_warehousemovement.TabIndex = 31;
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -447,6 +450,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(951, 586);
             this.Controls.Add(this.uC_SalesMain1);
+            this.Controls.Add(this.uc_warehousemovement);
             this.Controls.Add(this.parameters1);
             this.Controls.Add(this.warehouse1);
             this.Controls.Add(this.supplier1);
@@ -464,7 +468,7 @@
             this.Controls.Add(this.profile);
             this.Controls.Add(this.shift);
             this.Controls.Add(this.product);
-            this.Controls.Add(this.uc_warehousemovement);
+            
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.Name = "Dashboard";
@@ -479,6 +483,7 @@
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #endregion

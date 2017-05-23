@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Views
         public UC_PurchaseOrderGrid()
         {
             InitializeComponent();
-            fillGrid();
+            //fillGrid();
         }
 
         private void fillGrid()

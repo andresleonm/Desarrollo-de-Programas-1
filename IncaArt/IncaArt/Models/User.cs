@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,8 +21,8 @@ namespace WindowsFormsApp1.Models
         String password;
         int status;
 
-        public User( int id,string profile_id,string name,string middle_name,
-                        string last_name, string phone,string email,char gender,string address)
+        public User(int id, string profile_id, string name, string middle_name,
+                        string last_name, string phone, string email, char gender, string address)
         {
             this.id = id;
             this.profile = profile_id;
@@ -35,7 +35,7 @@ namespace WindowsFormsApp1.Models
             this.address = address;
         }
 
-        public User(int id,  string name, string middle_name,
+        public User(int id, string name, string middle_name,
                         string last_name)
         {
             this.id = id;
@@ -196,7 +196,6 @@ namespace WindowsFormsApp1.Models
                 status = value;
             }
         }
-
 
         public string Username
         {

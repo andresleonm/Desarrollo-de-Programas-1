@@ -202,11 +202,12 @@ namespace WindowsFormsApp1.Views
             }
         }
 
-        private void btn_warehouse_Click_1(object sender, EventArgs e)
+       
+
+        private void btn_warehouse_Click_2(object sender, EventArgs e)
         {
             hide_UserControls();
             uc_warehousemovement.Visible = true;
-
         }
     }
 }
