@@ -18,7 +18,7 @@ namespace WindowsFormsApp1.Views
         public List<Models.Material> material_list;
         public List<Models.Supplier> supplier_list;
         public List<Models.Warehouse> warehouse_list;
-        public List<Models.User> user_list;
+        //public List<Models.User> user_list;
         public Dashboard()
         {
             InitializeComponent();
@@ -201,6 +201,13 @@ namespace WindowsFormsApp1.Views
                 uc.Visible = false;
             }
         }
-        
+
+       
+
+        private void btn_warehouse_Click_2(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            uc_warehousemovement.Visible = true;
+        }
     }
 }

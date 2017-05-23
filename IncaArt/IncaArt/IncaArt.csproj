@@ -44,9 +44,17 @@
       <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Npgsql, Version=3.2.2.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.3.2.2\lib\net451\Npgsql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,10 +67,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Result.cs" />
+    <Compile Include="Controller\UsersController.cs" />
+    <Compile Include="DataService\DatabaseService.cs" />
+    <Compile Include="DataService\GenericResult.cs" />
+    <Compile Include="DataService\Parameter.cs" />
+    <Compile Include="DataService\Row.cs" />
+    <Compile Include="Models\ProductMovement.cs" />
+    <Compile Include="Models\MaterialMovement.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\Material.cs" />
     <Compile Include="Models\Parameters.cs" />
-    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PurchaseOrder.cs" />
     <Compile Include="Models\PurchaseOrderLine.cs" />
@@ -70,7 +87,6 @@
     <Compile Include="Models\SalesOrderLine.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\UnitOfMeasure.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Models\Warehouse.cs" />
     <Compile Include="Models\Worker.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -191,6 +207,24 @@
     </Compile>
     <Compile Include="Views\UC_SalesOrderLine.Designer.cs">
       <DependentUpon>UC_SalesOrderLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_WarehouseMovement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_WarehouseMovement.Designer.cs">
+      <DependentUpon>UC_WarehouseMovement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_WarehouseMovementP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_WarehouseMovementP.Designer.cs">
+      <DependentUpon>UC_WarehouseMovementP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_WarehouseMovementM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_WarehouseMovementM.Designer.cs">
+      <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_User.cs">
       <SubType>UserControl</SubType>
@@ -319,6 +353,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_SalesOrderLine.resx">
       <DependentUpon>UC_SalesOrderLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_WarehouseMovement.resx">
+      <DependentUpon>UC_WarehouseMovement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_WarehouseMovementP.resx">
+      <DependentUpon>UC_WarehouseMovementP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_WarehouseMovementM.resx">
+      <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_User.resx">
       <DependentUpon>UC_User.cs</DependentUpon>
