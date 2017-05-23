@@ -11,6 +11,45 @@ namespace WindowsFormsApp1.Models
         string name;
         double factor;
 
+        public string Symbol
+        {
+            get
+            {
+                return symbol;
+            }
+
+            set
+            {
+                symbol = value;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+            }
+        }
+
+        public double Factor
+        {
+            get
+            {
+                return factor;
+            }
+
+            set
+            {
+                factor = value;
+            }
+        }
+
         public UnitOfMeasure()
         {
             
