@@ -183,11 +183,19 @@ namespace WindowsFormsApp1.Views
             hide_UserControls();
             shift.Visible = true;
         }
+
+        private void btn_sales_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            uC_SalesMain1.Visible = true;
+        }
+
         private void hide_UserControls()
         {
             foreach (UserControl uc in this.Controls.OfType<UserControl>()){
                 uc.Visible = false;
             }
         }
+        
     }
 }
