@@ -17,6 +17,7 @@ namespace WindowsFormsApp1.Models
         char gender;
         String address;
         String profile;
+        String username;
         String password;
         int status;
 
@@ -194,7 +195,20 @@ namespace WindowsFormsApp1.Models
             {
                 status = value;
             }
+        }
 
+
+        public string Username
+        {
+            get
+            {
+                return username;
+            }
+
+            set
+            {
+                username = value;
+            }
         }
     }
 }

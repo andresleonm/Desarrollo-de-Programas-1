@@ -115,11 +115,11 @@
     <Compile Include="Views\MainDashboard.Designer.cs">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Material.cs">
+    <Compile Include="Views\UC_Material.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Material.Designer.cs">
-      <DependentUpon>Material.cs</DependentUpon>
+    <Compile Include="Views\UC_Material.Designer.cs">
+      <DependentUpon>UC_Material.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Parameters.cs">
       <SubType>UserControl</SubType>
@@ -181,6 +181,12 @@
     <Compile Include="Views\UC_PurchasesMenu.Designer.cs">
       <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_Sales.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_Sales.Designer.cs">
+      <DependentUpon>UC_Sales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UC_SalesMain.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -217,11 +223,11 @@
     <Compile Include="Views\UC_WarehouseMovementM.Designer.cs">
       <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\User.cs">
+    <Compile Include="Views\UC_User.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\User.Designer.cs">
-      <DependentUpon>User.cs</DependentUpon>
+    <Compile Include="Views\UC_User.Designer.cs">
+      <DependentUpon>UC_User.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Warehouse.cs">
       <SubType>UserControl</SubType>
@@ -273,11 +279,11 @@
     <Compile Include="Views\Purchase_Module\PurchaseOrderLine.Designer.cs">
       <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Worker.cs">
+    <Compile Include="Views\UC_Worker.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Worker.Designer.cs">
-      <DependentUpon>Worker.cs</DependentUpon>
+    <Compile Include="Views\UC_Worker.Designer.cs">
+      <DependentUpon>UC_Worker.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Workstation.cs">
       <SubType>UserControl</SubType>
@@ -303,8 +309,8 @@
     <EmbeddedResource Include="Views\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Material.resx">
-      <DependentUpon>Material.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UC_Material.resx">
+      <DependentUpon>UC_Material.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Parameters.resx">
       <DependentUpon>Parameters.cs</DependentUpon>
@@ -333,6 +339,9 @@
     <EmbeddedResource Include="Views\UC_PurchasesMenu.resx">
       <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Sales.resx">
+      <DependentUpon>UC_Sales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_SalesMain.resx">
       <DependentUpon>UC_SalesMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -351,8 +360,8 @@
     <EmbeddedResource Include="Views\UC_WarehouseMovementM.resx">
       <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\User.resx">
-      <DependentUpon>User.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UC_User.resx">
+      <DependentUpon>UC_User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse.resx">
       <DependentUpon>Warehouse.cs</DependentUpon>
@@ -378,8 +387,8 @@
     <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrderLine.resx">
       <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Worker.resx">
-      <DependentUpon>Worker.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UC_Worker.resx">
+      <DependentUpon>UC_Worker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Workstation.resx">
       <DependentUpon>Workstation.cs</DependentUpon>
@@ -407,6 +416,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\Search_16.png" />
     <None Include="Resources\Cash Register_40px.png" />
     <None Include="Resources\Undo_40px.png" />
     <None Include="Resources\Shopping Cart_40px.png" />

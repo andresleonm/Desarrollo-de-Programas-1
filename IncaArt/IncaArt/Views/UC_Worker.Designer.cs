@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Views
 {
-    partial class Worker
+    partial class UC_Worker
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -31,11 +31,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.worker_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worker_doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worker_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worker_last_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worker_shift = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.textbox_maternal_s = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -54,7 +49,6 @@
             this.textbox_email = new System.Windows.Forms.TextBox();
             this.textbox_address = new System.Windows.Forms.TextBox();
             this.combobox_shift = new System.Windows.Forms.ComboBox();
-            this.textbox_cellphone = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -71,9 +65,14 @@
             this.textbox_paternal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textbox_name = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_new = new System.Windows.Forms.Button();
+            this.worker_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worker_doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worker_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worker_paternal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worker_maternal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worker_shift = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -87,7 +86,7 @@
             this.tabControl1.Location = new System.Drawing.Point(416, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(575, 422);
+            this.tabControl1.Size = new System.Drawing.Size(677, 422);
             this.tabControl1.TabIndex = 29;
             // 
             // tabPage1
@@ -97,7 +96,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(567, 396);
+            this.tabPage1.Size = new System.Drawing.Size(669, 396);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado de Trabajadores";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -109,39 +108,15 @@
             this.worker_id,
             this.worker_doi,
             this.worker_name,
-            this.worker_last_name,
+            this.worker_paternal,
+            this.worker_maternal,
             this.worker_shift});
             this.dataGridView1.Location = new System.Drawing.Point(6, 130);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(551, 260);
+            this.dataGridView1.Size = new System.Drawing.Size(647, 260);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // worker_id
-            // 
-            this.worker_id.HeaderText = "ID";
-            this.worker_id.Name = "worker_id";
-            // 
-            // worker_doi
-            // 
-            this.worker_doi.HeaderText = "DOI";
-            this.worker_doi.Name = "worker_doi";
-            // 
-            // worker_name
-            // 
-            this.worker_name.HeaderText = "Nombre";
-            this.worker_name.Name = "worker_name";
-            // 
-            // worker_last_name
-            // 
-            this.worker_last_name.HeaderText = "Apellido";
-            this.worker_last_name.Name = "worker_last_name";
-            // 
-            // worker_shift
-            // 
-            this.worker_shift.HeaderText = "Turno";
-            this.worker_shift.Name = "worker_shift";
             // 
             // groupBox5
             // 
@@ -158,7 +133,7 @@
             this.groupBox5.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox5.Location = new System.Drawing.Point(6, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(551, 117);
+            this.groupBox5.Size = new System.Drawing.Size(647, 117);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Datos";
@@ -183,12 +158,13 @@
             // 
             this.btn_search.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_search.ForeColor = System.Drawing.Color.White;
-            this.btn_search.Location = new System.Drawing.Point(373, 86);
+            this.btn_search.Location = new System.Drawing.Point(468, 85);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(83, 25);
             this.btn_search.TabIndex = 24;
             this.btn_search.Text = "Buscar";
             this.btn_search.UseVisualStyleBackColor = false;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // textbox_dni_s
             // 
@@ -202,12 +178,13 @@
             this.btn_delete.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_delete.Enabled = false;
             this.btn_delete.ForeColor = System.Drawing.Color.White;
-            this.btn_delete.Location = new System.Drawing.Point(462, 86);
+            this.btn_delete.Location = new System.Drawing.Point(557, 85);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(83, 25);
             this.btn_delete.TabIndex = 23;
             this.btn_delete.Text = "Eliminar";
             this.btn_delete.UseVisualStyleBackColor = false;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // textbox_paternal_s
             // 
@@ -260,6 +237,7 @@
             this.btn_edit.TabIndex = 32;
             this.btn_edit.Text = "Editar";
             this.btn_edit.UseVisualStyleBackColor = false;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
             // groupBox1
             // 
@@ -268,7 +246,6 @@
             this.groupBox1.Controls.Add(this.textbox_email);
             this.groupBox1.Controls.Add(this.textbox_address);
             this.groupBox1.Controls.Add(this.combobox_shift);
-            this.groupBox1.Controls.Add(this.textbox_cellphone);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label3);
@@ -285,7 +262,6 @@
             this.groupBox1.Controls.Add(this.textbox_paternal);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textbox_name);
-            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox1.Location = new System.Drawing.Point(12, 16);
             this.groupBox1.Name = "groupBox1";
@@ -318,7 +294,7 @@
             // 
             // textbox_email
             // 
-            this.textbox_email.Location = new System.Drawing.Point(129, 245);
+            this.textbox_email.Location = new System.Drawing.Point(129, 225);
             this.textbox_email.Name = "textbox_email";
             this.textbox_email.Size = new System.Drawing.Size(155, 20);
             this.textbox_email.TabIndex = 5;
@@ -333,17 +309,10 @@
             // combobox_shift
             // 
             this.combobox_shift.FormattingEnabled = true;
-            this.combobox_shift.Location = new System.Drawing.Point(129, 273);
+            this.combobox_shift.Location = new System.Drawing.Point(129, 253);
             this.combobox_shift.Name = "combobox_shift";
             this.combobox_shift.Size = new System.Drawing.Size(155, 21);
             this.combobox_shift.TabIndex = 5;
-            // 
-            // textbox_cellphone
-            // 
-            this.textbox_cellphone.Location = new System.Drawing.Point(129, 219);
-            this.textbox_cellphone.Name = "textbox_cellphone";
-            this.textbox_cellphone.Size = new System.Drawing.Size(155, 20);
-            this.textbox_cellphone.TabIndex = 4;
             // 
             // label2
             // 
@@ -358,7 +327,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label11.Location = new System.Drawing.Point(10, 276);
+            this.label11.Location = new System.Drawing.Point(6, 255);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(38, 13);
             this.label11.TabIndex = 2;
@@ -441,7 +410,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 247);
+            this.label10.Location = new System.Drawing.Point(6, 227);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 13);
             this.label10.TabIndex = 2;
@@ -479,15 +448,6 @@
             this.textbox_name.Size = new System.Drawing.Size(155, 20);
             this.textbox_name.TabIndex = 6;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 222);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(42, 13);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Celular:";
-            // 
             // btn_cancel
             // 
             this.btn_cancel.BackColor = System.Drawing.Color.SteelBlue;
@@ -512,6 +472,36 @@
             this.btn_new.UseVisualStyleBackColor = false;
             this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
             // 
+            // worker_id
+            // 
+            this.worker_id.HeaderText = "ID";
+            this.worker_id.Name = "worker_id";
+            // 
+            // worker_doi
+            // 
+            this.worker_doi.HeaderText = "DOI";
+            this.worker_doi.Name = "worker_doi";
+            // 
+            // worker_name
+            // 
+            this.worker_name.HeaderText = "Nombre";
+            this.worker_name.Name = "worker_name";
+            // 
+            // worker_paternal
+            // 
+            this.worker_paternal.HeaderText = "Apellido Paterno";
+            this.worker_paternal.Name = "worker_paternal";
+            // 
+            // worker_maternal
+            // 
+            this.worker_maternal.HeaderText = "Apellido Materno";
+            this.worker_maternal.Name = "worker_maternal";
+            // 
+            // worker_shift
+            // 
+            this.worker_shift.HeaderText = "Turno";
+            this.worker_shift.Name = "worker_shift";
+            // 
             // Worker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -522,7 +512,7 @@
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_new);
             this.Name = "Worker";
-            this.Size = new System.Drawing.Size(999, 443);
+            this.Size = new System.Drawing.Size(1107, 462);
             this.Load += new System.EventHandler(this.Worker_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -540,11 +530,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn worker_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn worker_doi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn worker_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn worker_last_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn worker_shift;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox textbox_maternal_s;
         private System.Windows.Forms.Label label15;
@@ -563,7 +548,6 @@
         private System.Windows.Forms.TextBox textbox_email;
         private System.Windows.Forms.TextBox textbox_address;
         private System.Windows.Forms.ComboBox combobox_shift;
-        private System.Windows.Forms.TextBox textbox_cellphone;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
@@ -580,8 +564,13 @@
         private System.Windows.Forms.TextBox textbox_paternal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textbox_name;
-        private System.Windows.Forms.Label label9;
         internal System.Windows.Forms.Button btn_cancel;
         internal System.Windows.Forms.Button btn_new;
+        private System.Windows.Forms.DataGridViewTextBoxColumn worker_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn worker_doi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn worker_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn worker_paternal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn worker_maternal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn worker_shift;
     }
 }
