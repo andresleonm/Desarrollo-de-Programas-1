@@ -14,7 +14,10 @@ namespace WindowsFormsApp1.DataService
         public Parameter(string parameter_name,string parameter_value)
         {
             name = parameter_name;
-            value = parameter_value;
+            if (parameter_value == null)
+                value = "";
+            else
+                value = parameter_value;
         }
     }
 }

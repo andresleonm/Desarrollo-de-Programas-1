@@ -67,9 +67,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Result.cs" />
+    <Compile Include="Controller\UsersController.cs" />
     <Compile Include="DataService\DatabaseService.cs" />
+    <Compile Include="DataService\GenericResult.cs" />
     <Compile Include="DataService\Parameter.cs" />
+    <Compile Include="DataService\Row.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -326,11 +331,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="DataService\Clients\" />
-    <Folder Include="DataService\Products\" />
-    <Folder Include="DataService\Users\" />
-    <Folder Include="Model\" />
     <Folder Include="Views\Warehouse_Module\" />
   </ItemGroup>
   <ItemGroup>
