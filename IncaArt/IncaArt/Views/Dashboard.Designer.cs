@@ -55,6 +55,11 @@
             this.workstation1 = new WindowsFormsApp1.Views.Workstation();
             this.supplier1 = new WindowsFormsApp1.Views.Supplier();
             this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
+            this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
+            this.supplier1 = new WindowsFormsApp1.Views.Supplier();
+            this.uC_PurchasesMenu1 = new WindowsFormsApp1.Views.UC_PurchasesMenu();
+            this.mainDashboard1 = new WindowsFormsApp1.Views.MainDashboard();
+            this.parameters1 = new WindowsFormsApp1.Views.Parameters();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -314,7 +319,20 @@
             this.client1.Size = new System.Drawing.Size(898, 532);
             this.client1.TabIndex = 18;
             // 
-
+            // warehouse1
+            // 
+            this.warehouse1.Location = new System.Drawing.Point(132, 72);
+            this.warehouse1.Name = "warehouse1";
+            this.warehouse1.Size = new System.Drawing.Size(1023, 531);
+            this.warehouse1.TabIndex = 20;
+            // 
+            // supplier1
+            // 
+            this.supplier1.Location = new System.Drawing.Point(132, 72);
+            this.supplier1.Name = "supplier1";
+            this.supplier1.Size = new System.Drawing.Size(1064, 652);
+            this.supplier1.TabIndex = 18;
+            // 
             // uC_PurchasesMenu1
             // 
             this.uC_PurchasesMenu1.BackColor = System.Drawing.SystemColors.Control;
@@ -334,7 +352,7 @@
             this.mainDashboard1.Size = new System.Drawing.Size(819, 514);
             this.mainDashboard1.TabIndex = 13;
             // 
-            // supplier1
+            // parameters1
             // 
             this.supplier1.Location = new System.Drawing.Point(132, 72);
             this.supplier1.Name = "supplier1";
@@ -361,6 +379,12 @@
             this.warehouse1.Name = "warehouse1";
             this.warehouse1.Size = new System.Drawing.Size(1023, 531);
             this.warehouse1.TabIndex = 20;
+            
+            //parameters
+            this.parameters1.Location = new System.Drawing.Point(132, 72);
+            this.parameters1.Name = "parameters1";
+            this.parameters1.Size = new System.Drawing.Size(819, 514);
+            this.parameters1.TabIndex = 22;
             // 
             // Dashboard
             // 
@@ -368,6 +392,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(951, 586);
+            this.Controls.Add(this.parameters1);
             this.Controls.Add(this.warehouse1);
             this.Controls.Add(this.supplier1);
             this.Controls.Add(this.workstation1);
@@ -421,5 +446,6 @@
         private Client client1;
         private BOM bom1;
         private Workstation workstation1;
+        private Parameters parameters1;
     }
 }
