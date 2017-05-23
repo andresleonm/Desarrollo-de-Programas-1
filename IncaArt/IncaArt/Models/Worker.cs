@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class Worker
+    public class Worker
     {
         int id;
         Person person;

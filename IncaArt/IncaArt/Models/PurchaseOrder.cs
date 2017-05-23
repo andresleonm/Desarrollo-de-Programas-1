@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class PurchaseOrder
+    public class PurchaseOrder
     {
         List<PurchaseOrderLine> lines;
         Currency currency;
