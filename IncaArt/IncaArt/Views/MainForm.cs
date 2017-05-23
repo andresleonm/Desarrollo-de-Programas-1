@@ -176,11 +176,5 @@ namespace WindowsFormsApp1.Views
             frm_salesOrder.Show();
         }
 
-        private void toolStripButton12_Click(object sender, EventArgs e)
-        {
-            Almacén frm_almacen = new Almacén();
-            frm_almacen.MdiParent = this;
-            frm_almacen.Show();
-        }
     }
 }

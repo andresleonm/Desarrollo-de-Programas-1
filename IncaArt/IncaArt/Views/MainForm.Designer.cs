@@ -328,7 +328,6 @@
             this.toolStripButton12.Name = "toolStripButton12";
             this.toolStripButton12.Size = new System.Drawing.Size(109, 19);
             this.toolStripButton12.Text = "Almacén";
-            this.toolStripButton12.Click += new System.EventHandler(this.toolStripButton12_Click);
             // 
             // MainForm
             // 

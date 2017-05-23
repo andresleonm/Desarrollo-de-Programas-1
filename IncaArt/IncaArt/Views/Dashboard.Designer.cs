@@ -51,6 +51,7 @@
             this.uC_PurchasesMenu1 = new WindowsFormsApp1.Views.UC_PurchasesMenu();
             this.mainDashboard1 = new WindowsFormsApp1.Views.MainDashboard();
             this.supplier1 = new WindowsFormsApp1.Views.Supplier();
+            this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -329,12 +330,20 @@
             this.supplier1.Size = new System.Drawing.Size(1064, 652);
             this.supplier1.TabIndex = 18;
             // 
+            // warehouse1
+            // 
+            this.warehouse1.Location = new System.Drawing.Point(132, 72);
+            this.warehouse1.Name = "warehouse1";
+            this.warehouse1.Size = new System.Drawing.Size(1023, 531);
+            this.warehouse1.TabIndex = 20;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(951, 586);
+            this.Controls.Add(this.warehouse1);
             this.Controls.Add(this.supplier1);
             this.Controls.Add(this.uC_PurchasesMenu1);
             this.Controls.Add(this.mainDashboard1);
@@ -380,5 +389,6 @@
         private System.Windows.Forms.ImageList purchase_imagelist;
         private UC_PurchasesMenu uC_PurchasesMenu1;
         private Supplier supplier1;
+        private Warehouse warehouse1;
     }
 }
