@@ -302,6 +302,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "UC_PurchaseOrderGrid";
             this.Size = new System.Drawing.Size(593, 485);
+            this.VisibleChanged += new System.EventHandler(this.UC_PurchaseOrderGrid_VisibleChanged);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox1.ResumeLayout(false);

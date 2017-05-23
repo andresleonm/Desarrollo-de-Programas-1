@@ -32,8 +32,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btn_purchases_orders = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.uC_PurchaseOrder1 = new WindowsFormsApp1.Views.UC_PurchaseOrder();
             this.uC_PurchaseOrderGrid1 = new WindowsFormsApp1.Views.UC_PurchaseOrderGrid();
+            this.uC_PurchaseOrder1 = new WindowsFormsApp1.Views.UC_PurchaseOrder();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -96,6 +96,14 @@
             this.panel2.Size = new System.Drawing.Size(774, 485);
             this.panel2.TabIndex = 1;
             // 
+            // uC_PurchaseOrderGrid1
+            // 
+            this.uC_PurchaseOrderGrid1.Location = new System.Drawing.Point(0, 0);
+            this.uC_PurchaseOrderGrid1.Name = "uC_PurchaseOrderGrid1";
+            this.uC_PurchaseOrderGrid1.Size = new System.Drawing.Size(593, 485);
+            this.uC_PurchaseOrderGrid1.TabIndex = 0;
+            this.uC_PurchaseOrderGrid1.Visible = false;
+            // 
             // uC_PurchaseOrder1
             // 
             this.uC_PurchaseOrder1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -104,20 +112,6 @@
             this.uC_PurchaseOrder1.Size = new System.Drawing.Size(771, 482);
             this.uC_PurchaseOrder1.TabIndex = 1;
             this.uC_PurchaseOrder1.Visible = false;
-            // 
-            // uC_PurchaseOrderGrid1
-            // 
-            this.uC_PurchaseOrderGrid1.Location = new System.Drawing.Point(0, 0);
-            this.uC_PurchaseOrderGrid1.Name = "uC_PurchaseOrderGrid1";
-            this.uC_PurchaseOrderGrid1.Size = new System.Drawing.Size(593, 485);
-            this.uC_PurchaseOrderGrid1.TabIndex = 0;
-            // 
-            // uC_PurchaseOrderGrid1
-            // 
-            this.uC_PurchaseOrderGrid1.Location = new System.Drawing.Point(0, 0);
-            this.uC_PurchaseOrderGrid1.Name = "uC_PurchaseOrderGrid1";
-            this.uC_PurchaseOrderGrid1.Size = new System.Drawing.Size(593, 485);
-            this.uC_PurchaseOrderGrid1.TabIndex = 0;
             // 
             // UC_PurchasesMenu
             // 

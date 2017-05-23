@@ -14,14 +14,13 @@ namespace WindowsFormsApp1.Views
     {
         public UC_PurchaseOrderGrid()
         {
-            InitializeComponent();
-            //fillGrid();
+            InitializeComponent();            
         }
 
-        private void fillGrid()
+        public void fillGrid()
         {
             
-            foreach(Models.PurchaseOrder order in ((Dashboard)(FindForm().FindForm())).purchase_order_list)
+            foreach(Models.PurchaseOrder order in ((Dashboard)(this.FindForm().FindForm())).purchase_order_list)
             {
                 string[] gridline = new string[5];
                 gridline[0] = order.Id.ToString();
@@ -47,6 +46,14 @@ namespace WindowsFormsApp1.Views
 
             order.fillForm(p_order);
 
+        }
+
+        private void UC_PurchaseOrderGrid_VisibleChanged(object sender, EventArgs e)
+        {
+            if(this.Visible == true)
+            {
+                fillGrid();
+            }
         }
     }
 }
