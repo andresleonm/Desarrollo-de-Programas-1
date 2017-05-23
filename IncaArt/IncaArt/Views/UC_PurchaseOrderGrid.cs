@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class UC_PurchaseOrder : UserControl
+    public partial class UC_PurchaseOrderGrid : UserControl
     {
-        public UC_PurchaseOrder()
+        public UC_PurchaseOrderGrid()
         {
             InitializeComponent();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-                        
         }
     }
 }

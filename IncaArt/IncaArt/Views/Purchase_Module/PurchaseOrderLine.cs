@@ -31,5 +31,10 @@ namespace WindowsFormsApp1.Views.Purchase_Module
         {
             this.Dispose();
         }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

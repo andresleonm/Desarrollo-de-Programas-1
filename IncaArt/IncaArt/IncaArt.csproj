@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
       <Private>True</Private>
@@ -119,11 +123,23 @@
     <Compile Include="Views\UC_PurchaseOrder.Designer.cs">
       <DependentUpon>UC_PurchaseOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_PurchaseOrderGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_PurchaseOrderGrid.Designer.cs">
+      <DependentUpon>UC_PurchaseOrderGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UC_PurchaseOrderLine.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\UC_PurchaseOrderLine.Designer.cs">
       <DependentUpon>UC_PurchaseOrderLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_PurchasesMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_PurchasesMenu.Designer.cs">
+      <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Warehouse.cs">
       <SubType>Form</SubType>
@@ -246,8 +262,14 @@
     <EmbeddedResource Include="Views\UC_PurchaseOrder.resx">
       <DependentUpon>UC_PurchaseOrder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_PurchaseOrderGrid.resx">
+      <DependentUpon>UC_PurchaseOrderGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_PurchaseOrderLine.resx">
       <DependentUpon>UC_PurchaseOrderLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_PurchasesMenu.resx">
+      <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse.resx">
       <DependentUpon>Warehouse.cs</DependentUpon>

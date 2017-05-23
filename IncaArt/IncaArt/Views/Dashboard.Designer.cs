@@ -48,7 +48,7 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.uC_PurchaseOrder1 = new WindowsFormsApp1.Views.UC_PurchaseOrder();
+            this.uC_PurchasesMenu1 = new WindowsFormsApp1.Views.UC_PurchasesMenu();
             this.mainDashboard1 = new WindowsFormsApp1.Views.MainDashboard();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -67,17 +67,18 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1370, 27);
+            this.panel2.Size = new System.Drawing.Size(951, 27);
             this.panel2.TabIndex = 10;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Minimize_Window_52px;
-            this.pictureBox2.Location = new System.Drawing.Point(1319, 3);
+            this.pictureBox2.Location = new System.Drawing.Point(909, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(21, 21);
+            this.pictureBox2.Size = new System.Drawing.Size(21, 27);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
@@ -89,10 +90,11 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Close_Window_52px;
-            this.pictureBox1.Location = new System.Drawing.Point(1346, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(930, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(21, 21);
+            this.pictureBox1.Size = new System.Drawing.Size(21, 27);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -112,7 +114,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(132, 521);
+            this.panel1.Size = new System.Drawing.Size(132, 559);
             this.panel1.TabIndex = 11;
             // 
             // btn_purchase
@@ -264,14 +266,15 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(132, 27);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1238, 45);
+            this.panel4.Size = new System.Drawing.Size(819, 45);
             this.panel4.TabIndex = 12;
             // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.CustomBackground = true;
-            this.metroLabel2.Location = new System.Drawing.Point(1083, 23);
+            this.metroLabel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.metroLabel2.Location = new System.Drawing.Point(609, 0);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(101, 19);
             this.metroLabel2.TabIndex = 2;
@@ -281,7 +284,8 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.CustomBackground = true;
-            this.metroLabel1.Location = new System.Drawing.Point(1094, 5);
+            this.metroLabel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.metroLabel1.Location = new System.Drawing.Point(710, 0);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(78, 19);
             this.metroLabel1.TabIndex = 1;
@@ -291,20 +295,22 @@
             // 
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox3.Image = global::WindowsFormsApp1.Properties.Resources.Circled_User_Male_40px;
-            this.pictureBox3.Location = new System.Drawing.Point(1207, 0);
+            this.pictureBox3.Location = new System.Drawing.Point(788, 0);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(31, 45);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             // 
-            // uC_PurchaseOrder1
+            // uC_PurchasesMenu1
             // 
-            this.uC_PurchaseOrder1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_PurchaseOrder1.Location = new System.Drawing.Point(132, 72);
-            this.uC_PurchaseOrder1.Name = "uC_PurchaseOrder1";
-            this.uC_PurchaseOrder1.Size = new System.Drawing.Size(1238, 476);
-            this.uC_PurchaseOrder1.TabIndex = 14;
+            this.uC_PurchasesMenu1.BackColor = System.Drawing.SystemColors.Control;
+            this.uC_PurchasesMenu1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.uC_PurchasesMenu1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_PurchasesMenu1.Location = new System.Drawing.Point(132, 72);
+            this.uC_PurchasesMenu1.Name = "uC_PurchasesMenu1";
+            this.uC_PurchasesMenu1.Size = new System.Drawing.Size(819, 514);
+            this.uC_PurchasesMenu1.TabIndex = 16;
             // 
             // mainDashboard1
             // 
@@ -312,7 +318,7 @@
             this.mainDashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainDashboard1.Location = new System.Drawing.Point(132, 72);
             this.mainDashboard1.Name = "mainDashboard1";
-            this.mainDashboard1.Size = new System.Drawing.Size(1238, 476);
+            this.mainDashboard1.Size = new System.Drawing.Size(819, 514);
             this.mainDashboard1.TabIndex = 13;
             // 
             // Dashboard
@@ -320,8 +326,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1370, 548);
-            this.Controls.Add(this.uC_PurchaseOrder1);
+            this.ClientSize = new System.Drawing.Size(951, 586);
+            this.Controls.Add(this.uC_PurchasesMenu1);
             this.Controls.Add(this.mainDashboard1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
@@ -363,6 +369,6 @@
         private System.Windows.Forms.ImageList warehouse_imagelist;
         private System.Windows.Forms.ImageList sales_imagelist;
         private System.Windows.Forms.ImageList purchase_imagelist;
-        private UC_PurchaseOrder uC_PurchaseOrder1;
+        private UC_PurchasesMenu uC_PurchasesMenu1;
     }
 }
