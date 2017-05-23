@@ -89,6 +89,12 @@
     <Compile Include="Views\MainDashboard.Designer.cs">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Material.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Material.Designer.cs">
+      <DependentUpon>Material.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Parameters.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -149,6 +155,12 @@
     <Compile Include="Views\UC_PurchasesMenu.Designer.cs">
       <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\User.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\User.Designer.cs">
+      <DependentUpon>User.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Warehouse.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -167,12 +179,6 @@
     <Compile Include="Views\WarehouseMovementP.Designer.cs">
       <DependentUpon>WarehouseMovementP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Cliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Cliente.Designer.cs">
-      <DependentUpon>Cliente.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,12 +192,6 @@
     </Compile>
     <Compile Include="Views\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Material.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Material.designer.cs">
-      <DependentUpon>Material.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Purchase_Module\ConfirmationDialog.cs">
       <SubType>Form</SubType>
@@ -211,16 +211,10 @@
     <Compile Include="Views\Purchase_Module\PurchaseOrderLine.Designer.cs">
       <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\User.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\User.designer.cs">
-      <DependentUpon>User.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Worker.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Worker.designer.cs">
+    <Compile Include="Views\Worker.Designer.cs">
       <DependentUpon>Worker.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Workstation.cs">
@@ -247,6 +241,9 @@
     <EmbeddedResource Include="Views\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Material.resx">
+      <DependentUpon>Material.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Parameters.resx">
       <DependentUpon>Parameters.cs</DependentUpon>
     </EmbeddedResource>
@@ -271,6 +268,9 @@
     <EmbeddedResource Include="Views\UC_PurchasesMenu.resx">
       <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\User.resx">
+      <DependentUpon>User.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse.resx">
       <DependentUpon>Warehouse.cs</DependentUpon>
     </EmbeddedResource>
@@ -280,17 +280,11 @@
     <EmbeddedResource Include="Views\WarehouseMovementP.resx">
       <DependentUpon>WarehouseMovementP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Cliente.resx">
-      <DependentUpon>Cliente.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Material.resx">
-      <DependentUpon>Material.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Purchase_Module\ConfirmationDialog.resx">
       <DependentUpon>ConfirmationDialog.cs</DependentUpon>
@@ -300,9 +294,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrderLine.resx">
       <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\User.resx">
-      <DependentUpon>User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Worker.resx">
       <DependentUpon>Worker.cs</DependentUpon>

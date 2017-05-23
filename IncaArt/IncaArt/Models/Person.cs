@@ -9,18 +9,17 @@ namespace WindowsFormsApp1.Models
     class Person
     {
         int id;
-        int dni;
-        String name;
-        String paternal_last_name;
-        String maternal_last_name;
-        String phone;
-        String telephone;
-        String email;
+        string dni;
+        string name;
+        string paternal_last_name;
+        string maternal_last_name;
+        string phone;
+        string email;
         char gender;
-        String address;
-        String birthday;
+        string address;
+        DateTime birthday;
 
-        public Person(int id, int dni, string name, string paternal_last_name, string maternal_last_name, string phone, string telephone, string email, char gender, string address, string birthday)
+        public Person(int id, string dni, string name, string paternal_last_name, string maternal_last_name, string phone,  string email, char gender, string address, DateTime birthday)
         {
             this.id = id;
             this.dni = dni;
@@ -28,7 +27,6 @@ namespace WindowsFormsApp1.Models
             this.paternal_last_name = paternal_last_name;
             this.maternal_last_name = maternal_last_name;
             this.phone = phone;
-            this.telephone = telephone;
             this.email = email;
             this.gender = gender;
             this.address = address;
@@ -48,7 +46,7 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public int Dni
+        public string Dni
         {
             get
             {
@@ -112,20 +110,7 @@ namespace WindowsFormsApp1.Models
                 phone = value;
             }
         }
-
-        public string Telephone
-        {
-            get
-            {
-                return telephone;
-            }
-
-            set
-            {
-                telephone = value;
-            }
-        }
-
+        
         public string Email
         {
             get
@@ -165,7 +150,7 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public string Birthday
+        public DateTime Birthday
         {
             get
             {

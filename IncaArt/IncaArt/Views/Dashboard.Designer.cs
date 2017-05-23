@@ -56,6 +56,9 @@
             this.supplier1 = new WindowsFormsApp1.Views.Supplier();
             this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
             this.parameters1 = new WindowsFormsApp1.Views.Parameters();
+            this.user = new WindowsFormsApp1.Views.User();
+            this.material = new WindowsFormsApp1.Views.Material();
+            this.worker = new WindowsFormsApp1.Views.Worker();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -368,6 +371,31 @@
             this.parameters1.Name = "parameters1";
             this.parameters1.Size = new System.Drawing.Size(819, 514);
             this.parameters1.TabIndex = 22;
+            this.parameters1.Visible = false;
+            // 
+            // user
+            // 
+            this.user.Location = new System.Drawing.Point(132, 72);
+            this.user.Name = "user";
+            this.user.Size = new System.Drawing.Size(876, 367);
+            this.user.TabIndex = 24;
+            this.user.Visible = false;
+            // 
+            // material
+            // 
+            this.material.Location = new System.Drawing.Point(132, 72);
+            this.material.Name = "material";
+            this.material.Size = new System.Drawing.Size(792, 406);
+            this.material.TabIndex = 25;
+            this.material.Visible = false;
+            // 
+            // worker
+            // 
+            this.worker.Location = new System.Drawing.Point(132, 72);
+            this.worker.Name = "worker";
+            this.worker.Size = new System.Drawing.Size(999, 443);
+            this.worker.TabIndex = 26;
+            this.worker.Visible = false;
             // 
             // Dashboard
             // 
@@ -386,6 +414,9 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.user);
+            this.Controls.Add(this.material);
+            this.Controls.Add(this.worker);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.Name = "Dashboard";
@@ -430,5 +461,8 @@
         private BOM bom1;
         private Workstation workstation1;
         private Parameters parameters1;
+        private User user;
+        private Material material;
+        private Worker worker;
     }
 }

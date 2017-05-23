@@ -25,6 +25,9 @@ namespace WindowsFormsApp1.Views
             this.mainDashboard1.Controls.Find("metroTile5", false)[0].Click += btn_bom_Click;
             this.mainDashboard1.Controls.Find("metroTile8", false)[0].Click += btn_workstation_Click;
             this.mainDashboard1.Controls.Find("metroTile9", false)[0].Click += btn_parameters_Click;
+            this.mainDashboard1.Controls.Find("metroTile1", false)[0].Click += btn_user_Click;
+            this.mainDashboard1.Controls.Find("metroTile3", false)[0].Click += btn_worker_Click;
+            this.mainDashboard1.Controls.Find("metroTile7", false)[0].Click += btn_material_Click;
         }
 
         private void menuButton_Click(object sender, MouseEventArgs e)
@@ -140,6 +143,24 @@ namespace WindowsFormsApp1.Views
         {
             hide_UserControls();
             workstation1.Visible = true;
+        }
+
+        private void btn_user_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            user.Visible = true;
+        }
+
+        private void btn_worker_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            worker.Visible = true;
+        }
+
+        private void btn_material_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            material.Visible = true;
         }
 
         private void hide_UserControls()

@@ -1,16 +1,16 @@
-﻿namespace WindowsFormsApp1.Views.CRUD
+﻿namespace WindowsFormsApp1.Views
 {
     partial class Material
     {
-        /// <summary>
-        /// Required designer variable.
+        /// <summary> 
+        /// Variable del diseñador necesaria.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
+        /// <summary> 
+        /// Limpiar los recursos que se estén usando.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,14 +20,31 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Código generado por el Diseñador de componentes
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// <summary> 
+        /// Método necesario para admitir el Diseñador. No se puede modificar
+        /// el contenido de este método con el editor de código.
         /// </summary>
         private void InitializeComponent()
         {
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_search = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.combobox_unit_s = new System.Windows.Forms.ComboBox();
+            this.textbox_name_s = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.material_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.material_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.max_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_min = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_edit = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.btn_new = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textbox_max_stock = new System.Windows.Forms.TextBox();
             this.combobox_unit = new System.Windows.Forms.ComboBox();
@@ -37,29 +54,171 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.material_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.material_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.max_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_min = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.btnnuevo = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Location = new System.Drawing.Point(312, 3);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(467, 383);
+            this.tabControl1.TabIndex = 32;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox3);
+            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(459, 357);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Listado de Materias Prima";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox3.Controls.Add(this.btn_search);
+            this.groupBox3.Controls.Add(this.btn_delete);
+            this.groupBox3.Controls.Add(this.combobox_unit_s);
+            this.groupBox3.Controls.Add(this.textbox_name_s);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox3.Location = new System.Drawing.Point(3, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(450, 114);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Datos";
+            // 
+            // btn_search
+            // 
+            this.btn_search.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_search.ForeColor = System.Drawing.Color.White;
+            this.btn_search.Location = new System.Drawing.Point(272, 83);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(83, 25);
+            this.btn_search.TabIndex = 27;
+            this.btn_search.Text = "Buscar";
+            this.btn_search.UseVisualStyleBackColor = false;
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_delete.ForeColor = System.Drawing.Color.White;
+            this.btn_delete.Location = new System.Drawing.Point(361, 83);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(83, 25);
+            this.btn_delete.TabIndex = 26;
+            this.btn_delete.Text = "Eliminar";
+            this.btn_delete.UseVisualStyleBackColor = false;
+            // 
+            // combobox_unit_s
+            // 
+            this.combobox_unit_s.FormattingEnabled = true;
+            this.combobox_unit_s.Location = new System.Drawing.Point(59, 48);
+            this.combobox_unit_s.Name = "combobox_unit_s";
+            this.combobox_unit_s.Size = new System.Drawing.Size(121, 21);
+            this.combobox_unit_s.TabIndex = 4;
+            // 
+            // textbox_name_s
+            // 
+            this.textbox_name_s.Location = new System.Drawing.Point(59, 22);
+            this.textbox_name_s.Name = "textbox_name_s";
+            this.textbox_name_s.Size = new System.Drawing.Size(121, 20);
+            this.textbox_name_s.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 49);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Unidad:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 25);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Nombre:";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.material_id,
+            this.material_name,
+            this.max_stock,
+            this.stock_min});
+            this.dataGridView1.Location = new System.Drawing.Point(6, 123);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(447, 228);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // material_id
+            // 
+            this.material_id.HeaderText = "ID";
+            this.material_id.Name = "material_id";
+            // 
+            // material_name
+            // 
+            this.material_name.HeaderText = "Nombre";
+            this.material_name.Name = "material_name";
+            // 
+            // max_stock
+            // 
+            this.max_stock.HeaderText = "Stock Máximo";
+            this.max_stock.Name = "max_stock";
+            // 
+            // stock_min
+            // 
+            this.stock_min.HeaderText = "Stock mínimo";
+            this.stock_min.Name = "stock_min";
+            // 
+            // btn_edit
+            // 
+            this.btn_edit.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_edit.ForeColor = System.Drawing.Color.White;
+            this.btn_edit.Location = new System.Drawing.Point(134, 363);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.Size = new System.Drawing.Size(83, 25);
+            this.btn_edit.TabIndex = 35;
+            this.btn_edit.Text = "Editar";
+            this.btn_edit.UseVisualStyleBackColor = false;
+            // 
+            // btn_cancel
+            // 
+            this.btn_cancel.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_cancel.ForeColor = System.Drawing.Color.White;
+            this.btn_cancel.Location = new System.Drawing.Point(223, 363);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(83, 25);
+            this.btn_cancel.TabIndex = 34;
+            this.btn_cancel.Text = "Cancelar";
+            this.btn_cancel.UseVisualStyleBackColor = false;
+            // 
+            // btn_new
+            // 
+            this.btn_new.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_new.ForeColor = System.Drawing.Color.White;
+            this.btn_new.Location = new System.Drawing.Point(45, 363);
+            this.btn_new.Name = "btn_new";
+            this.btn_new.Size = new System.Drawing.Size(83, 25);
+            this.btn_new.TabIndex = 33;
+            this.btn_new.Text = "Nuevo";
+            this.btn_new.UseVisualStyleBackColor = false;
             // 
             // groupBox1
             // 
@@ -73,10 +232,10 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox1.Location = new System.Drawing.Point(12, 50);
+            this.groupBox1.Location = new System.Drawing.Point(14, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(292, 336);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de Materia Prima";
             // 
@@ -145,207 +304,37 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.material_id,
-            this.material_name,
-            this.max_stock,
-            this.stock_min});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 123);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(447, 228);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // material_id
-            // 
-            this.material_id.HeaderText = "ID";
-            this.material_id.Name = "material_id";
-            // 
-            // material_name
-            // 
-            this.material_name.HeaderText = "Nombre";
-            this.material_name.Name = "material_name";
-            // 
-            // max_stock
-            // 
-            this.max_stock.HeaderText = "Stock Máximo";
-            this.max_stock.Name = "max_stock";
-            // 
-            // stock_min
-            // 
-            this.stock_min.HeaderText = "Stock mínimo";
-            this.stock_min.Name = "stock_min";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Controls.Add(this.comboBox1);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox3.Location = new System.Drawing.Point(3, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(450, 114);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Datos";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.SteelBlue;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(272, 83);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 25);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.SteelBlue;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(361, 83);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 25);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "Eliminar";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(59, 48);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 4;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(59, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 2;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 49);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Unidad:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 25);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Nombre:";
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.SteelBlue;
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(132, 401);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(83, 25);
-            this.button5.TabIndex = 25;
-            this.button5.Text = "Editar";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.SteelBlue;
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(221, 401);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(83, 25);
-            this.button6.TabIndex = 24;
-            this.button6.Text = "Cancelar";
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // btnnuevo
-            // 
-            this.btnnuevo.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnnuevo.ForeColor = System.Drawing.Color.White;
-            this.btnnuevo.Location = new System.Drawing.Point(43, 401);
-            this.btnnuevo.Name = "btnnuevo";
-            this.btnnuevo.Size = new System.Drawing.Size(83, 25);
-            this.btnnuevo.TabIndex = 23;
-            this.btnnuevo.Text = "Nuevo";
-            this.btnnuevo.UseVisualStyleBackColor = false;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(310, 3);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(467, 383);
-            this.tabControl1.TabIndex = 2;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.groupBox3);
-            this.tabPage1.Controls.Add(this.dataGridView1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(459, 357);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Listado de Materias Prima";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
             // Material
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(784, 442);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.btnnuevo);
+            this.Controls.Add(this.btn_edit);
+            this.Controls.Add(this.btn_cancel);
+            this.Controls.Add(this.btn_new);
             this.Controls.Add(this.groupBox1);
             this.Name = "Material";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Material";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.Size = new System.Drawing.Size(792, 406);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textbox_name;
-        private System.Windows.Forms.TextBox textbox_max_stock;
-        private System.Windows.Forms.ComboBox combobox_unit;
-        private System.Windows.Forms.TextBox textbox_min_stock;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        internal System.Windows.Forms.Button btn_search;
+        internal System.Windows.Forms.Button btn_delete;
+        private System.Windows.Forms.ComboBox combobox_unit_s;
+        private System.Windows.Forms.TextBox textbox_name_s;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -353,12 +342,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn material_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn max_stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn stock_min;
-        internal System.Windows.Forms.Button button1;
-        internal System.Windows.Forms.Button button2;
-        internal System.Windows.Forms.Button button5;
-        internal System.Windows.Forms.Button button6;
-        internal System.Windows.Forms.Button btnnuevo;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        internal System.Windows.Forms.Button btn_edit;
+        internal System.Windows.Forms.Button btn_cancel;
+        internal System.Windows.Forms.Button btn_new;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textbox_max_stock;
+        private System.Windows.Forms.ComboBox combobox_unit;
+        private System.Windows.Forms.TextBox textbox_min_stock;
+        private System.Windows.Forms.TextBox textbox_name;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
