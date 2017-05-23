@@ -63,8 +63,11 @@
     <Compile Include="Models\Material.cs" />
     <Compile Include="Models\Parameters.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PurchaseOrder.cs" />
     <Compile Include="Models\PurchaseOrderLine.cs" />
+    <Compile Include="Models\SalesOrder.cs" />
+    <Compile Include="Models\SalesOrderLine.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\UnitOfMeasure.cs" />
     <Compile Include="Models\User.cs" />
