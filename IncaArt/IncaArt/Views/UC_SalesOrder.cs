@@ -19,8 +19,13 @@ namespace WindowsFormsApp1.Views
 
         private void add_Click(object sender, EventArgs e)
         {
-            Sales_Module.SalesOrderLine order_line = new Sales_Module.SalesOrderLine();
-            order_line.Show();
+            Models.SalesOrderLine sl= new Models.SalesOrderLine();
+            Sales_Module.SalesOrderLine order_line = new Sales_Module.SalesOrderLine(sl);
+            order_line.ShowDialog();
+            if (sl!=null)
+            {
+
+            }
         }
     }
 }

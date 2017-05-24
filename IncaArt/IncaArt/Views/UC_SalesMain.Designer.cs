@@ -102,6 +102,7 @@
             this.devolution.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.devolution.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.devolution.UseTileImage = true;
+            this.devolution.Click += new System.EventHandler(this.devolution_Click);
             // 
             // panel1
             // 
@@ -130,6 +131,7 @@
             this.uC_Sales1.Name = "uC_Sales1";
             this.uC_Sales1.Size = new System.Drawing.Size(900, 600);
             this.uC_Sales1.TabIndex = 1;
+            this.uC_Sales1.Visible = false;
             // 
             // uC_SalesOrder1
             // 
@@ -138,6 +140,7 @@
             this.uC_SalesOrder1.Name = "uC_SalesOrder1";
             this.uC_SalesOrder1.Size = new System.Drawing.Size(872, 592);
             this.uC_SalesOrder1.TabIndex = 2;
+            this.uC_SalesOrder1.Visible = false;
             // 
             // UC_SalesMain
             // 

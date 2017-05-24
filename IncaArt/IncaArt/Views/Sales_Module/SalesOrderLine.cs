@@ -13,10 +13,11 @@ namespace WindowsFormsApp1.Views.Sales_Module
     public partial class SalesOrderLine : Form
     {
         Models.SalesOrderLine line;
-        public SalesOrderLine()
+        public SalesOrderLine(Models.SalesOrderLine sl)
         {
             InitializeComponent();
             dud_Quantity.Text = "0";
+            line = sl;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -53,7 +54,12 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     int quantity = int.Parse(this.dud_Quantity.Text);
                     string description = this.txt_Description.Text;
                     double price = double.Parse(this.txt_UnitPrice.Text);
-                    line = new Models.SalesOrderLine(product, description, quantity, price);
+                    line.Product = product;
+                    line.Description = description;
+                    line.Quantity = quantity;
+                    line.Unit_price = price;
+                    //line = new Models.SalesOrderLine(product, description, quantity, price);
+                    this.Close();
                 }
             }
         }

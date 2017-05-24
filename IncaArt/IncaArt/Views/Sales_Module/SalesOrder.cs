@@ -35,8 +35,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void add_Click(object sender, EventArgs e)
         {
-            SalesOrderLine orderLineForm = new SalesOrderLine();
-            orderLineForm.Show();
+            //SalesOrderLine orderLineForm = new SalesOrderLine();
+            //orderLineForm.Show();
         }
 
         private void cancel_Click(object sender, EventArgs e)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class SalesOrderLine
+    public class SalesOrderLine
     {
         private Product product;
         private string description;
@@ -46,6 +46,10 @@ namespace WindowsFormsApp1.Models
             this.Unit_price = price;
         }
 
-        
+        public SalesOrderLine()
+        {
+        }
+
+
     }
 }

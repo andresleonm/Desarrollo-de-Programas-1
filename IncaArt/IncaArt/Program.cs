@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
             }*/
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashboard());
+            Application.Run(new Frm_Login());
         }
     }
 }

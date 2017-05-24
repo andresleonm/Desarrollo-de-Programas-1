@@ -28,5 +28,11 @@ namespace WindowsFormsApp1.Views
             uC_SalesOrder1.Visible = false;
             uC_Sales1.Visible = true;
         }
+
+        private void devolution_Click(object sender, EventArgs e)
+        {
+            uC_Sales1.Visible = false;
+            uC_SalesOrder1.Visible = true;
+        }
     }
 }
