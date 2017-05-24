@@ -19,11 +19,20 @@ namespace WindowsFormsApp1.Views
 
         private void add_Click(object sender, EventArgs e)
         {
-            Models.SalesOrderLine sl= new Models.SalesOrderLine();
-            Sales_Module.SalesOrderLine order_line = new Sales_Module.SalesOrderLine(sl);
+            Models.SalesOrderLine salesOrderLine= new Models.SalesOrderLine();
+            Sales_Module.SalesOrderLine order_line = new Sales_Module.SalesOrderLine(salesOrderLine);
             order_line.ShowDialog();
-            if (sl!=null)
+            if (salesOrderLine != null)
             {
+                int num = dataGridView1.Rows.Count;
+                String[] row = new String[6];
+                row[0] = num.ToString();
+                row[1] = salesOrderLine.Product.ToString();
+                row[2] = salesOrderLine.Description.ToString();
+                row[3] = salesOrderLine.Quantity.ToString();
+                row[4] = salesOrderLine.Unit_price.ToString();
+                row[5] = (salesOrderLine.Quantity * salesOrderLine.Unit_price).ToString();
+                this.dataGridView1.Rows.Add(row);
 
             }
         }
