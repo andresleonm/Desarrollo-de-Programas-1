@@ -1,37 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1.Views.Purchase_Module
+namespace WindowsFormsApp1.Views
 {
-    public partial class PurchaseOrderLine : Form
+    public partial class UC_PurchaseOrderLine : UserControl
     {
         Models.PurchaseOrderLine line;
-        public PurchaseOrderLine(Models.PurchaseOrderLine line)
+        public UC_PurchaseOrderLine()
         {
             InitializeComponent();
-            this.line = line;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            ConfirmationDialog confirm_dialog = new ConfirmationDialog();            
-            if (confirm_dialog.ShowDialog(this) == DialogResult.OK)
-            {
-                confirm_dialog.Dispose();
-                this.Close();
-            }
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Visible = false;
         }
 
         private void pictureBox_MouseHover(object sender, EventArgs e)
@@ -42,7 +31,7 @@ namespace WindowsFormsApp1.Views.Purchase_Module
         private void pictureBox_MouseLeave(object sender, EventArgs e)
         {
             ((PictureBox)sender).BackColor = Color.LightSteelBlue;
-        }       
+        }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
@@ -52,16 +41,12 @@ namespace WindowsFormsApp1.Views.Purchase_Module
             }
             else
             {
-                DialogResult result = MessageBox.Show(this,"¿Está seguro que desea realizar esta operación?","Confirmación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show(this, "¿Está seguro que desea realizar esta operación?", "Confirmación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
                     Models.Material material = new Models.Material();
                     int quantity = int.Parse(this.txt_quantity.Text);
-                    line.Material = material;
-                    line.Quantity = quantity;
-                    line.Price = quantity * material.Cost;
-                    this.Close();
-                    //line = new Models.PurchaseOrderLine(material, 1, 1);
+                    line = new Models.PurchaseOrderLine(material, 1, 1);
                 }
             }
         }
@@ -70,7 +55,7 @@ namespace WindowsFormsApp1.Views.Purchase_Module
         {
             Models.Material material = new Models.Material(); // se tiene que sacar el material de la lista para rellenar los campos bloqueados
             this.txt_measure_unit.Text = material.Unit.Name;
-            this.txt_description.Text = material.Description;            
+            this.txt_description.Text = material.Description;
 
         }
 
@@ -88,5 +73,10 @@ namespace WindowsFormsApp1.Views.Purchase_Module
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
+        
     }
 }

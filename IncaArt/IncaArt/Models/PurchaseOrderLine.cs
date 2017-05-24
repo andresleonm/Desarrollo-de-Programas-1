@@ -57,5 +57,10 @@ namespace WindowsFormsApp1.Models
             this.quantity = quantity;
             this.price = price;            
         }
+
+        public PurchaseOrderLine()
+        {
+
+        }
     }
 }

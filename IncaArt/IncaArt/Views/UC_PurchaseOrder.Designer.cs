@@ -605,5 +605,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private UC_PurchaseOrderLine uC_PurchaseOrderLine1;
     }
 }
