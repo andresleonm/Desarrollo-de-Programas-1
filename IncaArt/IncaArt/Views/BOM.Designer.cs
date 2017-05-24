@@ -45,11 +45,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.textBoxQuantity = new System.Windows.Forms.TextBox();
+            this.comboBoxMaterial = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxProduct = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -221,14 +221,15 @@
             this.button1.TabIndex = 10;
             this.button1.Text = "Nuevo";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.textBoxQuantity);
+            this.groupBox1.Controls.Add(this.comboBoxMaterial);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.comboBoxProduct);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.SteelBlue;
@@ -239,20 +240,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de la Receta";
             // 
-            // textBox1
+            // textBoxQuantity
             // 
-            this.textBox1.Location = new System.Drawing.Point(122, 127);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(225, 20);
-            this.textBox1.TabIndex = 24;
+            this.textBoxQuantity.Location = new System.Drawing.Point(122, 127);
+            this.textBoxQuantity.Name = "textBoxQuantity";
+            this.textBoxQuantity.Size = new System.Drawing.Size(225, 20);
+            this.textBoxQuantity.TabIndex = 24;
             // 
-            // comboBox2
+            // comboBoxMaterial
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(122, 86);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(225, 21);
-            this.comboBox2.TabIndex = 23;
+            this.comboBoxMaterial.FormattingEnabled = true;
+            this.comboBoxMaterial.Location = new System.Drawing.Point(122, 86);
+            this.comboBoxMaterial.Name = "comboBoxMaterial";
+            this.comboBoxMaterial.Size = new System.Drawing.Size(225, 21);
+            this.comboBoxMaterial.TabIndex = 23;
             // 
             // label3
             // 
@@ -272,13 +273,13 @@
             this.label2.TabIndex = 21;
             this.label2.Text = "Material:";
             // 
-            // comboBox1
+            // comboBoxProduct
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(122, 42);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(225, 21);
-            this.comboBox1.TabIndex = 20;
+            this.comboBoxProduct.FormattingEnabled = true;
+            this.comboBoxProduct.Location = new System.Drawing.Point(122, 42);
+            this.comboBoxProduct.Name = "comboBoxProduct";
+            this.comboBoxProduct.Size = new System.Drawing.Size(225, 21);
+            this.comboBoxProduct.TabIndex = 20;
             // 
             // label1
             // 
@@ -289,7 +290,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Producto:";
             // 
-            // BOM1
+            // BOM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -298,7 +299,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
-            this.Name = "BOM1";
+            this.Name = "BOM";
             this.Size = new System.Drawing.Size(882, 489);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -330,11 +331,11 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox textBoxQuantity;
+        private System.Windows.Forms.ComboBox comboBoxMaterial;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxProduct;
         private System.Windows.Forms.Label label1;
     }
 }

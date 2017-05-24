@@ -74,7 +74,7 @@ namespace WindowsFormsApp1.Views
 
             if (!isCorrect)
             {
-                MessageBox.Show(message, "Error al registrar trabajador", MessageBoxButtons.OK);
+                MessageBox.Show(message, "Error al registrar cliente", MessageBoxButtons.OK);
             }
 
             return isCorrect;

@@ -73,6 +73,7 @@
     <Compile Include="DataService\GenericResult.cs" />
     <Compile Include="DataService\Parameter.cs" />
     <Compile Include="DataService\Row.cs" />
+    <Compile Include="Models\BOM.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\ProductMovement.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Models\UnitOfMeasure.cs" />
     <Compile Include="Models\Warehouse.cs" />
     <Compile Include="Models\Worker.cs" />
+    <Compile Include="Models\Workstation.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
