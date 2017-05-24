@@ -8,51 +8,18 @@ namespace WindowsFormsApp1.Models
 {
     public class User
     {
-        int id;
-        String name;
-        String paternal_last_name;
-        String maternal_last_name;
-        String phone;
-        String email;
-        char gender;
-        String address;
-        String profile;
-        String username;
-        String password;
-        int status;
-
-        public User(int id, string profile_id, string name, string middle_name,
-                        string last_name, string phone, string email, char gender, string address)
-        {
-            this.id = id;
-            this.profile = profile_id;
-            this.name = name;
-            this.maternal_last_name = middle_name;
-            this.paternal_last_name = last_name;
-            this.phone = phone;
-            this.email = email;
-            this.gender = gender;
-            this.address = address;
-        }
-
-        public User(int id, string name, string middle_name,
-                        string last_name)
-        {
-            this.id = id;
-            this.name = name;
-            this.maternal_last_name = middle_name;
-            this.paternal_last_name = last_name;
-        }
-
-        public User()
-        {
-
-        }
-
-        public void print()
-        {
-            Console.WriteLine(name + " " + paternal_last_name);
-        }
+        private int id;
+        private string name;
+        private string middlename;
+        private string lastname;
+        private string phone;
+        private string email;
+        private char gender;
+        private string address;
+        private Profile profile;
+        private string nickname;
+        private string password;
+        private int status;
 
         public int Id
         {
@@ -80,29 +47,29 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public string Paternal_last_name
+        public string Middlename
         {
             get
             {
-                return paternal_last_name;
+                return middlename;
             }
 
             set
             {
-                paternal_last_name = value;
+                middlename = value;
             }
         }
 
-        public string Maternal_last_name
+        public string Lastname
         {
             get
             {
-                return maternal_last_name;
+                return lastname;
             }
 
             set
             {
-                maternal_last_name = value;
+                lastname = value;
             }
         }
 
@@ -158,7 +125,7 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public string Profile
+        internal Profile Profile
         {
             get
             {
@@ -168,6 +135,19 @@ namespace WindowsFormsApp1.Models
             set
             {
                 profile = value;
+            }
+        }
+
+        public string Nickname
+        {
+            get
+            {
+                return nickname;
+            }
+
+            set
+            {
+                nickname = value;
             }
         }
 
@@ -197,17 +177,22 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public string Username
+        public User(int id, Profile profile, string name, string middlename, string lastname, string phone, string email, char gender, string address)
         {
-            get
-            {
-                return username;
-            }
+            this.id = id;
+            this.profile = profile;
+            this.name = name;
+            this.lastname = middlename;
+            this.middlename = lastname;
+            this.phone = phone;
+            this.email = email;
+            this.gender = gender;
+            this.address = address;
+        }
 
-            set
-            {
-                username = value;
-            }
+        public User()
+        {
+
         }
     }
 }
