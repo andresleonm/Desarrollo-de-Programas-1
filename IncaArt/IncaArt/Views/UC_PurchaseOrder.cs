@@ -27,7 +27,7 @@ namespace WindowsFormsApp1.Views
             if (line != null)
             {
                 string[] grid_line = new string[6];
-                //grid_line[0] = order.Due_date.ToString();
+                grid_line[0] = line.Scheluded_date.ToString();
                 grid_line[1] = "";
                 grid_line[2] = line.Quantity.ToString();
                 grid_line[3] = line.Material.Name;

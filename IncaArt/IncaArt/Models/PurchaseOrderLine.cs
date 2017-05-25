@@ -11,6 +11,7 @@ namespace WindowsFormsApp1.Models
         Material material;
         int quantity;
         double price;
+        DateTime scheluded_date;
 
         public Material Material
         {
@@ -48,6 +49,19 @@ namespace WindowsFormsApp1.Models
             set
             {
                 price = value;
+            }
+        }
+
+        public DateTime Scheluded_date
+        {
+            get
+            {
+                return scheluded_date;
+            }
+
+            set
+            {
+                scheluded_date = value;
             }
         }
 

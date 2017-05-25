@@ -20,18 +20,6 @@ namespace WindowsFormsApp1.Views
         public void fillGrid()
         {
             
-            foreach(Models.PurchaseOrder order in ((Dashboard)(this.FindForm().FindForm())).purchase_order_list)
-            {
-                string[] gridline = new string[5];
-                gridline[0] = order.Id.ToString();
-                gridline[1] = order.Creation_date.ToString();
-                gridline[2] = order.Due_date.ToString();
-                gridline[3] = order.Amount.ToString();
-                gridline[4] = order.State.ToString();
-
-                dataGridView2.Rows.Add(gridline);
-
-            }
         }
 
         private void button6_Click(object sender, EventArgs e)

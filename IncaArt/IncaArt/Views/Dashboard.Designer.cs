@@ -45,8 +45,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_logo = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.label_user_role = new MetroFramework.Controls.MetroLabel();
+            this.label_user_name = new MetroFramework.Controls.MetroLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.uC_SalesMain1 = new WindowsFormsApp1.Views.UC_SalesMain();
             this.uc_warehousemovement = new WindowsFormsApp1.Views.UC_WarehouseMovement();
@@ -75,7 +75,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -87,7 +87,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Minimize_Window_52px;
             this.pictureBox2.Location = new System.Drawing.Point(909, 0);
@@ -103,7 +103,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Close_Window_52px;
             this.pictureBox1.Location = new System.Drawing.Point(930, 0);
@@ -119,7 +119,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.panel1.Controls.Add(this.btn_purchase);
             this.panel1.Controls.Add(this.btn_sales);
             this.panel1.Controls.Add(this.btn_warehouse);
@@ -133,9 +133,9 @@
             // 
             // btn_purchase
             // 
-            this.btn_purchase.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_purchase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_purchase.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_purchase.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btn_purchase.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_purchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_purchase.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_purchase.ForeColor = System.Drawing.Color.White;
@@ -161,9 +161,9 @@
             // 
             // btn_sales
             // 
-            this.btn_sales.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_sales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_sales.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_sales.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btn_sales.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_sales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_sales.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_sales.ForeColor = System.Drawing.Color.White;
@@ -189,9 +189,9 @@
             // 
             // btn_warehouse
             // 
-            this.btn_warehouse.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_warehouse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_warehouse.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_warehouse.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btn_warehouse.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_warehouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_warehouse.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_warehouse.ForeColor = System.Drawing.Color.White;
@@ -217,9 +217,9 @@
             // 
             // btn_config
             // 
-            this.btn_config.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_config.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_config.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_config.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btn_config.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_config.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_config.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_config.ForeColor = System.Drawing.Color.White;
@@ -255,9 +255,9 @@
             // 
             // btn_logo
             // 
-            this.btn_logo.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_logo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_logo.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_logo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_logo.FlatAppearance.BorderSize = 0;
             this.btn_logo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_logo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -275,9 +275,9 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.panel4.Controls.Add(this.metroLabel2);
-            this.panel4.Controls.Add(this.metroLabel1);
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.panel4.Controls.Add(this.label_user_role);
+            this.panel4.Controls.Add(this.label_user_name);
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(132, 27);
@@ -285,27 +285,32 @@
             this.panel4.Size = new System.Drawing.Size(819, 45);
             this.panel4.TabIndex = 12;
             // 
-            // metroLabel2
+            // label_user_role
             // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.CustomBackground = true;
-            this.metroLabel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.metroLabel2.Location = new System.Drawing.Point(609, 0);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(101, 19);
-            this.metroLabel2.TabIndex = 2;
-            this.metroLabel2.Text = "(Administrador)";
+            this.label_user_role.AutoSize = true;
+            this.label_user_role.CustomBackground = true;
+            this.label_user_role.CustomForeColor = true;
+            this.label_user_role.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label_user_role.ForeColor = System.Drawing.Color.White;
+            this.label_user_role.Location = new System.Drawing.Point(609, 0);
+            this.label_user_role.Name = "label_user_role";
+            this.label_user_role.Size = new System.Drawing.Size(101, 19);
+            this.label_user_role.TabIndex = 2;
+            this.label_user_role.Text = "(Administrador)";
             // 
-            // metroLabel1
+            // label_user_name
             // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.CustomBackground = true;
-            this.metroLabel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.metroLabel1.Location = new System.Drawing.Point(710, 0);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(78, 19);
-            this.metroLabel1.TabIndex = 1;
-            this.metroLabel1.Text = "Rony Cueva";
+            this.label_user_name.AutoSize = true;
+            this.label_user_name.CustomBackground = true;
+            this.label_user_name.CustomForeColor = true;
+            this.label_user_name.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label_user_name.ForeColor = System.Drawing.Color.White;
+            this.label_user_name.Location = new System.Drawing.Point(710, 0);
+            this.label_user_name.Name = "label_user_name";
+            this.label_user_name.Size = new System.Drawing.Size(78, 19);
+            this.label_user_name.Style = MetroFramework.MetroColorStyle.White;
+            this.label_user_name.TabIndex = 1;
+            this.label_user_name.Text = "Rony Cueva";
             // 
             // pictureBox3
             // 
@@ -320,7 +325,7 @@
             // 
             // uC_SalesMain1
             // 
-            this.uC_SalesMain1.BackColor = System.Drawing.Color.White;
+            this.uC_SalesMain1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(143)))), ((int)(((byte)(132)))));
             this.uC_SalesMain1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_SalesMain1.Location = new System.Drawing.Point(132, 72);
             this.uC_SalesMain1.Name = "uC_SalesMain1";
@@ -498,8 +503,8 @@
         private System.Windows.Forms.Panel panel4;
         private MainDashboard mainDashboard1;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel label_user_role;
+        private MetroFramework.Controls.MetroLabel label_user_name;
         private System.Windows.Forms.ImageList config_imagelist;
         private System.Windows.Forms.ImageList warehouse_imagelist;
         private System.Windows.Forms.ImageList sales_imagelist;
