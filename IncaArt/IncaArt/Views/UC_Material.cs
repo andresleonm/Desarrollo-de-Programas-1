@@ -17,6 +17,7 @@ namespace WindowsFormsApp1.Views
         int cur_row;
         List<Models.Material> material_list;
         List<Models.UnitOfMeasure> unit_list;
+        Controller.MaterialsController materialController;
         public UC_Material()
         {
             InitializeComponent();
@@ -30,15 +31,15 @@ namespace WindowsFormsApp1.Views
 
             Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
             unit.Name = "Kilogramos";
-            unit.Symbol = "Kg";
+            unit.Symbol = "1";
             unit_list.Add(unit);
             unit = new Models.UnitOfMeasure();
             unit.Name = "Gramos";
-            unit.Symbol = "g";
+            unit.Symbol = "2";
             unit_list.Add(unit);
             unit = new Models.UnitOfMeasure();
             unit.Name = "Listones";
-            unit.Symbol = "liston";
+            unit.Symbol = "3";
             unit_list.Add(unit);
 
             //Cargar los combobox

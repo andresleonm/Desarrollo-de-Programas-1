@@ -59,7 +59,7 @@ namespace WindowsFormsApp1.Views.Purchase_Module
                     int quantity = int.Parse(this.txt_quantity.Text);
                     line.Material = material;
                     line.Quantity = quantity;
-                    line.Price = quantity * material.Cost;
+                    line.Price = quantity * material.Average_cost;
                     this.Close();
                     //line = new Models.PurchaseOrderLine(material, 1, 1);
                 }
