@@ -84,7 +84,7 @@ namespace WindowsFormsApp1.Controller
 
                 foreach (Row row in result.data)
                 {
-                    profiles.Add(new Profile(Int32.Parse(row.getColumn(0)), row.getColumn(1));
+                    profiles.Add(new Profile(Int32.Parse(row.getColumn(0)), row.getColumn(1)));
                 }
 
                 return new Result(profiles, true, "");

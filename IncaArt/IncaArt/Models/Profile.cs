@@ -64,5 +64,10 @@ namespace WindowsFormsApp1.Models
             this.description = description;
             this.functionalities = new List<Functionality>();
         }
+
+        public Profile()
+        {
+
+        }
     }
 }

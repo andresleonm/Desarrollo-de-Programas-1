@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using WindowsFormsApp1.Models;
+using WindowsFormsApp1.Controller;
 
 namespace WindowsFormsApp1.Views
 {
@@ -14,15 +17,21 @@ namespace WindowsFormsApp1.Views
     {
         int last_id;
         int cur_row;
-        List<Models.User> user_list;
-        List<String> profile_list;
+        List<User> user_list;
+        List<Profile> profile_list;
+        ProfileController profile_controller;
+        UsersController user_controller;
 
         public UC_User()
         {
             InitializeComponent();
+            profile_list = new List<Profile>();
+            profile_controller = new ProfileController("", "");
+            user_controller = new UsersController("", "");
+
         }
 
-        private bool validate_data(String name, String paternal_last_name, String maternal_last_name,char gender, String phone, String email, String username,String password,String profile)
+        private bool validate_data(String name, String paternal_last_name, String maternal_last_name,char gender, String phone, String email, String address, String username,String password,String profile)
         {
             bool isCorrect = true;
             String message = "";
@@ -47,16 +56,20 @@ namespace WindowsFormsApp1.Views
                 isCorrect = false;
                 message += "- Debe ingresar el género del usuario.\n";
             }
-            
-            if (phone == "")
+            if (!Regex.IsMatch(phone, @"^\d+$"))
             {
                 isCorrect = false;
-                message += "- Debe ingresar el teléfono del usuario.\n";
+                message += "- Debe ingresar un teléfono válido (solamente con digitos).\n";
             }
-            if (email == "")
+            if (!Regex.IsMatch(email, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"))
             {
                 isCorrect = false;
-                message += "- Debe ingresar el email del usuario.\n";
+                message += "- Debe ingresar un email válido.\n";
+            }
+            if (address == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar la direccion del usuario.\n";
             }
 
             if (username == "")
@@ -88,22 +101,26 @@ namespace WindowsFormsApp1.Views
         private void User_Load(object sender, EventArgs e)
         {
             user_list = ((Dashboard)Parent).user_list;
-            profile_list = new List<string>();
+
+            Result profiles_result = profile_controller.getProfiles();
+
+            if (profiles_result.success)
+            {
+                profile_list = (List<Profile>)profiles_result.data;
+            }
+            else
+            {
+                MessageBox.Show(profiles_result.message);
+            }
 
             last_id = user_list.Count();
 
-            profile_list.Add("SuperAdmin");
-            profile_list.Add("Admin");
-            profile_list.Add("Usuario");
-
-
             //Cargar Combobox
-            foreach (var item in profile_list)
+            foreach (Profile profile in profile_list)
             {
-                combobox_profile.Items.Add(item);
-                combobox_profile_s.Items.Add(item);
+                combobox_profile.Items.Add(profile.Description);
+                combobox_profile_s.Items.Add(profile.Description);
             }
-            Load_DataGridView("","","","","");
         }
 
         private void Load_DataGridView(String name, String paternal, String maternal,String username,String profile)
@@ -138,6 +155,8 @@ namespace WindowsFormsApp1.Views
             textbox_paternal_s.Text = "";
             textbox_phone.Text = "";
             textbox_password.Text = "";
+            textbox_address.Text = "";
+            textbox_username.Text = "";
             combobox_profile.Text = "";
             combobox_profile_s.Text = "";
             radioButton1.Checked = false;
@@ -159,38 +178,36 @@ namespace WindowsFormsApp1.Views
             String paternal = textbox_paternal.Text;
             String phone = textbox_phone.Text;
             String password = textbox_password.Text;
-            String profile = combobox_profile.Text;
+            String profile_name = combobox_profile.Text;
             String username = textbox_username.Text;
-            //char gender = 'M';
-            //if (radioButton1.Checked)
-            //{
-            //    gender = 'M';
-            //}
-            //else if (radioButton2.Checked)
-            //{
-            //    gender = 'F';
-            //}
+            String address = textbox_address.Text;
+            char gender = ' ';
+            if (radioButton1.Checked)
+            {
+                gender = 'M';
+            }
+            else if (radioButton2.Checked)
+            {
+                gender = 'F';
+            }
 
-            //if (validate_data(name, paternal, maternal, gender, phone, email, username, password, profile)){
-            //    Models.User user = new Models.User();
-            //    user.Id = last_id;
-            //    user.Name = name;
-            //    user.Paternal_last_name = paternal;
-            //    user.Maternal_last_name = maternal;
-            //    user.Gender = gender;
-            //    user.Phone = phone;
-            //    user.Profile = profile;
-            //    user.Email = email;
-            //    user.Nickname = username;
-            //    user.Password = password;
-            //    user.Status = 1;
+            if (validate_data(name, paternal, maternal, gender, phone, email, address, username, password, profile_name))
+            {
+                Profile profile = profile_list.Find(p => p.Description == profile_name);
+                User user = new User(0, profile, name, paternal, maternal, phone, email, gender, address, username, password, "");
+                Result insert_result = user_controller.insertUser(user);
 
-            //    last_id++;
-            //    user_list.Add(user);
-            //    Clean();
-            //    Load_DataGridView("", "", "", "", "");
-            //}
-            
+                if (insert_result.success)
+                {
+                    Clean();
+                    MessageBox.Show("Usuario ingresado correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show(insert_result.message);
+                }
+            }
+
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -236,26 +253,26 @@ namespace WindowsFormsApp1.Views
         //Modificar Datos
         private void btm_edit_Click(object sender, EventArgs e)
         {
-            String email = textbox_email.Text;
-            String maternal = textbox_maternal.Text;
-            String name = textbox_name.Text;
-            String paternal = textbox_paternal.Text;
-            String phone = textbox_phone.Text;
-            String password = textbox_password.Text;
-            String profile = combobox_profile.Text;
-            String username = textbox_username.Text;
-            char gender = 'M';
-            if (radioButton1.Checked)
-            {
-                gender = 'M';
-            }
-            else if (radioButton2.Checked)
-            {
-                gender = 'F';
-            }
+            //String email = textbox_email.Text;
+            //String maternal = textbox_maternal.Text;
+            //String name = textbox_name.Text;
+            //String paternal = textbox_paternal.Text;
+            //String phone = textbox_phone.Text;
+            //String password = textbox_password.Text;
+            //String profile = combobox_profile.Text;
+            //String username = textbox_username.Text;
+            //char gender = ' ';
+            //if (radioButton1.Checked)
+            //{
+            //    gender = 'M';
+            //}
+            //else if (radioButton2.Checked)
+            //{
+            //    gender = 'F';
+            //}
 
-            if (validate_data(name, paternal, maternal, gender, phone, email, username, password, profile))
-            {
+            //if (validate_data(name, paternal, maternal, gender, phone, email, username, password, profile))
+            //{
                 //Models.User user = new Models.User();
                 //user.Id = int.Parse(dataGridView1.Rows[cur_row].Cells[0].Value.ToString());
                 //user.Name = name;
@@ -287,7 +304,7 @@ namespace WindowsFormsApp1.Views
                 //}
                 //Clean();
                 //Load_DataGridView("", "", "", "", "");
-            }
+            //}
         }
 
         //Buscar
