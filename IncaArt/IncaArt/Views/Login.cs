@@ -8,14 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Views;
+using WindowsFormsApp1.Controller;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1
 {
     public partial class Frm_Login : Form
     {
+        UsersController usersController;
         public Frm_Login()
         {
             InitializeComponent();
+            usersController = new UsersController("", "");
         }
 
         private void Btn_CancelLogin_Click(object sender, EventArgs e)
@@ -25,9 +29,19 @@ namespace WindowsFormsApp1
 
         private void Btn_Login_Click(object sender, EventArgs e)
         {
-            Dashboard main_form = new Dashboard();
-            main_form.Show();
-            this.Hide();
+            Result userResult = usersController.getUserByNickname(textBoxNickname.Text);
+
+            if (userResult.success)
+            {
+                User user = (User)userResult.data;
+                Dashboard main_form = new Dashboard();
+                MessageBox.Show("Bienvenido " + user.Name);
+                main_form.Show();
+                this.Hide();
+            } else
+            {
+                MessageBox.Show(userResult.message);
+            }
         }
     }
 }

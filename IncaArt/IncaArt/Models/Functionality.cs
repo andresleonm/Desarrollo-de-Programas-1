@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    public class Profile
+    public class Functionality
     {
         int id;
+        string name;
         string description;
-        List<Functionality> functionalities;
 
         public int Id
         {
@@ -22,6 +22,19 @@ namespace WindowsFormsApp1.Models
             set
             {
                 id = value;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
             }
         }
 
@@ -38,29 +51,11 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public List<Functionality> Functionalities
-        {
-            get
-            {
-                return functionalities;
-            }
-
-            set
-            {
-                functionalities = value;
-            }
-        }
-
-        public Profile(int id, string description, List<Functionality> functionalities)
+        public Functionality(int id, string name, string description)
         {
             this.id = id;
+            this.name = name;
             this.description = description;
-            this.functionalities = functionalities;
-        }
-
-        public Profile()
-        {
-
         }
     }
 }

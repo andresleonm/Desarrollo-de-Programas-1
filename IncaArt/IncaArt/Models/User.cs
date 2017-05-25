@@ -177,7 +177,7 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public User(int id, Profile profile, string name, string middlename, string lastname, string phone, string email, char gender, string address)
+        public User(int id, Profile profile, string name, string middlename, string lastname, string phone, string email, char gender, string address, string nickname, string password)
         {
             this.id = id;
             this.profile = profile;
@@ -188,11 +188,8 @@ namespace WindowsFormsApp1.Models
             this.email = email;
             this.gender = gender;
             this.address = address;
-        }
-
-        public User()
-        {
-
+            this.nickname = nickname;
+            this.password = password;
         }
     }
 }

@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ProfileController.cs" />
     <Compile Include="Controller\Result.cs" />
     <Compile Include="Controller\UsersController.cs" />
     <Compile Include="DataService\DatabaseService.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Models\BOM.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Functionality.cs" />
     <Compile Include="Models\ProductMovement.cs" />
     <Compile Include="Models\MaterialMovement.cs" />
     <Compile Include="Models\Person.cs" />
