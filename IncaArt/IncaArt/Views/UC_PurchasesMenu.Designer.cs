@@ -40,7 +40,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.btn_new_purchase_order);
             this.panel1.Controls.Add(this.btn_purchase_orders);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -53,7 +53,7 @@
             // 
             this.btn_new_purchase_order.ActiveControl = null;
             this.btn_new_purchase_order.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_new_purchase_order.Location = new System.Drawing.Point(213, 5);
+            this.btn_new_purchase_order.Location = new System.Drawing.Point(263, 5);
             this.btn_new_purchase_order.Name = "btn_new_purchase_order";
             this.btn_new_purchase_order.Size = new System.Drawing.Size(177, 62);
             this.btn_new_purchase_order.TabIndex = 1;
@@ -66,7 +66,7 @@
             // 
             this.btn_purchase_orders.ActiveControl = null;
             this.btn_purchase_orders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_purchase_orders.Location = new System.Drawing.Point(3, 5);
+            this.btn_purchase_orders.Location = new System.Drawing.Point(27, 5);
             this.btn_purchase_orders.Name = "btn_purchase_orders";
             this.btn_purchase_orders.Size = new System.Drawing.Size(177, 62);
             this.btn_purchase_orders.TabIndex = 0;
