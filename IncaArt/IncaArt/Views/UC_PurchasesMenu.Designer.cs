@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_new_purchase_order = new MetroFramework.Controls.MetroTile();
+            this.btn_purchase_orders = new MetroFramework.Controls.MetroTile();
             this.panel2 = new System.Windows.Forms.Panel();
             this.uC_PurchaseOrderGrid1 = new WindowsFormsApp1.Views.UC_PurchaseOrderGrid();
             this.uC_PurchaseOrder1 = new WindowsFormsApp1.Views.UC_PurchaseOrder();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
-            this.metroTile2 = new MetroFramework.Controls.MetroTile();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -41,13 +41,39 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.metroTile2);
-            this.panel1.Controls.Add(this.metroTile1);
+            this.panel1.Controls.Add(this.btn_new_purchase_order);
+            this.panel1.Controls.Add(this.btn_purchase_orders);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(774, 70);
             this.panel1.TabIndex = 0;
+            // 
+            // btn_new_purchase_order
+            // 
+            this.btn_new_purchase_order.ActiveControl = null;
+            this.btn_new_purchase_order.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_new_purchase_order.Location = new System.Drawing.Point(213, 5);
+            this.btn_new_purchase_order.Name = "btn_new_purchase_order";
+            this.btn_new_purchase_order.Size = new System.Drawing.Size(177, 62);
+            this.btn_new_purchase_order.TabIndex = 1;
+            this.btn_new_purchase_order.Text = "Nueva Orden";
+            this.btn_new_purchase_order.UseCustomBackColor = true;
+            this.btn_new_purchase_order.UseSelectable = true;
+            this.btn_new_purchase_order.Click += new System.EventHandler(this.btn_new_purchase_order_Click);
+            // 
+            // btn_purchase_orders
+            // 
+            this.btn_purchase_orders.ActiveControl = null;
+            this.btn_purchase_orders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_purchase_orders.Location = new System.Drawing.Point(3, 5);
+            this.btn_purchase_orders.Name = "btn_purchase_orders";
+            this.btn_purchase_orders.Size = new System.Drawing.Size(177, 62);
+            this.btn_purchase_orders.TabIndex = 0;
+            this.btn_purchase_orders.Text = "Órdenes de Compra";
+            this.btn_purchase_orders.UseCustomBackColor = true;
+            this.btn_purchase_orders.UseSelectable = true;
+            this.btn_purchase_orders.Click += new System.EventHandler(this.btn_purchases_orders_Click);
             // 
             // panel2
             // 
@@ -79,22 +105,6 @@
             this.uC_PurchaseOrder1.TabIndex = 1;
             this.uC_PurchaseOrder1.Visible = false;
             // 
-            // metroTile1
-            // 
-            this.metroTile1.Location = new System.Drawing.Point(3, 5);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(177, 62);
-            this.metroTile1.TabIndex = 0;
-            this.metroTile1.Text = "Órdenes de Compra";
-            // 
-            // metroTile2
-            // 
-            this.metroTile2.Location = new System.Drawing.Point(213, 5);
-            this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(177, 62);
-            this.metroTile2.TabIndex = 1;
-            this.metroTile2.Text = "Nueva Orden";
-            // 
             // UC_PurchasesMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -117,7 +127,7 @@
         private System.Windows.Forms.Panel panel2;
         private UC_PurchaseOrderGrid uC_PurchaseOrderGrid1;
         private UC_PurchaseOrder uC_PurchaseOrder1;
-        private MetroFramework.Controls.MetroTile metroTile1;
-        private MetroFramework.Controls.MetroTile metroTile2;
+        private MetroFramework.Controls.MetroTile btn_purchase_orders;
+        private MetroFramework.Controls.MetroTile btn_new_purchase_order;
     }
 }

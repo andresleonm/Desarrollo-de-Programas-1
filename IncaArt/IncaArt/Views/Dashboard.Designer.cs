@@ -241,7 +241,7 @@
             // 
             this.config_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("config_imagelist.ImageStream")));
             this.config_imagelist.TransparentColor = System.Drawing.Color.Transparent;
-            this.config_imagelist.Images.SetKeyName(0, "Blue_Settings_40px.png");
+            this.config_imagelist.Images.SetKeyName(0, "Settings_48px.png");
             this.config_imagelist.Images.SetKeyName(1, "Settings_48px.png");
             // 
             // panel3
