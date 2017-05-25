@@ -423,6 +423,7 @@
             this.Controls.Add(this.editA);
             this.Controls.Add(this.newA);
             this.Controls.Add(this.groupBox1);
+            this.DoubleBuffered = true;
             this.Name = "Warehouse";
             this.Size = new System.Drawing.Size(1023, 531);
             this.Load += new System.EventHandler(this.Warehouse_Load);

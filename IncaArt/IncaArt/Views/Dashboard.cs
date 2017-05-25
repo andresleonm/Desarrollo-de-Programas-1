@@ -86,12 +86,12 @@ namespace WindowsFormsApp1.Views
 
         private void pictureBox_MouseHover(object sender, EventArgs e)
         {
-            ((PictureBox)sender).BackColor = Color.RoyalBlue;
+            ((PictureBox)sender).BackColor = Color.FromArgb(64, 104, 104);
         }
 
         private void pictureBox_MouseLeave(object sender, EventArgs e)
         {
-            ((PictureBox)sender).BackColor = Color.LightSteelBlue;
+            ((PictureBox)sender).BackColor = Color.FromArgb(222, 234, 198);
         }
 
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]

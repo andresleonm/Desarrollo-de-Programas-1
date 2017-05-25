@@ -443,6 +443,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
+            this.DoubleBuffered = true;
             this.Name = "UC_WarehouseMovementP";
             this.Size = new System.Drawing.Size(1126, 521);
             this.tabControl1.ResumeLayout(false);

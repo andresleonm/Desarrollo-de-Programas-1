@@ -38,8 +38,8 @@
             // 
             // register_sale
             // 
-            this.register_sale.BackColor = System.Drawing.Color.DarkBlue;
-            this.register_sale.UseCustomBackColor = true;
+            this.register_sale.ActiveControl = null;
+            this.register_sale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.register_sale.Location = new System.Drawing.Point(31, 3);
             this.register_sale.Name = "register_sale";
             this.register_sale.Size = new System.Drawing.Size(177, 62);
@@ -49,13 +49,15 @@
             this.register_sale.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.register_sale.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.register_sale.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.register_sale.UseCustomBackColor = true;
+            this.register_sale.UseSelectable = true;
             this.register_sale.UseTileImage = true;
             this.register_sale.Click += new System.EventHandler(this.register_sale_Click_1);
             // 
             // sales
             // 
-            this.sales.BackColor = System.Drawing.Color.DarkGreen;
-            this.sales.UseCustomBackColor = true;
+            this.sales.ActiveControl = null;
+            this.sales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.sales.Location = new System.Drawing.Point(250, 3);
             this.sales.Name = "sales";
             this.sales.Size = new System.Drawing.Size(177, 62);
@@ -65,6 +67,8 @@
             this.sales.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.sales.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.sales.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.sales.UseCustomBackColor = true;
+            this.sales.UseSelectable = true;
             this.sales.UseTileImage = true;
             this.sales.Click += new System.EventHandler(this.sales_Click);
             // 
@@ -100,6 +104,7 @@
             this.Controls.Add(this.UC_WarehouseMovementP);
             this.Controls.Add(this.UC_WarehouseMovementM);
             this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
             this.Name = "UC_WarehouseMovement";
             this.Size = new System.Drawing.Size(1096, 572);
             this.panel1.ResumeLayout(false);

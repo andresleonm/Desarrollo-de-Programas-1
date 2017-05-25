@@ -156,7 +156,7 @@
             // 
             this.purchase_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("purchase_imagelist.ImageStream")));
             this.purchase_imagelist.TransparentColor = System.Drawing.Color.Transparent;
-            this.purchase_imagelist.Images.SetKeyName(0, "blue_Shopping Cart_20px.png");
+            this.purchase_imagelist.Images.SetKeyName(0, "Shopping Cart_20px.png");
             this.purchase_imagelist.Images.SetKeyName(1, "Shopping Cart_52px.png");
             // 
             // btn_sales
@@ -184,7 +184,7 @@
             // 
             this.sales_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("sales_imagelist.ImageStream")));
             this.sales_imagelist.TransparentColor = System.Drawing.Color.Transparent;
-            this.sales_imagelist.Images.SetKeyName(0, "blue_Sales Performance_20px.png");
+            this.sales_imagelist.Images.SetKeyName(0, "Sales Performance_20px.png");
             this.sales_imagelist.Images.SetKeyName(1, "Sales Performance_64px.png");
             // 
             // btn_warehouse
@@ -212,7 +212,7 @@
             // 
             this.warehouse_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("warehouse_imagelist.ImageStream")));
             this.warehouse_imagelist.TransparentColor = System.Drawing.Color.Transparent;
-            this.warehouse_imagelist.Images.SetKeyName(0, "blue_Move by Trolley_20px.png");
+            this.warehouse_imagelist.Images.SetKeyName(0, "Move by Trolley_20px.png");
             this.warehouse_imagelist.Images.SetKeyName(1, "Hangar_64px.png");
             // 
             // btn_config
@@ -472,6 +472,7 @@
             this.Controls.Add(this.shift);
             this.Controls.Add(this.product);
             this.Controls.Add(this.material);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.Name = "Dashboard";

@@ -511,6 +511,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_new);
+            this.DoubleBuffered = true;
             this.Name = "UC_Worker";
             this.Size = new System.Drawing.Size(1107, 462);
             this.Load += new System.EventHandler(this.Worker_Load);
