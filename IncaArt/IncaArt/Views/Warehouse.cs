@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class Warehouse : UserControl
+    public partial class Warehouse : MetroFramework.Controls.MetroUserControl
     {
         List<UC_Product> products = new List<UC_Product>();
         List<UC_Material> materials = new List<UC_Material>();
@@ -56,7 +56,7 @@ namespace WindowsFormsApp1.Views
             
 
             
-
+/*
             String nameWarehouse = name.Text;
             String typeWarehouse = type.Text;
 
@@ -69,7 +69,7 @@ namespace WindowsFormsApp1.Views
             bool isValid =validate_data(nameWarehouse, typeWarehouse, m_capacity, a_capacity, u1, u2);
             if (isValid) {
                 
-            }
+            }*/
         }
     }
 }
