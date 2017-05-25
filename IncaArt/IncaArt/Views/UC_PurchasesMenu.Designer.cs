@@ -71,8 +71,11 @@
             this.btn_purchase_orders.Size = new System.Drawing.Size(177, 62);
             this.btn_purchase_orders.TabIndex = 0;
             this.btn_purchase_orders.Text = "Órdenes de Compra";
+            this.btn_purchase_orders.TileImage = global::WindowsFormsApp1.Properties.Resources.Documents_40px;
+            this.btn_purchase_orders.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.btn_purchase_orders.UseCustomBackColor = true;
             this.btn_purchase_orders.UseSelectable = true;
+            this.btn_purchase_orders.UseTileImage = true;
             this.btn_purchase_orders.Click += new System.EventHandler(this.btn_purchases_orders_Click);
             // 
             // panel2

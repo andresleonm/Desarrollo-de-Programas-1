@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.register_sale = new MetroFramework.Controls.MetroTile();
             this.invoice = new MetroFramework.Controls.MetroTile();
             this.sales = new MetroFramework.Controls.MetroTile();
             this.devolution = new MetroFramework.Controls.MetroTile();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.uC_Sales1 = new WindowsFormsApp1.Views.UC_Sales();
             this.uC_SalesOrder1 = new WindowsFormsApp1.Views.UC_SalesOrder();
             this.panel1.SuspendLayout();
@@ -51,15 +51,6 @@
             this.panel1.Size = new System.Drawing.Size(894, 70);
             this.panel1.TabIndex = 41;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.uC_Sales1);
-            this.panel2.Controls.Add(this.uC_SalesOrder1);
-            this.panel2.Location = new System.Drawing.Point(3, 79);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(894, 618);
-            this.panel2.TabIndex = 42;
-            // 
             // register_sale
             // 
             this.register_sale.ActiveControl = null;
@@ -70,8 +61,7 @@
             this.register_sale.TabIndex = 38;
             this.register_sale.Text = "Registrar Venta";
             this.register_sale.TileImage = global::WindowsFormsApp1.Properties.Resources.Shopping_Cart_40px;
-            this.register_sale.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.register_sale.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.register_sale.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.register_sale.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.register_sale.UseCustomBackColor = true;
             this.register_sale.UseSelectable = true;
@@ -88,8 +78,7 @@
             this.invoice.TabIndex = 40;
             this.invoice.Text = "Generar Facturas";
             this.invoice.TileImage = global::WindowsFormsApp1.Properties.Resources.Documents_40px;
-            this.invoice.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.invoice.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.invoice.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.invoice.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.invoice.UseCustomBackColor = true;
             this.invoice.UseSelectable = true;
@@ -105,8 +94,7 @@
             this.sales.TabIndex = 39;
             this.sales.Text = "Ventas";
             this.sales.TileImage = global::WindowsFormsApp1.Properties.Resources.Cash_Register_40px;
-            this.sales.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.sales.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.sales.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.sales.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.sales.UseCustomBackColor = true;
             this.sales.UseSelectable = true;
@@ -124,13 +112,21 @@
             this.devolution.TabIndex = 37;
             this.devolution.Text = "Devoluciones";
             this.devolution.TileImage = global::WindowsFormsApp1.Properties.Resources.Undo_40px;
-            this.devolution.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.devolution.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.devolution.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.devolution.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.devolution.UseCustomBackColor = true;
             this.devolution.UseSelectable = true;
             this.devolution.UseTileImage = true;
             this.devolution.Click += new System.EventHandler(this.devolution_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.uC_Sales1);
+            this.panel2.Controls.Add(this.uC_SalesOrder1);
+            this.panel2.Location = new System.Drawing.Point(3, 79);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(894, 618);
+            this.panel2.TabIndex = 42;
             // 
             // uC_Sales1
             // 

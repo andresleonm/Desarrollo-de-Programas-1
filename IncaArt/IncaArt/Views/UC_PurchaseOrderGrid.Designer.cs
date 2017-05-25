@@ -38,18 +38,18 @@
             this.order_due_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_edit = new System.Windows.Forms.Button();
-            this.btn_delete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.btn_search = new System.Windows.Forms.Button();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.btn_search = new MetroFramework.Controls.MetroButton();
+            this.btn_edit = new MetroFramework.Controls.MetroButton();
+            this.btn_delete = new MetroFramework.Controls.MetroButton();
+            this.txt_id = new MetroFramework.Controls.MetroTextBox();
+            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
+            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.metroDateTime2 = new MetroFramework.Controls.MetroDateTime();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -60,10 +60,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.btn_delete);
+            this.panel1.Controls.Add(this.btn_edit);
             this.panel1.Controls.Add(this.metroLabel1);
             this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Controls.Add(this.btn_edit);
-            this.panel1.Controls.Add(this.btn_delete);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -78,7 +78,7 @@
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel1.ForeColor = System.Drawing.Color.Black;
-            this.metroLabel1.Location = new System.Drawing.Point(29, 422);
+            this.metroLabel1.Location = new System.Drawing.Point(26, 428);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(377, 15);
             this.metroLabel1.TabIndex = 51;
@@ -91,7 +91,7 @@
             this.groupBox2.Controls.Add(this.panel3);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(26, 138);
+            this.groupBox2.Location = new System.Drawing.Point(23, 144);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(732, 281);
             this.groupBox2.TabIndex = 54;
@@ -163,58 +163,26 @@
             this.status.Name = "status";
             this.status.ReadOnly = true;
             // 
-            // btn_edit
-            // 
-            this.btn_edit.BackColor = System.Drawing.Color.SteelBlue;
-            this.btn_edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_edit.ForeColor = System.Drawing.Color.White;
-            this.btn_edit.Location = new System.Drawing.Point(272, 453);
-            this.btn_edit.Name = "btn_edit";
-            this.btn_edit.Size = new System.Drawing.Size(82, 23);
-            this.btn_edit.TabIndex = 52;
-            this.btn_edit.Text = "Editar";
-            this.btn_edit.UseVisualStyleBackColor = false;
-            // 
-            // btn_delete
-            // 
-            this.btn_delete.BackColor = System.Drawing.Color.SteelBlue;
-            this.btn_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_delete.ForeColor = System.Drawing.Color.White;
-            this.btn_delete.Location = new System.Drawing.Point(405, 453);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(82, 23);
-            this.btn_delete.TabIndex = 53;
-            this.btn_delete.Text = "Eliminar";
-            this.btn_delete.UseVisualStyleBackColor = false;
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.comboBox5);
+            this.groupBox1.Controls.Add(this.metroDateTime2);
+            this.groupBox1.Controls.Add(this.metroTextBox1);
+            this.groupBox1.Controls.Add(this.metroDateTime1);
+            this.groupBox1.Controls.Add(this.txt_id);
+            this.groupBox1.Controls.Add(this.btn_search);
             this.groupBox1.Controls.Add(this.metroLabel14);
             this.groupBox1.Controls.Add(this.metroLabel13);
             this.groupBox1.Controls.Add(this.metroLabel12);
             this.groupBox1.Controls.Add(this.metroLabel11);
-            this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.btn_search);
-            this.groupBox1.Controls.Add(this.dateTimePicker3);
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(26, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(732, 124);
+            this.groupBox1.Size = new System.Drawing.Size(732, 130);
             this.groupBox1.TabIndex = 50;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros";
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(467, 18);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(200, 21);
-            this.comboBox5.TabIndex = 40;
             // 
             // metroLabel14
             // 
@@ -238,7 +206,7 @@
             this.metroLabel13.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel13.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel13.ForeColor = System.Drawing.Color.Black;
-            this.metroLabel13.Location = new System.Drawing.Point(346, 48);
+            this.metroLabel13.Location = new System.Drawing.Point(346, 68);
             this.metroLabel13.Name = "metroLabel13";
             this.metroLabel13.Size = new System.Drawing.Size(115, 15);
             this.metroLabel13.TabIndex = 42;
@@ -253,7 +221,7 @@
             this.metroLabel12.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel12.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel12.ForeColor = System.Drawing.Color.Black;
-            this.metroLabel12.Location = new System.Drawing.Point(24, 48);
+            this.metroLabel12.Location = new System.Drawing.Point(24, 68);
             this.metroLabel12.Name = "metroLabel12";
             this.metroLabel12.Size = new System.Drawing.Size(98, 15);
             this.metroLabel12.TabIndex = 41;
@@ -276,44 +244,135 @@
             this.metroLabel11.UseCustomBackColor = true;
             this.metroLabel11.UseCustomForeColor = true;
             // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(128, 17);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(200, 20);
-            this.textBox6.TabIndex = 32;
-            // 
             // btn_search
             // 
-            this.btn_search.BackColor = System.Drawing.Color.SteelBlue;
-            this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_search.ForeColor = System.Drawing.Color.White;
-            this.btn_search.Location = new System.Drawing.Point(128, 82);
+            this.btn_search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            this.btn_search.Highlight = true;
+            this.btn_search.Location = new System.Drawing.Point(128, 101);
             this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(82, 23);
-            this.btn_search.TabIndex = 19;
+            this.btn_search.Size = new System.Drawing.Size(75, 23);
+            this.btn_search.Style = MetroFramework.MetroColorStyle.Silver;
+            this.btn_search.TabIndex = 44;
             this.btn_search.Text = "Buscar";
-            this.btn_search.UseVisualStyleBackColor = false;
+            this.btn_search.UseCustomBackColor = true;
+            this.btn_search.UseCustomForeColor = true;
+            this.btn_search.UseSelectable = true;
+            this.btn_search.UseStyleColors = true;
             // 
-            // dateTimePicker3
+            // btn_edit
             // 
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(467, 43);
-            this.dateTimePicker3.MinDate = new System.DateTime(2017, 5, 8, 0, 0, 0, 0);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker3.TabIndex = 31;
-            this.dateTimePicker3.Value = new System.DateTime(2017, 5, 8, 0, 0, 0, 0);
+            this.btn_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_edit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            this.btn_edit.Highlight = true;
+            this.btn_edit.Location = new System.Drawing.Point(279, 453);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.Size = new System.Drawing.Size(75, 23);
+            this.btn_edit.Style = MetroFramework.MetroColorStyle.Silver;
+            this.btn_edit.TabIndex = 55;
+            this.btn_edit.Text = "Editar";
+            this.btn_edit.UseCustomBackColor = true;
+            this.btn_edit.UseCustomForeColor = true;
+            this.btn_edit.UseSelectable = true;
+            this.btn_edit.UseStyleColors = true;
             // 
-            // dateTimePicker2
+            // btn_delete
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(128, 43);
-            this.dateTimePicker2.MinDate = new System.DateTime(2017, 5, 8, 0, 0, 0, 0);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 29;
-            this.dateTimePicker2.Value = new System.DateTime(2017, 5, 8, 0, 0, 0, 0);
+            this.btn_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_delete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            this.btn_delete.Highlight = true;
+            this.btn_delete.Location = new System.Drawing.Point(412, 453);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(75, 23);
+            this.btn_delete.Style = MetroFramework.MetroColorStyle.Silver;
+            this.btn_delete.TabIndex = 56;
+            this.btn_delete.Text = "Eliminar";
+            this.btn_delete.UseCustomBackColor = true;
+            this.btn_delete.UseCustomForeColor = true;
+            this.btn_delete.UseSelectable = true;
+            this.btn_delete.UseStyleColors = true;
+            // 
+            // txt_id
+            // 
+            this.txt_id.BackColor = System.Drawing.SystemColors.ScrollBar;
+            // 
+            // 
+            // 
+            this.txt_id.CustomButton.BackColor = System.Drawing.SystemColors.Control;
+            this.txt_id.CustomButton.Image = null;
+            this.txt_id.CustomButton.Location = new System.Drawing.Point(179, 1);
+            this.txt_id.CustomButton.Name = "";
+            this.txt_id.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_id.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txt_id.CustomButton.TabIndex = 1;
+            this.txt_id.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txt_id.CustomButton.UseSelectable = true;
+            this.txt_id.CustomButton.UseVisualStyleBackColor = false;
+            this.txt_id.CustomButton.Visible = false;
+            this.txt_id.Enabled = false;
+            this.txt_id.Lines = new string[0];
+            this.txt_id.Location = new System.Drawing.Point(467, 17);
+            this.txt_id.MaxLength = 32767;
+            this.txt_id.Name = "txt_id";
+            this.txt_id.PasswordChar = '\0';
+            this.txt_id.ReadOnly = true;
+            this.txt_id.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_id.SelectedText = "";
+            this.txt_id.SelectionLength = 0;
+            this.txt_id.SelectionStart = 0;
+            this.txt_id.ShortcutsEnabled = true;
+            this.txt_id.Size = new System.Drawing.Size(200, 29);
+            this.txt_id.TabIndex = 45;
+            this.txt_id.UseCustomBackColor = true;
+            this.txt_id.UseSelectable = true;
+            this.txt_id.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txt_id.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroDateTime1
+            // 
+            this.metroDateTime1.Location = new System.Drawing.Point(467, 63);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime1.Name = "metroDateTime1";
+            this.metroDateTime1.Size = new System.Drawing.Size(200, 29);
+            this.metroDateTime1.TabIndex = 46;
+            // 
+            // metroTextBox1
+            // 
+            // 
+            // 
+            // 
+            this.metroTextBox1.CustomButton.Image = null;
+            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(172, 1);
+            this.metroTextBox1.CustomButton.Name = "";
+            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBox1.CustomButton.TabIndex = 1;
+            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBox1.CustomButton.UseSelectable = true;
+            this.metroTextBox1.CustomButton.Visible = false;
+            this.metroTextBox1.Lines = new string[0];
+            this.metroTextBox1.Location = new System.Drawing.Point(128, 17);
+            this.metroTextBox1.MaxLength = 32767;
+            this.metroTextBox1.Name = "metroTextBox1";
+            this.metroTextBox1.PasswordChar = '\0';
+            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBox1.SelectedText = "";
+            this.metroTextBox1.SelectionLength = 0;
+            this.metroTextBox1.SelectionStart = 0;
+            this.metroTextBox1.ShortcutsEnabled = true;
+            this.metroTextBox1.Size = new System.Drawing.Size(200, 29);
+            this.metroTextBox1.TabIndex = 47;
+            this.metroTextBox1.UseSelectable = true;
+            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroDateTime2
+            // 
+            this.metroDateTime2.Location = new System.Drawing.Point(128, 60);
+            this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime2.Name = "metroDateTime2";
+            this.metroDateTime2.Size = new System.Drawing.Size(200, 29);
+            this.metroDateTime2.TabIndex = 48;
             // 
             // UC_PurchaseOrderGrid
             // 
@@ -348,17 +407,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn order_due_date;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
-        private System.Windows.Forms.Button btn_edit;
-        private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox5;
         private MetroFramework.Controls.MetroLabel metroLabel14;
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroLabel metroLabel12;
         private MetroFramework.Controls.MetroLabel metroLabel11;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button btn_search;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private MetroFramework.Controls.MetroButton btn_delete;
+        private MetroFramework.Controls.MetroButton btn_edit;
+        private MetroFramework.Controls.MetroButton btn_search;
+        private MetroFramework.Controls.MetroDateTime metroDateTime1;
+        private MetroFramework.Controls.MetroTextBox txt_id;
+        private MetroFramework.Controls.MetroDateTime metroDateTime2;
+        private MetroFramework.Controls.MetroTextBox metroTextBox1;
     }
 }

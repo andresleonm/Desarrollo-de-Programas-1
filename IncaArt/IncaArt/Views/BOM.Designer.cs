@@ -44,18 +44,18 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBoxQuantity = new System.Windows.Forms.TextBox();
-            this.comboBoxMaterial = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBoxProduct = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.comboBoxProduct = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.comboBoxMaterial = new MetroFramework.Controls.MetroComboBox();
+            this.textBoxQuantity = new MetroFramework.Controls.MetroTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -223,82 +223,123 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // groupBox1
+            // groupBox3
             // 
-            this.groupBox1.Controls.Add(this.textBoxQuantity);
-            this.groupBox1.Controls.Add(this.comboBoxMaterial);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.comboBoxProduct);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox1.Location = new System.Drawing.Point(15, 135);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(370, 180);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos de la Receta";
+            this.groupBox3.Controls.Add(this.textBoxQuantity);
+            this.groupBox3.Controls.Add(this.comboBoxMaterial);
+            this.groupBox3.Controls.Add(this.metroLabel3);
+            this.groupBox3.Controls.Add(this.metroLabel2);
+            this.groupBox3.Controls.Add(this.comboBoxProduct);
+            this.groupBox3.Controls.Add(this.metroLabel1);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(24, 145);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(352, 165);
+            this.groupBox3.TabIndex = 14;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Datos de la Receta";
             // 
-            // textBoxQuantity
+            // metroLabel1
             // 
-            this.textBoxQuantity.Location = new System.Drawing.Point(122, 127);
-            this.textBoxQuantity.Name = "textBoxQuantity";
-            this.textBoxQuantity.Size = new System.Drawing.Size(225, 20);
-            this.textBoxQuantity.TabIndex = 24;
-            // 
-            // comboBoxMaterial
-            // 
-            this.comboBoxMaterial.FormattingEnabled = true;
-            this.comboBoxMaterial.Location = new System.Drawing.Point(122, 86);
-            this.comboBoxMaterial.Name = "comboBoxMaterial";
-            this.comboBoxMaterial.Size = new System.Drawing.Size(225, 21);
-            this.comboBoxMaterial.TabIndex = 23;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 127);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 13);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "Cantidad:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 86);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Material:";
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel1.ForeColor = System.Drawing.Color.Black;
+            this.metroLabel1.Location = new System.Drawing.Point(37, 35);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(64, 15);
+            this.metroLabel1.TabIndex = 31;
+            this.metroLabel1.Text = "Producto :";
+            this.metroLabel1.UseCustomBackColor = true;
+            this.metroLabel1.UseCustomForeColor = true;
             // 
             // comboBoxProduct
             // 
             this.comboBoxProduct.FormattingEnabled = true;
-            this.comboBoxProduct.Location = new System.Drawing.Point(122, 42);
+            this.comboBoxProduct.ItemHeight = 23;
+            this.comboBoxProduct.Location = new System.Drawing.Point(107, 27);
             this.comboBoxProduct.Name = "comboBoxProduct";
-            this.comboBoxProduct.Size = new System.Drawing.Size(225, 21);
-            this.comboBoxProduct.TabIndex = 20;
+            this.comboBoxProduct.Size = new System.Drawing.Size(207, 29);
+            this.comboBoxProduct.TabIndex = 39;
+            this.comboBoxProduct.UseSelectable = true;
             // 
-            // label1
+            // metroLabel2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Producto:";
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel2.ForeColor = System.Drawing.Color.Black;
+            this.metroLabel2.Location = new System.Drawing.Point(43, 84);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(59, 15);
+            this.metroLabel2.TabIndex = 40;
+            this.metroLabel2.Text = "Material :";
+            this.metroLabel2.UseCustomBackColor = true;
+            this.metroLabel2.UseCustomForeColor = true;
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel3.ForeColor = System.Drawing.Color.Black;
+            this.metroLabel3.Location = new System.Drawing.Point(41, 125);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(61, 15);
+            this.metroLabel3.TabIndex = 41;
+            this.metroLabel3.Text = "Cantidad :";
+            this.metroLabel3.UseCustomBackColor = true;
+            this.metroLabel3.UseCustomForeColor = true;
+            // 
+            // comboBoxMaterial
+            // 
+            this.comboBoxMaterial.FormattingEnabled = true;
+            this.comboBoxMaterial.ItemHeight = 23;
+            this.comboBoxMaterial.Location = new System.Drawing.Point(108, 76);
+            this.comboBoxMaterial.Name = "comboBoxMaterial";
+            this.comboBoxMaterial.Size = new System.Drawing.Size(206, 29);
+            this.comboBoxMaterial.TabIndex = 42;
+            this.comboBoxMaterial.UseSelectable = true;
+            // 
+            // textBoxQuantity
+            // 
+            // 
+            // 
+            // 
+            this.textBoxQuantity.CustomButton.Image = null;
+            this.textBoxQuantity.CustomButton.Location = new System.Drawing.Point(178, 1);
+            this.textBoxQuantity.CustomButton.Name = "";
+            this.textBoxQuantity.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.textBoxQuantity.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textBoxQuantity.CustomButton.TabIndex = 1;
+            this.textBoxQuantity.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textBoxQuantity.CustomButton.UseSelectable = true;
+            this.textBoxQuantity.CustomButton.Visible = false;
+            this.textBoxQuantity.Lines = new string[0];
+            this.textBoxQuantity.Location = new System.Drawing.Point(108, 117);
+            this.textBoxQuantity.MaxLength = 32767;
+            this.textBoxQuantity.Name = "textBoxQuantity";
+            this.textBoxQuantity.PasswordChar = '\0';
+            this.textBoxQuantity.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textBoxQuantity.SelectedText = "";
+            this.textBoxQuantity.SelectionLength = 0;
+            this.textBoxQuantity.SelectionStart = 0;
+            this.textBoxQuantity.ShortcutsEnabled = true;
+            this.textBoxQuantity.Size = new System.Drawing.Size(206, 29);
+            this.textBoxQuantity.TabIndex = 43;
+            this.textBoxQuantity.UseSelectable = true;
+            this.textBoxQuantity.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textBoxQuantity.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // BOM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox1);
             this.Name = "BOM";
             this.Size = new System.Drawing.Size(882, 489);
             this.tabControl1.ResumeLayout(false);
@@ -306,8 +347,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -330,12 +371,12 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBoxQuantity;
-        private System.Windows.Forms.ComboBox comboBoxMaterial;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBoxProduct;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroTextBox textBoxQuantity;
+        private MetroFramework.Controls.MetroComboBox comboBoxMaterial;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroComboBox comboBoxProduct;
     }
 }
