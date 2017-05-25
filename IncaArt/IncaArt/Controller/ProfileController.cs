@@ -72,5 +72,25 @@ namespace WindowsFormsApp1.Controller
                 return new Result(null, false, result.message);
             }
         }
+
+        public Result getProfiles()
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            GenericResult result = execute_function("get_profiles", parameters);
+
+            if (result.success)
+            {
+                List<Profile> profiles = new List<Profile>();
+
+                foreach (Row row in result.data)
+                {
+                    profiles.Add(new Profile(Int32.Parse(row.getColumn(0)), row.getColumn(1));
+                }
+
+                return new Result(profiles, true, "");
+            }
+
+            return new Result(null, false, result.message);
+        }
     }
 }

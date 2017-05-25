@@ -39,7 +39,7 @@ namespace WindowsFormsApp1.Controller
                     if (profile_result.success)
                     {
                         Profile profile = (Profile)profile_result.data;
-                        User user = new User(Int32.Parse(row.getColumn(0)), profile, row.getColumn(2), row.getColumn(3), row.getColumn(4), row.getColumn(5), row.getColumn(6), row.getColumn(7)[0], row.getColumn(8), row.getColumn(9), row.getColumn(10));
+                        User user = new User(Int32.Parse(row.getColumn(0)), profile, row.getColumn(2), row.getColumn(3), row.getColumn(4), row.getColumn(5), row.getColumn(6), row.getColumn(7)[0], row.getColumn(8), row.getColumn(9), row.getColumn(10), row.getColumn(11));
 
                         return new Result(user, true, "");
                     }
@@ -52,6 +52,26 @@ namespace WindowsFormsApp1.Controller
             }
 
             return new Result(null, result.success, result.message);
+        }
+
+        public Result getUsers()
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            GenericResult result = execute_function("get_users", parameters);
+
+            if (result.success)
+            {
+                List<User> users = new List<User>();
+
+                foreach (Row row in result.data)
+                {
+                    users.Add(new User(Int32.Parse(row.getColumn(0)), profile, row.getColumn(2), row.getColumn(3), row.getColumn(4), row.getColumn(5), row.getColumn(6), row.getColumn(7)[0], row.getColumn(8), row.getColumn(9), row.getColumn(10), row.getColumn(11)));
+                }
+
+                return new Result(users, true, "");
+            }
+
+            return new Result(null, false, result.message);
         }
 
         //public Result insertUser(User user)

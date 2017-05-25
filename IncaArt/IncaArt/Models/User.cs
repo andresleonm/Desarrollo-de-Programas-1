@@ -19,7 +19,7 @@ namespace WindowsFormsApp1.Models
         private Profile profile;
         private string nickname;
         private string password;
-        private int status;
+        private string state;
 
         public int Id
         {
@@ -164,20 +164,20 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public int Status
+        public string State
         {
             get
             {
-                return status;
+                return state;
             }
 
             set
             {
-                status = value;
+                state = value;
             }
         }
 
-        public User(int id, Profile profile, string name, string middlename, string lastname, string phone, string email, char gender, string address, string nickname, string password)
+        public User(int id, Profile profile, string name, string middlename, string lastname, string phone, string email, char gender, string address, string nickname, string password, string state)
         {
             this.id = id;
             this.profile = profile;
@@ -190,6 +190,7 @@ namespace WindowsFormsApp1.Models
             this.address = address;
             this.nickname = nickname;
             this.password = password;
+            this.state = state;
         }
     }
 }
