@@ -12,8 +12,8 @@ namespace WindowsFormsApp1.Models
         UnitOfMeasure unit;
         int unit_id;
         string name;
-        int max_stock;
-        int min_stock;
+        int stock_max;
+        int stock_min;
         int status;
         double average_cost;
         int current_logical_stock;
@@ -29,16 +29,8 @@ namespace WindowsFormsApp1.Models
             this.id = id;
             this.unit_id = unit_id;
             this.name = name;
-            this.max_stock = max_stock;
-            this.min_stock = min_stock;
-        }
-
-        public Material(int id, string name, int min_stock, int max_stock)
-        {
-            this.id = id;
-            this.name = name;
-            this.max_stock = max_stock;
-            this.min_stock = min_stock;
+            this.Stock_max = max_stock;
+            this.Stock_min = min_stock;
         }
 
         public int Id
@@ -80,31 +72,7 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public int Max_stock
-        {
-            get
-            {
-                return max_stock;
-            }
-
-            set
-            {
-                max_stock = value;
-            }
-        }
-
-        public int Min_stock
-        {
-            get
-            {
-                return min_stock;
-            }
-
-            set
-            {
-                min_stock = value;
-            }
-        }
+        
 
         public int Status
         {
@@ -181,6 +149,32 @@ namespace WindowsFormsApp1.Models
             set
             {
                 unit = value;
+            }
+        }
+
+        public int Stock_max
+        {
+            get
+            {
+                return stock_max;
+            }
+
+            set
+            {
+                stock_max = value;
+            }
+        }
+
+        public int Stock_min
+        {
+            get
+            {
+                return stock_min;
+            }
+
+            set
+            {
+                stock_min = value;
             }
         }
     }

@@ -7,6 +7,7 @@ namespace WindowsFormsApp1.Models
 {
     public class UnitOfMeasure
     {
+        int id;
         string symbol;
         string name;
         double factor;
@@ -50,9 +51,29 @@ namespace WindowsFormsApp1.Models
             }
         }
 
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
         public UnitOfMeasure()
         {
-            
+
+        }
+
+        public UnitOfMeasure(int id,string name, string symbol)
+        {
+            this.Id = id;
+            this.symbol = symbol;
+            this.name = name;
         }
     }
 }

@@ -13,11 +13,12 @@ namespace WindowsFormsApp1.Views
 
     public partial class UC_Material : UserControl
     {
-        int last_id;
+        Boolean first;
         int cur_row;
         List<Models.Material> material_list;
         List<Models.UnitOfMeasure> unit_list;
         Controller.MaterialsController materialController;
+        Controller.UnitController unitController;
         public UC_Material()
         {
             InitializeComponent();
@@ -25,30 +26,25 @@ namespace WindowsFormsApp1.Views
 
         private void Material_Load(object sender, EventArgs e)
         {
-            unit_list = ((Dashboard)Parent).unit_list;
-            material_list = ((Dashboard)Parent).material_list;
-            last_id = material_list.Count();
-
-            Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
-            unit.Name = "Kilogramos";
-            unit.Symbol = "1";
-            unit_list.Add(unit);
-            unit = new Models.UnitOfMeasure();
-            unit.Name = "Gramos";
-            unit.Symbol = "2";
-            unit_list.Add(unit);
-            unit = new Models.UnitOfMeasure();
-            unit.Name = "Listones";
-            unit.Symbol = "3";
-            unit_list.Add(unit);
+            string user = "dp1admin";
+            string password = "dp1admin";
+            first = true;
+            materialController = new Controller.MaterialsController(user, password);
+            unitController = new Controller.UnitController(user, password);
+            material_list = new List<Models.Material>();
+            Load_Data();
 
             //Cargar los combobox
+            Dictionary<int, string> combo_data = new Dictionary<int, string>();
             foreach (var item in unit_list)
             {
-                combobox_unit.Items.Add(item.Symbol);
-                combobox_unit_s.Items.Add(item.Symbol);
+                combo_data.Add(item.Id, item.Symbol);
+
             }
-            Load_DataGridView("", "");
+            combobox_unit.DataSource = new BindingSource(combo_data, null);
+            combobox_unit.DisplayMember = "Value";
+            combobox_unit.ValueMember = "Key";
+            Load_DataGridView();
         }
 
         private bool validate_data(String name, String unit, String max_stock, String min_stock)
@@ -97,60 +93,46 @@ namespace WindowsFormsApp1.Views
             return isCorrect;
         }
 
-        int Search_condition(String name, String unit)
+        private void Load_Data()
         {
-            if (name == "" && unit == "")
+            Controller.Result result;
+            if (first)
             {
-                return 1;
+                first = false;
+                result = unitController.getUnits();
+                unit_list = (List<Models.UnitOfMeasure>)result.data;
             }
-            else if (name == "" && unit != "")
-            {
-                return 2;
-            }
-            else if (name != "" && unit == "")
-            {
-                return 3;
-            }
-            return 4;
+
+            material_list = new List<Models.Material>();
+            result = materialController.getMaterials();
+            if (result.data == null) MessageBox.Show(result.message, "Error al listar material", MessageBoxButtons.OK);
+            else material_list = (List<Models.Material>)result.data;
         }
 
-        private void Load_DataGridView(String name, String unit)
+        private void Load_DataGridView()
         {
+            Load_Data();
             dataGridView1.Rows.Clear();
-            int condition = Search_condition(name, unit);
             for (int i = 0; i < material_list.Count(); i++)
             {
-                if (material_list[i].Status == 1)
+                Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
+                Controller.Result result = unitController.getUnit(material_list[i].Unit_id);
+                if (result.data == null)
                 {
-                    Boolean found = false;
-                    switch (condition)
-                    {
-                        case 1:
-                            found = true;
-                            break;
-                        case 2:
-                            if (unit == material_list[i].Unit.Symbol) found = true;
-                            break;
-                        case 3:
-                            if (name == material_list[i].Name) found = true;
-                            break;
-                        case 4:
-                            if (name == material_list[i].Name && unit == material_list[i].Unit.Symbol) found = true;
-                            break;
-                    }
-
-                    if (found)
-                    {
-                        String[] row = new String[5];
-                        row[0] = material_list[i].Id.ToString();
-                        row[1] = material_list[i].Name;
-                        row[2] = material_list[i].Unit.Symbol;
-                        row[3] = material_list[i].Min_stock.ToString();
-                        row[4] = material_list[i].Max_stock.ToString();
-                        this.dataGridView1.Rows.Add(row);
-                    }
-
+                    MessageBox.Show(result.message, "Error al buscar unit", MessageBoxButtons.OK);
                 }
+                else
+                {
+                    unit = (Models.UnitOfMeasure)result.data;
+                    String[] row = new String[5];
+                    row[0] = material_list[i].Id.ToString();
+                    row[1] = material_list[i].Name;
+                    row[2] = unit.Name;
+                    row[3] = material_list[i].Stock_min.ToString();
+                    row[4] = material_list[i].Stock_max.ToString();
+                    this.dataGridView1.Rows.Add(row);
+                }
+
             }
         }
 
@@ -174,12 +156,9 @@ namespace WindowsFormsApp1.Views
         //Registrar
         private void btn_new_Click(object sender, EventArgs e)
         {
-
             String name, unit;
-
-
             name = textbox_name.Text;
-            unit = combobox_unit.Text;
+            unit = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Value;
             if (validate_data(name, unit, textbox_max_stock.Text, textbox_min_stock.Text))
             {
                 int min_stock, max_stock;
@@ -187,23 +166,16 @@ namespace WindowsFormsApp1.Views
                 max_stock = int.Parse(textbox_max_stock.Text);
 
                 Models.Material mat = new Models.Material();
-                mat.Id = last_id;
-                last_id++;
-                mat.Name = name;
-                foreach (var item in unit_list)
-                {
-                    if (unit == item.Symbol)
-                    {
-                        mat.Unit = item;
-                        break;
-                    }
-                }
-                mat.Min_stock = min_stock;
-                mat.Max_stock = max_stock;
-                mat.Status = 1;
 
-                material_list.Add(mat);
-                Load_DataGridView("", "");
+                int unit_id = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Key;
+                mat = new Models.Material(0, unit_id, name, min_stock, max_stock);
+                Controller.Result result = materialController.insertMaterial(mat);
+                if (result.data == null)
+                {
+                    MessageBox.Show(result.message, "Error al registrar material", MessageBoxButtons.OK);
+                }
+
+                Load_DataGridView();
                 Clean();
             }
 
@@ -255,21 +227,21 @@ namespace WindowsFormsApp1.Views
                         break;
                     }
                 }
-                mat.Min_stock = min_stock;
-                mat.Max_stock = max_stock;
+                mat.Stock_min = min_stock;
+                mat.Stock_max = max_stock;
 
                 for (int i = 0; i < material_list.Count(); i++)
                 {
                     if (mat.Id == material_list[i].Id)
                     {
                         material_list[i].Name = mat.Name;
-                        material_list[i].Max_stock = mat.Max_stock;
-                        material_list[i].Min_stock = mat.Min_stock;
+                        material_list[i].Stock_max = mat.Stock_max;
+                        material_list[i].Stock_min = mat.Stock_min;
                         material_list[i].Unit = mat.Unit;
                         break;
                     }
                 }
-                Load_DataGridView("", "");
+                Load_DataGridView();
                 Clean();
             }
 
@@ -280,7 +252,7 @@ namespace WindowsFormsApp1.Views
         private void btn_search_Click(object sender, EventArgs e)
         {
             String name = textbox_name_s.Text, unit = combobox_unit_s.Text;
-            Load_DataGridView(name, unit);
+            Load_DataGridView();
         }
 
         //Eliminar
@@ -296,7 +268,7 @@ namespace WindowsFormsApp1.Views
                 }
             }
             btn_delete.Enabled = false;
-            Load_DataGridView("", "");
+            Load_DataGridView();
         }
     }
 }
