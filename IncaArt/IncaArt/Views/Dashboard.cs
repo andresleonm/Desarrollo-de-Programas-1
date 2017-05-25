@@ -48,21 +48,29 @@ namespace WindowsFormsApp1.Views
 
         private void highlightButtons(object sender)
         {
-            btn_config.BackColor = Color.RoyalBlue;
+            btn_config.BackColor = Color.FromArgb(64, 104, 104);
             btn_config.ForeColor = Color.White;
+            btn_config.FlatAppearance.BorderColor = Color.FromArgb(64, 104, 104);
             btn_config.ImageIndex = 1;
-            btn_warehouse.BackColor = Color.RoyalBlue;
+
+            btn_warehouse.BackColor = Color.FromArgb(64, 104, 104);
             btn_warehouse.ForeColor = Color.White;
+            btn_warehouse.FlatAppearance.BorderColor = Color.FromArgb(64, 104, 104);
             btn_warehouse.ImageIndex = 1;
-            btn_sales.BackColor = Color.RoyalBlue;
+
+            btn_sales.BackColor = Color.FromArgb(64, 104, 104);
             btn_sales.ForeColor = Color.White;
+            btn_sales.FlatAppearance.BorderColor = Color.FromArgb(64, 104, 104);
             btn_sales.ImageIndex = 1;
-            btn_purchase.BackColor = Color.RoyalBlue;
+
+            btn_purchase.BackColor = Color.FromArgb(64, 104, 104);
             btn_purchase.ForeColor = Color.White;
+            btn_purchase.FlatAppearance.BorderColor = Color.FromArgb(64, 104, 104);
             btn_purchase.ImageIndex = 1;
 
-            ((Button)sender).BackColor = Color.White;
-            ((Button)sender).ForeColor = Color.RoyalBlue;
+            ((Button)sender).BackColor = Color.FromArgb(222, 234, 198);
+            ((Button)sender).ForeColor = Color.FromArgb(64, 104, 104);
+            ((Button)sender).FlatAppearance.BorderColor = Color.FromArgb(222, 234, 198);
             ((Button)sender).ImageIndex = Math.Abs(((Button)sender).ImageIndex - 1);
         }
 
@@ -78,12 +86,12 @@ namespace WindowsFormsApp1.Views
 
         private void pictureBox_MouseHover(object sender, EventArgs e)
         {
-            ((PictureBox)sender).BackColor = Color.RoyalBlue;
+            ((PictureBox)sender).BackColor = Color.FromArgb(64, 104, 104);
         }
 
         private void pictureBox_MouseLeave(object sender, EventArgs e)
         {
-            ((PictureBox)sender).BackColor = Color.LightSteelBlue;
+            ((PictureBox)sender).BackColor = Color.FromArgb(222, 234, 198);
         }
 
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
@@ -128,7 +136,9 @@ namespace WindowsFormsApp1.Views
         private void btn_logo_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            mainDashboard1.Visible = true;
+            btn_config_Click((object)btn_config, e);
+            menuButton_Click((object)btn_config,(MouseEventArgs)e);
+            //mainDashboard1.Visible = true;
         }
 
         private void btn_purchase_Click(object sender, EventArgs e)

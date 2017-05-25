@@ -23,11 +23,10 @@ namespace WindowsFormsApp1.Views
             uC_PurchaseOrderGrid1.Visible = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_new_purchase_order_Click(object sender, EventArgs e)
         {
             uC_PurchaseOrderGrid1.Visible = false;
             uC_PurchaseOrder1.Visible = true;
-        }        
-       
+        }
     }
 }

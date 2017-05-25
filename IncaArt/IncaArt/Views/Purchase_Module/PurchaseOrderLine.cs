@@ -21,7 +21,7 @@ namespace WindowsFormsApp1.Views.Purchase_Module
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ConfirmationDialog confirm_dialog = new ConfirmationDialog();            
+            ConfirmationDialog confirm_dialog = new ConfirmationDialog();
             if (confirm_dialog.ShowDialog(this) == DialogResult.OK)
             {
                 confirm_dialog.Dispose();
