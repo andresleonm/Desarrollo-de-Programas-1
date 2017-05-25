@@ -325,7 +325,7 @@
             // 
             // uC_SalesMain1
             // 
-            this.uC_SalesMain1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(143)))), ((int)(((byte)(132)))));
+            this.uC_SalesMain1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(149)))), ((int)(((byte)(132)))));
             this.uC_SalesMain1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_SalesMain1.Location = new System.Drawing.Point(132, 72);
             this.uC_SalesMain1.Name = "uC_SalesMain1";
