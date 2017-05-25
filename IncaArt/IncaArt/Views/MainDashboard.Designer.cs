@@ -45,7 +45,7 @@
             // metroTile10
             // 
             this.metroTile10.BackColor = System.Drawing.Color.RoyalBlue;
-            this.metroTile10.CustomBackground = true;
+            this.metroTile10.UseCustomBackColor = true;
             this.metroTile10.Location = new System.Drawing.Point(468, 304);
             this.metroTile10.Name = "metroTile10";
             this.metroTile10.Size = new System.Drawing.Size(177, 81);
@@ -60,7 +60,7 @@
             // metroTile11
             // 
             this.metroTile11.BackColor = System.Drawing.Color.RoyalBlue;
-            this.metroTile11.CustomBackground = true;
+            this.metroTile11.UseCustomBackColor = true;
             this.metroTile11.Location = new System.Drawing.Point(247, 304);
             this.metroTile11.Name = "metroTile11";
             this.metroTile11.Size = new System.Drawing.Size(177, 81);
@@ -75,7 +75,7 @@
             // metroTile12
             // 
             this.metroTile12.BackColor = System.Drawing.Color.RoyalBlue;
-            this.metroTile12.CustomBackground = true;
+            this.metroTile12.UseCustomBackColor = true;
             this.metroTile12.Location = new System.Drawing.Point(26, 304);
             this.metroTile12.Name = "metroTile12";
             this.metroTile12.Size = new System.Drawing.Size(177, 81);
@@ -90,7 +90,7 @@
             // metroTile5
             // 
             this.metroTile5.BackColor = System.Drawing.Color.RoyalBlue;
-            this.metroTile5.CustomBackground = true;
+            this.metroTile5.UseCustomBackColor = true;
             this.metroTile5.Location = new System.Drawing.Point(689, 203);
             this.metroTile5.Name = "metroTile5";
             this.metroTile5.Size = new System.Drawing.Size(177, 81);
@@ -106,7 +106,7 @@
             // metroTile6
             // 
             this.metroTile6.BackColor = System.Drawing.Color.RoyalBlue;
-            this.metroTile6.CustomBackground = true;
+            this.metroTile6.UseCustomBackColor = true;
             this.metroTile6.Location = new System.Drawing.Point(468, 203);
             this.metroTile6.Name = "metroTile6";
             this.metroTile6.Size = new System.Drawing.Size(177, 81);
@@ -121,7 +121,7 @@
             // metroTile7
             // 
             this.metroTile7.BackColor = System.Drawing.Color.RoyalBlue;
-            this.metroTile7.CustomBackground = true;
+            this.metroTile7.UseCustomBackColor = true;
             this.metroTile7.Location = new System.Drawing.Point(247, 203);
             this.metroTile7.Name = "metroTile7";
             this.metroTile7.Size = new System.Drawing.Size(177, 81);
@@ -136,7 +136,7 @@
             // metroTile8
             // 
             this.metroTile8.BackColor = System.Drawing.Color.RoyalBlue;
-            this.metroTile8.CustomBackground = true;
+            this.metroTile8.UseCustomBackColor = true;
             this.metroTile8.Location = new System.Drawing.Point(26, 203);
             this.metroTile8.Name = "metroTile8";
             this.metroTile8.Size = new System.Drawing.Size(177, 81);
@@ -151,7 +151,7 @@
             // metroTile4
             // 
             this.metroTile4.BackColor = System.Drawing.Color.RoyalBlue;
-            this.metroTile4.CustomBackground = true;
+            this.metroTile4.UseCustomBackColor = true;
             this.metroTile4.Location = new System.Drawing.Point(689, 102);
             this.metroTile4.Name = "metroTile4";
             this.metroTile4.Size = new System.Drawing.Size(177, 81);
@@ -166,7 +166,7 @@
             // metroTile3
             // 
             this.metroTile3.BackColor = System.Drawing.Color.RoyalBlue;
-            this.metroTile3.CustomBackground = true;
+            this.metroTile3.UseCustomBackColor = true;
             this.metroTile3.Location = new System.Drawing.Point(468, 102);
             this.metroTile3.Name = "metroTile3";
             this.metroTile3.Size = new System.Drawing.Size(177, 81);
@@ -181,7 +181,7 @@
             // metroTile2
             // 
             this.metroTile2.BackColor = System.Drawing.Color.RoyalBlue;
-            this.metroTile2.CustomBackground = true;
+            this.metroTile2.UseCustomBackColor = true;
             this.metroTile2.Location = new System.Drawing.Point(247, 102);
             this.metroTile2.Name = "metroTile2";
             this.metroTile2.Size = new System.Drawing.Size(177, 81);
@@ -196,7 +196,7 @@
             // metroTile1
             // 
             this.metroTile1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.metroTile1.CustomBackground = true;
+            this.metroTile1.UseCustomBackColor = true;
             this.metroTile1.Location = new System.Drawing.Point(26, 102);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.PaintTileCount = false;
@@ -212,7 +212,7 @@
             // metroTile9
             // 
             this.metroTile9.BackColor = System.Drawing.Color.RoyalBlue;
-            this.metroTile9.CustomBackground = true;
+            this.metroTile9.UseCustomBackColor = true;
             this.metroTile9.Location = new System.Drawing.Point(689, 304);
             this.metroTile9.Name = "metroTile9";
             this.metroTile9.Size = new System.Drawing.Size(177, 81);

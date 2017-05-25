@@ -42,8 +42,8 @@
             // 
             // sales
             // 
-            this.sales.BackColor = System.Drawing.Color.DarkGreen;
-            this.sales.CustomBackground = true;
+            this.sales.ActiveControl = null;
+            this.sales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.sales.Location = new System.Drawing.Point(32, 3);
             this.sales.Name = "sales";
             this.sales.Size = new System.Drawing.Size(177, 62);
@@ -53,13 +53,15 @@
             this.sales.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.sales.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.sales.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.sales.UseCustomBackColor = true;
+            this.sales.UseSelectable = true;
             this.sales.UseTileImage = true;
             this.sales.Click += new System.EventHandler(this.sales_Click);
             // 
             // invoice
             // 
-            this.invoice.BackColor = System.Drawing.Color.Gold;
-            this.invoice.CustomBackground = true;
+            this.invoice.ActiveControl = null;
+            this.invoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.invoice.Location = new System.Drawing.Point(688, 3);
             this.invoice.Name = "invoice";
             this.invoice.Size = new System.Drawing.Size(177, 62);
@@ -69,12 +71,14 @@
             this.invoice.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.invoice.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.invoice.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.invoice.UseCustomBackColor = true;
+            this.invoice.UseSelectable = true;
             this.invoice.UseTileImage = true;
             // 
             // register_sale
             // 
-            this.register_sale.BackColor = System.Drawing.Color.DarkBlue;
-            this.register_sale.CustomBackground = true;
+            this.register_sale.ActiveControl = null;
+            this.register_sale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.register_sale.Location = new System.Drawing.Point(252, 3);
             this.register_sale.Name = "register_sale";
             this.register_sale.Size = new System.Drawing.Size(177, 62);
@@ -84,13 +88,15 @@
             this.register_sale.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.register_sale.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.register_sale.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.register_sale.UseCustomBackColor = true;
+            this.register_sale.UseSelectable = true;
             this.register_sale.UseTileImage = true;
             this.register_sale.Click += new System.EventHandler(this.register_sale_Click);
             // 
             // devolution
             // 
-            this.devolution.BackColor = System.Drawing.Color.Firebrick;
-            this.devolution.CustomBackground = true;
+            this.devolution.ActiveControl = null;
+            this.devolution.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.devolution.Location = new System.Drawing.Point(474, 3);
             this.devolution.Name = "devolution";
             this.devolution.PaintTileCount = false;
@@ -101,6 +107,8 @@
             this.devolution.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.devolution.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.devolution.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.devolution.UseCustomBackColor = true;
+            this.devolution.UseSelectable = true;
             this.devolution.UseTileImage = true;
             this.devolution.Click += new System.EventHandler(this.devolution_Click);
             // 

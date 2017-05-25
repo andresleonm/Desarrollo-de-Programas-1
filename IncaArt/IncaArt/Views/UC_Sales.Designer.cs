@@ -192,7 +192,7 @@
             // register_sale
             // 
             this.register_sale.BackColor = System.Drawing.Color.SteelBlue;
-            this.register_sale.CustomBackground = true;
+            this.register_sale.UseCustomBackColor = true;
             this.register_sale.Location = new System.Drawing.Point(308, 90);
             this.register_sale.Name = "register_sale";
             this.register_sale.Size = new System.Drawing.Size(24, 20);

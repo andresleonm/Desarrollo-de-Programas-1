@@ -288,8 +288,6 @@
             // label_user_role
             // 
             this.label_user_role.AutoSize = true;
-            this.label_user_role.CustomBackground = true;
-            this.label_user_role.CustomForeColor = true;
             this.label_user_role.Dock = System.Windows.Forms.DockStyle.Right;
             this.label_user_role.ForeColor = System.Drawing.Color.White;
             this.label_user_role.Location = new System.Drawing.Point(609, 0);
@@ -297,12 +295,12 @@
             this.label_user_role.Size = new System.Drawing.Size(101, 19);
             this.label_user_role.TabIndex = 2;
             this.label_user_role.Text = "(Administrador)";
+            this.label_user_role.UseCustomBackColor = true;
+            this.label_user_role.UseCustomForeColor = true;
             // 
             // label_user_name
             // 
             this.label_user_name.AutoSize = true;
-            this.label_user_name.CustomBackground = true;
-            this.label_user_name.CustomForeColor = true;
             this.label_user_name.Dock = System.Windows.Forms.DockStyle.Right;
             this.label_user_name.ForeColor = System.Drawing.Color.White;
             this.label_user_name.Location = new System.Drawing.Point(710, 0);
@@ -311,6 +309,8 @@
             this.label_user_name.Style = MetroFramework.MetroColorStyle.White;
             this.label_user_name.TabIndex = 1;
             this.label_user_name.Text = "Rony Cueva";
+            this.label_user_name.UseCustomBackColor = true;
+            this.label_user_name.UseCustomForeColor = true;
             // 
             // pictureBox3
             // 
@@ -325,7 +325,7 @@
             // 
             // uC_SalesMain1
             // 
-            this.uC_SalesMain1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(149)))), ((int)(((byte)(132)))));
+            this.uC_SalesMain1.BackColor = System.Drawing.SystemColors.Control;
             this.uC_SalesMain1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_SalesMain1.Location = new System.Drawing.Point(132, 72);
             this.uC_SalesMain1.Name = "uC_SalesMain1";

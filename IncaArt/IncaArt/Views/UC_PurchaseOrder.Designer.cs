@@ -113,8 +113,8 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.CustomBackground = true;
-            this.metroLabel5.CustomForeColor = true;
+            this.metroLabel5.UseCustomBackColor = true;
+            this.metroLabel5.UseCustomForeColor = true;
             this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel5.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -129,7 +129,7 @@
             this.metroTabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
-            this.metroTabControl1.CustomBackground = true;
+            this.metroTabControl1.UseCustomBackColor = true;
             this.metroTabControl1.HotTrack = true;
             this.metroTabControl1.ItemSize = new System.Drawing.Size(125, 25);
             this.metroTabControl1.Location = new System.Drawing.Point(14, 91);
@@ -173,8 +173,8 @@
             // 
             this.metroLabel10.AutoSize = true;
             this.metroLabel10.BackColor = System.Drawing.Color.White;
-            this.metroLabel10.CustomBackground = true;
-            this.metroLabel10.CustomForeColor = true;
+            this.metroLabel10.UseCustomBackColor = true;
+            this.metroLabel10.UseCustomForeColor = true;
             this.metroLabel10.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel10.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -188,8 +188,8 @@
             // 
             this.metroLabel9.AutoSize = true;
             this.metroLabel9.BackColor = System.Drawing.Color.White;
-            this.metroLabel9.CustomBackground = true;
-            this.metroLabel9.CustomForeColor = true;
+            this.metroLabel9.UseCustomBackColor = true;
+            this.metroLabel9.UseCustomForeColor = true;
             this.metroLabel9.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel9.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel9.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -203,8 +203,8 @@
             // 
             this.metroLabel8.AutoSize = true;
             this.metroLabel8.BackColor = System.Drawing.Color.White;
-            this.metroLabel8.CustomBackground = true;
-            this.metroLabel8.CustomForeColor = true;
+            this.metroLabel8.UseCustomBackColor = true;
+            this.metroLabel8.UseCustomForeColor = true;
             this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel8.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -218,8 +218,8 @@
             // 
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.BackColor = System.Drawing.Color.White;
-            this.metroLabel7.CustomBackground = true;
-            this.metroLabel7.CustomForeColor = true;
+            this.metroLabel7.UseCustomBackColor = true;
+            this.metroLabel7.UseCustomForeColor = true;
             this.metroLabel7.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel7.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -233,8 +233,8 @@
             // 
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.BackColor = System.Drawing.Color.White;
-            this.metroLabel6.CustomBackground = true;
-            this.metroLabel6.CustomForeColor = true;
+            this.metroLabel6.UseCustomBackColor = true;
+            this.metroLabel6.UseCustomForeColor = true;
             this.metroLabel6.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel6.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -248,8 +248,8 @@
             // 
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.BackColor = System.Drawing.Color.White;
-            this.metroLabel4.CustomBackground = true;
-            this.metroLabel4.CustomForeColor = true;
+            this.metroLabel4.UseCustomBackColor = true;
+            this.metroLabel4.UseCustomForeColor = true;
             this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel4.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -263,8 +263,8 @@
             // 
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.BackColor = System.Drawing.Color.White;
-            this.metroLabel3.CustomBackground = true;
-            this.metroLabel3.CustomForeColor = true;
+            this.metroLabel3.UseCustomBackColor = true;
+            this.metroLabel3.UseCustomForeColor = true;
             this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel3.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -510,8 +510,8 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.CustomBackground = true;
-            this.metroLabel2.CustomForeColor = true;
+            this.metroLabel2.UseCustomBackColor = true;
+            this.metroLabel2.UseCustomForeColor = true;
             this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel2.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -524,8 +524,8 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.CustomBackground = true;
-            this.metroLabel1.CustomForeColor = true;
+            this.metroLabel1.UseCustomBackColor = true;
+            this.metroLabel1.UseCustomForeColor = true;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel1.ForeColor = System.Drawing.Color.RoyalBlue;

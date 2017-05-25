@@ -44,18 +44,18 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.order = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.order_due_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_edit
@@ -95,8 +95,6 @@
             // 
             this.metroLabel14.AutoSize = true;
             this.metroLabel14.BackColor = System.Drawing.Color.White;
-            this.metroLabel14.CustomBackground = true;
-            this.metroLabel14.CustomForeColor = true;
             this.metroLabel14.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel14.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel14.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -105,13 +103,13 @@
             this.metroLabel14.Size = new System.Drawing.Size(49, 15);
             this.metroLabel14.TabIndex = 43;
             this.metroLabel14.Text = "Estado :";
+            this.metroLabel14.UseCustomBackColor = true;
+            this.metroLabel14.UseCustomForeColor = true;
             // 
             // metroLabel13
             // 
             this.metroLabel13.AutoSize = true;
             this.metroLabel13.BackColor = System.Drawing.Color.White;
-            this.metroLabel13.CustomBackground = true;
-            this.metroLabel13.CustomForeColor = true;
             this.metroLabel13.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel13.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel13.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -120,13 +118,13 @@
             this.metroLabel13.Size = new System.Drawing.Size(115, 15);
             this.metroLabel13.TabIndex = 42;
             this.metroLabel13.Text = "Fecha programada :";
+            this.metroLabel13.UseCustomBackColor = true;
+            this.metroLabel13.UseCustomForeColor = true;
             // 
             // metroLabel12
             // 
             this.metroLabel12.AutoSize = true;
             this.metroLabel12.BackColor = System.Drawing.Color.White;
-            this.metroLabel12.CustomBackground = true;
-            this.metroLabel12.CustomForeColor = true;
             this.metroLabel12.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel12.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel12.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -135,13 +133,13 @@
             this.metroLabel12.Size = new System.Drawing.Size(98, 15);
             this.metroLabel12.TabIndex = 41;
             this.metroLabel12.Text = "Fecha de orden :";
+            this.metroLabel12.UseCustomBackColor = true;
+            this.metroLabel12.UseCustomForeColor = true;
             // 
             // metroLabel11
             // 
             this.metroLabel11.AutoSize = true;
             this.metroLabel11.BackColor = System.Drawing.Color.White;
-            this.metroLabel11.CustomBackground = true;
-            this.metroLabel11.CustomForeColor = true;
             this.metroLabel11.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel11.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -150,6 +148,8 @@
             this.metroLabel11.Size = new System.Drawing.Size(48, 15);
             this.metroLabel11.TabIndex = 40;
             this.metroLabel11.Text = "Orden :";
+            this.metroLabel11.UseCustomBackColor = true;
+            this.metroLabel11.UseCustomForeColor = true;
             // 
             // textBox6
             // 
@@ -220,6 +220,15 @@
             this.groupBox2.TabIndex = 49;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultados";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dataGridView2);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 16);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(726, 262);
+            this.panel3.TabIndex = 49;
             // 
             // dataGridView2
             // 
@@ -301,21 +310,10 @@
             this.status.Name = "status";
             this.status.ReadOnly = true;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.dataGridView2);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 16);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(726, 262);
-            this.panel3.TabIndex = 49;
-            // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.BackColor = System.Drawing.Color.White;
-            this.metroLabel1.CustomBackground = true;
-            this.metroLabel1.CustomForeColor = true;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel1.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -324,6 +322,8 @@
             this.metroLabel1.Size = new System.Drawing.Size(377, 15);
             this.metroLabel1.TabIndex = 44;
             this.metroLabel1.Text = "* Seleccione una fila y luego presione el botón \"Editar\" o \"Eliminar\"";
+            this.metroLabel1.UseCustomBackColor = true;
+            this.metroLabel1.UseCustomForeColor = true;
             // 
             // UC_PurchaseOrderGrid
             // 
@@ -341,8 +341,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
