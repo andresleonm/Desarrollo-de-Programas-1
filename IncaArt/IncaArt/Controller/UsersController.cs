@@ -39,7 +39,7 @@ namespace WindowsFormsApp1.Controller
                     if (profile_result.success)
                     {
                         Profile profile = (Profile)profile_result.data;
-                        User user = new User(Int32.Parse(row.getColumn(0)), profile, row.getColumn(2), row.getColumn(3), row.getColumn(4), row.getColumn(5), row.getColumn(6), row.getColumn(7)[0], row.getColumn(8), row.getColumn(9), row.getColumn(10), row.getColumn(11));
+                        User user = new User(Int32.Parse(row.getColumn(0)), profile, row.getColumn(2), row.getColumn(3), row.getColumn(4), row.getColumn(5), row.getColumn(6), row.getColumn(7)[0], row.getColumn(8), row.getColumn(9), row.getColumn(10), row.getColumn(11), false);
 
                         return new Result(user, true, "");
                     }
@@ -65,7 +65,7 @@ namespace WindowsFormsApp1.Controller
 
                 foreach (Row row in result.data)
                 {
-                    users.Add(new User(Int32.Parse(row.getColumn(0)), new Profile(0, row.getColumn(1)), row.getColumn(2), row.getColumn(3), row.getColumn(4), row.getColumn(5), row.getColumn(6), row.getColumn(7)[0], row.getColumn(8), row.getColumn(9), row.getColumn(10), row.getColumn(11)));
+                    users.Add(new User(Int32.Parse(row.getColumn(0)), new Profile(0, row.getColumn(1)), row.getColumn(2), row.getColumn(3), row.getColumn(4), row.getColumn(5), row.getColumn(6), row.getColumn(7)[0], row.getColumn(8), row.getColumn(9), row.getColumn(10), row.getColumn(11), false));
                 }
 
                 return new Result(users, true, "");

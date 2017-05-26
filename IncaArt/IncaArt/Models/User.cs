@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace WindowsFormsApp1.Models
 {
@@ -20,6 +21,9 @@ namespace WindowsFormsApp1.Models
         private string nickname;
         private string password;
         private string state;
+
+        static private string salt = "9aff81a04032f4387e353179e92e12743edbcc6e";
+        static private HashAlgorithm hasher = new SHA1CryptoServiceProvider();
 
         public int Id
         {
@@ -157,11 +161,6 @@ namespace WindowsFormsApp1.Models
             {
                 return password;
             }
-
-            set
-            {
-                password = value;
-            }
         }
 
         public string State
@@ -177,7 +176,7 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public User(int id, Profile profile, string name, string middlename, string lastname, string phone, string email, char gender, string address, string nickname, string password, string state)
+        public User(int id, Profile profile, string name, string middlename, string lastname, string phone, string email, char gender, string address, string nickname, string password, string state, bool encode = true)
         {
             this.id = id;
             this.profile = profile;
@@ -189,8 +188,30 @@ namespace WindowsFormsApp1.Models
             this.gender = gender;
             this.address = address;
             this.nickname = nickname;
-            this.password = password;
             this.state = state;
+
+            if (encode)
+            {
+                this.password =  HashText(password, User.salt, User.hasher);
+            }
+            else
+            {
+                this.password = password;
+            }
+            
+        }
+
+        public bool isPassword(string source)
+        {
+            return (HashText(source, User.salt, User.hasher) == password);
+        }
+
+        private string HashText(string text, string salt, HashAlgorithm hasher)
+        {
+            byte[] textWithSaltBytes = Encoding.UTF8.GetBytes(string.Concat(text, salt));
+            byte[] hashedBytes = hasher.ComputeHash(textWithSaltBytes);
+            hasher.Clear();
+            return Convert.ToBase64String(hashedBytes);
         }
     }
 }
