@@ -59,7 +59,6 @@ namespace WindowsFormsApp1.Views
             editing_order = order;
             txt_id.Text = order.Id.ToString();
             date_order_date.Text = order.Creation_date.ToString();
-            combo_warehouse.Text = order.Warehouse.Name;
             combo_supplier.Text = order.Supplier.Supplier_name;
             combo_address.Text = order.Supplier.Supplier_addres;
             combo_state.Text = order.State;
