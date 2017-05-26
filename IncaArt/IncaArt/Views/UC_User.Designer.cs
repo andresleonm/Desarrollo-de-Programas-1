@@ -54,6 +54,8 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_new = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textbox_address = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.textbox_username = new System.Windows.Forms.TextBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -73,20 +75,26 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textbox_address = new System.Windows.Forms.TextBox();
+            this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.metroTabControl1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btm_edit
             // 
             this.btm_edit.BackColor = System.Drawing.Color.SteelBlue;
             this.btm_edit.ForeColor = System.Drawing.Color.White;
-            this.btm_edit.Location = new System.Drawing.Point(155, 369);
+            this.btm_edit.Location = new System.Drawing.Point(165, 769);
             this.btm_edit.Name = "btm_edit";
             this.btm_edit.Size = new System.Drawing.Size(83, 25);
             this.btm_edit.TabIndex = 24;
@@ -97,7 +105,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(334, 16);
+            this.tabControl1.Location = new System.Drawing.Point(344, 416);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(671, 393);
@@ -294,7 +302,7 @@
             // 
             this.btn_cancel.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_cancel.Location = new System.Drawing.Point(244, 369);
+            this.btn_cancel.Location = new System.Drawing.Point(254, 769);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(83, 25);
             this.btn_cancel.TabIndex = 23;
@@ -306,7 +314,7 @@
             // 
             this.btn_new.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_new.ForeColor = System.Drawing.Color.White;
-            this.btn_new.Location = new System.Drawing.Point(66, 369);
+            this.btn_new.Location = new System.Drawing.Point(76, 769);
             this.btn_new.Name = "btn_new";
             this.btn_new.Size = new System.Drawing.Size(83, 25);
             this.btn_new.TabIndex = 22;
@@ -339,12 +347,28 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox1.Location = new System.Drawing.Point(5, 16);
+            this.groupBox1.Location = new System.Drawing.Point(15, 416);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(323, 325);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Usuario";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 209);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(55, 13);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "Direccion:";
+            // 
+            // textbox_address
+            // 
+            this.textbox_address.Location = new System.Drawing.Point(110, 206);
+            this.textbox_address.Name = "textbox_address";
+            this.textbox_address.Size = new System.Drawing.Size(100, 20);
+            this.textbox_address.TabIndex = 23;
             // 
             // label14
             // 
@@ -507,33 +531,80 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
-            // label13
+            // metroTabControl1
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 209);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(55, 13);
-            this.label13.TabIndex = 24;
-            this.label13.Text = "Direccion:";
+            this.metroTabControl1.Controls.Add(this.tabPage2);
+            this.metroTabControl1.Controls.Add(this.tabPage3);
+            this.metroTabControl1.Controls.Add(this.tabPage4);
+            this.metroTabControl1.Location = new System.Drawing.Point(40, 98);
+            this.metroTabControl1.Name = "metroTabControl1";
+            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.Size = new System.Drawing.Size(952, 294);
+            this.metroTabControl1.TabIndex = 25;
+            this.metroTabControl1.UseSelectable = true;
             // 
-            // textbox_address
+            // tabPage2
             // 
-            this.textbox_address.Location = new System.Drawing.Point(110, 206);
-            this.textbox_address.Name = "textbox_address";
-            this.textbox_address.Size = new System.Drawing.Size(100, 20);
-            this.textbox_address.TabIndex = 23;
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Window;
+            this.tabPage2.Location = new System.Drawing.Point(4, 38);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(944, 252);
+            this.tabPage2.TabIndex = 0;
+            this.tabPage2.Text = "Principal    ";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.SystemColors.Window;
+            this.tabPage3.Controls.Add(this.metroLabel2);
+            this.tabPage3.Location = new System.Drawing.Point(4, 38);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(944, 252);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.Text = "Crear    ";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.SystemColors.Window;
+            this.tabPage4.Location = new System.Drawing.Point(4, 38);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(944, 252);
+            this.tabPage4.TabIndex = 2;
+            this.tabPage4.Text = "Editar    ";
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel1.Location = new System.Drawing.Point(44, 45);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(80, 25);
+            this.metroLabel1.TabIndex = 26;
+            this.metroLabel1.Text = "Usuarios";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(119, 59);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(83, 19);
+            this.metroLabel2.TabIndex = 0;
+            this.metroLabel2.Text = "metroLabel2";
             // 
             // UC_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.metroTabControl1);
             this.Controls.Add(this.btm_edit);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_new);
             this.Controls.Add(this.groupBox1);
             this.Name = "UC_User";
-            this.Size = new System.Drawing.Size(1033, 428);
+            this.Size = new System.Drawing.Size(1033, 812);
             this.Load += new System.EventHandler(this.User_Load);
             this.Leave += new System.EventHandler(this.UC_User_Leave);
             this.tabControl1.ResumeLayout(false);
@@ -543,7 +614,11 @@
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.metroTabControl1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -596,5 +671,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn user_profile;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textbox_address;
+        private MetroFramework.Controls.MetroTabControl metroTabControl1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
     }
 }
