@@ -65,7 +65,7 @@ namespace WindowsFormsApp1.Controller
 
                 foreach (Row row in result.data)
                 {
-                    users.Add(new User(Int32.Parse(row.getColumn(0)), new Profile(), row.getColumn(2), row.getColumn(3), row.getColumn(4), row.getColumn(5), row.getColumn(6), row.getColumn(7)[0], row.getColumn(8), row.getColumn(9), row.getColumn(10), row.getColumn(11)));
+                    users.Add(new User(Int32.Parse(row.getColumn(0)), new Profile(0, row.getColumn(1)), row.getColumn(2), row.getColumn(3), row.getColumn(4), row.getColumn(5), row.getColumn(6), row.getColumn(7)[0], row.getColumn(8), row.getColumn(9), row.getColumn(10), row.getColumn(11)));
                 }
 
                 return new Result(users, true, "");
@@ -97,27 +97,5 @@ namespace WindowsFormsApp1.Controller
 
             return new Result(null, result.success, result.message);
         }
-
-        //public Result insertUser(User user)
-        //{
-        //    //consultar permisos
-        //    List<Parameter> parameters = new List<Parameter>();
-        //    parameters.Add(new Parameter("id", user.Id.ToString()));
-        //    parameters.Add(new Parameter("name", user.Name));
-        //    parameters.Add(new Parameter("middlename", user.Maternal_last_name));
-        //    parameters.Add(new Parameter("password", user.Password));
-        //    parameters.Add(new Parameter("lastname", user.Paternal_last_name));
-        //    parameters.Add(new Parameter("phone", user.Phone));
-        //    parameters.Add(new Parameter("email", user.Email));
-        //    parameters.Add(new Parameter("address", user.Address));
-        //    parameters.Add(new Parameter("gender", user.Gender.ToString()));
-        //    parameters.Add(new Parameter("profile", user.Profile));
-        //    GenericResult result = execute_transaction("insert_user", parameters);
-        //    if (result.success)
-        //    {               
-        //        return new Result(result.singleValue, true, "");
-        //    }
-        //    return new Result(null, result.success, result.message);
-        //}
     }
 }
