@@ -130,6 +130,12 @@
     <Compile Include="Views\UC_Material.Designer.cs">
       <DependentUpon>UC_Material.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_Material2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_Material2.Designer.cs">
+      <DependentUpon>UC_Material2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Parameters.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -326,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Material.resx">
       <DependentUpon>UC_Material.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Material2.resx">
+      <DependentUpon>UC_Material2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Parameters.resx">
       <DependentUpon>Parameters.cs</DependentUpon>

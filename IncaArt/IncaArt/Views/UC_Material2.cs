@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace WindowsFormsApp1.Views
 {
 
-    public partial class UC_Material : UserControl
+    public partial class UC_Material2 : UserControl
     {
         Boolean first;
         int cur_row;
@@ -19,7 +19,7 @@ namespace WindowsFormsApp1.Views
         List<Models.UnitOfMeasure> unit_list;
         Controller.MaterialsController materialController;
         Controller.UnitController unitController;
-        public UC_Material()
+        public UC_Material2()
         {
             InitializeComponent();
         }

@@ -13,7 +13,7 @@ namespace WindowsFormsApp1.Views
     public partial class Warehouse : UserControl
     {
         List<UC_Product> products = new List<UC_Product>();
-        List<UC_Material> materials = new List<UC_Material>();
+        List<UC_Material2> materials = new List<UC_Material2>();
         List<Warehouse> warehouses = new List<Warehouse>();
         public Warehouse()
         {

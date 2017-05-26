@@ -63,7 +63,7 @@
             this.profile = new WindowsFormsApp1.Views.UC_Profile();
             this.shift = new WindowsFormsApp1.Views.UC_Shift();
             this.product = new WindowsFormsApp1.Views.UC_Product();
-            this.material = new WindowsFormsApp1.Views.UC_Material();
+            this.material = new WindowsFormsApp1.Views.UC_Material2();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -524,6 +524,6 @@
         private UC_Shift shift;
         private UC_SalesMain uC_SalesMain1;
         private UC_WarehouseMovement uc_warehousemovement;
-        private UC_Material material;
+        private UC_Material2 material;
     }
 }
