@@ -64,5 +64,33 @@ namespace WindowsFormsApp1.Controller
             }
             return new Result(null, result.success, result.message);
         }
+
+        public Result updateMaterial(Models.Material material)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", material.Id.ToString()));
+            parameters.Add(new Parameter("name", material.Name));
+            parameters.Add(new Parameter("unit_id", material.Unit_id.ToString()));
+            parameters.Add(new Parameter("stock_min", material.Stock_min.ToString()));
+            parameters.Add(new Parameter("stock_max", material.Stock_max.ToString()));
+            GenericResult result = execute_transaction("update_material", parameters);
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result deleteMaterial(Models.Material material)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", material.Id.ToString()));
+            GenericResult result = execute_transaction("delete_material", parameters);
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
     }
 }

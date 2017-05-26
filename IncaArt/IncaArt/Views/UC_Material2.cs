@@ -13,7 +13,6 @@ namespace WindowsFormsApp1.Views
 
     public partial class UC_Material2 : UserControl
     {
-        Boolean first;
         int cur_row;
         List<Models.Material> material_list;
         List<Models.UnitOfMeasure> unit_list;
@@ -24,11 +23,21 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
         }
 
+        private void Load_Data()
+        {
+            Controller.Result result;
+            result = unitController.getUnits();
+            unit_list = (List<Models.UnitOfMeasure>)result.data;
+            material_list = new List<Models.Material>();
+            result = materialController.getMaterials();
+            if (result.data == null) MessageBox.Show(result.message, "Error al listar material", MessageBoxButtons.OK);
+            else material_list = (List<Models.Material>)result.data;
+        }
+
         private void Material_Load(object sender, EventArgs e)
         {
             string user = "dp1admin";
             string password = "dp1admin";
-            first = true;
             materialController = new Controller.MaterialsController(user, password);
             unitController = new Controller.UnitController(user, password);
             material_list = new List<Models.Material>();
@@ -93,25 +102,8 @@ namespace WindowsFormsApp1.Views
             return isCorrect;
         }
 
-        private void Load_Data()
-        {
-            Controller.Result result;
-            if (first)
-            {
-                first = false;
-                result = unitController.getUnits();
-                unit_list = (List<Models.UnitOfMeasure>)result.data;
-            }
-
-            material_list = new List<Models.Material>();
-            result = materialController.getMaterials();
-            if (result.data == null) MessageBox.Show(result.message, "Error al listar material", MessageBoxButtons.OK);
-            else material_list = (List<Models.Material>)result.data;
-        }
-
         private void Load_DataGridView()
         {
-            Load_Data();
             dataGridView1.Rows.Clear();
             for (int i = 0; i < material_list.Count(); i++)
             {
@@ -124,12 +116,13 @@ namespace WindowsFormsApp1.Views
                 else
                 {
                     unit = (Models.UnitOfMeasure)result.data;
-                    String[] row = new String[5];
+                    String[] row = new String[6];
                     row[0] = material_list[i].Id.ToString();
-                    row[1] = material_list[i].Name;
-                    row[2] = unit.Name;
-                    row[3] = material_list[i].Stock_min.ToString();
-                    row[4] = material_list[i].Stock_max.ToString();
+                    row[1] = i.ToString();
+                    row[2] = material_list[i].Name;
+                    row[3] = unit.Name;
+                    row[4] = material_list[i].Stock_min.ToString();
+                    row[5] = material_list[i].Stock_max.ToString();
                     this.dataGridView1.Rows.Add(row);
                 }
 
@@ -173,6 +166,9 @@ namespace WindowsFormsApp1.Views
                 if (result.data == null)
                 {
                     MessageBox.Show(result.message, "Error al registrar material", MessageBoxButtons.OK);
+                }else
+                {
+                    material_list.Add(mat);
                 }
 
                 Load_DataGridView();
@@ -196,56 +192,43 @@ namespace WindowsFormsApp1.Views
             cur_row = e.RowIndex;
             if (dataGridView1.Rows[e.RowIndex].Cells[1].Value != null)
             {
-                textbox_name.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                combobox_unit.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                textbox_min_stock.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                textbox_max_stock.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                textbox_name.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                combobox_unit.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                textbox_min_stock.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                textbox_max_stock.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
             }
         }
-
+        
         //Modificar Datos
         private void btn_edit_Click(object sender, EventArgs e)
         {
             String name, unit;
-            unit = combobox_unit.Text;
-
             name = textbox_name.Text;
-            unit = combobox_unit.Text;
+            unit = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Value;
             if (validate_data(name, unit, textbox_max_stock.Text, textbox_min_stock.Text))
             {
-                int min_stock = int.Parse(textbox_min_stock.Text);
-                int max_stock = int.Parse(textbox_max_stock.Text);
+                int min_stock, max_stock;
+                int id = int.Parse(dataGridView1.Rows[cur_row].Cells[0].Value.ToString());
+                min_stock = int.Parse(textbox_min_stock.Text);
+                max_stock = int.Parse(textbox_max_stock.Text);
 
                 Models.Material mat = new Models.Material();
-                mat.Id = int.Parse(dataGridView1.Rows[cur_row].Cells[0].Value.ToString());
-                mat.Name = name;
-                foreach (var item in unit_list)
+                
+                int unit_id = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Key;
+                mat = new Models.Material(id, unit_id, name, min_stock, max_stock);
+                Controller.Result result = materialController.updateMaterial(mat);
+                if (result.data == null)
                 {
-                    if (unit == item.Symbol)
-                    {
-                        mat.Unit = item;
-                        break;
-                    }
+                    MessageBox.Show(result.message, "Error al modificar material", MessageBoxButtons.OK);
                 }
-                mat.Stock_min = min_stock;
-                mat.Stock_max = max_stock;
+                else
+                {
+                    material_list[int.Parse(dataGridView1.Rows[cur_row].Cells[1].Value.ToString())] = mat;
+                }
 
-                for (int i = 0; i < material_list.Count(); i++)
-                {
-                    if (mat.Id == material_list[i].Id)
-                    {
-                        material_list[i].Name = mat.Name;
-                        material_list[i].Stock_max = mat.Stock_max;
-                        material_list[i].Stock_min = mat.Stock_min;
-                        material_list[i].Unit = mat.Unit;
-                        break;
-                    }
-                }
                 Load_DataGridView();
                 Clean();
             }
-
-
         }
 
         //Buscar
@@ -258,14 +241,15 @@ namespace WindowsFormsApp1.Views
         //Eliminar
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(dataGridView1.Rows[cur_row].Cells[0].Value.ToString());
-            for (int i = 0; i < material_list.Count(); i++)
+            int index = int.Parse(dataGridView1.Rows[cur_row].Cells[1].Value.ToString());
+            Controller.Result result = materialController.deleteMaterial(material_list[index]);
+            if (result.data == null)
             {
-                if (id == material_list[i].Id)
-                {
-                    material_list.Remove(material_list[i]);
-                    break;
-                }
+                MessageBox.Show(result.message, "Error al eliminar material", MessageBoxButtons.OK);
+            }
+            else
+            {
+                material_list.Remove(material_list[index]);
             }
             btn_delete.Enabled = false;
             Load_DataGridView();
