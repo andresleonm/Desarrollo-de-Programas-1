@@ -158,6 +158,12 @@
     <Compile Include="Views\Sales_Module\SalesOrderLine.Designer.cs">
       <DependentUpon>SalesOrderLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_SalesInvoice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_SalesInvoice.Designer.cs">
+      <DependentUpon>UC_SalesInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UC_Shift.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -336,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\SalesOrderLine.resx">
       <DependentUpon>SalesOrderLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_SalesInvoice.resx">
+      <DependentUpon>UC_SalesInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Shift.resx">
       <DependentUpon>UC_Shift.cs</DependentUpon>
