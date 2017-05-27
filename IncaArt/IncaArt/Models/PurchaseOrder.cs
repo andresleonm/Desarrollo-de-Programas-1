@@ -9,25 +9,28 @@ namespace WindowsFormsApp1.Models
     public class PurchaseOrder
     {
         List<PurchaseOrderLine> lines;
-        int warehouse_id;
+        int id;
         int currency_id;
-        int supplier_id;
+        int supplier_id;                
         Double amount;
         string state;
+        string observation;
+        string external_number;
+        double igv_amount;
+        double igv_percentage;
         DateTime due_date;
         DateTime creation_date;
-        int id;
 
-        public List<PurchaseOrderLine> Lines
+        public int Id
         {
             get
             {
-                return lines;
+                return id;
             }
 
             set
             {
-                lines = value;
+                id = value;
             }
         }
 
@@ -83,6 +86,58 @@ namespace WindowsFormsApp1.Models
             }
         }
 
+        public string Observation
+        {
+            get
+            {
+                return observation;
+            }
+
+            set
+            {
+                observation = value;
+            }
+        }
+
+        public string External_number
+        {
+            get
+            {
+                return external_number;
+            }
+
+            set
+            {
+                external_number = value;
+            }
+        }
+
+        public double Igv_amount
+        {
+            get
+            {
+                return igv_amount;
+            }
+
+            set
+            {
+                igv_amount = value;
+            }
+        }
+
+        public double Igv_percentage
+        {
+            get
+            {
+                return igv_percentage;
+            }
+
+            set
+            {
+                igv_percentage = value;
+            }
+        }
+
         public DateTime Due_date
         {
             get
@@ -109,29 +164,16 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public int Id
+        public List<PurchaseOrderLine> Lines
         {
             get
             {
-                return id;
+                return lines;
             }
 
             set
             {
-                id = value;
-            }
-        }
-
-        public int Warehouse_id
-        {
-            get
-            {
-                return warehouse_id;
-            }
-
-            set
-            {
-                warehouse_id = value;
+                lines = value;
             }
         }
 

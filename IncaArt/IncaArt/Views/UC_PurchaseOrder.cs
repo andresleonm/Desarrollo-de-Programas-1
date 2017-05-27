@@ -20,21 +20,7 @@ namespace WindowsFormsApp1.Views
         }
 
         private void button4_Click(object sender, EventArgs e)
-        {
-            Models.PurchaseOrderLine line = new Models.PurchaseOrderLine();
-            Purchase_Module.PurchaseOrderLine order_line = new Purchase_Module.PurchaseOrderLine(line);
-            order_line.ShowDialog();
-            if (line != null)
-            {
-                string[] grid_line = new string[6];
-                grid_line[0] = line.Scheluded_date.ToString();
-                grid_line[1] = "";
-                grid_line[2] = line.Quantity.ToString();
-                grid_line[3] = line.Material.Name;
-                grid_line[4] = line.Price.ToString();
-                grid_line[5] = (line.Quantity * line.Price).ToString();
-                grid_order_lines.Rows.Add(grid_line);
-            }
+        {            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -46,9 +32,7 @@ namespace WindowsFormsApp1.Views
             else
             {
                 if (editing)
-                {
-                    int index = ((Dashboard)(this.FindForm().FindForm())).purchase_order_list.FindIndex(or => or.Id == editing_order.Id);
-                    ((Dashboard)(this.FindForm().FindForm())).purchase_order_list[index] = editing_order;
+                {                    
                 }
             }
         }
@@ -69,7 +53,7 @@ namespace WindowsFormsApp1.Views
                 grid_line[0] = order.Due_date.ToString();
                 grid_line[1] = "";
                 grid_line[2] = line.Quantity.ToString();
-                grid_line[3] = line.Material.Name;
+                //grid_line[3] = line.Material.Name;
                 grid_line[4] = line.Price.ToString();
                 grid_line[5] = (line.Quantity * line.Price).ToString();
                 grid_order_lines.Rows.Add(grid_line);
