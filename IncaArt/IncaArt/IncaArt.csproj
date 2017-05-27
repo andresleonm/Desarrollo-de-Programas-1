@@ -279,12 +279,6 @@
     <Compile Include="Views\Sales_Module\UC_SalesOrder.Designer.cs">
       <DependentUpon>UC_SalesOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Sales_Module\UC_SalesOrderLine.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Sales_Module\UC_SalesOrderLine.Designer.cs">
-      <DependentUpon>UC_SalesOrderLine.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\UC_WarehouseMovement.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -469,9 +463,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesOrder.resx">
       <DependentUpon>UC_SalesOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Sales_Module\UC_SalesOrderLine.resx">
-      <DependentUpon>UC_SalesOrderLine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_WarehouseMovement.resx">
       <DependentUpon>UC_WarehouseMovement.cs</DependentUpon>

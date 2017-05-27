@@ -20,7 +20,10 @@ namespace WindowsFormsApp1.Views.Sales_Module
             line = sl;
         }
 
-        
+        private void SalesOrderLine_Load(object sender, EventArgs e)
+        {
+            MaximizeBox = false;
+        }
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
@@ -51,5 +54,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
         {
             this.Close();
         }
+               
     }
 }
