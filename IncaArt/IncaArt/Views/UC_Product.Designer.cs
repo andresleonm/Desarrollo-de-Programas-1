@@ -43,11 +43,6 @@
             this.tabControl_List = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Measure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_StockMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_StockMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_Delete = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
@@ -58,6 +53,13 @@
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_Edit = new System.Windows.Forms.Button();
             this.button_New = new System.Windows.Forms.Button();
+            this.product_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Measure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_StockMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_StockMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox_Product.SuspendLayout();
             this.tabControl_List.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -90,9 +92,6 @@
             // comboBox_Currency
             // 
             this.comboBox_Currency.FormattingEnabled = true;
-            this.comboBox_Currency.Items.AddRange(new object[] {
-            "soles",
-            "dólares"});
             this.comboBox_Currency.Location = new System.Drawing.Point(254, 124);
             this.comboBox_Currency.Name = "comboBox_Currency";
             this.comboBox_Currency.Size = new System.Drawing.Size(75, 21);
@@ -101,9 +100,6 @@
             // comboBox_UnitMeasure
             // 
             this.comboBox_UnitMeasure.FormattingEnabled = true;
-            this.comboBox_UnitMeasure.Items.AddRange(new object[] {
-            "kilos",
-            "metros cuadrados"});
             this.comboBox_UnitMeasure.Location = new System.Drawing.Point(162, 92);
             this.comboBox_UnitMeasure.Name = "comboBox_UnitMeasure";
             this.comboBox_UnitMeasure.Size = new System.Drawing.Size(167, 21);
@@ -211,6 +207,8 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.product_id,
+            this.index,
             this.Column_Name,
             this.Column_Measure,
             this.Column_Price,
@@ -220,31 +218,8 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(448, 242);
             this.dataGridView1.TabIndex = 21;
-            // 
-            // Column_Name
-            // 
-            this.Column_Name.HeaderText = "Nombre";
-            this.Column_Name.Name = "Column_Name";
-            // 
-            // Column_Measure
-            // 
-            this.Column_Measure.HeaderText = "Medida";
-            this.Column_Measure.Name = "Column_Measure";
-            // 
-            // Column_Price
-            // 
-            this.Column_Price.HeaderText = "Precio";
-            this.Column_Price.Name = "Column_Price";
-            // 
-            // Column_StockMin
-            // 
-            this.Column_StockMin.HeaderText = "Stock mínimo";
-            this.Column_StockMin.Name = "Column_StockMin";
-            // 
-            // Column_StockMax
-            // 
-            this.Column_StockMax.HeaderText = "Stock máximo";
-            this.Column_StockMax.Name = "Column_StockMax";
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // button_Delete
             // 
@@ -258,6 +233,7 @@
             this.button_Delete.TabIndex = 20;
             this.button_Delete.Text = "Eliminar";
             this.button_Delete.UseVisualStyleBackColor = false;
+            this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
             // 
             // groupBox2
             // 
@@ -278,9 +254,6 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "kilos",
-            "metros cuadrados"});
             this.comboBox3.Location = new System.Drawing.Point(315, 28);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(148, 21);
@@ -334,6 +307,7 @@
             this.button_Cancel.TabIndex = 21;
             this.button_Cancel.Text = "Cancelar";
             this.button_Cancel.UseVisualStyleBackColor = false;
+            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // button_Edit
             // 
@@ -346,6 +320,7 @@
             this.button_Edit.TabIndex = 20;
             this.button_Edit.Text = "Editar";
             this.button_Edit.UseVisualStyleBackColor = false;
+            this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
             // 
             // button_New
             // 
@@ -360,7 +335,43 @@
             this.button_New.UseVisualStyleBackColor = false;
             this.button_New.Click += new System.EventHandler(this.button_New_Click);
             // 
-            // Product
+            // product_id
+            // 
+            this.product_id.HeaderText = "Id";
+            this.product_id.Name = "product_id";
+            // 
+            // index
+            // 
+            this.index.HeaderText = "Index";
+            this.index.Name = "index";
+            this.index.Visible = false;
+            // 
+            // Column_Name
+            // 
+            this.Column_Name.HeaderText = "Nombre";
+            this.Column_Name.Name = "Column_Name";
+            // 
+            // Column_Measure
+            // 
+            this.Column_Measure.HeaderText = "Unidad";
+            this.Column_Measure.Name = "Column_Measure";
+            // 
+            // Column_Price
+            // 
+            this.Column_Price.HeaderText = "Precio";
+            this.Column_Price.Name = "Column_Price";
+            // 
+            // Column_StockMin
+            // 
+            this.Column_StockMin.HeaderText = "Stock mínimo";
+            this.Column_StockMin.Name = "Column_StockMin";
+            // 
+            // Column_StockMax
+            // 
+            this.Column_StockMax.HeaderText = "Stock máximo";
+            this.Column_StockMax.Name = "Column_StockMax";
+            // 
+            // UC_Product
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -369,8 +380,9 @@
             this.Controls.Add(this.button_New);
             this.Controls.Add(this.tabControl_List);
             this.Controls.Add(this.groupBox_Product);
-            this.Name = "Product";
+            this.Name = "UC_Product";
             this.Size = new System.Drawing.Size(915, 549);
+            this.Load += new System.EventHandler(this.UC_Product_Load);
             this.groupBox_Product.ResumeLayout(false);
             this.groupBox_Product.PerformLayout();
             this.tabControl_List.ResumeLayout(false);
@@ -399,11 +411,6 @@
         private System.Windows.Forms.TabControl tabControl_List;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Measure;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_StockMin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_StockMax;
         private System.Windows.Forms.Button button_Delete;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox comboBox3;
@@ -414,5 +421,12 @@
         private System.Windows.Forms.Button button_Cancel;
         private System.Windows.Forms.Button button_Edit;
         private System.Windows.Forms.Button button_New;
+        private System.Windows.Forms.DataGridViewTextBoxColumn product_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn index;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Measure;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_StockMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_StockMax;
     }
 }

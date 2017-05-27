@@ -10,9 +10,10 @@ namespace WindowsFormsApp1.Models
     {
         private int id;
         private UnitOfMeasure unit;
+        private int unit_id;
         private string name;
-        private int max_stock;
-        private int min_stock;
+        private int stock_max;
+        private int stock_min;
         private int stock;
         private double average_cost;
         private double unit_price;
@@ -35,18 +36,6 @@ namespace WindowsFormsApp1.Models
             set { name = value; }
         }
 
-        public int Max_stock
-        {
-            get { return max_stock; }
-            set { max_stock = value; }
-        }
-
-        public int Min_stock
-        {
-            get { return min_stock; }
-            set { min_stock = value; }
-        }
-
         public int Stock
         {
             get { return stock; }
@@ -65,16 +54,74 @@ namespace WindowsFormsApp1.Models
             set { unit_price = value; }
         }
 
+        public int Unit_id
+        {
+            get
+            {
+                return unit_id;
+            }
+
+            set
+            {
+                unit_id = value;
+            }
+        }
+
+        public int Stock_max
+        {
+            get
+            {
+                return stock_max;
+            }
+
+            set
+            {
+                stock_max = value;
+            }
+        }
+
+        public int Stock_min
+        {
+            get
+            {
+                return stock_min;
+            }
+
+            set
+            {
+                stock_min = value;
+            }
+        }
+
         public Product(int id, UnitOfMeasure unit, string name, int stock, int min_stock, int max_stock, double avg_cost, double price)
         {
             this.id = id;
             this.unit = unit;
             this.name = name;
             this.stock = stock;
-            this.min_stock = min_stock;
-            this.max_stock = max_stock;
+            this.stock_max = max_stock;
+            this.stock_min = min_stock;
             this.average_cost = avg_cost;
             this.unit_price = price;
+        }
+
+        public Product(int id, int unit_id, string name, int stock_min, int stock_max,double price)
+        {
+            this.id = id;
+            this.Unit_id = unit_id;
+            this.name = name;
+            this.stock_max = stock_max;
+            this.stock_min = stock_min;
+            this.unit_price = price;
+        }
+
+        public Product(int id, int unit_id, string name, int stock_min, int stock_max)
+        {
+            this.id = id;
+            this.Unit_id = unit_id;
+            this.name = name;
+            this.stock_max = stock_max;
+            this.stock_min = stock_min;
         }
 
         public Product()
