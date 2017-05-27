@@ -23,9 +23,52 @@ namespace WindowsFormsApp1.Controller
             {
                 foreach (Row r in result.data)
                 {
-                    sales_orders.Add(new SalesOrder(Int32.Parse(r.getColumn(0)), r.getColumn(3), r.getColumn(10), DateTime.Parse(r.getColumn(9)), DateTime.Parse(r.getColumn(11)), Double.Parse(r.getColumn(6)), r.getColumn(7)));
+                    sales_orders.Add(new SalesOrder(Int32.Parse(r.getColumn(0)), r.getColumn(3), r.getColumn(10),
+                                                    DateTime.Parse(r.getColumn(9)), DateTime.Parse(r.getColumn(11)), 
+                                                    Double.Parse(r.getColumn(6)), r.getColumn(7)));
                 }
                 return new Result(sales_orders, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        //public Result getSalesOrder(int id)
+        //{
+        //    List<Parameter> parameters = new List<Parameter>();
+        //    parameters.Add(new Parameter("id", id.ToString()));
+        //    GenericResult result = execute_function("get_user", parameters);
+        //    if (result.success)
+        //    {
+        //        var r = result.data[0];
+        //        SalesOrder sales_order = new SalesOrder(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
+        //                                                Int32.Parse(r.getColumn(2)), r.getColumn(3), r.getColumn(4),
+        //                                                r.getColumn(5), Double.Parse(r.getColumn(6)), r.getColumn(7),
+        //                                                r.getColumn(8), DateTime.Parse(r.getColumn(9)), r.getColumn(10), 
+        //                                                r.getColumn(11));
+        //        return new Result(sales_order, true, "");
+        //    }
+        //    return new Result(null, result.success, result.message);
+        //}
+
+        public Result insertSalesOrder(SalesOrder sales_order)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", sales_order.Id.ToString()));
+            parameters.Add(new Parameter("currency", sales_order.Currency.Id.ToString()));
+            parameters.Add(new Parameter("customer_id", sales_order.Client.Id.ToString()));
+            parameters.Add(new Parameter("customer_name", sales_order.Client_name));
+            parameters.Add(new Parameter("customer_address", sales_order.Client_address));
+            parameters.Add(new Parameter("customer_phone", sales_order.Client_phone));
+            parameters.Add(new Parameter("amount", sales_order.Amount.ToString()));
+            parameters.Add(new Parameter("state", sales_order.Status));
+            parameters.Add(new Parameter("customer_doi", sales_order.Client_doi));
+            parameters.Add(new Parameter("date", sales_order.Issue_date.ToShortDateString()));
+            parameters.Add(new Parameter("observation", sales_order.Observation));
+            parameters.Add(new Parameter("date", sales_order.Delivery_date.ToShortDateString()));
+            GenericResult result = execute_transaction("insert_sales_order", parameters);
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
             }
             return new Result(null, result.success, result.message);
         }

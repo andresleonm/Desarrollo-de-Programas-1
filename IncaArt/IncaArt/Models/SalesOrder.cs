@@ -117,6 +117,7 @@ namespace WindowsFormsApp1.Models
             this.lines = lines;
         }
 
+        // For SalesOrderList
         public SalesOrder(int order_id, string cli_name, string observation, DateTime issue_date, DateTime delivery_date, double amount, string status)
         {
             this.id = order_id;
@@ -126,6 +127,24 @@ namespace WindowsFormsApp1.Models
             this.delivery_date = delivery_date;
             this.amount = amount;
             this.status = status;
+        }
+
+        // For get_sales_order(id)
+        public SalesOrder(int order_id, Currency currency, Client client, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, DateTime delivery_date, double amount, string observation, List<SalesOrderLine> lines)
+        {
+            this.id = order_id;
+            this.currency = currency;
+            this.client = client;
+            this.client_name = cli_name;
+            this.client_address = cli_addr;
+            this.client_phone = cli_phone;
+            this.client_doi = cli_doi;
+            this.status = status;
+            this.issue_date = issue_date;
+            this.delivery_date = delivery_date;
+            this.amount = amount;
+            this.observation = observation;
+            this.lines = lines;
         }
 
     }
