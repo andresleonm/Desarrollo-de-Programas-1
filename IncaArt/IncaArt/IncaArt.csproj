@@ -68,8 +68,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\MaterialsController.cs" />
+    <Compile Include="Controller\MaterialWarehouseController.cs" />
     <Compile Include="Controller\ProductsController.cs" />
+    <Compile Include="Controller\ProductWarehouse.cs" />
     <Compile Include="Controller\UnitController.cs" />
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Models\MaterialWarehouse.cs" />
+    <Compile Include="Models\Result.cs" />
+>>>>>>> Stashed changes
     <Compile Include="Controller\PurchaseOrderController.cs" />
     <Compile Include="Controller\PurchaseOrderLineController.cs" />
     <Compile Include="Controller\Result.cs" />
