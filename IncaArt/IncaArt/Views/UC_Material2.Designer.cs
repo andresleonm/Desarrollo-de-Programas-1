@@ -306,6 +306,7 @@
             // 
             this.material_index.HeaderText = "Index";
             this.material_index.Name = "material_index";
+            this.material_index.Visible = false;
             // 
             // material_name
             // 

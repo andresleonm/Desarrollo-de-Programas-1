@@ -64,6 +64,7 @@
             this.shift = new WindowsFormsApp1.Views.UC_Shift();
             this.product = new WindowsFormsApp1.Views.UC_Product();
             this.material = new WindowsFormsApp1.Views.UC_Material2();
+            this.uc_material = new WindowsFormsApp1.Views.UC_Material();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -447,6 +448,15 @@
             this.material.Size = new System.Drawing.Size(889, 400);
             this.material.TabIndex = 33;
             // 
+            // uc_material
+            // 
+            this.uc_material.Location = new System.Drawing.Point(132, 72);
+            this.uc_material.Name = "uc_material";
+            this.uc_material.Size = new System.Drawing.Size(711, 493);
+            this.uc_material.TabIndex = 35;
+            this.uc_material.UseSelectable = true;
+            this.uc_material.Visible = false;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -472,6 +482,7 @@
             this.Controls.Add(this.shift);
             this.Controls.Add(this.product);
             this.Controls.Add(this.material);
+            this.Controls.Add(this.uc_material);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
@@ -525,5 +536,6 @@
         private UC_SalesMain uC_SalesMain1;
         private UC_WarehouseMovement uc_warehousemovement;
         private UC_Material2 material;
+        private UC_Material uc_material;
     }
 }
