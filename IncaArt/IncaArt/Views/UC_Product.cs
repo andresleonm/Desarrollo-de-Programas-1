@@ -47,7 +47,6 @@ namespace WindowsFormsApp1.Views
 
         private void Load_Data()
         {
-            Controller.Result result;
             result = unitController.getUnits();
             unit_list = (List<Models.UnitOfMeasure>)result.data;
             product_list = new List<Models.Product>();
@@ -62,7 +61,7 @@ namespace WindowsFormsApp1.Views
             for (int i = 0; i < product_list.Count(); i++)
             {
                 Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
-                Controller.Result result = unitController.getUnit(product_list[i].Unit_id);
+                result = unitController.getUnit(product_list[i].Unit_id);
                 if (result.data == null)
                 {
                     MessageBox.Show(result.message, "Error al buscar unit", MessageBoxButtons.OK);
@@ -126,7 +125,7 @@ namespace WindowsFormsApp1.Views
             stock_max = int.Parse(textbox_stock_max.Text);
             double price = double.Parse(textbox_price.Text);
             Models.Product product = new Models.Product(0, unit_id, name, stock_min, stock_max, price);
-            Controller.Result result = productController.insertProduct(product);
+            result = productController.insertProduct(product);
             if (result.data == null)
             {
                 MessageBox.Show(result.message, "Error al registrar producto", MessageBoxButtons.OK);
@@ -187,7 +186,7 @@ namespace WindowsFormsApp1.Views
             stock_max = int.Parse(textbox_stock_max.Text);
             double price = double.Parse(textbox_price.Text);
             Models.Product product = new Models.Product(id, unit_id, name, stock_min, stock_max, price);
-            Controller.Result result = productController.updateProduct(product);
+            result = productController.updateProduct(product);
             if (result.data == null)
             {
                 MessageBox.Show(result.message, "Error al modificar producto", MessageBoxButtons.OK);
@@ -205,7 +204,7 @@ namespace WindowsFormsApp1.Views
         private void button_Delete_Click(object sender, EventArgs e)
         {
             int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
-            Controller.Result result = productController.deleteProduct(product_list[index]);
+            result = productController.deleteProduct(product_list[index]);
             if (result.data == null)
             {
                 MessageBox.Show(result.message, "Error al eliminar material", MessageBoxButtons.OK);

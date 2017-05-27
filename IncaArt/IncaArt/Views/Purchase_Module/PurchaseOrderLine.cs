@@ -94,8 +94,10 @@ namespace WindowsFormsApp1.Views.Purchase_Module
 
         private void PurchaseOrderLine_Load(object sender, EventArgs e)
         {
-            Controller.MaterialController material_controller = new Controller.MaterialController();
-            Controller.WarehouseController warehouse_controller = new Controller.WarehouseController();
+            string user = "dp1admin";
+            string password = "dp1admin";
+            Controller.MaterialsController material_controller = new Controller.MaterialsController(user,password);
+            //Controller.WarehouseController warehouse_controller = new Controller.WarehouseController();
 
             Controller.Result result = material_controller.getMaterials();
             this.materials = (List<Models.Material>)result.data;
@@ -106,7 +108,7 @@ namespace WindowsFormsApp1.Views.Purchase_Module
             }
             this.combo_material.SelectedItem = this.combo_material.Items[0];
 
-            result = warehouse_controller.getWarehouses();
+            //result = warehouse_controller.getWarehouses();
             this.warehouses = (List<Models.Warehouse>)result.data;
 
             foreach(Models.Warehouse w in warehouses)

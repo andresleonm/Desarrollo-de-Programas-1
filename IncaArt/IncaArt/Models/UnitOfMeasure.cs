@@ -64,18 +64,6 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public int Id
-        {
-            get
-            {
-                return id;
-            }
-
-            set
-            {
-                id = value;
-            }
-        }
 
         public UnitOfMeasure()
         {

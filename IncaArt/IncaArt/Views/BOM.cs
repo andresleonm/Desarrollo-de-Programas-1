@@ -13,8 +13,8 @@ namespace WindowsFormsApp1.Views
 {
     public partial class BOM : UserControl
     {
-        private int last_id;
-        private List<Models.BOM> models_list;
+        //private int last_id;
+        //private List<Models.BOM> models_list;
 
 
         public BOM()
