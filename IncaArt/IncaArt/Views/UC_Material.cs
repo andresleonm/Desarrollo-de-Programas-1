@@ -198,13 +198,12 @@ namespace WindowsFormsApp1.Views
             }
             else
             {
-                material_list.Add(mat);
+                Load_Data();
             }
 
             Load_DataGridView();
             Clean();
             metroTabControl1.SelectedIndex = 0;
-
 
         }
 
