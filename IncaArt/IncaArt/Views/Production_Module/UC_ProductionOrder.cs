@@ -41,5 +41,22 @@ namespace WindowsFormsApp1.Views
 
             }
         }
+
+        private void metroButton_AddProduct_Click(object sender, EventArgs e)
+        {
+            Models.ProductionOrderProductLine line = new Models.ProductionOrderProductLine();
+            ProductionOrderProductLine product_line = new ProductionOrderProductLine();
+            product_line.Show();
+        }
+
+        private void metroButton_AddMaterial_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroButton_AddWorker_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
