@@ -76,6 +76,9 @@
     <Compile Include="Models\BOM.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\ProductionOrder.cs" />
+    <Compile Include="Models\ProductionOrderProductLine.cs" />
+    <Compile Include="Models\ProductionOrderWorkLine.cs" />
     <Compile Include="Models\ProductMovement.cs" />
     <Compile Include="Models\MaterialMovement.cs" />
     <Compile Include="Models\Person.cs" />
@@ -121,6 +124,24 @@
     </Compile>
     <Compile Include="Views\MainDashboard.Designer.cs">
       <DependentUpon>MainDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_ProductionOrderWorkLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_ProductionOrderWorkLine.Designer.cs">
+      <DependentUpon>UC_ProductionOrderWorkLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_ProductionOrderMaterialLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_ProductionOrderMaterialLine.Designer.cs">
+      <DependentUpon>UC_ProductionOrderMaterialLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_ProductionOrderProductLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_ProductionOrderProductLine.Designer.cs">
+      <DependentUpon>UC_ProductionOrderProductLine.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_Material.cs">
       <SubType>UserControl</SubType>
@@ -242,6 +263,18 @@
     <Compile Include="Views\UC_User.Designer.cs">
       <DependentUpon>UC_User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_ProductionOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_ProductionOrder.Designer.cs">
+      <DependentUpon>UC_ProductionOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_ProductionOrderSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_ProductionOrderSearch.Designer.cs">
+      <DependentUpon>UC_ProductionOrderSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Warehouse.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -331,6 +364,15 @@
     <EmbeddedResource Include="Views\UC_Product.resx">
       <DependentUpon>UC_Product.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_ProductionOrderMaterialLine.resx">
+      <DependentUpon>UC_ProductionOrderMaterialLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_ProductionOrderProductLine.resx">
+      <DependentUpon>UC_ProductionOrderProductLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_ProductionOrderWorkLine.resx">
+      <DependentUpon>UC_ProductionOrderWorkLine.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Profile.resx">
       <DependentUpon>UC_Profile.cs</DependentUpon>
     </EmbeddedResource>
@@ -378,6 +420,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_User.resx">
       <DependentUpon>UC_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_ProductionOrder.resx">
+      <DependentUpon>UC_ProductionOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_ProductionOrderSearch.resx">
+      <DependentUpon>UC_ProductionOrderSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse.resx">
       <DependentUpon>Warehouse.cs</DependentUpon>
