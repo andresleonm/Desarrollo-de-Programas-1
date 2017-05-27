@@ -35,6 +35,7 @@
             this.refund = new MetroFramework.Controls.MetroTile();
             this.panel2 = new System.Windows.Forms.Panel();
             this.uC_SalesOrder1 = new WindowsFormsApp1.Views.UC_SalesOrder();
+            this.uC_SalesOrderList1 = new WindowsFormsApp1.Views.UC_SalesOrderList();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -120,6 +121,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.uC_SalesOrderList1);
             this.panel2.Controls.Add(this.uC_SalesOrder1);
             this.panel2.Location = new System.Drawing.Point(3, 79);
             this.panel2.Name = "panel2";
@@ -136,6 +138,14 @@
             this.uC_SalesOrder1.TabIndex = 0;
             this.uC_SalesOrder1.UseSelectable = true;
             // 
+            // uC_SalesOrderList1
+            // 
+            this.uC_SalesOrderList1.BackColor = System.Drawing.Color.White;
+            this.uC_SalesOrderList1.Location = new System.Drawing.Point(3, 3);
+            this.uC_SalesOrderList1.Name = "uC_SalesOrderList1";
+            this.uC_SalesOrderList1.Size = new System.Drawing.Size(872, 624);
+            this.uC_SalesOrderList1.TabIndex = 1;
+            // 
             // UC_SalesMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -146,6 +156,7 @@
             this.DoubleBuffered = true;
             this.Name = "UC_SalesMain";
             this.Size = new System.Drawing.Size(900, 700);
+            this.Load += new System.EventHandler(this.UC_SalesMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -161,5 +172,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private UC_SalesOrder uC_SalesOrder1;
+        private UC_SalesOrderList uC_SalesOrderList1;
     }
 }

@@ -59,8 +59,8 @@ namespace WindowsFormsApp1.Views
             editing_order = order;
             txt_id.Text = order.Id.ToString();
             date_order_date.Text = order.Creation_date.ToString();
-            combo_supplier.Text = order.Supplier.Supplier_name;
-            combo_address.Text = order.Supplier.Supplier_addres;
+            //combo_supplier.Text = order.Supplier.Supplier_name;
+            //combo_address.Text = order.Supplier.Supplier_addres;
             combo_state.Text = order.State;
 
             foreach(Models.PurchaseOrderLine line in order.Lines)
