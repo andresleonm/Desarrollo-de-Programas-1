@@ -132,7 +132,7 @@ namespace WindowsFormsApp1.Views
             }
             else
             {
-                product_list.Add(product);
+                Load_Data();
             }
 
             Load_DataGridView();
