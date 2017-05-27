@@ -26,7 +26,7 @@ namespace WindowsFormsApp1.Views
         private void btn_New_Click(object sender, EventArgs e)
         {
             Models.SalesOrderLine salesOrderLine = new Models.SalesOrderLine();
-            Sales_Module.SalesOrderLine order_line = new Sales_Module.SalesOrderLine(salesOrderLine);
+            Sales_Module.SalesOrderLine order_line = new Sales_Module.SalesOrderLine(ref salesOrderLine);
             order_line.ShowDialog();
 
             if (salesOrderLine != null)
