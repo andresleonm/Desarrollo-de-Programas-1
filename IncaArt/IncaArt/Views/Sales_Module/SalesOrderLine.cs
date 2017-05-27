@@ -16,32 +16,15 @@ namespace WindowsFormsApp1.Views.Sales_Module
         public SalesOrderLine(Models.SalesOrderLine sl)
         {
             InitializeComponent();
-            dud_Quantity.Text = "0";
+            txt_Quantity.Text = "0";
             line = sl;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbo_Product.SelectedItem.Equals("Cerámico"))
-            {
-                txt_UnitPrice.Text = "5.00";
-            }else if (cbo_Product.SelectedItem.Equals("Retablo"))
-            {
-                txt_UnitPrice.Text = "7.00";
-            }else if (cbo_Product.SelectedItem.Equals("Piedra Tallada"))
-            {
-                txt_UnitPrice.Text = "10.00";
-            }
-        }
+        
 
-        private void cancel_Click(object sender, EventArgs e)
+        private void btn_Save_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        private void line_register_Click(object sender, EventArgs e)
-        {
-            if (String.IsNullOrWhiteSpace(dud_Quantity.Text) || String.IsNullOrWhiteSpace(cbo_Product.Text) || String.IsNullOrWhiteSpace(txt_UnitPrice.Text))
+            if (String.IsNullOrWhiteSpace(txt_Quantity.Text) || String.IsNullOrWhiteSpace(txt_DeliverQuan.Text) || String.IsNullOrWhiteSpace(cbo_Product.Text) || String.IsNullOrWhiteSpace(cbo_UnitMeasure.Text) || String.IsNullOrWhiteSpace(cbo_Warehouse.Text))
             {
                 MessageBox.Show(this, "Debe completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -51,8 +34,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 if (result == DialogResult.OK)
                 {
                     Models.Product product = new Models.Product();
-                    int quantity = int.Parse(this.dud_Quantity.Text);
-                    string description = this.txt_Description.Text;
+                    int quantity = int.Parse(this.txt_Quantity.Text);
+                    int deliver_quantity = int.Parse(this.txt_DeliverQuan.Text);
                     double price = double.Parse(this.txt_UnitPrice.Text);
                     line.Product = product;
                     //line.Description = description;
@@ -62,6 +45,11 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     this.Close();
                 }
             }
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

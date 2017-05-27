@@ -11,16 +11,20 @@ namespace WindowsFormsApp1.Models
         List<PurchaseOrderLine> lines;
         int id;
         int currency_id;
-        int supplier_id;                
+        int supplier_id;
+        string supplier_name;
+        string supplier_address;
+        string supplier_phone;                    
         double amount;
         string state;
+        string supplier_doi;
         string observation;
         string external_number;
         double igv_amount;
         double igv_percentage;        
         DateTime creation_date;
 
-        public PurchaseOrder(int id,int currency_id,int supplier_id,double amount,string state, DateTime creation_date, string observation,string external_number,double igv_amount,double igv_percentage)
+        public PurchaseOrder(int id,int currency_id,int supplier_id,string supplier_name,string supplier_address,string suppler_phone,double amount,string state,string supplier_doi, DateTime creation_date, string observation,string external_number,double igv_amount,double igv_percentage)
         {
             this.id = id;
             this.currency_id = currency_id;
@@ -174,6 +178,58 @@ namespace WindowsFormsApp1.Models
             set
             {
                 lines = value;
+            }
+        }
+
+        public string Supplier_name
+        {
+            get
+            {
+                return supplier_name;
+            }
+
+            set
+            {
+                supplier_name = value;
+            }
+        }
+
+        public string Supplier_address
+        {
+            get
+            {
+                return supplier_address;
+            }
+
+            set
+            {
+                supplier_address = value;
+            }
+        }
+
+        public string Supplier_phone
+        {
+            get
+            {
+                return supplier_phone;
+            }
+
+            set
+            {
+                supplier_phone = value;
+            }
+        }
+
+        public string Supplier_doi
+        {
+            get
+            {
+                return supplier_doi;
+            }
+
+            set
+            {
+                supplier_doi = value;
             }
         }
 
