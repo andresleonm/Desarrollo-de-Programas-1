@@ -67,18 +67,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Controller\MaterialsController.cs" />
     <Compile Include="Controller\ProductsController.cs" />
     <Compile Include="Controller\UnitController.cs" />
     <Compile Include="Models\Result.cs" />
-=======
     <Compile Include="Controller\PurchaseOrderController.cs" />
     <Compile Include="Controller\PurchaseOrderLineController.cs" />
     <Compile Include="Controller\Result.cs" />
     <Compile Include="Controller\SalesOrderController.cs" />
     <Compile Include="Controller\SalesOrderLineController.cs" />
->>>>>>> aae59133d4d1170a02fa4c27932853bf2dff2ed2
     <Compile Include="Controller\UsersController.cs" />
     <Compile Include="DataService\DatabaseService.cs" />
     <Compile Include="DataService\GenericResult.cs" />
@@ -423,10 +420,9 @@
     <EmbeddedResource Include="Views\UC_Product.resx">
       <DependentUpon>UC_Product.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
     <EmbeddedResource Include="Views\UC_Product2.resx">
       <DependentUpon>UC_Product2.cs</DependentUpon>
-=======
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderMaterialLine.resx">
       <DependentUpon>UC_ProductionOrderMaterialLine.cs</DependentUpon>
     </EmbeddedResource>
@@ -435,7 +431,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderWorkLine.resx">
       <DependentUpon>UC_ProductionOrderWorkLine.cs</DependentUpon>
->>>>>>> aae59133d4d1170a02fa4c27932853bf2dff2ed2
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Profile.resx">
       <DependentUpon>UC_Profile.cs</DependentUpon>
@@ -538,14 +533,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-<<<<<<< HEAD
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
     <Folder Include="Views\Warehouse_Module\" />
   </ItemGroup>
-=======
-  <ItemGroup />
->>>>>>> aae59133d4d1170a02fa4c27932853bf2dff2ed2
   <ItemGroup>
     <None Include="Resources\Minimize Window_52px.png" />
     <None Include="Resources\Close Window_52px.png" />
