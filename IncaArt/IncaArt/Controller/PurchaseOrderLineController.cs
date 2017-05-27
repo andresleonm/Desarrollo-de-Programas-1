@@ -14,9 +14,10 @@ namespace WindowsFormsApp1.Controller
 
         }
 
-        public Result getPurchaseOrderLines()
+        public Result getPurchaseOrderLines(int id)
         {
             List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("order_id", id.ToString()));
             GenericResult result = execute_function("get_purchase_order_lines", parameters);
             List<PurchaseOrderLine> lines = new List<PurchaseOrderLine>();
             if (result.success)
