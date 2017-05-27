@@ -12,14 +12,27 @@ namespace WindowsFormsApp1.Models
         int id;
         int currency_id;
         int supplier_id;                
-        Double amount;
+        double amount;
         string state;
         string observation;
         string external_number;
         double igv_amount;
-        double igv_percentage;
-        DateTime due_date;
+        double igv_percentage;        
         DateTime creation_date;
+
+        public PurchaseOrder(int id,int currency_id,int supplier_id,double amount,string state, DateTime creation_date, string observation,string external_number,double igv_amount,double igv_percentage)
+        {
+            this.id = id;
+            this.currency_id = currency_id;
+            this.supplier_id = supplier_id;
+            this.amount = amount;
+            this.state = state;
+            this.observation = observation;
+            this.external_number = external_number;
+            this.igv_amount = igv_amount;
+            this.igv_percentage = igv_percentage;            
+            this.creation_date = creation_date;
+        }
 
         public int Id
         {
@@ -135,19 +148,6 @@ namespace WindowsFormsApp1.Models
             set
             {
                 igv_percentage = value;
-            }
-        }
-
-        public DateTime Due_date
-        {
-            get
-            {
-                return due_date;
-            }
-
-            set
-            {
-                due_date = value;
             }
         }
 

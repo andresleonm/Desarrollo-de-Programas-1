@@ -23,7 +23,9 @@ namespace WindowsFormsApp1.Controller
             {
                 foreach (Row r in result.data)
                 {
-                    purchase_orders.Add(new PurchaseOrder());
+                    purchase_orders.Add(new PurchaseOrder(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2)),
+                                        double.Parse(r.getColumn(3)), r.getColumn(4), DateTime.Parse(r.getColumn(5)), r.getColumn(6), r.getColumn(7),
+                                        double.Parse(r.getColumn(8)),double.Parse(r.getColumn(9))));
                 }
                 return new Result(purchase_orders, true, "");
             }
@@ -38,7 +40,9 @@ namespace WindowsFormsApp1.Controller
             if (result.success)
             {
                 var r = result.data[0];
-                PurchaseOrder purchase_order = new PurchaseOrder();
+                PurchaseOrder purchase_order = new PurchaseOrder(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2)),
+                                        double.Parse(r.getColumn(3)), r.getColumn(4), DateTime.Parse(r.getColumn(5)), r.getColumn(6), r.getColumn(7),
+                                        double.Parse(r.getColumn(8)), double.Parse(r.getColumn(9)));
                 return new Result(purchase_order, true, "");
             }
             return new Result(null, result.success, result.message);
@@ -56,8 +60,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("observation", purchase_order.Observation));
             parameters.Add(new Parameter("external_number", purchase_order.External_number));
             parameters.Add(new Parameter("igv_amount", purchase_order.Igv_amount.ToString()));
-            parameters.Add(new Parameter("igv_percentage", purchase_order.Igv_percentage.ToString()));
-            parameters.Add(new Parameter("due_date", purchase_order.Due_date.ToString()));
+            parameters.Add(new Parameter("igv_percentage", purchase_order.Igv_percentage.ToString()));            
             GenericResult result = execute_transaction("insert_purchase_order", parameters);
             if (result.success)
             {

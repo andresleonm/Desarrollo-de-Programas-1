@@ -180,7 +180,8 @@ namespace WindowsFormsApp1.Views
         private void btn_material_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            material.Visible = true;
+            //material.Visible = true;
+            uc_material.Visible = true;
         }
 
         private void btn_profile_Click(object sender, EventArgs e)
@@ -192,7 +193,8 @@ namespace WindowsFormsApp1.Views
         private void btn_product_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            product.Visible = true;
+            //product.Visible = true;
+            uc_product.Visible = true;
         }
 
         private void btn_shift_Click(object sender, EventArgs e)
