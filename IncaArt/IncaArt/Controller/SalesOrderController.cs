@@ -64,7 +64,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("customer_doi", sales_order.Client_doi));
             parameters.Add(new Parameter("date", sales_order.Issue_date.ToShortDateString()));
             parameters.Add(new Parameter("observation", sales_order.Observation));
-            parameters.Add(new Parameter("date", sales_order.Delivery_date.ToShortDateString()));
+            parameters.Add(new Parameter("delivery_date", sales_order.Delivery_date.ToShortDateString()));
             GenericResult result = execute_transaction("insert_sales_order", parameters);
             if (result.success)
             {
