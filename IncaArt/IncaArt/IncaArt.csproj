@@ -149,6 +149,12 @@
     <Compile Include="Views\UC_Product.Designer.cs">
       <DependentUpon>UC_Product.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_Product2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_Product2.Designer.cs">
+      <DependentUpon>UC_Product2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UC_Profile.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -342,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Product.resx">
       <DependentUpon>UC_Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Product2.resx">
+      <DependentUpon>UC_Product2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Profile.resx">
       <DependentUpon>UC_Profile.cs</DependentUpon>

@@ -193,7 +193,8 @@ namespace WindowsFormsApp1.Views
         private void btn_product_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            product.Visible = true;
+            //product.Visible = true;
+            uc_product.Visible = true;
         }
 
         private void btn_shift_Click(object sender, EventArgs e)

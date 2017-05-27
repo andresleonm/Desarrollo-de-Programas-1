@@ -62,9 +62,10 @@
             this.worker = new WindowsFormsApp1.Views.UC_Worker();
             this.profile = new WindowsFormsApp1.Views.UC_Profile();
             this.shift = new WindowsFormsApp1.Views.UC_Shift();
-            this.product = new WindowsFormsApp1.Views.UC_Product();
+            this.product = new WindowsFormsApp1.Views.UC_Product2();
             this.material = new WindowsFormsApp1.Views.UC_Material2();
             this.uc_material = new WindowsFormsApp1.Views.UC_Material();
+            this.uc_product = new WindowsFormsApp1.Views.UC_Product();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -457,6 +458,15 @@
             this.uc_material.UseSelectable = true;
             this.uc_material.Visible = false;
             // 
+            // uc_product
+            // 
+            this.uc_product.Location = new System.Drawing.Point(132, 72);
+            this.uc_product.Name = "uc_product";
+            this.uc_product.Size = new System.Drawing.Size(795, 513);
+            this.uc_product.TabIndex = 37;
+            this.uc_product.UseSelectable = true;
+            this.uc_product.Visible = false;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -483,6 +493,7 @@
             this.Controls.Add(this.product);
             this.Controls.Add(this.material);
             this.Controls.Add(this.uc_material);
+            this.Controls.Add(this.uc_product);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
@@ -531,11 +542,12 @@
         private UC_User user;
         private UC_Worker worker;
         private UC_Profile profile;
-        private UC_Product product;
+        private UC_Product2 product;
         private UC_Shift shift;
         private UC_SalesMain uC_SalesMain1;
         private UC_WarehouseMovement uc_warehousemovement;
         private UC_Material2 material;
         private UC_Material uc_material;
+        private UC_Product uc_product;
     }
 }

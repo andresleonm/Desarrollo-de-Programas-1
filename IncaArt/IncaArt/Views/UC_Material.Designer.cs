@@ -38,11 +38,7 @@
             this.btn_clean_s = new MetroFramework.Controls.MetroButton();
             this.btn_search = new MetroFramework.Controls.MetroButton();
             this.combobox_unit_s = new MetroFramework.Controls.MetroComboBox();
-            this.textbox_stock_max_s = new MetroFramework.Controls.MetroTextBox();
-            this.textbox_stock_min_s = new MetroFramework.Controls.MetroTextBox();
             this.textbox_name_s = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
@@ -53,6 +49,9 @@
             this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stock_maximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registro = new MetroFramework.Controls.MetroTabPage();
+            this.btn_cancel = new MetroFramework.Controls.MetroButton();
+            this.btn_edit = new MetroFramework.Controls.MetroButton();
+            this.btn_new = new MetroFramework.Controls.MetroButton();
             this.combobox_unit = new MetroFramework.Controls.MetroComboBox();
             this.textbox_stock_min = new MetroFramework.Controls.MetroTextBox();
             this.textbox_stock_max = new MetroFramework.Controls.MetroTextBox();
@@ -62,9 +61,6 @@
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btn_new = new MetroFramework.Controls.MetroButton();
-            this.btn_edit = new MetroFramework.Controls.MetroButton();
-            this.btn_cancel = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
@@ -78,7 +74,7 @@
             this.metroTabControl1.Controls.Add(this.registro);
             this.metroTabControl1.Location = new System.Drawing.Point(3, 16);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(721, 450);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -89,11 +85,7 @@
             this.consulta.Controls.Add(this.btn_clean_s);
             this.consulta.Controls.Add(this.btn_search);
             this.consulta.Controls.Add(this.combobox_unit_s);
-            this.consulta.Controls.Add(this.textbox_stock_max_s);
-            this.consulta.Controls.Add(this.textbox_stock_min_s);
             this.consulta.Controls.Add(this.textbox_name_s);
-            this.consulta.Controls.Add(this.metroLabel4);
-            this.consulta.Controls.Add(this.metroLabel3);
             this.consulta.Controls.Add(this.metroLabel2);
             this.consulta.Controls.Add(this.metroLabel1);
             this.consulta.Controls.Add(this.metroGrid1);
@@ -142,71 +134,11 @@
             // 
             this.combobox_unit_s.FormattingEnabled = true;
             this.combobox_unit_s.ItemHeight = 23;
-            this.combobox_unit_s.Location = new System.Drawing.Point(103, 60);
+            this.combobox_unit_s.Location = new System.Drawing.Point(386, 23);
             this.combobox_unit_s.Name = "combobox_unit_s";
             this.combobox_unit_s.Size = new System.Drawing.Size(121, 29);
             this.combobox_unit_s.TabIndex = 10;
             this.combobox_unit_s.UseSelectable = true;
-            // 
-            // textbox_stock_max_s
-            // 
-            // 
-            // 
-            // 
-            this.textbox_stock_max_s.CustomButton.Image = null;
-            this.textbox_stock_max_s.CustomButton.Location = new System.Drawing.Point(97, 1);
-            this.textbox_stock_max_s.CustomButton.Name = "";
-            this.textbox_stock_max_s.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.textbox_stock_max_s.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.textbox_stock_max_s.CustomButton.TabIndex = 1;
-            this.textbox_stock_max_s.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.textbox_stock_max_s.CustomButton.UseSelectable = true;
-            this.textbox_stock_max_s.CustomButton.Visible = false;
-            this.textbox_stock_max_s.Lines = new string[0];
-            this.textbox_stock_max_s.Location = new System.Drawing.Point(388, 60);
-            this.textbox_stock_max_s.MaxLength = 32767;
-            this.textbox_stock_max_s.Name = "textbox_stock_max_s";
-            this.textbox_stock_max_s.PasswordChar = '\0';
-            this.textbox_stock_max_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.textbox_stock_max_s.SelectedText = "";
-            this.textbox_stock_max_s.SelectionLength = 0;
-            this.textbox_stock_max_s.SelectionStart = 0;
-            this.textbox_stock_max_s.ShortcutsEnabled = true;
-            this.textbox_stock_max_s.Size = new System.Drawing.Size(119, 23);
-            this.textbox_stock_max_s.TabIndex = 9;
-            this.textbox_stock_max_s.UseSelectable = true;
-            this.textbox_stock_max_s.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.textbox_stock_max_s.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // textbox_stock_min_s
-            // 
-            // 
-            // 
-            // 
-            this.textbox_stock_min_s.CustomButton.Image = null;
-            this.textbox_stock_min_s.CustomButton.Location = new System.Drawing.Point(98, 1);
-            this.textbox_stock_min_s.CustomButton.Name = "";
-            this.textbox_stock_min_s.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.textbox_stock_min_s.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.textbox_stock_min_s.CustomButton.TabIndex = 1;
-            this.textbox_stock_min_s.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.textbox_stock_min_s.CustomButton.UseSelectable = true;
-            this.textbox_stock_min_s.CustomButton.Visible = false;
-            this.textbox_stock_min_s.Lines = new string[0];
-            this.textbox_stock_min_s.Location = new System.Drawing.Point(387, 23);
-            this.textbox_stock_min_s.MaxLength = 32767;
-            this.textbox_stock_min_s.Name = "textbox_stock_min_s";
-            this.textbox_stock_min_s.PasswordChar = '\0';
-            this.textbox_stock_min_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.textbox_stock_min_s.SelectedText = "";
-            this.textbox_stock_min_s.SelectionLength = 0;
-            this.textbox_stock_min_s.SelectionStart = 0;
-            this.textbox_stock_min_s.ShortcutsEnabled = true;
-            this.textbox_stock_min_s.Size = new System.Drawing.Size(120, 23);
-            this.textbox_stock_min_s.TabIndex = 8;
-            this.textbox_stock_min_s.UseSelectable = true;
-            this.textbox_stock_min_s.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.textbox_stock_min_s.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // textbox_name_s
             // 
@@ -223,7 +155,7 @@
             this.textbox_name_s.CustomButton.UseSelectable = true;
             this.textbox_name_s.CustomButton.Visible = false;
             this.textbox_name_s.Lines = new string[0];
-            this.textbox_name_s.Location = new System.Drawing.Point(103, 22);
+            this.textbox_name_s.Location = new System.Drawing.Point(103, 23);
             this.textbox_name_s.MaxLength = 32767;
             this.textbox_name_s.Name = "textbox_name_s";
             this.textbox_name_s.PasswordChar = '\0';
@@ -238,28 +170,10 @@
             this.textbox_name_s.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_name_s.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroLabel4
-            // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(289, 64);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(92, 19);
-            this.metroLabel4.TabIndex = 6;
-            this.metroLabel4.Text = "Stock Máximo";
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(289, 22);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(92, 19);
-            this.metroLabel3.TabIndex = 5;
-            this.metroLabel3.Text = "Stock Mínimo:";
-            // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(43, 65);
+            this.metroLabel2.Location = new System.Drawing.Point(326, 28);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(54, 19);
             this.metroLabel2.TabIndex = 4;
@@ -384,6 +298,36 @@
             this.registro.VerticalScrollbarBarColor = true;
             this.registro.VerticalScrollbarHighlightOnWheel = false;
             this.registro.VerticalScrollbarSize = 10;
+            // 
+            // btn_cancel
+            // 
+            this.btn_cancel.Location = new System.Drawing.Point(206, 350);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.TabIndex = 12;
+            this.btn_cancel.Text = "Cancelar";
+            this.btn_cancel.UseSelectable = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
+            // btn_edit
+            // 
+            this.btn_edit.Location = new System.Drawing.Point(113, 350);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.Size = new System.Drawing.Size(75, 23);
+            this.btn_edit.TabIndex = 11;
+            this.btn_edit.Text = "Editar";
+            this.btn_edit.UseSelectable = true;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
+            // 
+            // btn_new
+            // 
+            this.btn_new.Location = new System.Drawing.Point(19, 350);
+            this.btn_new.Name = "btn_new";
+            this.btn_new.Size = new System.Drawing.Size(75, 23);
+            this.btn_new.TabIndex = 10;
+            this.btn_new.Text = "Registrar";
+            this.btn_new.UseSelectable = true;
+            this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
             // 
             // combobox_unit
             // 
@@ -525,36 +469,6 @@
             // 
             this.materialBindingSource.DataSource = typeof(WindowsFormsApp1.Models.Material);
             // 
-            // btn_new
-            // 
-            this.btn_new.Location = new System.Drawing.Point(19, 350);
-            this.btn_new.Name = "btn_new";
-            this.btn_new.Size = new System.Drawing.Size(75, 23);
-            this.btn_new.TabIndex = 10;
-            this.btn_new.Text = "Registrar";
-            this.btn_new.UseSelectable = true;
-            this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
-            // 
-            // btn_edit
-            // 
-            this.btn_edit.Location = new System.Drawing.Point(113, 350);
-            this.btn_edit.Name = "btn_edit";
-            this.btn_edit.Size = new System.Drawing.Size(75, 23);
-            this.btn_edit.TabIndex = 11;
-            this.btn_edit.Text = "Editar";
-            this.btn_edit.UseSelectable = true;
-            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
-            // 
-            // btn_cancel
-            // 
-            this.btn_cancel.Location = new System.Drawing.Point(206, 350);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 12;
-            this.btn_cancel.Text = "Cancelar";
-            this.btn_cancel.UseSelectable = true;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
-            // 
             // UC_Material
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -581,13 +495,9 @@
         private MetroFramework.Controls.MetroTabPage registro;
         private MetroFramework.Controls.MetroGrid metroGrid1;
         private System.Windows.Forms.BindingSource materialBindingSource;
-        private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroComboBox combobox_unit_s;
-        private MetroFramework.Controls.MetroTextBox textbox_stock_max_s;
-        private MetroFramework.Controls.MetroTextBox textbox_stock_min_s;
         private MetroFramework.Controls.MetroTextBox textbox_name_s;
         private MetroFramework.Controls.MetroButton btn_clean_s;
         private MetroFramework.Controls.MetroButton btn_search;
