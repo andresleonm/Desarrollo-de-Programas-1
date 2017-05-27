@@ -70,7 +70,6 @@
     <Compile Include="Controller\MaterialsController.cs" />
     <Compile Include="Controller\ProductsController.cs" />
     <Compile Include="Controller\UnitController.cs" />
-    <Compile Include="Models\Result.cs" />
     <Compile Include="Controller\PurchaseOrderController.cs" />
     <Compile Include="Controller\PurchaseOrderLineController.cs" />
     <Compile Include="Controller\Result.cs" />
@@ -228,6 +227,12 @@
     </Compile>
     <Compile Include="Views\Sales_Module\UC_SalesOrderList.Designer.cs">
       <DependentUpon>UC_SalesOrderList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_Recipe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_Recipe.Designer.cs">
+      <DependentUpon>UC_Recipe.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_Shift.cs">
       <SubType>UserControl</SubType>
@@ -443,6 +448,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesOrderList.resx">
       <DependentUpon>UC_SalesOrderList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Recipe.resx">
+      <DependentUpon>UC_Recipe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Shift.resx">
       <DependentUpon>UC_Shift.cs</DependentUpon>
