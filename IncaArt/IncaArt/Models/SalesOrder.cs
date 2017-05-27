@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class SalesOrder
+    public class SalesOrder
     {        
         private int id;
         private Currency currency;
@@ -115,6 +115,17 @@ namespace WindowsFormsApp1.Models
             this.amount = amount;
             this.observation = observation;
             this.lines = lines;
+        }
+
+        public SalesOrder(int order_id, string cli_name, string observation, DateTime issue_date, DateTime delivery_date, double amount, string status)
+        {
+            this.id = order_id;
+            this.client_name = cli_name;
+            this.observation = observation;
+            this.issue_date = issue_date;
+            this.delivery_date = delivery_date;
+            this.amount = amount;
+            this.status = status;
         }
 
     }
