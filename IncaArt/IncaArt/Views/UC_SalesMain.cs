@@ -17,22 +17,18 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
         }
 
-        private void register_sale_Click(object sender, EventArgs e)
+        private void register_order_Click(object sender, EventArgs e)
         {
-            uC_Sales1.Visible = false;
-            uC_SalesOrder1.Visible = true;
+
         }
 
-        private void sales_Click(object sender, EventArgs e)
+        private void orders_Click(object sender, EventArgs e)
         {
-            uC_SalesOrder1.Visible = false;
-            uC_Sales1.Visible = true;
+
         }
 
-        private void devolution_Click(object sender, EventArgs e)
+        private void refund_Click(object sender, EventArgs e)
         {
-            uC_Sales1.Visible = false;
-            uC_SalesOrder1.Visible = true;
         }
     }
 }
