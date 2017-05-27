@@ -203,6 +203,12 @@
     <Compile Include="Views\UC_SalesInvoice.Designer.cs">
       <DependentUpon>UC_SalesInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_SalesOrderList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_SalesOrderList.Designer.cs">
+      <DependentUpon>UC_SalesOrderList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UC_Shift.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -414,6 +420,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_SalesInvoice.resx">
       <DependentUpon>UC_SalesInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_SalesOrderList.resx">
+      <DependentUpon>UC_SalesOrderList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Shift.resx">
       <DependentUpon>UC_Shift.cs</DependentUpon>
