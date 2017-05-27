@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\PurchaseOrderController.cs" />
+    <Compile Include="Controller\PurchaseOrderLineController.cs" />
     <Compile Include="Controller\Result.cs" />
     <Compile Include="Controller\UsersController.cs" />
     <Compile Include="DataService\DatabaseService.cs" />

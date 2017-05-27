@@ -7,13 +7,58 @@ using System.Threading.Tasks;
 namespace WindowsFormsApp1.Models
 {
     public class PurchaseOrderLine
-    {        
-        Material material;
+    {
+        int id;
+        int purchase_order;
+        int unit_of_measure;
+        int material;
+        int warehouse;
+        int deliver_quantity;
+        string state;
         int quantity;
         double price;
         DateTime scheluded_date;
 
-        public Material Material
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
+        public int Purchase_order
+        {
+            get
+            {
+                return purchase_order;
+            }
+
+            set
+            {
+                purchase_order = value;
+            }
+        }
+
+        public int Unit_of_measure
+        {
+            get
+            {
+                return unit_of_measure;
+            }
+
+            set
+            {
+                unit_of_measure = value;
+            }
+        }
+
+        public int Material
         {
             get
             {
@@ -23,6 +68,45 @@ namespace WindowsFormsApp1.Models
             set
             {
                 material = value;
+            }
+        }
+
+        public int Warehouse
+        {
+            get
+            {
+                return warehouse;
+            }
+
+            set
+            {
+                warehouse = value;
+            }
+        }
+
+        public int Deliver_quantity
+        {
+            get
+            {
+                return deliver_quantity;
+            }
+
+            set
+            {
+                deliver_quantity = value;
+            }
+        }
+
+        public string State
+        {
+            get
+            {
+                return state;
+            }
+
+            set
+            {
+                state = value;
             }
         }
 
@@ -63,13 +147,6 @@ namespace WindowsFormsApp1.Models
             {
                 scheluded_date = value;
             }
-        }
-
-        public PurchaseOrderLine(Material material, int quantity, double price)
-        {            
-            this.material = material;
-            this.quantity = quantity;
-            this.price = price;            
         }
 
         public PurchaseOrderLine()
