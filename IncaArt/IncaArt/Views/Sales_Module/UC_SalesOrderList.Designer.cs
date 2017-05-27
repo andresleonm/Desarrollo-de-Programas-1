@@ -52,7 +52,7 @@
             this.idOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.client = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -130,7 +130,7 @@
             this.idOrder,
             this.client,
             this.observation,
-            this.dueDate,
+            this.issueDate,
             this.deliveryDate,
             this.amount,
             this.status});
@@ -370,12 +370,12 @@
             this.observation.HeaderText = "Observación";
             this.observation.Name = "observation";
             // 
-            // dueDate
+            // issueDate
             // 
-            this.dueDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dueDate.HeaderText = "Fecha de Emisión";
-            this.dueDate.Name = "dueDate";
-            this.dueDate.ReadOnly = true;
+            this.issueDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.issueDate.HeaderText = "Fecha de Emisión";
+            this.issueDate.Name = "issueDate";
+            this.issueDate.ReadOnly = true;
             // 
             // deliveryDate
             // 
@@ -436,7 +436,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn client;
         private System.Windows.Forms.DataGridViewTextBoxColumn observation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dueDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn issueDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
