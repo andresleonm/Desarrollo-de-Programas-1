@@ -198,16 +198,16 @@
     <Compile Include="Views\Sales_Module\SalesOrderLine.Designer.cs">
       <DependentUpon>SalesOrderLine.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UC_SalesInvoice.cs">
+    <Compile Include="Views\Sales_Module\UC_SalesInvoice.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UC_SalesInvoice.Designer.cs">
+    <Compile Include="Views\Sales_Module\UC_SalesInvoice.Designer.cs">
       <DependentUpon>UC_SalesInvoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UC_SalesOrderList.cs">
+    <Compile Include="Views\Sales_Module\UC_SalesOrderList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UC_SalesOrderList.Designer.cs">
+    <Compile Include="Views\Sales_Module\UC_SalesOrderList.Designer.cs">
       <DependentUpon>UC_SalesOrderList.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_Shift.cs">
@@ -246,22 +246,22 @@
     <Compile Include="Views\UC_PurchasesMenu.Designer.cs">
       <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UC_SalesMain.cs">
+    <Compile Include="Views\Sales_Module\UC_SalesMain.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UC_SalesMain.Designer.cs">
+    <Compile Include="Views\Sales_Module\UC_SalesMain.Designer.cs">
       <DependentUpon>UC_SalesMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UC_SalesOrder.cs">
+    <Compile Include="Views\Sales_Module\UC_SalesOrder.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UC_SalesOrder.Designer.cs">
+    <Compile Include="Views\Sales_Module\UC_SalesOrder.Designer.cs">
       <DependentUpon>UC_SalesOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UC_SalesOrderLine.cs">
+    <Compile Include="Views\Sales_Module\UC_SalesOrderLine.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UC_SalesOrderLine.Designer.cs">
+    <Compile Include="Views\Sales_Module\UC_SalesOrderLine.Designer.cs">
       <DependentUpon>UC_SalesOrderLine.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_WarehouseMovement.cs">
@@ -413,10 +413,10 @@
     <EmbeddedResource Include="Views\Sales_Module\SalesOrderLine.resx">
       <DependentUpon>SalesOrderLine.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_SalesInvoice.resx">
+    <EmbeddedResource Include="Views\Sales_Module\UC_SalesInvoice.resx">
       <DependentUpon>UC_SalesInvoice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_SalesOrderList.resx">
+    <EmbeddedResource Include="Views\Sales_Module\UC_SalesOrderList.resx">
       <DependentUpon>UC_SalesOrderList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Shift.resx">
@@ -437,13 +437,13 @@
     <EmbeddedResource Include="Views\UC_PurchasesMenu.resx">
       <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_SalesMain.resx">
+    <EmbeddedResource Include="Views\Sales_Module\UC_SalesMain.resx">
       <DependentUpon>UC_SalesMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_SalesOrder.resx">
+    <EmbeddedResource Include="Views\Sales_Module\UC_SalesOrder.resx">
       <DependentUpon>UC_SalesOrder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_SalesOrderLine.resx">
+    <EmbeddedResource Include="Views\Sales_Module\UC_SalesOrderLine.resx">
       <DependentUpon>UC_SalesOrderLine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_WarehouseMovement.resx">
@@ -508,9 +508,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Warehouse_Module\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\Minimize Window_52px.png" />
     <None Include="Resources\Close Window_52px.png" />
