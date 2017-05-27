@@ -109,13 +109,13 @@ namespace WindowsFormsApp1.Views.Purchase_Module
             this.combo_material.SelectedItem = this.combo_material.Items[0];
 
             //result = warehouse_controller.getWarehouses();
-            this.warehouses = (List<Models.Warehouse>)result.data;
+            //this.warehouses = (List<Models.Warehouse>)result.data;
 
-            foreach(Models.Warehouse w in warehouses)
-            {
-                this.combo_warehouse.Items.Add(w.Name);
-            }
-            this.combo_warehouse.SelectedItem = this.combo_warehouse.Items[0];
+            //foreach(Models.Warehouse w in warehouses)
+            //{
+            //    this.combo_warehouse.Items.Add(w.Name);
+            //}
+            //this.combo_warehouse.SelectedItem = this.combo_warehouse.Items[0];
             
             
         }
