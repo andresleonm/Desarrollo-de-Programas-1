@@ -44,11 +44,11 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result insertPurchaseOrder(PurchaseOrder purchase_order)
-        {
-            List<Parameter> parameters = new List<Parameter>();
-            parameters.Add(new Parameter("id", purchase_order.Id.ToString()));
-            parameters.Add(new Parameter("order",purchase_order.))
-        }
+        //public Result insertPurchaseOrder(PurchaseOrder purchase_order)
+        //{
+        //    List<Parameter> parameters = new List<Parameter>();
+        //    parameters.Add(new Parameter("id", purchase_order.Id.ToString()));
+        //    //parameters.Add(new Parameter("order",purchase_order.))
+        //}
     }
 }

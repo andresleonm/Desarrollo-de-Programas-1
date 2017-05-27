@@ -31,29 +31,29 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public Currency Currency
+        public int Currency_id
         {
             get
             {
-                return currency;
+                return currency_id;
             }
 
             set
             {
-                currency = value;
+                currency_id = value;
             }
         }
 
-        public Supplier Supplier
+        public int Supplier_id
         {
             get
             {
-                return supplier;
+                return supplier_id;
             }
 
             set
             {
-                supplier = value;
+                supplier_id = value;
             }
         }
 
@@ -122,16 +122,16 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public Warehouse Warehouse
+        public int Warehouse_id
         {
             get
             {
-                return warehouse;
+                return warehouse_id;
             }
 
             set
             {
-                warehouse = value;
+                warehouse_id = value;
             }
         }
 
