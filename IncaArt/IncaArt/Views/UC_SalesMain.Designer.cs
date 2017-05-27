@@ -34,7 +34,9 @@
             this.orders = new MetroFramework.Controls.MetroTile();
             this.refund = new MetroFramework.Controls.MetroTile();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.uC_SalesOrder1 = new WindowsFormsApp1.Views.UC_SalesOrder();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -51,7 +53,7 @@
             // register_order
             // 
             this.register_order.ActiveControl = null;
-            this.register_order.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.register_order.BackColor = System.Drawing.Color.DarkCyan;
             this.register_order.Location = new System.Drawing.Point(252, 3);
             this.register_order.Name = "register_order";
             this.register_order.Size = new System.Drawing.Size(177, 62);
@@ -68,7 +70,7 @@
             // invoice
             // 
             this.invoice.ActiveControl = null;
-            this.invoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.invoice.BackColor = System.Drawing.Color.DarkCyan;
             this.invoice.Location = new System.Drawing.Point(688, 3);
             this.invoice.Name = "invoice";
             this.invoice.Size = new System.Drawing.Size(177, 62);
@@ -84,7 +86,7 @@
             // orders
             // 
             this.orders.ActiveControl = null;
-            this.orders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.orders.BackColor = System.Drawing.Color.DarkCyan;
             this.orders.Location = new System.Drawing.Point(32, 3);
             this.orders.Name = "orders";
             this.orders.Size = new System.Drawing.Size(177, 62);
@@ -101,7 +103,7 @@
             // refund
             // 
             this.refund.ActiveControl = null;
-            this.refund.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.refund.BackColor = System.Drawing.Color.DarkCyan;
             this.refund.Location = new System.Drawing.Point(474, 3);
             this.refund.Name = "refund";
             this.refund.PaintTileCount = false;
@@ -118,10 +120,21 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.uC_SalesOrder1);
             this.panel2.Location = new System.Drawing.Point(3, 79);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(894, 618);
             this.panel2.TabIndex = 42;
+            // 
+            // uC_SalesOrder1
+            // 
+            this.uC_SalesOrder1.BackColor = System.Drawing.Color.White;
+            this.uC_SalesOrder1.Location = new System.Drawing.Point(1, 1);
+            this.uC_SalesOrder1.Name = "uC_SalesOrder1";
+            this.uC_SalesOrder1.Size = new System.Drawing.Size(872, 592);
+            this.uC_SalesOrder1.Style = MetroFramework.MetroColorStyle.Blue;
+            this.uC_SalesOrder1.TabIndex = 0;
+            this.uC_SalesOrder1.UseSelectable = true;
             // 
             // UC_SalesMain
             // 
@@ -134,6 +147,7 @@
             this.Name = "UC_SalesMain";
             this.Size = new System.Drawing.Size(900, 700);
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -146,5 +160,6 @@
         private MetroFramework.Controls.MetroTile refund;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private UC_SalesOrder uC_SalesOrder1;
     }
 }

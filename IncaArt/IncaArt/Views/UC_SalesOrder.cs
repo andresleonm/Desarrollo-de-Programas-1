@@ -9,12 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Views
-{
-    public partial class UC_SalesOrder : UserControl
+{           
+    public partial class UC_SalesOrder : MetroFramework.Controls.MetroUserControl
     {
         public UC_SalesOrder()
         {
             InitializeComponent();
+            this.Style = mbStyle.Style;
+        }
+
+        private void UC_SalesOrder_Load(object sender, EventArgs e)
+        {
+            mbStyle.Style = MetroFramework.MetroColorStyle.Teal;
         }
 
         private void add_Click(object sender, EventArgs e)
@@ -36,5 +42,7 @@ namespace WindowsFormsApp1.Views
 
             }
         }
+
+        
     }
 }
