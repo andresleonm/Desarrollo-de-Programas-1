@@ -73,8 +73,7 @@ namespace WindowsFormsApp1.Views.Purchase_Module
         private void comboBox1_TextUpdate(object sender, EventArgs e)
         {
             Models.Material material = new Models.Material(); // se tiene que sacar el material de la lista para rellenar los campos bloqueados
-            this.txt_measure_unit.Text = material.Unit.Name;
-            this.txt_description.Text = material.Description;            
+            this.txt_measure_unit.Text = material.Unit.Name;                    
 
         }
 
