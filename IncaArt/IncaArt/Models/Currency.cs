@@ -8,5 +8,12 @@ namespace WindowsFormsApp1.Models
 {
     public class Currency
     {
+        private int id;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
     }
 }

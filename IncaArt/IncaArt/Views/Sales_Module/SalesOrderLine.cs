@@ -55,7 +55,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     string description = this.txt_Description.Text;
                     double price = double.Parse(this.txt_UnitPrice.Text);
                     line.Product = product;
-                    line.Description = description;
+                    //line.Description = description;
                     line.Quantity = quantity;
                     line.Unit_price = price;
                     //line = new Models.SalesOrderLine(product, description, quantity, price);

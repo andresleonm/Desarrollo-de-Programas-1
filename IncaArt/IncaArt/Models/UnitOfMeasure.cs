@@ -12,6 +12,19 @@ namespace WindowsFormsApp1.Models
         string name;
         double factor;
 
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
         public string Symbol
         {
             get

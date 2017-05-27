@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1.Views
 {
-    partial class UC_SalesOrder
+    partial class UC_SalesInvoice
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -80,10 +80,10 @@
             // 
             this.panel1.Controls.Add(this.tabControl1);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(8, 21);
+            this.panel1.Location = new System.Drawing.Point(23, 21);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(855, 559);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 2;
             // 
             // tabControl1
             // 
@@ -132,7 +132,6 @@
             this.add.TabIndex = 18;
             this.add.Text = "Agregar";
             this.add.UseVisualStyleBackColor = false;
-            this.add.Click += new System.EventHandler(this.add_Click);
             // 
             // label10
             // 
@@ -510,15 +509,14 @@
             this.comboBox2.Size = new System.Drawing.Size(200, 21);
             this.comboBox2.TabIndex = 5;
             // 
-            // UC_SalesOrder
+            // UC_SalesInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel1);
-            this.DoubleBuffered = true;
-            this.Name = "UC_SalesOrder";
-            this.Size = new System.Drawing.Size(872, 592);
+            this.Name = "UC_SalesInvoice";
+            this.Size = new System.Drawing.Size(900, 600);
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -559,6 +557,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label11;
@@ -571,6 +570,5 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

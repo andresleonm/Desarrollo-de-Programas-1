@@ -9,51 +9,54 @@ namespace WindowsFormsApp1.Models
     public class PurchaseOrder
     {
         List<PurchaseOrderLine> lines;
-        Warehouse warehouse;
-        Currency currency;
-        Supplier supplier;
+        int id;
+        int currency_id;
+        int supplier_id;                
         Double amount;
         string state;
+        string observation;
+        string external_number;
+        double igv_amount;
+        double igv_percentage;
         DateTime due_date;
         DateTime creation_date;
-        int id;
 
-        public List<PurchaseOrderLine> Lines
+        public int Id
         {
             get
             {
-                return lines;
+                return id;
             }
 
             set
             {
-                lines = value;
+                id = value;
             }
         }
 
-        public Currency Currency
+        public int Currency_id
         {
             get
             {
-                return currency;
+                return currency_id;
             }
 
             set
             {
-                currency = value;
+                currency_id = value;
             }
         }
 
-        public Supplier Supplier
+        public int Supplier_id
         {
             get
             {
-                return supplier;
+                return supplier_id;
             }
 
             set
             {
-                supplier = value;
+                supplier_id = value;
             }
         }
 
@@ -83,6 +86,58 @@ namespace WindowsFormsApp1.Models
             }
         }
 
+        public string Observation
+        {
+            get
+            {
+                return observation;
+            }
+
+            set
+            {
+                observation = value;
+            }
+        }
+
+        public string External_number
+        {
+            get
+            {
+                return external_number;
+            }
+
+            set
+            {
+                external_number = value;
+            }
+        }
+
+        public double Igv_amount
+        {
+            get
+            {
+                return igv_amount;
+            }
+
+            set
+            {
+                igv_amount = value;
+            }
+        }
+
+        public double Igv_percentage
+        {
+            get
+            {
+                return igv_percentage;
+            }
+
+            set
+            {
+                igv_percentage = value;
+            }
+        }
+
         public DateTime Due_date
         {
             get
@@ -109,29 +164,16 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public int Id
+        public List<PurchaseOrderLine> Lines
         {
             get
             {
-                return id;
+                return lines;
             }
 
             set
             {
-                id = value;
-            }
-        }
-
-        public Warehouse Warehouse
-        {
-            get
-            {
-                return warehouse;
-            }
-
-            set
-            {
-                warehouse = value;
+                lines = value;
             }
         }
 

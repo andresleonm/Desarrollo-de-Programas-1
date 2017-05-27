@@ -83,7 +83,7 @@ namespace WindowsFormsApp1.DataService
             
         }
 
-        // deben usar execute_function cuando quieran retornar un solo valor de la bd, puede ser un string un integer un booleano, etc, pero
+        // deben usar execute_transaction cuando quieran retornar un solo valor de la bd, puede ser un string un integer un booleano, etc, pero
         //solo un valor!!!
         protected GenericResult execute_transaction(string function, List<Parameter> parameters)
         {
