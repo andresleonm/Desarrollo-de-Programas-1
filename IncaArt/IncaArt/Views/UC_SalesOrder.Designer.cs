@@ -71,6 +71,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.mbStyle = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.observation = new MetroFramework.Controls.MetroTextBox();
             this.panel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -88,7 +90,7 @@
             this.panel1.Controls.Add(this.gbOrder);
             this.panel1.Location = new System.Drawing.Point(14, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(855, 615);
+            this.panel1.Size = new System.Drawing.Size(855, 601);
             this.panel1.TabIndex = 1;
             // 
             // metroTabControl1
@@ -98,7 +100,7 @@
             this.metroTabControl1.Location = new System.Drawing.Point(12, 194);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(827, 408);
+            this.metroTabControl1.Size = new System.Drawing.Size(827, 399);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 40;
             this.metroTabControl1.UseCustomBackColor = true;
@@ -110,6 +112,8 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.CausesValidation = false;
+            this.tabPage1.Controls.Add(this.observation);
+            this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.txt_amount);
             this.tabPage1.Controls.Add(this.btn_Clean);
             this.tabPage1.Controls.Add(this.cb_status);
@@ -122,7 +126,7 @@
             this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 38);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(819, 366);
+            this.tabPage1.Size = new System.Drawing.Size(819, 357);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Pedido";
             // 
@@ -145,7 +149,7 @@
             this.txt_amount.CustomButton.Visible = false;
             this.txt_amount.Enabled = false;
             this.txt_amount.Lines = new string[0];
-            this.txt_amount.Location = new System.Drawing.Point(651, 277);
+            this.txt_amount.Location = new System.Drawing.Point(651, 197);
             this.txt_amount.MaxLength = 32767;
             this.txt_amount.Name = "txt_amount";
             this.txt_amount.PasswordChar = '\0';
@@ -167,7 +171,7 @@
             this.btn_Clean.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_Clean.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Clean.ForeColor = System.Drawing.Color.White;
-            this.btn_Clean.Location = new System.Drawing.Point(294, 321);
+            this.btn_Clean.Location = new System.Drawing.Point(294, 314);
             this.btn_Clean.Name = "btn_Clean";
             this.btn_Clean.Size = new System.Drawing.Size(82, 29);
             this.btn_Clean.TabIndex = 59;
@@ -178,7 +182,7 @@
             // 
             this.cb_status.FormattingEnabled = true;
             this.cb_status.ItemHeight = 23;
-            this.cb_status.Location = new System.Drawing.Point(82, 275);
+            this.cb_status.Location = new System.Drawing.Point(108, 267);
             this.cb_status.Name = "cb_status";
             this.cb_status.Size = new System.Drawing.Size(184, 29);
             this.cb_status.TabIndex = 58;
@@ -189,7 +193,7 @@
             this.btn_Cancel.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_Cancel.Location = new System.Drawing.Point(532, 321);
+            this.btn_Cancel.Location = new System.Drawing.Point(532, 314);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(82, 29);
             this.btn_Cancel.TabIndex = 57;
@@ -201,7 +205,7 @@
             this.btn_Save.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Save.ForeColor = System.Drawing.Color.White;
-            this.btn_Save.Location = new System.Drawing.Point(413, 321);
+            this.btn_Save.Location = new System.Drawing.Point(413, 314);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(82, 29);
             this.btn_Save.TabIndex = 56;
@@ -213,18 +217,18 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label6.Location = new System.Drawing.Point(15, 282);
+            this.label6.Location = new System.Drawing.Point(15, 205);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 13);
+            this.label6.Size = new System.Drawing.Size(86, 13);
             this.label6.TabIndex = 55;
-            this.label6.Text = "Estado :";
+            this.label6.Text = "Observación :";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label5.Location = new System.Drawing.Point(600, 285);
+            this.label5.Location = new System.Drawing.Point(600, 205);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 51;
@@ -235,7 +239,7 @@
             this.btn_New.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_New.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_New.ForeColor = System.Drawing.Color.White;
-            this.btn_New.Location = new System.Drawing.Point(712, 10);
+            this.btn_New.Location = new System.Drawing.Point(712, 6);
             this.btn_New.Name = "btn_New";
             this.btn_New.Size = new System.Drawing.Size(82, 25);
             this.btn_New.TabIndex = 46;
@@ -248,9 +252,9 @@
             this.gb_OrderLine.Controls.Add(this.grid_order_lines);
             this.gb_OrderLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gb_OrderLine.ForeColor = System.Drawing.Color.Black;
-            this.gb_OrderLine.Location = new System.Drawing.Point(9, 38);
+            this.gb_OrderLine.Location = new System.Drawing.Point(9, 29);
             this.gb_OrderLine.Name = "gb_OrderLine";
-            this.gb_OrderLine.Size = new System.Drawing.Size(791, 230);
+            this.gb_OrderLine.Size = new System.Drawing.Size(791, 156);
             this.gb_OrderLine.TabIndex = 45;
             this.gb_OrderLine.TabStop = false;
             this.gb_OrderLine.Text = "Líneas del Pedido";
@@ -305,7 +309,7 @@
             this.grid_order_lines.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.grid_order_lines.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.grid_order_lines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_order_lines.Size = new System.Drawing.Size(785, 211);
+            this.grid_order_lines.Size = new System.Drawing.Size(785, 137);
             this.grid_order_lines.TabIndex = 50;
             // 
             // item
@@ -669,6 +673,48 @@
             // 
             this.mbStyle.Owner = null;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label3.Location = new System.Drawing.Point(15, 276);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 13);
+            this.label3.TabIndex = 61;
+            this.label3.Text = "Estado :";
+            // 
+            // observation
+            // 
+            // 
+            // 
+            // 
+            this.observation.CustomButton.Image = null;
+            this.observation.CustomButton.Location = new System.Drawing.Point(370, 2);
+            this.observation.CustomButton.Name = "";
+            this.observation.CustomButton.Size = new System.Drawing.Size(55, 55);
+            this.observation.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.observation.CustomButton.TabIndex = 1;
+            this.observation.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.observation.CustomButton.UseSelectable = true;
+            this.observation.CustomButton.Visible = false;
+            this.observation.Lines = new string[0];
+            this.observation.Location = new System.Drawing.Point(108, 197);
+            this.observation.MaxLength = 32767;
+            this.observation.Multiline = true;
+            this.observation.Name = "observation";
+            this.observation.PasswordChar = '\0';
+            this.observation.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.observation.SelectedText = "";
+            this.observation.SelectionLength = 0;
+            this.observation.SelectionStart = 0;
+            this.observation.ShortcutsEnabled = true;
+            this.observation.Size = new System.Drawing.Size(428, 60);
+            this.observation.TabIndex = 62;
+            this.observation.UseSelectable = true;
+            this.observation.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.observation.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // UC_SalesOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -677,7 +723,7 @@
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Name = "UC_SalesOrder";
-            this.Size = new System.Drawing.Size(872, 636);
+            this.Size = new System.Drawing.Size(872, 614);
             this.Load += new System.EventHandler(this.UC_SalesOrder_Load);
             this.panel1.ResumeLayout(false);
             this.metroTabControl1.ResumeLayout(false);
@@ -735,5 +781,7 @@
         private System.Windows.Forms.Button btn_Clean;
         private MetroFramework.Controls.MetroComboBox cb_status;
         private MetroFramework.Controls.MetroTextBox txt_amount;
+        private MetroFramework.Controls.MetroTextBox observation;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -246,12 +246,6 @@
     <Compile Include="Views\UC_PurchasesMenu.Designer.cs">
       <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UC_Sales.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\UC_Sales.Designer.cs">
-      <DependentUpon>UC_Sales.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\UC_SalesMain.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -442,9 +436,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_PurchasesMenu.resx">
       <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_Sales.resx">
-      <DependentUpon>UC_Sales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_SalesMain.resx">
       <DependentUpon>UC_SalesMain.cs</DependentUpon>

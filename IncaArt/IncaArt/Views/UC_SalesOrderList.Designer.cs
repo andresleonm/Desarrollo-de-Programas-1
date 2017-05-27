@@ -32,29 +32,30 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btn_Edit = new System.Windows.Forms.Button();
+            this.btn_Delete = new System.Windows.Forms.Button();
             this.gb_OrderLine = new System.Windows.Forms.GroupBox();
             this.grid_order_lines = new MetroFramework.Controls.MetroGrid();
-            this.idOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.client = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbClient = new System.Windows.Forms.GroupBox();
             this.cb_Currency = new MetroFramework.Controls.MetroComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_Search = new System.Windows.Forms.Button();
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.dt_DeliveryDate = new MetroFramework.Controls.MetroDateTime();
-            this.btn_Search = new MetroFramework.Controls.MetroTile();
+            this.btn_SearchClient = new MetroFramework.Controls.MetroTile();
             this.txt_idOrder = new MetroFramework.Controls.MetroTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_name = new MetroFramework.Controls.MetroTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.idOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.client = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.gb_OrderLine.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_order_lines)).BeginInit();
@@ -63,8 +64,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button7);
+            this.panel1.Controls.Add(this.btn_Edit);
+            this.panel1.Controls.Add(this.btn_Delete);
             this.panel1.Controls.Add(this.gb_OrderLine);
             this.panel1.Controls.Add(this.gbClient);
             this.panel1.Location = new System.Drawing.Point(9, 6);
@@ -72,29 +73,29 @@
             this.panel1.Size = new System.Drawing.Size(855, 607);
             this.panel1.TabIndex = 0;
             // 
-            // button6
+            // btn_Edit
             // 
-            this.button6.BackColor = System.Drawing.Color.DarkCyan;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(300, 545);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(82, 29);
-            this.button6.TabIndex = 48;
-            this.button6.Text = "Editar";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btn_Edit.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Edit.ForeColor = System.Drawing.Color.White;
+            this.btn_Edit.Location = new System.Drawing.Point(300, 545);
+            this.btn_Edit.Name = "btn_Edit";
+            this.btn_Edit.Size = new System.Drawing.Size(82, 29);
+            this.btn_Edit.TabIndex = 48;
+            this.btn_Edit.Text = "Editar";
+            this.btn_Edit.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // btn_Delete
             // 
-            this.button7.BackColor = System.Drawing.Color.DarkCyan;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(445, 545);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(82, 29);
-            this.button7.TabIndex = 49;
-            this.button7.Text = "Eliminar";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btn_Delete.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Delete.ForeColor = System.Drawing.Color.White;
+            this.btn_Delete.Location = new System.Drawing.Point(445, 545);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(82, 29);
+            this.btn_Delete.TabIndex = 49;
+            this.btn_Delete.Text = "Eliminar";
+            this.btn_Delete.UseVisualStyleBackColor = false;
             // 
             // gb_OrderLine
             // 
@@ -128,6 +129,7 @@
             this.grid_order_lines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idOrder,
             this.client,
+            this.observation,
             this.dueDate,
             this.deliveryDate,
             this.amount,
@@ -160,52 +162,14 @@
             this.grid_order_lines.Size = new System.Drawing.Size(820, 302);
             this.grid_order_lines.TabIndex = 50;
             // 
-            // idOrder
-            // 
-            this.idOrder.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.idOrder.HeaderText = "N° Orden";
-            this.idOrder.Name = "idOrder";
-            this.idOrder.ReadOnly = true;
-            // 
-            // client
-            // 
-            this.client.HeaderText = "Cliente";
-            this.client.Name = "client";
-            // 
-            // dueDate
-            // 
-            this.dueDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dueDate.HeaderText = "Fecha de Emisión";
-            this.dueDate.Name = "dueDate";
-            this.dueDate.ReadOnly = true;
-            // 
-            // deliveryDate
-            // 
-            this.deliveryDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.deliveryDate.HeaderText = "Fecha de Entrega";
-            this.deliveryDate.Name = "deliveryDate";
-            this.deliveryDate.ReadOnly = true;
-            // 
-            // amount
-            // 
-            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.amount.HeaderText = "Total";
-            this.amount.Name = "amount";
-            this.amount.ReadOnly = true;
-            // 
-            // status
-            // 
-            this.status.HeaderText = "Estado";
-            this.status.Name = "status";
-            // 
             // gbClient
             // 
             this.gbClient.Controls.Add(this.cb_Currency);
             this.gbClient.Controls.Add(this.label2);
-            this.gbClient.Controls.Add(this.button3);
+            this.gbClient.Controls.Add(this.btn_Search);
             this.gbClient.Controls.Add(this.metroDateTime1);
             this.gbClient.Controls.Add(this.dt_DeliveryDate);
-            this.gbClient.Controls.Add(this.btn_Search);
+            this.gbClient.Controls.Add(this.btn_SearchClient);
             this.gbClient.Controls.Add(this.txt_idOrder);
             this.gbClient.Controls.Add(this.label1);
             this.gbClient.Controls.Add(this.txt_name);
@@ -241,17 +205,17 @@
             this.label2.TabIndex = 51;
             this.label2.Text = "Estado :";
             // 
-            // button3
+            // btn_Search
             // 
-            this.button3.BackColor = System.Drawing.Color.DarkCyan;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(431, 119);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(85, 29);
-            this.button3.TabIndex = 50;
-            this.button3.Text = "Buscar";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btn_Search.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Search.ForeColor = System.Drawing.Color.White;
+            this.btn_Search.Location = new System.Drawing.Point(431, 119);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(85, 29);
+            this.btn_Search.TabIndex = 50;
+            this.btn_Search.Text = "Buscar";
+            this.btn_Search.UseVisualStyleBackColor = false;
             // 
             // metroDateTime1
             // 
@@ -269,21 +233,21 @@
             this.dt_DeliveryDate.Size = new System.Drawing.Size(209, 29);
             this.dt_DeliveryDate.TabIndex = 48;
             // 
-            // btn_Search
+            // btn_SearchClient
             // 
-            this.btn_Search.ActiveControl = null;
-            this.btn_Search.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Search.Location = new System.Drawing.Point(327, 73);
-            this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(41, 29);
-            this.btn_Search.TabIndex = 43;
-            this.btn_Search.TileImage = global::WindowsFormsApp1.Properties.Resources.Search_16;
-            this.btn_Search.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_Search.UseCustomBackColor = true;
-            this.btn_Search.UseCustomForeColor = true;
-            this.btn_Search.UseSelectable = true;
-            this.btn_Search.UseStyleColors = true;
-            this.btn_Search.UseTileImage = true;
+            this.btn_SearchClient.ActiveControl = null;
+            this.btn_SearchClient.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_SearchClient.Location = new System.Drawing.Point(327, 73);
+            this.btn_SearchClient.Name = "btn_SearchClient";
+            this.btn_SearchClient.Size = new System.Drawing.Size(41, 29);
+            this.btn_SearchClient.TabIndex = 43;
+            this.btn_SearchClient.TileImage = global::WindowsFormsApp1.Properties.Resources.Search_16;
+            this.btn_SearchClient.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_SearchClient.UseCustomBackColor = true;
+            this.btn_SearchClient.UseCustomForeColor = true;
+            this.btn_SearchClient.UseSelectable = true;
+            this.btn_SearchClient.UseStyleColors = true;
+            this.btn_SearchClient.UseTileImage = true;
             // 
             // txt_idOrder
             // 
@@ -389,6 +353,49 @@
             this.label12.TabIndex = 4;
             this.label12.Text = "Fecha de Emisión :";
             // 
+            // idOrder
+            // 
+            this.idOrder.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idOrder.HeaderText = "N° Orden";
+            this.idOrder.Name = "idOrder";
+            this.idOrder.ReadOnly = true;
+            // 
+            // client
+            // 
+            this.client.HeaderText = "Cliente";
+            this.client.Name = "client";
+            // 
+            // observation
+            // 
+            this.observation.HeaderText = "Observación";
+            this.observation.Name = "observation";
+            // 
+            // dueDate
+            // 
+            this.dueDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dueDate.HeaderText = "Fecha de Emisión";
+            this.dueDate.Name = "dueDate";
+            this.dueDate.ReadOnly = true;
+            // 
+            // deliveryDate
+            // 
+            this.deliveryDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.deliveryDate.HeaderText = "Fecha de Entrega";
+            this.deliveryDate.Name = "deliveryDate";
+            this.deliveryDate.ReadOnly = true;
+            // 
+            // amount
+            // 
+            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.amount.HeaderText = "Total";
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.HeaderText = "Estado";
+            this.status.Name = "status";
+            // 
             // UC_SalesOrderList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,7 +417,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox gbClient;
-        private MetroFramework.Controls.MetroTile btn_Search;
+        private MetroFramework.Controls.MetroTile btn_SearchClient;
         private MetroFramework.Controls.MetroTextBox txt_idOrder;
         private System.Windows.Forms.Label label1;
         private MetroFramework.Controls.MetroTextBox txt_name;
@@ -419,18 +426,19 @@
         private System.Windows.Forms.Label label12;
         private MetroFramework.Controls.MetroDateTime metroDateTime1;
         private MetroFramework.Controls.MetroDateTime dt_DeliveryDate;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.GroupBox gb_OrderLine;
         private MetroFramework.Controls.MetroGrid grid_order_lines;
+        private System.Windows.Forms.Label label2;
+        private MetroFramework.Controls.MetroComboBox cb_Currency;
+        private System.Windows.Forms.Button btn_Edit;
+        private System.Windows.Forms.Button btn_Delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn idOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn client;
+        private System.Windows.Forms.DataGridViewTextBoxColumn observation;
         private System.Windows.Forms.DataGridViewTextBoxColumn dueDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
-        private System.Windows.Forms.Label label2;
-        private MetroFramework.Controls.MetroComboBox cb_Currency;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
     }
 }
