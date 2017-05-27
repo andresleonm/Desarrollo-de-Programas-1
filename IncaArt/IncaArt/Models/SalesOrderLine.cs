@@ -85,6 +85,18 @@ namespace WindowsFormsApp1.Models
             this.status = status;
         }
 
+        // For gridview
+        public SalesOrderLine(Product product, UnitOfMeasure unit_measure, int quantity, double price, string status, int del_quantity, Warehouse warehouse)
+        {
+            this.Product = product;
+            this.unit_measure = unit_measure;
+            this.Quantity = quantity;
+            this.Unit_price = price;
+            this.delivery_quantity = del_quantity;
+            this.warehouse = warehouse;
+            this.status = status;
+        }
+
         public SalesOrderLine()
         {
         }

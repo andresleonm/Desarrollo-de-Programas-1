@@ -7,9 +7,23 @@ namespace WindowsFormsApp1.Models
 {
     public class UnitOfMeasure
     {
+        int id;
         string symbol;
         string name;
         double factor;
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
 
         public string Symbol
         {
