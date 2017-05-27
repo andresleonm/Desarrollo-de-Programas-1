@@ -9,9 +9,9 @@ namespace WindowsFormsApp1.Models
     public class PurchaseOrder
     {
         List<PurchaseOrderLine> lines;
-        Warehouse warehouse;
-        Currency currency;
-        Supplier supplier;
+        int warehouse_id;
+        int currency_id;
+        int supplier_id;
         Double amount;
         string state;
         DateTime due_date;
