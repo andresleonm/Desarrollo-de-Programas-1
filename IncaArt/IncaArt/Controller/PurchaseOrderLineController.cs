@@ -23,7 +23,9 @@ namespace WindowsFormsApp1.Controller
             {
                 foreach(Row r in result.data)
                 {
-
+                    lines.Add(new PurchaseOrderLine(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2)), int.Parse(r.getColumn(3)),
+                              double.Parse(r.getColumn(4)), DateTime.Parse(r.getColumn(5)), r.getColumn(6), Int32.Parse(r.getColumn(7)), Int32.Parse(r.getColumn(8)),
+                              Int32.Parse(r.getColumn(9))));
                 }
 
                 return new Result(lines, true, "");

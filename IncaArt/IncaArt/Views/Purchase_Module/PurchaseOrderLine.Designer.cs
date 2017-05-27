@@ -35,6 +35,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_cancel = new MetroFramework.Controls.MetroButton();
+            this.btn_save = new MetroFramework.Controls.MetroButton();
+            this.date_due_date = new MetroFramework.Controls.MetroDateTime();
+            this.txt_unit_price = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.txt_description = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.txt_measure_unit = new MetroFramework.Controls.MetroTextBox();
@@ -45,12 +51,6 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.combo_warehouse = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.txt_unit_price = new MetroFramework.Controls.MetroTextBox();
-            this.date_due_date = new MetroFramework.Controls.MetroDateTime();
-            this.btn_save = new MetroFramework.Controls.MetroButton();
-            this.btn_cancel = new MetroFramework.Controls.MetroButton();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -164,6 +164,107 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Línea de Orden";
+            // 
+            // btn_cancel
+            // 
+            this.btn_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_cancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            this.btn_cancel.Highlight = true;
+            this.btn_cancel.Location = new System.Drawing.Point(408, 219);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.Style = MetroFramework.MetroColorStyle.Silver;
+            this.btn_cancel.TabIndex = 59;
+            this.btn_cancel.Text = "Cancelar";
+            this.btn_cancel.UseCustomBackColor = true;
+            this.btn_cancel.UseCustomForeColor = true;
+            this.btn_cancel.UseSelectable = true;
+            this.btn_cancel.UseStyleColors = true;
+            // 
+            // btn_save
+            // 
+            this.btn_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            this.btn_save.Highlight = true;
+            this.btn_save.Location = new System.Drawing.Point(276, 219);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(75, 23);
+            this.btn_save.Style = MetroFramework.MetroColorStyle.Silver;
+            this.btn_save.TabIndex = 58;
+            this.btn_save.Text = "Grabar";
+            this.btn_save.UseCustomBackColor = true;
+            this.btn_save.UseCustomForeColor = true;
+            this.btn_save.UseSelectable = true;
+            this.btn_save.UseStyleColors = true;
+            // 
+            // date_due_date
+            // 
+            this.date_due_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.date_due_date.Location = new System.Drawing.Point(124, 149);
+            this.date_due_date.MinimumSize = new System.Drawing.Size(0, 29);
+            this.date_due_date.Name = "date_due_date";
+            this.date_due_date.Size = new System.Drawing.Size(208, 29);
+            this.date_due_date.TabIndex = 57;
+            // 
+            // txt_unit_price
+            // 
+            // 
+            // 
+            // 
+            this.txt_unit_price.CustomButton.Image = null;
+            this.txt_unit_price.CustomButton.Location = new System.Drawing.Point(180, 1);
+            this.txt_unit_price.CustomButton.Name = "";
+            this.txt_unit_price.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_unit_price.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txt_unit_price.CustomButton.TabIndex = 1;
+            this.txt_unit_price.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txt_unit_price.CustomButton.UseSelectable = true;
+            this.txt_unit_price.CustomButton.Visible = false;
+            this.txt_unit_price.Lines = new string[0];
+            this.txt_unit_price.Location = new System.Drawing.Point(489, 149);
+            this.txt_unit_price.MaxLength = 32767;
+            this.txt_unit_price.Name = "txt_unit_price";
+            this.txt_unit_price.PasswordChar = '\0';
+            this.txt_unit_price.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_unit_price.SelectedText = "";
+            this.txt_unit_price.SelectionLength = 0;
+            this.txt_unit_price.SelectionStart = 0;
+            this.txt_unit_price.ShortcutsEnabled = true;
+            this.txt_unit_price.Size = new System.Drawing.Size(208, 29);
+            this.txt_unit_price.TabIndex = 56;
+            this.txt_unit_price.UseSelectable = true;
+            this.txt_unit_price.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txt_unit_price.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.BackColor = System.Drawing.SystemColors.Control;
+            this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel4.ForeColor = System.Drawing.Color.Black;
+            this.metroLabel4.Location = new System.Drawing.Point(387, 149);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(96, 15);
+            this.metroLabel4.TabIndex = 55;
+            this.metroLabel4.Text = "Precio Unitario :";
+            this.metroLabel4.UseCustomBackColor = true;
+            this.metroLabel4.UseCustomForeColor = true;
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.BackColor = System.Drawing.SystemColors.Control;
+            this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel3.ForeColor = System.Drawing.Color.Black;
+            this.metroLabel3.Location = new System.Drawing.Point(3, 149);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(115, 15);
+            this.metroLabel3.TabIndex = 54;
+            this.metroLabel3.Text = "Fecha Programada :";
+            this.metroLabel3.UseCustomBackColor = true;
+            this.metroLabel3.UseCustomForeColor = true;
             // 
             // txt_description
             // 
@@ -317,6 +418,7 @@
             this.combo_material.FormattingEnabled = true;
             this.combo_material.ItemHeight = 23;
             this.combo_material.Location = new System.Drawing.Point(124, 18);
+            this.combo_material.MaxDropDownItems = 20;
             this.combo_material.Name = "combo_material";
             this.combo_material.Size = new System.Drawing.Size(208, 29);
             this.combo_material.TabIndex = 42;
@@ -341,6 +443,7 @@
             this.combo_warehouse.FormattingEnabled = true;
             this.combo_warehouse.ItemHeight = 23;
             this.combo_warehouse.Location = new System.Drawing.Point(489, 18);
+            this.combo_warehouse.MaxDropDownItems = 20;
             this.combo_warehouse.Name = "combo_warehouse";
             this.combo_warehouse.Size = new System.Drawing.Size(208, 29);
             this.combo_warehouse.TabIndex = 40;
@@ -360,107 +463,6 @@
             this.metroLabel7.UseCustomBackColor = true;
             this.metroLabel7.UseCustomForeColor = true;
             // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.BackColor = System.Drawing.SystemColors.Control;
-            this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel3.ForeColor = System.Drawing.Color.Black;
-            this.metroLabel3.Location = new System.Drawing.Point(3, 149);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(115, 15);
-            this.metroLabel3.TabIndex = 54;
-            this.metroLabel3.Text = "Fecha Programada :";
-            this.metroLabel3.UseCustomBackColor = true;
-            this.metroLabel3.UseCustomForeColor = true;
-            // 
-            // metroLabel4
-            // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.BackColor = System.Drawing.SystemColors.Control;
-            this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel4.ForeColor = System.Drawing.Color.Black;
-            this.metroLabel4.Location = new System.Drawing.Point(387, 149);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(96, 15);
-            this.metroLabel4.TabIndex = 55;
-            this.metroLabel4.Text = "Precio Unitario :";
-            this.metroLabel4.UseCustomBackColor = true;
-            this.metroLabel4.UseCustomForeColor = true;
-            // 
-            // txt_unit_price
-            // 
-            // 
-            // 
-            // 
-            this.txt_unit_price.CustomButton.Image = null;
-            this.txt_unit_price.CustomButton.Location = new System.Drawing.Point(180, 1);
-            this.txt_unit_price.CustomButton.Name = "";
-            this.txt_unit_price.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.txt_unit_price.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txt_unit_price.CustomButton.TabIndex = 1;
-            this.txt_unit_price.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txt_unit_price.CustomButton.UseSelectable = true;
-            this.txt_unit_price.CustomButton.Visible = false;
-            this.txt_unit_price.Lines = new string[0];
-            this.txt_unit_price.Location = new System.Drawing.Point(489, 149);
-            this.txt_unit_price.MaxLength = 32767;
-            this.txt_unit_price.Name = "txt_unit_price";
-            this.txt_unit_price.PasswordChar = '\0';
-            this.txt_unit_price.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txt_unit_price.SelectedText = "";
-            this.txt_unit_price.SelectionLength = 0;
-            this.txt_unit_price.SelectionStart = 0;
-            this.txt_unit_price.ShortcutsEnabled = true;
-            this.txt_unit_price.Size = new System.Drawing.Size(208, 29);
-            this.txt_unit_price.TabIndex = 56;
-            this.txt_unit_price.UseSelectable = true;
-            this.txt_unit_price.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txt_unit_price.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // date_due_date
-            // 
-            this.date_due_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date_due_date.Location = new System.Drawing.Point(124, 149);
-            this.date_due_date.MinimumSize = new System.Drawing.Size(0, 29);
-            this.date_due_date.Name = "date_due_date";
-            this.date_due_date.Size = new System.Drawing.Size(208, 29);
-            this.date_due_date.TabIndex = 57;
-            // 
-            // btn_save
-            // 
-            this.btn_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_save.Highlight = true;
-            this.btn_save.Location = new System.Drawing.Point(276, 219);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(75, 23);
-            this.btn_save.Style = MetroFramework.MetroColorStyle.Silver;
-            this.btn_save.TabIndex = 58;
-            this.btn_save.Text = "Grabar";
-            this.btn_save.UseCustomBackColor = true;
-            this.btn_save.UseCustomForeColor = true;
-            this.btn_save.UseSelectable = true;
-            this.btn_save.UseStyleColors = true;
-            // 
-            // btn_cancel
-            // 
-            this.btn_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_cancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_cancel.Highlight = true;
-            this.btn_cancel.Location = new System.Drawing.Point(408, 219);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.Style = MetroFramework.MetroColorStyle.Silver;
-            this.btn_cancel.TabIndex = 59;
-            this.btn_cancel.Text = "Cancelar";
-            this.btn_cancel.UseCustomBackColor = true;
-            this.btn_cancel.UseCustomForeColor = true;
-            this.btn_cancel.UseSelectable = true;
-            this.btn_cancel.UseStyleColors = true;
-            // 
             // PurchaseOrderLine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -471,6 +473,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PurchaseOrderLine";
             this.Text = "Línea de Orden de Compra";
+            this.Load += new System.EventHandler(this.PurchaseOrderLine_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();

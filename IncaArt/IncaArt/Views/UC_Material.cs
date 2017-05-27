@@ -10,44 +10,53 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Views
 {
-
-    public partial class UC_Material : UserControl
+    public partial class UC_Material : MetroFramework.Controls.MetroUserControl
     {
-        int last_id;
         int cur_row;
         List<Models.Material> material_list;
         List<Models.UnitOfMeasure> unit_list;
+        Controller.MaterialsController materialController;
+        Controller.UnitController unitController;
+        Controller.Result result;
         public UC_Material()
         {
             InitializeComponent();
         }
 
-        private void Material_Load(object sender, EventArgs e)
+        private void UC_Material_Load(object sender, EventArgs e)
         {
-            unit_list = ((Dashboard)Parent).unit_list;
-            material_list = ((Dashboard)Parent).material_list;
-            last_id = material_list.Count();
-
-            Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
-            unit.Name = "Kilogramos";
-            unit.Symbol = "Kg";
-            unit_list.Add(unit);
-            unit = new Models.UnitOfMeasure();
-            unit.Name = "Gramos";
-            unit.Symbol = "g";
-            unit_list.Add(unit);
-            unit = new Models.UnitOfMeasure();
-            unit.Name = "Listones";
-            unit.Symbol = "liston";
-            unit_list.Add(unit);
+            string user = "dp1admin";
+            string password = "dp1admin";
+            materialController = new Controller.MaterialsController(user, password);
+            unitController = new Controller.UnitController(user, password);
+            material_list = new List<Models.Material>();
+            Load_Data();
 
             //Cargar los combobox
+            Dictionary<int, string> combo_data = new Dictionary<int, string>();
             foreach (var item in unit_list)
             {
-                combobox_unit.Items.Add(item.Symbol);
-                combobox_unit_s.Items.Add(item.Symbol);
+                combo_data.Add(item.Id, item.Symbol);
+
             }
-            Load_DataGridView("", "");
+            combobox_unit.DataSource = new BindingSource(combo_data, null);
+            combobox_unit.DisplayMember = "Value";
+            combobox_unit.ValueMember = "Key";
+            combobox_unit_s.DataSource = new BindingSource(combo_data, null);
+            combobox_unit_s.DisplayMember = "Value";
+            combobox_unit_s.ValueMember = "Key";
+            Load_DataGridView();
+            metroTabControl1.SelectedIndex = 0;
+        }
+
+        private void Load_Data()
+        {
+            result = unitController.getUnits();
+            unit_list = (List<Models.UnitOfMeasure>)result.data;
+            material_list = new List<Models.Material>();
+            result = materialController.getMaterials();
+            if (result.data == null) MessageBox.Show(result.message, "Error al listar material", MessageBoxButtons.OK);
+            else material_list = (List<Models.Material>)result.data;
         }
 
         private bool validate_data(String name, String unit, String max_stock, String min_stock)
@@ -96,122 +105,113 @@ namespace WindowsFormsApp1.Views
             return isCorrect;
         }
 
-        int Search_condition(String name, String unit)
+        private void Load_DataGridView()
         {
-            if (name == "" && unit == "")
-            {
-                return 1;
-            }
-            else if (name == "" && unit != "")
-            {
-                return 2;
-            }
-            else if (name != "" && unit == "")
-            {
-                return 3;
-            }
-            return 4;
-        }
-
-        private void Load_DataGridView(String name, String unit)
-        {
-            dataGridView1.Rows.Clear();
-            int condition = Search_condition(name, unit);
+            metroGrid1.Rows.Clear();
             for (int i = 0; i < material_list.Count(); i++)
             {
-                if (material_list[i].Status == 1)
+                Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
+                result = unitController.getUnit(material_list[i].Unit_id);
+                if (result.data == null)
                 {
-                    Boolean found = false;
-                    switch (condition)
-                    {
-                        case 1:
-                            found = true;
-                            break;
-                        case 2:
-                            if (unit == material_list[i].Unit.Symbol) found = true;
-                            break;
-                        case 3:
-                            if (name == material_list[i].Name) found = true;
-                            break;
-                        case 4:
-                            if (name == material_list[i].Name && unit == material_list[i].Unit.Symbol) found = true;
-                            break;
-                    }
-
-                    if (found)
-                    {
-                        String[] row = new String[5];
-                        row[0] = material_list[i].Id.ToString();
-                        row[1] = material_list[i].Name;
-                        row[2] = material_list[i].Unit.Symbol;
-                        row[3] = material_list[i].Min_stock.ToString();
-                        row[4] = material_list[i].Max_stock.ToString();
-                        this.dataGridView1.Rows.Add(row);
-                    }
-
+                    MessageBox.Show(result.message, "Error al buscar unit", MessageBoxButtons.OK);
                 }
+                else
+                {
+                    unit = (Models.UnitOfMeasure)result.data;
+                    String[] row = new String[6];
+                    row[0] = material_list[i].Id.ToString();
+                    row[1] = i.ToString();
+                    row[2] = material_list[i].Name;
+                    row[3] = unit.Name;
+                    row[4] = material_list[i].Stock_min.ToString();
+                    row[5] = material_list[i].Stock_max.ToString();
+                    this.metroGrid1.Rows.Add(row);
+                }
+
             }
         }
 
         private void Clean()
         {
-            textbox_name.Text = "";
-            combobox_unit.Text = "";
-            textbox_min_stock.Text = "";
-            textbox_max_stock.Text = "";
-            textbox_name_s.Text = "";
-            combobox_unit_s.Text = "";
+            ClearTextBoxes(this);
         }
 
-        //Cancelar
-        private void btn_cancel_Click(object sender, EventArgs e)
+        private void ClearTextBoxes(Control control)
         {
-            Clean();
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                    ((TextBox)c).Clear();
+                }
+
+                if (c.HasChildren)
+                {
+                    ClearTextBoxes(c);
+                }
+
+
+                if (c is CheckBox)
+                {
+
+                    ((CheckBox)c).Checked = false;
+                }
+
+                if (c is RadioButton)
+                {
+                    ((RadioButton)c).Checked = false;
+                }
+            }
         }
 
+        private Models.Material crearMaterial(int operacion)
+        {
+            String name, unit;
+            name = textbox_name.Text;
+            unit = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Value;
+
+            int min_stock, max_stock,id=0;
+            min_stock = int.Parse(textbox_stock_min.Text);
+            max_stock = int.Parse(textbox_stock_max.Text);
+            int unit_id = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Key;
+            Models.Material mat = new Models.Material();
+
+            if (operacion== 1) //UPDATE
+            {
+                id= int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
+            }
+            mat = new Models.Material(id, unit_id, name, min_stock, max_stock);
+
+            return mat;
+        }
 
         //Registrar
         private void btn_new_Click(object sender, EventArgs e)
         {
 
-            String name, unit;
-
-
-            name = textbox_name.Text;
-            unit = combobox_unit.Text;
-            if (validate_data(name, unit, textbox_max_stock.Text, textbox_min_stock.Text))
+            Models.Material mat = crearMaterial(0);
+            result = materialController.insertMaterial(mat);
+            if (result.data == null)
             {
-                int min_stock, max_stock;
-                min_stock = int.Parse(textbox_min_stock.Text);
-                max_stock = int.Parse(textbox_max_stock.Text);
-
-                Models.Material mat = new Models.Material();
-                mat.Id = last_id;
-                last_id++;
-                mat.Name = name;
-                foreach (var item in unit_list)
-                {
-                    if (unit == item.Symbol)
-                    {
-                        mat.Unit = item;
-                        break;
-                    }
-                }
-                mat.Min_stock = min_stock;
-                mat.Max_stock = max_stock;
-                mat.Status = 1;
-
-                material_list.Add(mat);
-                Load_DataGridView("", "");
-                Clean();
+                MessageBox.Show(result.message, "Error al registrar material", MessageBoxButtons.OK);
             }
+            else
+            {
+                material_list.Add(mat);
+            }
+
+            Load_DataGridView();
+            Clean();
+            metroTabControl1.SelectedIndex = 0;
+
 
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             cur_row = e.RowIndex;
-            if (dataGridView1.Rows[e.RowIndex].Cells[1].Value != null)
+            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
             {
                 btn_delete.Enabled = true;
             }
@@ -221,57 +221,39 @@ namespace WindowsFormsApp1.Views
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             cur_row = e.RowIndex;
-            if (dataGridView1.Rows[e.RowIndex].Cells[1].Value != null)
+            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
             {
-                textbox_name.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                combobox_unit.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                textbox_min_stock.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                textbox_max_stock.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                for (int i = 0; i < unit_list.Count(); i++)
+                {
+                    if (unit_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
+                    {
+                        combobox_unit.SelectedIndex = i;
+                    }
+                }
+                textbox_stock_min.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                textbox_stock_max.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                metroTabControl1.SelectedIndex = 1;
             }
         }
 
         //Modificar Datos
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            String name, unit;
-            unit = combobox_unit.Text;
-
-            name = textbox_name.Text;
-            unit = combobox_unit.Text;
-            if (validate_data(name, unit, textbox_max_stock.Text, textbox_min_stock.Text))
+            Models.Material mat = crearMaterial(1);
+            result = materialController.updateMaterial(mat);
+            if (result.data == null)
             {
-                int min_stock = int.Parse(textbox_min_stock.Text);
-                int max_stock = int.Parse(textbox_max_stock.Text);
-
-                Models.Material mat = new Models.Material();
-                mat.Id = int.Parse(dataGridView1.Rows[cur_row].Cells[0].Value.ToString());
-                mat.Name = name;
-                foreach (var item in unit_list)
-                {
-                    if (unit == item.Symbol)
-                    {
-                        mat.Unit = item;
-                        break;
-                    }
-                }
-                mat.Min_stock = min_stock;
-                mat.Max_stock = max_stock;
-
-                for (int i = 0; i < material_list.Count(); i++)
-                {
-                    if (mat.Id == material_list[i].Id)
-                    {
-                        material_list[i].Name = mat.Name;
-                        material_list[i].Max_stock = mat.Max_stock;
-                        material_list[i].Min_stock = mat.Min_stock;
-                        material_list[i].Unit = mat.Unit;
-                        break;
-                    }
-                }
-                Load_DataGridView("", "");
-                Clean();
+                MessageBox.Show(result.message, "Error al modificar material", MessageBoxButtons.OK);
+            }
+            else
+            {
+                material_list[int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString())] = mat;
             }
 
+            Load_DataGridView();
+            Clean();
+            metroTabControl1.SelectedIndex = 0;
 
         }
 
@@ -279,23 +261,35 @@ namespace WindowsFormsApp1.Views
         private void btn_search_Click(object sender, EventArgs e)
         {
             String name = textbox_name_s.Text, unit = combobox_unit_s.Text;
-            Load_DataGridView(name, unit);
+            Load_DataGridView();
         }
 
         //Eliminar
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(dataGridView1.Rows[cur_row].Cells[0].Value.ToString());
-            for (int i = 0; i < material_list.Count(); i++)
+            int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+            result = materialController.deleteMaterial(material_list[index]);
+            if (result.data == null)
             {
-                if (id == material_list[i].Id)
-                {
-                    material_list.Remove(material_list[i]);
-                    break;
-                }
+                MessageBox.Show(result.message, "Error al eliminar material", MessageBoxButtons.OK);
+            }
+            else
+            {
+                material_list.Remove(material_list[index]);
             }
             btn_delete.Enabled = false;
-            Load_DataGridView("", "");
+            Load_DataGridView();
+        }
+
+        private void btn_clean_s_Click(object sender, EventArgs e)
+        {
+            Clean();
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            Clean();
+            metroTabControl1.SelectedIndex = 0;
         }
     }
 }

@@ -19,6 +19,20 @@ namespace WindowsFormsApp1.Models
         double price;
         DateTime scheluded_date;
 
+        public PurchaseOrderLine(int id, int purchase_order,int unit_of_measure,int quantity,double price,DateTime scheluded_date,string state,int deliver_quantity,int material,int warehouse)
+        {
+            this.id = id;
+            this.purchase_order = purchase_order;
+            this.unit_of_measure = unit_of_measure;
+            this.quantity = quantity;
+            this.price = price;
+            this.scheluded_date = scheluded_date;
+            this.state = state;
+            this.deliver_quantity = deliver_quantity;
+            this.material = material;
+            this.warehouse = warehouse;
+        }
+
         public int Id
         {
             get
