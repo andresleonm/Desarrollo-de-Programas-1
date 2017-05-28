@@ -555,6 +555,7 @@
     <None Include="Resources\Close Window_52px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Maximize Window_64px.png" />
     <None Include="Resources\Search_16.png" />
     <None Include="Resources\Cash Register_40px.png" />
     <None Include="Resources\Undo_40px.png" />

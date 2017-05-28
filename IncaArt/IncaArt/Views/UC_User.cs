@@ -87,23 +87,23 @@ namespace WindowsFormsApp1.Views
 
         private void User_Load(object sender, EventArgs e)
         {
-            user_list = ((Dashboard)Parent).user_list;
-            profile_list = new List<string>();
+            //user_list = ((Dashboard)Parent).user_list;
+            //profile_list = new List<string>();
 
-            last_id = user_list.Count();
+            //last_id = user_list.Count();
 
-            profile_list.Add("SuperAdmin");
-            profile_list.Add("Admin");
-            profile_list.Add("Usuario");
+            //profile_list.Add("SuperAdmin");
+            //profile_list.Add("Admin");
+            //profile_list.Add("Usuario");
 
 
-            //Cargar Combobox
-            foreach (var item in profile_list)
-            {
-                combobox_profile.Items.Add(item);
-                combobox_profile_s.Items.Add(item);
-            }
-            Load_DataGridView("","","","","");
+            ////Cargar Combobox
+            //foreach (var item in profile_list)
+            //{
+            //    combobox_profile.Items.Add(item);
+            //    combobox_profile_s.Items.Add(item);
+            //}
+            //Load_DataGridView("","","","","");
         }
 
         private void Load_DataGridView(String name, String paternal, String maternal,String username,String profile)

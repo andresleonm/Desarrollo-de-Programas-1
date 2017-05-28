@@ -121,17 +121,20 @@
   <data name="Reviewer Male_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Reviewer Male_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="User Group Man Man_52px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\User Group Man Man_52px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Webcam Man_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Webcam Man_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Menu_64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Menu_64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Shopping Cart_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Shopping Cart_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Workers Male_52px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Workers Male_52px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="American Indians Seminole_white_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\American Indians Seminole_white_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Shopping Cart_52px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Shopping Cart_52px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Sales Performance_64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sales Performance_64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,8 +151,8 @@
   <data name="American Indians Seminole_white_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\American Indians Seminole_white_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Documents_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Documents_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Search_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Search_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Circled User Male_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Circled User Male_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,11 +163,11 @@
   <data name="Product_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Product_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Shopping Cart_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Shopping Cart_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Hangar_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Hangar_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Workers Male_52px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Workers Male_52px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Settings_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Settings_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,8 +181,8 @@
   <data name="American Indians Seminole_white_20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\American Indians Seminole_white_20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="User Group Man Man_52px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\User Group Man Man_52px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="American Indians Seminole_white_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\American Indians Seminole_white_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Construction Worker_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Construction Worker_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,10 +193,10 @@
   <data name="Mortar and Pestle_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Mortar and Pestle_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Shopping Cart_52px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Shopping Cart_52px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Documents_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Documents_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Search_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Search_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Maximize Window_64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Maximize Window_64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -71,5 +71,14 @@ namespace WindowsFormsApp1.Views
             frm_line.ShowDialog();
 
         }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            Controller.PurchaseOrderController po_controller = new Controller.PurchaseOrderController("dp1admin", "dp1admin");
+            Models.PurchaseOrder po = new Models.PurchaseOrder();
+            po.Id = Int32.Parse(txt_id.Text);
+
+            //po_controller.insertPurchaseOrder();
+        }
     }
 }

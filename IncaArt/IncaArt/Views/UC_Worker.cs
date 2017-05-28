@@ -81,20 +81,20 @@ namespace WindowsFormsApp1.Views
 
         private void Worker_Load(object sender, EventArgs e)
         {
-            worker_list = ((Dashboard)Parent).worker_list;
-            shift_list = new List<string>();
+            //worker_list = ((Dashboard)Parent).worker_list;
+            //shift_list = new List<string>();
 
-            last_id = worker_list.Count();
-            shift_list.Add("Turno 1");
-            shift_list.Add("Turno 2");
-            shift_list.Add("Turno 3");
+            //last_id = worker_list.Count();
+            //shift_list.Add("Turno 1");
+            //shift_list.Add("Turno 2");
+            //shift_list.Add("Turno 3");
 
-            //Cargar Combobox
-            foreach (var item in shift_list)
-            {
-                combobox_shift.Items.Add(item);
-            }
-            Load_DataGridView("", "", "", "");
+            ////Cargar Combobox
+            //foreach (var item in shift_list)
+            //{
+            //    combobox_shift.Items.Add(item);
+            //}
+            //Load_DataGridView("", "", "", "");
         }
 
         private void Load_DataGridView(String name, String paternal, String maternal, String dni)
