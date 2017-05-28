@@ -75,10 +75,7 @@
     <Compile Include="Controller\ProductTypeWarehouseController.cs" />
     <Compile Include="Controller\ProductWarehouseController.cs" />
     <Compile Include="Controller\RecipesController.cs" />
-<<<<<<< HEAD
     <Compile Include="Models\ProductWarehouse.cs" />
-=======
->>>>>>> Mantenimiento
     <Compile Include="Controller\UnitController.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\MaterialTypeWarehouse.cs" />
