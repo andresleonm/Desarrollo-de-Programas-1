@@ -9,9 +9,18 @@ namespace WindowsFormsApp1.Models
     public class Worker
     {
         int id;
-        Person person;
-        String shift;
-        int status;
+        int shift_id;
+        string name;
+        string paternal_name;
+        string maternal_name;
+        string phone;
+        string email;
+        char gender;
+        string address;
+        string doi;
+        string telephone;
+        DateTime birthday;
+        double salary;
 
         public int Id
         {
@@ -26,42 +35,159 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public string Shift
+        public int Shift_id
         {
             get
             {
-                return shift;
+                return shift_id;
             }
 
             set
             {
-                shift = value;
+                shift_id = value;
             }
         }
 
-        public int Status
+        public string Name
         {
             get
             {
-                return status;
+                return name;
             }
 
             set
             {
-                status = value;
+                name = value;
             }
         }
 
-        internal Person Person
+        public string Paternal_name
         {
             get
             {
-                return person;
+                return paternal_name;
             }
 
             set
             {
-                person = value;
+                paternal_name = value;
+            }
+        }
+
+        public string Maternal_name
+        {
+            get
+            {
+                return maternal_name;
+            }
+
+            set
+            {
+                maternal_name = value;
+            }
+        }
+
+        public string Phone
+        {
+            get
+            {
+                return phone;
+            }
+
+            set
+            {
+                phone = value;
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return email;
+            }
+
+            set
+            {
+                email = value;
+            }
+        }
+
+        public char Gender
+        {
+            get
+            {
+                return gender;
+            }
+
+            set
+            {
+                gender = value;
+            }
+        }
+
+        public string Address
+        {
+            get
+            {
+                return address;
+            }
+
+            set
+            {
+                address = value;
+            }
+        }
+
+        public string Doi
+        {
+            get
+            {
+                return doi;
+            }
+
+            set
+            {
+                doi = value;
+            }
+        }
+
+        public string Telephone
+        {
+            get
+            {
+                return telephone;
+            }
+
+            set
+            {
+                telephone = value;
+            }
+        }
+
+        public DateTime Birthday
+        {
+            get
+            {
+                return birthday;
+            }
+
+            set
+            {
+                birthday = value;
+            }
+        }
+
+        public double Salary
+        {
+            get
+            {
+                return salary;
+            }
+
+            set
+            {
+                salary = value;
             }
         }
     }
