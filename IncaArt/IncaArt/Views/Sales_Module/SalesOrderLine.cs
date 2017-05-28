@@ -17,6 +17,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
         Models.SalesOrderLine line;
         private List<Product> products;
         private List<UnitOfMeasure> units;
+        private List<Warehouse> warehouses;
 
         public SalesOrderLine(ref Models.SalesOrderLine sales)
         {
@@ -34,12 +35,16 @@ namespace WindowsFormsApp1.Views.Sales_Module
             // ComboBox
             ProductsController product_controller = new ProductsController(user, password);
             UnitController unit_controller = new UnitController(user, password);
+            //WarehouseController warehouse_controller = new WarehouseController(user, password);
 
             Result result = product_controller.getProducts();
             this.products = (List<Product>)result.data;
 
             result = unit_controller.getUnits();
             this.units = (List<UnitOfMeasure>)result.data;
+
+            //result = warehouse_controller.getWarehouses();
+            //this.warehouses = (List<Warehouse>)result.data;
 
             foreach (Product prod in products)
             {
@@ -53,6 +58,11 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
             //this.cbo_UnitMeasure.SelectedItem = this.cbo_UnitMeasure.Items[0];
 
+            foreach (Warehouse ware in warehouses)
+            {
+                this.cbo_Warehouse.Items.Add(ware.Name);
+            }
+            //this.cbo_Warehouse.SelectedItem = this.cbo_Warehouse.Items[0];
 
         }
 
@@ -67,16 +77,13 @@ namespace WindowsFormsApp1.Views.Sales_Module
             {
                 DialogResult result = MessageBox.Show(this, "¿Está seguro que desea realizar esta operación?", "Confirmación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
-                {
-                    Models.Product product = new Models.Product();
-                    int quantity = int.Parse(this.txt_Quantity.Text);
-                    int deliver_quantity = int.Parse(this.txt_DeliverQuan.Text);
-                    double price = double.Parse(this.txt_UnitPrice.Text);
-                    line.Product = product;
-                    //line.Description = description;
-                    line.Quantity = quantity;
-                    line.Unit_price = price;
-                    //line = new Models.SalesOrderLine(product, description, quantity, price);
+                {                                      
+                    line.Product = products.ElementAt(cbo_Product.SelectedIndex);                    
+                    line.Quantity = int.Parse(this.txt_Quantity.Text);
+                    line.Delivery_quantity = int.Parse(this.txt_DeliverQuan.Text);
+                    line.Unit_measure = units.ElementAt(cbo_UnitMeasure.SelectedIndex);
+                    line.Unit_price = double.Parse(this.txt_UnitPrice.Text);
+                    //line.Warehouse = warehouses.ElementAt(cbo_Warehouse.SelectedIndex);
                     this.Close();
                 }
             }
