@@ -9,13 +9,13 @@ namespace WindowsFormsApp1.Models
     class RecipeDetail
     {
         int recipe_id;
-        int product_id;
+        int material_id;
         int quantity;
         char operation;
-        public RecipeDetail(int recipe_id,int product_id,int quantity)
+        public RecipeDetail(int recipe_id,int material_id,int quantity)
         {
             this.recipe_id = recipe_id;
-            this.product_id = product_id;
+            this.material_id = material_id;
             this.quantity = quantity;
         }
 
@@ -32,16 +32,16 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public int Product_id
+        public int Material_id
         {
             get
             {
-                return product_id;
+                return material_id;
             }
 
             set
             {
-                product_id = value;
+                material_id = value;
             }
         }
 

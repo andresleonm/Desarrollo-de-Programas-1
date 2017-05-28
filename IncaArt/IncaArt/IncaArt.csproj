@@ -70,6 +70,7 @@
     <Compile Include="Controller\MaterialsController.cs" />
     <Compile Include="Controller\MaterialWarehouseController.cs" />
     <Compile Include="Controller\ProductsController.cs" />
+    <Compile Include="Controller\RecipesController.cs" />
     <Compile Include="Models\ProductWarehouse.cs" />
     <Compile Include="Controller\UnitController.cs" />
     <Compile Include="Models\MaterialWarehouse.cs" />

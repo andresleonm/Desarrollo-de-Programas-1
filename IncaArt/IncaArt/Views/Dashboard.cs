@@ -156,7 +156,8 @@ namespace WindowsFormsApp1.Views
         private void btn_bom_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            bom1.Visible = true;
+            //bom1.Visible = true;
+            uc_recipe.Visible = true;
         }
 
         private void btn_workstation_Click(object sender, EventArgs e)

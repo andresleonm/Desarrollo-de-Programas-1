@@ -72,5 +72,12 @@ namespace WindowsFormsApp1.Models
             this.Name = name;
             this.description = description;
         }
+
+        public Recipe(int id, int product_id, string name)
+        {
+            this.Id = id;
+            this.Product_id = product_id;
+            this.Name = name;
+        }
     }
 }

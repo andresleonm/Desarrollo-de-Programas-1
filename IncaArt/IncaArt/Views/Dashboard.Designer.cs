@@ -66,6 +66,7 @@
             this.material = new WindowsFormsApp1.Views.UC_Material2();
             this.uc_material = new WindowsFormsApp1.Views.UC_Material();
             this.uc_product = new WindowsFormsApp1.Views.UC_Product();
+            this.uc_recipe = new WindowsFormsApp1.Views.UC_Recipe();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -356,7 +357,9 @@
             this.warehouse1.Location = new System.Drawing.Point(132, 72);
             this.warehouse1.Name = "warehouse1";
             this.warehouse1.Size = new System.Drawing.Size(1023, 531);
+            this.warehouse1.Style = MetroFramework.MetroColorStyle.Blue;
             this.warehouse1.TabIndex = 20;
+            this.warehouse1.UseSelectable = true;
             // 
             // supplier1
             // 
@@ -467,6 +470,15 @@
             this.uc_product.UseSelectable = true;
             this.uc_product.Visible = false;
             // 
+            // uc_recipe
+            // 
+            this.uc_recipe.Location = new System.Drawing.Point(132, 72);
+            this.uc_recipe.Name = "uc_recipe";
+            this.uc_recipe.Size = new System.Drawing.Size(840, 545);
+            this.uc_recipe.TabIndex = 39;
+            this.uc_recipe.UseSelectable = true;
+            this.uc_recipe.Visible = false;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -494,6 +506,7 @@
             this.Controls.Add(this.material);
             this.Controls.Add(this.uc_material);
             this.Controls.Add(this.uc_product);
+            this.Controls.Add(this.uc_recipe);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
@@ -549,5 +562,6 @@
         private UC_Material2 material;
         private UC_Material uc_material;
         private UC_Product uc_product;
+        private UC_Recipe uc_recipe;
     }
 }
