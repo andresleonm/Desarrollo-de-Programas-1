@@ -73,9 +73,9 @@
     <Compile Include="Controller\MaterialWarehouseController.cs" />
     <Compile Include="Controller\ProductsController.cs" />
     <Compile Include="Controller\ProductTypeWarehouseController.cs" />
+    <Compile Include="Models\ProductWarehouse.cs" />
     <Compile Include="Controller\ProductWarehouseController.cs" />
     <Compile Include="Controller\RecipesController.cs" />
-    <Compile Include="Models\ProductWarehouse.cs" />
     <Compile Include="Controller\UnitController.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\MaterialTypeWarehouse.cs" />
@@ -100,7 +100,6 @@
     <Compile Include="Models\MaterialMovement.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\ProductTypeWarehouse.cs" />
-    <Compile Include="Models\ProductWarehouse.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\Material.cs" />
