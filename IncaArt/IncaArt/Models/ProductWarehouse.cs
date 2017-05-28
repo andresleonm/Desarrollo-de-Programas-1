@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Controller
 {
-    class ProductWarehouse
+    public class ProductWarehouse
     {
         int id;
         String name;

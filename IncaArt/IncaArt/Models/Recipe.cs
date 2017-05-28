@@ -65,7 +65,7 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public Recipe(int id,int product_id,string name,string description)
+        public Recipe(int id, int product_id, string name, string description)
         {
             this.Id = id;
             this.Product_id = product_id;
