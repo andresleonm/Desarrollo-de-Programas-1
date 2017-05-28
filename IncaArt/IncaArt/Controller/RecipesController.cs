@@ -94,21 +94,26 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result getRecipeDetails(Models.Recipe recipe)
+        public Result getRecipeDetails(int id)
         {
             //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
-            parameters.Add(new Parameter("id", recipe.Id.ToString()));
+            parameters.Add(new Parameter("id", id.ToString()));
             GenericResult result = execute_function("get_recipe_details", parameters);
             List<Models.RecipeDetail> recipe_details = new List<Models.RecipeDetail>();
             if (result.success)
             {
+                Models.RecipeDetail detail;
                 foreach (Row r in result.data)
                 {
-                    //"RECIPE_ID",      0
-                    //"MATERIAL_ID",    1
-                    //"QUANTITY"        2
-                    recipe_details.Add(new Models.RecipeDetail(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2))));
+                    //"RECIPE_DETAIL.RECIPE_ID",                    0
+                    //"RECIPE_DETAIL.MATERIAL_ID",                  1
+                    //"UNIT_OF_MEASURES.UNIT_OF_MEASURE_NAME",      2
+                    //"RECIPE_DETAIL.QUANTITY"                      3
+                    detail = new Models.RecipeDetail(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), r.getColumn(2), Int32.Parse(r.getColumn(3)));
+                    detail.Operation = 'N';
+                    recipe_details.Add(detail);
+                    //recipe_details.Add(new Models.RecipeDetail(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2))));
                 }
                 return new Result(recipe_details, true, "");
             }
@@ -120,8 +125,8 @@ namespace WindowsFormsApp1.Controller
             //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("recipe_id", recipe_id.ToString()));
-            parameters.Add(new Parameter("id", material_id.ToString()));
-            GenericResult result = execute_function("get_recipe", parameters);
+            parameters.Add(new Parameter("material_id", material_id.ToString()));
+            GenericResult result = execute_function("get_recipe_detail", parameters);
             if (result.success)
             {
                 //"RECIPE_ID",      0

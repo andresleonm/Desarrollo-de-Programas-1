@@ -12,10 +12,20 @@ namespace WindowsFormsApp1.Models
         int material_id;
         int quantity;
         char operation;
+        string unit;
+
         public RecipeDetail(int recipe_id, int material_id, int quantity)
         {
             this.recipe_id = recipe_id;
             this.material_id = material_id;
+            this.quantity = quantity;
+        }
+
+        public RecipeDetail(int recipe_id, int material_id, string unit, int quantity)
+        {
+            this.recipe_id = recipe_id;
+            this.material_id = material_id;
+            this.unit = unit;
             this.quantity = quantity;
         }
 
@@ -68,6 +78,19 @@ namespace WindowsFormsApp1.Models
             set
             {
                 operation = value;
+            }
+        }
+
+        public string Unit
+        {
+            get
+            {
+                return unit;
+            }
+
+            set
+            {
+                unit = value;
             }
         }
     }
