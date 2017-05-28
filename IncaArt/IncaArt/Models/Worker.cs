@@ -22,6 +22,33 @@ namespace WindowsFormsApp1.Models
         DateTime birthday;
         double salary;
 
+        public Worker(int id,int shift_id, string name,string paternal_name,string maternal_name, string doi)
+        {
+            this.id = id;
+            this.shift_id = shift_id;
+            this.name = name;
+            this.paternal_name = paternal_name;
+            this.maternal_name = maternal_name;
+            this.doi = doi;
+        }
+
+        public Worker(int id, int shift_id, string name, string paternal_name, string maternal_name, string doi,DateTime birthday,char gender,string telephone,string phone,string email,string address,double salary)
+        {
+            this.id = id;
+            this.shift_id = shift_id;
+            this.name = name;
+            this.paternal_name = paternal_name;
+            this.maternal_name = maternal_name;
+            this.doi = doi;
+            this.birthday = birthday;
+            this.gender = gender;
+            this.telephone = telephone;
+            this.phone = phone;
+            this.email = email;
+            this.address = address;
+            this.salary = salary;
+        }
+
         public int Id
         {
             get
