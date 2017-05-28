@@ -23,11 +23,12 @@ namespace WindowsFormsApp1.Views
             mbStyle.Style = MetroFramework.MetroColorStyle.Teal;
         }
 
-        private void add_Click(object sender, EventArgs e)
+        private void btn_New_Click(object sender, EventArgs e)
         {
-            Models.SalesOrderLine salesOrderLine= new Models.SalesOrderLine();
-            Sales_Module.SalesOrderLine order_line = new Sales_Module.SalesOrderLine(salesOrderLine);
+            Models.SalesOrderLine salesOrderLine = new Models.SalesOrderLine();
+            Sales_Module.SalesOrderLine order_line = new Sales_Module.SalesOrderLine(ref salesOrderLine);
             order_line.ShowDialog();
+
             if (salesOrderLine != null)
             {
                 //int num = dataGridView1.Rows.Count;
@@ -41,8 +42,7 @@ namespace WindowsFormsApp1.Views
                 //this.dataGridView1.Rows.Add(row);
 
             }
-        }
 
-        
+        }
     }
 }

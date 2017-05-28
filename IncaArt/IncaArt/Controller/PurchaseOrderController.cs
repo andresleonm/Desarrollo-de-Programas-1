@@ -23,9 +23,9 @@ namespace WindowsFormsApp1.Controller
             {
                 foreach (Row r in result.data)
                 {
-                    purchase_orders.Add(new PurchaseOrder(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2)),
-                                        double.Parse(r.getColumn(3)), r.getColumn(4), DateTime.Parse(r.getColumn(5)), r.getColumn(6), r.getColumn(7),
-                                        double.Parse(r.getColumn(8)),double.Parse(r.getColumn(9))));
+                    purchase_orders.Add(new PurchaseOrder(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2)), r.getColumn(3),
+                                        r.getColumn(4), r.getColumn(5), double.Parse(r.getColumn(6)), r.getColumn(7), r.getColumn(8), DateTime.Parse(r.getColumn(9)),
+                                        r.getColumn(10), r.getColumn(11),double.Parse(r.getColumn(12)),double.Parse(r.getColumn(13))));
                 }
                 return new Result(purchase_orders, true, "");
             }
@@ -40,9 +40,9 @@ namespace WindowsFormsApp1.Controller
             if (result.success)
             {
                 var r = result.data[0];
-                PurchaseOrder purchase_order = new PurchaseOrder(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2)),
-                                        double.Parse(r.getColumn(3)), r.getColumn(4), DateTime.Parse(r.getColumn(5)), r.getColumn(6), r.getColumn(7),
-                                        double.Parse(r.getColumn(8)), double.Parse(r.getColumn(9)));
+                PurchaseOrder purchase_order = new PurchaseOrder(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2)), r.getColumn(3),
+                                        r.getColumn(4), r.getColumn(5), double.Parse(r.getColumn(6)), r.getColumn(7), r.getColumn(8), DateTime.Parse(r.getColumn(9)),
+                                        r.getColumn(10), r.getColumn(11), double.Parse(r.getColumn(12)), double.Parse(r.getColumn(13)));
                 return new Result(purchase_order, true, "");
             }
             return new Result(null, result.success, result.message);
@@ -54,8 +54,12 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("id", purchase_order.Id.ToString()));
             parameters.Add(new Parameter("currency", purchase_order.Currency_id.ToString()));
             parameters.Add(new Parameter("supplier", purchase_order.Supplier_id.ToString()));
+            parameters.Add(new Parameter("supplier_name", purchase_order.Supplier_name));
+            parameters.Add(new Parameter("supplier_address", purchase_order.Supplier_name));
+            parameters.Add(new Parameter("supplier_phone", purchase_order.Supplier_phone));
             parameters.Add(new Parameter("amount", purchase_order.Amount.ToString()));
             parameters.Add(new Parameter("state", purchase_order.State));
+            parameters.Add(new Parameter("supplier_doi", purchase_order.Supplier_doi));
             parameters.Add(new Parameter("order_date", purchase_order.Creation_date.ToString()));
             parameters.Add(new Parameter("observation", purchase_order.Observation));
             parameters.Add(new Parameter("external_number", purchase_order.External_number));

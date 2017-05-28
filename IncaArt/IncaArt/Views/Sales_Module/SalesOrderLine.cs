@@ -7,41 +7,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
+using WindowsFormsApp1.Controller;
 
 namespace WindowsFormsApp1.Views.Sales_Module
 {
     public partial class SalesOrderLine : Form
     {
         Models.SalesOrderLine line;
-        public SalesOrderLine(Models.SalesOrderLine sl)
+        private List<Product> products;
+        private List<UnitOfMeasure> units;
+
+        public SalesOrderLine(ref Models.SalesOrderLine sales)
         {
             InitializeComponent();
-            dud_Quantity.Text = "0";
-            line = sl;
+            txt_Quantity.Text = "0";
+            line = sales;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void SalesOrderLine_Load(object sender, EventArgs e)
         {
-            if (cbo_Product.SelectedItem.Equals("Cerámico"))
+            MaximizeBox = false;
+            string user = "dp1admin";
+            string password = "dp1admin";
+
+            // ComboBox
+            ProductsController product_controller = new ProductsController(user, password);
+            UnitController unit_controller = new UnitController(user, password);
+
+            Result result = product_controller.getProducts();
+            this.products = (List<Product>)result.data;
+
+            result = unit_controller.getUnits();
+            this.units = (List<UnitOfMeasure>)result.data;
+
+            foreach (Product prod in products)
             {
-                txt_UnitPrice.Text = "5.00";
-            }else if (cbo_Product.SelectedItem.Equals("Retablo"))
-            {
-                txt_UnitPrice.Text = "7.00";
-            }else if (cbo_Product.SelectedItem.Equals("Piedra Tallada"))
-            {
-                txt_UnitPrice.Text = "10.00";
+                this.cbo_Product.Items.Add(prod.Name);
             }
+            //this.cbo_Product.SelectedItem = this.cbo_Product.Items[0];
+
+            foreach (UnitOfMeasure unit in units)
+            {
+                this.cbo_UnitMeasure.Items.Add(unit.Name);
+            }
+            //this.cbo_UnitMeasure.SelectedItem = this.cbo_UnitMeasure.Items[0];
+
+
         }
 
-        private void cancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
-        private void line_register_Click(object sender, EventArgs e)
+        private void btn_Save_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(dud_Quantity.Text) || String.IsNullOrWhiteSpace(cbo_Product.Text) || String.IsNullOrWhiteSpace(txt_UnitPrice.Text))
+            if (String.IsNullOrWhiteSpace(txt_Quantity.Text) || String.IsNullOrWhiteSpace(txt_DeliverQuan.Text) || String.IsNullOrWhiteSpace(cbo_Product.Text) || String.IsNullOrWhiteSpace(cbo_UnitMeasure.Text) || String.IsNullOrWhiteSpace(cbo_Warehouse.Text))
             {
                 MessageBox.Show(this, "Debe completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -51,8 +69,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 if (result == DialogResult.OK)
                 {
                     Models.Product product = new Models.Product();
-                    int quantity = int.Parse(this.dud_Quantity.Text);
-                    string description = this.txt_Description.Text;
+                    int quantity = int.Parse(this.txt_Quantity.Text);
+                    int deliver_quantity = int.Parse(this.txt_DeliverQuan.Text);
                     double price = double.Parse(this.txt_UnitPrice.Text);
                     line.Product = product;
                     //line.Description = description;
@@ -62,6 +80,16 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     this.Close();
                 }
             }
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cbo_Product_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txt_UnitPrice.Text = Math.Round(products.ElementAt(cbo_Product.SelectedIndex).Unit_price,2).ToString();
         }
     }
 }

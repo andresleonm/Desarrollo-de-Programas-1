@@ -73,8 +73,7 @@ namespace WindowsFormsApp1.Views.Purchase_Module
         private void comboBox1_TextUpdate(object sender, EventArgs e)
         {
             Models.Material material = new Models.Material(); // se tiene que sacar el material de la lista para rellenar los campos bloqueados
-            this.txt_measure_unit.Text = material.Unit.Name;
-            this.txt_description.Text = material.Description;            
+            this.txt_measure_unit.Text = material.Unit.Name;                    
 
         }
 
@@ -109,13 +108,13 @@ namespace WindowsFormsApp1.Views.Purchase_Module
             this.combo_material.SelectedItem = this.combo_material.Items[0];
 
             //result = warehouse_controller.getWarehouses();
-            this.warehouses = (List<Models.Warehouse>)result.data;
+            //this.warehouses = (List<Models.Warehouse>)result.data;
 
-            foreach(Models.Warehouse w in warehouses)
-            {
-                this.combo_warehouse.Items.Add(w.Name);
-            }
-            this.combo_warehouse.SelectedItem = this.combo_warehouse.Items[0];
+            //foreach(Models.Warehouse w in warehouses)
+            //{
+            //    this.combo_warehouse.Items.Add(w.Name);
+            //}
+            //this.combo_warehouse.SelectedItem = this.combo_warehouse.Items[0];
             
             
         }

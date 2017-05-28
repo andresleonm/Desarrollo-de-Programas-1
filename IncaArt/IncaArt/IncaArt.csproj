@@ -286,9 +286,7 @@
     <Compile Include="Views\Sales_Module\UC_SalesOrder.Designer.cs">
       <DependentUpon>UC_SalesOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Sales_Module\UC_SalesOrderLine.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Views\Sales_Module\UC_SalesOrderLine.cs" />
     <Compile Include="Views\Sales_Module\UC_SalesOrderLine.Designer.cs">
       <DependentUpon>UC_SalesOrderLine.cs</DependentUpon>
     </Compile>
