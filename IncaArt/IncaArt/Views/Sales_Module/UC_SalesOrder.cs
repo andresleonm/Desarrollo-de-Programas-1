@@ -26,16 +26,16 @@ namespace WindowsFormsApp1.Views
         {
             mbStyle.Style = MetroFramework.MetroColorStyle.Teal;
 
-            ProductsController product_controller = new ProductsController(user, password);
-            UnitController unit_controller = new UnitController(user, password);
+            //ProductsController product_controller = new ProductsController(user, password);
+            //UnitController unit_controller = new UnitController(user, password);
 
-            Result result = product_controller.getProducts();
-            this.products = (List<Product>)result.data;
+            //Result result = product_controller.getProducts();
+            //this.products = (List<Product>)result.data;
 
-            foreach (Product prod in products)
-            {
-                this.cbo_Product.Items.Add(prod.Name);
-            }
+            //foreach (Product prod in products)
+            //{
+            //    this.cbo_Product.Items.Add(prod.Name);
+            //}
             //this.cbo_Product.SelectedItem = this.cbo_Product.Items[0];
         }
 
