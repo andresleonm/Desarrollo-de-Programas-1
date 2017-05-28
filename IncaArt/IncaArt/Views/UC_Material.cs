@@ -165,7 +165,7 @@ namespace WindowsFormsApp1.Views
             }
         }
 
-        private Models.Material crearMaterial(int operacion)
+        private Models.Material CreateMaterial(int operacion)
         {
             String name, unit;
             name = textbox_name.Text;
@@ -190,7 +190,7 @@ namespace WindowsFormsApp1.Views
         private void btn_new_Click(object sender, EventArgs e)
         {
 
-            Models.Material mat = crearMaterial(0);
+            Models.Material mat = CreateMaterial(0);
             result = materialController.insertMaterial(mat);
             if (result.data == null)
             {
@@ -209,9 +209,9 @@ namespace WindowsFormsApp1.Views
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            cur_row = e.RowIndex;
             if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
             {
+                cur_row = e.RowIndex;
                 btn_delete.Enabled = true;
             }
         }
@@ -228,6 +228,7 @@ namespace WindowsFormsApp1.Views
                     if (unit_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
                     {
                         combobox_unit.SelectedIndex = i;
+                        break;
                     }
                 }
                 textbox_stock_min.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
@@ -239,7 +240,7 @@ namespace WindowsFormsApp1.Views
         //Modificar Datos
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            Models.Material mat = crearMaterial(1);
+            Models.Material mat = CreateMaterial(1);
             result = materialController.updateMaterial(mat);
             if (result.data == null)
             {
@@ -247,7 +248,8 @@ namespace WindowsFormsApp1.Views
             }
             else
             {
-                material_list[int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString())] = mat;
+                int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+                material_list[index] = mat;
             }
 
             Load_DataGridView();

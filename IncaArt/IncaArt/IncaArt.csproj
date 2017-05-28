@@ -457,6 +457,9 @@
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesOrderList.resx">
       <DependentUpon>UC_SalesOrderList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Recipe.resx">
+      <DependentUpon>UC_Recipe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Shift.resx">
       <DependentUpon>UC_Shift.cs</DependentUpon>
     </EmbeddedResource>
