@@ -74,6 +74,7 @@
     <Compile Include="Controller\MaterialWarehouseController.cs" />
     <Compile Include="Controller\ProductsController.cs" />
     <Compile Include="Controller\ProductTypeWarehouseController.cs" />
+    <Compile Include="Controller\SupplierControler.cs" />
     <Compile Include="Models\ProductWarehouse.cs" />
     <Compile Include="Controller\ProductWarehouseController.cs" />
     <Compile Include="Controller\RecipesController.cs" />
