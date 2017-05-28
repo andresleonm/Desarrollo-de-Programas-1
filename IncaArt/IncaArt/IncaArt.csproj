@@ -72,8 +72,13 @@
     <Compile Include="Controller\MaterialTypeWarehouseController.cs" />
     <Compile Include="Controller\MaterialWarehouseController.cs" />
     <Compile Include="Controller\ProductsController.cs" />
+<<<<<<< HEAD
     <Compile Include="Controller\ProductTypeWarehouseController.cs" />
     <Compile Include="Controller\ProductWarehouseController.cs" />
+=======
+    <Compile Include="Controller\RecipesController.cs" />
+    <Compile Include="Models\ProductWarehouse.cs" />
+>>>>>>> 31781ba499f35d4d55ca60f9b194b4768dfd077c
     <Compile Include="Controller\UnitController.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\MaterialTypeWarehouse.cs" />
