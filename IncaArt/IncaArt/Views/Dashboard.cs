@@ -216,13 +216,16 @@ namespace WindowsFormsApp1.Views
                 uc.Visible = false;
             }
         }
-
        
-
         private void btn_warehouse_Click_2(object sender, EventArgs e)
         {
             hide_UserControls();
             uc_warehousemovement.Visible = true;
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }

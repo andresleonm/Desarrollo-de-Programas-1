@@ -48,6 +48,12 @@
             this.btn_new_line = new MetroFramework.Controls.MetroButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grid_order_lines = new MetroFramework.Controls.MetroGrid();
+            this.dueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.material = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit_measure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sub_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.combo_address = new MetroFramework.Controls.MetroComboBox();
             this.combo_supplier = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
@@ -61,12 +67,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.dueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.material = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit_measure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sub_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -285,6 +285,7 @@
             this.btn_save.UseCustomForeColor = true;
             this.btn_save.UseSelectable = true;
             this.btn_save.UseStyleColors = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // txt_total
             // 
@@ -475,6 +476,48 @@
             this.grid_order_lines.Size = new System.Drawing.Size(722, 173);
             this.grid_order_lines.TabIndex = 50;
             // 
+            // dueDate
+            // 
+            this.dueDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dueDate.HeaderText = "Fecha Programada";
+            this.dueDate.Name = "dueDate";
+            this.dueDate.ReadOnly = true;
+            // 
+            // material
+            // 
+            this.material.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.material.HeaderText = "Material";
+            this.material.Name = "material";
+            this.material.ReadOnly = true;
+            // 
+            // quant
+            // 
+            this.quant.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.quant.HeaderText = "Cantidad";
+            this.quant.Name = "quant";
+            this.quant.ReadOnly = true;
+            // 
+            // unit_measure
+            // 
+            this.unit_measure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.unit_measure.HeaderText = "Unidad de Medida";
+            this.unit_measure.Name = "unit_measure";
+            this.unit_measure.ReadOnly = true;
+            // 
+            // unitPrice
+            // 
+            this.unitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.unitPrice.HeaderText = "Precio Unitario";
+            this.unitPrice.Name = "unitPrice";
+            this.unitPrice.ReadOnly = true;
+            // 
+            // sub_total
+            // 
+            this.sub_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.sub_total.HeaderText = "Subtotal";
+            this.sub_total.Name = "sub_total";
+            this.sub_total.ReadOnly = true;
+            // 
             // combo_address
             // 
             this.combo_address.FormattingEnabled = true;
@@ -640,48 +683,6 @@
             this.metroLabel1.Text = "Orden :";
             this.metroLabel1.UseCustomBackColor = true;
             this.metroLabel1.UseCustomForeColor = true;
-            // 
-            // dueDate
-            // 
-            this.dueDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dueDate.HeaderText = "Fecha Programada";
-            this.dueDate.Name = "dueDate";
-            this.dueDate.ReadOnly = true;
-            // 
-            // material
-            // 
-            this.material.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.material.HeaderText = "Material";
-            this.material.Name = "material";
-            this.material.ReadOnly = true;
-            // 
-            // quant
-            // 
-            this.quant.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.quant.HeaderText = "Cantidad";
-            this.quant.Name = "quant";
-            this.quant.ReadOnly = true;
-            // 
-            // unit_measure
-            // 
-            this.unit_measure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unit_measure.HeaderText = "Unidad de Medida";
-            this.unit_measure.Name = "unit_measure";
-            this.unit_measure.ReadOnly = true;
-            // 
-            // unitPrice
-            // 
-            this.unitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unitPrice.HeaderText = "Precio Unitario";
-            this.unitPrice.Name = "unitPrice";
-            this.unitPrice.ReadOnly = true;
-            // 
-            // sub_total
-            // 
-            this.sub_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sub_total.HeaderText = "Subtotal";
-            this.sub_total.Name = "sub_total";
-            this.sub_total.ReadOnly = true;
             // 
             // UC_PurchaseOrder
             // 
