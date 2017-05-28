@@ -36,6 +36,13 @@
             this.btn_Delete = new System.Windows.Forms.Button();
             this.gb_OrderLine = new System.Windows.Forms.GroupBox();
             this.grid_order_lines = new MetroFramework.Controls.MetroGrid();
+            this.idOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.client = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbClient = new System.Windows.Forms.GroupBox();
             this.cb_Currency = new MetroFramework.Controls.MetroComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,13 +56,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.idOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.client = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.gb_OrderLine.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_order_lines)).BeginInit();
@@ -161,6 +161,49 @@
             this.grid_order_lines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_order_lines.Size = new System.Drawing.Size(820, 302);
             this.grid_order_lines.TabIndex = 50;
+            // 
+            // idOrder
+            // 
+            this.idOrder.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idOrder.HeaderText = "N° Orden";
+            this.idOrder.Name = "idOrder";
+            this.idOrder.ReadOnly = true;
+            // 
+            // client
+            // 
+            this.client.HeaderText = "Cliente";
+            this.client.Name = "client";
+            // 
+            // observation
+            // 
+            this.observation.HeaderText = "Observación";
+            this.observation.Name = "observation";
+            // 
+            // issueDate
+            // 
+            this.issueDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.issueDate.HeaderText = "Fecha de Emisión";
+            this.issueDate.Name = "issueDate";
+            this.issueDate.ReadOnly = true;
+            // 
+            // deliveryDate
+            // 
+            this.deliveryDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.deliveryDate.HeaderText = "Fecha de Entrega";
+            this.deliveryDate.Name = "deliveryDate";
+            this.deliveryDate.ReadOnly = true;
+            // 
+            // amount
+            // 
+            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.amount.HeaderText = "Total";
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.HeaderText = "Estado";
+            this.status.Name = "status";
             // 
             // gbClient
             // 
@@ -353,49 +396,6 @@
             this.label12.TabIndex = 4;
             this.label12.Text = "Fecha de Emisión :";
             // 
-            // idOrder
-            // 
-            this.idOrder.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.idOrder.HeaderText = "N° Orden";
-            this.idOrder.Name = "idOrder";
-            this.idOrder.ReadOnly = true;
-            // 
-            // client
-            // 
-            this.client.HeaderText = "Cliente";
-            this.client.Name = "client";
-            // 
-            // observation
-            // 
-            this.observation.HeaderText = "Observación";
-            this.observation.Name = "observation";
-            // 
-            // issueDate
-            // 
-            this.issueDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.issueDate.HeaderText = "Fecha de Emisión";
-            this.issueDate.Name = "issueDate";
-            this.issueDate.ReadOnly = true;
-            // 
-            // deliveryDate
-            // 
-            this.deliveryDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.deliveryDate.HeaderText = "Fecha de Entrega";
-            this.deliveryDate.Name = "deliveryDate";
-            this.deliveryDate.ReadOnly = true;
-            // 
-            // amount
-            // 
-            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.amount.HeaderText = "Total";
-            this.amount.Name = "amount";
-            this.amount.ReadOnly = true;
-            // 
-            // status
-            // 
-            this.status.HeaderText = "Estado";
-            this.status.Name = "status";
-            // 
             // UC_SalesOrderList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -404,6 +404,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "UC_SalesOrderList";
             this.Size = new System.Drawing.Size(872, 624);
+            this.Load += new System.EventHandler(this.UC_SalesOrderList_Load);
             this.panel1.ResumeLayout(false);
             this.gb_OrderLine.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_order_lines)).EndInit();
