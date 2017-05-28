@@ -175,7 +175,7 @@ namespace WindowsFormsApp1.Views
         private void btn_worker_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            worker.Visible = true;
+            uc_worker.Visible = true;
         }
 
         private void btn_material_Click(object sender, EventArgs e)
