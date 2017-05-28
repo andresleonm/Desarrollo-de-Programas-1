@@ -110,7 +110,7 @@ namespace WindowsFormsApp1.Controller
                     //"RECIPE_DETAIL.MATERIAL_ID",                  1
                     //"UNIT_OF_MEASURES.UNIT_OF_MEASURE_NAME",      2
                     //"RECIPE_DETAIL.QUANTITY"                      3
-                    detail = new Models.RecipeDetail(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), r.getColumn(2), Int32.Parse(r.getColumn(3)));
+                    detail = new Models.RecipeDetail(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),Int32.Parse(r.getColumn(2)));
                     detail.Operation = 'N';
                     recipe_details.Add(detail);
                     //recipe_details.Add(new Models.RecipeDetail(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2))));
@@ -142,11 +142,10 @@ namespace WindowsFormsApp1.Controller
         public Result insertRecipeDetail(Models.RecipeDetail detail)
         {
             List<Parameter> parameters = new List<Parameter>();
-            GenericResult result;
             parameters.Add(new Parameter("recipe_id", detail.Recipe_id.ToString()));
             parameters.Add(new Parameter("material_id", detail.Material_id.ToString()));
             parameters.Add(new Parameter("quantity", detail.Quantity.ToString()));
-            result = execute_function("insert_recipe_detail", parameters);
+            GenericResult result = execute_function("insert_recipe_detail", parameters);
             if (result.success)
             {
                 return new Result(result.singleValue, true, "");
