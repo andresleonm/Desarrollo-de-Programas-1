@@ -49,6 +49,10 @@ namespace WindowsFormsApp1.Models
             this.salary = salary;
         }
 
+        public Worker()
+        {
+        }
+
         public int Id
         {
             get

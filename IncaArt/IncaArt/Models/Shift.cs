@@ -17,6 +17,10 @@ namespace WindowsFormsApp1.Models
             this.description = description;
         }
 
+        public Shift()
+        {
+        }
+
         public int Id
         {
             get
