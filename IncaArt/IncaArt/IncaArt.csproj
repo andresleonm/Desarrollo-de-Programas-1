@@ -332,6 +332,12 @@
     <Compile Include="Views\Production_Module\UC_ProductionOrderSearch.Designer.cs">
       <DependentUpon>UC_ProductionOrderSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_Worker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_Worker.Designer.cs">
+      <DependentUpon>UC_Worker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Warehouse.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -381,12 +387,6 @@
     </Compile>
     <Compile Include="Views\Purchase_Module\PurchaseOrderLine.Designer.cs">
       <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UC_Worker.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\UC_Worker.Designer.cs">
-      <DependentUpon>UC_Worker.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Workstation.cs">
       <SubType>UserControl</SubType>
@@ -502,6 +502,9 @@
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderSearch.resx">
       <DependentUpon>UC_ProductionOrderSearch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Worker.resx">
+      <DependentUpon>UC_Worker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse.resx">
       <DependentUpon>Warehouse.cs</DependentUpon>
     </EmbeddedResource>
@@ -525,9 +528,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrderLine.resx">
       <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_Worker.resx">
-      <DependentUpon>UC_Worker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Workstation.resx">
       <DependentUpon>Workstation.cs</DependentUpon>
