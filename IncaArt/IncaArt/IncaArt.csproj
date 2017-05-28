@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\CurrencyController.cs" />
     <Compile Include="Controller\CustomerController.cs" />
     <Compile Include="Controller\MaterialsController.cs" />
     <Compile Include="Controller\MaterialTypeWarehouseController.cs" />

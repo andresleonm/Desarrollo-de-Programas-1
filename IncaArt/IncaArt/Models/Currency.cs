@@ -9,11 +9,68 @@ namespace WindowsFormsApp1.Models
     public class Currency
     {
         private int id;
+        String symbol;
+        String name;
+        String state;
+
+        public Currency(int id, string symbol, string name, string state)
+        {
+            this.id = id;
+            this.symbol = symbol;
+            this.name = name;
+            this.state = state;
+        }
 
         public int Id
         {
-            get { return id; }
-            set { id = value; }
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
+        public string Symbol
+        {
+            get
+            {
+                return symbol;
+            }
+
+            set
+            {
+                symbol = value;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+            }
+        }
+
+        public string State
+        {
+            get
+            {
+                return state;
+            }
+
+            set
+            {
+                state = value;
+            }
         }
     }
 }
