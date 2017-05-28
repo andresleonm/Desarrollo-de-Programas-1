@@ -4,29 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1.Controller
+namespace WindowsFormsApp1.Models
 {
-    class ProductWarehouse
+    class Customer
     {
         int id;
         String name;
-        int product_id;
-        int current_physical_stock;
-        int max_capacity;
-        int type_id;
+        String address;
+        String doi;
+        String phone;
+        String email;
+        String type;
+        int priority;
         String state;
-        int current_logical_stock;
 
-        public ProductWarehouse(int id, string name, int product_id, int current_physical_stock, int max_capacity, int type_id, string state, int current_logical_stock)
+        public Customer(int id, string name,string address, string doi, string phone, string email, string type, int priority, string state)
         {
             this.id = id;
             this.name = name;
-            this.product_id = product_id;
-            this.current_physical_stock = current_physical_stock;
-            this.max_capacity = max_capacity;
-            this.type_id = type_id;
+            this.Address = address;
+            this.doi = doi;
+            this.phone = phone;
+            this.email = email;
+            this.type = type;
+            this.priority = priority;
             this.state = state;
-            this.current_logical_stock = current_logical_stock;
         }
 
         public int Id
@@ -55,55 +57,68 @@ namespace WindowsFormsApp1.Controller
             }
         }
 
-        public int Product_id
+        public string Doi
         {
             get
             {
-                return product_id;
+                return doi;
             }
 
             set
             {
-                product_id = value;
+                doi = value;
             }
         }
 
-        public int Current_physical_stock
+        public string Phone
         {
             get
             {
-                return current_physical_stock;
+                return phone;
             }
 
             set
             {
-                current_physical_stock = value;
+                phone = value;
             }
         }
 
-        public int Max_capacity
+        public string Email
         {
             get
             {
-                return max_capacity;
+                return email;
             }
 
             set
             {
-                max_capacity = value;
+                email = value;
             }
         }
 
-        public int Type_id
+        public string Type
         {
             get
             {
-                return type_id;
+                return type;
             }
 
             set
             {
-                type_id = value;
+                type = value;
+            }
+        }
+
+        public int Priority
+        {
+            get
+            {
+                return priority;
+            }
+
+            set
+            {
+                priority = value;
             }
         }
 
@@ -120,17 +135,32 @@ namespace WindowsFormsApp1.Controller
             }
         }
 
-        public int Current_logical_stock
+        public string Address
         {
             get
             {
-                return current_logical_stock;
+                return address;
             }
 
             set
             {
-                current_logical_stock = value;
+                address = value;
             }
         }
     }
 }
+
+
+/*
+ CUSTOMER_ID
+CUSTOMER_NAME
+CUSTOMER_ADDRESS
+CUSTOMER_DOI
+CUSTOMER_PHONE
+CUSTOMER_EMAIL
+CUSTOMER_TYPE
+CUSTOMER_PRIORITY
+STATE
+
+     
+     */
