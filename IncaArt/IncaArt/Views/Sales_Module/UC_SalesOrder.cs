@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
+using WindowsFormsApp1.Controller;
 
 
 namespace WindowsFormsApp1.Views
@@ -25,18 +26,19 @@ namespace WindowsFormsApp1.Views
         private void UC_SalesOrder_Load(object sender, EventArgs e)
         {
             mbStyle.Style = MetroFramework.MetroColorStyle.Teal;
+            string user = "dp1admin";
+            string password = "dp1admin";
 
-            //ProductsController product_controller = new ProductsController(user, password);
-            //UnitController unit_controller = new UnitController(user, password);
+            CurrencyController currency_controller = new CurrencyController(user, password);            
 
-            //Result result = product_controller.getProducts();
-            //this.products = (List<Product>)result.data;
+            Result result = currency_controller.getCurrencies();
+            this.currencies = (List<Currency>)result.data;
 
-            //foreach (Product prod in products)
-            //{
-            //    this.cbo_Product.Items.Add(prod.Name);
-            //}
-            //this.cbo_Product.SelectedItem = this.cbo_Product.Items[0];
+            foreach (Currency curr in currencies)
+            {
+                this.cbo_Currency.Items.Add(curr.Name);
+            }
+            this.cbo_Currency.SelectedItem = this.cbo_Currency.Items[0];
         }
 
         private void btn_New_Click(object sender, EventArgs e)
@@ -47,14 +49,13 @@ namespace WindowsFormsApp1.Views
 
             if (salesOrderLine != null)
             {
-                String[] row = new String[6];
+                String[] row = new String[];
                 row[0] = salesOrderLine.Product.Name;
                 row[1] = salesOrderLine.Quantity.ToString();
                 row[2] = salesOrderLine.Unit_measure.Name;
                 row[3] = salesOrderLine.Warehouse.Name;
-                row[4] = salesOrderLine.Delivery_quantity.ToString();
-                row[5] = salesOrderLine.Unit_price.ToString();
-                row[6] = Math.Round((salesOrderLine.Quantity * salesOrderLine.Unit_price),2).ToString();
+                row[4] = salesOrderLine.Unit_price.ToString();
+                row[5] = Math.Round((salesOrderLine.Quantity * salesOrderLine.Unit_price),2).ToString();
                 this.grid_order_lines.Rows.Add(row);
             }
 

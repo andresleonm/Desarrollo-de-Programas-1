@@ -39,7 +39,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txt_amount = new MetroFramework.Controls.MetroTextBox();
             this.btn_Clean = new System.Windows.Forms.Button();
-            this.cb_status = new MetroFramework.Controls.MetroComboBox();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.btn_Save = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -47,13 +46,6 @@
             this.btn_New = new System.Windows.Forms.Button();
             this.gb_OrderLine = new System.Windows.Forms.GroupBox();
             this.grid_order_lines = new MetroFramework.Controls.MetroGrid();
-            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deliveryQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbClient = new System.Windows.Forms.GroupBox();
             this.btn_Search = new MetroFramework.Controls.MetroTile();
             this.txt_Doi = new MetroFramework.Controls.MetroTextBox();
@@ -65,13 +57,20 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.gbOrder = new System.Windows.Forms.GroupBox();
-            this.cb_Currency = new MetroFramework.Controls.MetroComboBox();
+            this.cbo_Currency = new MetroFramework.Controls.MetroComboBox();
             this.dt_DeliveryDate = new MetroFramework.Controls.MetroDateTime();
             this.txt_idOrder = new MetroFramework.Controls.MetroTextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.mbStyle = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
             this.panel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -111,11 +110,11 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.CausesValidation = false;
+            this.tabPage1.Controls.Add(this.metroTextBox1);
             this.tabPage1.Controls.Add(this.observation);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.txt_amount);
             this.tabPage1.Controls.Add(this.btn_Clean);
-            this.tabPage1.Controls.Add(this.cb_status);
             this.tabPage1.Controls.Add(this.btn_Cancel);
             this.tabPage1.Controls.Add(this.btn_Save);
             this.tabPage1.Controls.Add(this.label6);
@@ -219,16 +218,6 @@
             this.btn_Clean.Text = "Limpiar";
             this.btn_Clean.UseVisualStyleBackColor = false;
             // 
-            // cb_status
-            // 
-            this.cb_status.FormattingEnabled = true;
-            this.cb_status.ItemHeight = 23;
-            this.cb_status.Location = new System.Drawing.Point(108, 267);
-            this.cb_status.Name = "cb_status";
-            this.cb_status.Size = new System.Drawing.Size(184, 29);
-            this.cb_status.TabIndex = 58;
-            this.cb_status.UseSelectable = true;
-            // 
             // btn_Cancel
             // 
             this.btn_Cancel.BackColor = System.Drawing.Color.DarkCyan;
@@ -322,7 +311,6 @@
             this.quantity,
             this.unitMeasure,
             this.warehouse,
-            this.deliveryQuantity,
             this.unitPrice,
             this.amount});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -352,51 +340,6 @@
             this.grid_order_lines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_order_lines.Size = new System.Drawing.Size(785, 137);
             this.grid_order_lines.TabIndex = 50;
-            // 
-            // product
-            // 
-            this.product.HeaderText = "Producto";
-            this.product.Name = "product";
-            // 
-            // quantity
-            // 
-            this.quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.quantity.HeaderText = "Cantidad";
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
-            // 
-            // unitMeasure
-            // 
-            this.unitMeasure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unitMeasure.HeaderText = "Unidad de Medida";
-            this.unitMeasure.Name = "unitMeasure";
-            this.unitMeasure.ReadOnly = true;
-            // 
-            // warehouse
-            // 
-            this.warehouse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.warehouse.HeaderText = "Almacén";
-            this.warehouse.Name = "warehouse";
-            this.warehouse.ReadOnly = true;
-            // 
-            // deliveryQuantity
-            // 
-            this.deliveryQuantity.HeaderText = "Cantidad Entregada";
-            this.deliveryQuantity.Name = "deliveryQuantity";
-            // 
-            // unitPrice
-            // 
-            this.unitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unitPrice.HeaderText = "Precio Unitario";
-            this.unitPrice.Name = "unitPrice";
-            this.unitPrice.ReadOnly = true;
-            // 
-            // amount
-            // 
-            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.amount.HeaderText = "Subtotal";
-            this.amount.Name = "amount";
-            this.amount.ReadOnly = true;
             // 
             // gbClient
             // 
@@ -600,7 +543,7 @@
             // 
             // gbOrder
             // 
-            this.gbOrder.Controls.Add(this.cb_Currency);
+            this.gbOrder.Controls.Add(this.cbo_Currency);
             this.gbOrder.Controls.Add(this.dt_DeliveryDate);
             this.gbOrder.Controls.Add(this.txt_idOrder);
             this.gbOrder.Controls.Add(this.label11);
@@ -616,15 +559,15 @@
             this.gbOrder.TabStop = false;
             this.gbOrder.Text = "Datos del Pedido";
             // 
-            // cb_Currency
+            // cbo_Currency
             // 
-            this.cb_Currency.FormattingEnabled = true;
-            this.cb_Currency.ItemHeight = 23;
-            this.cb_Currency.Location = new System.Drawing.Point(116, 67);
-            this.cb_Currency.Name = "cb_Currency";
-            this.cb_Currency.Size = new System.Drawing.Size(240, 29);
-            this.cb_Currency.TabIndex = 48;
-            this.cb_Currency.UseSelectable = true;
+            this.cbo_Currency.FormattingEnabled = true;
+            this.cbo_Currency.ItemHeight = 23;
+            this.cbo_Currency.Location = new System.Drawing.Point(116, 67);
+            this.cbo_Currency.Name = "cbo_Currency";
+            this.cbo_Currency.Size = new System.Drawing.Size(240, 29);
+            this.cbo_Currency.TabIndex = 48;
+            this.cbo_Currency.UseSelectable = true;
             // 
             // dt_DeliveryDate
             // 
@@ -707,6 +650,82 @@
             // 
             this.mbStyle.Owner = null;
             // 
+            // product
+            // 
+            this.product.HeaderText = "Producto";
+            this.product.Name = "product";
+            // 
+            // quantity
+            // 
+            this.quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.quantity.HeaderText = "Cantidad";
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            // 
+            // unitMeasure
+            // 
+            this.unitMeasure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.unitMeasure.HeaderText = "Unidad de Medida";
+            this.unitMeasure.Name = "unitMeasure";
+            this.unitMeasure.ReadOnly = true;
+            // 
+            // warehouse
+            // 
+            this.warehouse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.warehouse.HeaderText = "Almacén";
+            this.warehouse.Name = "warehouse";
+            this.warehouse.ReadOnly = true;
+            // 
+            // unitPrice
+            // 
+            this.unitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.unitPrice.HeaderText = "Precio Unitario";
+            this.unitPrice.Name = "unitPrice";
+            this.unitPrice.ReadOnly = true;
+            // 
+            // amount
+            // 
+            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.amount.HeaderText = "Subtotal";
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
+            // 
+            // metroTextBox1
+            // 
+            this.metroTextBox1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            // 
+            // 
+            // 
+            this.metroTextBox1.CustomButton.BackColor = System.Drawing.SystemColors.Control;
+            this.metroTextBox1.CustomButton.Image = null;
+            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(117, 1);
+            this.metroTextBox1.CustomButton.Name = "";
+            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBox1.CustomButton.TabIndex = 1;
+            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBox1.CustomButton.UseSelectable = true;
+            this.metroTextBox1.CustomButton.UseVisualStyleBackColor = false;
+            this.metroTextBox1.CustomButton.Visible = false;
+            this.metroTextBox1.Enabled = false;
+            this.metroTextBox1.Lines = new string[0];
+            this.metroTextBox1.Location = new System.Drawing.Point(108, 267);
+            this.metroTextBox1.MaxLength = 32767;
+            this.metroTextBox1.Name = "metroTextBox1";
+            this.metroTextBox1.PasswordChar = '\0';
+            this.metroTextBox1.ReadOnly = true;
+            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBox1.SelectedText = "";
+            this.metroTextBox1.SelectionLength = 0;
+            this.metroTextBox1.SelectionStart = 0;
+            this.metroTextBox1.ShortcutsEnabled = true;
+            this.metroTextBox1.Size = new System.Drawing.Size(145, 29);
+            this.metroTextBox1.TabIndex = 63;
+            this.metroTextBox1.UseCustomBackColor = true;
+            this.metroTextBox1.UseSelectable = true;
+            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // UC_SalesOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -754,7 +773,7 @@
         private MetroFramework.Controls.MetroTabControl metroTabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private MetroFramework.Components.MetroStyleManager mbStyle;
-        private MetroFramework.Controls.MetroComboBox cb_Currency;
+        private MetroFramework.Controls.MetroComboBox cbo_Currency;
         private System.Windows.Forms.GroupBox gb_OrderLine;
         private MetroFramework.Controls.MetroGrid grid_order_lines;
         private System.Windows.Forms.Button btn_New;
@@ -763,7 +782,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btn_Clean;
-        private MetroFramework.Controls.MetroComboBox cb_status;
         private MetroFramework.Controls.MetroTextBox txt_amount;
         private MetroFramework.Controls.MetroTextBox observation;
         private System.Windows.Forms.Label label3;
@@ -771,8 +789,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitMeasure;
         private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deliveryQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
+        private MetroFramework.Controls.MetroTextBox metroTextBox1;
     }
 }

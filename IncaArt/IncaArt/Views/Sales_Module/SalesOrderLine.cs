@@ -80,7 +80,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 {                                      
                     line.Product = products.ElementAt(cbo_Product.SelectedIndex);                    
                     line.Quantity = int.Parse(this.txt_Quantity.Text);
-                    line.Delivery_quantity = int.Parse(this.txt_DeliverQuan.Text);
                     line.Unit_measure = units.ElementAt(cbo_UnitMeasure.SelectedIndex);
                     line.Unit_price = double.Parse(this.txt_UnitPrice.Text);
                     //line.Warehouse = warehouses.ElementAt(cbo_Warehouse.SelectedIndex);
