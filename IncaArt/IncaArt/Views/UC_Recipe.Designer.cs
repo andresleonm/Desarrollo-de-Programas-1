@@ -42,45 +42,42 @@
             this.textbox_name_s = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_maximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registro = new MetroFramework.Controls.MetroTabPage();
-            this.btn_cancel = new MetroFramework.Controls.MetroButton();
-            this.btn_edit = new MetroFramework.Controls.MetroButton();
-            this.btn_new = new MetroFramework.Controls.MetroButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textbox_name = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.combobox_product = new MetroFramework.Controls.MetroComboBox();
             this.textbox_description = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.combobox_product = new MetroFramework.Controls.MetroComboBox();
-            this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.combobox_material = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.textbox_quantity = new MetroFramework.Controls.MetroTextBox();
-            this.btn_mat_add = new MetroFramework.Controls.MetroButton();
-            this.btn_mat_edit = new MetroFramework.Controls.MetroButton();
             this.btn_mat_delete = new MetroFramework.Controls.MetroButton();
+            this.btn_mat_edit = new MetroFramework.Controls.MetroButton();
+            this.btn_mat_add = new MetroFramework.Controls.MetroButton();
+            this.textbox_quantity = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.combobox_material = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
+            this.btn_cancel = new MetroFramework.Controls.MetroButton();
+            this.btn_edit = new MetroFramework.Controls.MetroButton();
+            this.btn_new = new MetroFramework.Controls.MetroButton();
             this.material_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.material_row = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.material_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.registro.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -89,7 +86,7 @@
             this.metroTabControl1.Controls.Add(this.registro);
             this.metroTabControl1.Location = new System.Drawing.Point(24, 27);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(721, 450);
             this.metroTabControl1.TabIndex = 2;
             this.metroTabControl1.UseSelectable = true;
@@ -116,7 +113,7 @@
             // 
             // btn_delete
             // 
-            this.btn_delete.Location = new System.Drawing.Point(524, 340);
+            this.btn_delete.Location = new System.Drawing.Point(248, 341);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(75, 23);
             this.btn_delete.TabIndex = 13;
@@ -125,7 +122,7 @@
             // 
             // btn_clean_s
             // 
-            this.btn_clean_s.Location = new System.Drawing.Point(447, 109);
+            this.btn_clean_s.Location = new System.Drawing.Point(244, 106);
             this.btn_clean_s.Name = "btn_clean_s";
             this.btn_clean_s.Size = new System.Drawing.Size(75, 23);
             this.btn_clean_s.TabIndex = 12;
@@ -134,7 +131,7 @@
             // 
             // btn_search
             // 
-            this.btn_search.Location = new System.Drawing.Point(351, 109);
+            this.btn_search.Location = new System.Drawing.Point(148, 106);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(75, 23);
             this.btn_search.TabIndex = 11;
@@ -200,10 +197,7 @@
             this.id,
             this.index,
             this.nombre,
-            this.unidad,
-            this.price,
-            this.stock_minimo,
-            this.stock_maximo});
+            this.product});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -228,47 +222,8 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(564, 178);
+            this.metroGrid1.Size = new System.Drawing.Size(288, 178);
             this.metroGrid1.TabIndex = 2;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // index
-            // 
-            this.index.HeaderText = "Index";
-            this.index.Name = "index";
-            this.index.Visible = false;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            // 
-            // unidad
-            // 
-            this.unidad.HeaderText = "Unidad";
-            this.unidad.Name = "unidad";
-            // 
-            // price
-            // 
-            this.price.HeaderText = "Precio";
-            this.price.Name = "price";
-            // 
-            // stock_minimo
-            // 
-            this.stock_minimo.HeaderText = "Stock Mínimo";
-            this.stock_minimo.Name = "stock_minimo";
-            this.stock_minimo.Width = 110;
-            // 
-            // stock_maximo
-            // 
-            this.stock_maximo.HeaderText = "Stock Máximo";
-            this.stock_maximo.Name = "stock_maximo";
-            this.stock_maximo.Width = 110;
             // 
             // registro
             // 
@@ -287,32 +242,21 @@
             this.registro.VerticalScrollbarHighlightOnWheel = false;
             this.registro.VerticalScrollbarSize = 10;
             // 
-            // btn_cancel
+            // groupBox2
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(226, 483);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 12;
-            this.btn_cancel.Text = "Cancelar";
-            this.btn_cancel.UseSelectable = true;
-            // 
-            // btn_edit
-            // 
-            this.btn_edit.Location = new System.Drawing.Point(133, 483);
-            this.btn_edit.Name = "btn_edit";
-            this.btn_edit.Size = new System.Drawing.Size(75, 23);
-            this.btn_edit.TabIndex = 11;
-            this.btn_edit.Text = "Editar";
-            this.btn_edit.UseSelectable = true;
-            // 
-            // btn_new
-            // 
-            this.btn_new.Location = new System.Drawing.Point(39, 483);
-            this.btn_new.Name = "btn_new";
-            this.btn_new.Size = new System.Drawing.Size(75, 23);
-            this.btn_new.TabIndex = 10;
-            this.btn_new.Text = "Registrar";
-            this.btn_new.UseSelectable = true;
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox2.Controls.Add(this.textbox_name);
+            this.groupBox2.Controls.Add(this.metroLabel5);
+            this.groupBox2.Controls.Add(this.metroLabel2);
+            this.groupBox2.Controls.Add(this.combobox_product);
+            this.groupBox2.Controls.Add(this.textbox_description);
+            this.groupBox2.Controls.Add(this.metroLabel3);
+            this.groupBox2.Location = new System.Drawing.Point(11, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(691, 215);
+            this.groupBox2.TabIndex = 19;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Datos de Receta";
             // 
             // textbox_name
             // 
@@ -362,6 +306,16 @@
             this.metroLabel2.TabIndex = 13;
             this.metroLabel2.Text = "Descripción:";
             // 
+            // combobox_product
+            // 
+            this.combobox_product.FormattingEnabled = true;
+            this.combobox_product.ItemHeight = 23;
+            this.combobox_product.Location = new System.Drawing.Point(118, 167);
+            this.combobox_product.Name = "combobox_product";
+            this.combobox_product.Size = new System.Drawing.Size(179, 29);
+            this.combobox_product.TabIndex = 16;
+            this.combobox_product.UseSelectable = true;
+            // 
             // textbox_description
             // 
             // 
@@ -401,15 +355,107 @@
             this.metroLabel3.TabIndex = 15;
             this.metroLabel3.Text = "Producto:";
             // 
-            // combobox_product
+            // groupBox1
             // 
-            this.combobox_product.FormattingEnabled = true;
-            this.combobox_product.ItemHeight = 23;
-            this.combobox_product.Location = new System.Drawing.Point(118, 167);
-            this.combobox_product.Name = "combobox_product";
-            this.combobox_product.Size = new System.Drawing.Size(179, 29);
-            this.combobox_product.TabIndex = 16;
-            this.combobox_product.UseSelectable = true;
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox1.Controls.Add(this.btn_mat_delete);
+            this.groupBox1.Controls.Add(this.btn_mat_edit);
+            this.groupBox1.Controls.Add(this.btn_mat_add);
+            this.groupBox1.Controls.Add(this.textbox_quantity);
+            this.groupBox1.Controls.Add(this.metroLabel6);
+            this.groupBox1.Controls.Add(this.combobox_material);
+            this.groupBox1.Controls.Add(this.metroLabel4);
+            this.groupBox1.Location = new System.Drawing.Point(310, 242);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(392, 150);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Material";
+            // 
+            // btn_mat_delete
+            // 
+            this.btn_mat_delete.Location = new System.Drawing.Point(169, 121);
+            this.btn_mat_delete.Name = "btn_mat_delete";
+            this.btn_mat_delete.Size = new System.Drawing.Size(75, 23);
+            this.btn_mat_delete.TabIndex = 6;
+            this.btn_mat_delete.Text = "Eliminar";
+            this.btn_mat_delete.UseSelectable = true;
+            // 
+            // btn_mat_edit
+            // 
+            this.btn_mat_edit.Location = new System.Drawing.Point(88, 121);
+            this.btn_mat_edit.Name = "btn_mat_edit";
+            this.btn_mat_edit.Size = new System.Drawing.Size(75, 23);
+            this.btn_mat_edit.TabIndex = 5;
+            this.btn_mat_edit.Text = "Editar";
+            this.btn_mat_edit.UseSelectable = true;
+            // 
+            // btn_mat_add
+            // 
+            this.btn_mat_add.Location = new System.Drawing.Point(7, 121);
+            this.btn_mat_add.Name = "btn_mat_add";
+            this.btn_mat_add.Size = new System.Drawing.Size(75, 23);
+            this.btn_mat_add.TabIndex = 4;
+            this.btn_mat_add.Text = "Agregar";
+            this.btn_mat_add.UseSelectable = true;
+            // 
+            // textbox_quantity
+            // 
+            // 
+            // 
+            // 
+            this.textbox_quantity.CustomButton.Image = null;
+            this.textbox_quantity.CustomButton.Location = new System.Drawing.Point(99, 1);
+            this.textbox_quantity.CustomButton.Name = "";
+            this.textbox_quantity.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.textbox_quantity.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textbox_quantity.CustomButton.TabIndex = 1;
+            this.textbox_quantity.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textbox_quantity.CustomButton.UseSelectable = true;
+            this.textbox_quantity.CustomButton.Visible = false;
+            this.textbox_quantity.Lines = new string[0];
+            this.textbox_quantity.Location = new System.Drawing.Point(74, 75);
+            this.textbox_quantity.MaxLength = 32767;
+            this.textbox_quantity.Name = "textbox_quantity";
+            this.textbox_quantity.PasswordChar = '\0';
+            this.textbox_quantity.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textbox_quantity.SelectedText = "";
+            this.textbox_quantity.SelectionLength = 0;
+            this.textbox_quantity.SelectionStart = 0;
+            this.textbox_quantity.ShortcutsEnabled = true;
+            this.textbox_quantity.Size = new System.Drawing.Size(121, 23);
+            this.textbox_quantity.TabIndex = 3;
+            this.textbox_quantity.UseSelectable = true;
+            this.textbox_quantity.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textbox_quantity.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(2, 75);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(65, 19);
+            this.metroLabel6.TabIndex = 2;
+            this.metroLabel6.Text = "Cantidad:";
+            // 
+            // combobox_material
+            // 
+            this.combobox_material.FormattingEnabled = true;
+            this.combobox_material.ItemHeight = 23;
+            this.combobox_material.Location = new System.Drawing.Point(74, 31);
+            this.combobox_material.Name = "combobox_material";
+            this.combobox_material.Size = new System.Drawing.Size(121, 29);
+            this.combobox_material.TabIndex = 1;
+            this.combobox_material.UseSelectable = true;
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(7, 34);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(60, 19);
+            this.metroLabel4.TabIndex = 0;
+            this.metroLabel4.Text = "Material:";
             // 
             // metroGrid2
             // 
@@ -457,126 +503,35 @@
             this.metroGrid2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.metroGrid2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid2.Size = new System.Drawing.Size(254, 150);
+            this.metroGrid2.Size = new System.Drawing.Size(262, 150);
             this.metroGrid2.TabIndex = 17;
             // 
-            // groupBox1
+            // btn_cancel
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox1.Controls.Add(this.btn_mat_delete);
-            this.groupBox1.Controls.Add(this.btn_mat_edit);
-            this.groupBox1.Controls.Add(this.btn_mat_add);
-            this.groupBox1.Controls.Add(this.textbox_quantity);
-            this.groupBox1.Controls.Add(this.metroLabel6);
-            this.groupBox1.Controls.Add(this.combobox_material);
-            this.groupBox1.Controls.Add(this.metroLabel4);
-            this.groupBox1.Location = new System.Drawing.Point(310, 242);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(392, 150);
-            this.groupBox1.TabIndex = 18;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Material";
+            this.btn_cancel.Location = new System.Drawing.Point(226, 483);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.TabIndex = 12;
+            this.btn_cancel.Text = "Cancelar";
+            this.btn_cancel.UseSelectable = true;
             // 
-            // groupBox2
+            // btn_edit
             // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox2.Controls.Add(this.textbox_name);
-            this.groupBox2.Controls.Add(this.metroLabel5);
-            this.groupBox2.Controls.Add(this.metroLabel2);
-            this.groupBox2.Controls.Add(this.combobox_product);
-            this.groupBox2.Controls.Add(this.textbox_description);
-            this.groupBox2.Controls.Add(this.metroLabel3);
-            this.groupBox2.Location = new System.Drawing.Point(11, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(691, 215);
-            this.groupBox2.TabIndex = 19;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Datos de Receta";
+            this.btn_edit.Location = new System.Drawing.Point(133, 483);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.Size = new System.Drawing.Size(75, 23);
+            this.btn_edit.TabIndex = 11;
+            this.btn_edit.Text = "Editar";
+            this.btn_edit.UseSelectable = true;
             // 
-            // metroLabel4
+            // btn_new
             // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(7, 34);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(60, 19);
-            this.metroLabel4.TabIndex = 0;
-            this.metroLabel4.Text = "Material:";
-            // 
-            // combobox_material
-            // 
-            this.combobox_material.FormattingEnabled = true;
-            this.combobox_material.ItemHeight = 23;
-            this.combobox_material.Location = new System.Drawing.Point(74, 31);
-            this.combobox_material.Name = "combobox_material";
-            this.combobox_material.Size = new System.Drawing.Size(121, 29);
-            this.combobox_material.TabIndex = 1;
-            this.combobox_material.UseSelectable = true;
-            // 
-            // metroLabel6
-            // 
-            this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(2, 75);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(65, 19);
-            this.metroLabel6.TabIndex = 2;
-            this.metroLabel6.Text = "Cantidad:";
-            // 
-            // textbox_quantity
-            // 
-            // 
-            // 
-            // 
-            this.textbox_quantity.CustomButton.Image = null;
-            this.textbox_quantity.CustomButton.Location = new System.Drawing.Point(99, 1);
-            this.textbox_quantity.CustomButton.Name = "";
-            this.textbox_quantity.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.textbox_quantity.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.textbox_quantity.CustomButton.TabIndex = 1;
-            this.textbox_quantity.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.textbox_quantity.CustomButton.UseSelectable = true;
-            this.textbox_quantity.CustomButton.Visible = false;
-            this.textbox_quantity.Lines = new string[0];
-            this.textbox_quantity.Location = new System.Drawing.Point(74, 75);
-            this.textbox_quantity.MaxLength = 32767;
-            this.textbox_quantity.Name = "textbox_quantity";
-            this.textbox_quantity.PasswordChar = '\0';
-            this.textbox_quantity.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.textbox_quantity.SelectedText = "";
-            this.textbox_quantity.SelectionLength = 0;
-            this.textbox_quantity.SelectionStart = 0;
-            this.textbox_quantity.ShortcutsEnabled = true;
-            this.textbox_quantity.Size = new System.Drawing.Size(121, 23);
-            this.textbox_quantity.TabIndex = 3;
-            this.textbox_quantity.UseSelectable = true;
-            this.textbox_quantity.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.textbox_quantity.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // btn_mat_add
-            // 
-            this.btn_mat_add.Location = new System.Drawing.Point(7, 121);
-            this.btn_mat_add.Name = "btn_mat_add";
-            this.btn_mat_add.Size = new System.Drawing.Size(75, 23);
-            this.btn_mat_add.TabIndex = 4;
-            this.btn_mat_add.Text = "Agregar";
-            this.btn_mat_add.UseSelectable = true;
-            // 
-            // btn_mat_edit
-            // 
-            this.btn_mat_edit.Location = new System.Drawing.Point(88, 121);
-            this.btn_mat_edit.Name = "btn_mat_edit";
-            this.btn_mat_edit.Size = new System.Drawing.Size(75, 23);
-            this.btn_mat_edit.TabIndex = 5;
-            this.btn_mat_edit.Text = "Editar";
-            this.btn_mat_edit.UseSelectable = true;
-            // 
-            // btn_mat_delete
-            // 
-            this.btn_mat_delete.Location = new System.Drawing.Point(169, 121);
-            this.btn_mat_delete.Name = "btn_mat_delete";
-            this.btn_mat_delete.Size = new System.Drawing.Size(75, 23);
-            this.btn_mat_delete.TabIndex = 6;
-            this.btn_mat_delete.Text = "Eliminar";
-            this.btn_mat_delete.UseSelectable = true;
+            this.btn_new.Location = new System.Drawing.Point(39, 483);
+            this.btn_new.Name = "btn_new";
+            this.btn_new.Size = new System.Drawing.Size(75, 23);
+            this.btn_new.TabIndex = 10;
+            this.btn_new.Text = "Registrar";
+            this.btn_new.UseSelectable = true;
             // 
             // material_id
             // 
@@ -594,6 +549,7 @@
             // 
             this.operation.HeaderText = "Operation";
             this.operation.Name = "operation";
+            this.operation.Visible = false;
             // 
             // material_name
             // 
@@ -605,6 +561,28 @@
             this.quantity.HeaderText = "Cantidad";
             this.quantity.Name = "quantity";
             // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // index
+            // 
+            this.index.HeaderText = "Index";
+            this.index.Name = "index";
+            this.index.Visible = false;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            // 
+            // product
+            // 
+            this.product.HeaderText = "Producto";
+            this.product.Name = "product";
+            // 
             // UC_Recipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -615,16 +593,17 @@
             this.Controls.Add(this.btn_edit);
             this.Name = "UC_Recipe";
             this.Size = new System.Drawing.Size(840, 545);
+            this.Load += new System.EventHandler(this.UC_Recipe_Load);
             this.metroTabControl1.ResumeLayout(false);
             this.consulta.ResumeLayout(false);
             this.consulta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
             this.registro.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -639,13 +618,6 @@
         private MetroFramework.Controls.MetroTextBox textbox_name_s;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroGrid metroGrid1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn index;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stock_minimo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stock_maximo;
         private MetroFramework.Controls.MetroTabPage registro;
         private MetroFramework.Controls.MetroButton btn_cancel;
         private MetroFramework.Controls.MetroButton btn_edit;
@@ -671,5 +643,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn operation;
         private System.Windows.Forms.DataGridViewTextBoxColumn material_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn index;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn product;
     }
 }

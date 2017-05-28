@@ -12,7 +12,7 @@ namespace WindowsFormsApp1.Models
         int material_id;
         int quantity;
         char operation;
-        public RecipeDetail(int recipe_id,int material_id,int quantity)
+        public RecipeDetail(int recipe_id, int material_id, int quantity)
         {
             this.recipe_id = recipe_id;
             this.material_id = material_id;
