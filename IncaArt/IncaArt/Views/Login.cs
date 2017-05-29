@@ -29,19 +29,27 @@ namespace WindowsFormsApp1
 
         private void Btn_Login_Click(object sender, EventArgs e)
         {
-            //Result userResult = usersController.getUserByNickname(textBoxNickname.Text);
+            Result userResult = usersController.getUserByNickname(textBoxNickname.Text);
 
-            //if (userResult.success)
-            if (true)
+            if (userResult.success)
             {
-                //User user = (User)userResult.data;
-                Dashboard main_form = new Dashboard();
-                //MessageBox.Show("Bienvenido " + user.Name);
-                main_form.Show();
-                this.Hide();
-            } else
+                User user = (User)userResult.data;
+
+                if (user.isPassword(this.textBoxPassword.Text))
+                {
+                    Dashboard main_form = new Dashboard();
+                    MessageBox.Show("Bienvenido " + user.Name);
+                    main_form.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("La contraseña es incorrecta");
+                }
+            }
+            else
             {
-                //MessageBox.Show(userResult.message);
+                MessageBox.Show(userResult.message);
             }
         }
     }

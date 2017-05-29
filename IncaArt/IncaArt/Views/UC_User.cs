@@ -23,7 +23,7 @@ namespace WindowsFormsApp1.Views
         public UC_User()
         {
             InitializeComponent();
-            profile_list = new List<Profile>();
+            //profile_list = new List<Profile>();
 
         }
 
