@@ -97,5 +97,32 @@ namespace WindowsFormsApp1.Controller
 
             return new Result(null, result.success, result.message);
         }
+
+        public Result updateUser(User user)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", user.Id.ToString()));
+            parameters.Add(new Parameter("name", user.Name));
+            parameters.Add(new Parameter("middlename", user.Middlename));
+            parameters.Add(new Parameter("password", user.Password));
+            parameters.Add(new Parameter("lastname", user.Lastname));
+            parameters.Add(new Parameter("phone", user.Phone));
+            parameters.Add(new Parameter("email", user.Email));
+            parameters.Add(new Parameter("address", user.Address));
+            parameters.Add(new Parameter("gender", user.Gender.ToString()));
+            parameters.Add(new Parameter("profile", user.Profile.Id.ToString()));
+            parameters.Add(new Parameter("nickname", user.Nickname));
+            parameters.Add(new Parameter("status", user.State));
+
+            GenericResult result = execute_transaction("update_user", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+
+            return new Result(null, result.success, result.message);
+        }
+             
     }
 }
