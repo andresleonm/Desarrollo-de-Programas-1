@@ -70,7 +70,7 @@
             this.warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.txt_Status = new MetroFramework.Controls.MetroTextBox();
             this.panel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -110,7 +110,7 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.CausesValidation = false;
-            this.tabPage1.Controls.Add(this.metroTextBox1);
+            this.tabPage1.Controls.Add(this.txt_Status);
             this.tabPage1.Controls.Add(this.observation);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.txt_amount);
@@ -690,41 +690,41 @@
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
             // 
-            // metroTextBox1
+            // txt_Status
             // 
-            this.metroTextBox1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.txt_Status.BackColor = System.Drawing.SystemColors.ScrollBar;
             // 
             // 
             // 
-            this.metroTextBox1.CustomButton.BackColor = System.Drawing.SystemColors.Control;
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(117, 1);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.UseVisualStyleBackColor = false;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.Enabled = false;
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(108, 267);
-            this.metroTextBox1.MaxLength = 32767;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.ReadOnly = true;
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(145, 29);
-            this.metroTextBox1.TabIndex = 63;
-            this.metroTextBox1.UseCustomBackColor = true;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txt_Status.CustomButton.BackColor = System.Drawing.SystemColors.Control;
+            this.txt_Status.CustomButton.Image = null;
+            this.txt_Status.CustomButton.Location = new System.Drawing.Point(117, 1);
+            this.txt_Status.CustomButton.Name = "";
+            this.txt_Status.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_Status.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txt_Status.CustomButton.TabIndex = 1;
+            this.txt_Status.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txt_Status.CustomButton.UseSelectable = true;
+            this.txt_Status.CustomButton.UseVisualStyleBackColor = false;
+            this.txt_Status.CustomButton.Visible = false;
+            this.txt_Status.Enabled = false;
+            this.txt_Status.Lines = new string[0];
+            this.txt_Status.Location = new System.Drawing.Point(108, 267);
+            this.txt_Status.MaxLength = 32767;
+            this.txt_Status.Name = "txt_Status";
+            this.txt_Status.PasswordChar = '\0';
+            this.txt_Status.ReadOnly = true;
+            this.txt_Status.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_Status.SelectedText = "";
+            this.txt_Status.SelectionLength = 0;
+            this.txt_Status.SelectionStart = 0;
+            this.txt_Status.ShortcutsEnabled = true;
+            this.txt_Status.Size = new System.Drawing.Size(145, 29);
+            this.txt_Status.TabIndex = 63;
+            this.txt_Status.UseCustomBackColor = true;
+            this.txt_Status.UseSelectable = true;
+            this.txt_Status.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txt_Status.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // UC_SalesOrder
             // 
@@ -791,6 +791,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
+        private MetroFramework.Controls.MetroTextBox txt_Status;
     }
 }

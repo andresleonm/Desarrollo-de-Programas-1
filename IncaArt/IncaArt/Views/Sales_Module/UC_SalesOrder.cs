@@ -38,7 +38,7 @@ namespace WindowsFormsApp1.Views
             {
                 this.cbo_Currency.Items.Add(curr.Name);
             }
-            this.cbo_Currency.SelectedItem = this.cbo_Currency.Items[0];
+            //this.cbo_Currency.SelectedItem = this.cbo_Currency.Items[0];
         }
 
         private void btn_New_Click(object sender, EventArgs e)
@@ -49,11 +49,11 @@ namespace WindowsFormsApp1.Views
 
             if (salesOrderLine != null)
             {
-                String[] row = new String[];
+                String[] row = new String[5];
                 row[0] = salesOrderLine.Product.Name;
                 row[1] = salesOrderLine.Quantity.ToString();
                 row[2] = salesOrderLine.Unit_measure.Name;
-                row[3] = salesOrderLine.Warehouse.Name;
+                row[3] = salesOrderLine.Prod_warehouse.Name;
                 row[4] = salesOrderLine.Unit_price.ToString();
                 row[5] = Math.Round((salesOrderLine.Quantity * salesOrderLine.Unit_price),2).ToString();
                 this.grid_order_lines.Rows.Add(row);

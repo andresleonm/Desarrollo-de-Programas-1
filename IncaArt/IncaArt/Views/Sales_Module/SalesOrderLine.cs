@@ -69,7 +69,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(txt_Quantity.Text) || String.IsNullOrWhiteSpace(txt_DeliverQuan.Text) || String.IsNullOrWhiteSpace(cbo_Product.Text) || String.IsNullOrWhiteSpace(cbo_UnitMeasure.Text) || String.IsNullOrWhiteSpace(cbo_Warehouse.Text))
+            if (String.IsNullOrWhiteSpace(txt_Quantity.Text) || String.IsNullOrWhiteSpace(cbo_Product.Text) || String.IsNullOrWhiteSpace(cbo_UnitMeasure.Text) || String.IsNullOrWhiteSpace(cbo_Warehouse.Text))
             {
                 MessageBox.Show(this, "Debe completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -81,8 +81,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     line.Product = products.ElementAt(cbo_Product.SelectedIndex);                    
                     line.Quantity = int.Parse(this.txt_Quantity.Text);
                     line.Unit_measure = units.ElementAt(cbo_UnitMeasure.SelectedIndex);
+                    line.Prod_warehouse = prod_warehouses.ElementAt(cbo_Warehouse.SelectedIndex);
                     line.Unit_price = double.Parse(this.txt_UnitPrice.Text);
-                    //line.Warehouse = warehouses.ElementAt(cbo_Warehouse.SelectedIndex);
                     this.Close();
                 }
             }

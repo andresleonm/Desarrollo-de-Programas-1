@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Models
         private int quantity;            
         private double unit_price;
         private int delivery_quantity;
-        private Warehouse warehouse;
+        private ProductWarehouse prod_warehouse;
         private string status;
 
         public int Id
@@ -60,10 +60,10 @@ namespace WindowsFormsApp1.Models
             set { delivery_quantity = value; }
         }
 
-        public Warehouse Warehouse
+        public ProductWarehouse Prod_warehouse
         {
-            get { return warehouse; }
-            set { warehouse = value; }
+            get { return prod_warehouse; }
+            set { prod_warehouse = value; }
         }
 
         public string Status
@@ -73,7 +73,7 @@ namespace WindowsFormsApp1.Models
         }
 
 
-        public SalesOrderLine(int order_id, Product product, UnitOfMeasure unit_measure, int quantity, double price, int del_quantity, Warehouse warehouse, string status)
+        public SalesOrderLine(int order_id, Product product, UnitOfMeasure unit_measure, int quantity, double price, int del_quantity, ProductWarehouse prod_warehouse, string status)
         {
             this.order_id = order_id;
             this.Product = product;
@@ -81,19 +81,19 @@ namespace WindowsFormsApp1.Models
             this.Quantity = quantity;
             this.Unit_price = price;
             this.delivery_quantity = del_quantity;
-            this.warehouse = warehouse;
+            this.prod_warehouse = prod_warehouse;
             this.status = status;
         }
 
         // For gridview
-        public SalesOrderLine(Product product, UnitOfMeasure unit_measure, int quantity, double price, string status, int del_quantity, Warehouse warehouse)
+        public SalesOrderLine(Product product, UnitOfMeasure unit_measure, int quantity, double price, string status, int del_quantity, ProductWarehouse prod_warehouse)
         {
             this.Product = product;
             this.unit_measure = unit_measure;
             this.Quantity = quantity;
             this.Unit_price = price;
             this.delivery_quantity = del_quantity;
-            this.warehouse = warehouse;
+            this.prod_warehouse = prod_warehouse;
             this.status = status;
         }
 
