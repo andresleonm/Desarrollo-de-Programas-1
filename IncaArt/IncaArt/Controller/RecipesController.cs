@@ -145,7 +145,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("recipe_id", detail.Recipe_id.ToString()));
             parameters.Add(new Parameter("material_id", detail.Material_id.ToString()));
             parameters.Add(new Parameter("quantity", detail.Quantity.ToString()));
-            GenericResult result = execute_function("insert_recipe_detail", parameters);
+            GenericResult result = execute_transaction("insert_recipe_detail", parameters);
             if (result.success)
             {
                 return new Result(result.singleValue, true, "");
