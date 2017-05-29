@@ -9,6 +9,7 @@ namespace WindowsFormsApp1.Models
     class ProductionOrderWorkLine
     {
         private int order_Id;
+        private int id;
         private Worker worker;
         private Workstation workstation;
         private int quantity_required;

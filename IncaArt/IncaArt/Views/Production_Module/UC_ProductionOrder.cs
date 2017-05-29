@@ -12,6 +12,10 @@ namespace WindowsFormsApp1.Views
 {
     public partial class UC_ProductionOrder : UserControl
     {
+        private List<Models.ProductionOrderProductLine> productLines = new List<Models.ProductionOrderProductLine>();
+        private List<Models.ProductionOrderWorkLine> workLines = new List<Models.ProductionOrderWorkLine>();
+        private List<Models.ProductionOrderMaterialLine> materialLines = new List<Models.ProductionOrderMaterialLine>();
+
         public UC_ProductionOrder()
         {
             InitializeComponent();
@@ -34,29 +38,33 @@ namespace WindowsFormsApp1.Views
                 string description = metroTextBox_Description.Text;
                 string observations = metroTextBox_Observation.Text;
                 string status = "Created";
-                Models.ProductionOrder productionOrder = new Models.ProductionOrder(description,observations,begin,end,status);
-
-                List<Models.ProductionOrderProductLine> productLines = new List<Models.ProductionOrderProductLine>();
-                List<Models.ProductionOrderWorkLine> workLines = new List<Models.ProductionOrderWorkLine>();
+                Models.ProductionOrder productionOrder = new Models.ProductionOrder(description,observations,begin,end,status); 
 
             }
         }
 
         private void metroButton_AddProduct_Click(object sender, EventArgs e)
         {
-            Models.ProductionOrderProductLine line = new Models.ProductionOrderProductLine();
             ProductionOrderProductLine product_line = new ProductionOrderProductLine();
             product_line.Show();
+            if (product_line.IsRegistered)
+            {
+                productLines.Add(product_line.Line);
+            }
         }
 
         private void metroButton_AddMaterial_Click(object sender, EventArgs e)
         {
-
+            Models.ProductionOrderMaterialLine line = new Models.ProductionOrderMaterialLine();
+            Production_Module.ProductionOrderMaterialLine material_line = new Production_Module.ProductionOrderMaterialLine();
+            material_line.Show();
         }
 
         private void metroButton_AddWorker_Click(object sender, EventArgs e)
         {
-
+            Models.ProductionOrderWorkLine line = new Models.ProductionOrderWorkLine();
+            Production_Module.ProductionOrderWorkLine work_line = new Production_Module.ProductionOrderWorkLine();
+            work_line.Show();
         }
     }
 }

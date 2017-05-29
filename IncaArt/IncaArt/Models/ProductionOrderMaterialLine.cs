@@ -6,17 +6,20 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class ProductionOrderProductLine
+    class ProductionOrderMaterialLine
     {
         private int order_Id;
         private int id;
-        private Product product;
-        private int quantity;
-        private int produced_quantity;
+        private Material material;
+        private int quantity_required;
+        private int quantity_taken_real;
         private string status;
         private Recipe recipe;
-        private int quantity_warehouse;
-        private Warehouse warehouse;
+
+        public ProductionOrderMaterialLine()
+        {
+
+        }
 
         public int Order_Id
         {
@@ -44,45 +47,44 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public Product Product
+        public Material Material
         {
             get
             {
-                return product;
+                return material;
             }
 
             set
             {
-                product = value;
+                material = value;
             }
         }
 
-        public int Quantity
+        public int Quantity_required
         {
             get
             {
-                return quantity;
+                return quantity_required;
             }
 
             set
             {
-                quantity = value;
+                quantity_required = value;
             }
         }
 
-        public int Produced_quantity
+        public int Quantity_taken_real
         {
             get
             {
-                return Produced_quantity1;
+                return quantity_taken_real;
             }
 
             set
             {
-                Produced_quantity1 = value;
+                quantity_taken_real = value;
             }
         }
-
 
         public string Status
         {
@@ -94,19 +96,6 @@ namespace WindowsFormsApp1.Models
             set
             {
                 status = value;
-            }
-        }
-
-        public int Produced_quantity1
-        {
-            get
-            {
-                return produced_quantity;
-            }
-
-            set
-            {
-                produced_quantity = value;
             }
         }
 
@@ -122,37 +111,5 @@ namespace WindowsFormsApp1.Models
                 recipe = value;
             }
         }
-
-        public int Quantity_warehouse
-        {
-            get
-            {
-                return quantity_warehouse;
-            }
-
-            set
-            {
-                quantity_warehouse = value;
-            }
-        }
-
-        public Warehouse Warehouse
-        {
-            get
-            {
-                return warehouse;
-            }
-
-            set
-            {
-                warehouse = value;
-            }
-        }
-
-        public ProductionOrderProductLine()
-        {
-
-        }
-
     }
 }
