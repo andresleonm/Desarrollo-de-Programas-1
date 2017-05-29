@@ -24,11 +24,11 @@ namespace WindowsFormsApp1.Models
 
         public ProductMovementLine(SalesOrderLine line,int id)
         {
-            this.warehouse = line.Warehouse;
+            this.warehouse = line.Prod_warehouse;
             this.product = line.Product;
             this.unit = line.Unit_measure;
             this.id = id;
-            this.warehouseQuantity = line.Warehouse.Current_physical_stock;
+            this.warehouseQuantity = line.Prod_warehouse.Current_physical_stock;
             this.documentQuantity = line.Quantity - line.Delivery_quantity;
             this.State = "Active";
             this.idDocumentLine = line.Id;

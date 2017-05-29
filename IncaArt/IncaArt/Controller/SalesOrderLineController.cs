@@ -46,7 +46,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("state", line.Status));
             parameters.Add(new Parameter("deliver_quantity", line.Delivery_quantity.ToString()));
             parameters.Add(new Parameter("product_id", line.Product.Name.ToString()));
-            parameters.Add(new Parameter("warehouse_id", line.Warehouse.Id.ToString()));
+            parameters.Add(new Parameter("warehouse_id", line.Prod_warehouse.Id.ToString()));
             GenericResult result = execute_transaction("insert_sales_order_line", parameters);
             if (result.success)
             {
