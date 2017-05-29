@@ -184,8 +184,18 @@ namespace WindowsFormsApp1.Views
         {
             if (metroGrid1.Rows[cur_row].Cells[1].Value != null)
             {
-                int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
-                Models.Worker worker = worker_list[index];
+                int id = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
+                Models.Worker worker;
+                result = workerController.getWorker(id);
+                if (result.data == null)
+                {
+                    MessageBox.Show(result.message, "Error al buscar trabajador", MessageBoxButtons.OK);
+                    return;
+                }
+                else
+                {
+                    worker = (Models.Worker)result.data;
+                }
                 for (int i = 0; i < shift_list.Count(); i++)
                 {
                     if (shift_list[i].Description == metroGrid1.Rows[cur_row].Cells[6].Value.ToString())
@@ -213,6 +223,42 @@ namespace WindowsFormsApp1.Views
                 textbox_address.Text = worker.Address;
                 textbox_salary.Text = worker.Salary.ToString();
             }
+        }
+
+        //Editar
+        private void btn_edit_Click(object sender, EventArgs e)
+        {
+            Models.Worker worker = CreateWorker(1);
+            result = workerController.updateWorker(worker);
+            if (result.data == null)
+            {
+                MessageBox.Show(result.message, "Error al editar trabajador", MessageBoxButtons.OK);
+            }
+            else
+            {
+                int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+                worker_list[index] = worker;
+            }
+
+            Load_DataGridView();
+            Clean();
+            metroTabControl1.SelectedIndex = 0;
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+            result = workerController.deleteWorker(worker_list[index]);
+            if (result.data == null)
+            {
+                MessageBox.Show(result.message, "Error al eliminar trabajador", MessageBoxButtons.OK);
+            }
+            else
+            {
+                worker_list.Remove(worker_list[index]);
+            }
+            //btn_delete.Enabled = false;
+            Load_DataGridView();
         }
     }
 }
