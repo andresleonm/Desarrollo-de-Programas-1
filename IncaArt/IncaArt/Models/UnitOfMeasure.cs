@@ -76,5 +76,10 @@ namespace WindowsFormsApp1.Models
             this.symbol = symbol;
             this.name = name;
         }
+
+        public override string ToString()
+        {
+            return name;
+        }
     }
 }

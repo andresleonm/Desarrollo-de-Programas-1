@@ -9,13 +9,15 @@ namespace WindowsFormsApp1.Models
     public class ProductWarehouse
     {
         int id;
-        String name;
+        
         int product_id;
         int current_physical_stock;
+        int current_logical_stock;
         int max_capacity;
         int type_id;
         String state;
-        int current_logical_stock;
+        String name;
+
 
         public ProductWarehouse(int id, string name, int product_id, int current_physical_stock, int max_capacity, int type_id, string state, int current_logical_stock)
         {
@@ -131,6 +133,10 @@ namespace WindowsFormsApp1.Models
             {
                 current_logical_stock = value;
             }
+        }
+        public override string ToString()
+        {
+            return name;
         }
     }
 }

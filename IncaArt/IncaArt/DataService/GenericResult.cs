@@ -18,7 +18,7 @@ namespace WindowsFormsApp1.DataService
             this.data = data;
             this.success = success;
             this.message = message;
-            this.singleValue = "";
+            this.singleValue = singleValue;
         }
     }
 }

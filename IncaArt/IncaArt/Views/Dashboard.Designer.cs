@@ -34,6 +34,7 @@ namespace WindowsFormsApp1.Views
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_purchase = new System.Windows.Forms.Button();
@@ -61,7 +62,6 @@ namespace WindowsFormsApp1.Views
             this.uC_PurchasesMenu1 = new WindowsFormsApp1.Views.UC_PurchasesMenu();
             this.mainDashboard1 = new WindowsFormsApp1.Views.MainDashboard();
             this.user = new WindowsFormsApp1.Views.UC_User();
-            this.worker = new WindowsFormsApp1.Views.UC_Worker();
             this.profile = new WindowsFormsApp1.Views.UC_Profile();
             this.shift = new WindowsFormsApp1.Views.UC_Shift();
             this.product = new WindowsFormsApp1.Views.UC_Product2();
@@ -69,8 +69,10 @@ namespace WindowsFormsApp1.Views
             this.uc_material = new WindowsFormsApp1.Views.UC_Material();
             this.uc_product = new WindowsFormsApp1.Views.UC_Product();
             this.uc_recipe = new WindowsFormsApp1.Views.UC_Recipe();
+            this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -82,6 +84,7 @@ namespace WindowsFormsApp1.Views
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
             this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.pictureBox4);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -95,16 +98,31 @@ namespace WindowsFormsApp1.Views
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Minimize_Window_52px;
-            this.pictureBox2.Location = new System.Drawing.Point(909, 0);
+            this.pictureBox2.Location = new System.Drawing.Point(888, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(21, 27);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             this.pictureBox2.MouseEnter += new System.EventHandler(this.pictureBox_MouseHover);
             this.pictureBox2.MouseLeave += new System.EventHandler(this.pictureBox_MouseLeave);
             this.pictureBox2.MouseHover += new System.EventHandler(this.pictureBox_MouseHover);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox4.Image = global::WindowsFormsApp1.Properties.Resources.Maximize_Window_64px;
+            this.pictureBox4.Location = new System.Drawing.Point(909, 0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(21, 27);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 9;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            this.pictureBox4.MouseEnter += new System.EventHandler(this.pictureBox_MouseHover);
+            this.pictureBox4.MouseLeave += new System.EventHandler(this.pictureBox_MouseLeave);
+            this.pictureBox4.MouseHover += new System.EventHandler(this.pictureBox_MouseHover);
             // 
             // pictureBox1
             // 
@@ -418,14 +436,6 @@ namespace WindowsFormsApp1.Views
             this.user.TabIndex = 24;
             this.user.Visible = false;
             // 
-            // worker
-            // 
-            this.worker.Location = new System.Drawing.Point(132, 72);
-            this.worker.Name = "worker";
-            this.worker.Size = new System.Drawing.Size(1107, 462);
-            this.worker.TabIndex = 26;
-            this.worker.Visible = false;
-            // 
             // profile
             // 
             this.profile.Location = new System.Drawing.Point(132, 72);
@@ -481,6 +491,15 @@ namespace WindowsFormsApp1.Views
             this.uc_recipe.UseSelectable = true;
             this.uc_recipe.Visible = false;
             // 
+            // uc_worker
+            // 
+            this.uc_worker.Location = new System.Drawing.Point(132, 72);
+            this.uc_worker.Name = "uc_worker";
+            this.uc_worker.Size = new System.Drawing.Size(794, 527);
+            this.uc_worker.TabIndex = 41;
+            this.uc_worker.UseSelectable = true;
+            this.uc_worker.Visible = false;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -501,7 +520,6 @@ namespace WindowsFormsApp1.Views
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.user);
-            this.Controls.Add(this.worker);
             this.Controls.Add(this.profile);
             this.Controls.Add(this.shift);
             this.Controls.Add(this.product);
@@ -509,6 +527,7 @@ namespace WindowsFormsApp1.Views
             this.Controls.Add(this.uc_material);
             this.Controls.Add(this.uc_product);
             this.Controls.Add(this.uc_recipe);
+            this.Controls.Add(this.uc_worker);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
@@ -517,6 +536,7 @@ namespace WindowsFormsApp1.Views
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -529,7 +549,6 @@ namespace WindowsFormsApp1.Views
 
         #endregion
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_purchase;
@@ -555,7 +574,6 @@ namespace WindowsFormsApp1.Views
         private Workstation workstation1;
         private Parameters parameters1;
         private UC_User user;
-        private UC_Worker worker;
         private UC_Profile profile;
         private UC_Product2 product;
         private UC_Shift shift;
@@ -565,5 +583,8 @@ namespace WindowsFormsApp1.Views
         private UC_Material uc_material;
         private UC_Product uc_product;
         private UC_Recipe uc_recipe;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private UC_Worker uc_worker;
     }
 }

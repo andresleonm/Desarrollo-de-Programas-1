@@ -51,21 +51,25 @@
             this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stock_maximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registro = new MetroFramework.Controls.MetroTabPage();
+            this.gb_OrderLine = new System.Windows.Forms.GroupBox();
+            this.grid_movement_lines = new MetroFramework.Controls.MetroGrid();
+            this.movement_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.line_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Almacen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.documentQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDocumentLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date = new MetroFramework.Controls.MetroDateTime();
             this.btn_Clean = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.btn_Save = new System.Windows.Forms.Button();
             this.buttonAddRow = new System.Windows.Forms.Button();
-            this.gb_OrderLine = new System.Windows.Forms.GroupBox();
-            this.grid_movement_lines = new MetroFramework.Controls.MetroGrid();
-            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deliveryQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.documents_list = new MetroFramework.Controls.MetroComboBox();
             this.document_input = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.types_movements = new MetroFramework.Controls.MetroComboBox();
             this.textbox_observation = new MetroFramework.Controls.MetroTextBox();
@@ -103,9 +107,9 @@
             this.consulta.HorizontalScrollbarBarColor = true;
             this.consulta.HorizontalScrollbarHighlightOnWheel = false;
             this.consulta.HorizontalScrollbarSize = 10;
-            this.consulta.Location = new System.Drawing.Point(4, 35);
+            this.consulta.Location = new System.Drawing.Point(4, 38);
             this.consulta.Name = "consulta";
-            this.consulta.Size = new System.Drawing.Size(857, 411);
+            this.consulta.Size = new System.Drawing.Size(857, 408);
             this.consulta.TabIndex = 0;
             this.consulta.Text = "Consulta";
             this.consulta.VerticalScrollbarBarColor = true;
@@ -283,14 +287,14 @@
             // 
             // registro
             // 
+            this.registro.Controls.Add(this.gb_OrderLine);
+            this.registro.Controls.Add(this.date);
             this.registro.Controls.Add(this.btn_Clean);
             this.registro.Controls.Add(this.btn_Cancel);
             this.registro.Controls.Add(this.btn_Save);
             this.registro.Controls.Add(this.buttonAddRow);
-            this.registro.Controls.Add(this.gb_OrderLine);
             this.registro.Controls.Add(this.documents_list);
             this.registro.Controls.Add(this.document_input);
-            this.registro.Controls.Add(this.metroTextBox1);
             this.registro.Controls.Add(this.metroLabel3);
             this.registro.Controls.Add(this.types_movements);
             this.registro.Controls.Add(this.textbox_observation);
@@ -307,6 +311,162 @@
             this.registro.VerticalScrollbarBarColor = true;
             this.registro.VerticalScrollbarHighlightOnWheel = false;
             this.registro.VerticalScrollbarSize = 10;
+            // 
+            // gb_OrderLine
+            // 
+            this.gb_OrderLine.BackColor = System.Drawing.Color.White;
+            this.gb_OrderLine.Controls.Add(this.grid_movement_lines);
+            this.gb_OrderLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb_OrderLine.ForeColor = System.Drawing.Color.Black;
+            this.gb_OrderLine.Location = new System.Drawing.Point(19, 160);
+            this.gb_OrderLine.Name = "gb_OrderLine";
+            this.gb_OrderLine.Size = new System.Drawing.Size(791, 189);
+            this.gb_OrderLine.TabIndex = 64;
+            this.gb_OrderLine.TabStop = false;
+            this.gb_OrderLine.Text = "Detalle del Movimiento";
+            this.gb_OrderLine.Enter += new System.EventHandler(this.gb_OrderLine_Enter);
+            // 
+            // grid_movement_lines
+            // 
+            this.grid_movement_lines.AllowUserToResizeRows = false;
+            this.grid_movement_lines.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.grid_movement_lines.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.grid_movement_lines.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.grid_movement_lines.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_movement_lines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.grid_movement_lines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid_movement_lines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.movement_id,
+            this.line_id,
+            this.product,
+            this.unit,
+            this.Almacen,
+            this.stock,
+            this.documentQuantity,
+            this.Cantidad,
+            this.state,
+            this.idDocumentLine});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid_movement_lines.DefaultCellStyle = dataGridViewCellStyle5;
+            this.grid_movement_lines.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid_movement_lines.EnableHeadersVisualStyles = false;
+            this.grid_movement_lines.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.grid_movement_lines.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.grid_movement_lines.Location = new System.Drawing.Point(3, 16);
+            this.grid_movement_lines.Name = "grid_movement_lines";
+            this.grid_movement_lines.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_movement_lines.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.grid_movement_lines.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.grid_movement_lines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grid_movement_lines.Size = new System.Drawing.Size(785, 170);
+            this.grid_movement_lines.TabIndex = 50;
+            this.grid_movement_lines.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_order_lines_CellContentClick);
+            // 
+            // movement_id
+            // 
+            this.movement_id.DataPropertyName = "movementId";
+            this.movement_id.HeaderText = "movement_id";
+            this.movement_id.Name = "movement_id";
+            this.movement_id.Visible = false;
+            // 
+            // line_id
+            // 
+            this.line_id.DataPropertyName = "id";
+            this.line_id.HeaderText = "line_id";
+            this.line_id.Name = "line_id";
+            this.line_id.Visible = false;
+            // 
+            // product
+            // 
+            this.product.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.product.DataPropertyName = "product";
+            this.product.HeaderText = "Producto";
+            this.product.Name = "product";
+            this.product.ReadOnly = true;
+            // 
+            // unit
+            // 
+            this.unit.DataPropertyName = "unit";
+            this.unit.HeaderText = "Unidad de Medida";
+            this.unit.Name = "unit";
+            this.unit.ReadOnly = true;
+            // 
+            // Almacen
+            // 
+            this.Almacen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Almacen.DataPropertyName = "warehouse";
+            this.Almacen.HeaderText = "Almacen";
+            this.Almacen.Name = "Almacen";
+            this.Almacen.ReadOnly = true;
+            // 
+            // stock
+            // 
+            this.stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.stock.DataPropertyName = "warehouseQuantity";
+            this.stock.HeaderText = "Stock";
+            this.stock.Name = "stock";
+            this.stock.ReadOnly = true;
+            // 
+            // documentQuantity
+            // 
+            this.documentQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.documentQuantity.DataPropertyName = "documentQuantity";
+            this.documentQuantity.HeaderText = "Cantidad Documento";
+            this.documentQuantity.Name = "documentQuantity";
+            this.documentQuantity.ReadOnly = true;
+            this.documentQuantity.Visible = false;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Cantidad.DataPropertyName = "quantity";
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            // 
+            // state
+            // 
+            this.state.DataPropertyName = "state";
+            this.state.HeaderText = "Estado";
+            this.state.Name = "state";
+            this.state.Visible = false;
+            // 
+            // idDocumentLine
+            // 
+            this.idDocumentLine.DataPropertyName = "idDocumentLine";
+            this.idDocumentLine.HeaderText = "document_line";
+            this.idDocumentLine.Name = "idDocumentLine";
+            this.idDocumentLine.Visible = false;
+            // 
+            // date
+            // 
+            this.date.CustomFormat = "DD/MM/YYYY";
+            this.date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.date.Location = new System.Drawing.Point(598, 64);
+            this.date.MinimumSize = new System.Drawing.Size(0, 29);
+            this.date.Name = "date";
+            this.date.Size = new System.Drawing.Size(208, 29);
+            this.date.TabIndex = 63;
+            this.date.Value = new System.DateTime(2017, 5, 29, 6, 10, 20, 0);
             // 
             // btn_Clean
             // 
@@ -343,123 +503,20 @@
             this.btn_Save.TabIndex = 60;
             this.btn_Save.Text = "Guardar";
             this.btn_Save.UseVisualStyleBackColor = false;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // buttonAddRow
             // 
             this.buttonAddRow.BackColor = System.Drawing.Color.DarkCyan;
             this.buttonAddRow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddRow.ForeColor = System.Drawing.Color.White;
-            this.buttonAddRow.Location = new System.Drawing.Point(739, 115);
+            this.buttonAddRow.Location = new System.Drawing.Point(724, 129);
             this.buttonAddRow.Name = "buttonAddRow";
             this.buttonAddRow.Size = new System.Drawing.Size(82, 25);
             this.buttonAddRow.TabIndex = 47;
             this.buttonAddRow.Text = "Nueva";
             this.buttonAddRow.UseVisualStyleBackColor = false;
-            // 
-            // gb_OrderLine
-            // 
-            this.gb_OrderLine.BackColor = System.Drawing.Color.White;
-            this.gb_OrderLine.Controls.Add(this.grid_movement_lines);
-            this.gb_OrderLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gb_OrderLine.ForeColor = System.Drawing.Color.Black;
-            this.gb_OrderLine.Location = new System.Drawing.Point(33, 146);
-            this.gb_OrderLine.Name = "gb_OrderLine";
-            this.gb_OrderLine.Size = new System.Drawing.Size(791, 211);
-            this.gb_OrderLine.TabIndex = 46;
-            this.gb_OrderLine.TabStop = false;
-            this.gb_OrderLine.Text = "Detalle del Movimiento";
-            // 
-            // grid_movement_lines
-            // 
-            this.grid_movement_lines.AllowUserToResizeRows = false;
-            this.grid_movement_lines.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.grid_movement_lines.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.grid_movement_lines.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.grid_movement_lines.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_movement_lines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.grid_movement_lines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid_movement_lines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.unitPrice,
-            this.product,
-            this.unitMeasure,
-            this.warehouse,
-            this.quantity,
-            this.deliveryQuantity});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid_movement_lines.DefaultCellStyle = dataGridViewCellStyle5;
-            this.grid_movement_lines.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid_movement_lines.EnableHeadersVisualStyles = false;
-            this.grid_movement_lines.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.grid_movement_lines.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.grid_movement_lines.Location = new System.Drawing.Point(3, 16);
-            this.grid_movement_lines.Name = "grid_movement_lines";
-            this.grid_movement_lines.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_movement_lines.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.grid_movement_lines.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.grid_movement_lines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_movement_lines.Size = new System.Drawing.Size(785, 192);
-            this.grid_movement_lines.TabIndex = 50;
-            // 
-            // unitPrice
-            // 
-            this.unitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unitPrice.HeaderText = "id";
-            this.unitPrice.Name = "unitPrice";
-            this.unitPrice.ReadOnly = true;
-            this.unitPrice.Visible = false;
-            // 
-            // product
-            // 
-            this.product.HeaderText = "Producto";
-            this.product.Name = "product";
-            this.product.ReadOnly = true;
-            // 
-            // unitMeasure
-            // 
-            this.unitMeasure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unitMeasure.HeaderText = "Unidad de Medida";
-            this.unitMeasure.Name = "unitMeasure";
-            this.unitMeasure.ReadOnly = true;
-            // 
-            // warehouse
-            // 
-            this.warehouse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.warehouse.HeaderText = "Almacén";
-            this.warehouse.Name = "warehouse";
-            this.warehouse.ReadOnly = true;
-            // 
-            // quantity
-            // 
-            this.quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.quantity.HeaderText = "Cantidad Documento";
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
-            this.quantity.Visible = false;
-            // 
-            // deliveryQuantity
-            // 
-            this.deliveryQuantity.HeaderText = "Cantidad";
-            this.deliveryQuantity.Name = "deliveryQuantity";
+            this.buttonAddRow.Click += new System.EventHandler(this.buttonAddRow_Click);
             // 
             // documents_list
             // 
@@ -467,10 +524,11 @@
             this.documents_list.ItemHeight = 23;
             this.documents_list.Location = new System.Drawing.Point(598, 24);
             this.documents_list.Name = "documents_list";
-            this.documents_list.Size = new System.Drawing.Size(166, 29);
+            this.documents_list.Size = new System.Drawing.Size(245, 29);
             this.documents_list.TabIndex = 17;
             this.documents_list.UseSelectable = true;
             this.documents_list.Visible = false;
+            this.documents_list.SelectedIndexChanged += new System.EventHandler(this.documents_list_SelectedIndexChanged);
             // 
             // document_input
             // 
@@ -481,36 +539,6 @@
             this.document_input.TabIndex = 15;
             this.document_input.Text = "Documento";
             this.document_input.Visible = false;
-            // 
-            // metroTextBox1
-            // 
-            // 
-            // 
-            // 
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(99, 1);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(598, 60);
-            this.metroTextBox1.MaxLength = 32767;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(121, 23);
-            this.metroTextBox1.TabIndex = 14;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel3
             // 
@@ -561,6 +589,7 @@
             this.textbox_observation.UseSelectable = true;
             this.textbox_observation.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_observation.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textbox_observation.Click += new System.EventHandler(this.textbox_observation_Click);
             // 
             // metroLabel6
             // 
@@ -623,21 +652,25 @@
         private System.Windows.Forms.Button btn_Cancel;
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.Button buttonAddRow;
-        private System.Windows.Forms.GroupBox gb_OrderLine;
-        private MetroFramework.Controls.MetroGrid grid_movement_lines;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn product;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitMeasure;
-        private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deliveryQuantity;
         private MetroFramework.Controls.MetroComboBox documents_list;
         private MetroFramework.Controls.MetroLabel document_input;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroComboBox types_movements;
         private MetroFramework.Controls.MetroTextBox textbox_observation;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroDateTime date;
+        private System.Windows.Forms.GroupBox gb_OrderLine;
+        private MetroFramework.Controls.MetroGrid grid_movement_lines;
+        private System.Windows.Forms.DataGridViewTextBoxColumn movement_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn line_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn product;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Almacen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn documentQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn state;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDocumentLine;
     }
 }

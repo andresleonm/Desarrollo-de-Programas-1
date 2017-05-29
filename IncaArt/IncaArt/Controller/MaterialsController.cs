@@ -43,7 +43,7 @@ namespace WindowsFormsApp1.Controller
             if (result.success)
             {
                 var r = result.data[0];
-                Models.Material material = new Models.Material(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), r.getColumn(2), Int32.Parse(r.getColumn(4)), Int32.Parse(r.getColumn(5)));
+                Models.Material material = new Models.Material(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), r.getColumn(2), Int32.Parse(r.getColumn(3)), Int32.Parse(r.getColumn(4)));
                 return new Result(material, true, "");
             }
             return new Result(null, result.success, result.message);

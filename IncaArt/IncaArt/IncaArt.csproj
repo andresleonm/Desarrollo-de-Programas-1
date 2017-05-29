@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\CurrencyController.cs" />
     <Compile Include="Controller\CustomerController.cs" />
     <Compile Include="Controller\MaterialsController.cs" />
     <Compile Include="Controller\MaterialTypeWarehouseController.cs" />
@@ -78,6 +79,8 @@
     <Compile Include="Models\ProductMovementLine.cs" />
     <Compile Include="Models\ProductMovementType.cs" />
     <Compile Include="Models\MaterialMovementType.cs" />
+    <Compile Include="Controller\ShiftsController.cs" />
+    <Compile Include="Controller\WorkerController.cs" />
     <Compile Include="Models\ProductWarehouse.cs" />
     <Compile Include="Controller\ProductWarehouseController.cs" />
     <Compile Include="Controller\RecipesController.cs" />
@@ -106,6 +109,7 @@
     <Compile Include="Models\ProductTypeWarehouse.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipeDetail.cs" />
+    <Compile Include="Models\Shift.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\Material.cs" />
@@ -306,6 +310,7 @@
     <Compile Include="Views\Warehouse_Module\ProductMovementLine.Designer.cs">
       <DependentUpon>ProductMovementLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Warehouse_Module\ProductWarehouseM.cs" />
     <Compile Include="Views\Warehouse_Module\UC_WarehouseMovement.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -341,6 +346,12 @@
     </Compile>
     <Compile Include="Views\Production_Module\UC_ProductionOrderSearch.Designer.cs">
       <DependentUpon>UC_ProductionOrderSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_Worker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_Worker.Designer.cs">
+      <DependentUpon>UC_Worker.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Warehouse.cs">
       <SubType>UserControl</SubType>
@@ -391,12 +402,6 @@
     </Compile>
     <Compile Include="Views\Purchase_Module\PurchaseOrderLine.Designer.cs">
       <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UC_Worker.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\UC_Worker.Designer.cs">
-      <DependentUpon>UC_Worker.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Workstation.cs">
       <SubType>UserControl</SubType>
@@ -467,6 +472,9 @@
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesOrderList.resx">
       <DependentUpon>UC_SalesOrderList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Recipe.resx">
+      <DependentUpon>UC_Recipe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Shift.resx">
       <DependentUpon>UC_Shift.cs</DependentUpon>
     </EmbeddedResource>
@@ -512,6 +520,9 @@
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderSearch.resx">
       <DependentUpon>UC_ProductionOrderSearch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Worker.resx">
+      <DependentUpon>UC_Worker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse.resx">
       <DependentUpon>Warehouse.cs</DependentUpon>
     </EmbeddedResource>
@@ -535,9 +546,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrderLine.resx">
       <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_Worker.resx">
-      <DependentUpon>UC_Worker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Workstation.resx">
       <DependentUpon>Workstation.cs</DependentUpon>
@@ -564,6 +572,7 @@
     <None Include="Resources\Close Window_52px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Maximize Window_64px.png" />
     <None Include="Resources\Search_16.png" />
     <None Include="Resources\Cash Register_40px.png" />
     <None Include="Resources\Undo_40px.png" />

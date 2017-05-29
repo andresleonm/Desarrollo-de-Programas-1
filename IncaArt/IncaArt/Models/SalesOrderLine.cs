@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Models
         private int quantity;            
         private double unit_price;
         private int delivery_quantity;
-        private Warehouse warehouse;
+        private ProductWarehouse warehouse;
         private string status;
 
         public int Id
@@ -60,7 +60,7 @@ namespace WindowsFormsApp1.Models
             set { delivery_quantity = value; }
         }
 
-        public Warehouse Warehouse
+        public ProductWarehouse Warehouse
         {
             get { return warehouse; }
             set { warehouse = value; }
@@ -73,7 +73,7 @@ namespace WindowsFormsApp1.Models
         }
 
 
-        public SalesOrderLine(int order_id, Product product, UnitOfMeasure unit_measure, int quantity, double price, int del_quantity, Warehouse warehouse, string status)
+        public SalesOrderLine(int order_id, Product product, UnitOfMeasure unit_measure, int quantity, double price, int del_quantity, ProductWarehouse warehouse, string status)
         {
             this.order_id = order_id;
             this.Product = product;
@@ -86,7 +86,7 @@ namespace WindowsFormsApp1.Models
         }
 
         // For gridview
-        public SalesOrderLine(Product product, UnitOfMeasure unit_measure, int quantity, double price, string status, int del_quantity, Warehouse warehouse)
+        public SalesOrderLine(Product product, UnitOfMeasure unit_measure, int quantity, double price, string status, int del_quantity, ProductWarehouse warehouse)
         {
             this.Product = product;
             this.unit_measure = unit_measure;

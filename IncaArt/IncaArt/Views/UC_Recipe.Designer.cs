@@ -42,6 +42,10 @@
             this.textbox_name_s = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registro = new MetroFramework.Controls.MetroTabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textbox_name = new MetroFramework.Controls.MetroTextBox();
@@ -62,15 +66,12 @@
             this.btn_cancel = new MetroFramework.Controls.MetroButton();
             this.btn_edit = new MetroFramework.Controls.MetroButton();
             this.btn_new = new MetroFramework.Controls.MetroButton();
-            this.material_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recipe_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.material_row = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.material_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
@@ -86,7 +87,7 @@
             this.metroTabControl1.Controls.Add(this.registro);
             this.metroTabControl1.Location = new System.Drawing.Point(24, 27);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(721, 450);
             this.metroTabControl1.TabIndex = 2;
             this.metroTabControl1.UseSelectable = true;
@@ -119,6 +120,7 @@
             this.btn_delete.TabIndex = 13;
             this.btn_delete.Text = "Eliminar";
             this.btn_delete.UseSelectable = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_clean_s
             // 
@@ -128,6 +130,7 @@
             this.btn_clean_s.TabIndex = 12;
             this.btn_clean_s.Text = "Limpiar";
             this.btn_clean_s.UseSelectable = true;
+            this.btn_clean_s.Click += new System.EventHandler(this.btn_clean_s_Click);
             // 
             // btn_search
             // 
@@ -224,6 +227,30 @@
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid1.Size = new System.Drawing.Size(288, 178);
             this.metroGrid1.TabIndex = 2;
+            this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
+            this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
+            // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // index
+            // 
+            this.index.HeaderText = "Index";
+            this.index.Name = "index";
+            this.index.Visible = false;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            // 
+            // product
+            // 
+            this.product.HeaderText = "Producto";
+            this.product.Name = "product";
             // 
             // registro
             // 
@@ -253,7 +280,7 @@
             this.groupBox2.Controls.Add(this.metroLabel3);
             this.groupBox2.Location = new System.Drawing.Point(11, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(691, 215);
+            this.groupBox2.Size = new System.Drawing.Size(702, 215);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos de Receta";
@@ -365,7 +392,7 @@
             this.groupBox1.Controls.Add(this.metroLabel6);
             this.groupBox1.Controls.Add(this.combobox_material);
             this.groupBox1.Controls.Add(this.metroLabel4);
-            this.groupBox1.Location = new System.Drawing.Point(310, 242);
+            this.groupBox1.Location = new System.Drawing.Point(368, 242);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(392, 150);
             this.groupBox1.TabIndex = 18;
@@ -380,6 +407,7 @@
             this.btn_mat_delete.TabIndex = 6;
             this.btn_mat_delete.Text = "Eliminar";
             this.btn_mat_delete.UseSelectable = true;
+            this.btn_mat_delete.Click += new System.EventHandler(this.btn_mat_delete_Click);
             // 
             // btn_mat_edit
             // 
@@ -389,6 +417,7 @@
             this.btn_mat_edit.TabIndex = 5;
             this.btn_mat_edit.Text = "Editar";
             this.btn_mat_edit.UseSelectable = true;
+            this.btn_mat_edit.Click += new System.EventHandler(this.btn_mat_edit_Click);
             // 
             // btn_mat_add
             // 
@@ -398,6 +427,7 @@
             this.btn_mat_add.TabIndex = 4;
             this.btn_mat_add.Text = "Agregar";
             this.btn_mat_add.UseSelectable = true;
+            this.btn_mat_add.Click += new System.EventHandler(this.btn_mat_add_Click);
             // 
             // textbox_quantity
             // 
@@ -474,10 +504,11 @@
             this.metroGrid2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.metroGrid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.metroGrid2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.material_id,
+            this.recipe_id,
             this.material_row,
             this.operation,
             this.material_name,
+            this.unit,
             this.quantity});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -503,8 +534,10 @@
             this.metroGrid2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.metroGrid2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid2.Size = new System.Drawing.Size(262, 150);
+            this.metroGrid2.Size = new System.Drawing.Size(351, 150);
             this.metroGrid2.TabIndex = 17;
+            this.metroGrid2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellClick);
+            this.metroGrid2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellDoubleClick);
             // 
             // btn_cancel
             // 
@@ -514,6 +547,7 @@
             this.btn_cancel.TabIndex = 12;
             this.btn_cancel.Text = "Cancelar";
             this.btn_cancel.UseSelectable = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // btn_edit
             // 
@@ -523,6 +557,7 @@
             this.btn_edit.TabIndex = 11;
             this.btn_edit.Text = "Editar";
             this.btn_edit.UseSelectable = true;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
             // btn_new
             // 
@@ -532,12 +567,13 @@
             this.btn_new.TabIndex = 10;
             this.btn_new.Text = "Registrar";
             this.btn_new.UseSelectable = true;
+            this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
             // 
-            // material_id
+            // recipe_id
             // 
-            this.material_id.HeaderText = "ID";
-            this.material_id.Name = "material_id";
-            this.material_id.Visible = false;
+            this.recipe_id.HeaderText = "ID";
+            this.recipe_id.Name = "recipe_id";
+            this.recipe_id.Visible = false;
             // 
             // material_row
             // 
@@ -550,38 +586,22 @@
             this.operation.HeaderText = "Operation";
             this.operation.Name = "operation";
             this.operation.Visible = false;
+            this.operation.Width = 75;
             // 
             // material_name
             // 
             this.material_name.HeaderText = "Material";
             this.material_name.Name = "material_name";
             // 
+            // unit
+            // 
+            this.unit.HeaderText = "Unidad";
+            this.unit.Name = "unit";
+            // 
             // quantity
             // 
             this.quantity.HeaderText = "Cantidad";
             this.quantity.Name = "quantity";
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // index
-            // 
-            this.index.HeaderText = "Index";
-            this.index.Name = "index";
-            this.index.Visible = false;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            // 
-            // product
-            // 
-            this.product.HeaderText = "Producto";
-            this.product.Name = "product";
             // 
             // UC_Recipe
             // 
@@ -638,14 +658,15 @@
         private MetroFramework.Controls.MetroButton btn_mat_delete;
         private MetroFramework.Controls.MetroButton btn_mat_edit;
         private MetroFramework.Controls.MetroButton btn_mat_add;
-        private System.Windows.Forms.DataGridViewTextBoxColumn material_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn material_row;
-        private System.Windows.Forms.DataGridViewTextBoxColumn operation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn material_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn index;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn product;
+        private System.Windows.Forms.DataGridViewTextBoxColumn recipe_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn material_row;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn material_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
     }
 }

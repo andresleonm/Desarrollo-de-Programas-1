@@ -36,16 +36,19 @@ namespace WindowsFormsApp1.Controller
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("id", id.ToString()));
-            GenericResult result = execute_function("get_user", parameters);
+            GenericResult result = execute_function("get_sales_order", parameters);
             if (result.success)
             {
                 var r = result.data[0];
-                //SalesOrder sales_order = new SalesOrder(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
-                //                                        Int32.Parse(r.getColumn(2)), r.getColumn(3), r.getColumn(4),
-                //                                        r.getColumn(5), Double.Parse(r.getColumn(6)), r.getColumn(7),
-                //                                        r.getColumn(8), DateTime.Parse(r.getColumn(9)), r.getColumn(10),
-                //                                        r.getColumn(11));
-                //return new Result(sales_order, true, "");
+                SalesOrderLineController solc = new SalesOrderLineController(user, password);
+                var detail= (List<SalesOrderLine>)solc.getSalesOrderLines(Int32.Parse(r.getColumn(0))).data;
+            
+                SalesOrder sales_order = new SalesOrder(Int32.Parse(r.getColumn(0)),null,
+                                                        null, r.getColumn(3), r.getColumn(4),
+                                                        r.getColumn(5), r.getColumn(6), r.getColumn(7),
+                                                         DateTime.Parse(r.getColumn(8)), DateTime.Parse(r.getColumn(9)),Double.Parse(r.getColumn(10)),
+                                                        r.getColumn(11),detail);
+                return new Result(sales_order, true, "");
             }
             return new Result(null, result.success, result.message);
         }

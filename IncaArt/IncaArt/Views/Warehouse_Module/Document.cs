@@ -10,11 +10,13 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
     {
         public string name { get; set; }
         public string id { get; set; }
-        
-        public Document(string name,string id)
+        public string tipo { get; set; }
+
+        public Document(string name,string id,string tipo)
         {
             this.name=name;
             this.id = id;
+            this.tipo = tipo;
 
         }
     }

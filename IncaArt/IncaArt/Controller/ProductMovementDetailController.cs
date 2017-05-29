@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WindowsFormsApp1.DataService;
 using WindowsFormsApp1.Models;
+using WindowsFormsApp1.Views.Warehouse_Module;
 
 namespace WindowsFormsApp1.Controller
 {
@@ -14,44 +15,48 @@ namespace WindowsFormsApp1.Controller
 
         }
 
-        public Result getPurchaseOrderLines(int id)
+        public Result getWarehouses(int id)
         {
+           
+            //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
-            parameters.Add(new Parameter("order_id", id.ToString()));
-            GenericResult result = execute_function("get_purchase_order_lines", parameters);
-            List<PurchaseOrderLine> lines = new List<PurchaseOrderLine>();
+            parameters.Add(new Parameter("id", id.ToString()));
+            GenericResult result = execute_function("get_productwarehouse_byproduct", parameters);
+            List<ProductWarehouseM> productWarehouses = new List<ProductWarehouseM>();
             if (result.success)
             {
-                foreach(Row r in result.data)
+                foreach (Row r in result.data)
                 {
-                    lines.Add(new PurchaseOrderLine(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2)), int.Parse(r.getColumn(3)),
-                              double.Parse(r.getColumn(4)), DateTime.Parse(r.getColumn(5)), r.getColumn(6), Int32.Parse(r.getColumn(7)), Int32.Parse(r.getColumn(8)),
-                              Int32.Parse(r.getColumn(9))));
-                }
 
-                return new Result(lines, true, "");
+                    productWarehouses.Add(new ProductWarehouseM(Int32.Parse(r.getColumn(0)), r.getColumn(1), Int32.Parse(r.getColumn(2)), Int32.Parse(r.getColumn(3)), Int32.Parse(r.getColumn(4)),
+                        Int32.Parse(r.getColumn(5)), r.getColumn(6), Int32.Parse(r.getColumn(7)), r.getColumn(8), r.getColumn(9), Int32.Parse(r.getColumn(10))));
+                }
+                return new Result(productWarehouses, true, "");
             }
             return new Result(null, result.success, result.message);
         }
 
-        public Result insertPurchaseOrderLine(PurchaseOrderLine line)
+        public Result insertLine(Models.ProductMovementLine line)
         {
             List<Parameter> parameters = new List<Parameter>();
-            parameters.Add(new Parameter("purchase_order_id", line.Purchase_order.ToString()));
-            parameters.Add(new Parameter("unit_of_measure_id", line.Unit_of_measure.ToString()));
-            parameters.Add(new Parameter("quantity", line.Price.ToString()));
-            parameters.Add(new Parameter("price", line.Price.ToString()));
-            parameters.Add(new Parameter("scheluded_date", line.Scheluded_date.ToString()));
-            parameters.Add(new Parameter("state", line.State));
-            parameters.Add(new Parameter("deliver_quantity", line.Deliver_quantity.ToString()));
-            parameters.Add(new Parameter("material_id", line.Material.ToString()));
-            parameters.Add(new Parameter("warehouse_id", line.Warehouse.ToString()));
-            GenericResult result = execute_transaction("inser_purchase_order_line", parameters);
+            parameters.Add(new Parameter("movementid", line.movementId.ToString()));
+            parameters.Add(new Parameter("id", line.id.ToString()));
+            parameters.Add(new Parameter("product", line.product.Id.ToString()));
+            parameters.Add(new Parameter("warehouse", line.warehouse.Id.ToString()));
+            parameters.Add(new Parameter("quantity", line.quantity.ToString()));
+            parameters.Add(new Parameter("unit", line.unit.Id.ToString()));
+            parameters.Add(new Parameter("documentquantity", line.documentQuantity.ToString()));
+            parameters.Add(new Parameter("id_document_line", line.idDocumentLine.ToString()));
+
+            GenericResult result = execute_transaction("insert_movement_line", parameters);
+
             if (result.success)
             {
                 return new Result(result.singleValue, true, "");
             }
             return new Result(null, result.success, result.message);
         }
+
+
     }
 }

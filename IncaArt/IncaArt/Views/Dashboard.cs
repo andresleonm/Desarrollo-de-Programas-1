@@ -178,7 +178,7 @@ namespace WindowsFormsApp1.Views
         private void btn_worker_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            worker.Visible = true;
+            uc_worker.Visible = true;
         }
 
         private void btn_material_Click(object sender, EventArgs e)
@@ -219,13 +219,16 @@ namespace WindowsFormsApp1.Views
                 uc.Visible = false;
             }
         }
-
        
-
         private void btn_warehouse_Click_2(object sender, EventArgs e)
         {
             hide_UserControls();
             uc_warehousemovement.Visible = true;
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }

@@ -11,8 +11,8 @@ namespace WindowsFormsApp1.DataService
     public class DatabaseService
     {
         string conn_string = "Server=dp1test.c4d2tgrzz55h.us-west-2.rds.amazonaws.com;Port=5432;Database=dp1db;User Id=dp1admin;Password=dp1admin;";
-        string user;
-        string password;
+        public string user;
+        public string password;
 
         public DatabaseService(string user,string password)
         {
