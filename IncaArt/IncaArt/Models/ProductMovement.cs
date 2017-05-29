@@ -8,12 +8,22 @@ namespace WindowsFormsApp1.Models
 {
     public class ProductMovement
     {
-        String Almacen { get; set; }
-        String Tipo { get; set; }
-        String Producto { get; set; }
-        String Cantidad { get; set; }
-        String Unidad { get; set; }
+        int id { get; set; }
+        ProductMovementType Tipo { get; set; }
+        String Observacion { get; set; }
         String Fecha { get; set; }
+
+        String TipoDocumentoOrigen { get; set; }
+
+        String NroDocumentoOrigen { get; set; }
+
+        String TipoDocumentoFin { get; set; }
+
+        String NroDocumentoFin { get; set; }
+
+        String State { get; set; }
+
+        List<ProductMovementLine> detail { get; set; }
 
         
     }

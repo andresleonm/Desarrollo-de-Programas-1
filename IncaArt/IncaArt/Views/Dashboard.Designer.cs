@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsApp1.Views
+﻿using WindowsFormsApp1.Views.Warehouse_Module;
+
+namespace WindowsFormsApp1.Views
 {
     partial class Dashboard
     {
@@ -49,7 +51,7 @@
             this.label_user_name = new MetroFramework.Controls.MetroLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.uC_SalesMain1 = new WindowsFormsApp1.Views.UC_SalesMain();
-            this.uc_warehousemovement = new WindowsFormsApp1.Views.UC_WarehouseMovement();
+            this.uc_warehousemovement = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement(userName,password);
             this.parameters1 = new WindowsFormsApp1.Views.Parameters();
             this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
             this.supplier1 = new WindowsFormsApp1.Views.Supplier();

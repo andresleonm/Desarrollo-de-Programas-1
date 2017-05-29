@@ -9,11 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
+using WindowsFormsApp1.Views.Warehouse_Module;
 
 namespace WindowsFormsApp1.Views
 {
     public partial class Dashboard : Form
     {
+        public string userName;
+        public string password;
         public List<PurchaseOrder> purchase_order_list = new List<PurchaseOrder>();        
         public List<Models.Material> material_list = new List<Material>();
         public List<Models.Supplier> supplier_list;

@@ -54,19 +54,11 @@ namespace WindowsFormsApp1.DataService
                     while (dr.Read())
                     {
                         List<string> cols = new List<string>();
-                        int ncols = 0;
-                        while (true)
+                        int ncols = dr.FieldCount;
+                        for (int i = 0; i < ncols; i++)
                         {
-                            try
-                            {
-                                cols.Add(dr[ncols].ToString());
-                                ncols++;
-                            }
-                            catch
-                            {
-                                break;
-                            }
-                        }
+                            cols.Add(dr[i].ToString());
+                        }                        
                         result.Add(new Row(cols));
                     }
                     dr.Close();
