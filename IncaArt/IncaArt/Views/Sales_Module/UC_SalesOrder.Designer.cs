@@ -35,6 +35,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txt_Status = new MetroFramework.Controls.MetroTextBox();
             this.observation = new MetroFramework.Controls.MetroTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_amount = new MetroFramework.Controls.MetroTextBox();
@@ -46,6 +47,12 @@
             this.btn_New = new System.Windows.Forms.Button();
             this.gb_OrderLine = new System.Windows.Forms.GroupBox();
             this.grid_order_lines = new MetroFramework.Controls.MetroGrid();
+            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbClient = new System.Windows.Forms.GroupBox();
             this.btn_Search = new MetroFramework.Controls.MetroTile();
             this.txt_Doi = new MetroFramework.Controls.MetroTextBox();
@@ -64,13 +71,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.mbStyle = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txt_Status = new MetroFramework.Controls.MetroTextBox();
             this.panel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -127,6 +127,42 @@
             this.tabPage1.Size = new System.Drawing.Size(819, 357);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Pedido";
+            // 
+            // txt_Status
+            // 
+            this.txt_Status.BackColor = System.Drawing.SystemColors.ScrollBar;
+            // 
+            // 
+            // 
+            this.txt_Status.CustomButton.BackColor = System.Drawing.SystemColors.Control;
+            this.txt_Status.CustomButton.Image = null;
+            this.txt_Status.CustomButton.Location = new System.Drawing.Point(117, 1);
+            this.txt_Status.CustomButton.Name = "";
+            this.txt_Status.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_Status.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txt_Status.CustomButton.TabIndex = 1;
+            this.txt_Status.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txt_Status.CustomButton.UseSelectable = true;
+            this.txt_Status.CustomButton.UseVisualStyleBackColor = false;
+            this.txt_Status.CustomButton.Visible = false;
+            this.txt_Status.Enabled = false;
+            this.txt_Status.Lines = new string[0];
+            this.txt_Status.Location = new System.Drawing.Point(108, 267);
+            this.txt_Status.MaxLength = 32767;
+            this.txt_Status.Name = "txt_Status";
+            this.txt_Status.PasswordChar = '\0';
+            this.txt_Status.ReadOnly = true;
+            this.txt_Status.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_Status.SelectedText = "";
+            this.txt_Status.SelectionLength = 0;
+            this.txt_Status.SelectionStart = 0;
+            this.txt_Status.ShortcutsEnabled = true;
+            this.txt_Status.Size = new System.Drawing.Size(145, 29);
+            this.txt_Status.TabIndex = 63;
+            this.txt_Status.UseCustomBackColor = true;
+            this.txt_Status.UseSelectable = true;
+            this.txt_Status.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txt_Status.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // observation
             // 
@@ -241,6 +277,7 @@
             this.btn_Save.TabIndex = 56;
             this.btn_Save.Text = "Guardar";
             this.btn_Save.UseVisualStyleBackColor = false;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // label6
             // 
@@ -340,6 +377,46 @@
             this.grid_order_lines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_order_lines.Size = new System.Drawing.Size(785, 137);
             this.grid_order_lines.TabIndex = 50;
+            // 
+            // product
+            // 
+            this.product.HeaderText = "Producto";
+            this.product.Name = "product";
+            // 
+            // quantity
+            // 
+            this.quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.quantity.HeaderText = "Cantidad";
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            // 
+            // unitMeasure
+            // 
+            this.unitMeasure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.unitMeasure.HeaderText = "Unidad de Medida";
+            this.unitMeasure.Name = "unitMeasure";
+            this.unitMeasure.ReadOnly = true;
+            // 
+            // warehouse
+            // 
+            this.warehouse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.warehouse.HeaderText = "Almacén";
+            this.warehouse.Name = "warehouse";
+            this.warehouse.ReadOnly = true;
+            // 
+            // unitPrice
+            // 
+            this.unitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.unitPrice.HeaderText = "Precio Unitario";
+            this.unitPrice.Name = "unitPrice";
+            this.unitPrice.ReadOnly = true;
+            // 
+            // amount
+            // 
+            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.amount.HeaderText = "Subtotal";
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
             // 
             // gbClient
             // 
@@ -649,82 +726,6 @@
             // mbStyle
             // 
             this.mbStyle.Owner = null;
-            // 
-            // product
-            // 
-            this.product.HeaderText = "Producto";
-            this.product.Name = "product";
-            // 
-            // quantity
-            // 
-            this.quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.quantity.HeaderText = "Cantidad";
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
-            // 
-            // unitMeasure
-            // 
-            this.unitMeasure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unitMeasure.HeaderText = "Unidad de Medida";
-            this.unitMeasure.Name = "unitMeasure";
-            this.unitMeasure.ReadOnly = true;
-            // 
-            // warehouse
-            // 
-            this.warehouse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.warehouse.HeaderText = "Almacén";
-            this.warehouse.Name = "warehouse";
-            this.warehouse.ReadOnly = true;
-            // 
-            // unitPrice
-            // 
-            this.unitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unitPrice.HeaderText = "Precio Unitario";
-            this.unitPrice.Name = "unitPrice";
-            this.unitPrice.ReadOnly = true;
-            // 
-            // amount
-            // 
-            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.amount.HeaderText = "Subtotal";
-            this.amount.Name = "amount";
-            this.amount.ReadOnly = true;
-            // 
-            // txt_Status
-            // 
-            this.txt_Status.BackColor = System.Drawing.SystemColors.ScrollBar;
-            // 
-            // 
-            // 
-            this.txt_Status.CustomButton.BackColor = System.Drawing.SystemColors.Control;
-            this.txt_Status.CustomButton.Image = null;
-            this.txt_Status.CustomButton.Location = new System.Drawing.Point(117, 1);
-            this.txt_Status.CustomButton.Name = "";
-            this.txt_Status.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.txt_Status.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txt_Status.CustomButton.TabIndex = 1;
-            this.txt_Status.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txt_Status.CustomButton.UseSelectable = true;
-            this.txt_Status.CustomButton.UseVisualStyleBackColor = false;
-            this.txt_Status.CustomButton.Visible = false;
-            this.txt_Status.Enabled = false;
-            this.txt_Status.Lines = new string[0];
-            this.txt_Status.Location = new System.Drawing.Point(108, 267);
-            this.txt_Status.MaxLength = 32767;
-            this.txt_Status.Name = "txt_Status";
-            this.txt_Status.PasswordChar = '\0';
-            this.txt_Status.ReadOnly = true;
-            this.txt_Status.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txt_Status.SelectedText = "";
-            this.txt_Status.SelectionLength = 0;
-            this.txt_Status.SelectionStart = 0;
-            this.txt_Status.ShortcutsEnabled = true;
-            this.txt_Status.Size = new System.Drawing.Size(145, 29);
-            this.txt_Status.TabIndex = 63;
-            this.txt_Status.UseCustomBackColor = true;
-            this.txt_Status.UseSelectable = true;
-            this.txt_Status.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txt_Status.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // UC_SalesOrder
             // 
