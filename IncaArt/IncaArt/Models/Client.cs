@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class Client
+    public class Client
     {
         int id;
         Company company;

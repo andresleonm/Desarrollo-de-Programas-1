@@ -19,24 +19,6 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Models.PurchaseOrderLine line = new Models.PurchaseOrderLine();
-            Purchase_Module.PurchaseOrderLine order_line = new Purchase_Module.PurchaseOrderLine(line);
-            order_line.ShowDialog();
-            if (line != null)
-            {
-                string[] grid_line = new string[6];
-                grid_line[0] = line.Scheluded_date.ToString();
-                grid_line[1] = "";
-                grid_line[2] = line.Quantity.ToString();
-                grid_line[3] = line.Material.Name;
-                grid_line[4] = line.Price.ToString();
-                grid_line[5] = (line.Quantity * line.Price).ToString();
-                grid_order_lines.Rows.Add(grid_line);
-            }
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             if(grid_order_lines.Rows.Count == 0)
@@ -46,9 +28,7 @@ namespace WindowsFormsApp1.Views
             else
             {
                 if (editing)
-                {
-                    int index = ((Dashboard)(this.FindForm().FindForm())).purchase_order_list.FindIndex(or => or.Id == editing_order.Id);
-                    ((Dashboard)(this.FindForm().FindForm())).purchase_order_list[index] = editing_order;
+                {                    
                 }
             }
         }
@@ -59,17 +39,16 @@ namespace WindowsFormsApp1.Views
             editing_order = order;
             txt_id.Text = order.Id.ToString();
             date_order_date.Text = order.Creation_date.ToString();
-            combo_supplier.Text = order.Supplier.Supplier_name;
-            combo_address.Text = order.Supplier.Supplier_addres;
+            //combo_supplier.Text = order.Supplier.Supplier_name;
+            //combo_address.Text = order.Supplier.Supplier_addres;
             combo_state.Text = order.State;
 
             foreach(Models.PurchaseOrderLine line in order.Lines)
             {
-                string[] grid_line = new string[6];
-                grid_line[0] = order.Due_date.ToString();
+                string[] grid_line = new string[6];                
                 grid_line[1] = "";
                 grid_line[2] = line.Quantity.ToString();
-                grid_line[3] = line.Material.Name;
+                //grid_line[3] = line.Material.Name;
                 grid_line[4] = line.Price.ToString();
                 grid_line[5] = (line.Quantity * line.Price).ToString();
                 grid_order_lines.Rows.Add(grid_line);
@@ -85,5 +64,21 @@ namespace WindowsFormsApp1.Views
             txt_total.Text = (Double.Parse(txt_no_taxes.Text) + Double.Parse(txt_taxes.Text)).ToString();
         }
 
+        private void btn_new_line_Click(object sender, EventArgs e)
+        {
+            Models.PurchaseOrderLine line = new Models.PurchaseOrderLine();
+            Purchase_Module.PurchaseOrderLine frm_line = new Purchase_Module.PurchaseOrderLine(ref line);
+            frm_line.ShowDialog();
+
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            Controller.PurchaseOrderController po_controller = new Controller.PurchaseOrderController("dp1admin", "dp1admin");
+            Models.PurchaseOrder po = new Models.PurchaseOrder();
+            po.Id = Int32.Parse(txt_id.Text);
+
+            //po_controller.insertPurchaseOrder();
+        }
     }
 }

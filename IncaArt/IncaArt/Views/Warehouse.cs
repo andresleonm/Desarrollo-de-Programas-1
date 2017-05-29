@@ -13,11 +13,12 @@ namespace WindowsFormsApp1.Views
     public partial class Warehouse : MetroFramework.Controls.MetroUserControl
     {
         List<UC_Product> products = new List<UC_Product>();
-        List<UC_Material> materials = new List<UC_Material>();
+        List<UC_Material2> materials = new List<UC_Material2>();
         List<Warehouse> warehouses = new List<Warehouse>();
         public Warehouse()
         {
             InitializeComponent();
+            this.Style = mStyle.Style;
         }
 
         private bool validate_data(String name,String type,int m_capacity,int a_capacity,String u1,String u2)
@@ -48,7 +49,7 @@ namespace WindowsFormsApp1.Views
 
         private void Warehouse_Load(object sender, EventArgs e)
         {
-            
+            mStyle.Style = MetroFramework.MetroColorStyle.Silver;
         }
 
         private void newA_Click(object sender, EventArgs e)
@@ -70,6 +71,21 @@ namespace WindowsFormsApp1.Views
             if (isValid) {
                 
             }*/
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroTextBox5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

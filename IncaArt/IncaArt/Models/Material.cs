@@ -10,12 +10,28 @@ namespace WindowsFormsApp1.Models
     {
         int id;
         UnitOfMeasure unit;
-        String name;
-        int max_stock;
-        int min_stock;
+        int unit_id;
+        string name;
+        int stock_max;
+        int stock_min;
         int status;
-        double cost;
+        double average_cost;
+        int current_logical_stock;
+        int current_physical_stock;
         string description;
+
+        public Material()
+        {
+        }
+
+        public Material(int id, int unit_id,string name, int min_stock, int max_stock)
+        {
+            this.id = id;
+            this.unit_id = unit_id;
+            this.name = name;
+            this.Stock_max = max_stock;
+            this.Stock_min = min_stock;
+        }
 
         public int Id
         {
@@ -30,16 +46,16 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public UnitOfMeasure Unit
+        public int Unit_id
         {
             get
             {
-                return unit;
+                return unit_id;
             }
 
             set
             {
-                unit = value;
+                unit_id = value;
             }
         }
 
@@ -56,31 +72,7 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public int Max_stock
-        {
-            get
-            {
-                return max_stock;
-            }
-
-            set
-            {
-                max_stock = value;
-            }
-        }
-
-        public int Min_stock
-        {
-            get
-            {
-                return min_stock;
-            }
-
-            set
-            {
-                min_stock = value;
-            }
-        }
+        
 
         public int Status
         {
@@ -95,16 +87,42 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public double Cost
+        public double Average_cost
         {
             get
             {
-                return cost;
+                return average_cost;
             }
 
             set
             {
-                cost = value;
+                average_cost = value;
+            }
+        }
+
+        public int Current_logical_stock
+        {
+            get
+            {
+                return current_logical_stock;
+            }
+
+            set
+            {
+                current_logical_stock = value;
+            }
+        }
+
+        public int Current_physical_stock
+        {
+            get
+            {
+                return current_physical_stock;
+            }
+
+            set
+            {
+                current_physical_stock = value;
             }
         }
 
@@ -118,6 +136,45 @@ namespace WindowsFormsApp1.Models
             set
             {
                 description = value;
+            }
+        }
+
+        public UnitOfMeasure Unit
+        {
+            get
+            {
+                return unit;
+            }
+
+            set
+            {
+                unit = value;
+            }
+        }
+
+        public int Stock_max
+        {
+            get
+            {
+                return stock_max;
+            }
+
+            set
+            {
+                stock_max = value;
+            }
+        }
+
+        public int Stock_min
+        {
+            get
+            {
+                return stock_min;
+            }
+
+            set
+            {
+                stock_min = value;
             }
         }
     }

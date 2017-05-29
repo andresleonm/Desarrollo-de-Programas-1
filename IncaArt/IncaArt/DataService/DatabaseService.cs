@@ -11,8 +11,8 @@ namespace WindowsFormsApp1.DataService
     public class DatabaseService
     {
         string conn_string = "Server=dp1test.c4d2tgrzz55h.us-west-2.rds.amazonaws.com;Port=5432;Database=dp1db;User Id=dp1admin;Password=dp1admin;";
-        string user;
-        string password;
+        public string user;
+        public string password;
 
         public DatabaseService(string user,string password)
         {
@@ -54,19 +54,11 @@ namespace WindowsFormsApp1.DataService
                     while (dr.Read())
                     {
                         List<string> cols = new List<string>();
-                        int ncols = 0;
-                        while (true)
+                        int ncols = dr.FieldCount;
+                        for (int i = 0; i < ncols; i++)
                         {
-                            try
-                            {
-                                cols.Add(dr[ncols].ToString());
-                                ncols++;
-                            }
-                            catch
-                            {
-                                break;
-                            }
-                        }
+                            cols.Add(dr[i].ToString());
+                        }                        
                         result.Add(new Row(cols));
                     }
                     dr.Close();
@@ -83,7 +75,7 @@ namespace WindowsFormsApp1.DataService
             
         }
 
-        // deben usar execute_function cuando quieran retornar un solo valor de la bd, puede ser un string un integer un booleano, etc, pero
+        // deben usar execute_transaction cuando quieran retornar un solo valor de la bd, puede ser un string un integer un booleano, etc, pero
         //solo un valor!!!
         protected GenericResult execute_transaction(string function, List<Parameter> parameters)
         {

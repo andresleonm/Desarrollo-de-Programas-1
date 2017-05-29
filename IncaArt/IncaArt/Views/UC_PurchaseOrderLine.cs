@@ -12,7 +12,7 @@ namespace WindowsFormsApp1.Views
 {
     public partial class UC_PurchaseOrderLine : UserControl
     {
-        Models.PurchaseOrderLine line;
+        //Models.PurchaseOrderLine line;
         public UC_PurchaseOrderLine()
         {
             InitializeComponent();
@@ -44,9 +44,7 @@ namespace WindowsFormsApp1.Views
                 DialogResult result = MessageBox.Show(this, "¿Está seguro que desea realizar esta operación?", "Confirmación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
-                    Models.Material material = new Models.Material();
-                    int quantity = int.Parse(this.txt_quantity.Text);
-                    line = new Models.PurchaseOrderLine(material, 1, 1);
+                   
                 }
             }
         }
@@ -56,7 +54,6 @@ namespace WindowsFormsApp1.Views
             Models.Material material = new Models.Material(); // se tiene que sacar el material de la lista para rellenar los campos bloqueados
             this.txt_measure_unit.Text = material.Unit.Name;
             this.txt_description.Text = material.Description;
-
         }
 
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]

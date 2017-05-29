@@ -24,8 +24,6 @@ namespace WindowsFormsApp1.Views
         {
             InitializeComponent();
             profile_list = new List<Profile>();
-            profile_controller = new ProfileController("", "");
-            user_controller = new UsersController("", "");
 
         }
 
@@ -98,17 +96,15 @@ namespace WindowsFormsApp1.Views
 
         private void User_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("1???");
+            this.profile_controller = new ProfileController("", "");
+            this.user_controller = new UsersController("", "");
 
             Result profiles_result = profile_controller.getProfiles();
             Result users_result = user_controller.getUsers();
 
-            MessageBox.Show("???");
-
             if (profiles_result.success)
             {
-                profile_list = (List<Profile>)profiles_result.data;
-                MessageBox.Show("Perfiles");
+                this.profile_list = (List<Profile>)profiles_result.data;
             }
             else
             {
@@ -117,8 +113,7 @@ namespace WindowsFormsApp1.Views
 
             if (users_result.success)
             {
-                user_list = (List<User>)users_result.data;
-                MessageBox.Show("Usuarios");
+                this.user_list = (List<User>)users_result.data;
             }
             else
             {
@@ -126,7 +121,7 @@ namespace WindowsFormsApp1.Views
             }
 
 
-            foreach (Profile profile in profile_list)
+            foreach (Profile profile in this.profile_list)
             {
                 combobox_profile.Items.Add(profile.Description);
             }

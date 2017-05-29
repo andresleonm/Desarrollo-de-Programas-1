@@ -9,51 +9,71 @@ namespace WindowsFormsApp1.Models
     public class PurchaseOrder
     {
         List<PurchaseOrderLine> lines;
-        Warehouse warehouse;
-        Currency currency;
-        Supplier supplier;
-        Double amount;
-        string state;
-        DateTime due_date;
-        DateTime creation_date;
         int id;
+        int currency_id;
+        int supplier_id;
+        string supplier_name;
+        string supplier_address;
+        string supplier_phone;                    
+        double amount;
+        string state;
+        string supplier_doi;
+        string observation;
+        string external_number;
+        double igv_amount;
+        double igv_percentage;        
+        DateTime creation_date;
 
-        public List<PurchaseOrderLine> Lines
+        public PurchaseOrder(int id,int currency_id,int supplier_id,string supplier_name,string supplier_address,string suppler_phone,double amount,string state,string supplier_doi, DateTime creation_date, string observation,string external_number,double igv_amount,double igv_percentage)
+        {
+            this.id = id;
+            this.currency_id = currency_id;
+            this.supplier_id = supplier_id;
+            this.amount = amount;
+            this.state = state;
+            this.observation = observation;
+            this.external_number = external_number;
+            this.igv_amount = igv_amount;
+            this.igv_percentage = igv_percentage;            
+            this.creation_date = creation_date;
+        }
+
+        public int Id
         {
             get
             {
-                return lines;
+                return id;
             }
 
             set
             {
-                lines = value;
+                id = value;
             }
         }
 
-        public Currency Currency
+        public int Currency_id
         {
             get
             {
-                return currency;
+                return currency_id;
             }
 
             set
             {
-                currency = value;
+                currency_id = value;
             }
         }
 
-        public Supplier Supplier
+        public int Supplier_id
         {
             get
             {
-                return supplier;
+                return supplier_id;
             }
 
             set
             {
-                supplier = value;
+                supplier_id = value;
             }
         }
 
@@ -83,16 +103,55 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public DateTime Due_date
+        public string Observation
         {
             get
             {
-                return due_date;
+                return observation;
             }
 
             set
             {
-                due_date = value;
+                observation = value;
+            }
+        }
+
+        public string External_number
+        {
+            get
+            {
+                return external_number;
+            }
+
+            set
+            {
+                external_number = value;
+            }
+        }
+
+        public double Igv_amount
+        {
+            get
+            {
+                return igv_amount;
+            }
+
+            set
+            {
+                igv_amount = value;
+            }
+        }
+
+        public double Igv_percentage
+        {
+            get
+            {
+                return igv_percentage;
+            }
+
+            set
+            {
+                igv_percentage = value;
             }
         }
 
@@ -109,29 +168,68 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public int Id
+        public List<PurchaseOrderLine> Lines
         {
             get
             {
-                return id;
+                return lines;
             }
 
             set
             {
-                id = value;
+                lines = value;
             }
         }
 
-        public Warehouse Warehouse
+        public string Supplier_name
         {
             get
             {
-                return warehouse;
+                return supplier_name;
             }
 
             set
             {
-                warehouse = value;
+                supplier_name = value;
+            }
+        }
+
+        public string Supplier_address
+        {
+            get
+            {
+                return supplier_address;
+            }
+
+            set
+            {
+                supplier_address = value;
+            }
+        }
+
+        public string Supplier_phone
+        {
+            get
+            {
+                return supplier_phone;
+            }
+
+            set
+            {
+                supplier_phone = value;
+            }
+        }
+
+        public string Supplier_doi
+        {
+            get
+            {
+                return supplier_doi;
+            }
+
+            set
+            {
+                supplier_doi = value;
             }
         }
 

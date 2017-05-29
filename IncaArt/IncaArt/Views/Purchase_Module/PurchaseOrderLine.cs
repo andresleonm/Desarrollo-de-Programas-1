@@ -13,10 +13,14 @@ namespace WindowsFormsApp1.Views.Purchase_Module
     public partial class PurchaseOrderLine : Form
     {
         Models.PurchaseOrderLine line;
-        public PurchaseOrderLine(Models.PurchaseOrderLine line)
+        List<Models.Material> materials;
+        List<Models.Warehouse> warehouses;
+        public PurchaseOrderLine(ref Models.PurchaseOrderLine line)
         {
             InitializeComponent();
             this.line = line;
+            materials = new List<Models.Material>();
+            warehouses = new List<Models.Warehouse>();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -57,9 +61,9 @@ namespace WindowsFormsApp1.Views.Purchase_Module
                 {
                     Models.Material material = new Models.Material();
                     int quantity = int.Parse(this.txt_quantity.Text);
-                    line.Material = material;
+                    //line.Material = material;
                     line.Quantity = quantity;
-                    line.Price = quantity * material.Cost;
+                    line.Price = quantity * material.Average_cost;
                     this.Close();
                     //line = new Models.PurchaseOrderLine(material, 1, 1);
                 }
@@ -69,8 +73,7 @@ namespace WindowsFormsApp1.Views.Purchase_Module
         private void comboBox1_TextUpdate(object sender, EventArgs e)
         {
             Models.Material material = new Models.Material(); // se tiene que sacar el material de la lista para rellenar los campos bloqueados
-            this.txt_measure_unit.Text = material.Unit.Name;
-            this.txt_description.Text = material.Description;            
+            this.txt_measure_unit.Text = material.Unit.Name;                    
 
         }
 
@@ -88,5 +91,32 @@ namespace WindowsFormsApp1.Views.Purchase_Module
             }
         }
 
+        private void PurchaseOrderLine_Load(object sender, EventArgs e)
+        {
+            string user = "dp1admin";
+            string password = "dp1admin";
+            Controller.MaterialsController material_controller = new Controller.MaterialsController(user,password);
+            //Controller.WarehouseController warehouse_controller = new Controller.WarehouseController();
+
+            Controller.Result result = material_controller.getMaterials();
+            this.materials = (List<Models.Material>)result.data;
+
+            foreach (Models.Material m in materials)
+            {
+                this.combo_material.Items.Add(m.Name);
+            }
+            this.combo_material.SelectedItem = this.combo_material.Items[0];
+
+            //result = warehouse_controller.getWarehouses();
+            //this.warehouses = (List<Models.Warehouse>)result.data;
+
+            //foreach(Models.Warehouse w in warehouses)
+            //{
+            //    this.combo_warehouse.Items.Add(w.Name);
+            //}
+            //this.combo_warehouse.SelectedItem = this.combo_warehouse.Items[0];
+            
+            
+        }
     }
 }
