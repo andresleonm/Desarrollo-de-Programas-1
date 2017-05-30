@@ -172,7 +172,11 @@ namespace WindowsFormsApp1.Views
             product_id = ((KeyValuePair<int, string>)combobox_product.SelectedItem).Key;
             quantity = Int32.Parse(textbox_quantity.Text);
             Models.Workstation workstation = new Models.Workstation();
-
+            workstation.Product_id = product_id;
+            workstation.Previous_workstation = previous_id;
+            workstation.Next_workstation = next_id;
+            workstation.Quantity = quantity;
+            workstation.Name = name;
             int id = 0;
             if (operacion == 1) //UPDATE
             {
