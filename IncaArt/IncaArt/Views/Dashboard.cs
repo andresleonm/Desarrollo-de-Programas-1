@@ -165,7 +165,8 @@ namespace WindowsFormsApp1.Views
         private void btn_workstation_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            workstation1.Visible = true;
+            //workstation1.Visible = true;
+            uc_workstation.Visible = true;
         }
 
         private void btn_user_Click(object sender, EventArgs e)
