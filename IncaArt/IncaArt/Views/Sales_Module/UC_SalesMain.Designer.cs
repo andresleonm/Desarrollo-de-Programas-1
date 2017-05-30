@@ -29,71 +29,71 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.register_order = new MetroFramework.Controls.MetroTile();
-            this.invoice = new MetroFramework.Controls.MetroTile();
+            this.credit_notes = new MetroFramework.Controls.MetroTile();
+            this.invoices = new MetroFramework.Controls.MetroTile();
             this.orders = new MetroFramework.Controls.MetroTile();
-            this.refund = new MetroFramework.Controls.MetroTile();
+            this.refunds = new MetroFramework.Controls.MetroTile();
             this.panel2 = new System.Windows.Forms.Panel();
             this.uC_SalesOrder1 = new WindowsFormsApp1.Views.UC_SalesOrder();
-            this.uC_SalesOrderList1 = new WindowsFormsApp1.Views.UC_SalesOrderList();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.register_order);
-            this.panel1.Controls.Add(this.invoice);
+            this.panel1.Controls.Add(this.credit_notes);
+            this.panel1.Controls.Add(this.invoices);
             this.panel1.Controls.Add(this.orders);
-            this.panel1.Controls.Add(this.refund);
+            this.panel1.Controls.Add(this.refunds);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(894, 70);
+            this.panel1.Size = new System.Drawing.Size(894, 73);
             this.panel1.TabIndex = 41;
             // 
-            // register_order
+            // credit_notes
             // 
-            this.register_order.ActiveControl = null;
-            this.register_order.BackColor = System.Drawing.Color.DarkCyan;
-            this.register_order.Location = new System.Drawing.Point(252, 3);
-            this.register_order.Name = "register_order";
-            this.register_order.Size = new System.Drawing.Size(177, 62);
-            this.register_order.TabIndex = 38;
-            this.register_order.Text = "Registrar Pedido";
-            this.register_order.TileImage = global::WindowsFormsApp1.Properties.Resources.Shopping_Cart_40px;
-            this.register_order.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.register_order.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.register_order.UseCustomBackColor = true;
-            this.register_order.UseSelectable = true;
-            this.register_order.UseTileImage = true;
-            this.register_order.Click += new System.EventHandler(this.register_order_Click);
+            this.credit_notes.ActiveControl = null;
+            this.credit_notes.BackColor = System.Drawing.Color.DarkCyan;
+            this.credit_notes.Location = new System.Drawing.Point(683, 5);
+            this.credit_notes.Name = "credit_notes";
+            this.credit_notes.Size = new System.Drawing.Size(177, 62);
+            this.credit_notes.TabIndex = 38;
+            this.credit_notes.Text = "Notas de Crédito";
+            this.credit_notes.TileImage = global::WindowsFormsApp1.Properties.Resources.Shopping_Cart_40px;
+            this.credit_notes.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.credit_notes.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.credit_notes.UseCustomBackColor = true;
+            this.credit_notes.UseSelectable = true;
+            this.credit_notes.UseTileImage = true;
+            this.credit_notes.Click += new System.EventHandler(this.credit_notes_Click);
             // 
-            // invoice
+            // invoices
             // 
-            this.invoice.ActiveControl = null;
-            this.invoice.BackColor = System.Drawing.Color.DarkCyan;
-            this.invoice.Location = new System.Drawing.Point(688, 3);
-            this.invoice.Name = "invoice";
-            this.invoice.Size = new System.Drawing.Size(177, 62);
-            this.invoice.TabIndex = 40;
-            this.invoice.Text = "Generar Facturas";
-            this.invoice.TileImage = global::WindowsFormsApp1.Properties.Resources.Documents_40px;
-            this.invoice.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.invoice.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.invoice.UseCustomBackColor = true;
-            this.invoice.UseSelectable = true;
-            this.invoice.UseTileImage = true;
+            this.invoices.ActiveControl = null;
+            this.invoices.BackColor = System.Drawing.Color.DarkCyan;
+            this.invoices.Location = new System.Drawing.Point(246, 5);
+            this.invoices.Name = "invoices";
+            this.invoices.Size = new System.Drawing.Size(177, 62);
+            this.invoices.TabIndex = 40;
+            this.invoices.Text = "Facturas";
+            this.invoices.TileImage = global::WindowsFormsApp1.Properties.Resources.Documents_40px;
+            this.invoices.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.invoices.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.invoices.UseCustomBackColor = true;
+            this.invoices.UseSelectable = true;
+            this.invoices.UseTileImage = true;
+            this.invoices.Click += new System.EventHandler(this.invoices_Click);
             // 
             // orders
             // 
             this.orders.ActiveControl = null;
             this.orders.BackColor = System.Drawing.Color.DarkCyan;
-            this.orders.Location = new System.Drawing.Point(32, 3);
+            this.orders.Location = new System.Drawing.Point(19, 5);
             this.orders.Name = "orders";
             this.orders.Size = new System.Drawing.Size(177, 62);
             this.orders.TabIndex = 39;
             this.orders.Text = "Pedidos";
-            this.orders.TileImage = global::WindowsFormsApp1.Properties.Resources.Cash_Register_40px;
+            this.orders.TileImage = global::WindowsFormsApp1.Properties.Resources.Shopping_Cart_40px;
             this.orders.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.orders.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.orders.UseCustomBackColor = true;
@@ -101,27 +101,27 @@
             this.orders.UseTileImage = true;
             this.orders.Click += new System.EventHandler(this.orders_Click);
             // 
-            // refund
+            // refunds
             // 
-            this.refund.ActiveControl = null;
-            this.refund.BackColor = System.Drawing.Color.DarkCyan;
-            this.refund.Location = new System.Drawing.Point(474, 3);
-            this.refund.Name = "refund";
-            this.refund.PaintTileCount = false;
-            this.refund.Size = new System.Drawing.Size(177, 62);
-            this.refund.TabIndex = 37;
-            this.refund.Text = "Devoluciones";
-            this.refund.TileImage = global::WindowsFormsApp1.Properties.Resources.Undo_40px;
-            this.refund.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.refund.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.refund.UseCustomBackColor = true;
-            this.refund.UseSelectable = true;
-            this.refund.UseTileImage = true;
-            this.refund.Click += new System.EventHandler(this.refund_Click);
+            this.refunds.ActiveControl = null;
+            this.refunds.BackColor = System.Drawing.Color.DarkCyan;
+            this.refunds.Location = new System.Drawing.Point(464, 5);
+            this.refunds.Name = "refunds";
+            this.refunds.PaintTileCount = false;
+            this.refunds.Size = new System.Drawing.Size(177, 62);
+            this.refunds.TabIndex = 37;
+            this.refunds.Text = "Devoluciones";
+            this.refunds.TileImage = global::WindowsFormsApp1.Properties.Resources.Undo_40px;
+            this.refunds.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.refunds.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.refunds.UseCustomBackColor = true;
+            this.refunds.UseSelectable = true;
+            this.refunds.UseTileImage = true;
+            this.refunds.Click += new System.EventHandler(this.refunds_Click);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.uC_SalesOrderList1);
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.Controls.Add(this.uC_SalesOrder1);
             this.panel2.Location = new System.Drawing.Point(3, 79);
             this.panel2.Name = "panel2";
@@ -130,21 +130,13 @@
             // 
             // uC_SalesOrder1
             // 
-            this.uC_SalesOrder1.BackColor = System.Drawing.Color.White;
-            this.uC_SalesOrder1.Location = new System.Drawing.Point(1, 1);
+            this.uC_SalesOrder1.BackColor = System.Drawing.SystemColors.Control;
+            this.uC_SalesOrder1.Location = new System.Drawing.Point(4, 4);
             this.uC_SalesOrder1.Name = "uC_SalesOrder1";
-            this.uC_SalesOrder1.Size = new System.Drawing.Size(872, 592);
+            this.uC_SalesOrder1.Size = new System.Drawing.Size(872, 614);
             this.uC_SalesOrder1.Style = MetroFramework.MetroColorStyle.Blue;
             this.uC_SalesOrder1.TabIndex = 0;
             this.uC_SalesOrder1.UseSelectable = true;
-            // 
-            // uC_SalesOrderList1
-            // 
-            this.uC_SalesOrderList1.BackColor = System.Drawing.Color.White;
-            this.uC_SalesOrderList1.Location = new System.Drawing.Point(3, 3);
-            this.uC_SalesOrderList1.Name = "uC_SalesOrderList1";
-            this.uC_SalesOrderList1.Size = new System.Drawing.Size(872, 624);
-            this.uC_SalesOrderList1.TabIndex = 1;
             // 
             // UC_SalesMain
             // 
@@ -165,13 +157,12 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroTile invoice;
+        private MetroFramework.Controls.MetroTile invoices;
         private MetroFramework.Controls.MetroTile orders;
-        private MetroFramework.Controls.MetroTile register_order;
-        private MetroFramework.Controls.MetroTile refund;
+        private MetroFramework.Controls.MetroTile credit_notes;
+        private MetroFramework.Controls.MetroTile refunds;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private UC_SalesOrder uC_SalesOrder1;
-        private UC_SalesOrderList uC_SalesOrderList1;
     }
 }
