@@ -215,16 +215,63 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             movement.TipoDocumentoOrigen = getTipo(tipo.clase);
             if (doc!=null)
                 movement.NroDocumentoOrigen = doc.id;
-            pc.insertMovement(movement);
+            Result r =pc.insertMovement(movement);
+            if (r.success)
+            {
+                MessageBox.Show("Se creo el movimiento Nro - " + r.data.ToString());
+                InitializeComponent();
+                pc = new ProductMovementController(user, password);
+                soc = new SalesOrderController(user, password);
+                AdjustColumnOrder();
+                fillTypeMovements();
+                clearGrid();
+                AdjustColumnOrder();
+            }
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            ProductMovement currentObject = (ProductMovement)movement_grid.CurrentRow.DataBoundItem;
+            ProductMovement currentObject = (ProductMovement)movements_grid.CurrentRow.DataBoundItem;
             if (currentObject == null)
                 MessageBox.Show("Seleccione el movimiento que desea visualizar");
+            currentObject = (ProductMovement)pc.getMovement(currentObject.id).data;
             ViewWarehouseMovementP order_line = new ViewWarehouseMovementP(user, password, currentObject);
-            order_line.Show();
+            order_line.ShowDialog();
+
+        }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            var movements = (List<ProductMovement>)pc.getMovements().data;
+            movements_grid.DataSource = movements;
+
+        }
+
+        private void consulta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonViewV_Click(object sender, EventArgs e)
+        {
+            ProductMovement currentObject = (ProductMovement)movements_grid.CurrentRow.DataBoundItem;
+            if (currentObject == null)
+                MessageBox.Show("Seleccione el movimiento que desea visualizar");
+            currentObject = (ProductMovement)pc.getMovement(currentObject.id).data;
+            ViewWarehouseMovementP order_line = new ViewWarehouseMovementP(user, password, currentObject);
+            order_line.ShowDialog();
+        }
+
+        private void buttonSearchV_Click(object sender, EventArgs e)
+        {
+            var movements = (List<ProductMovement>)pc.getMovements().data;
+            movements_grid.DataSource = movements;
+        }
+
+        private void buttonCleanV_Click(object sender, EventArgs e)
+        {
+            var movements =new List<ProductMovement>();
+            movements_grid.DataSource = movements;
 
         }
     }
