@@ -20,11 +20,13 @@ namespace WindowsFormsApp1.Views
         ProfileController profile_controller;
         UsersController user_controller;
         User currentUser;
+        bool data_loaded;
 
         public UC_User()
         {
             InitializeComponent();
             this.metroTabControl1.SelectedIndex = 0;
+            data_loaded = false;
         }
 
         private bool validate_data(String name, String paternal_last_name, String maternal_last_name,char gender, String phone, String email, String address, String username,String password,String profile)
@@ -92,15 +94,6 @@ namespace WindowsFormsApp1.Views
             }
 
             return isCorrect;
-        }
-
-        private void User_Load(object sender, EventArgs e)
-        {
-            this.profile_controller = new ProfileController("", "");
-            this.user_controller = new UsersController("", "");
-
-            Load_Data();
-            Load_DataGridView();
         }
         
         private void Load_DataGridView()
@@ -280,6 +273,23 @@ namespace WindowsFormsApp1.Views
             btn_new.Text = "Guardar";
             textbox_password.Enabled = true;
             currentUser = null;
+        }
+
+        private void UC_User_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!data_loaded && Visible)
+            {
+                this.profile_controller = new ProfileController("", "");
+                this.user_controller = new UsersController("", "");
+
+                Load_Data();
+                Load_DataGridView();
+                data_loaded = true;
+            }
+            else if (!Visible)
+            {
+                metroTabControl1.SelectedIndex = 0;
+            }
         }
     }
 }

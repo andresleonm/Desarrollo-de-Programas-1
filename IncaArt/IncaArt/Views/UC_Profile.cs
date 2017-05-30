@@ -19,11 +19,13 @@ namespace WindowsFormsApp1.Views
         FunctionalityController functionality_controller;
         List<Profile> profile_list;
         List<Functionality> functionality_list;
+        bool data_loaded;
 
         public UC_Profile()
         {
             InitializeComponent();
             this.metroTabControl1.SelectedIndex = 0;
+            data_loaded = false;
         }
         private bool validate_data(string name) {
             //bool isCorrect = true;
@@ -118,16 +120,25 @@ namespace WindowsFormsApp1.Views
 
             Load_FunctionalityGridView();
         }
+        
 
-        private void UC_Profile_Load(object sender, EventArgs e)
+        private void UC_Profile_VisibleChanged(object sender, EventArgs e)
         {
-            profile_controller = new ProfileController("", "");
-            functionality_controller = new FunctionalityController("", "");
-            profile_list = new List<Profile>();
-            functionality_list = new List<Functionality>();
+            if (Visible && !data_loaded)
+            {
+                profile_controller = new ProfileController("", "");
+                functionality_controller = new FunctionalityController("", "");
+                profile_list = new List<Profile>();
+                functionality_list = new List<Functionality>();
 
-            Load_Data();
-            Load_DataGridView();
+                Load_Data();
+                Load_DataGridView();
+                data_loaded = true;
+            }
+            else if (!Visible)
+            {
+                metroTabControl1.SelectedIndex = 0;
+            }
         }
     }
 }
