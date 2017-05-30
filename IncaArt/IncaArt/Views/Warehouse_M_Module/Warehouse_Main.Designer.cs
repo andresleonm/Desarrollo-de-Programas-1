@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.mStyle = new MetroFramework.Components.MetroStyleManager(this.components);
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.select_products = new MetroFramework.Controls.MetroTile();
             this.select_materials = new MetroFramework.Controls.MetroTile();
-            this.uC_ProductWarehouse1 = new WindowsFormsApp1.Views.UC_ProductWarehouse();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.uC_MaterialWarehouse1 = new WindowsFormsApp1.Views.Warehouse_M_Module.UC_MaterialWarehouse();
+            this.uC_ProductWarehouse1 = new WindowsFormsApp1.Views.UC_ProductWarehouse();
             ((System.ComponentModel.ISupportInitialize)(this.mStyle)).BeginInit();
             this.metroPanel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
@@ -59,21 +59,6 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
-            // 
-            // metroPanel2
-            // 
-            this.metroPanel2.Controls.Add(this.uC_MaterialWarehouse1);
-            this.metroPanel2.Controls.Add(this.uC_ProductWarehouse1);
-            this.metroPanel2.HorizontalScrollbarBarColor = true;
-            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(20, 98);
-            this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(938, 492);
-            this.metroPanel2.TabIndex = 43;
-            this.metroPanel2.VerticalScrollbarBarColor = true;
-            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.VerticalScrollbarSize = 10;
             // 
             // select_products
             // 
@@ -111,13 +96,20 @@
             this.select_materials.UseTileImage = true;
             this.select_materials.Click += new System.EventHandler(this.select_materials_Click);
             // 
-            // uC_ProductWarehouse1
+            // metroPanel2
             // 
-            this.uC_ProductWarehouse1.Location = new System.Drawing.Point(3, 0);
-            this.uC_ProductWarehouse1.Name = "uC_ProductWarehouse1";
-            this.uC_ProductWarehouse1.Size = new System.Drawing.Size(966, 656);
-            this.uC_ProductWarehouse1.TabIndex = 2;
-            this.uC_ProductWarehouse1.UseSelectable = true;
+            this.metroPanel2.Controls.Add(this.uC_MaterialWarehouse1);
+            this.metroPanel2.Controls.Add(this.uC_ProductWarehouse1);
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(20, 98);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(938, 492);
+            this.metroPanel2.TabIndex = 43;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
             // 
             // uC_MaterialWarehouse1
             // 
@@ -126,6 +118,14 @@
             this.uC_MaterialWarehouse1.Size = new System.Drawing.Size(972, 658);
             this.uC_MaterialWarehouse1.TabIndex = 3;
             this.uC_MaterialWarehouse1.UseSelectable = true;
+            // 
+            // uC_ProductWarehouse1
+            // 
+            this.uC_ProductWarehouse1.Location = new System.Drawing.Point(3, 0);
+            this.uC_ProductWarehouse1.Name = "uC_ProductWarehouse1";
+            this.uC_ProductWarehouse1.Size = new System.Drawing.Size(966, 656);
+            this.uC_ProductWarehouse1.TabIndex = 2;
+            this.uC_ProductWarehouse1.UseSelectable = true;
             // 
             // Warehouse
             // 

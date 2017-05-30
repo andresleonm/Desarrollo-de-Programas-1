@@ -54,6 +54,7 @@ namespace WindowsFormsApp1.Controller
         {
             //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
+
             parameters.Add(new Parameter("name", materialWarehouse.Name.ToString()));
             parameters.Add(new Parameter("product_id", materialWarehouse.Material_id.ToString()));
             parameters.Add(new Parameter("physical_stock", materialWarehouse.Current_physical_stock.ToString()));
@@ -61,7 +62,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("type_warehouse", materialWarehouse.Type_id.ToString()));
             parameters.Add(new Parameter("state", materialWarehouse.State.ToString()));
             parameters.Add(new Parameter("logical_stock", materialWarehouse.Current_logical_stock.ToString()));
-            GenericResult result = execute_transaction("insert_materialWarehouse", parameters);
+            GenericResult result = execute_transaction("insert_materialwarehouse", parameters);
             if (result.success)
             {
                 return new Result(result.singleValue, true, "");

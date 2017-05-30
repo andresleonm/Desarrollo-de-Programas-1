@@ -33,7 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.delete = new MetroFramework.Controls.MetroButton();
             this.metroButton5 = new MetroFramework.Controls.MetroButton();
             this.search = new MetroFramework.Controls.MetroButton();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
@@ -63,6 +62,7 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.textbox_name = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.delete = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
@@ -77,6 +77,7 @@
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(922, 568);
+            this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 20;
             this.metroTabControl1.UseSelectable = true;
             // 
@@ -103,16 +104,6 @@
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
-            // delete
-            // 
-            this.delete.Location = new System.Drawing.Point(766, 577);
-            this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(116, 29);
-            this.delete.TabIndex = 30;
-            this.delete.Text = "Eliminar";
-            this.delete.UseSelectable = true;
-            this.delete.Click += new System.EventHandler(this.delete_Click);
-            // 
             // metroButton5
             // 
             this.metroButton5.Location = new System.Drawing.Point(522, 99);
@@ -130,7 +121,10 @@
             this.search.Size = new System.Drawing.Size(116, 29);
             this.search.TabIndex = 20;
             this.search.Text = "Buscar";
+            this.search.UseCustomBackColor = true;
+            this.search.UseCustomForeColor = true;
             this.search.UseSelectable = true;
+            this.search.UseStyleColors = true;
             this.search.Click += new System.EventHandler(this.search_Click);
             // 
             // metroGrid1
@@ -142,10 +136,10 @@
             this.metroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkCyan;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkCyan;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
@@ -162,28 +156,31 @@
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DarkCyan;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle5;
             this.metroGrid1.EnableHeadersVisualStyles = false;
             this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid1.Location = new System.Drawing.Point(23, 164);
+            this.metroGrid1.Location = new System.Drawing.Point(135, 198);
             this.metroGrid1.Name = "metroGrid1";
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkCyan;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DarkCyan;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(740, 235);
+            this.metroGrid1.Size = new System.Drawing.Size(740, 325);
             this.metroGrid1.TabIndex = 28;
+            this.metroGrid1.UseCustomBackColor = true;
+            this.metroGrid1.UseCustomForeColor = true;
+            this.metroGrid1.UseStyleColors = true;
             this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
             // 
             // Column2
@@ -479,6 +476,16 @@
             this.metroLabel1.Size = new System.Drawing.Size(70, 19);
             this.metroLabel1.TabIndex = 53;
             this.metroLabel1.Text = "Nombre : ";
+            // 
+            // delete
+            // 
+            this.delete.Location = new System.Drawing.Point(766, 577);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(116, 29);
+            this.delete.TabIndex = 30;
+            this.delete.Text = "Eliminar";
+            this.delete.UseSelectable = true;
+            this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
             // UC_ProductWarehouse
             // 

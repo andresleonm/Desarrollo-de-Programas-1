@@ -223,6 +223,12 @@
     <Compile Include="Views\UC_Product2.Designer.cs">
       <DependentUpon>UC_Product2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Warehouse_M_Module\UC_MaterialTypeWarehouse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_M_Module\UC_MaterialTypeWarehouse.Designer.cs">
+      <DependentUpon>UC_MaterialTypeWarehouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Warehouse_M_Module\UC_MaterialWarehouse.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -475,6 +481,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderWorkLine.resx">
       <DependentUpon>UC_ProductionOrderWorkLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_M_Module\UC_MaterialTypeWarehouse.resx">
+      <DependentUpon>UC_MaterialTypeWarehouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_M_Module\UC_MaterialWarehouse.resx">
       <DependentUpon>UC_MaterialWarehouse.cs</DependentUpon>

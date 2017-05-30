@@ -47,5 +47,58 @@ namespace WindowsFormsApp1.Controller
             }
             return new Result(null, result.success, result.message);
         }
+
+        public Result insertCustomer(Models.Customer supplier)
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("name", supplier.Name));
+            parameters.Add(new Parameter("address", supplier.Address));
+            parameters.Add(new Parameter("doi", supplier.Email));
+            parameters.Add(new Parameter("phone", supplier.Phone));
+            parameters.Add(new Parameter("email", supplier.Email));
+            parameters.Add(new Parameter("type", supplier.Type));
+            parameters.Add(new Parameter("priority", supplier.Priority.ToString()));
+            parameters.Add(new Parameter("state", supplier.State));
+            GenericResult result = execute_transaction("insert_customer", parameters);
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+
+        public Result updateCustomer(Models.Customer supplier)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", supplier.Id.ToString()));
+            parameters.Add(new Parameter("name", supplier.Name));
+            parameters.Add(new Parameter("address", supplier.Address));
+            parameters.Add(new Parameter("doi", supplier.Email));
+            parameters.Add(new Parameter("phone", supplier.Phone));
+            parameters.Add(new Parameter("email", supplier.Email));
+            parameters.Add(new Parameter("type", supplier.Type));
+            parameters.Add(new Parameter("priority", supplier.Priority.ToString()));
+            parameters.Add(new Parameter("state", supplier.State));
+            GenericResult result = execute_transaction("update_customer", parameters);
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result deleteCustomer(Models.Customer supplier)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", supplier.Id.ToString()));
+            GenericResult result = execute_transaction("delete_customer", parameters);
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
     }
 }

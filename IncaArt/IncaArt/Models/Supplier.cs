@@ -19,6 +19,11 @@ namespace WindowsFormsApp1.Models
         int priority;
         String state;
 
+
+        public Supplier()
+        {
+
+        }
         public Supplier(int id, string name, string address, string doi, string phone, string email, string type, int priority, string state)
         {
             this.id = id;

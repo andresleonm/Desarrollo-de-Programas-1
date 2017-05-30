@@ -32,6 +32,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
         public UC_MaterialWarehouse()
         {
             InitializeComponent();
+            //Load_Data();
         }
 
         private void UC_MaterialWarehouse_Load(object sender, EventArgs e)
@@ -152,7 +153,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
 
                 //Tipo
                 Models.MaterialTypeWarehouse type = new Models.MaterialTypeWarehouse();
-                resultT = typeController.getMaterialWarehouse(warehouse_list[i].Type_id);
+                resultT = typeController.getMaterialTypeWarehouse(warehouse_list[i].Type_id);
 
                 if (resultP.data == null || resultT.data == null)
                 {
@@ -326,7 +327,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
 
                 //Tipo
                 Models.MaterialTypeWarehouse type = new Models.MaterialTypeWarehouse();
-                resultT = typeController.getMaterialWarehouse(warehouse_list[i].Type_id);
+                resultT = typeController.getMaterialTypeWarehouse(warehouse_list[i].Type_id);
 
                 if (resultP.data == null || resultT.data == null)
                 {

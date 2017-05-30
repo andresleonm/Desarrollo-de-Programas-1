@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.Models
         String type;
         int priority;
         String state;
-
+        public Customer() { }
         public Customer(int id, string name,string address, string doi, string phone, string email, string type, int priority, string state)
         {
             this.id = id;
