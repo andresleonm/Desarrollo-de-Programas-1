@@ -78,6 +78,7 @@
     <Compile Include="Controller\ProductMovementController.cs" />
     <Compile Include="Controller\ProductMovementDetailController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
+    <Compile Include="Controller\WorkstationsController.cs" />
     <Compile Include="Models\ProductMovementLine.cs" />
     <Compile Include="Models\ProductMovementType.cs" />
     <Compile Include="Models\MaterialMovementType.cs" />
