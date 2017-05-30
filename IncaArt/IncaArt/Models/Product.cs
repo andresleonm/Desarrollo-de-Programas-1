@@ -12,12 +12,12 @@ namespace WindowsFormsApp1.Models
         private UnitOfMeasure unit;
         private int unit_id;
         private string name;
+        private int currency_id;
         private int stock_max;
         private int stock_min;
         private int stock;
         private double average_cost;
         private double unit_price;
-
         public int Id
         {
             get { return id; }
@@ -90,6 +90,19 @@ namespace WindowsFormsApp1.Models
             set
             {
                 stock_min = value;
+            }
+        }
+
+        public int Currency_id
+        {
+            get
+            {
+                return currency_id;
+            }
+
+            set
+            {
+                currency_id = value;
             }
         }
 

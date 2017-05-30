@@ -15,8 +15,10 @@ namespace WindowsFormsApp1.Views
         int cur_row;
         List<Models.Shift> shift_list;
         List<Models.Worker> worker_list;
+        List<Models.Currency> currency_list;
         Controller.WorkerController workerController;
         Controller.ShiftsController shiftController;
+        Controller.CurrencyController currencyController;
         Controller.Result result;
         public UC_Worker()
         {
@@ -29,6 +31,7 @@ namespace WindowsFormsApp1.Views
             string password = "dp1admin";
             workerController = new Controller.WorkerController(user, password);
             shiftController = new Controller.ShiftsController(user, password);
+            currencyController = new Controller.CurrencyController(user, password);
             Load_Data();
             //Cargar los combobox
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
@@ -45,12 +48,24 @@ namespace WindowsFormsApp1.Views
             combobox_shift_s.DisplayMember = "Value";
             combobox_shift_s.ValueMember = "Key";
 
+            combo_data = new Dictionary<int, string>();
+            foreach (var item in currency_list)
+            {
+                combo_data.Add(item.Id, item.Symbol);
+
+            }
+            combobox_currency.DataSource = new BindingSource(combo_data, null);
+            combobox_currency.DisplayMember = "Value";
+            combobox_currency.ValueMember = "Key";
+
             Load_DataGridView();
             metroTabControl1.SelectedIndex = 0;
         }
 
         private void Load_Data()
         {
+            result = currencyController.getCurrencies();
+            currency_list = (List<Models.Currency>)result.data;
             result = shiftController.getShifts();
             if (result.data == null) MessageBox.Show(result.message, "Error al listar turnos", MessageBoxButtons.OK);
             else shift_list = (List<Models.Shift>)result.data;
@@ -142,6 +157,7 @@ namespace WindowsFormsApp1.Views
             worker.Address = textbox_address.Text;
             worker.Salary = double.Parse(textbox_salary.Text);
             worker.Shift_id = ((KeyValuePair<int, string>)combobox_shift.SelectedItem).Key;
+            worker.Currency_id = ((KeyValuePair<int, string>)combobox_currency.SelectedItem).Key;
             int id = 0;
             if (operacion == 1) //UPDATE
             {
@@ -204,6 +220,14 @@ namespace WindowsFormsApp1.Views
                         break;
                     }
                 }
+                for (int i = 0; i < currency_list.Count(); i++)
+                {
+                    if (currency_list[i].Id ==worker.Currency_id)
+                    {
+                        combobox_currency.SelectedIndex = i;
+                        break;
+                    }
+                }
                 textbox_name.Text = worker.Name;
                 textbox_paternal.Text = worker.Paternal_name;
                 textbox_maternal.Text = worker.Maternal_name;
@@ -259,6 +283,17 @@ namespace WindowsFormsApp1.Views
             }
             //btn_delete.Enabled = false;
             Load_DataGridView();
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            Clean();
+            metroTabControl1.SelectedIndex = 0;
+        }
+
+        private void btn_clean_s_Click(object sender, EventArgs e)
+        {
+            Clean();
         }
     }
 }

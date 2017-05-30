@@ -36,15 +36,35 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result getWarehousesS(int id)
+        {
+
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", id.ToString()));
+            GenericResult result = execute_function("get_productwarehouse_byproduct", parameters);
+            List<Views.Sales_Module.ProductWarehouseS> productWarehouses = new List<Views.Sales_Module.ProductWarehouseS>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    productWarehouses.Add(new Views.Sales_Module.ProductWarehouseS(Int32.Parse(r.getColumn(0)), r.getColumn(1), Int32.Parse(r.getColumn(2)), Int32.Parse(r.getColumn(3)), Int32.Parse(r.getColumn(4)),
+                        Int32.Parse(r.getColumn(5)), r.getColumn(6), Int32.Parse(r.getColumn(7)), r.getColumn(8), r.getColumn(9), Int32.Parse(r.getColumn(10)), Double.Parse(r.getColumn(11))));
+                }
+                return new Result(productWarehouses, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
         public Result insertLine(Models.ProductMovementLine line)
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("movementid", line.movementId.ToString()));
             parameters.Add(new Parameter("id", line.id.ToString()));
-            parameters.Add(new Parameter("product", line.product.Id.ToString()));
-            parameters.Add(new Parameter("warehouse", line.warehouse.Id.ToString()));
+            parameters.Add(new Parameter("product", line.product_id.ToString()));
+            parameters.Add(new Parameter("warehouse", line.warehouse_id.ToString()));
             parameters.Add(new Parameter("quantity", line.quantity.ToString()));
-            parameters.Add(new Parameter("unit", line.unit.Id.ToString()));
+            parameters.Add(new Parameter("unit", line.unit_id.ToString()));
             parameters.Add(new Parameter("documentquantity", line.documentQuantity.ToString()));
             parameters.Add(new Parameter("id_document_line", line.idDocumentLine.ToString()));
 

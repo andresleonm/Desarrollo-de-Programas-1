@@ -54,6 +54,7 @@ namespace WindowsFormsApp1.Controller
                 //"AVERAGE_COST"        6
                 var r = result.data[0];
                 Models.Product product = new Models.Product(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), r.getColumn(2), Int32.Parse(r.getColumn(3)), Int32.Parse(r.getColumn(4)), double.Parse(r.getColumn(5)));
+                product.Currency_id = Int32.Parse(r.getColumn(7));
                 return new Result(product, true, "");
             }
             return new Result(null, result.success, result.message);
@@ -68,6 +69,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("stock_min", product.Stock_min.ToString()));
             parameters.Add(new Parameter("stock_max", product.Stock_max.ToString()));
             parameters.Add(new Parameter("price", product.Unit_price.ToString()));
+            parameters.Add(new Parameter("currency_id", product.Currency_id.ToString()));
             GenericResult result = execute_transaction("insert_product", parameters);
             if (result.success)
             {
@@ -85,6 +87,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("stock_min", product.Stock_min.ToString()));
             parameters.Add(new Parameter("stock_max", product.Stock_max.ToString()));
             parameters.Add(new Parameter("price", product.Unit_price.ToString()));
+            parameters.Add(new Parameter("currency_id", product.Currency_id.ToString()));
             GenericResult result = execute_transaction("update_product", parameters);
             if (result.success)
             {
