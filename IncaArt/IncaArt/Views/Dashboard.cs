@@ -15,8 +15,8 @@ namespace WindowsFormsApp1.Views
 {
     public partial class Dashboard : Form
     {
-        public string userName;
-        public string password;
+        public string userName="dp1";
+        public string password="pass";
         public List<PurchaseOrder> purchase_order_list = new List<PurchaseOrder>();        
         public List<Models.Material> material_list = new List<Material>();
         public List<Models.Warehouse> warehouse_list;
@@ -28,6 +28,7 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
             hide_UserControls();            
             mainDashboard1.Visible = true;
+            Cursor = Cursors.Arrow;
             this.mainDashboard1.Controls.Find("metroTile11", false)[0].Click += btn_supplier_Click;
             this.mainDashboard1.Controls.Find("metroTile10", false)[0].Click += btn_warehouse_Click;
             this.mainDashboard1.Controls.Find("metroTile11", false)[0].Click += btn_supplier_Click;
@@ -228,7 +229,15 @@ namespace WindowsFormsApp1.Views
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            if(this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            
         }
     }
 }
