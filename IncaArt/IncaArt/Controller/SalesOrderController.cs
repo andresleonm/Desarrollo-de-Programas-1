@@ -43,11 +43,12 @@ namespace WindowsFormsApp1.Controller
                 SalesOrderLineController solc = new SalesOrderLineController(user, password);
                 var detail= (List<SalesOrderLine>)solc.getSalesOrderLines(Int32.Parse(r.getColumn(0))).data;
             
-                SalesOrder sales_order = new SalesOrder(Int32.Parse(r.getColumn(0)),null,
-                                                        null, r.getColumn(3), r.getColumn(4),
-                                                        r.getColumn(5), r.getColumn(6), r.getColumn(7),
-                                                         DateTime.Parse(r.getColumn(8)), DateTime.Parse(r.getColumn(9)),Double.Parse(r.getColumn(10)),
-                                                        r.getColumn(11),detail);
+                SalesOrder sales_order = new SalesOrder(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
+                                                        r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
+                                                        r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
+                                                        r.getColumn(9), DateTime.Parse(r.getColumn(10)), 
+                                                        DateTime.Parse(r.getColumn(11)), Double.Parse(r.getColumn(12)),
+                                                        r.getColumn(13),detail);
                 return new Result(sales_order, true, "");
             }
             return new Result(null, result.success, result.message);
@@ -56,8 +57,8 @@ namespace WindowsFormsApp1.Controller
         public Result insertSalesOrder(SalesOrder sales_order)
         {
             List<Parameter> parameters = new List<Parameter>();
-            parameters.Add(new Parameter("currency", sales_order.Currency.Id.ToString()));
-            parameters.Add(new Parameter("customer_id", sales_order.Customer.Id.ToString()));
+            parameters.Add(new Parameter("currency", sales_order.Currency_id.ToString()));
+            parameters.Add(new Parameter("customer_id", sales_order.Customer_id.ToString()));
             parameters.Add(new Parameter("customer_name", sales_order.Customer_name));
             parameters.Add(new Parameter("customer_address", sales_order.Customer_address));
             parameters.Add(new Parameter("customer_phone", sales_order.Customer_phone));

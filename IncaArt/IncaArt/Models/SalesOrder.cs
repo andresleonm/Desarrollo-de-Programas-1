@@ -9,8 +9,10 @@ namespace WindowsFormsApp1.Models
     public class SalesOrder
     {        
         private int id;
-        private Currency currency;
-        private Customer customer;
+        private int currency_id;
+        private string currency_name;
+        private string currency_symbol;
+        private int customer_id;
         private string customer_name;
         private string customer_address;
         private string customer_phone;
@@ -29,16 +31,28 @@ namespace WindowsFormsApp1.Models
             set { id = value; }
         }        
 
-        public Currency Currency
+        public int Currency_id
         {
-            get { return currency; }
-            set { currency = value; }
+            get { return currency_id; }
+            set { currency_id = value; }
         }
 
-        public Customer Customer
+        public string Currency_name
         {
-            get { return customer; }
-            set { customer = value; }
+            get { return currency_name; }
+            set { currency_name = value; }
+        }
+
+        public string Currency_symbol
+        {
+            get { return currency_symbol; }
+            set { currency_symbol = value; }
+        }
+
+        public int Customer_id
+        {
+            get { return customer_id; }
+            set { customer_id = value; }
         }
 
         public string Customer_name
@@ -101,11 +115,13 @@ namespace WindowsFormsApp1.Models
             set { lines = value; }
         }
 
-        public SalesOrder(int order_id, Currency currency, Customer customer, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, DateTime delivery_date, double amount, string observation, List<SalesOrderLine> lines)
+        public SalesOrder(int order_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, DateTime delivery_date, double amount, string observation, List<SalesOrderLine> lines)
         {
             this.id = order_id;
-            this.currency = currency;
-            this.customer = customer;
+            this.currency_id = currency_id;
+            this.currency_name = currency_name;
+            this.currency_symbol = currency_symbol;
+            this.customer_id = customer_id;
             this.customer_name = cli_name;
             this.customer_address = cli_addr;
             this.customer_phone = cli_phone;

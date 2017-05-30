@@ -90,12 +90,14 @@ namespace WindowsFormsApp1.Views
                 SalesOrderLineController sales_order_line_controller = new SalesOrderLineController(user, password);
                 SalesOrder sales_order = new SalesOrder();
 
-                sales_order.Customer = customerL[0];
+                sales_order.Customer_id = customerL[0].Id;
                 sales_order.Customer_name = txt_name.Text;
                 sales_order.Customer_address = txt_address.Text;
                 sales_order.Customer_doi = txt_Doi.Text;
                 sales_order.Customer_phone = txt_phone.Text;
-                sales_order.Currency = currencies.ElementAt(cbo_Currency.SelectedIndex);
+                sales_order.Currency_id = currencies.ElementAt(cbo_Currency.SelectedIndex).Id;
+                sales_order.Currency_name = currencies.ElementAt(cbo_Currency.SelectedIndex).Name;
+                sales_order.Currency_symbol = currencies.ElementAt(cbo_Currency.SelectedIndex).Symbol;
                 sales_order.Issue_date = DateTime.Now;
                 sales_order.Delivery_date = DateTime.Parse(dt_DeliveryDate.Text);
                 sales_order.Observation = txt_observation.Text;
