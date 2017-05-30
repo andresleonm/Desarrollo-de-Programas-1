@@ -21,6 +21,7 @@ namespace WindowsFormsApp1.Models
         string telephone;
         DateTime birthday;
         double salary;
+        int currency_id;
 
         public Worker(int id,int shift_id, string name,string paternal_name,string maternal_name, string doi)
         {
@@ -219,6 +220,19 @@ namespace WindowsFormsApp1.Models
             set
             {
                 salary = value;
+            }
+        }
+
+        public int Currency_id
+        {
+            get
+            {
+                return currency_id;
+            }
+
+            set
+            {
+                currency_id = value;
             }
         }
     }
