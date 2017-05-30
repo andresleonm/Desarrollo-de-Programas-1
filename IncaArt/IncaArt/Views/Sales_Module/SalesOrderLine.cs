@@ -15,7 +15,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
     public partial class SalesOrderLine : Form
     {
         Models.SalesOrderLine line;
-        private List<Product> products;
         private string user = "dp1admin";
         private string password = "dp1admin";
         ProductMovementDetailController dc;
