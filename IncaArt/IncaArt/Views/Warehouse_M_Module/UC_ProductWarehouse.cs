@@ -45,25 +45,36 @@ namespace WindowsFormsApp1.Views
 
             //Cargar los combobox - Products
             Dictionary<int, string> combo_data_products = new Dictionary<int, string>();
+            combo_data_products.Add(-1, "");
             foreach (var item in products_list)
             {
                 combo_data_products.Add(item.Id, item.Name);
             }
 
             combobox_products.DataSource = new BindingSource(combo_data_products, null);
-            combobox_unit.DisplayMember = "Value";
-            combobox_unit.ValueMember = "Key";
+            combobox_products.DisplayMember = "Value";
+            combobox_products.ValueMember = "Key";
+
+            combobox_product_s.DataSource = new BindingSource(combo_data_products, null);
+            combobox_product_s.DisplayMember = "Value";
+            combobox_product_s.ValueMember = "Key";
 
             //Cargar los combobox - Types
             Dictionary<int, string> combo_data_types = new Dictionary<int, string>();
+            combo_data_types.Add(-1,"");
             foreach (var item in types_list)
             {
                 combo_data_types.Add(item.Id, item.Name);
             }
 
             combobox_type.DataSource = new BindingSource(combo_data_types, null);
-            combobox_unit.DisplayMember = "Value";
-            combobox_unit.ValueMember = "Key";
+            combobox_type.DisplayMember = "Value";
+            combobox_type.ValueMember = "Key";
+
+            combobox_type_s.DataSource = new BindingSource(combo_data_types, null);
+            combobox_type_s.DisplayMember = "Value";
+            combobox_type_s.ValueMember = "Key";
+
 
             Load_DataGridView();
             metroTabControl1.SelectedIndex = 0;
@@ -102,6 +113,7 @@ namespace WindowsFormsApp1.Views
         private void Clean()
         {
             ClearTextBoxes(this);
+            Load_DataGridView();
         }
 
         private void ClearTextBoxes(Control control)
@@ -129,6 +141,12 @@ namespace WindowsFormsApp1.Views
                 {
                     ((RadioButton)c).Checked = false;
                 }
+
+                if (c is ComboBox)
+                {
+                    ((ComboBox)c).SelectedItem = -1;
+                }
+
             }
         }
 
@@ -207,28 +225,37 @@ namespace WindowsFormsApp1.Views
 
         private void edit_Click(object sender, EventArgs e)
         {
-            /*
+            
             String name = textbox_name.Text;
             int id = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
-            int unit_id = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Key;
-            int stock_min, stock_max;
-            stock_min = int.Parse(textbox_stock_min.Text);
-            stock_max = int.Parse(textbox_stock_max.Text);
-            double price = double.Parse(textbox_price.Text);
-            Models.Product product = new Models.Product(id, unit_id, name, stock_min, stock_max, price);
-            result = productController.updateProduct(product);
+            int product_id = ((KeyValuePair<int, string>)combobox_products.SelectedItem).Key;
+            int type_id = ((KeyValuePair<int, string>)combobox_type.SelectedItem).Key;
+            int max_capacity = int.Parse(textbox_max_capacity.Text);
+            int i=0;
+            for (i = 0; i < warehouse_list.Count(); i++) {
+                if (warehouse_list[i].Id == id) {
+                    break;
+                } 
+            }
+            int physical_stock = warehouse_list[i].Current_physical_stock;
+            int logical_stock = warehouse_list[i].Current_logical_stock;
+            String state = warehouse_list[i].State;
+
+
+            Models.ProductWarehouse warehouse = new Models.ProductWarehouse(id,name,product_id,physical_stock,max_capacity,type_id,state,logical_stock);
+            result = productWarehouseController.updateProductWarehouse(warehouse);
             if (result.data == null)
             {
                 MessageBox.Show(result.message, "Error al modificar producto", MessageBoxButtons.OK);
             }
             else
             {
-                product_list[int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString())] = product;
+                warehouse_list[i] = warehouse;
             }
 
             Load_DataGridView();
             Clean();
-            metroTabControl1.SelectedIndex = 0;*/
+            metroTabControl1.SelectedIndex = 0;
         }
 
         private void Cancel_Click(object sender, EventArgs e)
@@ -248,23 +275,104 @@ namespace WindowsFormsApp1.Views
 
         private void metroGrid1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*
+            //Id, Nombre,Tipo,Producto,Unidad,capacidad Actual,capacidad Maxima
             cur_row = e.RowIndex;
             if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
             {
-                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                for (int i = 0; i < unit_list.Count(); i++)
+                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                for (int i = 0; i < products_list.Count(); i++)
                 {
-                    if (unit_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
+                    if (products_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
                     {
-                        combobox_unit.SelectedIndex = i;
+                        combobox_products.SelectedIndex = i+1;
+                        break;
                     }
                 }
-                textbox_stock_max.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
-                textbox_stock_min.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
-                textbox_price.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
+
+                for (int i = 0; i < types_list.Count(); i++) 
+                {
+                    if (types_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString())
+                    {
+                        combobox_type.SelectedIndex = i+1;
+                        break;
+                    }
+                }
+
+                textbox_max_capacity.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
+            
                 metroTabControl1.SelectedIndex = 1;
-            }*/
+            }
+        }
+
+        //Limpiar
+        private void metroButton5_Click(object sender, EventArgs e)
+        {
+            Clean();
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+            result = productWarehouseController.deleteProductWarehouse(warehouse_list[index]);
+            if (result.data == null)
+            {
+                MessageBox.Show(result.message, "Error al eliminar almacén", MessageBoxButtons.OK);
+            }
+            else
+            {
+                warehouse_list.Remove(warehouse_list[index]);
+            }
+            Load_DataGridView();
+        }
+
+        private void search_Click(object sender, EventArgs e)
+        {
+            metroGrid1.Rows.Clear();
+            for (int i = 0; i < warehouse_list.Count(); i++)
+            {
+                //Producto
+                Models.Product product = new Models.Product();
+                resultP = productController.getProduct(warehouse_list[i].Product_id);
+
+
+                //Tipo
+                Models.ProductTypeWarehouse type = new Models.ProductTypeWarehouse();
+                resultT = typeController.getProductWarehouse(warehouse_list[i].Type_id);
+
+                if (resultP.data == null || resultT.data == null)
+                {
+                    MessageBox.Show(result.message, "Error en las búsquedas de Productos o Tipos de Almacén", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    // Producto
+                    product = (Models.Product)resultP.data;
+                    //Tipo
+                    type = (Models.ProductTypeWarehouse)resultT.data;
+                    //Unidad
+                    Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
+                    result = unitController.getUnit(product.Unit_id);
+                    unit = (Models.UnitOfMeasure)result.data;
+                    
+                    String nameSelect = ((KeyValuePair<int, string>)combobox_product_s.SelectedItem).Value;
+                    String typeSelect = ((KeyValuePair<int, string>)combobox_type_s.SelectedItem).Value;
+                    if (product.Name==nameSelect && type.Name ==typeSelect){
+                        
+                        //Grilla
+                        String[] row = new String[7];
+                        row[0] = warehouse_list[i].Id.ToString();
+                        row[1] = warehouse_list[i].Name;
+                        row[2] = type.Name;
+                        row[3] = product.Name;
+                        row[4] = unit.Symbol;
+                        row[5] = warehouse_list[i].Current_physical_stock.ToString();
+                        row[6] = warehouse_list[i].Max_capacity.ToString();
+                        this.metroGrid1.Rows.Add(row);
+
+                    }
+                }
+
+            }
         }
     }
 }

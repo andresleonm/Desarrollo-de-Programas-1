@@ -87,5 +87,39 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result updateProductWarehouse(Models.ProductWarehouse warehouse)
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", warehouse.Id.ToString()));
+            parameters.Add(new Parameter("name", warehouse.Name.ToString()));
+            parameters.Add(new Parameter("product_id", warehouse.Product_id.ToString()));
+            parameters.Add(new Parameter("physical_stock", warehouse.Current_physical_stock.ToString()));
+            parameters.Add(new Parameter("max_capacity", warehouse.Max_capacity.ToString()));
+            parameters.Add(new Parameter("type_warehouse", warehouse.Type_id.ToString()));
+            parameters.Add(new Parameter("logical_stock", warehouse.Current_logical_stock.ToString()));
+            parameters.Add(new Parameter("state", warehouse.State.ToString()));
+            GenericResult result = execute_transaction("update_productwarehouse", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+
+        public Result deleteProductWarehouse(Models.ProductWarehouse warehouse)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", warehouse.Id.ToString()));
+            GenericResult result = execute_transaction("delete_productwarehouse", parameters);
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
     }
 }

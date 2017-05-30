@@ -13,6 +13,7 @@ namespace WindowsFormsApp1.Models
         String wclass;
         String state;
 
+
         public MaterialTypeWarehouse(int id, string name, string wclass, string state)
         {
             this.id = id;
@@ -20,7 +21,13 @@ namespace WindowsFormsApp1.Models
             this.wclass = wclass;
             this.state = state;
         }
-
+        public MaterialTypeWarehouse()
+        {
+            this.id = 0;
+            this.name = "";
+            this.wclass = "";
+            this.state = "";
+        }
         public int Id
         {
             get

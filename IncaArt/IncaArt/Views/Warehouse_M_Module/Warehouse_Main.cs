@@ -19,6 +19,9 @@ namespace WindowsFormsApp1.Views
         {
             InitializeComponent();
             this.Style = mStyle.Style;
+            uC_ProductWarehouse1.Visible = true;
+            uC_MaterialWarehouse1.Visible = false;
+
         }
 
         private bool validate_data(String name,String type,int m_capacity,int a_capacity,String u1,String u2)
@@ -98,7 +101,6 @@ namespace WindowsFormsApp1.Views
         {
             uC_MaterialWarehouse1.Visible = true;
             uC_ProductWarehouse1.Visible = false;
-            
         }
     }
 }

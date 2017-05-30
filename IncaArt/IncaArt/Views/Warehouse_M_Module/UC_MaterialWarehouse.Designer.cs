@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.metroButton5 = new MetroFramework.Controls.MetroButton();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.search = new MetroFramework.Controls.MetroButton();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
             this.Almacén = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,12 +45,13 @@
             this.current_capacity_s = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.combobox_name_s = new MetroFramework.Controls.MetroComboBox();
+            this.combobox_type_s = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.edit = new MetroFramework.Controls.MetroButton();
             this.combobox_products = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
+            this.cancel = new MetroFramework.Controls.MetroButton();
             this.register = new MetroFramework.Controls.MetroButton();
             this.combobox_unit = new MetroFramework.Controls.MetroComboBox();
             this.textbox_max_capacity = new MetroFramework.Controls.MetroTextBox();
@@ -59,6 +60,7 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.textbox_name = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.delete = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
@@ -71,7 +73,7 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
             this.metroTabControl1.Location = new System.Drawing.Point(3, 3);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(922, 568);
             this.metroTabControl1.TabIndex = 21;
             this.metroTabControl1.UseSelectable = true;
@@ -79,13 +81,13 @@
             // metroTabPage2
             // 
             this.metroTabPage2.Controls.Add(this.metroButton5);
-            this.metroTabPage2.Controls.Add(this.metroButton1);
+            this.metroTabPage2.Controls.Add(this.search);
             this.metroTabPage2.Controls.Add(this.metroGrid1);
             this.metroTabPage2.Controls.Add(this.combobox_product_s);
             this.metroTabPage2.Controls.Add(this.current_capacity_s);
             this.metroTabPage2.Controls.Add(this.metroLabel8);
             this.metroTabPage2.Controls.Add(this.metroLabel7);
-            this.metroTabPage2.Controls.Add(this.combobox_name_s);
+            this.metroTabPage2.Controls.Add(this.combobox_type_s);
             this.metroTabPage2.Controls.Add(this.metroLabel6);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
@@ -105,17 +107,19 @@
             this.metroButton5.Name = "metroButton5";
             this.metroButton5.Size = new System.Drawing.Size(116, 29);
             this.metroButton5.TabIndex = 29;
-            this.metroButton5.Text = "Grabar";
+            this.metroButton5.Text = "Limpiar";
             this.metroButton5.UseSelectable = true;
+            this.metroButton5.Click += new System.EventHandler(this.metroButton5_Click);
             // 
-            // metroButton1
+            // search
             // 
-            this.metroButton1.Location = new System.Drawing.Point(372, 99);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(116, 29);
-            this.metroButton1.TabIndex = 20;
-            this.metroButton1.Text = "Buscar";
-            this.metroButton1.UseSelectable = true;
+            this.search.Location = new System.Drawing.Point(372, 99);
+            this.search.Name = "search";
+            this.search.Size = new System.Drawing.Size(116, 29);
+            this.search.TabIndex = 20;
+            this.search.Text = "Buscar";
+            this.search.UseSelectable = true;
+            this.search.Click += new System.EventHandler(this.search_Click);
             // 
             // metroGrid1
             // 
@@ -125,14 +129,14 @@
             this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.metroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.metroGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Almacén,
@@ -140,32 +144,34 @@
             this.Column11,
             this.Column7,
             this.Column8});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle2;
             this.metroGrid1.EnableHeadersVisualStyles = false;
             this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid1.Location = new System.Drawing.Point(97, 190);
             this.metroGrid1.Name = "metroGrid1";
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid1.Size = new System.Drawing.Size(541, 235);
             this.metroGrid1.TabIndex = 28;
+            this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
+            this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
             // 
             // Almacén
             // 
@@ -250,30 +256,31 @@
             this.metroLabel7.TabIndex = 23;
             this.metroLabel7.Text = "Material :";
             // 
-            // combobox_name_s
+            // combobox_type_s
             // 
-            this.combobox_name_s.FormattingEnabled = true;
-            this.combobox_name_s.ItemHeight = 23;
-            this.combobox_name_s.Location = new System.Drawing.Point(159, 33);
-            this.combobox_name_s.Name = "combobox_name_s";
-            this.combobox_name_s.Size = new System.Drawing.Size(160, 29);
-            this.combobox_name_s.TabIndex = 22;
-            this.combobox_name_s.UseSelectable = true;
+            this.combobox_type_s.FormattingEnabled = true;
+            this.combobox_type_s.ItemHeight = 23;
+            this.combobox_type_s.Location = new System.Drawing.Point(159, 33);
+            this.combobox_type_s.Name = "combobox_type_s";
+            this.combobox_type_s.Size = new System.Drawing.Size(160, 29);
+            this.combobox_type_s.TabIndex = 22;
+            this.combobox_type_s.UseSelectable = true;
             // 
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.Location = new System.Drawing.Point(23, 33);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(66, 19);
+            this.metroLabel6.Size = new System.Drawing.Size(91, 19);
             this.metroLabel6.TabIndex = 21;
-            this.metroLabel6.Text = "Nombre :";
+            this.metroLabel6.Text = "Tipo almacén:";
             // 
             // metroTabPage3
             // 
+            this.metroTabPage3.Controls.Add(this.edit);
             this.metroTabPage3.Controls.Add(this.combobox_products);
             this.metroTabPage3.Controls.Add(this.metroLabel9);
-            this.metroTabPage3.Controls.Add(this.metroButton3);
+            this.metroTabPage3.Controls.Add(this.cancel);
             this.metroTabPage3.Controls.Add(this.register);
             this.metroTabPage3.Controls.Add(this.combobox_unit);
             this.metroTabPage3.Controls.Add(this.textbox_max_capacity);
@@ -294,6 +301,16 @@
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
             // 
+            // edit
+            // 
+            this.edit.Location = new System.Drawing.Point(454, 264);
+            this.edit.Name = "edit";
+            this.edit.Size = new System.Drawing.Size(98, 27);
+            this.edit.TabIndex = 70;
+            this.edit.Text = "Editar";
+            this.edit.UseSelectable = true;
+            this.edit.Click += new System.EventHandler(this.edit_Click);
+            // 
             // combobox_products
             // 
             this.combobox_products.FormattingEnabled = true;
@@ -313,14 +330,15 @@
             this.metroLabel9.TabIndex = 68;
             this.metroLabel9.Text = "Material :";
             // 
-            // metroButton3
+            // cancel
             // 
-            this.metroButton3.Location = new System.Drawing.Point(465, 264);
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(98, 27);
-            this.metroButton3.TabIndex = 67;
-            this.metroButton3.Text = "Cancelar";
-            this.metroButton3.UseSelectable = true;
+            this.cancel.Location = new System.Drawing.Point(589, 264);
+            this.cancel.Name = "cancel";
+            this.cancel.Size = new System.Drawing.Size(98, 27);
+            this.cancel.TabIndex = 67;
+            this.cancel.Text = "Cancelar";
+            this.cancel.UseSelectable = true;
+            this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
             // register
             // 
@@ -330,6 +348,7 @@
             this.register.TabIndex = 66;
             this.register.Text = "Registro";
             this.register.UseSelectable = true;
+            this.register.Click += new System.EventHandler(this.register_Click);
             // 
             // combobox_unit
             // 
@@ -438,10 +457,21 @@
             this.metroLabel1.TabIndex = 53;
             this.metroLabel1.Text = "Nombre : ";
             // 
+            // delete
+            // 
+            this.delete.Location = new System.Drawing.Point(529, 591);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(116, 29);
+            this.delete.TabIndex = 30;
+            this.delete.Text = "Eliminar";
+            this.delete.UseSelectable = true;
+            this.delete.Click += new System.EventHandler(this.delete_Click);
+            // 
             // UC_MaterialWarehouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.delete);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "UC_MaterialWarehouse";
             this.Size = new System.Drawing.Size(972, 658);
@@ -461,7 +491,7 @@
         private MetroFramework.Controls.MetroTabControl metroTabControl1;
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
         private MetroFramework.Controls.MetroButton metroButton5;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton search;
         private MetroFramework.Controls.MetroGrid metroGrid1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Almacén;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
@@ -472,12 +502,12 @@
         private MetroFramework.Controls.MetroTextBox current_capacity_s;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroLabel metroLabel7;
-        private MetroFramework.Controls.MetroComboBox combobox_name_s;
+        private MetroFramework.Controls.MetroComboBox combobox_type_s;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroTabPage metroTabPage3;
         private MetroFramework.Controls.MetroComboBox combobox_products;
         private MetroFramework.Controls.MetroLabel metroLabel9;
-        private MetroFramework.Controls.MetroButton metroButton3;
+        private MetroFramework.Controls.MetroButton cancel;
         private MetroFramework.Controls.MetroButton register;
         private MetroFramework.Controls.MetroComboBox combobox_unit;
         private MetroFramework.Controls.MetroTextBox textbox_max_capacity;
@@ -486,5 +516,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroTextBox textbox_name;
         private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroButton edit;
+        private MetroFramework.Controls.MetroButton delete;
     }
 }

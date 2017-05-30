@@ -34,7 +34,7 @@ namespace WindowsFormsApp1.Controller
         }
 
 
-        public Result getProductWarehouse(int id)
+        public Result getMaterialWarehouse(int id)
         {
             //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
