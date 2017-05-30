@@ -44,13 +44,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
-            this.idOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.client = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
@@ -108,6 +101,19 @@
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.mbStyle = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.currency_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currency_symbol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.order_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currency_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.order.SuspendLayout();
@@ -140,7 +146,7 @@
             this.metroTabControl1.Controls.Add(this.newOrder);
             this.metroTabControl1.Location = new System.Drawing.Point(12, 3);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(849, 608);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 41;
@@ -232,10 +238,16 @@
             this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.metroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.metroGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idOrder,
-            this.client,
+            this.currency_id,
+            this.currency_symbol,
+            this.customer_id,
+            this.customer_address,
+            this.customer_phone,
+            this.customer_doi,
+            this.order_id,
+            this.currency_name,
             this.dataGridViewTextBoxColumn1,
-            this.issueDate,
+            this.issue_date,
             this.deliveryDate,
             this.dataGridViewTextBoxColumn2,
             this.status});
@@ -266,49 +278,6 @@
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid1.Size = new System.Drawing.Size(792, 255);
             this.metroGrid1.TabIndex = 51;
-            // 
-            // idOrder
-            // 
-            this.idOrder.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.idOrder.HeaderText = "N° Orden";
-            this.idOrder.Name = "idOrder";
-            this.idOrder.ReadOnly = true;
-            // 
-            // client
-            // 
-            this.client.HeaderText = "Cliente";
-            this.client.Name = "client";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Observación";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // issueDate
-            // 
-            this.issueDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.issueDate.HeaderText = "Fecha de Emisión";
-            this.issueDate.Name = "issueDate";
-            this.issueDate.ReadOnly = true;
-            // 
-            // deliveryDate
-            // 
-            this.deliveryDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.deliveryDate.HeaderText = "Fecha de Entrega";
-            this.deliveryDate.Name = "deliveryDate";
-            this.deliveryDate.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Total";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // status
-            // 
-            this.status.HeaderText = "Estado";
-            this.status.Name = "status";
             // 
             // groupBox2
             // 
@@ -346,7 +315,7 @@
             // metroDateTime1
             // 
             this.metroDateTime1.Location = new System.Drawing.Point(562, 24);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(4, 29);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
             this.metroDateTime1.Size = new System.Drawing.Size(209, 29);
             this.metroDateTime1.TabIndex = 49;
@@ -354,7 +323,7 @@
             // metroDateTime2
             // 
             this.metroDateTime2.Location = new System.Drawing.Point(562, 66);
-            this.metroDateTime2.MinimumSize = new System.Drawing.Size(4, 29);
+            this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime2.Name = "metroDateTime2";
             this.metroDateTime2.Size = new System.Drawing.Size(209, 29);
             this.metroDateTime2.TabIndex = 48;
@@ -1185,6 +1154,95 @@
             // 
             this.mbStyle.Owner = null;
             // 
+            // currency_id
+            // 
+            this.currency_id.DataPropertyName = "currency_id";
+            this.currency_id.HeaderText = "currency_id";
+            this.currency_id.Name = "currency_id";
+            this.currency_id.Visible = false;
+            // 
+            // currency_symbol
+            // 
+            this.currency_symbol.DataPropertyName = "currency_symbol";
+            this.currency_symbol.HeaderText = "currency_symbol";
+            this.currency_symbol.Name = "currency_symbol";
+            this.currency_symbol.Visible = false;
+            // 
+            // customer_id
+            // 
+            this.customer_id.DataPropertyName = "customer_id";
+            this.customer_id.HeaderText = "customer_id";
+            this.customer_id.Name = "customer_id";
+            this.customer_id.Visible = false;
+            // 
+            // customer_address
+            // 
+            this.customer_address.DataPropertyName = "customer_address";
+            this.customer_address.HeaderText = "customer_address";
+            this.customer_address.Name = "customer_address";
+            this.customer_address.Visible = false;
+            // 
+            // customer_phone
+            // 
+            this.customer_phone.DataPropertyName = "customer_phone";
+            this.customer_phone.HeaderText = "customer_phone";
+            this.customer_phone.Name = "customer_phone";
+            this.customer_phone.Visible = false;
+            // 
+            // customer_doi
+            // 
+            this.customer_doi.DataPropertyName = "customer_doi";
+            this.customer_doi.HeaderText = "customer_doi";
+            this.customer_doi.Name = "customer_doi";
+            this.customer_doi.Visible = false;
+            // 
+            // order_id
+            // 
+            this.order_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.order_id.DataPropertyName = "order_id";
+            this.order_id.HeaderText = "N° Orden";
+            this.order_id.Name = "order_id";
+            this.order_id.ReadOnly = true;
+            // 
+            // currency_name
+            // 
+            this.currency_name.DataPropertyName = "currency_name";
+            this.currency_name.HeaderText = "Cliente";
+            this.currency_name.Name = "currency_name";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Observación";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // issue_date
+            // 
+            this.issue_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.issue_date.DataPropertyName = "issue_date";
+            this.issue_date.HeaderText = "Fecha de Emisión";
+            this.issue_date.Name = "issue_date";
+            this.issue_date.ReadOnly = true;
+            // 
+            // deliveryDate
+            // 
+            this.deliveryDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.deliveryDate.HeaderText = "Fecha de Entrega";
+            this.deliveryDate.Name = "deliveryDate";
+            this.deliveryDate.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Total";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.HeaderText = "Estado";
+            this.status.Name = "status";
+            // 
             // UC_SalesOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1230,13 +1288,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel4;
         private MetroFramework.Controls.MetroGrid metroGrid1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idOrder;
-        private System.Windows.Forms.DataGridViewTextBoxColumn client;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn issueDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button1;
         private MetroFramework.Controls.MetroDateTime metroDateTime1;
@@ -1293,5 +1344,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private System.Windows.Forms.DataGridViewButtonColumn action;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currency_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currency_symbol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customer_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customer_address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customer_phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customer_doi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn order_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currency_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn issue_date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
     }
 }
