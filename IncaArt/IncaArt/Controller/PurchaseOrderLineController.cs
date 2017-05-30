@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.Controller
         public Result getPurchaseOrderLines(int id)
         {
             List<Parameter> parameters = new List<Parameter>();
-            parameters.Add(new Parameter("order_id", id.ToString()));
+            parameters.Add(new Parameter("purchase_order_id", id.ToString()));
             GenericResult result = execute_function("get_purchase_order_lines", parameters);
             List<PurchaseOrderLine> lines = new List<PurchaseOrderLine>();
             if (result.success)
@@ -47,6 +47,26 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("material_id", line.Material.ToString()));
             parameters.Add(new Parameter("warehouse_id", line.Warehouse.ToString()));
             GenericResult result = execute_transaction("insert_purchase_order_line", parameters);
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result updatePurchaseOrderLine(PurchaseOrderLine line)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("purchase_order_id", line.Purchase_order.ToString()));
+            parameters.Add(new Parameter("unit_of_measure_id", line.Unit_of_measure.ToString()));
+            parameters.Add(new Parameter("quantity", line.Quantity.ToString()));
+            parameters.Add(new Parameter("price", line.Price.ToString()));
+            parameters.Add(new Parameter("scheduled_date", line.Scheluded_date.ToString("MM/dd/yyyy")));
+            parameters.Add(new Parameter("state", "ACTIVE"));
+            parameters.Add(new Parameter("deliver_quantity", line.Deliver_quantity.ToString()));
+            parameters.Add(new Parameter("material_id", line.Material.ToString()));
+            parameters.Add(new Parameter("warehouse_id", line.Warehouse.ToString()));
+            GenericResult result = execute_transaction("update_purchase_order_line", parameters);
             if (result.success)
             {
                 return new Result(result.singleValue, true, "");

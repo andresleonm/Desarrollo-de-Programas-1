@@ -24,7 +24,7 @@ namespace WindowsFormsApp1.Models
         double igv_percentage;        
         DateTime creation_date;
 
-        public PurchaseOrder(int id,int currency_id,int supplier_id,string supplier_name,string supplier_address,string suppler_phone,double amount,string state,string supplier_doi, DateTime creation_date, string observation,string external_number,double igv_amount,double igv_percentage)
+        public PurchaseOrder(int id, int currency_id, int supplier_id, string supplier_name, string supplier_address, string supplier_phone, double amount, string state, string supplier_doi, DateTime creation_date, string observation, string external_number, double igv_amount, double igv_percentage)
         {
             this.id = id;
             this.currency_id = currency_id;
@@ -34,8 +34,13 @@ namespace WindowsFormsApp1.Models
             this.observation = observation;
             this.external_number = external_number;
             this.igv_amount = igv_amount;
-            this.igv_percentage = igv_percentage;            
+            this.igv_percentage = igv_percentage;
             this.creation_date = creation_date;
+            this.supplier_address = supplier_address;
+            this.supplier_name = supplier_name;
+            this.supplier_phone = supplier_phone;
+            this.supplier_doi = supplier_doi;
+            lines = new List<PurchaseOrderLine>();
         }
 
         public int Id
