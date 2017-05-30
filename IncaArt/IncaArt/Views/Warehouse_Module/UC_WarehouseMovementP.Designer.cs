@@ -44,7 +44,7 @@
             this.textbox_name_s = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.movement_grid = new MetroFramework.Controls.MetroGrid();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,12 +74,12 @@
             this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.documentQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.action = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.actionbutton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDocumentLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movement_grid)).BeginInit();
             this.registro.SuspendLayout();
             this.gb_OrderLine.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_movement_lines)).BeginInit();
@@ -105,7 +105,7 @@
             this.consulta.Controls.Add(this.textbox_name_s);
             this.consulta.Controls.Add(this.metroLabel2);
             this.consulta.Controls.Add(this.metroLabel1);
-            this.consulta.Controls.Add(this.metroGrid1);
+            this.consulta.Controls.Add(this.movement_grid);
             this.consulta.HorizontalScrollbarBarColor = true;
             this.consulta.HorizontalScrollbarHighlightOnWheel = false;
             this.consulta.HorizontalScrollbarSize = 10;
@@ -204,13 +204,13 @@
             this.metroLabel1.TabIndex = 3;
             this.metroLabel1.Text = "Nombre:";
             // 
-            // metroGrid1
+            // movement_grid
             // 
-            this.metroGrid1.AllowUserToResizeRows = false;
-            this.metroGrid1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.metroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.metroGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.movement_grid.AllowUserToResizeRows = false;
+            this.movement_grid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.movement_grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.movement_grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.movement_grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -218,9 +218,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.metroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.metroGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.movement_grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.movement_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.movement_grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.index,
             this.nombre,
@@ -234,13 +234,13 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.metroGrid1.EnableHeadersVisualStyles = false;
-            this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid1.Location = new System.Drawing.Point(35, 147);
-            this.metroGrid1.Name = "metroGrid1";
-            this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.movement_grid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.movement_grid.EnableHeadersVisualStyles = false;
+            this.movement_grid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.movement_grid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.movement_grid.Location = new System.Drawing.Point(35, 147);
+            this.movement_grid.Name = "movement_grid";
+            this.movement_grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -248,11 +248,11 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(777, 178);
-            this.metroGrid1.TabIndex = 2;
+            this.movement_grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.movement_grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.movement_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.movement_grid.Size = new System.Drawing.Size(777, 178);
+            this.movement_grid.TabIndex = 2;
             // 
             // id
             // 
@@ -354,7 +354,7 @@
             this.stock,
             this.documentQuantity,
             this.quantity,
-            this.action,
+            this.actionbutton,
             this.state,
             this.idDocumentLine});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -599,21 +599,21 @@
             this.quantity.HeaderText = "Cantidad";
             this.quantity.Name = "quantity";
             // 
-            // action
+            // actionbutton
             // 
-            this.action.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.actionbutton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.action.DefaultCellStyle = dataGridViewCellStyle5;
-            this.action.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.action.HeaderText = "Accion";
-            this.action.Name = "action";
-            this.action.Text = "X";
-            this.action.Width = 40;
+            this.actionbutton.DefaultCellStyle = dataGridViewCellStyle5;
+            this.actionbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.actionbutton.HeaderText = "Accion";
+            this.actionbutton.Name = "actionbutton";
+            this.actionbutton.Text = "X";
+            this.actionbutton.Width = 40;
             // 
             // state
             // 
@@ -640,7 +640,7 @@
             this.metroTabControl1.ResumeLayout(false);
             this.consulta.ResumeLayout(false);
             this.consulta.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movement_grid)).EndInit();
             this.registro.ResumeLayout(false);
             this.registro.PerformLayout();
             this.gb_OrderLine.ResumeLayout(false);
@@ -660,7 +660,7 @@
         private MetroFramework.Controls.MetroTextBox textbox_name_s;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroGrid metroGrid1;
+        private MetroFramework.Controls.MetroGrid movement_grid;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn index;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
@@ -690,7 +690,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn documentQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewButtonColumn action;
+        private System.Windows.Forms.DataGridViewButtonColumn actionbutton;
         private System.Windows.Forms.DataGridViewTextBoxColumn state;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDocumentLine;
     }

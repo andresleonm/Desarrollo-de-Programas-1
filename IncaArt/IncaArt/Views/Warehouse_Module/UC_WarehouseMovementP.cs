@@ -55,7 +55,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             grid_movement_lines.Columns["warehouse"].DisplayIndex = 2;
             grid_movement_lines.Columns["stock"].DisplayIndex = 3;
             grid_movement_lines.Columns["quantity"].DisplayIndex = 4;
-            grid_movement_lines.Columns["action"].DisplayIndex = 5;
+            grid_movement_lines.Columns["documentQuantity"].DisplayIndex = 5;
+            grid_movement_lines.Columns["action"].DisplayIndex = 6;
         }
 
         private void populate_document_combo_box(int clase)
@@ -192,13 +193,14 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             List <Models.ProductMovementLine> current= (List<Models.ProductMovementLine>) this.grid_movement_lines.DataSource;
             current=current.Concat(lines).ToList();
             this.grid_movement_lines.DataSource = current;
+            AdjustColumnOrder();
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            List <Models.ProductMovementLine> current= (List<Models.ProductMovementLine>) this.grid_movement_lines.DataSource;
+            List <Models.ProductMovementLine> detail= (List<Models.ProductMovementLine>) this.grid_movement_lines.DataSource;
             Models.ProductMovement movement= new Models.ProductMovement();
-            movement.detail = current;
+            movement.detail = detail;
             var doc = (Document)this.documents_list.SelectedItem;
             var tipo = ((ProductMovementType)this.types_movements.SelectedItem);
             movement.Tipo = tipo;
@@ -212,7 +214,10 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            ViewWarehouseMovementP order_line = new ViewWarehouseMovementP(user, password);
+            ProductMovement currentObject = (ProductMovement)movement_grid.CurrentRow.DataBoundItem;
+            if (currentObject == null)
+                MessageBox.Show("Seleccione el movimiento que desea visualizar");
+            ViewWarehouseMovementP order_line = new ViewWarehouseMovementP(user, password, currentObject);
             order_line.Show();
         }
     }
