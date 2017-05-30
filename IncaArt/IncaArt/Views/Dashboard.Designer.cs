@@ -435,14 +435,18 @@ namespace WindowsFormsApp1.Views
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(1017, 439);
             this.user.TabIndex = 24;
+            this.user.UseSelectable = true;
             this.user.Visible = false;
             // 
             // profile
             // 
+            this.profile.BackColor = System.Drawing.SystemColors.Window;
             this.profile.Location = new System.Drawing.Point(132, 72);
             this.profile.Name = "profile";
             this.profile.Size = new System.Drawing.Size(873, 442);
             this.profile.TabIndex = 27;
+            this.profile.UseSelectable = true;
+            this.user.Visible = false;
             // 
             // shift
             // 

@@ -41,6 +41,13 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_maximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registro = new MetroFramework.Controls.MetroTabPage();
             this.combobox_currency = new MetroFramework.Controls.MetroComboBox();
             this.textbox_price = new MetroFramework.Controls.MetroTextBox();
@@ -56,13 +63,6 @@
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_maximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
@@ -130,6 +130,7 @@
             this.btn_search.TabIndex = 11;
             this.btn_search.Text = "Buscar";
             this.btn_search.UseSelectable = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // combobox_unit_s
             // 
@@ -241,6 +242,45 @@
             this.metroGrid1.TabIndex = 2;
             this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
             this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
+            // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // index
+            // 
+            this.index.HeaderText = "Index";
+            this.index.Name = "index";
+            this.index.Visible = false;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            // 
+            // unidad
+            // 
+            this.unidad.HeaderText = "Unidad";
+            this.unidad.Name = "unidad";
+            // 
+            // price
+            // 
+            this.price.HeaderText = "Precio";
+            this.price.Name = "price";
+            // 
+            // stock_minimo
+            // 
+            this.stock_minimo.HeaderText = "Stock Mínimo";
+            this.stock_minimo.Name = "stock_minimo";
+            this.stock_minimo.Width = 110;
+            // 
+            // stock_maximo
+            // 
+            this.stock_maximo.HeaderText = "Stock Máximo";
+            this.stock_maximo.Name = "stock_maximo";
+            this.stock_maximo.Width = 110;
             // 
             // registro
             // 
@@ -484,45 +524,6 @@
             this.metroLabel5.Size = new System.Drawing.Size(62, 19);
             this.metroLabel5.TabIndex = 2;
             this.metroLabel5.Text = "Nombre:";
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // index
-            // 
-            this.index.HeaderText = "Index";
-            this.index.Name = "index";
-            this.index.Visible = false;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            // 
-            // unidad
-            // 
-            this.unidad.HeaderText = "Unidad";
-            this.unidad.Name = "unidad";
-            // 
-            // price
-            // 
-            this.price.HeaderText = "Precio";
-            this.price.Name = "price";
-            // 
-            // stock_minimo
-            // 
-            this.stock_minimo.HeaderText = "Stock Mínimo";
-            this.stock_minimo.Name = "stock_minimo";
-            this.stock_minimo.Width = 110;
-            // 
-            // stock_maximo
-            // 
-            this.stock_maximo.HeaderText = "Stock Máximo";
-            this.stock_maximo.Name = "stock_maximo";
-            this.stock_maximo.Width = 110;
             // 
             // UC_Product
             // 
