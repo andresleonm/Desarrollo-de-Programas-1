@@ -32,8 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.consulta = new MetroFramework.Controls.MetroTabPage();
             this.btn_delete = new MetroFramework.Controls.MetroButton();
@@ -53,16 +54,6 @@
             this.registro = new MetroFramework.Controls.MetroTabPage();
             this.gb_OrderLine = new System.Windows.Forms.GroupBox();
             this.grid_movement_lines = new MetroFramework.Controls.MetroGrid();
-            this.movement_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.line_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Almacen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.documentQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDocumentLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new MetroFramework.Controls.MetroDateTime();
             this.btn_Clean = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
@@ -75,6 +66,17 @@
             this.textbox_observation = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.movement_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.line_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.documentQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.action = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDocumentLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
@@ -124,6 +126,7 @@
             this.btn_delete.TabIndex = 13;
             this.btn_delete.Text = "Ver";
             this.btn_delete.UseSelectable = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_clean_s
             // 
@@ -347,20 +350,21 @@
             this.line_id,
             this.product,
             this.unit,
-            this.Almacen,
+            this.warehouse,
             this.stock,
             this.documentQuantity,
-            this.Cantidad,
+            this.quantity,
+            this.action,
             this.state,
             this.idDocumentLine});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid_movement_lines.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid_movement_lines.DefaultCellStyle = dataGridViewCellStyle6;
             this.grid_movement_lines.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_movement_lines.EnableHeadersVisualStyles = false;
             this.grid_movement_lines.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -368,94 +372,19 @@
             this.grid_movement_lines.Location = new System.Drawing.Point(3, 16);
             this.grid_movement_lines.Name = "grid_movement_lines";
             this.grid_movement_lines.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_movement_lines.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_movement_lines.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.grid_movement_lines.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.grid_movement_lines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_movement_lines.Size = new System.Drawing.Size(785, 170);
             this.grid_movement_lines.TabIndex = 50;
             this.grid_movement_lines.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_order_lines_CellContentClick);
-            // 
-            // movement_id
-            // 
-            this.movement_id.DataPropertyName = "movementId";
-            this.movement_id.HeaderText = "movement_id";
-            this.movement_id.Name = "movement_id";
-            this.movement_id.Visible = false;
-            // 
-            // line_id
-            // 
-            this.line_id.DataPropertyName = "id";
-            this.line_id.HeaderText = "line_id";
-            this.line_id.Name = "line_id";
-            this.line_id.Visible = false;
-            // 
-            // product
-            // 
-            this.product.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.product.DataPropertyName = "product";
-            this.product.HeaderText = "Producto";
-            this.product.Name = "product";
-            this.product.ReadOnly = true;
-            // 
-            // unit
-            // 
-            this.unit.DataPropertyName = "unit";
-            this.unit.HeaderText = "Unidad de Medida";
-            this.unit.Name = "unit";
-            this.unit.ReadOnly = true;
-            // 
-            // Almacen
-            // 
-            this.Almacen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Almacen.DataPropertyName = "warehouse";
-            this.Almacen.HeaderText = "Almacen";
-            this.Almacen.Name = "Almacen";
-            this.Almacen.ReadOnly = true;
-            // 
-            // stock
-            // 
-            this.stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.stock.DataPropertyName = "warehouseQuantity";
-            this.stock.HeaderText = "Stock";
-            this.stock.Name = "stock";
-            this.stock.ReadOnly = true;
-            // 
-            // documentQuantity
-            // 
-            this.documentQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.documentQuantity.DataPropertyName = "documentQuantity";
-            this.documentQuantity.HeaderText = "Cantidad Documento";
-            this.documentQuantity.Name = "documentQuantity";
-            this.documentQuantity.ReadOnly = true;
-            this.documentQuantity.Visible = false;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cantidad.DataPropertyName = "quantity";
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // state
-            // 
-            this.state.DataPropertyName = "state";
-            this.state.HeaderText = "Estado";
-            this.state.Name = "state";
-            this.state.Visible = false;
-            // 
-            // idDocumentLine
-            // 
-            this.idDocumentLine.DataPropertyName = "idDocumentLine";
-            this.idDocumentLine.HeaderText = "document_line";
-            this.idDocumentLine.Name = "idDocumentLine";
-            this.idDocumentLine.Visible = false;
             // 
             // date
             // 
@@ -609,6 +538,97 @@
             this.metroLabel5.TabIndex = 2;
             this.metroLabel5.Text = "Tipo de Movimiento";
             // 
+            // movement_id
+            // 
+            this.movement_id.DataPropertyName = "movementId";
+            this.movement_id.HeaderText = "movement_id";
+            this.movement_id.Name = "movement_id";
+            this.movement_id.Visible = false;
+            // 
+            // line_id
+            // 
+            this.line_id.DataPropertyName = "id";
+            this.line_id.HeaderText = "line_id";
+            this.line_id.Name = "line_id";
+            this.line_id.Visible = false;
+            // 
+            // product
+            // 
+            this.product.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.product.DataPropertyName = "product";
+            this.product.HeaderText = "Producto";
+            this.product.Name = "product";
+            this.product.ReadOnly = true;
+            // 
+            // unit
+            // 
+            this.unit.DataPropertyName = "unit";
+            this.unit.HeaderText = "Unidad de Medida";
+            this.unit.Name = "unit";
+            this.unit.ReadOnly = true;
+            // 
+            // warehouse
+            // 
+            this.warehouse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.warehouse.DataPropertyName = "warehouse";
+            this.warehouse.HeaderText = "Almacen";
+            this.warehouse.Name = "warehouse";
+            this.warehouse.ReadOnly = true;
+            // 
+            // stock
+            // 
+            this.stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.stock.DataPropertyName = "warehouseQuantity";
+            this.stock.HeaderText = "Stock";
+            this.stock.Name = "stock";
+            this.stock.ReadOnly = true;
+            // 
+            // documentQuantity
+            // 
+            this.documentQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.documentQuantity.DataPropertyName = "documentQuantity";
+            this.documentQuantity.HeaderText = "Cantidad Documento";
+            this.documentQuantity.Name = "documentQuantity";
+            this.documentQuantity.ReadOnly = true;
+            this.documentQuantity.Visible = false;
+            // 
+            // quantity
+            // 
+            this.quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.quantity.DataPropertyName = "quantity";
+            this.quantity.HeaderText = "Cantidad";
+            this.quantity.Name = "quantity";
+            // 
+            // action
+            // 
+            this.action.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.action.DefaultCellStyle = dataGridViewCellStyle5;
+            this.action.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.action.HeaderText = "Accion";
+            this.action.Name = "action";
+            this.action.Text = "X";
+            this.action.Width = 40;
+            // 
+            // state
+            // 
+            this.state.DataPropertyName = "state";
+            this.state.HeaderText = "Estado";
+            this.state.Name = "state";
+            this.state.Visible = false;
+            // 
+            // idDocumentLine
+            // 
+            this.idDocumentLine.DataPropertyName = "idDocumentLine";
+            this.idDocumentLine.HeaderText = "document_line";
+            this.idDocumentLine.Name = "idDocumentLine";
+            this.idDocumentLine.Visible = false;
+            // 
             // UC_WarehouseMovementP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -666,10 +686,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn line_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn product;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Almacen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
         private System.Windows.Forms.DataGridViewTextBoxColumn stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn documentQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewButtonColumn action;
         private System.Windows.Forms.DataGridViewTextBoxColumn state;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDocumentLine;
     }

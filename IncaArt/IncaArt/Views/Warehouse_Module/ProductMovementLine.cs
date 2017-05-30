@@ -25,9 +25,12 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             pc = new ProductsController(user, password);
             dc = new ProductMovementDetailController(user, password);
             List<Models.Product> products = (List<Models.Product>)pc.getProducts().data;
+            Models.Product p = new Product();
+            p.Name = "Todos";
+            p.Id = 0;
+            products.Add(p);
             this.products.DataSource = products;
             this.products.DisplayMember = "name";
-            // make it readonly
             this.products.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         public ProductMovementLine(ref List<Models.ProductMovementLine> lines,string user,string password)

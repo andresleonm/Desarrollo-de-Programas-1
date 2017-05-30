@@ -315,6 +315,12 @@
       <DependentUpon>UC_Workstation.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Warehouse_Module\Document.cs" />
+    <Compile Include="Views\Warehouse_Module\ViewWarehouseMovementP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\ViewWarehouseMovementP.Designer.cs">
+      <DependentUpon>ViewWarehouseMovementP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Warehouse_Module\ProductMovementLine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -509,6 +515,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesOrder.resx">
       <DependentUpon>UC_SalesOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_Module\ViewWarehouseMovementP.resx">
+      <DependentUpon>ViewWarehouseMovementP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Workstation.resx">
       <DependentUpon>UC_Workstation.cs</DependentUpon>
