@@ -19,6 +19,7 @@ namespace WindowsFormsApp1.Models
         private int delivery_quantity;
         private int prod_warehouse_id;
         private string prod_warehouse_name;
+        private double amount;
         private string status;
 
         public int Id
@@ -88,6 +89,12 @@ namespace WindowsFormsApp1.Models
             set { prod_warehouse_name = value; }
         }
 
+        public double Amount
+        {
+            get { return amount; }
+            set { amount = value; }
+        }
+
         public string Status
         {
             get { return status; }
@@ -95,7 +102,7 @@ namespace WindowsFormsApp1.Models
         }
         
 
-        public SalesOrderLine(int id, int order_id, int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int del_quantity, int prod_warehouse_id, string prod_warehouse_name, string status)
+        public SalesOrderLine(int id, int order_id, int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int del_quantity, int prod_warehouse_id, string prod_warehouse_name)
         {
             this.id = id;
             this.order_id = order_id;
@@ -108,20 +115,21 @@ namespace WindowsFormsApp1.Models
             this.delivery_quantity = del_quantity;
             this.prod_warehouse_id = prod_warehouse_id;
             this.prod_warehouse_name = prod_warehouse_name;
-            this.status = status;
+            this.status = "Registrado";
         }
 
-        // For gridview
-        //public SalesOrderLine(Product product, UnitOfMeasure unit_measure, int quantity, double price, string status, int del_quantity, ProductWarehouse prod_warehouse)
-        //{
-        //    this.Product = product;
-        //    this.unit_measure = unit_measure;
-        //    this.Quantity = quantity;
-        //    this.Unit_price = price;
-        //    this.delivery_quantity = del_quantity;
-        //    this.prod_warehouse = prod_warehouse;
-        //    this.status = status;
-        //}
+        public SalesOrderLine(int id, int order_id, int product_id, int unit_measure_id, int quantity, double price, int prod_warehouse_id)
+        {
+            this.id = id;
+            this.order_id = order_id;
+            this.Product_id = product_id;            
+            this.unit_measure_id = unit_measure_id;
+            this.Quantity = quantity;
+            this.Unit_price = price;
+            this.delivery_quantity = 0;
+            this.prod_warehouse_id = prod_warehouse_id;
+            this.status = "Registrado";
+        }
 
         public SalesOrderLine()
         {
@@ -137,6 +145,7 @@ namespace WindowsFormsApp1.Models
             this.Unit_price = prod_WS.unit_price;
             this.prod_warehouse_id = prod_WS.Id;
             this.prod_warehouse_name = prod_WS.Name;
+            this.amount = prod_WS.quantity * prod_WS.unit_price;
             this.status = "Active";
         }
 

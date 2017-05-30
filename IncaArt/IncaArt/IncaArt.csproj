@@ -44,6 +44,9 @@
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Npgsql, Version=3.2.2.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.3.2.2\lib\net451\Npgsql.dll</HintPath>
       <Private>True</Private>
@@ -67,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\FunctionalityController.cs" />
     <Compile Include="Controller\ProfileController.cs" />
     <Compile Include="Controller\CurrencyController.cs" />
     <Compile Include="Controller\CustomerController.cs" />
@@ -195,6 +199,12 @@
       <DependentUpon>UC_ProductionOrderProductLine.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Sales_Module\ProductWarehouseS.cs" />
+    <Compile Include="Views\Sales_Module\SalesOrderSearchClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales_Module\SalesOrderSearchClient.Designer.cs">
+      <DependentUpon>SalesOrderSearchClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UC_Material.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -230,12 +240,6 @@
     </Compile>
     <Compile Include="Views\UC_Profile.Designer.cs">
       <DependentUpon>UC_Profile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Sales_Module\SalesOrder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Sales_Module\SalesOrder.Designer.cs">
-      <DependentUpon>SalesOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Sales_Module\SalesOrderLine.cs">
       <SubType>Form</SubType>
@@ -454,6 +458,9 @@
     <EmbeddedResource Include="Views\Production_Module\ProductionOrderWorkLine.resx">
       <DependentUpon>ProductionOrderWorkLine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales_Module\SalesOrderSearchClient.resx">
+      <DependentUpon>SalesOrderSearchClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Material.resx">
       <DependentUpon>UC_Material.cs</DependentUpon>
     </EmbeddedResource>
@@ -621,6 +628,9 @@
     <None Include="Resources\Hangar_64px.png" />
     <None Include="Resources\Settings_48px.png" />
     <None Include="Resources\Menu_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

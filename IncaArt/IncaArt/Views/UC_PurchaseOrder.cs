@@ -19,7 +19,7 @@ namespace WindowsFormsApp1.Views
         private List<Models.Supplier> suppliers;
         private List<Models.Currency> currencies;
         private List<Models.UnitOfMeasure> units_of_measure;
-        private DateTimePicker cellDateTimePicker;
+        private DateTimePicker cellDateTimePicker;        
         public UC_PurchaseOrder()
         {
             InitializeComponent();
@@ -30,13 +30,11 @@ namespace WindowsFormsApp1.Views
             this.grid_order_lines.Controls.Add(cellDateTimePicker);            
         }
 
-        void cellDateTimePickerValueChanged(object sender, EventArgs e)
+        void cellDateTimePickerValueChanged(object sender, EventArgs e) // coloca la fecha en la celda correspondiente
         {
-            grid_order_lines.CurrentRow.Cells[0].Value = cellDateTimePicker.Value.ToShortDateString();//convert the date as per your format
+            grid_order_lines.CurrentRow.Cells[0].Value = cellDateTimePicker.Value.ToShortDateString();
             cellDateTimePicker.Visible = false;
         }
-
-
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -55,30 +53,37 @@ namespace WindowsFormsApp1.Views
         public void fillForm(Models.PurchaseOrder order)
         {
             editing = true;
+            grid_order_lines.Rows.Clear();
+            loadLists();
             editing_order = order;
             txt_id.Text = order.Id.ToString();
-            date_order_date.Text = order.Creation_date.ToString();
-            //combo_supplier.Text = order.Supplier.Supplier_name;
-            //combo_address.Text = order.Supplier.Supplier_addres;
+            txt_external_number.Text = order.External_number;
+            combo_currency.Text = currencies.Find(c => c.Id == order.Currency_id).Name;
+            date_order_date.Text = order.Creation_date.ToShortDateString();
+            loadCombos();
+            combo_supplier.Text = order.Supplier_name;            
             txt_state.Text = order.State;
 
-            foreach(Models.PurchaseOrderLine line in order.Lines)
+            foreach (Models.PurchaseOrderLine line in order.Lines)
             {
-                string[] grid_line = new string[6];                
-                grid_line[1] = "";
+                string[] grid_line = new string[8];
+                grid_line[0] = line.Scheluded_date.ToShortDateString();
+                grid_line[1] = materials.Find(m => m.Id == line.Material).Name;
                 grid_line[2] = line.Quantity.ToString();
-                //grid_line[3] = line.Material.Name;
-                grid_line[4] = line.Price.ToString();
-                grid_line[5] = (line.Quantity * line.Price).ToString();
+                grid_line[3] = line.Deliver_quantity.ToString();
+                grid_line[4] = units_of_measure.Find(uom => uom.Id == line.Unit_of_measure).Name;
+                grid_line[5] = warehouses.Find(w => w.Id == line.Warehouse).Name;
+                grid_line[6] = line.Price.ToString();
+                grid_line[7] = (line.Quantity * line.Price).ToString();
                 grid_order_lines.Rows.Add(grid_line);
             }
-            
-
+            calculateCosts();
+            this.Visible = true;            
         }
 
         private void grid_order_lines_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            txt_no_taxes.Text = (Double.Parse(txt_no_taxes.Text) + (Double.Parse(grid_order_lines.Rows[grid_order_lines.Rows.Count].Cells[5].Value.ToString())) / 1.18).ToString();
+            txt_no_taxes.Text = (Double.Parse(txt_no_taxes.Text) + (Double.Parse(grid_order_lines.Rows[grid_order_lines.Rows.Count].Cells[6].Value.ToString())) / 1.18).ToString();
             txt_taxes.Text = (Double.Parse(txt_no_taxes.Text) * 0.18).ToString();
             txt_total.Text = (Double.Parse(txt_no_taxes.Text) + Double.Parse(txt_taxes.Text)).ToString();
         }
@@ -88,7 +93,6 @@ namespace WindowsFormsApp1.Views
             Models.PurchaseOrderLine line = new Models.PurchaseOrderLine();
             Purchase_Module.PurchaseOrderLine frm_line = new Purchase_Module.PurchaseOrderLine(ref line);
             frm_line.ShowDialog();
-
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -109,45 +113,62 @@ namespace WindowsFormsApp1.Views
             po.Supplier_id = suppliers.Find(s => s.Name == combo_supplier.Text).Id;
             po.Supplier_name = combo_supplier.Text;
             po.Supplier_phone = txt_supplier_phone.Text;
-            po.Currency_id = currencies.Find(c => c.Name == txt_currency.Text).Id;
-            int po_id = Int32.Parse(po_controller.insertPurchaseOrder(po).data.ToString());
-                        
-            for (int i=0;i<grid_order_lines.RowCount-1;i++)
+            po.Currency_id = currencies.Find(c => c.Name == combo_currency.Text).Id;            
+            if (editing)
             {
-                int unit_of_measure_id = units_of_measure.Find(uom => uom.Name == grid_order_lines.Rows[i].Cells[3].Value.ToString()).Id;
-                int material_id = materials.Find(m => m.Name == grid_order_lines.Rows[i].Cells[1].Value.ToString()).Id;
-                int warehouse_id = warehouses.Find(w => w.Name == grid_order_lines.Rows[i].Cells[4].Value.ToString()).Id;
-                Models.PurchaseOrderLine pol = new Models.PurchaseOrderLine(po_id, unit_of_measure_id, Int32.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString())
-                                                    , Double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString()), DateTime.Parse(grid_order_lines.Rows[i].Cells[0].Value.ToString()), 0
-                                                    , material_id,warehouse_id);
-                pol_controller.insertPurchaseOrderLine(pol);
+                po_controller.updatePurchaseOrder(po);
+                for (int i = 0; i < grid_order_lines.RowCount - 1; i++)
+                {
+                    int unit_of_measure_id = units_of_measure.Find(uom => uom.Name == grid_order_lines.Rows[i].Cells[4].Value.ToString()).Id;
+                    int material_id = materials.Find(m => m.Name == grid_order_lines.Rows[i].Cells[1].Value.ToString()).Id;
+                    int warehouse_id = warehouses.Find(w => w.Name == grid_order_lines.Rows[i].Cells[5].Value.ToString()).Id;
+                    Models.PurchaseOrderLine pol = new Models.PurchaseOrderLine(po.Id, unit_of_measure_id, Int32.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString())
+                                                        , Double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()), DateTime.Parse(grid_order_lines.Rows[i].Cells[0].Value.ToString()),
+                                                        Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()), material_id, warehouse_id);
+                    Controller.Result result =  pol_controller.updatePurchaseOrderLine(pol);
+                    if (result.success)
+                    {
+                        MessageBox.Show("Orden editada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo editar la orden", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
             }
+            else
+            {
+                int po_id = Int32.Parse(po_controller.insertPurchaseOrder(po).data.ToString());
+                for (int i = 0; i < grid_order_lines.RowCount - 1; i++)
+                {
+                    int unit_of_measure_id = units_of_measure.Find(uom => uom.Name == grid_order_lines.Rows[i].Cells[4].Value.ToString()).Id;
+                    int material_id = materials.Find(m => m.Name == grid_order_lines.Rows[i].Cells[1].Value.ToString()).Id;
+                    int warehouse_id = warehouses.Find(w => w.Name == grid_order_lines.Rows[i].Cells[5].Value.ToString()).Id;
+                    Models.PurchaseOrderLine pol = new Models.PurchaseOrderLine(po_id, unit_of_measure_id, Int32.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString())
+                                                        , Double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()), DateTime.Parse(grid_order_lines.Rows[i].Cells[0].Value.ToString()),
+                                                        Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()),material_id, warehouse_id);
+                    Controller.Result result = pol_controller.insertPurchaseOrderLine(pol);
+                    if (result.success)
+                    {
+                        MessageBox.Show("Orden creada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo crear la orden", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }                                    
         }
 
         private void UC_PurchaseOrder_Load(object sender, EventArgs e)
         {
-            loadLists();         
-            foreach (Models.Material m in materials)
-            {
-                ((DataGridViewComboBoxColumn)grid_order_lines.Columns["material"]).Items.Add(m.Name);
-            }                                                  
-
-            foreach (Models.MaterialWarehouse w in warehouses)
-            {
-                ((DataGridViewComboBoxColumn)grid_order_lines.Columns["warehouse"]).Items.Add(w.Name);
-            }                                 
-
-            foreach(Models.Supplier s in suppliers)
-            {
-                combo_supplier.Items.Add(s.Name);
-            }
+            loadLists();
+            loadCombos();                    
 
             txt_taxes.Text = "0";
             txt_total.Text = "0";
             txt_total.Text = "0";
-            txt_state.Text = "Registrado";
-            txt_id.Text = "2";
-            txt_currency.Text = currencies[0].Name;
+            txt_state.Text = "Registrado";                                    
         }
 
         private void grid_order_lines_CellContentClick(object sender, DataGridViewCellEventArgs e) // añade un datetimepicker a la grilla
@@ -171,16 +192,16 @@ namespace WindowsFormsApp1.Views
                 {
                     avg_cost = materials.Find(m => m.Name == grid_order_lines.Rows[e.RowIndex].Cells[1].Value.ToString()).Average_cost;
 
-                    grid_order_lines.Rows[e.RowIndex].Cells[3].Value =
+                    grid_order_lines.Rows[e.RowIndex].Cells[4].Value =
                         units_of_measure.Find(uom => uom.Id ==
                             materials.Find(m => m.Name == grid_order_lines.Rows[e.RowIndex].Cells[1].Value.ToString()).Unit_id).Name;
 
-                    grid_order_lines.Rows[e.RowIndex].Cells[5].Value = avg_cost;                                           
+                    grid_order_lines.Rows[e.RowIndex].Cells[6].Value = avg_cost;                                           
 
                 }
                 else if(e.ColumnIndex == 2) // si cambió la cantidad
                 {
-                    grid_order_lines.Rows[e.RowIndex].Cells[6].Value =
+                    grid_order_lines.Rows[e.RowIndex].Cells[7].Value =
                         Double.Parse(grid_order_lines.Rows[e.RowIndex].Cells[2].Value.ToString()) * avg_cost;                        
                     calculateCosts();
                 }
@@ -216,6 +237,29 @@ namespace WindowsFormsApp1.Views
             
         }
 
+        private void loadCombos()
+        {
+            foreach (Models.Material m in materials)
+            {
+                ((DataGridViewComboBoxColumn)grid_order_lines.Columns["material"]).Items.Add(m.Name);
+            }                                                  
+
+            foreach (Models.MaterialWarehouse w in warehouses)
+            {
+                ((DataGridViewComboBoxColumn)grid_order_lines.Columns["warehouse"]).Items.Add(w.Name);
+            }                                 
+
+            foreach(Models.Supplier s in suppliers)
+            {
+                combo_supplier.Items.Add(s.Name);
+            }
+
+            foreach(Models.Currency c in currencies)
+            {
+                combo_currency.Items.Add(c.Name);
+            }
+        }
+
         private void combo_supplier_SelectedIndexChanged(object sender, EventArgs e)
         {
             txt_address.Text = suppliers.Find(s => s.Name == combo_supplier.Text).Address;
@@ -233,7 +277,7 @@ namespace WindowsFormsApp1.Views
             for(int i=0; i<grid_order_lines.RowCount-1;i++)
             {
                 taxes = taxes + Double.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString()) *
-                        Double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString()) * Double.Parse(lbl_igv.Text);
+                        Double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()) * Double.Parse(lbl_igv.Text);
                 no_taxes = no_taxes + Double.Parse(grid_order_lines.Rows[i].Cells[grid_order_lines.Rows[i].Cells.Count - 1].Value.ToString());
                 total = total + no_taxes + taxes;
             }
@@ -242,5 +286,21 @@ namespace WindowsFormsApp1.Views
             txt_total.Text = total.ToString();
             txt_no_taxes.Text = no_taxes.ToString();
         }
+
+        public void cleanForm()
+        {
+            txt_address.Text = "";
+            txt_external_number.Text = "";
+            txt_no_taxes.Text = "";
+            txt_observation.Text = "";
+            txt_state.Text = "Registrado";
+            txt_supplier_doi.Text = "";
+            txt_supplier_phone.Text = "";
+            txt_taxes.Text = "";
+            txt_total.Text = "";
+            txt_id.Text = "";
+            grid_order_lines.Rows.Clear();
+        }
+
     }
 }

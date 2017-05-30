@@ -13,18 +13,20 @@ using WindowsFormsApp1.Controller;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class UC_User : UserControl
+    public partial class UC_User : MetroFramework.Controls.MetroUserControl
     {
         List<User> user_list;
         List<Profile> profile_list;
         ProfileController profile_controller;
         UsersController user_controller;
+        User currentUser;
+        bool data_loaded;
 
         public UC_User()
         {
             InitializeComponent();
-            //profile_list = new List<Profile>();
-
+            this.metroTabControl1.SelectedIndex = 0;
+            data_loaded = false;
         }
 
         private bool validate_data(String name, String paternal_last_name, String maternal_last_name,char gender, String phone, String email, String address, String username,String password,String profile)
@@ -93,12 +95,31 @@ namespace WindowsFormsApp1.Views
 
             return isCorrect;
         }
-
-        private void User_Load(object sender, EventArgs e)
+        
+        private void Load_DataGridView()
         {
-            this.profile_controller = new ProfileController("", "");
-            this.user_controller = new UsersController("", "");
+            metroGrid1.Rows.Clear();
 
+            foreach (User u in user_list)
+            {
+                string[] row = new string[10];
+                row[0] = u.Id.ToString();
+                row[1] = u.Name;
+                row[2] = u.Middlename;
+                row[3] = u.Lastname;
+                row[4] = u.Nickname;
+                row[5] = u.Profile.Description;
+                row[6] = u.Email;
+                row[7] = u.Phone;
+                row[8] = u.Address;
+                row[9] = u.Gender.ToString();
+
+                metroGrid1.Rows.Add(row);
+            }
+        }
+
+        private void Load_Data()
+        {
             Result profiles_result = profile_controller.getProfiles();
             Result users_result = user_controller.getUsers();
 
@@ -125,29 +146,6 @@ namespace WindowsFormsApp1.Views
             {
                 combobox_profile.Items.Add(profile.Description);
             }
-
-            Load_DataGridView();
-        }
-        
-        private void Load_DataGridView()
-        {
-            metroGrid1.Rows.Clear();
-
-            foreach (User u in user_list)
-            {
-                string[] row = new string[10];
-                row[0] = u.Name;
-                row[1] = u.Middlename;
-                row[2] = u.Lastname;
-                row[3] = u.Nickname;
-                row[4] = u.Profile.Description;
-                row[5] = u.Email;
-                row[6] = u.Phone;
-                row[7] = u.Address;
-                row[8] = u.Gender.ToString();
-
-                metroGrid1.Rows.Add(row);
-            }
         }
 
         private void Clean()
@@ -169,6 +167,7 @@ namespace WindowsFormsApp1.Views
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             Clean();
+            metroTabControl1.SelectedIndex = 0;
         }
 
         //Registrar
@@ -196,17 +195,35 @@ namespace WindowsFormsApp1.Views
             if (validate_data(name, paternal, maternal, gender, phone, email, address, username, password, profile_name))
             {
                 Profile profile = profile_list.Find(p => p.Description == profile_name);
-                User user = new User(0, profile, name, paternal, maternal, phone, email, gender, address, username, password, "");
-                Result insert_result = user_controller.insertUser(user);
+                Result transaction_result =  null;
+                string message = " ";
 
-                if (insert_result.success)
+
+                if (currentUser != null)
                 {
-                    Clean();
-                    MessageBox.Show("Usuario ingresado correctamente.");
+                    User user_to_update = new User(0, profile, name, paternal, maternal, phone, email, gender, address, username, password, "", false);
+                    user_to_update.Id = currentUser.Id;
+                    transaction_result = user_controller.updateUser(user_to_update);
+                    message = "Usuario editado correctamente.";
                 }
                 else
                 {
-                    MessageBox.Show(insert_result.message);
+                    User user_to_add = new User(0, profile, name, paternal, maternal, phone, email, gender, address, username, password, "");
+                    transaction_result = user_controller.insertUser(user_to_add);
+                    message = "Usuario ingresado correctamente.";
+                }
+
+                if (transaction_result.success)
+                {
+                    MessageBox.Show(message);
+                    Clean();
+                    Load_Data();
+                    Load_DataGridView();
+                    metroTabControl1.SelectedIndex = 0;
+                }
+                else
+                {
+                    MessageBox.Show(transaction_result.message);
                 }
             }
 
@@ -215,6 +232,64 @@ namespace WindowsFormsApp1.Views
         private void UC_User_Leave(object sender, EventArgs e)
         {
             ((Dashboard)Parent).user_list = user_list;
+        }
+
+        private void metroGrid1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = this.metroGrid1.Rows[e.RowIndex];
+
+            if (row.Cells[0].Value != null)
+            {
+                currentUser = user_list.Find(u => u.Id == Int32.Parse(row.Cells[0].Value.ToString()));
+                textbox_email.Text = currentUser.Email;
+                textbox_maternal.Text = currentUser.Lastname;
+                textbox_name.Text = currentUser.Name;
+                textbox_paternal.Text = currentUser.Middlename;
+                textbox_phone.Text = currentUser.Phone;
+                textbox_password.Text = currentUser.Password;
+                textbox_address.Text = currentUser.Address;
+                textbox_username.Text = currentUser.Nickname;
+                combobox_profile.Text = currentUser.Profile.Description;
+
+                if (currentUser.Gender == 'M')
+                {
+                    radioButton1.Checked = true;
+                }
+                else
+                {
+                    radioButton2.Checked = true;
+                }
+
+                metroTabControl1.SelectedIndex = 1;
+                btn_new.Text = "Editar";
+                textbox_password.Enabled = false;
+
+            }
+        }
+
+        private void tabIndex_Enter(object sender, EventArgs e)
+        {
+            Clean();
+            btn_new.Text = "Guardar";
+            textbox_password.Enabled = true;
+            currentUser = null;
+        }
+
+        private void UC_User_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!data_loaded && Visible)
+            {
+                this.profile_controller = new ProfileController("", "");
+                this.user_controller = new UsersController("", "");
+
+                Load_Data();
+                Load_DataGridView();
+                data_loaded = true;
+            }
+            else if (!Visible)
+            {
+                metroTabControl1.SelectedIndex = 0;
+            }
         }
     }
 }

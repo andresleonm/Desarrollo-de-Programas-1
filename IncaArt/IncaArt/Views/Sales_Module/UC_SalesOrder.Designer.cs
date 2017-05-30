@@ -81,7 +81,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.txt_Status = new MetroFramework.Controls.MetroTextBox();
-            this.observation = new MetroFramework.Controls.MetroTextBox();
+            this.txt_observation = new MetroFramework.Controls.MetroTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_amount = new MetroFramework.Controls.MetroTextBox();
             this.btn_Clean = new System.Windows.Forms.Button();
@@ -93,12 +93,20 @@
             this.btn_New = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_order_lines = new MetroFramework.Controls.MetroGrid();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Product_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delivery_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prod_warehouse_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.mbStyle = new MetroFramework.Components.MetroStyleManager(this.components);
             this.panel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
@@ -130,10 +138,10 @@
             this.metroTabControl1.CausesValidation = false;
             this.metroTabControl1.Controls.Add(this.order);
             this.metroTabControl1.Controls.Add(this.newOrder);
-            this.metroTabControl1.Location = new System.Drawing.Point(12, 13);
+            this.metroTabControl1.Location = new System.Drawing.Point(12, 3);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 1;
-            this.metroTabControl1.Size = new System.Drawing.Size(849, 588);
+            this.metroTabControl1.Size = new System.Drawing.Size(849, 608);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 41;
             this.metroTabControl1.UseCustomBackColor = true;
@@ -147,7 +155,7 @@
             this.order.Controls.Add(this.panel3);
             this.order.Location = new System.Drawing.Point(4, 38);
             this.order.Name = "order";
-            this.order.Size = new System.Drawing.Size(841, 546);
+            this.order.Size = new System.Drawing.Size(841, 566);
             this.order.TabIndex = 1;
             this.order.Text = "Consulta";
             // 
@@ -478,7 +486,7 @@
             this.newOrder.Controls.Add(this.gbOrder);
             this.newOrder.Controls.Add(this.gbClient);
             this.newOrder.Controls.Add(this.txt_Status);
-            this.newOrder.Controls.Add(this.observation);
+            this.newOrder.Controls.Add(this.txt_observation);
             this.newOrder.Controls.Add(this.label3);
             this.newOrder.Controls.Add(this.txt_amount);
             this.newOrder.Controls.Add(this.btn_Clean);
@@ -490,7 +498,7 @@
             this.newOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newOrder.Location = new System.Drawing.Point(4, 38);
             this.newOrder.Name = "newOrder";
-            this.newOrder.Size = new System.Drawing.Size(841, 546);
+            this.newOrder.Size = new System.Drawing.Size(841, 566);
             this.newOrder.TabIndex = 0;
             this.newOrder.Text = "Registro";
             // 
@@ -507,7 +515,7 @@
             this.gbOrder.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.gbOrder.Location = new System.Drawing.Point(450, 7);
             this.gbOrder.Name = "gbOrder";
-            this.gbOrder.Size = new System.Drawing.Size(374, 182);
+            this.gbOrder.Size = new System.Drawing.Size(374, 160);
             this.gbOrder.TabIndex = 65;
             this.gbOrder.TabStop = false;
             this.gbOrder.Text = "Datos del Pedido";
@@ -516,7 +524,7 @@
             // 
             this.cbo_Currency.FormattingEnabled = true;
             this.cbo_Currency.ItemHeight = 23;
-            this.cbo_Currency.Location = new System.Drawing.Point(116, 67);
+            this.cbo_Currency.Location = new System.Drawing.Point(116, 64);
             this.cbo_Currency.Name = "cbo_Currency";
             this.cbo_Currency.Size = new System.Drawing.Size(230, 29);
             this.cbo_Currency.TabIndex = 48;
@@ -524,7 +532,7 @@
             // 
             // dt_DeliveryDate
             // 
-            this.dt_DeliveryDate.Location = new System.Drawing.Point(116, 112);
+            this.dt_DeliveryDate.Location = new System.Drawing.Point(116, 105);
             this.dt_DeliveryDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_DeliveryDate.Name = "dt_DeliveryDate";
             this.dt_DeliveryDate.Size = new System.Drawing.Size(230, 29);
@@ -571,7 +579,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label11.Location = new System.Drawing.Point(6, 121);
+            this.label11.Location = new System.Drawing.Point(6, 115);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(98, 13);
             this.label11.TabIndex = 34;
@@ -593,7 +601,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label2.Location = new System.Drawing.Point(6, 76);
+            this.label2.Location = new System.Drawing.Point(6, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 4;
@@ -614,7 +622,7 @@
             this.gbClient.ForeColor = System.Drawing.Color.Black;
             this.gbClient.Location = new System.Drawing.Point(9, 7);
             this.gbClient.Name = "gbClient";
-            this.gbClient.Size = new System.Drawing.Size(427, 182);
+            this.gbClient.Size = new System.Drawing.Size(427, 160);
             this.gbClient.TabIndex = 64;
             this.gbClient.TabStop = false;
             this.gbClient.Text = "Datos del Cliente";
@@ -634,6 +642,7 @@
             this.btn_Search.UseSelectable = true;
             this.btn_Search.UseStyleColors = true;
             this.btn_Search.UseTileImage = true;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
             // txt_Doi
             // 
@@ -641,9 +650,9 @@
             // 
             // 
             this.txt_Doi.CustomButton.Image = null;
-            this.txt_Doi.CustomButton.Location = new System.Drawing.Point(222, 1);
+            this.txt_Doi.CustomButton.Location = new System.Drawing.Point(228, 2);
             this.txt_Doi.CustomButton.Name = "";
-            this.txt_Doi.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_Doi.CustomButton.Size = new System.Drawing.Size(19, 19);
             this.txt_Doi.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_Doi.CustomButton.TabIndex = 1;
             this.txt_Doi.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -659,7 +668,7 @@
             this.txt_Doi.SelectionLength = 0;
             this.txt_Doi.SelectionStart = 0;
             this.txt_Doi.ShortcutsEnabled = true;
-            this.txt_Doi.Size = new System.Drawing.Size(250, 29);
+            this.txt_Doi.Size = new System.Drawing.Size(250, 24);
             this.txt_Doi.TabIndex = 42;
             this.txt_Doi.UseSelectable = true;
             this.txt_Doi.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -671,16 +680,16 @@
             // 
             // 
             this.txt_address.CustomButton.Image = null;
-            this.txt_address.CustomButton.Location = new System.Drawing.Point(222, 1);
+            this.txt_address.CustomButton.Location = new System.Drawing.Point(228, 2);
             this.txt_address.CustomButton.Name = "";
-            this.txt_address.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_address.CustomButton.Size = new System.Drawing.Size(19, 19);
             this.txt_address.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_address.CustomButton.TabIndex = 1;
             this.txt_address.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txt_address.CustomButton.UseSelectable = true;
             this.txt_address.CustomButton.Visible = false;
             this.txt_address.Lines = new string[0];
-            this.txt_address.Location = new System.Drawing.Point(113, 102);
+            this.txt_address.Location = new System.Drawing.Point(113, 92);
             this.txt_address.MaxLength = 32767;
             this.txt_address.Name = "txt_address";
             this.txt_address.PasswordChar = '\0';
@@ -689,7 +698,7 @@
             this.txt_address.SelectionLength = 0;
             this.txt_address.SelectionStart = 0;
             this.txt_address.ShortcutsEnabled = true;
-            this.txt_address.Size = new System.Drawing.Size(250, 29);
+            this.txt_address.Size = new System.Drawing.Size(250, 24);
             this.txt_address.TabIndex = 41;
             this.txt_address.UseSelectable = true;
             this.txt_address.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -701,16 +710,16 @@
             // 
             // 
             this.txt_phone.CustomButton.Image = null;
-            this.txt_phone.CustomButton.Location = new System.Drawing.Point(222, 1);
+            this.txt_phone.CustomButton.Location = new System.Drawing.Point(228, 2);
             this.txt_phone.CustomButton.Name = "";
-            this.txt_phone.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_phone.CustomButton.Size = new System.Drawing.Size(19, 19);
             this.txt_phone.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_phone.CustomButton.TabIndex = 1;
             this.txt_phone.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txt_phone.CustomButton.UseSelectable = true;
             this.txt_phone.CustomButton.Visible = false;
             this.txt_phone.Lines = new string[0];
-            this.txt_phone.Location = new System.Drawing.Point(113, 141);
+            this.txt_phone.Location = new System.Drawing.Point(113, 125);
             this.txt_phone.MaxLength = 32767;
             this.txt_phone.Name = "txt_phone";
             this.txt_phone.PasswordChar = '\0';
@@ -719,7 +728,7 @@
             this.txt_phone.SelectionLength = 0;
             this.txt_phone.SelectionStart = 0;
             this.txt_phone.ShortcutsEnabled = true;
-            this.txt_phone.Size = new System.Drawing.Size(250, 29);
+            this.txt_phone.Size = new System.Drawing.Size(250, 24);
             this.txt_phone.TabIndex = 40;
             this.txt_phone.UseSelectable = true;
             this.txt_phone.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -730,7 +739,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label1.Location = new System.Drawing.Point(6, 149);
+            this.label1.Location = new System.Drawing.Point(6, 131);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 39;
@@ -742,16 +751,16 @@
             // 
             // 
             this.txt_name.CustomButton.Image = null;
-            this.txt_name.CustomButton.Location = new System.Drawing.Point(222, 1);
+            this.txt_name.CustomButton.Location = new System.Drawing.Point(228, 2);
             this.txt_name.CustomButton.Name = "";
-            this.txt_name.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_name.CustomButton.Size = new System.Drawing.Size(19, 19);
             this.txt_name.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_name.CustomButton.TabIndex = 1;
             this.txt_name.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txt_name.CustomButton.UseSelectable = true;
             this.txt_name.CustomButton.Visible = false;
             this.txt_name.Lines = new string[0];
-            this.txt_name.Location = new System.Drawing.Point(113, 22);
+            this.txt_name.Location = new System.Drawing.Point(113, 27);
             this.txt_name.MaxLength = 32767;
             this.txt_name.Name = "txt_name";
             this.txt_name.PasswordChar = '\0';
@@ -760,7 +769,7 @@
             this.txt_name.SelectionLength = 0;
             this.txt_name.SelectionStart = 0;
             this.txt_name.ShortcutsEnabled = true;
-            this.txt_name.Size = new System.Drawing.Size(250, 29);
+            this.txt_name.Size = new System.Drawing.Size(250, 24);
             this.txt_name.TabIndex = 38;
             this.txt_name.UseSelectable = true;
             this.txt_name.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -771,7 +780,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label7.Location = new System.Drawing.Point(6, 70);
+            this.label7.Location = new System.Drawing.Point(6, 66);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(97, 13);
             this.label7.TabIndex = 34;
@@ -782,7 +791,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label9.Location = new System.Drawing.Point(6, 30);
+            this.label9.Location = new System.Drawing.Point(6, 33);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(64, 13);
             this.label9.TabIndex = 32;
@@ -793,7 +802,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label12.Location = new System.Drawing.Point(6, 110);
+            this.label12.Location = new System.Drawing.Point(6, 98);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(69, 13);
             this.label12.TabIndex = 4;
@@ -818,7 +827,7 @@
             this.txt_Status.CustomButton.Visible = false;
             this.txt_Status.Enabled = false;
             this.txt_Status.Lines = new string[0];
-            this.txt_Status.Location = new System.Drawing.Point(108, 458);
+            this.txt_Status.Location = new System.Drawing.Point(108, 479);
             this.txt_Status.MaxLength = 32767;
             this.txt_Status.Name = "txt_Status";
             this.txt_Status.PasswordChar = '\0';
@@ -835,43 +844,43 @@
             this.txt_Status.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txt_Status.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // observation
+            // txt_observation
             // 
             // 
             // 
             // 
-            this.observation.CustomButton.Image = null;
-            this.observation.CustomButton.Location = new System.Drawing.Point(370, 2);
-            this.observation.CustomButton.Name = "";
-            this.observation.CustomButton.Size = new System.Drawing.Size(55, 55);
-            this.observation.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.observation.CustomButton.TabIndex = 1;
-            this.observation.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.observation.CustomButton.UseSelectable = true;
-            this.observation.CustomButton.Visible = false;
-            this.observation.Lines = new string[0];
-            this.observation.Location = new System.Drawing.Point(108, 387);
-            this.observation.MaxLength = 32767;
-            this.observation.Multiline = true;
-            this.observation.Name = "observation";
-            this.observation.PasswordChar = '\0';
-            this.observation.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.observation.SelectedText = "";
-            this.observation.SelectionLength = 0;
-            this.observation.SelectionStart = 0;
-            this.observation.ShortcutsEnabled = true;
-            this.observation.Size = new System.Drawing.Size(428, 60);
-            this.observation.TabIndex = 62;
-            this.observation.UseSelectable = true;
-            this.observation.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.observation.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txt_observation.CustomButton.Image = null;
+            this.txt_observation.CustomButton.Location = new System.Drawing.Point(329, 2);
+            this.txt_observation.CustomButton.Name = "";
+            this.txt_observation.CustomButton.Size = new System.Drawing.Size(55, 55);
+            this.txt_observation.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txt_observation.CustomButton.TabIndex = 1;
+            this.txt_observation.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txt_observation.CustomButton.UseSelectable = true;
+            this.txt_observation.CustomButton.Visible = false;
+            this.txt_observation.Lines = new string[0];
+            this.txt_observation.Location = new System.Drawing.Point(108, 408);
+            this.txt_observation.MaxLength = 32767;
+            this.txt_observation.Multiline = true;
+            this.txt_observation.Name = "txt_observation";
+            this.txt_observation.PasswordChar = '\0';
+            this.txt_observation.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_observation.SelectedText = "";
+            this.txt_observation.SelectionLength = 0;
+            this.txt_observation.SelectionStart = 0;
+            this.txt_observation.ShortcutsEnabled = true;
+            this.txt_observation.Size = new System.Drawing.Size(387, 60);
+            this.txt_observation.TabIndex = 62;
+            this.txt_observation.UseSelectable = true;
+            this.txt_observation.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txt_observation.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label3.Location = new System.Drawing.Point(15, 466);
+            this.label3.Location = new System.Drawing.Point(15, 487);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 61;
@@ -896,7 +905,7 @@
             this.txt_amount.CustomButton.Visible = false;
             this.txt_amount.Enabled = false;
             this.txt_amount.Lines = new string[0];
-            this.txt_amount.Location = new System.Drawing.Point(668, 387);
+            this.txt_amount.Location = new System.Drawing.Point(668, 408);
             this.txt_amount.MaxLength = 32767;
             this.txt_amount.Name = "txt_amount";
             this.txt_amount.PasswordChar = '\0';
@@ -918,31 +927,33 @@
             this.btn_Clean.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_Clean.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Clean.ForeColor = System.Drawing.Color.White;
-            this.btn_Clean.Location = new System.Drawing.Point(294, 504);
+            this.btn_Clean.Location = new System.Drawing.Point(294, 525);
             this.btn_Clean.Name = "btn_Clean";
             this.btn_Clean.Size = new System.Drawing.Size(82, 29);
             this.btn_Clean.TabIndex = 59;
             this.btn_Clean.Text = "Limpiar";
             this.btn_Clean.UseVisualStyleBackColor = false;
+            this.btn_Clean.Click += new System.EventHandler(this.btn_Clean_Click);
             // 
             // btn_Cancel
             // 
             this.btn_Cancel.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_Cancel.Location = new System.Drawing.Point(532, 504);
+            this.btn_Cancel.Location = new System.Drawing.Point(532, 525);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(82, 29);
             this.btn_Cancel.TabIndex = 57;
             this.btn_Cancel.Text = "Cancelar";
             this.btn_Cancel.UseVisualStyleBackColor = false;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // btn_Save
             // 
             this.btn_Save.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Save.ForeColor = System.Drawing.Color.White;
-            this.btn_Save.Location = new System.Drawing.Point(413, 504);
+            this.btn_Save.Location = new System.Drawing.Point(413, 525);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(82, 29);
             this.btn_Save.TabIndex = 56;
@@ -955,7 +966,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label6.Location = new System.Drawing.Point(15, 395);
+            this.label6.Location = new System.Drawing.Point(15, 416);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 13);
             this.label6.TabIndex = 55;
@@ -966,7 +977,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label5.Location = new System.Drawing.Point(611, 395);
+            this.label5.Location = new System.Drawing.Point(611, 416);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 51;
@@ -979,9 +990,9 @@
             this.gb_OrderLine.Controls.Add(this.panel2);
             this.gb_OrderLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gb_OrderLine.ForeColor = System.Drawing.Color.Black;
-            this.gb_OrderLine.Location = new System.Drawing.Point(9, 195);
+            this.gb_OrderLine.Location = new System.Drawing.Point(9, 173);
             this.gb_OrderLine.Name = "gb_OrderLine";
-            this.gb_OrderLine.Size = new System.Drawing.Size(815, 186);
+            this.gb_OrderLine.Size = new System.Drawing.Size(815, 229);
             this.gb_OrderLine.TabIndex = 45;
             this.gb_OrderLine.TabStop = false;
             this.gb_OrderLine.Text = "Líneas del Pedido";
@@ -1004,15 +1015,16 @@
             this.panel2.Controls.Add(this.grid_order_lines);
             this.panel2.Location = new System.Drawing.Point(9, 44);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(794, 130);
+            this.panel2.Size = new System.Drawing.Size(794, 168);
             this.panel2.TabIndex = 0;
             // 
             // grid_order_lines
             // 
+            this.grid_order_lines.AllowUserToAddRows = false;
             this.grid_order_lines.AllowUserToResizeRows = false;
             this.grid_order_lines.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.grid_order_lines.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.grid_order_lines.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.grid_order_lines.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.grid_order_lines.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkCyan;
@@ -1024,12 +1036,20 @@
             this.grid_order_lines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.grid_order_lines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid_order_lines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Type_id,
+            this.Product_id,
+            this.state,
+            this.unitId,
+            this.delivery_quantity,
+            this.prod_warehouse_id,
             this.product,
-            this.unitMeasure,
+            this.unit,
             this.warehouse,
             this.quantity,
-            this.unitPrice,
-            this.amount});
+            this.unit_Price,
+            this.amount,
+            this.action});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -1055,90 +1075,115 @@
             this.grid_order_lines.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.grid_order_lines.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.grid_order_lines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_order_lines.Size = new System.Drawing.Size(794, 130);
-            this.grid_order_lines.TabIndex = 51;
+            this.grid_order_lines.Size = new System.Drawing.Size(794, 168);
+            this.grid_order_lines.TabIndex = 52;
+            this.grid_order_lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_order_lines_CellValueChanged);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            // 
+            // Type_id
+            // 
+            this.Type_id.DataPropertyName = "order_id";
+            this.Type_id.HeaderText = "Order_id";
+            this.Type_id.Name = "Type_id";
+            this.Type_id.Visible = false;
+            // 
+            // Product_id
+            // 
+            this.Product_id.DataPropertyName = "product_id";
+            this.Product_id.HeaderText = "Product_id";
+            this.Product_id.Name = "Product_id";
+            this.Product_id.Visible = false;
+            // 
+            // state
+            // 
+            this.state.DataPropertyName = "status";
+            this.state.HeaderText = "state";
+            this.state.Name = "state";
+            this.state.Visible = false;
+            // 
+            // unitId
+            // 
+            this.unitId.DataPropertyName = "unit_measure_id";
+            this.unitId.HeaderText = "unitId";
+            this.unitId.Name = "unitId";
+            this.unitId.Visible = false;
+            // 
+            // delivery_quantity
+            // 
+            this.delivery_quantity.DataPropertyName = "delivery_quantity";
+            this.delivery_quantity.HeaderText = "delivery_quantity";
+            this.delivery_quantity.Name = "delivery_quantity";
+            this.delivery_quantity.Visible = false;
+            // 
+            // prod_warehouse_id
+            // 
+            this.prod_warehouse_id.DataPropertyName = "prod_warehouse_id";
+            this.prod_warehouse_id.HeaderText = "prod_warehouse_id";
+            this.prod_warehouse_id.Name = "prod_warehouse_id";
+            this.prod_warehouse_id.Visible = false;
             // 
             // product
             // 
+            this.product.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.product.DataPropertyName = "product_name";
+            this.product.FillWeight = 150F;
             this.product.HeaderText = "Producto";
             this.product.Name = "product";
+            this.product.ReadOnly = true;
+            this.product.Width = 77;
             // 
-            // unitMeasure
+            // unit
             // 
-            this.unitMeasure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unitMeasure.HeaderText = "Unidad de Medida";
-            this.unitMeasure.Name = "unitMeasure";
-            this.unitMeasure.ReadOnly = true;
+            this.unit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.unit.DataPropertyName = "unit_measure_name";
+            this.unit.HeaderText = "Unidad de Medida";
+            this.unit.Name = "unit";
+            this.unit.ReadOnly = true;
+            this.unit.Width = 115;
             // 
             // warehouse
             // 
             this.warehouse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.warehouse.HeaderText = "Almacén";
+            this.warehouse.DataPropertyName = "prod_warehouse_name";
+            this.warehouse.HeaderText = "Almacen";
             this.warehouse.Name = "warehouse";
             this.warehouse.ReadOnly = true;
             // 
             // quantity
             // 
-            this.quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.quantity.DataPropertyName = "quantity";
             this.quantity.HeaderText = "Cantidad";
             this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
+            this.quantity.Width = 77;
             // 
-            // unitPrice
+            // unit_Price
             // 
-            this.unitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unitPrice.HeaderText = "Precio Unitario";
-            this.unitPrice.Name = "unitPrice";
-            this.unitPrice.ReadOnly = true;
+            this.unit_Price.DataPropertyName = "unit_price";
+            this.unit_Price.HeaderText = "Precio Unitario";
+            this.unit_Price.Name = "unit_Price";
             // 
             // amount
             // 
-            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.amount.HeaderText = "Subtotal";
+            this.amount.DataPropertyName = "amount";
+            this.amount.HeaderText = "SubTotal";
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
-
+            // 
+            // action
+            // 
+            this.action.HeaderText = "Accion";
+            this.action.Name = "action";
+            // 
             // mbStyle
             // 
             this.mbStyle.Owner = null;
-
-            // product
-            // 
-            this.product.HeaderText = "Producto";
-            this.product.Name = "product";
-            // 
-            // quantity
-            // 
-            this.quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.quantity.HeaderText = "Cantidad";
-            this.quantity.Name = "quantity";
-            // 
-            // unitMeasure
-            // 
-            this.unitMeasure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unitMeasure.HeaderText = "Unidad de Medida";
-            this.unitMeasure.Name = "unitMeasure";
-            this.unitMeasure.ReadOnly = true;
-            // 
-            // warehouse
-            // 
-            this.warehouse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.warehouse.HeaderText = "Almacén";
-            this.warehouse.Name = "warehouse";
-            this.warehouse.ReadOnly = true;
-            // 
-            // unitPrice
-            // 
-            this.unitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unitPrice.HeaderText = "Precio Unitario";
-            this.unitPrice.Name = "unitPrice";
-            // 
-            // amount
-            // 
-            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.amount.HeaderText = "Subtotal";
-            this.amount.Name = "amount";
-            this.amount.ReadOnly = true;
             // 
             // UC_SalesOrder
             // 
@@ -1222,7 +1267,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label12;
         private MetroFramework.Controls.MetroTextBox txt_Status;
-        private MetroFramework.Controls.MetroTextBox observation;
+        private MetroFramework.Controls.MetroTextBox txt_observation;
         private System.Windows.Forms.Label label3;
         private MetroFramework.Controls.MetroTextBox txt_amount;
         private System.Windows.Forms.Button btn_Clean;
@@ -1234,11 +1279,19 @@
         private System.Windows.Forms.Button btn_New;
         private System.Windows.Forms.Panel panel2;
         private MetroFramework.Controls.MetroGrid grid_order_lines;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Product_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn state;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn delivery_quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prod_warehouse_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn product;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitMeasure;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
+        private System.Windows.Forms.DataGridViewButtonColumn action;
     }
 }
