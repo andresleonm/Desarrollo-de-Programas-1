@@ -15,8 +15,10 @@ namespace WindowsFormsApp1.Views
         int cur_row;
         List<Models.Product> product_list;
         List<Models.UnitOfMeasure> unit_list;
+        List<Models.Currency> currency_list;
         Controller.ProductsController productController;
         Controller.UnitController unitController;
+        Controller.CurrencyController currencyController;
         Controller.Result result;
         public UC_Product()
         {
@@ -29,6 +31,7 @@ namespace WindowsFormsApp1.Views
             string password = "dp1admin";
             productController = new Controller.ProductsController(user, password);
             unitController = new Controller.UnitController(user, password);
+            currencyController = new Controller.CurrencyController(user, password);
             Load_Data();
 
             //Cargar los combobox
@@ -41,12 +44,26 @@ namespace WindowsFormsApp1.Views
             combobox_unit.DataSource = new BindingSource(combo_data, null);
             combobox_unit.DisplayMember = "Value";
             combobox_unit.ValueMember = "Key";
+
+            combo_data = new Dictionary<int, string>();
+            foreach (var item in currency_list)
+            {
+                combo_data.Add(item.Id, item.Symbol);
+
+            }
+            combobox_currency.DataSource = new BindingSource(combo_data, null);
+            combobox_currency.DisplayMember = "Value";
+            combobox_currency.ValueMember = "Key";
+
+
             Load_DataGridView();
             metroTabControl1.SelectedIndex = 0;
         }
 
         private void Load_Data()
         {
+            result = currencyController.getCurrencies();
+            currency_list = (List<Models.Currency>)result.data;
             result = unitController.getUnits();
             unit_list = (List<Models.UnitOfMeasure>)result.data;
             product_list = new List<Models.Product>();
@@ -120,11 +137,13 @@ namespace WindowsFormsApp1.Views
         {
             String name = textbox_name.Text;
             int unit_id = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Key;
-            int stock_min, stock_max;
+            int stock_min, stock_max,currency_id;
             stock_min = int.Parse(textbox_stock_min.Text);
             stock_max = int.Parse(textbox_stock_max.Text);
+            currency_id = ((KeyValuePair<int, string>)combobox_currency.SelectedItem).Key;
             double price = double.Parse(textbox_price.Text);
             Models.Product product = new Models.Product(0, unit_id, name, stock_min, stock_max, price);
+            product.Currency_id = currency_id;
             result = productController.insertProduct(product);
             if (result.data == null)
             {

@@ -307,5 +307,16 @@ namespace WindowsFormsApp1.Views
             Clean();
             metroTabControl1.SelectedIndex = 0;
         }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            Clean();
+            metroTabControl1.SelectedIndex = 0;
+        }
+
+        private void btn_clean_s_Click(object sender, EventArgs e)
+        {
+            Clean();
+        }
     }
 }
