@@ -34,6 +34,16 @@
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.tabIndex = new System.Windows.Forms.TabPage();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabRegister = new System.Windows.Forms.TabPage();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.btn_new = new MetroFramework.Controls.MetroButton();
@@ -59,16 +69,6 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.tabIndex.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
@@ -81,7 +81,7 @@
             this.metroTabControl1.Controls.Add(this.tabRegister);
             this.metroTabControl1.Location = new System.Drawing.Point(40, 98);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(952, 348);
             this.metroTabControl1.TabIndex = 25;
             this.metroTabControl1.UseSelectable = true;
@@ -151,6 +151,57 @@
             this.metroGrid1.TabIndex = 0;
             this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
             // 
+            // id
+            // 
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Nombre";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Apellido Pat.";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Apellido Mat.";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Usuario";
+            this.Column4.Name = "Column4";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Perfil";
+            this.Column9.Name = "Column9";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Email";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Teléfono";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Dirección";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Sexo";
+            this.Column8.Name = "Column8";
+            // 
             // tabRegister
             // 
             this.tabRegister.BackColor = System.Drawing.SystemColors.Window;
@@ -189,7 +240,7 @@
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(103, 23);
             this.metroButton1.TabIndex = 23;
-            this.metroButton1.Text = "Limpiar";
+            this.metroButton1.Text = "Cancelar";
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
@@ -338,7 +389,7 @@
             this.metroLabel11.AutoSize = true;
             this.metroLabel11.Location = new System.Drawing.Point(502, 193);
             this.metroLabel11.Name = "metroLabel11";
-            this.metroLabel11.Size = new System.Drawing.Size(41, 19);
+            this.metroLabel11.Size = new System.Drawing.Size(42, 19);
             this.metroLabel11.TabIndex = 16;
             this.metroLabel11.Text = "Perfil:";
             // 
@@ -532,7 +583,7 @@
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.Location = new System.Drawing.Point(32, 80);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(110, 19);
+            this.metroLabel6.Size = new System.Drawing.Size(111, 19);
             this.metroLabel6.TabIndex = 4;
             this.metroLabel6.Text = "Apellido Paterno:";
             // 
@@ -541,7 +592,7 @@
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.Location = new System.Drawing.Point(32, 193);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(61, 19);
+            this.metroLabel5.Size = new System.Drawing.Size(63, 19);
             this.metroLabel5.TabIndex = 3;
             this.metroLabel5.Text = "Telefono:";
             // 
@@ -574,57 +625,6 @@
             this.metroLabel1.TabIndex = 26;
             this.metroLabel1.Text = "Usuarios";
             // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Sexo";
-            this.Column8.Name = "Column8";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Dirección";
-            this.Column7.Name = "Column7";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Teléfono";
-            this.Column6.Name = "Column6";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Email";
-            this.Column5.Name = "Column5";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Perfil";
-            this.Column9.Name = "Column9";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Usuario";
-            this.Column4.Name = "Column4";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Apellido Mat.";
-            this.Column3.Name = "Column3";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Apellido Pat.";
-            this.Column2.Name = "Column2";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Nombre";
-            this.Column1.Name = "Column1";
-            // 
-            // id
-            // 
-            this.id.HeaderText = "Id";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
             // UC_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -634,7 +634,7 @@
             this.Controls.Add(this.metroTabControl1);
             this.Name = "UC_User";
             this.Size = new System.Drawing.Size(1033, 499);
-            this.Load += new System.EventHandler(this.User_Load);
+            this.Enter += new System.EventHandler(this.User_Load);
             this.Leave += new System.EventHandler(this.UC_User_Leave);
             this.metroTabControl1.ResumeLayout(false);
             this.tabIndex.ResumeLayout(false);

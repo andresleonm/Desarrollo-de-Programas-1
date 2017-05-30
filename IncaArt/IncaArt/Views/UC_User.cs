@@ -13,7 +13,7 @@ using WindowsFormsApp1.Controller;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class UC_User : UserControl
+    public partial class UC_User : MetroFramework.Controls.MetroUserControl
     {
         List<User> user_list;
         List<Profile> profile_list;
@@ -24,8 +24,7 @@ namespace WindowsFormsApp1.Views
         public UC_User()
         {
             InitializeComponent();
-            //profile_list = new List<Profile>();
-
+            this.metroTabControl1.SelectedIndex = 0;
         }
 
         private bool validate_data(String name, String paternal_last_name, String maternal_last_name,char gender, String phone, String email, String address, String username,String password,String profile)
