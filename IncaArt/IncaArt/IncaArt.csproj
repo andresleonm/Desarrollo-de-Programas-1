@@ -303,18 +303,6 @@
     <Compile Include="Views\Sales_Module\UC_SalesOrder.Designer.cs">
       <DependentUpon>UC_SalesOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UC_WarehouseMovement.cs" />
-    <Compile Include="Views\UC_WarehouseMovement.Designer.cs">
-      <DependentUpon>UC_WarehouseMovement.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UC_WarehouseMovementP.cs" />
-    <Compile Include="Views\UC_WarehouseMovementP.Designer.cs">
-      <DependentUpon>UC_WarehouseMovementP.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UC_WarehouseMovementM.cs" />
-    <Compile Include="Views\UC_WarehouseMovementM.Designer.cs">
-      <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\UC_User.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -487,15 +475,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesOrder.resx">
       <DependentUpon>UC_SalesOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_WarehouseMovement.resx">
-      <DependentUpon>UC_WarehouseMovement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_WarehouseMovementP.resx">
-      <DependentUpon>UC_WarehouseMovementP.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_WarehouseMovementM.resx">
-      <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_User.resx">
       <DependentUpon>UC_User.cs</DependentUpon>
