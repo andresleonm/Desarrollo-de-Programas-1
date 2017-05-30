@@ -194,6 +194,7 @@
     <Compile Include="Views\Production_Module\UC_ProductionOrderProductLine.Designer.cs">
       <DependentUpon>UC_ProductionOrderProductLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Sales_Module\ProductWarehouseS.cs" />
     <Compile Include="Views\UC_Material.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -47,18 +47,18 @@ namespace WindowsFormsApp1.Views
             Sales_Module.SalesOrderLine order_line = new Sales_Module.SalesOrderLine(ref salesOrderLine);
             order_line.ShowDialog();
 
-            if (salesOrderLine != null)
-            {
-                String[] row = new String[6];
-                row[0] = salesOrderLine.Product.Name;
-                row[1] = salesOrderLine.Unit_measure.Name;
-                row[2] = salesOrderLine.Prod_warehouse.Name;
-                row[3] = salesOrderLine.Quantity.ToString();
-                row[4] = salesOrderLine.Unit_price.ToString();
-                row[5] = Math.Round((salesOrderLine.Quantity * salesOrderLine.Unit_price), 2).ToString();
-                this.grid_order_lines.Rows.Add(row);
-                list_order_detail.Add(salesOrderLine);
-            }
+            //if (salesOrderLine != null)
+            //{
+            //    String[] row = new String[6];
+            //    row[0] = salesOrderLine.Product.Name;
+            //    row[1] = salesOrderLine.Unit_measure.Name;
+            //    row[2] = salesOrderLine.Prod_warehouse.Name;
+            //    row[3] = salesOrderLine.Quantity.ToString();
+            //    row[4] = salesOrderLine.Unit_price.ToString();
+            //    row[5] = Math.Round((salesOrderLine.Quantity * salesOrderLine.Unit_price), 2).ToString();
+            //    this.grid_order_lines.Rows.Add(row);
+            //    list_order_detail.Add(salesOrderLine);
+            //}
         }
 
         private void btn_Save_Click(object sender, EventArgs e)

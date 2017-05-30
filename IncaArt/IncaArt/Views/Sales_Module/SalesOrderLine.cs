@@ -16,40 +16,29 @@ namespace WindowsFormsApp1.Views.Sales_Module
     {
         Models.SalesOrderLine line;
         private List<Product> products;
-        private List<ProductWarehouse> prod_warehouses;
         private string user = "dp1admin";
         private string password = "dp1admin";
+        ProductMovementDetailController dc;
+        ProductsController pc;
+        bool flg = true;
 
         public SalesOrderLine(ref Models.SalesOrderLine sales)
         {
-            InitializeComponent();
-            txt_Quantity.Text = "0";
+            InitializeComponent();            
             line = sales;
+            dc = new ProductMovementDetailController(user, password);
+            fillProducts();
         }
 
         private void SalesOrderLine_Load(object sender, EventArgs e)
         {
-            MaximizeBox = false;
-            cbo_Warehouse.Enabled = false;
-
-            // ComboBox
-            ProductsController product_controller = new ProductsController(user, password);
-            
-            Result result = product_controller.getProducts();
-            this.products = (List<Product>)result.data;
-            
-            foreach (Product prod in products)
-            {
-                this.cbo_Product.Items.Add(prod.Name);
-            }
-            //this.cbo_Product.SelectedItem = this.cbo_Product.Items[0];
-
+            MaximizeBox = false;    
         }
 
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(txt_Quantity.Text) || String.IsNullOrWhiteSpace(cbo_Product.Text) || String.IsNullOrWhiteSpace(txt_UnitMeasure.Text) || String.IsNullOrWhiteSpace(cbo_Warehouse.Text))
+            if (String.IsNullOrWhiteSpace(cbo_Product.Text) )
             {
                 MessageBox.Show(this, "Debe completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -59,12 +48,12 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 if (result == DialogResult.OK)
                 {
                     //line.Unit_measure = ;
-                    line.Quantity = int.Parse(this.txt_Quantity.Text);
-                    line.Unit_price = double.Parse(this.txt_UnitMeasure.Text);
-                    line.Status = "Active";
-                    line.Delivery_quantity = 0;
-                    line.Product = products.ElementAt(cbo_Product.SelectedIndex);
-                    line.Prod_warehouse = prod_warehouses.ElementAt(cbo_Warehouse.SelectedIndex);
+                    //line.Quantity = int.Parse(this.txt_Quantity.Text);
+                    //line.Unit_price = double.Parse(this.txt_UnitMeasure.Text);
+                    //line.Status = "Active";
+                    //line.Delivery_quantity = 0;
+                    //line.Product = products.ElementAt(cbo_Product.SelectedIndex);
+                    //line.Prod_warehouse = prod_warehouses.ElementAt(cbo_Warehouse.SelectedIndex);
                     this.Close();
                 }
             }
@@ -75,24 +64,42 @@ namespace WindowsFormsApp1.Views.Sales_Module
             this.Close();
         }
 
-        private void cbo_Product_SelectedIndexChanged(object sender, EventArgs e)
+        private void btn_Search_Click(object sender, EventArgs e)
         {
-            txt_UnitPrice.Text = Math.Round(products.ElementAt(cbo_Product.SelectedIndex).Unit_price,2).ToString();
-            txt_UnitMeasure.Text = products.ElementAt(cbo_Product.SelectedIndex).Unit_id.ToString();
-            cbo_Warehouse.Enabled = true;
-            cbo_Warehouse.Text = "";
-            cbo_Warehouse.Items.Clear();
+            var product = ((Product)this.cbo_Product.SelectedItem).Id;
+            List<ProductWarehouseS> warehouses = (List<ProductWarehouseS>)dc.getWarehousesS(product).data;
+            if (!flg)
+                grid_products.DataSource = new List<ProductWarehouseS>();
+            else flg = false;
+            grid_products.DataSource = warehouses;
+            AdjustColumnOrder();
 
-            ProductWarehouseController prod_warehouse_controller = new ProductWarehouseController(user, password);
-            int id_product = products.ElementAt(cbo_Product.SelectedIndex).Id;
-            Result result = prod_warehouse_controller.getProductWarehouses_by_idProduct(id_product, '0');
-            this.prod_warehouses = (List<ProductWarehouse>)result.data;
-
-            foreach (ProductWarehouse prod_ware in prod_warehouses)
-            {
-                this.cbo_Warehouse.Items.Add(prod_ware.Name);
-            }
-            //this.cbo_Warehouse.SelectedItem = this.cbo_Warehouse.Items[0];
         }
+
+        public void fillProducts()
+        {
+            pc = new ProductsController(user, password);
+            dc = new ProductMovementDetailController(user, password);
+            List<Models.Product> products = (List<Models.Product>)pc.getProducts().data;
+            Models.Product p = new Product();
+            p.Name = "Todos";
+            p.Id = 0;
+            products.Add(p);
+            this.cbo_Product.DataSource = products;
+            this.cbo_Product.DisplayMember = "name";
+            this.cbo_Product.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private void AdjustColumnOrder()
+        {
+            grid_products.Columns["product"].DisplayIndex = 0;
+            grid_products.Columns["unit"].DisplayIndex = 1;
+            grid_products.Columns["warehouse"].DisplayIndex = 2;
+            grid_products.Columns["stockL"].DisplayIndex = 3;
+            grid_products.Columns["quantity"].DisplayIndex = 4;
+            grid_products.Columns["unit_price"].DisplayIndex = 5;
+            grid_products.Columns["select"].DisplayIndex = 6;
+        }
+
     }
 }

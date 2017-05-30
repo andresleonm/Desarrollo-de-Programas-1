@@ -212,8 +212,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            ViewWarehouseMovementP order_line = new ViewWarehouseMovementP(user, password);
-            order_line.Show();
+            //ViewWarehouseMovementP order_line = new ViewWarehouseMovementP(user, password);
+            //order_line.Show();
         }
     }
 }
