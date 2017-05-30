@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ProfileController.cs" />
     <Compile Include="Controller\CurrencyController.cs" />
     <Compile Include="Controller\CustomerController.cs" />
     <Compile Include="Controller\MaterialsController.cs" />
@@ -76,6 +77,8 @@
     <Compile Include="Controller\ProductTypeWarehouseController.cs" />
     <Compile Include="Controller\ProductMovementController.cs" />
     <Compile Include="Controller\ProductMovementDetailController.cs" />
+    <Compile Include="Controller\SupplierController.cs" />
+    <Compile Include="Controller\WorkstationsController.cs" />
     <Compile Include="Models\ProductMovementLine.cs" />
     <Compile Include="Models\ProductMovementType.cs" />
     <Compile Include="Models\MaterialMovementType.cs" />
@@ -101,11 +104,13 @@
     <Compile Include="Models\BOM.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Functionality.cs" />
     <Compile Include="Models\ProductionOrder.cs" />
     <Compile Include="Models\ProductionOrderProductLine.cs" />
     <Compile Include="Models\ProductionOrderWorkLine.cs" />
     <Compile Include="Models\ProductMovement.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\ProductTypeWarehouse.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipeDetail.cs" />
@@ -302,6 +307,12 @@
     </Compile>
     <Compile Include="Views\Sales_Module\UC_SalesOrder.Designer.cs">
       <DependentUpon>UC_SalesOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_Workstation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_Workstation.Designer.cs">
+      <DependentUpon>UC_Workstation.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Warehouse_Module\Document.cs" />
     <Compile Include="Views\Warehouse_Module\ViewWarehouseMovementP.cs">
@@ -507,6 +518,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_Module\ViewWarehouseMovementP.resx">
       <DependentUpon>ViewWarehouseMovementP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Workstation.resx">
+      <DependentUpon>UC_Workstation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_Module\ProductMovementLine.resx">
       <DependentUpon>ProductMovementLine.cs</DependentUpon>

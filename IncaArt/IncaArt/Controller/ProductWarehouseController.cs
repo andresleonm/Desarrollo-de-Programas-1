@@ -49,5 +49,24 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result getProductWarehouses_by_idProduct(int idProduct, char idClass)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id_product", idProduct.ToString()));
+            parameters.Add(new Parameter("class_id", idClass.ToString()));
+            GenericResult result = execute_function("get_productwarehouse_by_idproduct", parameters);
+            List<Models.ProductWarehouse> productWarehouses = new List<Models.ProductWarehouse>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    productWarehouses.Add(new Models.ProductWarehouse(Int32.Parse(r.getColumn(0)), r.getColumn(1), Int32.Parse(r.getColumn(2)), int.Parse(r.getColumn(3)), int.Parse(r.getColumn(4)),
+                        Int32.Parse(r.getColumn(5)), r.getColumn(6), int.Parse(r.getColumn(7))));
+                }
+                return new Result(productWarehouses, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
     }
 }

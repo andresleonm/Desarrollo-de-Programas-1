@@ -171,6 +171,7 @@
             // 
             // cbo_Warehouse
             // 
+            this.cbo_Warehouse.Enabled = false;
             this.cbo_Warehouse.FormattingEnabled = true;
             this.cbo_Warehouse.ItemHeight = 23;
             this.cbo_Warehouse.Location = new System.Drawing.Point(136, 138);
