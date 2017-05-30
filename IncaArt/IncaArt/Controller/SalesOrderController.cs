@@ -57,16 +57,16 @@ namespace WindowsFormsApp1.Controller
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("currency", sales_order.Currency.Id.ToString()));
-            parameters.Add(new Parameter("customer_id", sales_order.Client.Id.ToString()));
-            parameters.Add(new Parameter("customer_name", sales_order.Client_name));
-            parameters.Add(new Parameter("customer_address", sales_order.Client_address));
-            parameters.Add(new Parameter("customer_phone", sales_order.Client_phone));
+            parameters.Add(new Parameter("customer_id", sales_order.Customer.Id.ToString()));
+            parameters.Add(new Parameter("customer_name", sales_order.Customer_name));
+            parameters.Add(new Parameter("customer_address", sales_order.Customer_address));
+            parameters.Add(new Parameter("customer_phone", sales_order.Customer_phone));
             parameters.Add(new Parameter("amount", sales_order.Amount.ToString()));
             parameters.Add(new Parameter("state", sales_order.Status));
-            parameters.Add(new Parameter("customer_doi", sales_order.Client_doi));
-            parameters.Add(new Parameter("date", sales_order.Issue_date.ToShortDateString()));
+            parameters.Add(new Parameter("customer_doi", sales_order.Customer_doi));
+            parameters.Add(new Parameter("issue_date", sales_order.Issue_date.ToString("MM/dd/yyyy")));
             parameters.Add(new Parameter("observation", sales_order.Observation));
-            parameters.Add(new Parameter("delivery_date", sales_order.Delivery_date.ToShortDateString()));
+            parameters.Add(new Parameter("delivery_date", sales_order.Delivery_date.ToString("MM/dd/yyyy")));
             GenericResult result = execute_transaction("insert_sales_order", parameters);
             if (result.success)
             {

@@ -102,7 +102,7 @@ namespace WindowsFormsApp1.Models
         }
         
 
-        public SalesOrderLine(int id, int order_id, int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int del_quantity, int prod_warehouse_id, string prod_warehouse_name, string status)
+        public SalesOrderLine(int id, int order_id, int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int del_quantity, int prod_warehouse_id, string prod_warehouse_name)
         {
             this.id = id;
             this.order_id = order_id;
@@ -115,7 +115,20 @@ namespace WindowsFormsApp1.Models
             this.delivery_quantity = del_quantity;
             this.prod_warehouse_id = prod_warehouse_id;
             this.prod_warehouse_name = prod_warehouse_name;
-            this.status = status;
+            this.status = "Registrado";
+        }
+
+        public SalesOrderLine(int id, int order_id, int product_id, int unit_measure_id, int quantity, double price, int prod_warehouse_id)
+        {
+            this.id = id;
+            this.order_id = order_id;
+            this.Product_id = product_id;            
+            this.unit_measure_id = unit_measure_id;
+            this.Quantity = quantity;
+            this.Unit_price = price;
+            this.delivery_quantity = 0;
+            this.prod_warehouse_id = prod_warehouse_id;
+            this.status = "Registrado";
         }
 
         public SalesOrderLine()
