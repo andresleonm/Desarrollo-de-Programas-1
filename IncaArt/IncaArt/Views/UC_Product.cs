@@ -46,6 +46,17 @@ namespace WindowsFormsApp1.Views
             combobox_unit.ValueMember = "Key";
 
             combo_data = new Dictionary<int, string>();
+            combo_data.Add(0, "Seleccionar");
+            foreach (var item in unit_list)
+            {
+                combo_data.Add(item.Id, item.Symbol);
+
+            }
+            combobox_unit_s.DataSource = new BindingSource(combo_data, null);
+            combobox_unit_s.DisplayMember = "Value";
+            combobox_unit_s.ValueMember = "Key";
+
+            combo_data = new Dictionary<int, string>();
             foreach (var item in currency_list)
             {
                 combo_data.Add(item.Id, item.Symbol);
@@ -238,6 +249,23 @@ namespace WindowsFormsApp1.Views
         private void btn_clean_s_Click(object sender, EventArgs e)
         {
             Clean();
+        }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            Models.Product product = new Models.Product();
+            product.Name = textbox_name_s.Text;
+            product.Unit_id = ((KeyValuePair<int, string>)combobox_unit_s.SelectedItem).Key;
+            result = productController.getProducts(product);
+            if (result.data == null)
+            {
+                MessageBox.Show(result.message, "Error al buscar producto con filtro", MessageBoxButtons.OK);
+            }
+            else
+            {
+                product_list = (List<Models.Product>)result.data;
+                Load_DataGridView();
+            }
         }
     }
 }

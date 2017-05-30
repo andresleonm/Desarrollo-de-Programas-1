@@ -34,6 +34,28 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result getMaterials(Models.Material material)
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            if (material.Name != "") parameters.Add(new Parameter("name", material.Name));
+            if (material.Unit_id != 0) parameters.Add(new Parameter("unit_id", material.Unit_id.ToString()));
+            
+            GenericResult result = execute_function("get_materials2", parameters);
+            List<Models.Material> materials = new List<Models.Material>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    materials.Add(new Models.Material(
+                        Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), r.getColumn(2), Int32.Parse(r.getColumn(3)), Int32.Parse(r.getColumn(4))
+                        ));
+                }
+                return new Result(materials, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
         public Result getMaterial(int id)
         {
             //consultar permisos
