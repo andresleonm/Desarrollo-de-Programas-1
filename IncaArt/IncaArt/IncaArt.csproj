@@ -78,6 +78,7 @@
     <Compile Include="Controller\ProductMovementController.cs" />
     <Compile Include="Controller\ProductMovementDetailController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
+    <Compile Include="Controller\WorkstationsController.cs" />
     <Compile Include="Models\ProductMovementLine.cs" />
     <Compile Include="Models\ProductMovementType.cs" />
     <Compile Include="Models\MaterialMovementType.cs" />
@@ -307,6 +308,12 @@
     <Compile Include="Views\Sales_Module\UC_SalesOrder.Designer.cs">
       <DependentUpon>UC_SalesOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_Workstation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_Workstation.Designer.cs">
+      <DependentUpon>UC_Workstation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Warehouse_Module\Document.cs" />
     <Compile Include="Views\Warehouse_Module\ProductMovementLine.cs">
       <SubType>Form</SubType>
@@ -502,6 +509,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesOrder.resx">
       <DependentUpon>UC_SalesOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Workstation.resx">
+      <DependentUpon>UC_Workstation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_Module\ProductMovementLine.resx">
       <DependentUpon>ProductMovementLine.cs</DependentUpon>

@@ -63,15 +63,15 @@
             this.combobox_material = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
-            this.btn_cancel = new MetroFramework.Controls.MetroButton();
-            this.btn_edit = new MetroFramework.Controls.MetroButton();
-            this.btn_new = new MetroFramework.Controls.MetroButton();
             this.recipe_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.material_row = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.material_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_cancel = new MetroFramework.Controls.MetroButton();
+            this.btn_edit = new MetroFramework.Controls.MetroButton();
+            this.btn_new = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
@@ -85,10 +85,10 @@
             // 
             this.metroTabControl1.Controls.Add(this.consulta);
             this.metroTabControl1.Controls.Add(this.registro);
-            this.metroTabControl1.Location = new System.Drawing.Point(24, 27);
+            this.metroTabControl1.Location = new System.Drawing.Point(25, 34);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 1;
-            this.metroTabControl1.Size = new System.Drawing.Size(721, 450);
+            this.metroTabControl1.Size = new System.Drawing.Size(753, 456);
             this.metroTabControl1.TabIndex = 2;
             this.metroTabControl1.UseSelectable = true;
             // 
@@ -254,6 +254,9 @@
             // 
             // registro
             // 
+            this.registro.Controls.Add(this.btn_cancel);
+            this.registro.Controls.Add(this.btn_new);
+            this.registro.Controls.Add(this.btn_edit);
             this.registro.Controls.Add(this.groupBox2);
             this.registro.Controls.Add(this.groupBox1);
             this.registro.Controls.Add(this.metroGrid2);
@@ -262,7 +265,7 @@
             this.registro.HorizontalScrollbarSize = 10;
             this.registro.Location = new System.Drawing.Point(4, 38);
             this.registro.Name = "registro";
-            this.registro.Size = new System.Drawing.Size(713, 408);
+            this.registro.Size = new System.Drawing.Size(745, 414);
             this.registro.TabIndex = 1;
             this.registro.Text = "Registro";
             this.registro.VerticalScrollbarBarColor = true;
@@ -394,7 +397,7 @@
             this.groupBox1.Controls.Add(this.metroLabel4);
             this.groupBox1.Location = new System.Drawing.Point(368, 242);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(392, 150);
+            this.groupBox1.Size = new System.Drawing.Size(345, 150);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Material";
@@ -539,36 +542,6 @@
             this.metroGrid2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellClick);
             this.metroGrid2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellDoubleClick);
             // 
-            // btn_cancel
-            // 
-            this.btn_cancel.Location = new System.Drawing.Point(226, 483);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 12;
-            this.btn_cancel.Text = "Cancelar";
-            this.btn_cancel.UseSelectable = true;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
-            // 
-            // btn_edit
-            // 
-            this.btn_edit.Location = new System.Drawing.Point(133, 483);
-            this.btn_edit.Name = "btn_edit";
-            this.btn_edit.Size = new System.Drawing.Size(75, 23);
-            this.btn_edit.TabIndex = 11;
-            this.btn_edit.Text = "Editar";
-            this.btn_edit.UseSelectable = true;
-            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
-            // 
-            // btn_new
-            // 
-            this.btn_new.Location = new System.Drawing.Point(39, 483);
-            this.btn_new.Name = "btn_new";
-            this.btn_new.Size = new System.Drawing.Size(75, 23);
-            this.btn_new.TabIndex = 10;
-            this.btn_new.Text = "Registrar";
-            this.btn_new.UseSelectable = true;
-            this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
-            // 
             // recipe_id
             // 
             this.recipe_id.HeaderText = "ID";
@@ -603,14 +576,41 @@
             this.quantity.HeaderText = "Cantidad";
             this.quantity.Name = "quantity";
             // 
+            // btn_cancel
+            // 
+            this.btn_cancel.Location = new System.Drawing.Point(217, 369);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.TabIndex = 12;
+            this.btn_cancel.Text = "Cancelar";
+            this.btn_cancel.UseSelectable = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
+            // btn_edit
+            // 
+            this.btn_edit.Location = new System.Drawing.Point(124, 369);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.Size = new System.Drawing.Size(75, 23);
+            this.btn_edit.TabIndex = 11;
+            this.btn_edit.Text = "Editar";
+            this.btn_edit.UseSelectable = true;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
+            // 
+            // btn_new
+            // 
+            this.btn_new.Location = new System.Drawing.Point(30, 369);
+            this.btn_new.Name = "btn_new";
+            this.btn_new.Size = new System.Drawing.Size(75, 23);
+            this.btn_new.TabIndex = 10;
+            this.btn_new.Text = "Registrar";
+            this.btn_new.UseSelectable = true;
+            this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
+            // 
             // UC_Recipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.metroTabControl1);
-            this.Controls.Add(this.btn_cancel);
-            this.Controls.Add(this.btn_new);
-            this.Controls.Add(this.btn_edit);
             this.Name = "UC_Recipe";
             this.Size = new System.Drawing.Size(840, 545);
             this.Load += new System.EventHandler(this.UC_Recipe_Load);
