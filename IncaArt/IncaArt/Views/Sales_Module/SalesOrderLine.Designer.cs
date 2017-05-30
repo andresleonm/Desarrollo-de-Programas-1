@@ -35,6 +35,11 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grid_products = new MetroFramework.Controls.MetroGrid();
+            this.btn_Search = new System.Windows.Forms.Button();
+            this.cbo_Product = new MetroFramework.Controls.MetroComboBox();
+            this.btn_Cancel = new System.Windows.Forms.Button();
+            this.btn_Save = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Product_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,11 +54,6 @@
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btn_Search = new System.Windows.Forms.Button();
-            this.cbo_Product = new MetroFramework.Controls.MetroComboBox();
-            this.btn_Cancel = new System.Windows.Forms.Button();
-            this.btn_Save = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -74,7 +74,7 @@
             this.groupBox1.Controls.Add(this.btn_Save);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 6);
+            this.groupBox1.Location = new System.Drawing.Point(12, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(750, 346);
             this.groupBox1.TabIndex = 1;
@@ -159,6 +159,67 @@
             this.grid_products.Size = new System.Drawing.Size(682, 178);
             this.grid_products.TabIndex = 51;
             // 
+            // btn_Search
+            // 
+            this.btn_Search.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Search.ForeColor = System.Drawing.Color.White;
+            this.btn_Search.Location = new System.Drawing.Point(534, 19);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(82, 29);
+            this.btn_Search.TabIndex = 50;
+            this.btn_Search.Text = "Buscar";
+            this.btn_Search.UseVisualStyleBackColor = false;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+            // 
+            // cbo_Product
+            // 
+            this.cbo_Product.FormattingEnabled = true;
+            this.cbo_Product.ItemHeight = 23;
+            this.cbo_Product.Location = new System.Drawing.Point(262, 19);
+            this.cbo_Product.Name = "cbo_Product";
+            this.cbo_Product.Size = new System.Drawing.Size(228, 29);
+            this.cbo_Product.TabIndex = 49;
+            this.cbo_Product.UseSelectable = true;
+            // 
+            // btn_Cancel
+            // 
+            this.btn_Cancel.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancel.ForeColor = System.Drawing.Color.White;
+            this.btn_Cancel.Location = new System.Drawing.Point(408, 298);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Size = new System.Drawing.Size(82, 29);
+            this.btn_Cancel.TabIndex = 17;
+            this.btn_Cancel.Text = "Cancelar";
+            this.btn_Cancel.UseVisualStyleBackColor = false;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
+            // 
+            // btn_Save
+            // 
+            this.btn_Save.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Save.ForeColor = System.Drawing.Color.White;
+            this.btn_Save.Location = new System.Drawing.Point(262, 298);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(82, 29);
+            this.btn_Save.TabIndex = 16;
+            this.btn_Save.Text = "Grabar";
+            this.btn_Save.UseVisualStyleBackColor = false;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label1.Location = new System.Drawing.Point(169, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Producto :";
+            // 
             // Id
             // 
             this.Id.DataPropertyName = "id";
@@ -229,6 +290,7 @@
             this.stockF.Name = "stockF";
             this.stockF.ReadOnly = true;
             this.stockF.Visible = false;
+            this.stockF.Width = 83;
             // 
             // stockL
             // 
@@ -236,6 +298,7 @@
             this.stockL.DataPropertyName = "current_logical_stock";
             this.stockL.HeaderText = "Stock Logico";
             this.stockL.Name = "stockL";
+            this.stockL.ReadOnly = true;
             this.stockL.Width = 87;
             // 
             // capacity
@@ -245,6 +308,7 @@
             this.capacity.HeaderText = "Capacidad Maxima";
             this.capacity.Name = "capacity";
             this.capacity.Visible = false;
+            this.capacity.Width = 115;
             // 
             // quantity
             // 
@@ -267,67 +331,6 @@
             this.select.HeaderText = "Seleccionar";
             this.select.Name = "select";
             this.select.Width = 69;
-            // 
-            // btn_Search
-            // 
-            this.btn_Search.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Search.ForeColor = System.Drawing.Color.White;
-            this.btn_Search.Location = new System.Drawing.Point(534, 19);
-            this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(82, 29);
-            this.btn_Search.TabIndex = 50;
-            this.btn_Search.Text = "Buscar";
-            this.btn_Search.UseVisualStyleBackColor = false;
-            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
-            // 
-            // cbo_Product
-            // 
-            this.cbo_Product.FormattingEnabled = true;
-            this.cbo_Product.ItemHeight = 23;
-            this.cbo_Product.Location = new System.Drawing.Point(262, 19);
-            this.cbo_Product.Name = "cbo_Product";
-            this.cbo_Product.Size = new System.Drawing.Size(228, 29);
-            this.cbo_Product.TabIndex = 49;
-            this.cbo_Product.UseSelectable = true;
-            // 
-            // btn_Cancel
-            // 
-            this.btn_Cancel.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_Cancel.Location = new System.Drawing.Point(408, 298);
-            this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(82, 29);
-            this.btn_Cancel.TabIndex = 17;
-            this.btn_Cancel.Text = "Cancelar";
-            this.btn_Cancel.UseVisualStyleBackColor = false;
-            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
-            // 
-            // btn_Save
-            // 
-            this.btn_Save.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Save.ForeColor = System.Drawing.Color.White;
-            this.btn_Save.Location = new System.Drawing.Point(262, 298);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(82, 29);
-            this.btn_Save.TabIndex = 16;
-            this.btn_Save.Text = "Grabar";
-            this.btn_Save.UseVisualStyleBackColor = false;
-            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label1.Location = new System.Drawing.Point(169, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Producto :";
             // 
             // SalesOrderLine
             // 

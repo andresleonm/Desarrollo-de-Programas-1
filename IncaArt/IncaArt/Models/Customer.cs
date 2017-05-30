@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class Customer
+    public class Customer
     {
         int id;
         String name;
@@ -29,6 +29,10 @@ namespace WindowsFormsApp1.Models
             this.type = type;
             this.priority = priority;
             this.state = state;
+        }
+
+        public Customer()
+        {
         }
 
         public int Id

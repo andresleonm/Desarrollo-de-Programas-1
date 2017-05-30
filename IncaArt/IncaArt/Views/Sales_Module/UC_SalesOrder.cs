@@ -15,6 +15,7 @@ namespace WindowsFormsApp1.Views
 {           
     public partial class UC_SalesOrder : MetroFramework.Controls.MetroUserControl
     {
+       
         private List<Currency> currencies;
         private string user = "dp1admin";
         private string password = "dp1admin";
@@ -37,6 +38,23 @@ namespace WindowsFormsApp1.Views
                 this.cbo_Currency.Items.Add(curr.Name);
             }
             //this.cbo_Currency.SelectedItem = this.cbo_Currency.Items[0];
+        }
+
+        private void btn_Search_Click(object sender, EventArgs e)
+        {
+            List<Customer> customerL= new List<Customer>();
+            Sales_Module.SalesOrderSearchClient search_view = new Sales_Module.SalesOrderSearchClient(ref customerL, user, password);
+            search_view.ShowDialog();
+            if (customerL.Count != 0)
+            {
+                Customer customer = customerL[0];
+                txt_name.Text = customer.Name;
+                txt_address.Text = customer.Address;
+                txt_Doi.Text= customer.Doi;
+                txt_phone.Text = customer.Phone;
+
+            }
+            
         }
 
         private void btn_New_Click(object sender, EventArgs e)
@@ -69,5 +87,6 @@ namespace WindowsFormsApp1.Views
             grid_order_lines.Columns["amount"].DisplayIndex = 5;
             grid_order_lines.Columns["action"].DisplayIndex = 6;
         }
+        
     }
 }

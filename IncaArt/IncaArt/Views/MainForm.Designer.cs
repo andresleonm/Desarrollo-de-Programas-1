@@ -166,7 +166,6 @@
             this.btn_register_sale.Name = "btn_register_sale";
             this.btn_register_sale.Size = new System.Drawing.Size(87, 19);
             this.btn_register_sale.Text = "Registrar venta";
-            this.btn_register_sale.Click += new System.EventHandler(this.btn_register_sale_Click);
             // 
             // toolStripButton13
             // 
