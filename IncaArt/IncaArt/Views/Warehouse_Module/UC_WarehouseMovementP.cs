@@ -90,6 +90,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 this.buttonAddRow.Visible = false;
                 this.documents_list.Visible = true;
                 this.document_input.Visible = true;
+                this.action.Visible = false;
                 grid_movement_lines.Columns["documentQuantity"].Visible = true;
                 populate_document_combo_box(mov.clase);
                 flgBegin = true;
@@ -99,6 +100,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 grid_movement_lines.Columns["documentQuantity"].Visible = false;
                 this.documents_list.Visible = false;
                 this.document_input.Visible = false;
+                this.action.Visible = true;
             }
 
             claseAnt = mov.clase;
@@ -223,6 +225,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 MessageBox.Show("Seleccione el movimiento que desea visualizar");
             ViewWarehouseMovementP order_line = new ViewWarehouseMovementP(user, password, currentObject);
             order_line.Show();
+
         }
     }
 }

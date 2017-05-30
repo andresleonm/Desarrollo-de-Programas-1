@@ -1097,10 +1097,48 @@
             this.amount.HeaderText = "Subtotal";
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
-            // 
+
             // mbStyle
             // 
             this.mbStyle.Owner = null;
+
+            // product
+            // 
+            this.product.HeaderText = "Producto";
+            this.product.Name = "product";
+            // 
+            // quantity
+            // 
+            this.quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.quantity.HeaderText = "Cantidad";
+            this.quantity.Name = "quantity";
+            // 
+            // unitMeasure
+            // 
+            this.unitMeasure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.unitMeasure.HeaderText = "Unidad de Medida";
+            this.unitMeasure.Name = "unitMeasure";
+            this.unitMeasure.ReadOnly = true;
+            // 
+            // warehouse
+            // 
+            this.warehouse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.warehouse.HeaderText = "Almacén";
+            this.warehouse.Name = "warehouse";
+            this.warehouse.ReadOnly = true;
+            // 
+            // unitPrice
+            // 
+            this.unitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.unitPrice.HeaderText = "Precio Unitario";
+            this.unitPrice.Name = "unitPrice";
+            // 
+            // amount
+            // 
+            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.amount.HeaderText = "Subtotal";
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
             // 
             // UC_SalesOrder
             // 

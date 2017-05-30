@@ -105,6 +105,7 @@ namespace WindowsFormsApp1.Views
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             this.pictureBox2.MouseEnter += new System.EventHandler(this.pictureBox_MouseHover);
             this.pictureBox2.MouseLeave += new System.EventHandler(this.pictureBox_MouseLeave);
             this.pictureBox2.MouseHover += new System.EventHandler(this.pictureBox_MouseHover);
@@ -356,8 +357,6 @@ namespace WindowsFormsApp1.Views
             this.uC_SalesMain1.Size = new System.Drawing.Size(819, 514);
             this.uC_SalesMain1.TabIndex = 31;
 
-            // uC_SalesMain1
-            // 
             this.uc_warehousemovement.BackColor = System.Drawing.SystemColors.Control;
             this.uc_warehousemovement.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uc_warehousemovement.Location = new System.Drawing.Point(132, 72);
