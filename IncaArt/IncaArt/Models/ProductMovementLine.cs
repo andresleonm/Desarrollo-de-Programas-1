@@ -27,6 +27,27 @@ namespace WindowsFormsApp1.Models
         public String State { get; set; }
         public int idDocumentLine { get; set; }
 
+
+        public ProductMovementLine(int movementId,int id,int warehouse_id,int product_id,
+            int unit_id,String warehouse_name,
+                                String product_name,String unit_name,int warehouseQuantity,
+                                int documentQuantity,int quantity,
+                                String state,int idDocumentLine)
+        {
+            this.movementId = movementId;
+            this.id = id;
+            this.warehouse_id = warehouse_id;
+            this.product_id = product_id;
+            this.unit_id = unit_id;
+            this.warehouse_name = warehouse_name;
+            this.product_name = product_name;
+            this.unit_name = unit_name;
+            this.warehouseQuantity = warehouseQuantity;
+            this.documentQuantity = documentQuantity;
+            this.quantity = quantity;
+            this.State = state;
+            this.idDocumentLine = idDocumentLine;
+        }
         public ProductMovementLine(SalesOrderLine line,int id, string user, string password)
         {
             this.warehouse_id = line.Prod_warehouse_id;

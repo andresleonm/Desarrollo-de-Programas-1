@@ -32,7 +32,30 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             soc = new SalesOrderController(user, password);
             fillTypeMovements();
             clearGrid();
-            pm = movement;            
+            pm = movement;
+            this.grid_movement_lines.DataSource=pm.detail;
+            this.textbox_observation.Text = pm.Observacion;
+            this.fecha.Text = pm.Fecha;
+            types_movements.SelectedIndex = types_movements.FindString(pm.Tipo.name);
+            document.Text = pm.TipoDocumentoOrigen + " - "+pm.NroDocumentoOrigen.ToString();
+            var mov = movement.Tipo;
+            List<int> checkValues = new List<int> { 0, 1, 2 };            
+            
+            if (checkValues.Contains(mov.clase))
+            {
+
+                this.document.Visible = true;
+                this.document_input.Visible = true;
+                grid_movement_lines.Columns["documentQuantity"].Visible = false;
+            }
+            else
+            {
+
+                grid_movement_lines.Columns["documentQuantity"].Visible = false;
+                this.document.Visible = false;
+                this.document_input.Visible = false;
+            }
+            document.Text = pm.TipoDocumentoOrigen + " - " + pm.NroDocumentoOrigen.ToString();
         }
         public void fillTypeMovements()
         {
@@ -49,20 +72,9 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
         }
 
-        private void populate_document_combo_box(int clase)
-        {
-            List<Document> documents = (List<Document>)pc.getDocuments(clase).data;
-            this.documents_list.DataSource = documents;
-            this.documents_list.DisplayMember = "name";
-            this.documents_list.DropDownStyle = ComboBoxStyle.DropDownList;
-        }
+        
 
-        private void clearDocuments()
-        {
-            documents_list.DataSource = null;
-            documents_list.DisplayMember = null;
-            documents_list.ValueMember = null;
-        }
+      
 
         
 
@@ -71,32 +83,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             List<Models.ProductMovementLine> emptyStudentDetail = new List<Models.ProductMovementLine>();
             grid_movement_lines.DataSource = emptyStudentDetail;
         }
-        private void combobox_unit_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var mov = (ProductMovementType)this.types_movements.SelectedItem;
-            List<int> checkValues = new List<int> { 0, 1, 2 };
-            clearDocuments();
-            clearGrid();
-            if (checkValues.Contains(mov.clase))
-            {
-
-                this.documents_list.Visible = true;
-                this.document_input.Visible = true;
-                grid_movement_lines.Columns["documentQuantity"].Visible = true;
-                populate_document_combo_box(mov.clase);
-                flgBegin = true;
-            }
-            else
-            {
-
-                grid_movement_lines.Columns["documentQuantity"].Visible = false;
-                this.documents_list.Visible = false;
-                this.document_input.Visible = false;
-            }
-
-            claseAnt = mov.clase;
-
-        }
+        
 
         private void populateDetail(SalesOrder order)
         {
@@ -123,16 +110,6 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         }
 
         private void grid_movement_lines_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void gb_OrderLine_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void grid_order_lines_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

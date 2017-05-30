@@ -34,6 +34,17 @@ namespace WindowsFormsApp1.Controller
             }
             return new Result(null, result.success, result.message);
        }
+
+        public ProductMovementType getMovementType(int id,List<ProductMovementType> mov_types)
+        {
+            if (mov_types == null) return new ProductMovementType();
+            foreach (ProductMovementType mt in mov_types)
+            {
+                if (mt.id == id.ToString())
+                    return mt;
+            }
+            return new ProductMovementType();
+        }
         public string getLabel(int clase)
         {
             if (clase == 0)
@@ -105,7 +116,7 @@ namespace WindowsFormsApp1.Controller
                             return new Result(null, resultD.success, resultD.message);
                         n++;
                     }
-                    return new Result(null, true, "");
+                    return new Result(id, true, "");
                 }catch(Exception e)
                 {
                     return new Result(null, false, e.Message);
@@ -115,6 +126,49 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-       
+
+        public Result getMovements()
+        {
+            List<Parameter> parameters = new List<Parameter>();            
+            GenericResult result = execute_function("get_movements", parameters);
+            List<Models.ProductMovement> movements = new List<ProductMovement>();
+            if (result.success)
+            {
+                List<ProductMovementType> mov_types = (List<ProductMovementType>) getMovementTypes().data;
+                foreach (Row r in result.data)
+                {
+                    var movementType = getMovementType(Int32.Parse(r.getColumn(1)),mov_types);
+                    var detail =new List<Models.ProductMovementLine>();
+                    movements.Add(new ProductMovement(Int32.Parse(r.getColumn(0)),movementType, r.getColumn(2), r.getColumn(3),
+                         r.getColumn(4), r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8), detail));
+                }
+                return new Result(movements, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result getMovement(int id)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", id.ToString()));
+            GenericResult result = execute_function("get_movement", parameters);
+           
+            if (result.success)
+            {
+                Models.ProductMovement movement= new ProductMovement();
+                List<ProductMovementType> mov_types = (List<ProductMovementType>)getMovementTypes().data;
+                foreach (Row r in result.data)
+                {
+                    var movementType = getMovementType(Int32.Parse(r.getColumn(1)), mov_types);
+                    var detail = (List<Models.ProductMovementLine>)new ProductMovementDetailController(user, password).getLines(id).data;
+                    movement=new ProductMovement(Int32.Parse(r.getColumn(0)), movementType, r.getColumn(2), r.getColumn(3),
+                         r.getColumn(4), r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8), detail);
+                }
+                return new Result(movement, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+
     }
 }

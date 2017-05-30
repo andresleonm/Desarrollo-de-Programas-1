@@ -36,24 +36,27 @@
             this.gb_OrderLine = new System.Windows.Forms.GroupBox();
             this.grid_movement_lines = new MetroFramework.Controls.MetroGrid();
             this.movement_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.warehouse_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.product_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.line_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Almacen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.documentQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDocumentLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.date = new MetroFramework.Controls.MetroDateTime();
             this.btn_Save = new System.Windows.Forms.Button();
-            this.documents_list = new MetroFramework.Controls.MetroComboBox();
             this.document_input = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.types_movements = new MetroFramework.Controls.MetroComboBox();
             this.textbox_observation = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.document = new MetroFramework.Controls.MetroTextBox();
+            this.fecha = new MetroFramework.Controls.MetroTextBox();
             this.metroTabControl1.SuspendLayout();
             this.registro.SuspendLayout();
             this.gb_OrderLine.SuspendLayout();
@@ -72,10 +75,10 @@
             // 
             // registro
             // 
+            this.registro.Controls.Add(this.fecha);
+            this.registro.Controls.Add(this.document);
             this.registro.Controls.Add(this.gb_OrderLine);
-            this.registro.Controls.Add(this.date);
             this.registro.Controls.Add(this.btn_Save);
-            this.registro.Controls.Add(this.documents_list);
             this.registro.Controls.Add(this.document_input);
             this.registro.Controls.Add(this.metroLabel3);
             this.registro.Controls.Add(this.types_movements);
@@ -100,10 +103,10 @@
             this.gb_OrderLine.Controls.Add(this.grid_movement_lines);
             this.gb_OrderLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gb_OrderLine.ForeColor = System.Drawing.Color.Black;
-            this.gb_OrderLine.Location = new System.Drawing.Point(19, 160);
+            this.gb_OrderLine.Location = new System.Drawing.Point(19, 157);
             this.gb_OrderLine.Name = "gb_OrderLine";
             this.gb_OrderLine.Size = new System.Drawing.Size(791, 189);
-            this.gb_OrderLine.TabIndex = 64;
+            this.gb_OrderLine.TabIndex = 65;
             this.gb_OrderLine.TabStop = false;
             this.gb_OrderLine.Text = "Detalle del Movimiento";
             // 
@@ -125,13 +128,16 @@
             this.grid_movement_lines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid_movement_lines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.movement_id,
+            this.unit_id,
+            this.warehouse_id,
+            this.product_id,
             this.line_id,
             this.product,
             this.unit,
-            this.Almacen,
+            this.warehouse,
             this.stock,
             this.documentQuantity,
-            this.Cantidad,
+            this.quantity,
             this.state,
             this.idDocumentLine});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -169,6 +175,27 @@
             this.movement_id.Name = "movement_id";
             this.movement_id.Visible = false;
             // 
+            // unit_id
+            // 
+            this.unit_id.DataPropertyName = "unit_id";
+            this.unit_id.HeaderText = "unit_id";
+            this.unit_id.Name = "unit_id";
+            this.unit_id.Visible = false;
+            // 
+            // warehouse_id
+            // 
+            this.warehouse_id.DataPropertyName = "warehouse_id";
+            this.warehouse_id.HeaderText = "warehouse_id";
+            this.warehouse_id.Name = "warehouse_id";
+            this.warehouse_id.Visible = false;
+            // 
+            // product_id
+            // 
+            this.product_id.DataPropertyName = "product_id";
+            this.product_id.HeaderText = "product_id";
+            this.product_id.Name = "product_id";
+            this.product_id.Visible = false;
+            // 
             // line_id
             // 
             this.line_id.DataPropertyName = "id";
@@ -179,25 +206,25 @@
             // product
             // 
             this.product.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.product.DataPropertyName = "product";
+            this.product.DataPropertyName = "product_name";
             this.product.HeaderText = "Producto";
             this.product.Name = "product";
             this.product.ReadOnly = true;
             // 
             // unit
             // 
-            this.unit.DataPropertyName = "unit";
+            this.unit.DataPropertyName = "unit_name";
             this.unit.HeaderText = "Unidad de Medida";
             this.unit.Name = "unit";
             this.unit.ReadOnly = true;
             // 
-            // Almacen
+            // warehouse
             // 
-            this.Almacen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Almacen.DataPropertyName = "warehouse";
-            this.Almacen.HeaderText = "Almacen";
-            this.Almacen.Name = "Almacen";
-            this.Almacen.ReadOnly = true;
+            this.warehouse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.warehouse.DataPropertyName = "warehouse_name";
+            this.warehouse.HeaderText = "Almacen";
+            this.warehouse.Name = "warehouse";
+            this.warehouse.ReadOnly = true;
             // 
             // stock
             // 
@@ -216,12 +243,12 @@
             this.documentQuantity.ReadOnly = true;
             this.documentQuantity.Visible = false;
             // 
-            // Cantidad
+            // quantity
             // 
-            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cantidad.DataPropertyName = "quantity";
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
+            this.quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.quantity.DataPropertyName = "quantity";
+            this.quantity.HeaderText = "Cantidad";
+            this.quantity.Name = "quantity";
             // 
             // state
             // 
@@ -237,17 +264,6 @@
             this.idDocumentLine.Name = "idDocumentLine";
             this.idDocumentLine.Visible = false;
             // 
-            // date
-            // 
-            this.date.CustomFormat = "DD/MM/YYYY";
-            this.date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date.Location = new System.Drawing.Point(598, 64);
-            this.date.MinimumSize = new System.Drawing.Size(0, 29);
-            this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(208, 29);
-            this.date.TabIndex = 63;
-            this.date.Value = new System.DateTime(2017, 5, 29, 6, 10, 20, 0);
-            // 
             // btn_Save
             // 
             this.btn_Save.BackColor = System.Drawing.Color.DarkCyan;
@@ -259,17 +275,6 @@
             this.btn_Save.TabIndex = 60;
             this.btn_Save.Text = "Anular";
             this.btn_Save.UseVisualStyleBackColor = false;
-            // 
-            // documents_list
-            // 
-            this.documents_list.FormattingEnabled = true;
-            this.documents_list.ItemHeight = 23;
-            this.documents_list.Location = new System.Drawing.Point(598, 24);
-            this.documents_list.Name = "documents_list";
-            this.documents_list.Size = new System.Drawing.Size(245, 29);
-            this.documents_list.TabIndex = 17;
-            this.documents_list.UseSelectable = true;
-            this.documents_list.Visible = false;
             // 
             // document_input
             // 
@@ -292,6 +297,7 @@
             // 
             // types_movements
             // 
+            this.types_movements.Enabled = false;
             this.types_movements.FormattingEnabled = true;
             this.types_movements.ItemHeight = 23;
             this.types_movements.Location = new System.Drawing.Point(160, 25);
@@ -348,6 +354,66 @@
             this.metroLabel5.TabIndex = 2;
             this.metroLabel5.Text = "Tipo de Movimiento";
             // 
+            // document
+            // 
+            // 
+            // 
+            // 
+            this.document.CustomButton.Image = null;
+            this.document.CustomButton.Location = new System.Drawing.Point(172, 2);
+            this.document.CustomButton.Name = "";
+            this.document.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.document.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.document.CustomButton.TabIndex = 1;
+            this.document.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.document.CustomButton.UseSelectable = true;
+            this.document.CustomButton.Visible = false;
+            this.document.Lines = new string[0];
+            this.document.Location = new System.Drawing.Point(578, 24);
+            this.document.MaxLength = 32767;
+            this.document.Name = "document";
+            this.document.PasswordChar = '\0';
+            this.document.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.document.SelectedText = "";
+            this.document.SelectionLength = 0;
+            this.document.SelectionStart = 0;
+            this.document.ShortcutsEnabled = true;
+            this.document.Size = new System.Drawing.Size(200, 30);
+            this.document.TabIndex = 66;
+            this.document.UseSelectable = true;
+            this.document.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.document.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // fecha
+            // 
+            // 
+            // 
+            // 
+            this.fecha.CustomButton.Image = null;
+            this.fecha.CustomButton.Location = new System.Drawing.Point(172, 2);
+            this.fecha.CustomButton.Name = "";
+            this.fecha.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.fecha.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.fecha.CustomButton.TabIndex = 1;
+            this.fecha.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.fecha.CustomButton.UseSelectable = true;
+            this.fecha.CustomButton.Visible = false;
+            this.fecha.Lines = new string[0];
+            this.fecha.Location = new System.Drawing.Point(578, 60);
+            this.fecha.MaxLength = 32767;
+            this.fecha.Name = "fecha";
+            this.fecha.PasswordChar = '\0';
+            this.fecha.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.fecha.SelectedText = "";
+            this.fecha.SelectionLength = 0;
+            this.fecha.SelectionStart = 0;
+            this.fecha.ShortcutsEnabled = true;
+            this.fecha.Size = new System.Drawing.Size(200, 30);
+            this.fecha.TabIndex = 67;
+            this.fecha.UseSelectable = true;
+            this.fecha.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.fecha.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // ViewWarehouseMovementP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -369,26 +435,29 @@
 
         private MetroFramework.Controls.MetroTabControl metroTabControl1;
         private MetroFramework.Controls.MetroTabPage registro;
-        private System.Windows.Forms.GroupBox gb_OrderLine;
-        private MetroFramework.Controls.MetroGrid grid_movement_lines;
-        private System.Windows.Forms.DataGridViewTextBoxColumn movement_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn line_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn product;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Almacen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn documentQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn state;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDocumentLine;
-        private MetroFramework.Controls.MetroDateTime date;
         private System.Windows.Forms.Button btn_Save;
-        private MetroFramework.Controls.MetroComboBox documents_list;
         private MetroFramework.Controls.MetroLabel document_input;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroComboBox types_movements;
         private MetroFramework.Controls.MetroTextBox textbox_observation;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel5;
+        private System.Windows.Forms.GroupBox gb_OrderLine;
+        private MetroFramework.Controls.MetroGrid grid_movement_lines;
+        private System.Windows.Forms.DataGridViewTextBoxColumn movement_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn warehouse_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn product_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn line_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn product;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn documentQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn state;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDocumentLine;
+        private MetroFramework.Controls.MetroTextBox fecha;
+        private MetroFramework.Controls.MetroTextBox document;
     }
 }

@@ -629,5 +629,8 @@
     <None Include="Resources\Settings_48px.png" />
     <None Include="Resources\Menu_64px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -27,6 +27,7 @@ namespace WindowsFormsApp1.Views
         {
             uC_PurchaseOrderGrid1.Visible = false;
             uC_PurchaseOrder1.Visible = true;
+            uC_PurchaseOrder1.cleanForm();
         }
     }
 }

@@ -77,6 +77,28 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result getLines(int idMovement)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", idMovement.ToString()));
+            GenericResult result = execute_function("get_movement_product_detail", parameters);
+            
+            if (result.success)
+            {
+                List<Models.ProductMovementLine> lines = new List<Models.ProductMovementLine>();
+                foreach (Row r in result.data)
+                {
+
+                    lines.Add(new Models.ProductMovementLine(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
+                                                        Int32.Parse(r.getColumn(2)), Int32.Parse(r.getColumn(3)),
+                        Int32.Parse(r.getColumn(4)), r.getColumn(5), r.getColumn(6),r.getColumn(7), Int32.Parse(r.getColumn(8)), 
+                        Int32.Parse(r.getColumn(9)), Int32.Parse(r.getColumn(10)), r.getColumn(11), Int32.Parse(r.getColumn(12))));
+                }
+                return new Result(lines, true, "");
+            }
+            return new Result(null, result.success, result.message);
+
+        }
 
     }
 }
