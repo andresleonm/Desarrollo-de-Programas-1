@@ -20,15 +20,31 @@ namespace WindowsFormsApp1.Views
         List<Profile> profile_list;
         List<Functionality> functionality_list;
         bool data_loaded;
-        int selected_functionalities;
+        List<int> selected_functionalities;
+        Profile current_profile;
 
         public UC_Profile()
         {
             InitializeComponent();
             this.metroTabControl1.SelectedIndex = 0;
             data_loaded = false;
-            selected_functionalities = 0;
+            selected_functionalities = new List<int>();
+            current_profile = null;
         }
+
+        private void Clean()
+        {
+            textbox_name.Text = "";
+        }
+
+        private void Clean_FuncGrid()
+        {
+            foreach (DataGridViewRow funcGridRow in metroGrid2.Rows)
+            {
+                funcGridRow.Cells[3].Value = false;
+            }
+        }
+
         private bool validate_data(string name) {
             bool isCorrect = true;
             string message = "";
@@ -37,7 +53,7 @@ namespace WindowsFormsApp1.Views
                 isCorrect = false;
                 message = "-Debe ingresar el nombre del perfil.\n";
             }
-            if (selected_functionalities == 0)
+            if (selected_functionalities.Count == 0)
             {
                 isCorrect = false;
                 message += "-Debe seleccionar como mínimo un permiso para el perfil.";
@@ -52,7 +68,28 @@ namespace WindowsFormsApp1.Views
             String name = textbox_name.Text;
             if (validate_data(name))
             {
-                MessageBox.Show("OK");
+                Profile profile = new Profile(0, name);
+
+                foreach (int index in selected_functionalities)
+                {
+                    profile.Functionalities.Add(functionality_list[index]);
+                }
+
+                Result insert_result = profile_controller.insertProfile(profile);
+
+                if (insert_result.success)
+                {
+                    Load_Data();
+                    MessageBox.Show("Perfile agregado correctamente");
+                    Load_DataGridView();
+                    metroTabControl1.SelectedIndex = 0;
+                    Clean();
+                    Load_FunctionalityGridView();
+                }
+                else
+                {
+                    MessageBox.Show(insert_result.message);
+                }
             }
         }
 
@@ -71,7 +108,7 @@ namespace WindowsFormsApp1.Views
                 row.Cells.Add(new DataGridViewTextBoxCell());
                 row.Cells[1].Value = i.ToString();
                 row.Cells.Add(new DataGridViewTextBoxCell());
-                row.Cells[2].Value = f.Name;
+                row.Cells[2].Value = f.Description;
                 row.Cells.Add(new DataGridViewCheckBoxCell());
                 row.Cells[3] = new DataGridViewCheckBoxCell();
                 row.Cells[3].Style.NullValue = false;
@@ -153,18 +190,51 @@ namespace WindowsFormsApp1.Views
 
         private void metroGrid2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (metroGrid2.Columns[e.ColumnIndex].HeaderText == "Agregar" && e.RowIndex >= 0)
+            if (metroGrid2.Columns[e.ColumnIndex].HeaderText == "Agregar" && e.RowIndex >= 0 && metroGrid2.Rows[e.RowIndex].Cells[0].Value != null)
             {
-                DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)metroGrid2.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                DataGridViewRow row = metroGrid2.Rows[e.RowIndex];
+                DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)row.Cells[e.ColumnIndex];
 
                 if ((Boolean)checkCell.Value)
                 {
-                    selected_functionalities++;
+                    selected_functionalities.Add(Int32.Parse(row.Cells[1].Value.ToString()));
                 } else
                 {
-                    selected_functionalities--;
+                    selected_functionalities.Remove(Int32.Parse(row.Cells[1].Value.ToString()));
                 }
             }
+        }
+
+        private void metroGrid1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = this.metroGrid1.Rows[e.RowIndex];
+
+            if (row.Cells[0].Value != null)
+            {
+                current_profile = profile_list[Int32.Parse(row.Cells[1].Value.ToString())];
+                textbox_name.Text = current_profile.Description;
+                selected_functionalities = current_profile.Functionalities.Select(f => f.Id).ToList();
+
+                foreach(DataGridViewRow funcGridRow in metroGrid2.Rows)
+                {
+                    if (funcGridRow.Cells[0].Value != null)
+                    {
+                        int cellIndex = Int32.Parse(funcGridRow.Cells[0].Value.ToString());
+                        funcGridRow.Cells[3].Value = selected_functionalities.Contains(cellIndex);
+                    }
+                }
+
+                buttonSave.Text = "Registrar";
+                metroTabControl1.SelectedIndex = 1;
+            }
+        }
+
+        private void tabPage1_Enter(object sender, EventArgs e)
+        {
+            Clean();
+            Clean_FuncGrid();
+            selected_functionalities.Clear();
+            buttonSave.Text = "Guardar";
         }
     }
 }
