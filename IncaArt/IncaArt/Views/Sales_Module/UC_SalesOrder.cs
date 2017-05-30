@@ -55,11 +55,10 @@ namespace WindowsFormsApp1.Views
                 row[2] = salesOrderLine.Prod_warehouse.Name;
                 row[3] = salesOrderLine.Quantity.ToString();
                 row[4] = salesOrderLine.Unit_price.ToString();
-                row[5] = Math.Round((salesOrderLine.Quantity * salesOrderLine.Unit_price),2).ToString();
+                row[5] = Math.Round((salesOrderLine.Quantity * salesOrderLine.Unit_price), 2).ToString();
                 this.grid_order_lines.Rows.Add(row);
                 list_order_detail.Add(salesOrderLine);
             }
-
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
@@ -67,7 +66,8 @@ namespace WindowsFormsApp1.Views
             SalesOrderLineController sales_order_line_controller = new SalesOrderLineController(user, password);
 
             Result result;
-            foreach (SalesOrderLine order_detail in list_order_detail) {
+            foreach (SalesOrderLine order_detail in list_order_detail)
+            {
                 result = sales_order_line_controller.insertSalesOrderLine(order_detail);
             }
         }

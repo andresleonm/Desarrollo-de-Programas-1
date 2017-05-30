@@ -77,7 +77,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void cbo_Product_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txt_UnitMeasure.Text = Math.Round(products.ElementAt(cbo_Product.SelectedIndex).Unit_price,2).ToString();
+            txt_UnitPrice.Text = Math.Round(products.ElementAt(cbo_Product.SelectedIndex).Unit_price,2).ToString();
             txt_UnitMeasure.Text = products.ElementAt(cbo_Product.SelectedIndex).Unit_id.ToString();
             cbo_Warehouse.Enabled = true;
             cbo_Warehouse.Text = "";
