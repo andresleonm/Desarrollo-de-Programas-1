@@ -106,7 +106,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             int i = 1;
             foreach (SalesOrderLine line in lines)
             {
-                movs_lines.Add(new Models.ProductMovementLine(line, i));
+                movs_lines.Add(new Models.ProductMovementLine(line, i,user,password));
                 i++;
             }
             this.grid_movement_lines.DataSource = movs_lines;

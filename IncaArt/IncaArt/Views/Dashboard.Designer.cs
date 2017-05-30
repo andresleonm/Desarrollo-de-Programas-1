@@ -203,7 +203,6 @@ namespace WindowsFormsApp1.Views
             this.btn_sales.UseVisualStyleBackColor = false;
             this.btn_sales.Click += new System.EventHandler(this.btn_sales_Click);
             this.btn_sales.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
-
             // 
             // sales_imagelist
             // 
