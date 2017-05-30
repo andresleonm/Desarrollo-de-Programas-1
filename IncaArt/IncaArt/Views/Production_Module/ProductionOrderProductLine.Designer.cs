@@ -165,13 +165,11 @@
             this.metroTextBox_Quantity.CustomButton.UseSelectable = true;
             this.metroTextBox_Quantity.CustomButton.UseVisualStyleBackColor = false;
             this.metroTextBox_Quantity.CustomButton.Visible = false;
-            this.metroTextBox_Quantity.Enabled = false;
             this.metroTextBox_Quantity.Lines = new string[0];
             this.metroTextBox_Quantity.Location = new System.Drawing.Point(153, 64);
             this.metroTextBox_Quantity.MaxLength = 32767;
             this.metroTextBox_Quantity.Name = "metroTextBox_Quantity";
             this.metroTextBox_Quantity.PasswordChar = '\0';
-            this.metroTextBox_Quantity.ReadOnly = true;
             this.metroTextBox_Quantity.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.metroTextBox_Quantity.SelectedText = "";
             this.metroTextBox_Quantity.SelectionLength = 0;

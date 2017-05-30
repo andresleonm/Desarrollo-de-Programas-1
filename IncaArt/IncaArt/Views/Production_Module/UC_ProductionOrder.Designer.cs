@@ -44,11 +44,23 @@
             this.metroTabPage_Products = new MetroFramework.Controls.MetroTabPage();
             this.metroButton_AddProduct = new MetroFramework.Controls.MetroButton();
             this.datagrid_Products = new MetroFramework.Controls.MetroGrid();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.metroTabPage_Materials = new MetroFramework.Controls.MetroTabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.metroButton_AddMaterial = new MetroFramework.Controls.MetroButton();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.metroTabPage_Workers = new System.Windows.Forms.TabPage();
             this.metroButton_AddWorker = new MetroFramework.Controls.MetroButton();
@@ -82,18 +94,6 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox_OrderNumber = new MetroFramework.Controls.MetroTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage_Products.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_Products)).BeginInit();
@@ -214,6 +214,41 @@
             this.datagrid_Products.Size = new System.Drawing.Size(731, 235);
             this.datagrid_Products.TabIndex = 51;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Nombre del producto";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Cantidad";
+            this.Column2.Name = "Column2";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Cantidad producida";
+            this.Column13.Name = "Column13";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Unidad de medida";
+            this.Column3.Name = "Column3";
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "Receta";
+            this.Column14.Name = "Column14";
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "Almacén";
+            this.Column15.Name = "Column15";
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "Cantidad en almacén";
+            this.Column16.Name = "Column16";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -316,6 +351,31 @@
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid1.Size = new System.Drawing.Size(709, 204);
             this.metroGrid1.TabIndex = 52;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Nombre de material";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Cantidad requerida";
+            this.Column5.Name = "Column5";
+            // 
+            // Column17
+            // 
+            this.Column17.HeaderText = "Cantidad real solicitada";
+            this.Column17.Name = "Column17";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Unidad de medida";
+            this.Column6.Name = "Column6";
+            // 
+            // Column18
+            // 
+            this.Column18.HeaderText = "Receta";
+            this.Column18.Name = "Column18";
             // 
             // richTextBox1
             // 
@@ -795,66 +855,6 @@
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de la orden de producción";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Nombre del producto";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Cantidad";
-            this.Column2.Name = "Column2";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Cantidad producida";
-            this.Column13.Name = "Column13";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Unidad de medida";
-            this.Column3.Name = "Column3";
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "Receta";
-            this.Column14.Name = "Column14";
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "Almacén";
-            this.Column15.Name = "Column15";
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "Cantidad en almacén";
-            this.Column16.Name = "Column16";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Nombre de material";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Cantidad requerida";
-            this.Column5.Name = "Column5";
-            // 
-            // Column17
-            // 
-            this.Column17.HeaderText = "Cantidad real solicitada";
-            this.Column17.Name = "Column17";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Unidad de medida";
-            this.Column6.Name = "Column6";
-            // 
-            // Column18
-            // 
-            this.Column18.HeaderText = "Receta";
-            this.Column18.Name = "Column18";
             // 
             // UC_ProductionOrder
             // 

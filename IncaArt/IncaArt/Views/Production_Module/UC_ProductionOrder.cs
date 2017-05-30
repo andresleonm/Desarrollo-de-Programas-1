@@ -12,10 +12,10 @@ namespace WindowsFormsApp1.Views
 {
     public partial class UC_ProductionOrder : UserControl
     {
-        private List<Models.ProductionOrderProductLine> productLines = new List<Models.ProductionOrderProductLine>();
-        private List<Models.ProductionOrderWorkLine> workLines = new List<Models.ProductionOrderWorkLine>();
-        private List<Models.ProductionOrderMaterialLine> materialLines = new List<Models.ProductionOrderMaterialLine>();
-
+        private List<Models.ProductionOrderProductLine> product_lines = new List<Models.ProductionOrderProductLine>();
+        private List<Models.ProductionOrderWorkLine> work_lines = new List<Models.ProductionOrderWorkLine>();
+        private List<Models.ProductionOrderMaterialLine> material_lines = new List<Models.ProductionOrderMaterialLine>();
+         
         public UC_ProductionOrder()
         {
             InitializeComponent();
@@ -49,8 +49,9 @@ namespace WindowsFormsApp1.Views
             product_line.Show();
             if (product_line.IsRegistered)
             {
-                productLines.Add(product_line.Line);
+                product_lines.Add(product_line.Line);
             }
+            Load_Product_DataGridView();
         }
 
         private void metroButton_AddMaterial_Click(object sender, EventArgs e)
@@ -58,6 +59,10 @@ namespace WindowsFormsApp1.Views
             Models.ProductionOrderMaterialLine line = new Models.ProductionOrderMaterialLine();
             Production_Module.ProductionOrderMaterialLine material_line = new Production_Module.ProductionOrderMaterialLine();
             material_line.Show();
+            if (material_line.IsRegistered)
+            {
+                material_lines.Add(material_line.Line);
+            }
         }
 
         private void metroButton_AddWorker_Click(object sender, EventArgs e)
@@ -66,5 +71,27 @@ namespace WindowsFormsApp1.Views
             Production_Module.ProductionOrderWorkLine work_line = new Production_Module.ProductionOrderWorkLine();
             work_line.Show();
         }
+
+        private void Load_Product_DataGridView()
+        {
+            datagrid_Products.Rows.Clear();
+            for (int i = 0; i < product_lines.Count(); i++)
+            {
+                String[] row = new String[6];
+                row[0] = product_lines[i].Product.Name;
+                row[1] = product_lines[i].Quantity.ToString();
+                row[2] = product_lines[i].Produced_quantity.ToString();
+                row[3] = product_lines[i].Product.Unit.Name;
+                row[4] = product_lines[i].Recipe.Name;
+                row[5] = product_lines[i].Warehouse.Name;
+                row[5] = product_lines[i].Quantity_warehouse.ToString();
+                this.datagrid_Products.Rows.Add(row);
+             }
+
+            }
+        
+
+
+
     }
 }

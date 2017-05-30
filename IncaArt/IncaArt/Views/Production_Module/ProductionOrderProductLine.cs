@@ -14,11 +14,11 @@ namespace WindowsFormsApp1.Views
 {
     public partial class ProductionOrderProductLine : Form
     {
-        private Models.ProductionOrderProductLine line;
+        private Models.ProductionOrderProductLine line=new Models.ProductionOrderProductLine();
         private bool isRegistered=false;
 
         List<Product> products;
-        List<ProductWarehouse> warehouses;
+        List<ProductWarehouse> product_warehouses;
         List<Recipe> recipes;
         public ProductionOrderProductLine()
         {
@@ -59,10 +59,13 @@ namespace WindowsFormsApp1.Views
         {
             if (validate_data()) {
                 IsRegistered = true;
-                line.Product = new Product();
+                int selectedIndex = comboBox_Product.SelectedIndex-1;
+                line.Product = products[selectedIndex];
                 line.Quantity = Int32.Parse(metroTextBox_Quantity.Text);
-                //line.Recipe=;
-                line.Warehouse = new Models.Warehouse();
+                selectedIndex = comboBox_Recipe.SelectedIndex-1;
+                line.Recipe = recipes[selectedIndex];
+                selectedIndex = comboBox_Warehouse.SelectedIndex-1;
+                line.Warehouse = product_warehouses[selectedIndex];
                 this.Close();
             }
         }
@@ -86,7 +89,7 @@ namespace WindowsFormsApp1.Views
             this.products = (List<Product>)result.data;
 
             result = product_warehouse_controller.getProductWarehouses();
-            this.warehouses = (List<ProductWarehouse>)result.data;
+            this.product_warehouses = (List<ProductWarehouse>)result.data;
 
             result = recipe_controller.getRecipes();
             this.recipes=(List<Recipe>)result.data;
@@ -95,7 +98,7 @@ namespace WindowsFormsApp1.Views
                 this.comboBox_Product.Items.Add(prod.Name);
             }                   
 
-            foreach (ProductWarehouse prod_ware in warehouses)
+            foreach (ProductWarehouse prod_ware in product_warehouses)
             {
                 this.comboBox_Warehouse.Items.Add(prod_ware.Name);
             }
