@@ -20,6 +20,9 @@ namespace WindowsFormsApp1.Views
         List<Product> products;
         List<ProductWarehouse> product_warehouses;
         List<Recipe> recipes;
+        string user = "dp1admin";
+        string password = "dp1admin";
+
         public ProductionOrderProductLine()
         {
             InitializeComponent();
@@ -59,12 +62,15 @@ namespace WindowsFormsApp1.Views
         {
             if (validate_data()) {
                 IsRegistered = true;
-                int selectedIndex = comboBox_Product.SelectedIndex-1;
+                int selectedIndex = comboBox_Product.SelectedIndex;
                 line.Product = products[selectedIndex];
+                UnitController unit_controller = new UnitController(user, password);
+                Result result = unit_controller.getUnit(line.Product.Unit_id);
+                line.Product.Unit = (UnitOfMeasure)result.data;
                 line.Quantity = Int32.Parse(metroTextBox_Quantity.Text);
-                selectedIndex = comboBox_Recipe.SelectedIndex-1;
+                selectedIndex = comboBox_Recipe.SelectedIndex;
                 line.Recipe = recipes[selectedIndex];
-                selectedIndex = comboBox_Warehouse.SelectedIndex-1;
+                selectedIndex = comboBox_Warehouse.SelectedIndex;
                 line.Warehouse = product_warehouses[selectedIndex];
                 this.Close();
             }
@@ -78,13 +84,13 @@ namespace WindowsFormsApp1.Views
         private void ProductionOrderProductLine_Load(object sender, EventArgs e)
         {
             MaximizeBox = false;
-            string user = "dp1admin";
-            string password = "dp1admin";
+           
 
             // ComboBox
             ProductsController product_controller = new ProductsController(user, password);
             ProductWarehouseController product_warehouse_controller = new ProductWarehouseController(user, password);
             RecipesController recipe_controller = new RecipesController(user, password);
+           
             Result result = product_controller.getProducts();
             this.products = (List<Product>)result.data;
 
@@ -93,6 +99,9 @@ namespace WindowsFormsApp1.Views
 
             result = recipe_controller.getRecipes();
             this.recipes=(List<Recipe>)result.data;
+
+            
+
             foreach (Product prod in products)
             {
                 this.comboBox_Product.Items.Add(prod.Name);

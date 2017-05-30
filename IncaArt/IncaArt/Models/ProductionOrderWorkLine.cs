@@ -18,7 +18,7 @@ namespace WindowsFormsApp1.Models
         private double production_time;
         private Product product;
         private string observation;
-        private string status;
+        private string state;
 
         public int Order_Id
         {
@@ -137,16 +137,16 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public string Status
+        public string State
         {
             get
             {
-                return status;
+                return state;
             }
 
             set
             {
-                status = value;
+                state = value;
             }
         }
 

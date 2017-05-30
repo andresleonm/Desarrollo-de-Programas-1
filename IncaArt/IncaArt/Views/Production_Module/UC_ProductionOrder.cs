@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Controller;
 
 namespace WindowsFormsApp1.Views
 {
@@ -15,7 +16,8 @@ namespace WindowsFormsApp1.Views
         private List<Models.ProductionOrderProductLine> product_lines = new List<Models.ProductionOrderProductLine>();
         private List<Models.ProductionOrderWorkLine> work_lines = new List<Models.ProductionOrderWorkLine>();
         private List<Models.ProductionOrderMaterialLine> material_lines = new List<Models.ProductionOrderMaterialLine>();
-         
+        string user = "dp1admin";
+        string password= "dp1admin";
         public UC_ProductionOrder()
         {
             InitializeComponent();
@@ -31,14 +33,24 @@ namespace WindowsFormsApp1.Views
         private void metroButton_Register_Click(object sender, EventArgs e)
         {
             if (validate_data())
-            {
-                int numOrder = Int32.Parse(metroTextBox_OrderNumber.Text);
+            {        
+                //Header    
                 DateTime begin = metroDateTime_Begin.Value;
                 DateTime end = metroDateTime_End.Value;
                 string description = metroTextBox_Description.Text;
                 string observations = metroTextBox_Observation.Text;
-                string status = "Created";
-                Models.ProductionOrder productionOrder = new Models.ProductionOrder(description,observations,begin,end,status); 
+                string status = "Registrado";
+                Models.ProductionOrder production_order = new Models.ProductionOrder(description,observations,begin,end,status);
+                ProductionOrderController production_controller = new ProductionOrderController(user,password);
+                int order_id = Int32.Parse(production_controller.insertProductionOrder(production_order).data.ToString());
+                //List of products
+                ProductionOrderProductLineController product_line_controller = new ProductionOrderProductLineController(user, password);
+                for(int i=0;i<product_lines.Count;i++)
+                {
+                    product_lines[i].Order_Id = order_id;
+                    product_lines[i].State = "Registrado";
+                    Result result = product_line_controller.insertProductLine(product_lines[i]);
+                }
 
             }
         }
@@ -46,7 +58,7 @@ namespace WindowsFormsApp1.Views
         private void metroButton_AddProduct_Click(object sender, EventArgs e)
         {
             ProductionOrderProductLine product_line = new ProductionOrderProductLine();
-            product_line.Show();
+            product_line.ShowDialog();
             if (product_line.IsRegistered)
             {
                 product_lines.Add(product_line.Line);
@@ -77,21 +89,30 @@ namespace WindowsFormsApp1.Views
             datagrid_Products.Rows.Clear();
             for (int i = 0; i < product_lines.Count(); i++)
             {
-                String[] row = new String[6];
+                String[] row = new String[7];
                 row[0] = product_lines[i].Product.Name;
                 row[1] = product_lines[i].Quantity.ToString();
                 row[2] = product_lines[i].Produced_quantity.ToString();
                 row[3] = product_lines[i].Product.Unit.Name;
                 row[4] = product_lines[i].Recipe.Name;
                 row[5] = product_lines[i].Warehouse.Name;
-                row[5] = product_lines[i].Quantity_warehouse.ToString();
+                row[6] = product_lines[i].Quantity_warehouse.ToString();
                 this.datagrid_Products.Rows.Add(row);
              }
 
-            }
-        
+          }
+
+        private void UC_ProductionOrder_Load(object sender, EventArgs e)
+        {
+
+            Load_Product_DataGridView();
 
 
+        }
 
+        private void UC_ProductionOrder_VisibleChanged(object sender, EventArgs e)
+        {
+            Load_Product_DataGridView();
+        }
     }
 }

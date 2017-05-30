@@ -13,8 +13,8 @@ namespace WindowsFormsApp1.Models
         private Material material;
         private int quantity_required;
         private int quantity_taken_real;
-        private string status;
-        private Recipe recipe;
+        private string state;
+        private MaterialWarehouse warehouse;
 
         public ProductionOrderMaterialLine()
         {
@@ -86,29 +86,16 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public string Status
+        public string State
         {
             get
             {
-                return status;
+                return state;
             }
 
             set
             {
-                status = value;
-            }
-        }
-
-        internal Recipe Recipe
-        {
-            get
-            {
-                return recipe;
-            }
-
-            set
-            {
-                recipe = value;
+                state = value;
             }
         }
     }

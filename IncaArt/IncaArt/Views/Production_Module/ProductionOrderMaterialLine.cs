@@ -16,8 +16,31 @@ namespace WindowsFormsApp1.Views.Production_Module
         private Models.ProductionOrderMaterialLine line;
         private bool isRegistered = false;
 
-        internal Models.ProductionOrderMaterialLine Line { get => line; set => line = value; }
-        public bool IsRegistered { get => isRegistered; set => isRegistered = value; }
+        internal Models.ProductionOrderMaterialLine Line
+        {
+            get
+            {
+                return line;
+            }
+
+            set
+            {
+                line = value;
+            }
+        }
+
+        public bool IsRegistered
+        {
+            get
+            {
+                return isRegistered;
+            }
+
+            set
+            {
+                isRegistered = value;
+            }
+        }
 
         public ProductionOrderMaterialLine()
         {

@@ -13,7 +13,7 @@ namespace WindowsFormsApp1.Models
         private Product product;
         private int quantity;
         private int produced_quantity;
-        private string status;
+        private string state;
         private Recipe recipe;
         private int quantity_warehouse;
         private ProductWarehouse warehouse;
@@ -84,16 +84,16 @@ namespace WindowsFormsApp1.Models
         }
 
 
-        public string Status
+        public string State
         {
             get
             {
-                return status;
+                return state;
             }
 
             set
             {
-                status = value;
+                state = value;
             }
         }
 
@@ -136,7 +136,18 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public ProductWarehouse Warehouse { get => warehouse; set => warehouse = value; }
+        public ProductWarehouse Warehouse
+        {
+            get
+            {
+                return warehouse;
+            }
+
+            set
+            {
+                warehouse = value;
+            }
+        }
 
         public ProductionOrderProductLine()
         {
