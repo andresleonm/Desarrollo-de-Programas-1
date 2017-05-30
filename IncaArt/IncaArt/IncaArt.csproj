@@ -223,6 +223,18 @@
     <Compile Include="Views\UC_Product2.Designer.cs">
       <DependentUpon>UC_Product2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Warehouse_M_Module\UC_MaterialWarehouse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_M_Module\UC_MaterialWarehouse.Designer.cs">
+      <DependentUpon>UC_MaterialWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Warehouse_M_Module\UC_ProductWarehouse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_M_Module\UC_ProductWarehouse.Designer.cs">
+      <DependentUpon>UC_ProductWarehouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UC_Profile.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -357,11 +369,11 @@
     <Compile Include="Views\UC_Worker.Designer.cs">
       <DependentUpon>UC_Worker.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Warehouse.cs">
+    <Compile Include="Views\Warehouse_M_Module\Warehouse_Main.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Warehouse.Designer.cs">
-      <DependentUpon>Warehouse.cs</DependentUpon>
+    <Compile Include="Views\Warehouse_M_Module\Warehouse_Main.Designer.cs">
+      <DependentUpon>Warehouse_Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\WarehouseMovementM.cs">
       <SubType>Form</SubType>
@@ -464,6 +476,12 @@
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderWorkLine.resx">
       <DependentUpon>UC_ProductionOrderWorkLine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_M_Module\UC_MaterialWarehouse.resx">
+      <DependentUpon>UC_MaterialWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_M_Module\UC_ProductWarehouse.resx">
+      <DependentUpon>UC_ProductWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Profile.resx">
       <DependentUpon>UC_Profile.cs</DependentUpon>
     </EmbeddedResource>
@@ -527,8 +545,8 @@
     <EmbeddedResource Include="Views\UC_Worker.resx">
       <DependentUpon>UC_Worker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Warehouse.resx">
-      <DependentUpon>Warehouse.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Warehouse_M_Module\Warehouse_Main.resx">
+      <DependentUpon>Warehouse_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\WarehouseMovementM.resx">
       <DependentUpon>WarehouseMovementM.cs</DependentUpon>

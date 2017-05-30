@@ -52,7 +52,6 @@ namespace WindowsFormsApp1.Views
             this.label_user_name = new MetroFramework.Controls.MetroLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.uC_SalesMain1 = new WindowsFormsApp1.Views.UC_SalesMain();
-            this.uc_warehousemovement = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement(userName,password);
             this.parameters1 = new WindowsFormsApp1.Views.Parameters();
             this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
             this.supplier1 = new WindowsFormsApp1.Views.Supplier();
@@ -70,6 +69,7 @@ namespace WindowsFormsApp1.Views
             this.uc_product = new WindowsFormsApp1.Views.UC_Product();
             this.uc_recipe = new WindowsFormsApp1.Views.UC_Recipe();
             this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
+            this.uC_ProductWarehouse1 = new WindowsFormsApp1.Views.UC_ProductWarehouse();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -355,15 +355,6 @@ namespace WindowsFormsApp1.Views
             this.uC_SalesMain1.Size = new System.Drawing.Size(819, 514);
             this.uC_SalesMain1.TabIndex = 31;
             // 
-            // uc_warehousemovement
-            // 
-            this.uc_warehousemovement.BackColor = System.Drawing.Color.White;
-            this.uc_warehousemovement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_warehousemovement.Location = new System.Drawing.Point(132, 72);
-            this.uc_warehousemovement.Name = "uc_warehousemovement";
-            this.uc_warehousemovement.Size = new System.Drawing.Size(819, 514);
-            this.uc_warehousemovement.TabIndex = 31;
-            // 
             // parameters1
             // 
             this.parameters1.Location = new System.Drawing.Point(132, 72);
@@ -430,6 +421,7 @@ namespace WindowsFormsApp1.Views
             // 
             // user
             // 
+            this.user.BackColor = System.Drawing.SystemColors.Window;
             this.user.Location = new System.Drawing.Point(132, 72);
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(1017, 439);
@@ -500,14 +492,22 @@ namespace WindowsFormsApp1.Views
             this.uc_worker.UseSelectable = true;
             this.uc_worker.Visible = false;
             // 
+            // uC_ProductWarehouse1
+            // 
+            this.uC_ProductWarehouse1.Location = new System.Drawing.Point(132, 72);
+            this.uC_ProductWarehouse1.Name = "uC_ProductWarehouse1";
+            this.uC_ProductWarehouse1.Size = new System.Drawing.Size(1004, 656);
+            this.uC_ProductWarehouse1.TabIndex = 43;
+            this.uC_ProductWarehouse1.UseSelectable = true;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(951, 586);
+            this.Controls.Add(this.uC_ProductWarehouse1);
             this.Controls.Add(this.uC_SalesMain1);
-            this.Controls.Add(this.uc_warehousemovement);
             this.Controls.Add(this.parameters1);
             this.Controls.Add(this.warehouse1);
             this.Controls.Add(this.supplier1);
@@ -586,5 +586,6 @@ namespace WindowsFormsApp1.Views
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private UC_Worker uc_worker;
+        private UC_ProductWarehouse uC_ProductWarehouse1;
     }
 }

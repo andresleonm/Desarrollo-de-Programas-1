@@ -87,5 +87,18 @@ namespace WindowsFormsApp1.Views
         {
 
         }
+
+        private void select_products_Click(object sender, EventArgs e)
+        {
+            uC_ProductWarehouse1.Visible = true;
+            uC_MaterialWarehouse1.Visible = false;
+        }
+
+        private void select_materials_Click(object sender, EventArgs e)
+        {
+            uC_MaterialWarehouse1.Visible = true;
+            uC_ProductWarehouse1.Visible = false;
+            
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.Controller
         {
             //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
-            GenericResult result = execute_function("get_productWarehouses", parameters);
+            GenericResult result = execute_function("get_productwarehouses", parameters);
             List<Models.ProductWarehouse> productWarehouses = new List<Models.ProductWarehouse>();
             if (result.success)
             {
@@ -38,7 +38,7 @@ namespace WindowsFormsApp1.Controller
             //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("id", id.ToString()));                                                     
-            GenericResult result = execute_function("get_productWarehouse", parameters);
+            GenericResult result = execute_function("get_productwarehouse", parameters);
             if (result.success)
             {
                 var r = result.data[0];
@@ -64,6 +64,25 @@ namespace WindowsFormsApp1.Controller
                         Int32.Parse(r.getColumn(5)), r.getColumn(6), int.Parse(r.getColumn(7))));
                 }
                 return new Result(productWarehouses, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result insertProductWarehouse(Models.ProductWarehouse warehouse)
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("name",warehouse.Name.ToString()));
+            parameters.Add(new Parameter("product_id", warehouse.Product_id.ToString()));
+            parameters.Add(new Parameter("physical_stock", warehouse.Current_physical_stock.ToString()));
+            parameters.Add(new Parameter("max_capacity", warehouse.Max_capacity.ToString()));
+            parameters.Add(new Parameter("type_warehouse", warehouse.Type_id.ToString()));
+            parameters.Add(new Parameter("logical_stock", warehouse.Current_logical_stock.ToString()));
+            parameters.Add(new Parameter("state", warehouse.State.ToString()));
+            GenericResult result = execute_transaction("insert_productwarehouse", parameters);
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
             }
             return new Result(null, result.success, result.message);
         }
