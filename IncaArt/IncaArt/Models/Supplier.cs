@@ -6,39 +6,146 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    public class Supplier
+    class Supplier
     {
-        string supplier_name;
-        string supplier_addres;
 
-        public Supplier(string supplier_name)
+        int id;
+        String name;
+        String address;
+        String doi;
+        String phone;
+        String email;
+        String type;
+        int priority;
+        String state;
+
+        public Supplier(int id, string name, string address, string doi, string phone, string email, string type, int priority, string state)
         {
-            this.supplier_name = supplier_name;
+            this.id = id;
+            this.name = name;
+            this.address = address;
+            this.doi = doi;
+            this.phone = phone;
+            this.email = email;
+            this.type = type;
+            this.priority = priority;
+            this.state = state;
         }
 
-        public string Supplier_name
+        public int Id
         {
             get
             {
-                return supplier_name;
+                return id;
             }
 
             set
             {
-                supplier_name = value;
+                id = value;
             }
         }
 
-        public string Supplier_addres
+        public string Name
         {
             get
             {
-                return supplier_addres;
+                return name;
             }
 
             set
             {
-                supplier_addres = value;
+                name = value;
+            }
+        }
+
+        public string Address
+        {
+            get
+            {
+                return address;
+            }
+
+            set
+            {
+                address = value;
+            }
+        }
+
+        public string Doi
+        {
+            get
+            {
+                return doi;
+            }
+
+            set
+            {
+                doi = value;
+            }
+        }
+
+        public string Phone
+        {
+            get
+            {
+                return phone;
+            }
+
+            set
+            {
+                phone = value;
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return email;
+            }
+
+            set
+            {
+                email = value;
+            }
+        }
+
+        public string Type
+        {
+            get
+            {
+                return type;
+            }
+
+            set
+            {
+                type = value;
+            }
+        }
+
+        public int Priority
+        {
+            get
+            {
+                return priority;
+            }
+
+            set
+            {
+                priority = value;
+            }
+        }
+
+        public string State
+        {
+            get
+            {
+                return state;
+            }
+
+            set
+            {
+                state = value;
             }
         }
     }
