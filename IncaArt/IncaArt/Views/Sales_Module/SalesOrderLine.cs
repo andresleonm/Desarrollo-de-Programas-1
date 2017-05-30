@@ -13,19 +13,18 @@ using WindowsFormsApp1.Controller;
 namespace WindowsFormsApp1.Views.Sales_Module
 {
     public partial class SalesOrderLine : Form
-    {
-        Models.SalesOrderLine line;
-        private List<Product> products;
+    {        
+        List<Models.SalesOrderLine> lines;
         private string user = "dp1admin";
         private string password = "dp1admin";
         ProductMovementDetailController dc;
         ProductsController pc;
         bool flg = true;
 
-        public SalesOrderLine(ref Models.SalesOrderLine sales)
+        public SalesOrderLine(ref List<Models.SalesOrderLine> lines, string user, string password)
         {
             InitializeComponent();            
-            line = sales;
+            this.lines = lines;
             dc = new ProductMovementDetailController(user, password);
             fillProducts();
         }
@@ -38,25 +37,17 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(cbo_Product.Text) )
+            List<ProductWarehouseS> warehouses = (List<ProductWarehouseS>)grid_products.DataSource;
+            int i = 0;
+            foreach (ProductWarehouseS warehouse in warehouses)
             {
-                MessageBox.Show(this, "Debe completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show(this, "¿Está seguro que desea realizar esta operación?", "Confirmación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK)
+                if (warehouse.selected)
                 {
-                    //line.Unit_measure = ;
-                    //line.Quantity = int.Parse(this.txt_Quantity.Text);
-                    //line.Unit_price = double.Parse(this.txt_UnitMeasure.Text);
-                    //line.Status = "Active";
-                    //line.Delivery_quantity = 0;
-                    //line.Product = products.ElementAt(cbo_Product.SelectedIndex);
-                    //line.Prod_warehouse = prod_warehouses.ElementAt(cbo_Warehouse.SelectedIndex);
-                    this.Close();
+                    lines.Add(new Models.SalesOrderLine(warehouse));
                 }
+                i++;
             }
+            this.Close();
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
