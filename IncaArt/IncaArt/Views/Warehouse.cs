@@ -15,6 +15,11 @@ namespace WindowsFormsApp1.Views
         List<UC_Product> products = new List<UC_Product>();
         List<UC_Material2> materials = new List<UC_Material2>();
         List<Warehouse> warehouses = new List<Warehouse>();
+
+        Controller.SupplierController supplierController;
+        Controller.Result result;
+        List<Models.Supplier> supplier_list;
+
         public Warehouse()
         {
             InitializeComponent();
@@ -85,6 +90,27 @@ namespace WindowsFormsApp1.Views
 
         private void metroTextBox5_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void metroTabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void combobox_obtener_Click(object sender, EventArgs e)
+        {
+            string user = "dp1admin";
+            string password = "dp1admin";
+            supplierController = new Controller.SupplierController(user, password);
+            supplier_list = new List<Models.Supplier>();
+            result = supplierController.getSuppliers();
+            if (result.data == null) MessageBox.Show(result.message, "Error al listar material", MessageBoxButtons.OK);
+            else supplier_list = (List < Models.Supplier>)result.data;
+
+            for (int i = 0; i < supplier_list.Count(); i++) {
+                MessageBox.Show(supplier_list[i].Name);
+            }
 
         }
     }

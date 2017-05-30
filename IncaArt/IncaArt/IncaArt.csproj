@@ -74,7 +74,7 @@
     <Compile Include="Controller\MaterialWarehouseController.cs" />
     <Compile Include="Controller\ProductsController.cs" />
     <Compile Include="Controller\ProductTypeWarehouseController.cs" />
-    <Compile Include="Controller\SupplierControler.cs" />
+    <Compile Include="Controller\SupplierController.cs" />
     <Compile Include="Models\ProductWarehouse.cs" />
     <Compile Include="Controller\ProductWarehouseController.cs" />
     <Compile Include="Controller\RecipesController.cs" />
@@ -212,6 +212,12 @@
     </Compile>
     <Compile Include="Views\UC_Product2.Designer.cs">
       <DependentUpon>UC_Product2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_ProductWarehouse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_ProductWarehouse.Designer.cs">
+      <DependentUpon>UC_ProductWarehouse.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_Profile.cs">
       <SubType>UserControl</SubType>
@@ -445,6 +451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderWorkLine.resx">
       <DependentUpon>UC_ProductionOrderWorkLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_ProductWarehouse.resx">
+      <DependentUpon>UC_ProductWarehouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Profile.resx">
       <DependentUpon>UC_Profile.cs</DependentUpon>

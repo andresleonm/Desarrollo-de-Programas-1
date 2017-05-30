@@ -7,9 +7,9 @@ using WindowsFormsApp1.DataService;
 
 namespace WindowsFormsApp1.Controller
 {
-    class SupplierControler: DataService.DatabaseService
+    class SupplierController: DataService.DatabaseService
     {
-        public SupplierControler(string user, string password) : base(user, password)
+        public SupplierController(string user, string password) : base(user, password)
         {
         }
 
