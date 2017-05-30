@@ -42,13 +42,15 @@
             this.buttonCancel = new MetroFramework.Controls.MetroButton();
             this.buttonSave = new MetroFramework.Controls.MetroButton();
             this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textbox_name = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -74,7 +76,7 @@
             this.metroTabControl1.Controls.Add(this.tabPage2);
             this.metroTabControl1.Location = new System.Drawing.Point(35, 76);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(583, 365);
             this.metroTabControl1.TabIndex = 29;
             this.metroTabControl1.UseSelectable = true;
@@ -107,6 +109,7 @@
             this.metroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.metroGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnId,
+            this.Column4,
             this.columnName});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -167,6 +170,7 @@
             this.buttonSave.TabIndex = 9;
             this.buttonSave.Text = "Guardar";
             this.buttonSave.UseSelectable = true;
+            this.buttonSave.Click += new System.EventHandler(this.button_New_Click);
             // 
             // metroGrid2
             // 
@@ -186,6 +190,7 @@
             this.metroGrid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.metroGrid2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.ColumnIndex,
             this.Column2,
             this.Column3});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -214,22 +219,8 @@
             this.metroGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid2.Size = new System.Drawing.Size(409, 150);
             this.metroGrid2.TabIndex = 8;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Permiso";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Agregar";
-            this.Column3.Name = "Column3";
+            this.metroGrid2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellValueChanged);
+            this.metroGrid2.CurrentCellDirtyStateChanged += new System.EventHandler(this.metroGrid2_CurrentCellDirtyStateChanged);
             // 
             // textbox_name
             // 
@@ -279,11 +270,39 @@
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "Nombre:";
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Id";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // ColumnIndex
+            // 
+            this.ColumnIndex.HeaderText = "Index";
+            this.ColumnIndex.Name = "ColumnIndex";
+            this.ColumnIndex.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Permiso";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Agregar";
+            this.Column3.Name = "Column3";
+            // 
             // columnId
             // 
             this.columnId.HeaderText = "Id";
             this.columnId.Name = "columnId";
             this.columnId.Visible = false;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Index";
+            this.Column4.Name = "Column4";
+            this.Column4.Visible = false;
             // 
             // columnName
             // 
@@ -322,12 +341,14 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroTextBox textbox_name;
         private MetroFramework.Controls.MetroGrid metroGrid2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private MetroFramework.Controls.MetroButton buttonSave;
         private MetroFramework.Controls.MetroButton buttonCancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }
