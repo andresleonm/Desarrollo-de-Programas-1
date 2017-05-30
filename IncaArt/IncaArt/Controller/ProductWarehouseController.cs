@@ -37,7 +37,7 @@ namespace WindowsFormsApp1.Controller
         {
             //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
-            parameters.Add(new Parameter("id", id.ToString()));
+            parameters.Add(new Parameter("id", id.ToString()));                                                     
             GenericResult result = execute_function("get_productWarehouse", parameters);
             if (result.success)
             {

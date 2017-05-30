@@ -9,11 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
+using WindowsFormsApp1.Views.Warehouse_Module;
 
 namespace WindowsFormsApp1.Views
 {
     public partial class Dashboard : Form
     {
+        public string userName;
+        public string password;
         public List<PurchaseOrder> purchase_order_list = new List<PurchaseOrder>();        
         public List<Models.Material> material_list = new List<Material>();
         public List<Models.Supplier> supplier_list;
@@ -175,7 +178,7 @@ namespace WindowsFormsApp1.Views
         private void btn_worker_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            worker.Visible = true;
+            uc_worker.Visible = true;
         }
 
         private void btn_material_Click(object sender, EventArgs e)
@@ -216,13 +219,16 @@ namespace WindowsFormsApp1.Views
                 uc.Visible = false;
             }
         }
-
        
-
         private void btn_warehouse_Click_2(object sender, EventArgs e)
         {
             hide_UserControls();
             uc_warehousemovement.Visible = true;
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }

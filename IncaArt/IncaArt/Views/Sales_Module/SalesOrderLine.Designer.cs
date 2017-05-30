@@ -36,12 +36,10 @@
             this.cbo_UnitMeasure = new MetroFramework.Controls.MetroComboBox();
             this.cbo_Warehouse = new MetroFramework.Controls.MetroComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txt_DeliverQuan = new MetroFramework.Controls.MetroTextBox();
             this.cbo_Product = new MetroFramework.Controls.MetroComboBox();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.btn_Save = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -60,12 +58,10 @@
             this.groupBox1.Controls.Add(this.cbo_UnitMeasure);
             this.groupBox1.Controls.Add(this.cbo_Warehouse);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txt_DeliverQuan);
             this.groupBox1.Controls.Add(this.cbo_Product);
             this.groupBox1.Controls.Add(this.btn_Cancel);
             this.groupBox1.Controls.Add(this.btn_Save);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 6);
@@ -80,7 +76,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label7.Location = new System.Drawing.Point(6, 154);
+            this.label7.Location = new System.Drawing.Point(333, 101);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 13);
             this.label7.TabIndex = 58;
@@ -116,7 +112,7 @@
             this.txt_UnitPrice.CustomButton.Visible = false;
             this.txt_UnitPrice.Enabled = false;
             this.txt_UnitPrice.Lines = new string[0];
-            this.txt_UnitPrice.Location = new System.Drawing.Point(476, 35);
+            this.txt_UnitPrice.Location = new System.Drawing.Point(451, 40);
             this.txt_UnitPrice.MaxLength = 32767;
             this.txt_UnitPrice.Name = "txt_UnitPrice";
             this.txt_UnitPrice.PasswordChar = '\0';
@@ -148,7 +144,7 @@
             this.txt_Quantity.CustomButton.UseSelectable = true;
             this.txt_Quantity.CustomButton.Visible = false;
             this.txt_Quantity.Lines = new string[0];
-            this.txt_Quantity.Location = new System.Drawing.Point(136, 146);
+            this.txt_Quantity.Location = new System.Drawing.Point(451, 93);
             this.txt_Quantity.MaxLength = 32767;
             this.txt_Quantity.Name = "txt_Quantity";
             this.txt_Quantity.PasswordChar = '\0';
@@ -177,7 +173,7 @@
             // 
             this.cbo_Warehouse.FormattingEnabled = true;
             this.cbo_Warehouse.ItemHeight = 23;
-            this.cbo_Warehouse.Location = new System.Drawing.Point(476, 87);
+            this.cbo_Warehouse.Location = new System.Drawing.Point(136, 138);
             this.cbo_Warehouse.Name = "cbo_Warehouse";
             this.cbo_Warehouse.Size = new System.Drawing.Size(160, 29);
             this.cbo_Warehouse.TabIndex = 52;
@@ -193,36 +189,6 @@
             this.label3.Size = new System.Drawing.Size(99, 13);
             this.label3.TabIndex = 51;
             this.label3.Text = "Precio Unitario :";
-            // 
-            // txt_DeliverQuan
-            // 
-            // 
-            // 
-            // 
-            this.txt_DeliverQuan.CustomButton.Image = null;
-            this.txt_DeliverQuan.CustomButton.Location = new System.Drawing.Point(132, 1);
-            this.txt_DeliverQuan.CustomButton.Name = "";
-            this.txt_DeliverQuan.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.txt_DeliverQuan.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txt_DeliverQuan.CustomButton.TabIndex = 1;
-            this.txt_DeliverQuan.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txt_DeliverQuan.CustomButton.UseSelectable = true;
-            this.txt_DeliverQuan.CustomButton.Visible = false;
-            this.txt_DeliverQuan.Lines = new string[0];
-            this.txt_DeliverQuan.Location = new System.Drawing.Point(476, 146);
-            this.txt_DeliverQuan.MaxLength = 32767;
-            this.txt_DeliverQuan.Name = "txt_DeliverQuan";
-            this.txt_DeliverQuan.PasswordChar = '\0';
-            this.txt_DeliverQuan.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txt_DeliverQuan.SelectedText = "";
-            this.txt_DeliverQuan.SelectionLength = 0;
-            this.txt_DeliverQuan.SelectionStart = 0;
-            this.txt_DeliverQuan.ShortcutsEnabled = true;
-            this.txt_DeliverQuan.Size = new System.Drawing.Size(160, 29);
-            this.txt_DeliverQuan.TabIndex = 50;
-            this.txt_DeliverQuan.UseSelectable = true;
-            this.txt_DeliverQuan.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txt_DeliverQuan.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // cbo_Product
             // 
@@ -267,22 +233,11 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label4.Location = new System.Drawing.Point(333, 98);
+            this.label4.Location = new System.Drawing.Point(6, 147);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Almacén :";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label2.Location = new System.Drawing.Point(333, 154);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Cantidad entregada :";
             // 
             // label1
             // 
@@ -318,10 +273,8 @@
         private System.Windows.Forms.Button btn_Cancel;
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private MetroFramework.Controls.MetroComboBox cbo_Product;
-        private MetroFramework.Controls.MetroTextBox txt_DeliverQuan;
         private MetroFramework.Controls.MetroComboBox cbo_Warehouse;
         private System.Windows.Forms.Label label3;
         private MetroFramework.Controls.MetroComboBox cbo_UnitMeasure;

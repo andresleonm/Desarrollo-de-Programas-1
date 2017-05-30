@@ -16,5 +16,10 @@ namespace WindowsFormsApp1.Views
         {
             InitializeComponent();
         }
+
+        private void UC_SalesOrderList_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -66,7 +66,7 @@
             this.btn_cancel = new MetroFramework.Controls.MetroButton();
             this.btn_edit = new MetroFramework.Controls.MetroButton();
             this.btn_new = new MetroFramework.Controls.MetroButton();
-            this.material_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recipe_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.material_row = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.material_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -504,7 +504,7 @@
             this.metroGrid2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.metroGrid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.metroGrid2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.material_id,
+            this.recipe_id,
             this.material_row,
             this.operation,
             this.material_name,
@@ -534,7 +534,7 @@
             this.metroGrid2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.metroGrid2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid2.Size = new System.Drawing.Size(337, 150);
+            this.metroGrid2.Size = new System.Drawing.Size(351, 150);
             this.metroGrid2.TabIndex = 17;
             this.metroGrid2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellClick);
             this.metroGrid2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellDoubleClick);
@@ -569,11 +569,11 @@
             this.btn_new.UseSelectable = true;
             this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
             // 
-            // material_id
+            // recipe_id
             // 
-            this.material_id.HeaderText = "ID";
-            this.material_id.Name = "material_id";
-            this.material_id.Visible = false;
+            this.recipe_id.HeaderText = "ID";
+            this.recipe_id.Name = "recipe_id";
+            this.recipe_id.Visible = false;
             // 
             // material_row
             // 
@@ -585,6 +585,8 @@
             // 
             this.operation.HeaderText = "Operation";
             this.operation.Name = "operation";
+            this.operation.Visible = false;
+            this.operation.Width = 75;
             // 
             // material_name
             // 
@@ -660,7 +662,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn index;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn product;
-        private System.Windows.Forms.DataGridViewTextBoxColumn material_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn recipe_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn material_row;
         private System.Windows.Forms.DataGridViewTextBoxColumn operation;
         private System.Windows.Forms.DataGridViewTextBoxColumn material_name;

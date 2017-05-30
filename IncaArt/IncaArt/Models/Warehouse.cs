@@ -92,5 +92,10 @@ namespace WindowsFormsApp1.Models
                 id_product = value;
             }
         }
+
+        public override string ToString()
+        {
+            return name;
+        }
     }
 }

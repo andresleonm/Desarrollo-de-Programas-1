@@ -1,16 +1,16 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    public class UnitOfMeasure
+    public class Functionality
     {
         int id;
-        string symbol;
         string name;
-        double factor;
+        string description;
 
         public int Id
         {
@@ -22,19 +22,6 @@ namespace WindowsFormsApp1.Models
             set
             {
                 id = value;
-            }
-        }
-
-        public string Symbol
-        {
-            get
-            {
-                return symbol;
-            }
-
-            set
-            {
-                symbol = value;
             }
         }
 
@@ -51,35 +38,24 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public double Factor
+        public string Description
         {
             get
             {
-                return factor;
+                return description;
             }
 
             set
             {
-                factor = value;
+                description = value;
             }
         }
 
-
-        public UnitOfMeasure()
+        public Functionality(int id, string name, string description)
         {
-
-        }
-
-        public UnitOfMeasure(int id,string name, string symbol)
-        {
-            this.Id = id;
-            this.symbol = symbol;
+            this.id = id;
             this.name = name;
-        }
-
-        public override string ToString()
-        {
-            return name;
+            this.description = description;
         }
     }
 }

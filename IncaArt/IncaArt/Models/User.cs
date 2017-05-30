@@ -3,56 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace WindowsFormsApp1.Models
 {
     public class User
     {
-        int id;
-        String name;
-        String paternal_last_name;
-        String maternal_last_name;
-        String phone;
-        String email;
-        char gender;
-        String address;
-        String profile;
-        String username;
-        String password;
-        int status;
+        private int id;
+        private string name;
+        private string middlename;
+        private string lastname;
+        private string phone;
+        private string email;
+        private char gender;
+        private string address;
+        private Profile profile;
+        private string nickname;
+        private string password;
+        private string state;
 
-        public User(int id, string profile_id, string name, string middle_name,
-                        string last_name, string phone, string email, char gender, string address)
-        {
-            this.id = id;
-            this.profile = profile_id;
-            this.name = name;
-            this.maternal_last_name = middle_name;
-            this.paternal_last_name = last_name;
-            this.phone = phone;
-            this.email = email;
-            this.gender = gender;
-            this.address = address;
-        }
-
-        public User(int id, string name, string middle_name,
-                        string last_name)
-        {
-            this.id = id;
-            this.name = name;
-            this.maternal_last_name = middle_name;
-            this.paternal_last_name = last_name;
-        }
-
-        public User()
-        {
-
-        }
-
-        public void print()
-        {
-            Console.WriteLine(name + " " + paternal_last_name);
-        }
+        static private string salt = "9aff81a04032f4387e353179e92e12743edbcc6e";
+        static private HashAlgorithm hasher = new SHA1CryptoServiceProvider();
 
         public int Id
         {
@@ -80,29 +51,29 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public string Paternal_last_name
+        public string Middlename
         {
             get
             {
-                return paternal_last_name;
+                return middlename;
             }
 
             set
             {
-                paternal_last_name = value;
+                middlename = value;
             }
         }
 
-        public string Maternal_last_name
+        public string Lastname
         {
             get
             {
-                return maternal_last_name;
+                return lastname;
             }
 
             set
             {
-                maternal_last_name = value;
+                lastname = value;
             }
         }
 
@@ -158,7 +129,7 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public string Profile
+        internal Profile Profile
         {
             get
             {
@@ -171,43 +142,76 @@ namespace WindowsFormsApp1.Models
             }
         }
 
+        public string Nickname
+        {
+            get
+            {
+                return nickname;
+            }
+
+            set
+            {
+                nickname = value;
+            }
+        }
+
         public string Password
         {
             get
             {
                 return password;
             }
-
-            set
-            {
-                password = value;
-            }
         }
 
-        public int Status
+        public string State
         {
             get
             {
-                return status;
+                return state;
             }
 
             set
             {
-                status = value;
+                state = value;
             }
         }
 
-        public string Username
+        public User(int id, Profile profile, string name, string middlename, string lastname, string phone, string email, char gender, string address, string nickname, string password, string state, bool encode = true)
         {
-            get
-            {
-                return username;
-            }
+            this.id = id;
+            this.profile = profile;
+            this.name = name;
+            this.lastname = middlename;
+            this.middlename = lastname;
+            this.phone = phone;
+            this.email = email;
+            this.gender = gender;
+            this.address = address;
+            this.nickname = nickname;
+            this.state = state;
 
-            set
+            if (encode)
             {
-                username = value;
+                this.password =  HashText(password, User.salt, User.hasher);
             }
+            else
+            {
+                this.password = password;
+            }
+            
+        }
+
+        public bool isPassword(string source)
+        {
+            return (HashText(source, User.salt, User.hasher) == password);
+        }
+
+        private string HashText(string text, string salt, HashAlgorithm hasher)
+        {
+            byte[] textWithSaltBytes = Encoding.UTF8.GetBytes(string.Concat(text, salt));
+            byte[] hashedBytes = hasher.ComputeHash(textWithSaltBytes);
+            hasher.Clear();
+            return Convert.ToBase64String(hashedBytes);
         }
     }
 }
