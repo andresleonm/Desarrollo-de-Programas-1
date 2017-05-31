@@ -32,16 +32,16 @@ namespace WindowsFormsApp1
             Cursor = Cursors.WaitCursor;
             Result userResult = usersController.getUserByNickname(textBoxNickname.Text);
 
-            //if (userResult.success)
-            if (true)
+            if (userResult.success)
+            //if (true)
             {
                 User user = (User)userResult.data;
 
-                //if (user.isPassword(this.textBoxPassword.Text))
-                if (true)
+                if (user.isPassword(this.textBoxPassword.Text))
+                //if (true)
                 {
                     Dashboard main_form = new Dashboard();
-                    //MessageBox.Show("Bienvenido " + user.Name);
+                    MessageBox.Show("Bienvenido " + user.Name);
                     main_form.Show();
                     this.Hide();
                 }

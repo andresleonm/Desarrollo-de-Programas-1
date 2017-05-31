@@ -210,7 +210,7 @@ namespace WindowsFormsApp1.Models
         {
             byte[] textWithSaltBytes = Encoding.UTF8.GetBytes(string.Concat(text, salt));
             byte[] hashedBytes = hasher.ComputeHash(textWithSaltBytes);
-            hasher.Clear();
+            //hasher.Clear();
             return Convert.ToBase64String(hashedBytes);
         }
     }
