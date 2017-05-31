@@ -71,6 +71,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\FunctionalityController.cs" />
+    <Compile Include="Controller\MaterialMovementController.cs" />
+    <Compile Include="Controller\MaterialMovementDetailController.cs" />
     <Compile Include="Controller\ProfileController.cs" />
     <Compile Include="Controller\CurrencyController.cs" />
     <Compile Include="Controller\CustomerController.cs" />
@@ -83,6 +85,8 @@
     <Compile Include="Controller\ProductMovementDetailController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
     <Compile Include="Controller\WorkstationsController.cs" />
+    <Compile Include="Models\MaterialMovement.cs" />
+    <Compile Include="Models\MaterialMovementLine.cs" />
     <Compile Include="Models\ProductMovementLine.cs" />
     <Compile Include="Models\ProductMovementType.cs" />
     <Compile Include="Models\MaterialMovementType.cs" />
@@ -320,6 +324,25 @@
       <DependentUpon>UC_Workstation.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Warehouse_Module\Document.cs" />
+    <Compile Include="Views\Warehouse_Module\MaterialMovementLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\MaterialMovementLine.Designer.cs">
+      <DependentUpon>MaterialMovementLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\MaterialWarehouseM.cs" />
+    <Compile Include="Views\Warehouse_Module\UC_WarehouseMovementM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\UC_WarehouseMovementM.Designer.cs">
+      <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\ViewWarehouseMovementM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\ViewWarehouseMovementM.Designer.cs">
+      <DependentUpon>ViewWarehouseMovementM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Warehouse_Module\ViewWarehouseMovementP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -344,12 +367,6 @@
     </Compile>
     <Compile Include="Views\Warehouse_Module\UC_WarehouseMovementP.Designer.cs">
       <DependentUpon>UC_WarehouseMovementP.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Warehouse_Module\UC_WarehouseMovementM.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Warehouse_Module\UC_WarehouseMovementM.Designer.cs">
-      <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_User.cs">
       <SubType>UserControl</SubType>
@@ -524,6 +541,15 @@
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesOrder.resx">
       <DependentUpon>UC_SalesOrder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_Module\MaterialMovementLine.resx">
+      <DependentUpon>MaterialMovementLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_Module\UC_WarehouseMovementM.resx">
+      <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_Module\ViewWarehouseMovementM.resx">
+      <DependentUpon>ViewWarehouseMovementM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_Module\ViewWarehouseMovementP.resx">
       <DependentUpon>ViewWarehouseMovementP.cs</DependentUpon>
     </EmbeddedResource>
@@ -538,9 +564,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_Module\UC_WarehouseMovementP.resx">
       <DependentUpon>UC_WarehouseMovementP.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Warehouse_Module\UC_WarehouseMovementM.resx">
-      <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_User.resx">
       <DependentUpon>UC_User.cs</DependentUpon>
