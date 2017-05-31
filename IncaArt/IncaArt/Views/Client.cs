@@ -298,5 +298,87 @@ namespace WindowsFormsApp1.Views
             delete.Enabled = false;
             Load_DataGridView();
         }
+
+        private void Client_Load_1(object sender, EventArgs e)
+        {
+            string user = "dp1admin";
+            string password = "dp1admin";
+            supplierController = new Controller.CustomerController(user, password);
+            supplier_list = new List<Models.Customer>();
+            Load_Data();
+            Load_DataGridView();
+            metroTabControl1.SelectedIndex = 0;
+        }
+
+        private void metroGrid1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            Models.Customer sup = new Models.Customer();
+            for (int i = 0; i < supplier_list.Count(); i++)
+            {
+                if (supplier_list[i].Id.ToString() == metroGrid1.Rows[e.RowIndex].Cells[0].Value.ToString())
+                {
+                    sup = (Models.Customer)supplier_list[i];
+                    break;
+                }
+            }
+
+            cur_row = e.RowIndex;
+            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
+            {
+                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                textbox_address.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                textbox_phone.Text = metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                textbox_email.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                textbox_priority.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                textbox_doi.Text = sup.Doi;
+                textbox_type.Text = sup.Type.ToString();
+                metroTabControl1.SelectedIndex = 1;
+            }
+        }
+
+        private void metroGrid1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
+            {
+                cur_row = e.RowIndex;
+                delete.Enabled = true;
+            }
+        }
+
+        private void edit_Click_1(object sender, EventArgs e)
+        {
+            Models.Customer sup = new Models.Customer();
+            int id = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
+            sup.Id = id;
+            sup.Name = textbox_name.Text;
+            sup.Phone = textbox_phone.Text;
+            sup.Email = textbox_email.Text;
+            sup.Doi = textbox_doi.Text;
+            sup.Address = textbox_address.Text;
+            sup.State = "ACTIVE";
+            sup.Priority = Int32.Parse(textbox_priority.Text);
+            sup.Type = textbox_type.Text;
+
+            result = supplierController.updateCustomer(sup);
+            if (result.data == null)
+            {
+                MessageBox.Show(result.message, "Error al registrar cliente", MessageBoxButtons.OK);
+            }
+            else
+            {
+                Load_Data();
+            }
+
+
+            Load_DataGridView();
+            Clean();
+            metroTabControl1.SelectedIndex = 0;
+        }
+
+        private void Cancel_Click_1(object sender, EventArgs e)
+        {
+            Clean();
+            metroTabControl1.SelectedIndex = 0;
+        }
     }
 }
