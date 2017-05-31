@@ -132,7 +132,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 var doc = (Document)this.documents_list.SelectedItem;
                 var clase = ((ProductMovementType)this.types_movements.SelectedItem).clase;
                 List<int> checkValues = new List<int> { 3,4 };
-                if (doc==null || clase==null|| (clase == claseAnt && idAnt == doc.id) || checkValues.Contains(clase)) return;
+                if (doc==null || (clase == claseAnt && idAnt == doc.id) || checkValues.Contains(clase)) return;
                 
                 if (clase == 0)
                 {
@@ -201,10 +201,40 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             this.grid_movement_lines.DataSource = current;
             AdjustColumnOrder();
         }
+        private bool allIsZero(List<Models.ProductMovementLine> lines)
+        {
+            foreach(Models.ProductMovementLine line in lines)
+            {
+                if (line.quantity != 0)
+                    return false;               
+            }
+            return true;
+        }
+
+        private bool allGreatherThanZero(List<Models.ProductMovementLine> lines)
+        {
+            foreach (Models.ProductMovementLine line in lines)
+            {
+                if (line.quantity < 0)
+                    return false;
+            }
+            return true;
+        }
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
             List <Models.ProductMovementLine> detail= (List<Models.ProductMovementLine>) this.grid_movement_lines.DataSource;
+            if (detail==null || detail.Count == 0 || allIsZero(detail))
+            {
+                MessageBox.Show("Seleccione por lo menos una linea con cantidad diferente de 0");
+                return;
+            }
+
+            if (!allGreatherThanZero(detail))
+            {
+                MessageBox.Show("Las cantidades deben ser mayores a 0");
+                return;
+            }
             Models.ProductMovement movement= new Models.ProductMovement();
             movement.detail = detail;
             var doc = (Document)this.documents_list.SelectedItem;
@@ -215,17 +245,14 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             movement.TipoDocumentoOrigen = getTipo(tipo.clase);
             if (doc!=null)
                 movement.NroDocumentoOrigen = doc.id;
+            
             Result r =pc.insertMovement(movement);
             if (r.success)
             {
                 MessageBox.Show("Se creo el movimiento Nro - " + r.data.ToString());
-                InitializeComponent();
-                pc = new ProductMovementController(user, password);
-                soc = new SalesOrderController(user, password);
-                AdjustColumnOrder();
-                fillTypeMovements();
-                clearGrid();
-                AdjustColumnOrder();
+            }else
+            {
+                MessageBox.Show(r.message);
             }
         }
 
@@ -265,6 +292,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         private void buttonSearchV_Click(object sender, EventArgs e)
         {
             var movements = (List<ProductMovement>)pc.getMovements().data;
+            if (movements ==null)
+                movements=new List<ProductMovement>();
             movements_grid.DataSource = movements;
         }
 

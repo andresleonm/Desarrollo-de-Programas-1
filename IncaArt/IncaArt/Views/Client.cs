@@ -380,5 +380,29 @@ namespace WindowsFormsApp1.Views
             Clean();
             metroTabControl1.SelectedIndex = 0;
         }
+
+        private void delete_Click_1(object sender, EventArgs e)
+        {
+            int i;
+            int index = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
+
+            for (i = 0; i < supplier_list.Count(); i++)
+            {
+                if (int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString()) == supplier_list[i].Id)
+                    break;
+            }
+
+            result = supplierController.deleteCustomer(supplier_list[i]);
+            if (result.data == null)
+            {
+                MessageBox.Show(result.message, "Error al eliminar cliente", MessageBoxButtons.OK);
+            }
+            else
+            {
+                supplier_list.Remove(supplier_list[i]);
+            }
+            delete.Enabled = false;
+            Load_DataGridView();
+        }
     }
 }

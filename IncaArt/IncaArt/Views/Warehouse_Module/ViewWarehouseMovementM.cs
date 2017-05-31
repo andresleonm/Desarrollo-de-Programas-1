@@ -17,9 +17,6 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         string password;
         MaterialMovementController pc;
         PurchaseOrderController soc;
-        bool flgBegin = true;
-        int claseAnt = -1;
-        string idAnt;
         Models.MaterialMovement pm;
 
         

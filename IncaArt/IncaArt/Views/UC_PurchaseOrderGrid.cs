@@ -73,5 +73,28 @@ namespace WindowsFormsApp1.Views
                 uc.fillForm(purchase_order);                     
             }
         }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+
+            Controller.PurchaseOrderController po_controller = new Controller.PurchaseOrderController("dp1admin", "dp1admin");
+            Controller.PurchaseOrderLineController pol_controller = new Controller.PurchaseOrderLineController("dp1admin", "dp1admin");
+
+            Controller.Result result = po_controller.getPurchaseOrder(Int32.Parse(this.metroGrid1.SelectedRows[0].Cells[0].Value.ToString()));
+            Models.PurchaseOrder purchase_order = (Models.PurchaseOrder)result.data;
+
+            result = pol_controller.getPurchaseOrderLines(Int32.Parse(this.metroGrid1.SelectedRows[0].Cells[0].Value.ToString()));
+            List<Models.PurchaseOrderLine> lines = (List<Models.PurchaseOrderLine>)result.data;
+
+            UC_PurchaseOrder uc = ((UC_PurchaseOrder)(this.Parent.Controls.Find("uC_PurchaseOrder1", false)[0]));
+
+            foreach (Models.PurchaseOrderLine line in lines)
+            {
+                purchase_order.Lines.Add(line);
+            }
+            purchase_order.State = "Anulado";
+            po_controller.updatePurchaseOrder(purchase_order);
+
+        }
     }
 }

@@ -11,10 +11,10 @@ namespace WindowsFormsApp1.Controller
 {
     class MaterialMovementController : DatabaseService
     {
-        MaterialMovementDetailController pd;
+        MaterialMovementDetailController mdc;
         public MaterialMovementController(string user,string password) : base(user, password)
         {
-            pd = new MaterialMovementDetailController(user, password);
+            mdc = new MaterialMovementDetailController(user, password);
         }
 
         public Result getMovementTypes()
@@ -89,10 +89,25 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result deleteMovement(int id, string tipo)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("tipo", tipo));
+            parameters.Add(new Parameter("id", id.ToString()));
+
+            GenericResult result = execute_transaction("delete_movement", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
         public Result insertMovement(Models.MaterialMovement movement)
         {
             List<Parameter> parameters = new List<Parameter>();
-            parameters.Add(new Parameter("tipo",movement.Tipo.id.ToString()));
+            parameters.Add(new Parameter("tipo", movement.Tipo.id.ToString()));
             parameters.Add(new Parameter("observacion", movement.Observacion));
             parameters.Add(new Parameter("fecha", movement.Fecha));
             parameters.Add(new Parameter("tipodo", movement.TipoDocumentoOrigen));
@@ -101,28 +116,46 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("nrodf", movement.NroDocumentoFin));
 
             GenericResult result = execute_transaction("insert_movementm", parameters);
-
+            int id;
             if (result.success)
             {
                 try
                 {
-                    int id = Int32.Parse(result.singleValue);
+                    id = Int32.Parse(result.singleValue);
+                }
+                catch (Exception e)
+                {
+
+                    return new Result(null, false, e.Message);
+                }
+
+                try
+                {
                     int n = 1;
                     foreach (Models.MaterialMovementLine line in movement.detail)
                     {
-                        line.id = n;
-                        line.movementId = id;
-                        Result resultD=pd.insertLine(line);
-                        if (!resultD.success)
-                            return new Result(null, resultD.success, resultD.message);
-                        n++;
+                        if (line.quantity != 0)
+                        {
+                            line.id = n;
+                            line.movementId = id;
+
+                            Result resultD = mdc.insertLine(line);
+                            if (!resultD.success)
+                            {
+                                deleteMovement(id, "M");
+                                return new Result(null, resultD.success, resultD.message);
+                            }
+                            n++;
+                        }                        
                     }
                     return new Result(id, true, "");
-                }catch(Exception e)
+                }
+                catch (Exception e)
                 {
+                    deleteMovement(id, "M");
                     return new Result(null, false, e.Message);
                 }
-                
+
             }
             return new Result(null, result.success, result.message);
         }
@@ -161,7 +194,7 @@ namespace WindowsFormsApp1.Controller
                 foreach (Row r in result.data)
                 {
                     var movementType = getMovementType(Int32.Parse(r.getColumn(1)), mov_types);
-                    var detail = (List<Models.MaterialMovementLine>)pd.getLines(id).data;
+                    var detail = (List<Models.MaterialMovementLine>)mdc.getLines(id).data;
                     movement=new MaterialMovement(Int32.Parse(r.getColumn(0)), movementType, r.getColumn(2), r.getColumn(3),
                          r.getColumn(4), r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8), detail);
                 }

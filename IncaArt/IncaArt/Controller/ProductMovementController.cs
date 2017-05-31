@@ -88,6 +88,21 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result deleteMovement(int id,string tipo)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("tipo",tipo));
+            parameters.Add(new Parameter("id", id.ToString()));
+
+            GenericResult result = execute_transaction("delete_movement", parameters);
+           
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
         public Result insertMovement(Models.ProductMovement movement)
         {
             List<Parameter> parameters = new List<Parameter>();
@@ -100,25 +115,42 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("nrodf", movement.NroDocumentoFin));
 
             GenericResult result = execute_transaction("insert_movement", parameters);
-
+            int id;
             if (result.success)
             {
                 try
                 {
-                    int id = Int32.Parse(result.singleValue);
+                    id= Int32.Parse(result.singleValue);
+                }
+                catch (Exception e)
+                {
+                    
+                    return new Result(null, false, e.Message);
+                }
+                
+                try
+                {                    
                     int n = 1;
                     foreach (Models.ProductMovementLine line in movement.detail)
                     {
-                        line.id = n;
-                        line.movementId = id;
-                        Result resultD=pd.insertLine(line);
-                        if (!resultD.success)
-                            return new Result(null, resultD.success, resultD.message);
-                        n++;
+                        if (line.quantity != 0)
+                        {
+                            line.id = n;
+                            line.movementId = id;
+                            Result resultD = pd.insertLine(line);
+                            if (!resultD.success)
+                            {
+                                deleteMovement(id, "P");
+                                return new Result(null, resultD.success, resultD.message);
+                            }
+
+                            n++;
+                        }                         
                     }
                     return new Result(id, true, "");
                 }catch(Exception e)
                 {
+                    deleteMovement(id, "P");
                     return new Result(null, false, e.Message);
                 }
                 

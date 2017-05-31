@@ -25,7 +25,7 @@ namespace WindowsFormsApp1.Controller
                 foreach(Row r in result.data)
                 {
                     lines.Add(new PurchaseOrderLine(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2)), int.Parse(r.getColumn(3)),
-                              double.Parse(r.getColumn(4)), DateTime.Parse(r.getColumn(5)),Int32.Parse(r.getColumn(7)), Int32.Parse(r.getColumn(8)),
+                              double.Parse(r.getColumn(4)), DateTime.Parse(r.getColumn(5)),r.getColumn(6),Int32.Parse(r.getColumn(7)), Int32.Parse(r.getColumn(8)),
                               Int32.Parse(r.getColumn(9))));
                 }
 
@@ -57,6 +57,7 @@ namespace WindowsFormsApp1.Controller
         public Result updatePurchaseOrderLine(PurchaseOrderLine line)
         {
             List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("purchase_order_line_id", line.Id.ToString()));
             parameters.Add(new Parameter("purchase_order_id", line.Purchase_order.ToString()));
             parameters.Add(new Parameter("unit_of_measure_id", line.Unit_of_measure.ToString()));
             parameters.Add(new Parameter("quantity", line.Quantity.ToString()));

@@ -46,16 +46,6 @@
             this.buttonViewV = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.movements_grid = new MetroFramework.Controls.MetroGrid();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Observacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoDocumentoOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NroDocumentoOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoDocumentoFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NroDocumentoFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registro = new MetroFramework.Controls.MetroTabPage();
             this.gb_OrderLine = new System.Windows.Forms.GroupBox();
             this.grid_movement_lines = new MetroFramework.Controls.MetroGrid();
@@ -85,6 +75,17 @@
             this.textbox_observation = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.movementName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Observacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoDocumentoOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NroDocumentoOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoDocumentoFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NroDocumentoFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -199,7 +200,7 @@
             this.buttonViewV.BackColor = System.Drawing.Color.DarkCyan;
             this.buttonViewV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonViewV.ForeColor = System.Drawing.Color.White;
-            this.buttonViewV.Location = new System.Drawing.Point(402, 327);
+            this.buttonViewV.Location = new System.Drawing.Point(402, 352);
             this.buttonViewV.Name = "buttonViewV";
             this.buttonViewV.Size = new System.Drawing.Size(85, 29);
             this.buttonViewV.TabIndex = 67;
@@ -215,7 +216,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(18, 110);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(839, 211);
+            this.groupBox1.Size = new System.Drawing.Size(839, 236);
             this.groupBox1.TabIndex = 66;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Movimientos";
@@ -238,6 +239,7 @@
             this.movements_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.movements_grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
+            this.movementName,
             this.Tipo,
             this.Observacion,
             this.Fecha,
@@ -272,70 +274,8 @@
             this.movements_grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.movements_grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.movements_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.movements_grid.Size = new System.Drawing.Size(833, 192);
+            this.movements_grid.Size = new System.Drawing.Size(833, 217);
             this.movements_grid.TabIndex = 50;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "Tipo";
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            // 
-            // Observacion
-            // 
-            this.Observacion.DataPropertyName = "Observacion";
-            this.Observacion.HeaderText = "Observacion";
-            this.Observacion.Name = "Observacion";
-            // 
-            // Fecha
-            // 
-            this.Fecha.DataPropertyName = "Fecha";
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            // 
-            // TipoDocumentoOrigen
-            // 
-            this.TipoDocumentoOrigen.DataPropertyName = "TipoDocumentoOrigen";
-            this.TipoDocumentoOrigen.HeaderText = "Documento Origen";
-            this.TipoDocumentoOrigen.Name = "TipoDocumentoOrigen";
-            // 
-            // NroDocumentoOrigen
-            // 
-            this.NroDocumentoOrigen.DataPropertyName = "NroDocumentoOrigen";
-            this.NroDocumentoOrigen.HeaderText = "Nro";
-            this.NroDocumentoOrigen.Name = "NroDocumentoOrigen";
-            // 
-            // TipoDocumentoFin
-            // 
-            this.TipoDocumentoFin.DataPropertyName = "TipoDocumentoFin";
-            this.TipoDocumentoFin.HeaderText = "Documento  Fin";
-            this.TipoDocumentoFin.Name = "TipoDocumentoFin";
-            // 
-            // NroDocumentoFin
-            // 
-            this.NroDocumentoFin.DataPropertyName = "NroDocumentoFin";
-            this.NroDocumentoFin.HeaderText = "Nro";
-            this.NroDocumentoFin.Name = "NroDocumentoFin";
-            // 
-            // estado
-            // 
-            this.estado.DataPropertyName = "State";
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            // 
-            // detail
-            // 
-            this.detail.DataPropertyName = "detail";
-            this.detail.HeaderText = "detail";
-            this.detail.Name = "detail";
-            this.detail.Visible = false;
             // 
             // registro
             // 
@@ -703,13 +643,81 @@
             this.metroLabel5.TabIndex = 2;
             this.metroLabel5.Text = "Tipo de Movimiento";
             // 
-            // UC_WarehouseMovementP
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // movementName
+            // 
+            this.movementName.DataPropertyName = "movementName";
+            this.movementName.HeaderText = "Movimiento";
+            this.movementName.Name = "movementName";
+            // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "Tipo";
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            // 
+            // Observacion
+            // 
+            this.Observacion.DataPropertyName = "Observacion";
+            this.Observacion.HeaderText = "Observacion";
+            this.Observacion.Name = "Observacion";
+            // 
+            // Fecha
+            // 
+            this.Fecha.DataPropertyName = "Fecha";
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            // 
+            // TipoDocumentoOrigen
+            // 
+            this.TipoDocumentoOrigen.DataPropertyName = "TipoDocumentoOrigen";
+            this.TipoDocumentoOrigen.HeaderText = "Documento Origen";
+            this.TipoDocumentoOrigen.Name = "TipoDocumentoOrigen";
+            // 
+            // NroDocumentoOrigen
+            // 
+            this.NroDocumentoOrigen.DataPropertyName = "NroDocumentoOrigen";
+            this.NroDocumentoOrigen.HeaderText = "Nro";
+            this.NroDocumentoOrigen.Name = "NroDocumentoOrigen";
+            // 
+            // TipoDocumentoFin
+            // 
+            this.TipoDocumentoFin.DataPropertyName = "TipoDocumentoFin";
+            this.TipoDocumentoFin.HeaderText = "Documento  Fin";
+            this.TipoDocumentoFin.Name = "TipoDocumentoFin";
+            // 
+            // NroDocumentoFin
+            // 
+            this.NroDocumentoFin.DataPropertyName = "NroDocumentoFin";
+            this.NroDocumentoFin.HeaderText = "Nro";
+            this.NroDocumentoFin.Name = "NroDocumentoFin";
+            // 
+            // estado
+            // 
+            this.estado.DataPropertyName = "State";
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
+            // 
+            // detail
+            // 
+            this.detail.DataPropertyName = "detail";
+            this.detail.HeaderText = "detail";
+            this.detail.Name = "detail";
+            this.detail.Visible = false;
+            // 
+            // UC_WarehouseMovementM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.metroTabControl1);
             this.DoubleBuffered = true;
-            this.Name = "UC_WarehouseMovementP";
+            this.Name = "UC_WarehouseMovementM";
             this.Size = new System.Drawing.Size(1126, 521);
             this.metroTabControl1.ResumeLayout(false);
             this.consulta.ResumeLayout(false);
@@ -759,7 +767,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idDocumentLine;
         private System.Windows.Forms.GroupBox groupBox1;
         private MetroFramework.Controls.MetroGrid movements_grid;
+        private System.Windows.Forms.Button buttonSearchV;
+        private System.Windows.Forms.Button buttonCleanV;
+        private System.Windows.Forms.Button buttonViewV;
+        private MetroFramework.Controls.MetroDateTime metroDateTime2;
+        private MetroFramework.Controls.MetroDateTime metroDateTime1;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn movementName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Observacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
@@ -769,12 +785,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NroDocumentoFin;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn detail;
-        private System.Windows.Forms.Button buttonSearchV;
-        private System.Windows.Forms.Button buttonCleanV;
-        private System.Windows.Forms.Button buttonViewV;
-        private MetroFramework.Controls.MetroDateTime metroDateTime2;
-        private MetroFramework.Controls.MetroDateTime metroDateTime1;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
     }
 }

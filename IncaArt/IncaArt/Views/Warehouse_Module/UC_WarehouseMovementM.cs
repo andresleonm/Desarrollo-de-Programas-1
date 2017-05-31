@@ -18,16 +18,16 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         MaterialMovementController pc;
         PurchaseOrderController poc;
         PurchaseOrderLineController pocl;
-        bool flgBegin=true;
-        int claseAnt=-1;
+        bool flgBegin = true;
+        int claseAnt = -1;
         string idAnt;
         public UC_WarehouseMovementM(string user, string password)
-        { 
+        {
             InitializeComponent();
             this.user = user;
             this.password = password;
             pc = new MaterialMovementController(user, password);
-            poc= new PurchaseOrderController(user, password);
+            poc = new PurchaseOrderController(user, password);
             pocl = new PurchaseOrderLineController(user, password);
             AdjustColumnOrder();
             fillTypeMovements();
@@ -36,7 +36,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         }
         public void fillTypeMovements()
         {
-            MaterialMovementController pc = new MaterialMovementController(user,password);
+            MaterialMovementController pc = new MaterialMovementController(user, password);
             List<MaterialMovementType> movs = (List<MaterialMovementType>)pc.getMovementTypes().data;
             this.types_movements.DataSource = movs;
             this.types_movements.DisplayMember = "name";
@@ -63,7 +63,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
         private void populate_document_combo_box(int clase)
         {
-            List<Document> documents=(List<Document>)pc.getDocuments(clase).data;
+            List<Document> documents = (List<Document>)pc.getDocuments(clase).data;
             this.documents_list.DataSource = documents;
             this.documents_list.DisplayMember = "name";
             this.documents_list.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -96,7 +96,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 grid_movement_lines.Columns["documentQuantity"].Visible = true;
                 populate_document_combo_box(mov.clase);
                 flgBegin = true;
-            }else            
+            } else
             {
                 this.buttonAddRow.Visible = true;
                 grid_movement_lines.Columns["documentQuantity"].Visible = false;
@@ -109,15 +109,15 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
         }
 
-        private void  populateDetail(PurchaseOrder order)
+        private void populateDetail(PurchaseOrder order)
         {
             clearGrid();
             var lines = order.Lines;
             var movs_lines = new List<Models.MaterialMovementLine>();
             int i = 1;
-            foreach(PurchaseOrderLine line in lines)
+            foreach (PurchaseOrderLine line in lines)
             {
-                movs_lines.Add(new Models.MaterialMovementLine(line, i,user,password));
+                movs_lines.Add(new Models.MaterialMovementLine(line, i, user, password));
                 i++;
             }
             this.grid_movement_lines.DataSource = movs_lines;
@@ -127,18 +127,18 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         private void documents_list_SelectedIndexChanged(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            
+
             if (flgBegin)
             {
-                
+
                 var doc = (Document)this.documents_list.SelectedItem;
                 var clase = ((MaterialMovementType)this.types_movements.SelectedItem).clase;
-                List<int> checkValues = new List<int> { 2,3 };
-                if (doc==null || clase==null|| (clase == claseAnt && idAnt == doc.id) || checkValues.Contains(clase)) return;
-                
+                List<int> checkValues = new List<int> { 2, 3 };
+                if (doc == null  || (clase == claseAnt && idAnt == doc.id) || checkValues.Contains(clase)) return;
+
                 if (clase == 0)
                 {
-                    
+
                 }
                 else
                 {
@@ -188,24 +188,53 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             return "";
         }
 
-               
+
 
         private void buttonAddRow_Click(object sender, EventArgs e)
         {
             List<Models.MaterialMovementLine> lines = new List<Models.MaterialMovementLine>();
-            MaterialMovementLine order_line = new MaterialMovementLine(ref lines,user,password);
+            MaterialMovementLine order_line = new MaterialMovementLine(ref lines, user, password);
             order_line.ShowDialog();
 
-            List <Models.MaterialMovementLine> current= (List<Models.MaterialMovementLine>) this.grid_movement_lines.DataSource;
-            current=current.Concat(lines).ToList();
+            List<Models.MaterialMovementLine> current = (List<Models.MaterialMovementLine>)this.grid_movement_lines.DataSource;
+            current = current.Concat(lines).ToList();
             this.grid_movement_lines.DataSource = current;
             AdjustColumnOrder();
         }
 
+        private bool allIsZero(List<Models.MaterialMovementLine> lines)
+        {
+            foreach (Models.MaterialMovementLine line in lines)
+            {
+                if (line.quantity != 0)
+                    return false;
+            }
+            return true;
+        }
+
+        private bool allGreatherThanZero(List<Models.MaterialMovementLine> lines)
+        {
+            foreach (Models.MaterialMovementLine line in lines)
+            {
+                if (line.quantity < 0)
+                    return false;
+            }
+            return true;
+        }
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            List <Models.MaterialMovementLine> detail= (List<Models.MaterialMovementLine>) this.grid_movement_lines.DataSource;
-            Models.MaterialMovement movement= new Models.MaterialMovement();
+            List<Models.MaterialMovementLine> detail = (List<Models.MaterialMovementLine>)this.grid_movement_lines.DataSource;
+            if (detail == null || detail.Count == 0 || allIsZero(detail))
+            {
+                MessageBox.Show("Seleccione por lo menos una linea con cantidad mayor a 0");
+                return;
+            }
+            if (!allGreatherThanZero(detail))
+            {
+                MessageBox.Show("Las cantidades deben ser mayores a 0");
+                return;
+            }
+            Models.MaterialMovement movement = new Models.MaterialMovement();
             movement.detail = detail;
             var doc = (Document)this.documents_list.SelectedItem;
             var tipo = ((MaterialMovementType)this.types_movements.SelectedItem);
@@ -213,19 +242,17 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             movement.Fecha = date.Value.ToString("MM/dd/yyyy");
             movement.Observacion = textbox_observation.Text.ToString();
             movement.TipoDocumentoOrigen = getTipo(tipo.clase);
-            if (doc!=null)
+            if (doc != null)
                 movement.NroDocumentoOrigen = doc.id;
-            Result r =pc.insertMovement(movement);
+
+            Result r = pc.insertMovement(movement);
             if (r.success)
             {
                 MessageBox.Show("Se creo el movimiento Nro - " + r.data.ToString());
-                InitializeComponent();
-                pc = new MaterialMovementController(user, password);
-                poc = new PurchaseOrderController(user, password);
-                AdjustColumnOrder();
-                fillTypeMovements();
-                clearGrid();
-                AdjustColumnOrder();
+            }
+            else
+            {
+                MessageBox.Show(r.message);
             }
         }
 

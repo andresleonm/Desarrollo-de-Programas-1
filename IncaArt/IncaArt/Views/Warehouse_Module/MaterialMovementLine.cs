@@ -17,18 +17,18 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         List<Models.MaterialMovementLine> lines;
         string user;
         string password;
-        MaterialsController pc;
-        MaterialMovementDetailController dc;
+        MaterialsController mc;
+        MaterialMovementDetailController mdc;
         bool flg = true;
-        public void fillmaterials()
+        public void fillMaterials()
         {
-            pc = new MaterialsController(user, password);
-            dc = new MaterialMovementDetailController(user, password);
-            List<Models.Material> materials = (List<Models.Material>)pc.getMaterials().data;
-            Models.Material p = new Material();
-            p.Name = "Todos";
-            p.Id = 0;
-            materials.Add(p);
+            mc = new MaterialsController(user, password);
+            mdc = new MaterialMovementDetailController(user, password);
+            List<Models.Material> materials = (List<Models.Material>)mc.getMaterials().data;
+            Models.Material m = new Material();
+            m.Name = "Todos";
+            m.Id = 0;
+            materials.Add(m);
             this.materials.DataSource = materials;
             this.materials.DisplayMember = "name";
             this.materials.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -39,10 +39,10 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             this.lines = lines;
             this.user = user;
             this.password = password;
-            fillmaterials();
+            fillMaterials();
         }
 
-        private void materialMovementLine_Load(object sender, EventArgs e)
+        private void ProductMovementLine_Load(object sender, EventArgs e)
         {
 
         }
@@ -61,10 +61,14 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         private void button1_Click(object sender, EventArgs e)
         {
             var material = ((Material)this.materials.SelectedItem).Id;
-            List<MaterialWarehouseM> warehouses = (List<MaterialWarehouseM>)dc.getWarehouses(material).data;
+            List<MaterialWarehouseM> warehouses = (List<MaterialWarehouseM>)mdc.getWarehouses(material).data;
             if (!flg)
                 grid_materials.DataSource = new List<MaterialWarehouseM>();
             else flg = false;
+            if (warehouses == null)
+                warehouses = new List<MaterialWarehouseM>();
+
+
             grid_materials.DataSource = warehouses;
             AdjustColumnOrder();
         }

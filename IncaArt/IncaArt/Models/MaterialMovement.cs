@@ -8,6 +8,7 @@ namespace WindowsFormsApp1.Models
 {
     public class MaterialMovement
     {
+        public string movementName;
         public int id { get; set; }
         public MaterialMovementType Tipo { get; set; }
         public String Observacion { get; set; }
@@ -44,6 +45,19 @@ namespace WindowsFormsApp1.Models
 
         }
 
-        
+        public string MovementName
+        {
+            get
+            {
+                return "Movimiento Nro - "+ id.ToString();
+            }
+
+            set
+            {
+                movementName = value;
+            }
+        }
+
+
     }
 }
