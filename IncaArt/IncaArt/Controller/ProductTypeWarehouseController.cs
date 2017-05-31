@@ -18,7 +18,7 @@ namespace WindowsFormsApp1.Controller
         {
             //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
-            GenericResult result = execute_function("get_productTypeWarehouses", parameters);
+            GenericResult result = execute_function("get_producttype_warehouses", parameters);
             List<Models.ProductTypeWarehouse> productTypeWarehouse = new List<Models.ProductTypeWarehouse>();
             if (result.success)
             {
@@ -39,7 +39,7 @@ namespace WindowsFormsApp1.Controller
             //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("id", id.ToString()));
-            GenericResult result = execute_function("get_productTypeWarehouse", parameters);
+            GenericResult result = execute_function("get_productyype_warehouse", parameters);
             if (result.success)
             {
                 var r = result.data[0];

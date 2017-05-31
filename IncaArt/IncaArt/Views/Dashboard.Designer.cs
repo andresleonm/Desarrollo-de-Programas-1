@@ -70,6 +70,7 @@ namespace WindowsFormsApp1.Views
             this.uc_product = new WindowsFormsApp1.Views.UC_Product();
             this.uc_recipe = new WindowsFormsApp1.Views.UC_Recipe();
             this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
+            this.uC_ProductWarehouse1 = new WindowsFormsApp1.Views.UC_ProductWarehouse();
             this.uc_ProductionMenu = new WindowsFormsApp1.Views.Production_Module.UC_ProductionMenu();
             this.uc_workstation = new WindowsFormsApp1.Views.UC_Workstation();
             this.uc_warehousemovement = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement(userName,password);
@@ -529,6 +530,13 @@ namespace WindowsFormsApp1.Views
             this.uc_worker.UseSelectable = true;
             this.uc_worker.Visible = false;
             // 
+            // uC_ProductWarehouse1
+            // 
+            this.uC_ProductWarehouse1.Location = new System.Drawing.Point(132, 72);
+            this.uC_ProductWarehouse1.Name = "uC_ProductWarehouse1";
+            this.uC_ProductWarehouse1.Size = new System.Drawing.Size(1004, 656);
+            this.uC_ProductWarehouse1.TabIndex = 43;
+            this.uC_ProductWarehouse1.UseSelectable = true;
             // uc_ProductionMenu
             // 
             this.uc_ProductionMenu.BackColor = System.Drawing.SystemColors.Control;
@@ -553,6 +561,7 @@ namespace WindowsFormsApp1.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(951, 586);
+            this.Controls.Add(this.uC_ProductWarehouse1);
             this.Controls.Add(this.uc_warehousemovement);
             this.Controls.Add(this.uC_SalesMain1);
             this.Controls.Add(this.parameters1);
@@ -635,6 +644,7 @@ namespace WindowsFormsApp1.Views
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private UC_Worker uc_worker;
+        private UC_ProductWarehouse uC_ProductWarehouse1;
         private System.Windows.Forms.Button btn_production;
         private Production_Module.UC_ProductionMenu uc_ProductionMenu;
         private UC_Workstation uc_workstation;
