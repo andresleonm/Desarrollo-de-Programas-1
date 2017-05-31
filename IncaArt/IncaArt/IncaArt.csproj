@@ -44,6 +44,9 @@
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Npgsql, Version=3.2.2.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.3.2.2\lib\net451\Npgsql.dll</HintPath>
       <Private>True</Private>
@@ -67,6 +70,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\FunctionalityController.cs" />
+    <Compile Include="Controller\ProfileController.cs" />
     <Compile Include="Controller\CurrencyController.cs" />
     <Compile Include="Controller\CustomerController.cs" />
     <Compile Include="Controller\MaterialsController.cs" />
@@ -76,6 +81,13 @@
     <Compile Include="Controller\ProductionOrderProductLineController.cs" />
     <Compile Include="Controller\ProductsController.cs" />
     <Compile Include="Controller\ProductTypeWarehouseController.cs" />
+    <Compile Include="Controller\ProductMovementController.cs" />
+    <Compile Include="Controller\ProductMovementDetailController.cs" />
+    <Compile Include="Controller\SupplierController.cs" />
+    <Compile Include="Controller\WorkstationsController.cs" />
+    <Compile Include="Models\ProductMovementLine.cs" />
+    <Compile Include="Models\ProductMovementType.cs" />
+    <Compile Include="Models\MaterialMovementType.cs" />
     <Compile Include="Controller\ShiftsController.cs" />
     <Compile Include="Controller\WorkerController.cs" />
     <Compile Include="Models\ProductionOrderMaterialLine.cs" />
@@ -99,12 +111,13 @@
     <Compile Include="Models\BOM.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Functionality.cs" />
     <Compile Include="Models\ProductionOrder.cs" />
     <Compile Include="Models\ProductionOrderProductLine.cs" />
     <Compile Include="Models\ProductionOrderWorkLine.cs" />
     <Compile Include="Models\ProductMovement.cs" />
-    <Compile Include="Models\MaterialMovement.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\ProductTypeWarehouse.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipeDetail.cs" />
@@ -194,6 +207,13 @@
     <Compile Include="Views\Production_Module\UC_ProductionOrderProductLine.Designer.cs">
       <DependentUpon>UC_ProductionOrderProductLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Sales_Module\ProductWarehouseS.cs" />
+    <Compile Include="Views\Sales_Module\SalesOrderSearchClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales_Module\SalesOrderSearchClient.Designer.cs">
+      <DependentUpon>SalesOrderSearchClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UC_Material.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -229,12 +249,6 @@
     </Compile>
     <Compile Include="Views\UC_Profile.Designer.cs">
       <DependentUpon>UC_Profile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Sales_Module\SalesOrder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Sales_Module\SalesOrder.Designer.cs">
-      <DependentUpon>SalesOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Sales_Module\SalesOrderLine.cs">
       <SubType>Form</SubType>
@@ -308,22 +322,42 @@
     <Compile Include="Views\Sales_Module\UC_SalesOrder.Designer.cs">
       <DependentUpon>UC_SalesOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UC_WarehouseMovement.cs">
+    <Compile Include="Views\UC_Workstation.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UC_WarehouseMovement.Designer.cs">
+    <Compile Include="Views\UC_Workstation.Designer.cs">
+      <DependentUpon>UC_Workstation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\Document.cs" />
+    <Compile Include="Views\Warehouse_Module\ViewWarehouseMovementP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\ViewWarehouseMovementP.Designer.cs">
+      <DependentUpon>ViewWarehouseMovementP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\ProductMovementLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\ProductMovementLine.Designer.cs">
+      <DependentUpon>ProductMovementLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\ProductWarehouseM.cs" />
+    <Compile Include="Views\Warehouse_Module\UC_WarehouseMovement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\UC_WarehouseMovement.Designer.cs">
       <DependentUpon>UC_WarehouseMovement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UC_WarehouseMovementP.cs">
+    <Compile Include="Views\Warehouse_Module\UC_WarehouseMovementP.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UC_WarehouseMovementP.Designer.cs">
+    <Compile Include="Views\Warehouse_Module\UC_WarehouseMovementP.Designer.cs">
       <DependentUpon>UC_WarehouseMovementP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UC_WarehouseMovementM.cs">
+    <Compile Include="Views\Warehouse_Module\UC_WarehouseMovementM.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UC_WarehouseMovementM.Designer.cs">
+    <Compile Include="Views\Warehouse_Module\UC_WarehouseMovementM.Designer.cs">
       <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_User.cs">
@@ -435,6 +469,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionMenu.resx">
       <DependentUpon>UC_ProductionMenu.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales_Module\SalesOrderSearchClient.resx">
+      <DependentUpon>SalesOrderSearchClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Material.resx">
       <DependentUpon>UC_Material.cs</DependentUpon>
@@ -499,13 +536,22 @@
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesOrder.resx">
       <DependentUpon>UC_SalesOrder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_WarehouseMovement.resx">
+    <EmbeddedResource Include="Views\Warehouse_Module\ViewWarehouseMovementP.resx">
+      <DependentUpon>ViewWarehouseMovementP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Workstation.resx">
+      <DependentUpon>UC_Workstation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_Module\ProductMovementLine.resx">
+      <DependentUpon>ProductMovementLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_Module\UC_WarehouseMovement.resx">
       <DependentUpon>UC_WarehouseMovement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_WarehouseMovementP.resx">
+    <EmbeddedResource Include="Views\Warehouse_Module\UC_WarehouseMovementP.resx">
       <DependentUpon>UC_WarehouseMovementP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_WarehouseMovementM.resx">
+    <EmbeddedResource Include="Views\Warehouse_Module\UC_WarehouseMovementM.resx">
       <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_User.resx">
@@ -563,7 +609,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
-    <Folder Include="Views\Warehouse_Module\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Minimize Window_52px.png" />
@@ -595,6 +640,9 @@
     <None Include="Resources\Hangar_64px.png" />
     <None Include="Resources\Settings_48px.png" />
     <None Include="Resources\Menu_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

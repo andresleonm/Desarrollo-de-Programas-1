@@ -14,13 +14,13 @@ namespace WindowsFormsApp1.Views.Purchase_Module
     {
         Models.PurchaseOrderLine line;
         List<Models.Material> materials;
-        List<Models.Warehouse> warehouses;
+        List<Models.MaterialWarehouse> warehouses;
         public PurchaseOrderLine(ref Models.PurchaseOrderLine line)
         {
             InitializeComponent();
             this.line = line;
             materials = new List<Models.Material>();
-            warehouses = new List<Models.Warehouse>();
+            warehouses = new List<Models.MaterialWarehouse>();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -96,26 +96,49 @@ namespace WindowsFormsApp1.Views.Purchase_Module
             string user = "dp1admin";
             string password = "dp1admin";
             Controller.MaterialsController material_controller = new Controller.MaterialsController(user,password);
-            //Controller.WarehouseController warehouse_controller = new Controller.WarehouseController();
+            Controller.MaterialWarehouseController warehouse_controller = new Controller.MaterialWarehouseController("dp1admin","dp1admin");
 
             Controller.Result result = material_controller.getMaterials();
             this.materials = (List<Models.Material>)result.data;
 
-            foreach (Models.Material m in materials)
+            if (((List<Models.Material>)result.data).Count != 0)
             {
-                this.combo_material.Items.Add(m.Name);
+                foreach (Models.Material m in materials)
+                {
+                    this.combo_material.Items.Add(m.Name);
+                }
+                this.combo_material.SelectedItem = this.combo_material.Items[0];
             }
-            this.combo_material.SelectedItem = this.combo_material.Items[0];
 
-            //result = warehouse_controller.getWarehouses();
-            //this.warehouses = (List<Models.Warehouse>)result.data;
+            result = warehouse_controller.getMaterialWarehouses();
+            if (((List<Models.MaterialWarehouse>)result.data).Count != 0)
+            {
+                this.warehouses = (List<Models.MaterialWarehouse>)result.data;
 
-            //foreach(Models.Warehouse w in warehouses)
-            //{
-            //    this.combo_warehouse.Items.Add(w.Name);
-            //}
-            //this.combo_warehouse.SelectedItem = this.combo_warehouse.Items[0];
-            
+                foreach (Models.MaterialWarehouse w in warehouses)
+                {
+                    this.combo_warehouse.Items.Add(w.Name);
+                }
+                this.combo_warehouse.SelectedItem = this.combo_warehouse.Items[0];
+            }
+
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
             
         }
     }

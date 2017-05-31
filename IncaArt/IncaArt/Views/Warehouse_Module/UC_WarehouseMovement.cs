@@ -8,13 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1.Views
+namespace WindowsFormsApp1.Views.Warehouse_Module
 {
     public partial class UC_WarehouseMovement : UserControl
     {
-        public UC_WarehouseMovement()
+        string user;
+        string password;
+        public UC_WarehouseMovement(string user,string password)
         {
             InitializeComponent();
+            this.user = user;
+            this.password = password;
         }
 
         private void hide_UserControls()

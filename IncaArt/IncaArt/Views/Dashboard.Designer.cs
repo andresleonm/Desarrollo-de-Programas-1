@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsApp1.Views
+﻿using WindowsFormsApp1.Views.Warehouse_Module;
+
+namespace WindowsFormsApp1.Views
 {
     partial class Dashboard
     {
@@ -51,7 +53,6 @@
             this.label_user_name = new MetroFramework.Controls.MetroLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.uC_SalesMain1 = new WindowsFormsApp1.Views.UC_SalesMain();
-            this.uc_warehousemovement = new WindowsFormsApp1.Views.UC_WarehouseMovement();
             this.parameters1 = new WindowsFormsApp1.Views.Parameters();
             this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
             this.supplier1 = new WindowsFormsApp1.Views.Supplier();
@@ -70,6 +71,9 @@
             this.uc_recipe = new WindowsFormsApp1.Views.UC_Recipe();
             this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
             this.uc_ProductionMenu = new WindowsFormsApp1.Views.Production_Module.UC_ProductionMenu();
+            this.uc_workstation = new WindowsFormsApp1.Views.UC_Workstation();
+            this.uc_warehousemovement = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement(userName,password);
+
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -104,6 +108,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             this.pictureBox2.MouseEnter += new System.EventHandler(this.pictureBox_MouseHover);
             this.pictureBox2.MouseLeave += new System.EventHandler(this.pictureBox_MouseLeave);
             this.pictureBox2.MouseHover += new System.EventHandler(this.pictureBox_MouseHover);
@@ -375,10 +380,8 @@
             this.uC_SalesMain1.Name = "uC_SalesMain1";
             this.uC_SalesMain1.Size = new System.Drawing.Size(819, 514);
             this.uC_SalesMain1.TabIndex = 31;
-            // 
-            // uc_warehousemovement
-            // 
-            this.uc_warehousemovement.BackColor = System.Drawing.Color.White;
+
+            this.uc_warehousemovement.BackColor = System.Drawing.SystemColors.Control;
             this.uc_warehousemovement.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uc_warehousemovement.Location = new System.Drawing.Point(132, 72);
             this.uc_warehousemovement.Name = "uc_warehousemovement";
@@ -451,18 +454,23 @@
             // 
             // user
             // 
+            this.user.BackColor = System.Drawing.SystemColors.Window;
             this.user.Location = new System.Drawing.Point(132, 72);
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(1017, 439);
             this.user.TabIndex = 24;
+            this.user.UseSelectable = true;
             this.user.Visible = false;
             // 
             // profile
             // 
+            this.profile.BackColor = System.Drawing.SystemColors.Window;
             this.profile.Location = new System.Drawing.Point(132, 72);
             this.profile.Name = "profile";
             this.profile.Size = new System.Drawing.Size(873, 442);
             this.profile.TabIndex = 27;
+            this.profile.UseSelectable = true;
+            this.user.Visible = false;
             // 
             // shift
             // 
@@ -530,6 +538,14 @@
             this.uc_ProductionMenu.Name = "uc_ProductionMenu";
             this.uc_ProductionMenu.Size = new System.Drawing.Size(819, 514);
             this.uc_ProductionMenu.TabIndex = 34;
+            // uc_workstation
+            // 
+            this.uc_workstation.Location = new System.Drawing.Point(132, 72);
+            this.uc_workstation.Name = "uc_workstation";
+            this.uc_workstation.Size = new System.Drawing.Size(872, 658);
+            this.uc_workstation.TabIndex = 43;
+            this.uc_workstation.UseSelectable = true;
+            this.uc_workstation.Visible = false;
             // 
             // Dashboard
             // 
@@ -537,8 +553,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(951, 586);
-            this.Controls.Add(this.uC_SalesMain1);
             this.Controls.Add(this.uc_warehousemovement);
+            this.Controls.Add(this.uC_SalesMain1);
             this.Controls.Add(this.parameters1);
             this.Controls.Add(this.warehouse1);
             this.Controls.Add(this.supplier1);
@@ -560,6 +576,7 @@
             this.Controls.Add(this.uc_product);
             this.Controls.Add(this.uc_recipe);
             this.Controls.Add(this.uc_worker);
+            this.Controls.Add(this.uc_workstation);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
@@ -620,5 +637,6 @@
         private UC_Worker uc_worker;
         private System.Windows.Forms.Button btn_production;
         private Production_Module.UC_ProductionMenu uc_ProductionMenu;
+        private UC_Workstation uc_workstation;
     }
 }

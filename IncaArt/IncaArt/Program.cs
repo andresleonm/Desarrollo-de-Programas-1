@@ -17,16 +17,6 @@ namespace WindowsFormsApp1
         [STAThread]
         static void Main()
         {
-            /*UsersController uc = new UsersController("ADMIN", "ADMIN");
-            Models.User user =(Models.User) uc.getUser(1).data;
-            user.print();
-            user.id = 4;
-            uc.insertUser(user);
-            var users = (List<Models.User>)uc.getUsers().data;
-            foreach(Models.User u in users)
-            {
-                u.print();
-            }*/
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Frm_Login());

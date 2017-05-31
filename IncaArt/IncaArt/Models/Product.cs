@@ -12,12 +12,12 @@ namespace WindowsFormsApp1.Models
         private UnitOfMeasure unit;
         private int unit_id;
         private string name;
+        private int currency_id;
         private int stock_max;
         private int stock_min;
         private int stock;
         private double average_cost;
         private double unit_price;
-
         public int Id
         {
             get { return id; }
@@ -93,6 +93,19 @@ namespace WindowsFormsApp1.Models
             }
         }
 
+        public int Currency_id
+        {
+            get
+            {
+                return currency_id;
+            }
+
+            set
+            {
+                currency_id = value;
+            }
+        }
+
         public Product(int id, UnitOfMeasure unit, string name, int stock, int min_stock, int max_stock, double avg_cost, double price)
         {
             this.id = id;
@@ -126,6 +139,11 @@ namespace WindowsFormsApp1.Models
 
         public Product()
         {
+        }
+
+        public override string ToString()
+        {
+            return name;
         }
 
     }

@@ -41,6 +41,13 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_maximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registro = new MetroFramework.Controls.MetroTabPage();
             this.combobox_currency = new MetroFramework.Controls.MetroComboBox();
             this.textbox_price = new MetroFramework.Controls.MetroTextBox();
@@ -56,13 +63,6 @@
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_maximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
@@ -104,32 +104,45 @@
             // 
             // btn_delete
             // 
+            this.btn_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_delete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
             this.btn_delete.Location = new System.Drawing.Point(524, 340);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(75, 23);
             this.btn_delete.TabIndex = 13;
             this.btn_delete.Text = "Eliminar";
+            this.btn_delete.UseCustomBackColor = true;
+            this.btn_delete.UseCustomForeColor = true;
             this.btn_delete.UseSelectable = true;
             this.btn_delete.Click += new System.EventHandler(this.button_Delete_Click);
             // 
             // btn_clean_s
             // 
+            this.btn_clean_s.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_clean_s.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
             this.btn_clean_s.Location = new System.Drawing.Point(447, 109);
             this.btn_clean_s.Name = "btn_clean_s";
             this.btn_clean_s.Size = new System.Drawing.Size(75, 23);
             this.btn_clean_s.TabIndex = 12;
             this.btn_clean_s.Text = "Limpiar";
+            this.btn_clean_s.UseCustomBackColor = true;
+            this.btn_clean_s.UseCustomForeColor = true;
             this.btn_clean_s.UseSelectable = true;
             this.btn_clean_s.Click += new System.EventHandler(this.btn_clean_s_Click);
             // 
             // btn_search
             // 
+            this.btn_search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
             this.btn_search.Location = new System.Drawing.Point(351, 109);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(75, 23);
             this.btn_search.TabIndex = 11;
             this.btn_search.Text = "Buscar";
+            this.btn_search.UseCustomBackColor = true;
+            this.btn_search.UseCustomForeColor = true;
             this.btn_search.UseSelectable = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // combobox_unit_s
             // 
@@ -174,20 +187,24 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
+            this.metroLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.metroLabel2.Location = new System.Drawing.Point(341, 26);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(54, 19);
             this.metroLabel2.TabIndex = 4;
             this.metroLabel2.Text = "Unidad:";
+            this.metroLabel2.UseCustomForeColor = true;
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
+            this.metroLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.metroLabel1.Location = new System.Drawing.Point(35, 23);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(62, 19);
             this.metroLabel1.TabIndex = 3;
             this.metroLabel1.Text = "Nombre:";
+            this.metroLabel1.UseCustomForeColor = true;
             // 
             // metroGrid1
             // 
@@ -197,9 +214,9 @@
             this.metroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -228,7 +245,7 @@
             this.metroGrid1.Name = "metroGrid1";
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
@@ -241,6 +258,45 @@
             this.metroGrid1.TabIndex = 2;
             this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
             this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
+            // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // index
+            // 
+            this.index.HeaderText = "Index";
+            this.index.Name = "index";
+            this.index.Visible = false;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            // 
+            // unidad
+            // 
+            this.unidad.HeaderText = "Unidad";
+            this.unidad.Name = "unidad";
+            // 
+            // price
+            // 
+            this.price.HeaderText = "Precio";
+            this.price.Name = "price";
+            // 
+            // stock_minimo
+            // 
+            this.stock_minimo.HeaderText = "Stock Mínimo";
+            this.stock_minimo.Name = "stock_minimo";
+            this.stock_minimo.Width = 110;
+            // 
+            // stock_maximo
+            // 
+            this.stock_maximo.HeaderText = "Stock Máximo";
+            this.stock_maximo.Name = "stock_maximo";
+            this.stock_maximo.Width = 110;
             // 
             // registro
             // 
@@ -313,39 +369,53 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
+            this.metroLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.metroLabel3.Location = new System.Drawing.Point(19, 92);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(49, 19);
             this.metroLabel3.TabIndex = 13;
             this.metroLabel3.Text = "Precio:";
+            this.metroLabel3.UseCustomForeColor = true;
             // 
             // btn_cancel
             // 
+            this.btn_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_cancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
             this.btn_cancel.Location = new System.Drawing.Point(206, 350);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 12;
             this.btn_cancel.Text = "Cancelar";
+            this.btn_cancel.UseCustomBackColor = true;
+            this.btn_cancel.UseCustomForeColor = true;
             this.btn_cancel.UseSelectable = true;
             this.btn_cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // btn_edit
             // 
+            this.btn_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_edit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
             this.btn_edit.Location = new System.Drawing.Point(113, 350);
             this.btn_edit.Name = "btn_edit";
             this.btn_edit.Size = new System.Drawing.Size(75, 23);
             this.btn_edit.TabIndex = 11;
             this.btn_edit.Text = "Editar";
+            this.btn_edit.UseCustomBackColor = true;
+            this.btn_edit.UseCustomForeColor = true;
             this.btn_edit.UseSelectable = true;
             this.btn_edit.Click += new System.EventHandler(this.button_Edit_Click);
             // 
             // btn_new
             // 
+            this.btn_new.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_new.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
             this.btn_new.Location = new System.Drawing.Point(19, 350);
             this.btn_new.Name = "btn_new";
             this.btn_new.Size = new System.Drawing.Size(75, 23);
             this.btn_new.TabIndex = 10;
             this.btn_new.Text = "Registrar";
+            this.btn_new.UseCustomBackColor = true;
+            this.btn_new.UseCustomForeColor = true;
             this.btn_new.UseSelectable = true;
             this.btn_new.Click += new System.EventHandler(this.button_New_Click);
             // 
@@ -452,77 +522,46 @@
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
+            this.metroLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.metroLabel8.Location = new System.Drawing.Point(19, 167);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(95, 19);
             this.metroLabel8.TabIndex = 5;
             this.metroLabel8.Text = "Stock Máximo:";
+            this.metroLabel8.UseCustomForeColor = true;
             // 
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
+            this.metroLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.metroLabel7.Location = new System.Drawing.Point(19, 131);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(88, 19);
             this.metroLabel7.TabIndex = 4;
             this.metroLabel7.Text = "StockMínimo:";
+            this.metroLabel7.UseCustomForeColor = true;
             // 
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
+            this.metroLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.metroLabel6.Location = new System.Drawing.Point(19, 58);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(54, 19);
             this.metroLabel6.TabIndex = 3;
             this.metroLabel6.Text = "Unidad:";
+            this.metroLabel6.UseCustomForeColor = true;
             // 
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
+            this.metroLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.metroLabel5.Location = new System.Drawing.Point(19, 25);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(62, 19);
             this.metroLabel5.TabIndex = 2;
             this.metroLabel5.Text = "Nombre:";
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // index
-            // 
-            this.index.HeaderText = "Index";
-            this.index.Name = "index";
-            this.index.Visible = false;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            // 
-            // unidad
-            // 
-            this.unidad.HeaderText = "Unidad";
-            this.unidad.Name = "unidad";
-            // 
-            // price
-            // 
-            this.price.HeaderText = "Precio";
-            this.price.Name = "price";
-            // 
-            // stock_minimo
-            // 
-            this.stock_minimo.HeaderText = "Stock Mínimo";
-            this.stock_minimo.Name = "stock_minimo";
-            this.stock_minimo.Width = 110;
-            // 
-            // stock_maximo
-            // 
-            this.stock_maximo.HeaderText = "Stock Máximo";
-            this.stock_maximo.Name = "stock_maximo";
-            this.stock_maximo.Width = 110;
+            this.metroLabel5.UseCustomForeColor = true;
             // 
             // UC_Product
             // 

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.Lbl_Username = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxNickname = new System.Windows.Forms.TextBox();
             this.Lbl_Password = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.Btn_Login = new System.Windows.Forms.Button();
             this.Btn_CancelLogin = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -48,12 +48,12 @@
             this.Lbl_Username.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Lbl_Username.UseMnemonic = false;
             // 
-            // textBox1
+            // textBoxNickname
             // 
-            this.textBox1.Location = new System.Drawing.Point(155, 157);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(142, 20);
-            this.textBox1.TabIndex = 2;
+            this.textBoxNickname.Location = new System.Drawing.Point(155, 157);
+            this.textBoxNickname.Name = "textBoxNickname";
+            this.textBoxNickname.Size = new System.Drawing.Size(142, 20);
+            this.textBoxNickname.TabIndex = 2;
             // 
             // Lbl_Password
             // 
@@ -66,13 +66,13 @@
             this.Lbl_Password.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Lbl_Password.UseMnemonic = false;
             // 
-            // textBox2
+            // textBoxPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(155, 190);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(142, 20);
-            this.textBox2.TabIndex = 4;
+            this.textBoxPassword.Location = new System.Drawing.Point(155, 190);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
+            this.textBoxPassword.Size = new System.Drawing.Size(142, 20);
+            this.textBoxPassword.TabIndex = 4;
             // 
             // Btn_Login
             // 
@@ -116,9 +116,9 @@
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.Btn_CancelLogin);
             this.Controls.Add(this.Btn_Login);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.Lbl_Password);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxNickname);
             this.Controls.Add(this.Lbl_Username);
             this.Name = "Frm_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -130,9 +130,9 @@
 
         #endregion
         private System.Windows.Forms.Label Lbl_Username;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxNickname;
         private System.Windows.Forms.Label Lbl_Password;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Button Btn_Login;
         private System.Windows.Forms.Button Btn_CancelLogin;
         private System.Windows.Forms.LinkLabel linkLabel1;

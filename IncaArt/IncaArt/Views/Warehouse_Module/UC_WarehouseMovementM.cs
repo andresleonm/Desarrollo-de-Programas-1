@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1.Views
+namespace WindowsFormsApp1.Views.Warehouse_Module
 {
     public partial class UC_WarehouseMovementM : UserControl
     {
@@ -17,6 +17,14 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
         }
 
-      
+        private void metroLabel5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

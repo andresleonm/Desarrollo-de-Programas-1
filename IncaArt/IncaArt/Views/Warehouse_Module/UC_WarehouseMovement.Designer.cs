@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1.Views
+﻿namespace WindowsFormsApp1.Views.Warehouse_Module
 {
     partial class UC_WarehouseMovement
     {
@@ -31,8 +31,8 @@
             this.register_sale = new MetroFramework.Controls.MetroTile();
             this.sales = new MetroFramework.Controls.MetroTile();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.UC_WarehouseMovementP = new WindowsFormsApp1.Views.UC_WarehouseMovementP();
-            this.UC_WarehouseMovementM = new WindowsFormsApp1.Views.UC_WarehouseMovementM();
+            this.UC_WarehouseMovementP = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovementP(this.user,this.password);
+            this.UC_WarehouseMovementM = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovementM();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 

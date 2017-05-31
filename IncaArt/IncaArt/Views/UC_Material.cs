@@ -42,6 +42,14 @@ namespace WindowsFormsApp1.Views
             combobox_unit.DataSource = new BindingSource(combo_data, null);
             combobox_unit.DisplayMember = "Value";
             combobox_unit.ValueMember = "Key";
+
+            combo_data = new Dictionary<int, string>();
+            combo_data.Add(0, "Seleccionar");
+            foreach (var item in unit_list)
+            {
+                combo_data.Add(item.Id, item.Symbol);
+
+            }
             combobox_unit_s.DataSource = new BindingSource(combo_data, null);
             combobox_unit_s.DisplayMember = "Value";
             combobox_unit_s.ValueMember = "Key";
@@ -261,8 +269,18 @@ namespace WindowsFormsApp1.Views
         //Buscar
         private void btn_search_Click(object sender, EventArgs e)
         {
-            String name = textbox_name_s.Text, unit = combobox_unit_s.Text;
-            Load_DataGridView();
+            Models.Material material = new Models.Material();
+            material.Name = textbox_name_s.Text;
+            material.Unit_id = ((KeyValuePair<int, string>)combobox_unit_s.SelectedItem).Key;
+            result = materialController.getMaterials(material);
+            if (result.data == null)
+            {
+                MessageBox.Show(result.message, "Error al buscar material con filtros", MessageBoxButtons.OK);
+            } else
+            {
+                material_list = (List<Models.Material>)result.data;
+                Load_DataGridView();
+            }
         }
 
         //Eliminar
