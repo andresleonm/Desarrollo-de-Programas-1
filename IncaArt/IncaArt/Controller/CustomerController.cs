@@ -48,7 +48,6 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-<<<<<<< HEAD
         public Result insertCustomer(Models.Customer supplier)
         {
             //consultar permisos
@@ -90,15 +89,6 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result deleteCustomer(Models.Customer supplier)
-        {
-            List<Parameter> parameters = new List<Parameter>();
-            parameters.Add(new Parameter("id", supplier.Id.ToString()));
-            GenericResult result = execute_transaction("delete_customer", parameters);
-            if (result.success)
-            {
-                return new Result(result.singleValue, true, "");
-=======
         public Result getCustomer_by_text(string text)
         {
             //consultar permisos
@@ -115,7 +105,19 @@ namespace WindowsFormsApp1.Controller
                 }
 
                 return new Result(customers, true, "");
->>>>>>> f45bab6d429fb4244bb0e1318a09c6a8c29701e0
+            }
+            return new Result(null, result.success, result.message);
+
+        }
+
+        public Result deleteCustomer(Models.Customer supplier)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", supplier.Id.ToString()));
+            GenericResult result = execute_transaction("delete_customer", parameters);
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
             }
             return new Result(null, result.success, result.message);
         }

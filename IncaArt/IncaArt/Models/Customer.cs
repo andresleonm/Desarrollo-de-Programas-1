@@ -31,9 +31,6 @@ namespace WindowsFormsApp1.Models
             this.state = state;
         }
 
-        public Customer()
-        {
-        }
 
         public int Id
         {
