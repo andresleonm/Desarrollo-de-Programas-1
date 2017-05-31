@@ -280,12 +280,6 @@
     <Compile Include="Views\Sales_Module\UC_SalesInvoice.Designer.cs">
       <DependentUpon>UC_SalesInvoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Sales_Module\UC_SalesOrderList.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Sales_Module\UC_SalesOrderList.Designer.cs">
-      <DependentUpon>UC_SalesOrderList.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\UC_Recipe.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -487,7 +481,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionMenu.resx">
       <DependentUpon>UC_ProductionMenu.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\SalesOrderSearchClient.resx">
       <DependentUpon>SalesOrderSearchClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -532,9 +526,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesInvoice.resx">
       <DependentUpon>UC_SalesInvoice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Sales_Module\UC_SalesOrderList.resx">
-      <DependentUpon>UC_SalesOrderList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Recipe.resx">
       <DependentUpon>UC_Recipe.cs</DependentUpon>

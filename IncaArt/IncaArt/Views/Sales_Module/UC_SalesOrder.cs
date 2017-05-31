@@ -201,50 +201,43 @@ namespace WindowsFormsApp1.Views
 
         private void tab_Order_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (tab_Order.SelectedIndex == 0) // Orders
-            //{
-            //    SalesOrderController sales_order_controller = new SalesOrderController(user, password);
-
-            //    Result result = sales_order_controller.getSalesOrders();
-            //    this.sales_orders = (List<SalesOrder>)result.data;
-
-            //    List<SalesOrder> current = (List<SalesOrder>)this.grid_orders.DataSource;
-            //    if (current == null)
-            //        current = new List<SalesOrder>();
-            //    current = current.Concat(sales_orders).ToList();
-            //    this.grid_orders.DataSource = current;
-            //    AdjustColumnOrder_byOrder();
-            //}
-            //else if (tab_Order.SelectedIndex == 1) // NewOrder
-            //{
-            //    CurrencyController currency_controller = new CurrencyController(user, password);
-            //    Result result = currency_controller.getCurrencies();
-            //    this.currencies = (List<Currency>)result.data;
-            //    foreach (Currency curr in currencies)
-            //    {
-            //        this.cbo_Currency.Items.Add(curr.Symbol + " - " + curr.Name);
-            //    }
-            //    //this.cbo_Currency.SelectedItem = this.cbo_Currency.Items[0];
-            //}
+            if (tab_Order.SelectedIndex == 0) // Orders
+            {
+                List<SalesOrder> sales_orders_filtered = new List<SalesOrder>();
+                grid_orders.DataSource = sales_orders_filtered;
+                List<SalesOrder> current = (List<SalesOrder>)this.grid_orders.DataSource;
+                if (current == null)
+                    current = new List<SalesOrder>();
+                current = current.Concat(sales_orders).ToList();
+                this.grid_orders.DataSource = current;
+                AdjustColumnOrder_byOrder();
+            }
+            else if (tab_Order.SelectedIndex == 1) // NewOrder
+            {
+                
+            }
 
         }
 
         private void btn_Search_Order_Click(object sender, EventArgs e)
         {
-            //if (mtxt_order_id.Text != "") {
-            //    SalesOrderController sales_order_controller = new SalesOrderController(user, password);
+            if (mtxt_order_id.Text != "")
+            {
+                List<SalesOrder> sales_orders_filtered = new List<SalesOrder>();
+                grid_orders.DataSource = sales_orders_filtered;
+                SalesOrderController sales_order_controller = new SalesOrderController(user, password);
 
-            //    Result result = sales_order_controller.getSalesOrder(Int32.Parse(mtxt_order_id.Text));
-            //    List<SalesOrder> sales_orders_filtered = new List<SalesOrder>();
-            //    sales_orders_filtered = (List<SalesOrder>)result.data;
+                Result result = sales_order_controller.getSalesOrder(Int32.Parse(mtxt_order_id.Text));
+                SalesOrder sol = (SalesOrder)result.data;                
+                sales_orders_filtered.Add(sol);
 
-            //    List<SalesOrder> current = (List<SalesOrder>)this.grid_orders.DataSource;
-            //    if (current == null)
-            //        current = new List<SalesOrder>();
-            //    current = current.Concat(sales_orders_filtered).ToList();
-            //    this.grid_orders.DataSource = current;
-            //    AdjustColumnOrder_byOrder();
-            //}
+                List <SalesOrder> current = (List<SalesOrder>)this.grid_orders.DataSource;
+                if (current == null)
+                    current = new List<SalesOrder>();
+                current = current.Concat(sales_orders_filtered).ToList();
+                this.grid_orders.DataSource = current;
+                AdjustColumnOrder_byOrder();
+            }
         }
     }
 }
