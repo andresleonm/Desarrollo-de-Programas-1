@@ -17,9 +17,11 @@ namespace WindowsFormsApp1.Models
         int quantity;
         double price;
         DateTime scheluded_date;
+        string state;
 
-        public PurchaseOrderLine(int id,int purchase_order,int unit_of_measure,int quantity,double price,DateTime scheluded_date,int deliver_quantity,int material,int warehouse)
-        {            
+        public PurchaseOrderLine(int id,int purchase_order,int unit_of_measure,int quantity,double price,DateTime scheluded_date,string state,int deliver_quantity,int material,int warehouse)
+        {
+            this.id = id;
             this.purchase_order = purchase_order;
             this.unit_of_measure = unit_of_measure;
             this.quantity = quantity;
@@ -28,6 +30,7 @@ namespace WindowsFormsApp1.Models
             this.deliver_quantity = deliver_quantity;
             this.material = material;
             this.warehouse = warehouse;
+            this.state = state;
         }
 
         public PurchaseOrderLine(int purchase_order, int unit_of_measure, int quantity, double price, DateTime scheluded_date,int deliver_quantity, int material, int warehouse)
@@ -156,6 +159,19 @@ namespace WindowsFormsApp1.Models
             set
             {
                 scheluded_date = value;
+            }
+        }
+
+        public string State
+        {
+            get
+            {
+                return state;
+            }
+
+            set
+            {
+                state = value;
             }
         }
 

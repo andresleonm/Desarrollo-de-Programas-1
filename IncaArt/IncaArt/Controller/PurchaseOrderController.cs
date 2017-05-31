@@ -75,6 +75,7 @@ namespace WindowsFormsApp1.Controller
         public Result updatePurchaseOrder(PurchaseOrder purchase_order)
         {
             List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", purchase_order.Id.ToString()));
             parameters.Add(new Parameter("currency", purchase_order.Currency_id.ToString()));
             parameters.Add(new Parameter("supplier", purchase_order.Supplier_id.ToString()));
             parameters.Add(new Parameter("supplier_name", purchase_order.Supplier_name));

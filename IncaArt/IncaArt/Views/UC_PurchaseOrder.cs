@@ -55,13 +55,12 @@ namespace WindowsFormsApp1.Views
             editing = true;
             grid_order_lines.Rows.Clear();
             loadLists();
+            loadCombos();
             editing_order = order;
             txt_id.Text = order.Id.ToString();
-            txt_external_number.Text = order.External_number;
-            combo_currency.Text = currencies.Find(c => c.Id == order.Currency_id).Name;
-            date_order_date.Text = order.Creation_date.ToShortDateString();
-            loadCombos();
-            combo_supplier.Text = order.Supplier_name;            
+            txt_external_number.Text = order.External_number;            
+            date_order_date.Text = order.Creation_date.ToShortDateString();            
+                        
             txt_state.Text = order.State;
 
             foreach (Models.PurchaseOrderLine line in order.Lines)
@@ -78,7 +77,9 @@ namespace WindowsFormsApp1.Views
                 grid_order_lines.Rows.Add(grid_line);
             }
             calculateCosts();
-            this.Visible = true;            
+            this.Visible = true;
+            combo_supplier.Text = order.Supplier_name;
+            combo_currency.Text = currencies.Find(c => c.Id == order.Currency_id).Name;
         }
 
         private void grid_order_lines_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -100,7 +101,7 @@ namespace WindowsFormsApp1.Views
             Controller.PurchaseOrderController po_controller = new Controller.PurchaseOrderController("dp1admin", "dp1admin");
             Controller.PurchaseOrderLineController pol_controller = new Controller.PurchaseOrderLineController("dp1admin", "dp1admin");
             Models.PurchaseOrder po = new Models.PurchaseOrder();
-            po.Id = Int32.Parse(txt_id.Text);
+            po.Id = 0;
             po.Amount = Double.Parse(txt_total.Text);
             po.Creation_date = DateTime.Parse(date_order_date.Text);
             po.External_number = txt_external_number.Text;
@@ -113,17 +114,18 @@ namespace WindowsFormsApp1.Views
             po.Supplier_id = suppliers.Find(s => s.Name == combo_supplier.Text).Id;
             po.Supplier_name = combo_supplier.Text;
             po.Supplier_phone = txt_supplier_phone.Text;
-            po.Currency_id = currencies.Find(c => c.Name == combo_currency.Text).Id;            
+            po.Currency_id = currencies.Find(c => c.Name == combo_currency.Text).Id;       
             if (editing)
             {
+                po.Id = Int32.Parse(txt_id.Text);
                 po_controller.updatePurchaseOrder(po);
                 for (int i = 0; i < grid_order_lines.RowCount - 1; i++)
                 {
                     int unit_of_measure_id = units_of_measure.Find(uom => uom.Name == grid_order_lines.Rows[i].Cells[4].Value.ToString()).Id;
                     int material_id = materials.Find(m => m.Name == grid_order_lines.Rows[i].Cells[1].Value.ToString()).Id;
                     int warehouse_id = warehouses.Find(w => w.Name == grid_order_lines.Rows[i].Cells[5].Value.ToString()).Id;
-                    Models.PurchaseOrderLine pol = new Models.PurchaseOrderLine(po.Id, unit_of_measure_id, Int32.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString())
-                                                        , Double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()), DateTime.Parse(grid_order_lines.Rows[i].Cells[0].Value.ToString()),
+                    Models.PurchaseOrderLine pol = new Models.PurchaseOrderLine(editing_order.Lines[i].Id, po.Id, unit_of_measure_id, Int32.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString())
+                                                        , Double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString()), DateTime.Parse(grid_order_lines.Rows[i].Cells[0].Value.ToString()),editing_order.Lines[i].State,
                                                         Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()), material_id, warehouse_id);
                     Controller.Result result =  pol_controller.updatePurchaseOrderLine(pol);
                     if (result.success)
@@ -247,8 +249,10 @@ namespace WindowsFormsApp1.Views
             foreach (Models.MaterialWarehouse w in warehouses)
             {
                 ((DataGridViewComboBoxColumn)grid_order_lines.Columns["warehouse"]).Items.Add(w.Name);
-            }                                 
+            }
 
+            combo_supplier.Items.Clear();
+            combo_currency.Items.Clear();
             foreach(Models.Supplier s in suppliers)
             {
                 combo_supplier.Items.Add(s.Name);
