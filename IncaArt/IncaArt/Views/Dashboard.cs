@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
+using WindowsFormsApp1.Views.Production_Module;
 using WindowsFormsApp1.Views.Warehouse_Module;
 
 namespace WindowsFormsApp1.Views
@@ -70,6 +71,11 @@ namespace WindowsFormsApp1.Views
             btn_purchase.ForeColor = Color.White;
             btn_purchase.FlatAppearance.BorderColor = Color.FromArgb(64, 104, 104);
             btn_purchase.ImageIndex = 1;
+
+            btn_production.BackColor = Color.FromArgb(64, 104, 104);
+            btn_production.ForeColor = Color.White;
+            btn_production.FlatAppearance.BorderColor = Color.FromArgb(64, 104, 104);
+            btn_production.ImageIndex = 1;
 
             ((Button)sender).BackColor = Color.FromArgb(222, 234, 198);
             ((Button)sender).ForeColor = Color.FromArgb(64, 104, 104);
@@ -238,6 +244,12 @@ namespace WindowsFormsApp1.Views
                 this.WindowState = FormWindowState.Maximized;
             }
             
+        }
+
+        private void btn_production_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            uc_ProductionMenu.Visible = true;
         }
     }
 }

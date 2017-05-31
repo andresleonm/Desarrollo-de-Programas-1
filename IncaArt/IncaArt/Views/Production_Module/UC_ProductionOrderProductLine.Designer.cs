@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox_Unit = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox_Quantity = new MetroFramework.Controls.MetroTextBox();
             this.comboBox_Product = new System.Windows.Forms.ComboBox();
@@ -43,6 +47,10 @@
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.metroLabel5);
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.metroLabel4);
             this.groupBox1.Controls.Add(this.metroTextBox_Unit);
             this.groupBox1.Controls.Add(this.metroTextBox_Quantity);
             this.groupBox1.Controls.Add(this.comboBox_Product);
@@ -55,10 +63,54 @@
             this.groupBox1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.groupBox1.Location = new System.Drawing.Point(27, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(381, 196);
+            this.groupBox1.Size = new System.Drawing.Size(433, 270);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Línea de Producto de Orden";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(153, 167);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(163, 21);
+            this.comboBox2.TabIndex = 54;
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel5.ForeColor = System.Drawing.Color.Black;
+            this.metroLabel5.Location = new System.Drawing.Point(34, 173);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(61, 15);
+            this.metroLabel5.TabIndex = 53;
+            this.metroLabel5.Text = "Almacén :";
+            this.metroLabel5.UseCustomBackColor = true;
+            this.metroLabel5.UseCustomForeColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(153, 134);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(163, 21);
+            this.comboBox1.TabIndex = 52;
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel4.ForeColor = System.Drawing.Color.Black;
+            this.metroLabel4.Location = new System.Drawing.Point(34, 134);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(52, 15);
+            this.metroLabel4.TabIndex = 51;
+            this.metroLabel4.Text = "Receta :";
+            this.metroLabel4.UseCustomBackColor = true;
+            this.metroLabel4.UseCustomForeColor = true;
             // 
             // metroTextBox_Unit
             // 
@@ -188,7 +240,7 @@
             this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Cancel.ForeColor = System.Drawing.Color.White;
-            this.button_Cancel.Location = new System.Drawing.Point(225, 148);
+            this.button_Cancel.Location = new System.Drawing.Point(270, 215);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(82, 23);
             this.button_Cancel.TabIndex = 17;
@@ -200,12 +252,13 @@
             this.button_Register.BackColor = System.Drawing.Color.SteelBlue;
             this.button_Register.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Register.ForeColor = System.Drawing.Color.White;
-            this.button_Register.Location = new System.Drawing.Point(103, 148);
+            this.button_Register.Location = new System.Drawing.Point(148, 215);
             this.button_Register.Name = "button_Register";
             this.button_Register.Size = new System.Drawing.Size(82, 23);
             this.button_Register.TabIndex = 16;
             this.button_Register.Text = "Grabar";
             this.button_Register.UseVisualStyleBackColor = false;
+            this.button_Register.Click += new System.EventHandler(this.button_Register_Click);
             // 
             // UC_ProductionOrderProductLine
             // 
@@ -213,7 +266,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
             this.Name = "UC_ProductionOrderProductLine";
-            this.Size = new System.Drawing.Size(438, 246);
+            this.Size = new System.Drawing.Size(502, 325);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -232,5 +285,9 @@
         private System.Windows.Forms.Button button_Register;
         private MetroFramework.Controls.MetroTextBox metroTextBox_Unit;
         private MetroFramework.Controls.MetroTextBox metroTextBox_Quantity;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
     }
 }

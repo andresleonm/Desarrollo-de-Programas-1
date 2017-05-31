@@ -77,6 +77,8 @@
     <Compile Include="Controller\MaterialsController.cs" />
     <Compile Include="Controller\MaterialTypeWarehouseController.cs" />
     <Compile Include="Controller\MaterialWarehouseController.cs" />
+    <Compile Include="Controller\ProductionOrderController.cs" />
+    <Compile Include="Controller\ProductionOrderProductLineController.cs" />
     <Compile Include="Controller\ProductsController.cs" />
     <Compile Include="Controller\ProductTypeWarehouseController.cs" />
     <Compile Include="Controller\ProductMovementController.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Models\MaterialMovementType.cs" />
     <Compile Include="Controller\ShiftsController.cs" />
     <Compile Include="Controller\WorkerController.cs" />
+    <Compile Include="Models\ProductionOrderMaterialLine.cs" />
     <Compile Include="Models\ProductWarehouse.cs" />
     <Compile Include="Controller\ProductWarehouseController.cs" />
     <Compile Include="Controller\RecipesController.cs" />
@@ -179,6 +182,12 @@
     </Compile>
     <Compile Include="Views\Production_Module\ProductionOrderWorkLine.Designer.cs">
       <DependentUpon>ProductionOrderWorkLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Production_Module\UC_ProductionMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Production_Module\UC_ProductionMenu.Designer.cs">
+      <DependentUpon>UC_ProductionMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Production_Module\UC_ProductionOrderWorkLine.cs">
       <SubType>UserControl</SubType>
@@ -458,6 +467,9 @@
     <EmbeddedResource Include="Views\Production_Module\ProductionOrderWorkLine.resx">
       <DependentUpon>ProductionOrderWorkLine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Production_Module\UC_ProductionMenu.resx">
+      <DependentUpon>UC_ProductionMenu.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\SalesOrderSearchClient.resx">
       <DependentUpon>SalesOrderSearchClient.cs</DependentUpon>
     </EmbeddedResource>
