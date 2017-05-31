@@ -33,6 +33,9 @@ namespace WindowsFormsApp1.Views
 
             //Cargar los combobox
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
+
+            //Producto
+            combo_data.Add(0, "Ninguno");
             foreach (var item in product_list)
             {
                 combo_data.Add(item.Id, item.Name);
@@ -46,7 +49,7 @@ namespace WindowsFormsApp1.Views
             combobox_product_s.DisplayMember = "Value";
             combobox_product_s.ValueMember = "Key";
 
-
+            //Anterior y Siguiente Workstation
             combo_data = new Dictionary<int, string>();
             combo_data.Add(0, "Ninguno");
             foreach (var item in workstation_list)
@@ -317,6 +320,23 @@ namespace WindowsFormsApp1.Views
         private void btn_clean_s_Click(object sender, EventArgs e)
         {
             Clean();
+        }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            Models.Workstation workstation = new Models.Workstation();
+            workstation.Name = textbox_name_s.Text;
+            workstation.Product_id = ((KeyValuePair<int, string>)combobox_product_s.SelectedItem).Key;
+            result = workstationController.getWorkstations(workstation);
+            if (result.data == null)
+            {
+                MessageBox.Show(result.message, "Error al buscar puesto trabajo con filtro", MessageBoxButtons.OK);
+            }
+            else
+            {
+                workstation_list = (List<Models.Workstation>)result.data;
+                Load_DataGridView();
+            }
         }
     }
 }

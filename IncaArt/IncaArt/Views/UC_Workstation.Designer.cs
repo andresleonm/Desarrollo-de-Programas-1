@@ -140,6 +140,7 @@
             this.btn_search.UseCustomBackColor = true;
             this.btn_search.UseCustomForeColor = true;
             this.btn_search.UseSelectable = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // combobox_product_s
             // 
