@@ -608,6 +608,7 @@
     <None Include="Resources\Cash Register_40px.png" />
     <None Include="Resources\Undo_40px.png" />
     <None Include="Resources\Shopping Cart_40px.png" />
+    <None Include="Resources\Add File_40px.png" />
     <Content Include="Resources\American Indians Seminole_white_20px.png" />
     <None Include="Resources\American Indians Seminole_white_40px.png" />
     <None Include="Resources\American Indians Seminole_white_50px.png" />
