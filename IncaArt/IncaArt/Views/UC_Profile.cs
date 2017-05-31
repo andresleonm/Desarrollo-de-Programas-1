@@ -20,7 +20,7 @@ namespace WindowsFormsApp1.Views
         List<Profile> profile_list;
         List<Functionality> functionality_list;
         bool data_loaded;
-        List<int> selected_functionalities;
+        List<int> selected_functionalities = new List<int>();
         Profile current_profile;
 
         public UC_Profile()
@@ -28,7 +28,6 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
             this.metroTabControl1.SelectedIndex = 0;
             data_loaded = false;
-            selected_functionalities = new List<int>();
             current_profile = null;
         }
 

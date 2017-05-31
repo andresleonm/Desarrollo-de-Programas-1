@@ -13,9 +13,7 @@ namespace WindowsFormsApp1.Models
         private string observation;
         private DateTime begin;
         private DateTime end;
-        private string status;
-        private List<ProductionOrderProductLine> productLines;
-        private List<ProductionOrderWorkLine> workLines;
+        private string state;
         public int Id
         {
             get
@@ -81,42 +79,18 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public string Status
+      
+
+        public string State
         {
             get
             {
-                return status;
+                return state;
             }
 
             set
             {
-                status = value;
-            }
-        }
-
-        internal List<ProductionOrderProductLine> ProductLines
-        {
-            get
-            {
-                return productLines;
-            }
-
-            set
-            {
-                productLines = value;
-            }
-        }
-
-        internal List<ProductionOrderWorkLine> WorkLines
-        {
-            get
-            {
-                return workLines;
-            }
-
-            set
-            {
-                workLines = value;
+                state = value;
             }
         }
 
@@ -125,14 +99,24 @@ namespace WindowsFormsApp1.Models
 
         }
 
-        public ProductionOrder(string description, string observation, DateTime begin, DateTime end, string status)
+        public ProductionOrder(string description, string observation, DateTime begin, DateTime end, string state)
         {
             this.description = description;
             this.observation = observation;
             this.begin = begin;
             this.end = end;
-            this.status = status;
+            this.state = state;
          }
+       
+        public ProductionOrder(int id,string description, string observation,DateTime begin,string state,DateTime end)
+        {
+            this.id = id;
+            this.description = description;
+            this.observation = observation;
+            this.begin = begin;
+            this.state=state;
+            this.end = end;
+        }
     
     }
 }

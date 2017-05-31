@@ -15,9 +15,10 @@ namespace WindowsFormsApp1.Views
 {           
     public partial class UC_SalesOrder : MetroFramework.Controls.MetroUserControl
     {
+        private List<SalesOrder> sales_orders;
         private List<Customer> customerL;
         private List<Currency> currencies;
-        List<SalesOrderLine> lines;
+        private List<SalesOrderLine> lines;
         private string user = "dp1admin";
         private string password = "dp1admin";
 
@@ -30,15 +31,26 @@ namespace WindowsFormsApp1.Views
         private void UC_SalesOrder_Load(object sender, EventArgs e)
         {
             mbStyle.Style = MetroFramework.MetroColorStyle.Teal;
-            CurrencyController currency_controller = new CurrencyController(user, password);            
 
-            Result result = currency_controller.getCurrencies();
+            SalesOrderController sales_order_controller = new SalesOrderController(user, password);
+
+            Result result = sales_order_controller.getSalesOrders();
+            this.sales_orders = (List<SalesOrder>)result.data;
+
+            List<SalesOrder> current = (List<SalesOrder>)this.grid_orders.DataSource;
+            if (current == null)
+                current = new List<SalesOrder>();
+            current = current.Concat(sales_orders).ToList();
+            this.grid_orders.DataSource = current;
+            AdjustColumnOrder_byOrder();
+
+            CurrencyController currency_controller = new CurrencyController(user, password);
+            result = currency_controller.getCurrencies();
             this.currencies = (List<Currency>)result.data;
             foreach (Currency curr in currencies)
             {
-                this.cbo_Currency.Items.Add(curr.Symbol +" - "+ curr.Name);
+                this.cbo_Currency.Items.Add(curr.Symbol + " - " + curr.Name);
             }
-            //this.cbo_Currency.SelectedItem = this.cbo_Currency.Items[0];
         }
 
         private void btn_Search_Click(object sender, EventArgs e)
@@ -162,6 +174,17 @@ namespace WindowsFormsApp1.Views
             grid_order_lines.Columns["action"].DisplayIndex = 6;
         }
 
+        private void AdjustColumnOrder_byOrder()
+        {
+            grid_orders.Columns["order_id"].DisplayIndex = 0;
+            grid_orders.Columns["customer_name"].DisplayIndex = 1;
+            grid_orders.Columns["issue_date"].DisplayIndex = 2;
+            grid_orders.Columns["delivery_date"].DisplayIndex = 3;
+            grid_orders.Columns["currency_name"].DisplayIndex = 4;
+            grid_orders.Columns["amount2"].DisplayIndex = 5;
+            grid_orders.Columns["observation"].DisplayIndex = 6;
+        }
+
         private void btn_Clean_Click(object sender, EventArgs e)
         {
             txt_address.Text = "";
@@ -174,6 +197,47 @@ namespace WindowsFormsApp1.Views
             txt_Status.Text = "";
             cbo_Currency.Text = "";
             lines.Clear();
+        }
+
+        private void tab_Order_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tab_Order.SelectedIndex == 0) // Orders
+            {
+                List<SalesOrder> sales_orders_filtered = new List<SalesOrder>();
+                grid_orders.DataSource = sales_orders_filtered;
+                List<SalesOrder> current = (List<SalesOrder>)this.grid_orders.DataSource;
+                if (current == null)
+                    current = new List<SalesOrder>();
+                current = current.Concat(sales_orders).ToList();
+                this.grid_orders.DataSource = current;
+                AdjustColumnOrder_byOrder();
+            }
+            else if (tab_Order.SelectedIndex == 1) // NewOrder
+            {
+                
+            }
+
+        }
+
+        private void btn_Search_Order_Click(object sender, EventArgs e)
+        {
+            if (mtxt_order_id.Text != "")
+            {
+                List<SalesOrder> sales_orders_filtered = new List<SalesOrder>();
+                grid_orders.DataSource = sales_orders_filtered;
+                SalesOrderController sales_order_controller = new SalesOrderController(user, password);
+
+                Result result = sales_order_controller.getSalesOrder(Int32.Parse(mtxt_order_id.Text));
+                SalesOrder sol = (SalesOrder)result.data;                
+                sales_orders_filtered.Add(sol);
+
+                List <SalesOrder> current = (List<SalesOrder>)this.grid_orders.DataSource;
+                if (current == null)
+                    current = new List<SalesOrder>();
+                current = current.Concat(sales_orders_filtered).ToList();
+                this.grid_orders.DataSource = current;
+                AdjustColumnOrder_byOrder();
+            }
         }
     }
 }
