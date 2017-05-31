@@ -27,5 +27,10 @@ namespace WindowsFormsApp1.Models
             this.state = state;
         }
 
+        public override string ToString()
+        {
+            return name;
+        }
+
     }
 }

@@ -21,5 +21,10 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         {
 
         }
+
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

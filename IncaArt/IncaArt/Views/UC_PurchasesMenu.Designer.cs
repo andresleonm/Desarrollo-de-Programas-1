@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_new_purchase_order = new MetroFramework.Controls.MetroTile();
-            this.btn_purchase_orders = new MetroFramework.Controls.MetroTile();
             this.panel2 = new System.Windows.Forms.Panel();
             this.uC_PurchaseOrderGrid1 = new WindowsFormsApp1.Views.UC_PurchaseOrderGrid();
             this.uC_PurchaseOrder1 = new WindowsFormsApp1.Views.UC_PurchaseOrder();
+            this.btn_new_purchase_order = new MetroFramework.Controls.MetroTile();
+            this.btn_purchase_orders = new MetroFramework.Controls.MetroTile();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -48,35 +48,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(774, 70);
             this.panel1.TabIndex = 0;
-            // 
-            // btn_new_purchase_order
-            // 
-            this.btn_new_purchase_order.ActiveControl = null;
-            this.btn_new_purchase_order.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_new_purchase_order.Location = new System.Drawing.Point(263, 5);
-            this.btn_new_purchase_order.Name = "btn_new_purchase_order";
-            this.btn_new_purchase_order.Size = new System.Drawing.Size(177, 62);
-            this.btn_new_purchase_order.TabIndex = 1;
-            this.btn_new_purchase_order.Text = "Nueva Orden";
-            this.btn_new_purchase_order.UseCustomBackColor = true;
-            this.btn_new_purchase_order.UseSelectable = true;
-            this.btn_new_purchase_order.Click += new System.EventHandler(this.btn_new_purchase_order_Click);
-            // 
-            // btn_purchase_orders
-            // 
-            this.btn_purchase_orders.ActiveControl = null;
-            this.btn_purchase_orders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_purchase_orders.Location = new System.Drawing.Point(27, 5);
-            this.btn_purchase_orders.Name = "btn_purchase_orders";
-            this.btn_purchase_orders.Size = new System.Drawing.Size(177, 62);
-            this.btn_purchase_orders.TabIndex = 0;
-            this.btn_purchase_orders.Text = "Órdenes de Compra";
-            this.btn_purchase_orders.TileImage = global::WindowsFormsApp1.Properties.Resources.Documents_40px;
-            this.btn_purchase_orders.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btn_purchase_orders.UseCustomBackColor = true;
-            this.btn_purchase_orders.UseSelectable = true;
-            this.btn_purchase_orders.UseTileImage = true;
-            this.btn_purchase_orders.Click += new System.EventHandler(this.btn_purchases_orders_Click);
             // 
             // panel2
             // 
@@ -107,6 +78,38 @@
             this.uC_PurchaseOrder1.Size = new System.Drawing.Size(774, 452);
             this.uC_PurchaseOrder1.TabIndex = 1;
             this.uC_PurchaseOrder1.Visible = false;
+            // 
+            // btn_new_purchase_order
+            // 
+            this.btn_new_purchase_order.ActiveControl = null;
+            this.btn_new_purchase_order.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_new_purchase_order.Location = new System.Drawing.Point(263, 5);
+            this.btn_new_purchase_order.Name = "btn_new_purchase_order";
+            this.btn_new_purchase_order.Size = new System.Drawing.Size(177, 62);
+            this.btn_new_purchase_order.TabIndex = 1;
+            this.btn_new_purchase_order.Text = "Nueva Orden";
+            this.btn_new_purchase_order.TileImage = global::WindowsFormsApp1.Properties.Resources.Add_File_40px;
+            this.btn_new_purchase_order.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_new_purchase_order.UseCustomBackColor = true;
+            this.btn_new_purchase_order.UseSelectable = true;
+            this.btn_new_purchase_order.UseTileImage = true;
+            this.btn_new_purchase_order.Click += new System.EventHandler(this.btn_new_purchase_order_Click);
+            // 
+            // btn_purchase_orders
+            // 
+            this.btn_purchase_orders.ActiveControl = null;
+            this.btn_purchase_orders.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_purchase_orders.Location = new System.Drawing.Point(27, 5);
+            this.btn_purchase_orders.Name = "btn_purchase_orders";
+            this.btn_purchase_orders.Size = new System.Drawing.Size(177, 62);
+            this.btn_purchase_orders.TabIndex = 0;
+            this.btn_purchase_orders.Text = "Órdenes de Compra";
+            this.btn_purchase_orders.TileImage = global::WindowsFormsApp1.Properties.Resources.Documents_40px;
+            this.btn_purchase_orders.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_purchase_orders.UseCustomBackColor = true;
+            this.btn_purchase_orders.UseSelectable = true;
+            this.btn_purchase_orders.UseTileImage = true;
+            this.btn_purchase_orders.Click += new System.EventHandler(this.btn_purchases_orders_Click);
             // 
             // UC_PurchasesMenu
             // 

@@ -33,6 +33,28 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result getRecipes(Models.Recipe recipe)
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            if (recipe.Name != "") parameters.Add(new Parameter("name", recipe.Name));
+            if (recipe.Product_id != 0) parameters.Add(new Parameter("product_id", recipe.Product_id.ToString()));
+            GenericResult result = execute_function("get_recipes2", parameters);
+            List<Models.Recipe> recipes = new List<Models.Recipe>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    //"RECIPE_ID",      0
+                    //"PRODUCT_ID",     1
+                    //"RECIPE_NAME"     2
+                    recipes.Add(new Models.Recipe(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), r.getColumn(2)));
+                }
+                return new Result(recipes, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
         public Result getRecipe(int id)
         {
             //consultar permisos
@@ -145,7 +167,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("recipe_id", detail.Recipe_id.ToString()));
             parameters.Add(new Parameter("material_id", detail.Material_id.ToString()));
             parameters.Add(new Parameter("quantity", detail.Quantity.ToString()));
-            GenericResult result = execute_function("insert_recipe_detail", parameters);
+            GenericResult result = execute_transaction("insert_recipe_detail", parameters);
             if (result.success)
             {
                 return new Result(result.singleValue, true, "");

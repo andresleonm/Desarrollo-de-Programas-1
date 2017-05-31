@@ -39,6 +39,7 @@ namespace WindowsFormsApp1.Views
             detail_list = new List<Models.RecipeDetail>();
             Load_Data();
             //Cargar los combobox
+
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
             foreach (var item in material_list)
             {
@@ -49,6 +50,7 @@ namespace WindowsFormsApp1.Views
             combobox_material.DisplayMember = "Value";
             combobox_material.ValueMember = "Key";
             combobox_material.DataSource = new BindingSource(combo_data, null);
+
             combo_data = new Dictionary<int, string>();
             foreach (var item in product_list)
             {
@@ -58,6 +60,18 @@ namespace WindowsFormsApp1.Views
             combobox_product.DisplayMember = "Value";
             combobox_product.ValueMember = "Key";
             combobox_product.DataSource = new BindingSource(combo_data, null);
+
+            combo_data = new Dictionary<int, string>();
+            combo_data.Add(0, "Seleccionar");
+            foreach (var item in product_list)
+            {
+                combo_data.Add(item.Id, item.Name);
+
+            }
+            combobox_product_s.DisplayMember = "Value";
+            combobox_product_s.ValueMember = "Key";
+            combobox_product_s.DataSource = new BindingSource(combo_data, null);
+
             Load_DataGridView();
             metroTabControl1.SelectedIndex = 0;
         }
@@ -449,5 +463,20 @@ namespace WindowsFormsApp1.Views
             }
         }
 
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            Models.Recipe recipe = new Models.Recipe();
+            recipe.Name = textbox_name_s.Text;
+            recipe.Product_id = ((KeyValuePair<int, string>)combobox_product_s.SelectedItem).Key;
+            result = recipeController.getRecipes(recipe);
+            if (result.data == null)
+            {
+                MessageBox.Show(result.message, "Error al buscar receta con filtros", MessageBoxButtons.OK);
+            } else
+            {
+                recipe_list = (List<Models.Recipe>)result.data;
+                Load_DataGridView();
+            }
+        }
     }
 }

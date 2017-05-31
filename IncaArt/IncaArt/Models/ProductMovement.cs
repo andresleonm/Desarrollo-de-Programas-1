@@ -25,6 +25,25 @@ namespace WindowsFormsApp1.Models
 
         public List<ProductMovementLine> detail { get; set; }
 
+        public ProductMovement(int id,ProductMovementType pm,String observacion,String Fecha
+                            ,String TipoDocumentoOrigen, String NroDocumentoOrigen
+            , String TipoDocumentoFin, String NroDocumentoFin,String State,List<ProductMovementLine> detail    )
+        {
+            this.id = id;
+            this.Observacion = observacion;
+            this.Fecha = Fecha;
+            this.TipoDocumentoOrigen = TipoDocumentoOrigen;
+            this.NroDocumentoOrigen = NroDocumentoOrigen;
+            this.TipoDocumentoFin = TipoDocumentoFin;
+            this.State = State;
+            this.detail = detail;
+            this.Tipo = pm;
+        }
+        public ProductMovement()
+        {
+
+        }
+
         
     }
 }

@@ -9,19 +9,13 @@ namespace WindowsFormsApp1.Models
     class Workstation
     {
         int id;
+        int product_id;
         string name;
-        Product product;
+        int assigned_worker;
+        int next_workstation;
+        int previous_workstation;
         int quantity;
-        string description;
 
-        public Workstation(int id, string name, Product product, int quantity, string description)
-        {
-            this.id = id;
-            this.name = name;
-            this.product = product;
-            this.quantity = quantity;
-            this.description = description;
-        }
         public int Id
         {
             get
@@ -32,6 +26,19 @@ namespace WindowsFormsApp1.Models
             set
             {
                 id = value;
+            }
+        }
+
+        public int Product_id
+        {
+            get
+            {
+                return product_id;
+            }
+
+            set
+            {
+                product_id = value;
             }
         }
 
@@ -48,16 +55,42 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        internal Product Product
+        public int Assigned_worker
         {
             get
             {
-                return product;
+                return assigned_worker;
             }
 
             set
             {
-                product = value;
+                assigned_worker = value;
+            }
+        }
+
+        public int Next_workstation
+        {
+            get
+            {
+                return next_workstation;
+            }
+
+            set
+            {
+                next_workstation = value;
+            }
+        }
+
+        public int Previous_workstation
+        {
+            get
+            {
+                return previous_workstation;
+            }
+
+            set
+            {
+                previous_workstation = value;
             }
         }
 
@@ -71,19 +104,6 @@ namespace WindowsFormsApp1.Models
             set
             {
                 quantity = value;
-            }
-        }
-
-        public string Description
-        {
-            get
-            {
-                return description;
-            }
-
-            set
-            {
-                description = value;
             }
         }
     }

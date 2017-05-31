@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
 
         private void Btn_Login_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             Result userResult = usersController.getUserByNickname(textBoxNickname.Text);
 
             //if (userResult.success)
@@ -46,6 +47,7 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
+                    Cursor = Cursors.Arrow;
                     MessageBox.Show("La contraseña es incorrecta");
                 }
             }

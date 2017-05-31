@@ -63,6 +63,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Add_File_40px {
+            get {
+                object obj = ResourceManager.GetObject("Add File_40px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap American_Indians_Seminole_white_20px {
             get {
                 object obj = ResourceManager.GetObject("American Indians Seminole_white_20px", resourceCulture);

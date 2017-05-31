@@ -59,6 +59,7 @@ namespace WindowsFormsApp1.Controller
                 //"SALARY"          12
                 var r = result.data[0];
                 Models.Worker worker = new Models.Worker(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(11)), r.getColumn(1), r.getColumn(2), r.getColumn(3), r.getColumn(4), DateTime.Parse(r.getColumn(5)), char.Parse(r.getColumn(6)), r.getColumn(7), r.getColumn(8), r.getColumn(9), r.getColumn(10), double.Parse(r.getColumn(12)));
+                worker.Currency_id = Int32.Parse(r.getColumn(13));
                 return new Result(worker, true, "");
             }
             return new Result(null, result.success, result.message);
@@ -80,6 +81,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("address", worker.Address.ToString()));
             parameters.Add(new Parameter("shift_id", worker.Shift_id.ToString()));
             parameters.Add(new Parameter("salary", worker.Salary.ToString()));
+            parameters.Add(new Parameter("currency_id", worker.Currency_id.ToString()));
             GenericResult result = execute_transaction("insert_worker", parameters);
             if (result.success)
             {
@@ -104,6 +106,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("address", worker.Address.ToString()));
             parameters.Add(new Parameter("shift_id", worker.Shift_id.ToString()));
             parameters.Add(new Parameter("salary", worker.Salary.ToString()));
+            parameters.Add(new Parameter("currency_id", worker.Currency_id.ToString()));
             GenericResult result = execute_transaction("update_worker", parameters);
             if (result.success)
             {

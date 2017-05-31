@@ -13,21 +13,30 @@ namespace WindowsFormsApp1.Models
         int unit_of_measure;
         int material;
         int warehouse;
-        int deliver_quantity;
-        string state;
+        int deliver_quantity;        
         int quantity;
         double price;
         DateTime scheluded_date;
 
-        public PurchaseOrderLine(int id, int purchase_order,int unit_of_measure,int quantity,double price,DateTime scheluded_date,string state,int deliver_quantity,int material,int warehouse)
-        {
-            this.id = id;
+        public PurchaseOrderLine(int id,int purchase_order,int unit_of_measure,int quantity,double price,DateTime scheluded_date,int deliver_quantity,int material,int warehouse)
+        {            
             this.purchase_order = purchase_order;
             this.unit_of_measure = unit_of_measure;
             this.quantity = quantity;
             this.price = price;
-            this.scheluded_date = scheluded_date;
-            this.state = state;
+            this.scheluded_date = scheluded_date;            
+            this.deliver_quantity = deliver_quantity;
+            this.material = material;
+            this.warehouse = warehouse;
+        }
+
+        public PurchaseOrderLine(int purchase_order, int unit_of_measure, int quantity, double price, DateTime scheluded_date,int deliver_quantity, int material, int warehouse)
+        {
+            this.purchase_order = purchase_order;
+            this.unit_of_measure = unit_of_measure;
+            this.quantity = quantity;
+            this.price = price;
+            this.scheluded_date = scheluded_date;            
             this.deliver_quantity = deliver_quantity;
             this.material = material;
             this.warehouse = warehouse;
@@ -108,19 +117,6 @@ namespace WindowsFormsApp1.Models
             set
             {
                 deliver_quantity = value;
-            }
-        }
-
-        public string State
-        {
-            get
-            {
-                return state;
-            }
-
-            set
-            {
-                state = value;
             }
         }
 

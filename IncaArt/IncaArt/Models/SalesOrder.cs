@@ -9,12 +9,14 @@ namespace WindowsFormsApp1.Models
     public class SalesOrder
     {        
         private int id;
-        private Currency currency;
-        private Client client;
-        private string client_name;
-        private string client_address;
-        private string client_phone;
-        private string client_doi;
+        private int currency_id;
+        private string currency_name;
+        private string currency_symbol;
+        private int customer_id;
+        private string customer_name;
+        private string customer_address;
+        private string customer_phone;
+        private string customer_doi;
         private double amount;
         private string status;
         private DateTime issue_date;
@@ -29,40 +31,52 @@ namespace WindowsFormsApp1.Models
             set { id = value; }
         }        
 
-        public Currency Currency
+        public int Currency_id
         {
-            get { return currency; }
-            set { currency = value; }
+            get { return currency_id; }
+            set { currency_id = value; }
         }
 
-        public Client Client
+        public string Currency_name
         {
-            get { return client; }
-            set { client = value; }
+            get { return currency_name; }
+            set { currency_name = value; }
         }
 
-        public string Client_name
+        public string Currency_symbol
         {
-            get { return client_name; }
-            set { client_name = value; }
+            get { return currency_symbol; }
+            set { currency_symbol = value; }
         }
 
-        public string Client_address
+        public int Customer_id
         {
-            get { return client_address; }
-            set { client_address = value; }
+            get { return customer_id; }
+            set { customer_id = value; }
         }
 
-        public string Client_phone
+        public string Customer_name
         {
-            get { return client_phone; }
-            set { client_phone = value; }
+            get { return customer_name; }
+            set { customer_name = value; }
         }
 
-        public string Client_doi
+        public string Customer_address
         {
-            get { return client_doi; }
-            set { client_doi = value; }
+            get { return customer_address; }
+            set { customer_address = value; }
+        }
+
+        public string Customer_phone
+        {
+            get { return customer_phone; }
+            set { customer_phone = value; }
+        }
+
+        public string Customer_doi
+        {
+            get { return customer_doi; }
+            set { customer_doi = value; }
         }
 
         public double Amount
@@ -101,15 +115,17 @@ namespace WindowsFormsApp1.Models
             set { lines = value; }
         }
 
-        public SalesOrder(int order_id, Currency currency, Client client, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, DateTime delivery_date, double amount, string observation, List<SalesOrderLine> lines)
+        public SalesOrder(int order_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, DateTime delivery_date, double amount, string observation, List<SalesOrderLine> lines)
         {
             this.id = order_id;
-            this.currency = currency;
-            this.client = client;
-            this.client_name = cli_name;
-            this.client_address = cli_addr;
-            this.client_phone = cli_phone;
-            this.client_doi = cli_doi;
+            this.currency_id = currency_id;
+            this.currency_name = currency_name;
+            this.currency_symbol = currency_symbol;
+            this.customer_id = customer_id;
+            this.customer_name = cli_name;
+            this.customer_address = cli_addr;
+            this.customer_phone = cli_phone;
+            this.customer_doi = cli_doi;
             this.status = status;
             this.issue_date = issue_date;
             this.delivery_date = delivery_date;
@@ -118,11 +134,13 @@ namespace WindowsFormsApp1.Models
             this.lines = lines;
         }
 
+        public SalesOrder() { }
+
         // For SalesOrderList
         public SalesOrder(int order_id, string cli_name, string observation, DateTime issue_date, DateTime delivery_date, double amount, string status)
         {
             this.id = order_id;
-            this.client_name = cli_name;
+            this.customer_name = cli_name;
             this.observation = observation;
             this.issue_date = issue_date;
             this.delivery_date = delivery_date;

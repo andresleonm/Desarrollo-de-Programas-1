@@ -9,14 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
+using WindowsFormsApp1.Views.Production_Module;
 using WindowsFormsApp1.Views.Warehouse_Module;
 
 namespace WindowsFormsApp1.Views
 {
     public partial class Dashboard : Form
     {
-        public string userName;
-        public string password;
+        public string userName="dp1";
+        public string password="pass";
         public List<PurchaseOrder> purchase_order_list = new List<PurchaseOrder>();        
         public List<Models.Material> material_list = new List<Material>();
         public List<Models.Warehouse> warehouse_list;
@@ -28,6 +29,7 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
             hide_UserControls();            
             mainDashboard1.Visible = true;
+            Cursor = Cursors.Arrow;
             this.mainDashboard1.Controls.Find("metroTile11", false)[0].Click += btn_supplier_Click;
             this.mainDashboard1.Controls.Find("metroTile10", false)[0].Click += btn_warehouse_Click;
             this.mainDashboard1.Controls.Find("metroTile11", false)[0].Click += btn_supplier_Click;
@@ -69,6 +71,11 @@ namespace WindowsFormsApp1.Views
             btn_purchase.ForeColor = Color.White;
             btn_purchase.FlatAppearance.BorderColor = Color.FromArgb(64, 104, 104);
             btn_purchase.ImageIndex = 1;
+
+            btn_production.BackColor = Color.FromArgb(64, 104, 104);
+            btn_production.ForeColor = Color.White;
+            btn_production.FlatAppearance.BorderColor = Color.FromArgb(64, 104, 104);
+            btn_production.ImageIndex = 1;
 
             ((Button)sender).BackColor = Color.FromArgb(222, 234, 198);
             ((Button)sender).ForeColor = Color.FromArgb(64, 104, 104);
@@ -165,7 +172,8 @@ namespace WindowsFormsApp1.Views
         private void btn_workstation_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            workstation1.Visible = true;
+            //workstation1.Visible = true;
+            uc_workstation.Visible = true;
         }
 
         private void btn_user_Click(object sender, EventArgs e)
@@ -227,7 +235,21 @@ namespace WindowsFormsApp1.Views
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            if(this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            
+        }
+
+        private void btn_production_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            uc_ProductionMenu.Visible = true;
         }
     }
 }
