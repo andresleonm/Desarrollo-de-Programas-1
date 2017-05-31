@@ -13,6 +13,14 @@ namespace WindowsFormsApp1.Models
         String wclass;
         String state;
 
+        public ProductTypeWarehouse()
+        {
+            this.id = 0;
+            this.name = "";
+            this.wclass = "";
+            this.state = "";
+        }
+
         public ProductTypeWarehouse(int id, string name, string wclass, string state)
         {
             this.id = id;

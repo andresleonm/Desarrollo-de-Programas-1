@@ -13,8 +13,10 @@ namespace WindowsFormsApp1.Models
         private Product product;
         private int quantity;
         private int produced_quantity;
-        private int broke_quantity;
-        private string status;
+        private string state;
+        private Recipe recipe;
+        private int quantity_warehouse;
+        private ProductWarehouse warehouse;
 
         public int Order_Id
         {
@@ -72,6 +74,33 @@ namespace WindowsFormsApp1.Models
         {
             get
             {
+                return Produced_quantity1;
+            }
+
+            set
+            {
+                Produced_quantity1 = value;
+            }
+        }
+
+
+        public string State
+        {
+            get
+            {
+                return state;
+            }
+
+            set
+            {
+                state = value;
+            }
+        }
+
+        public int Produced_quantity1
+        {
+            get
+            {
                 return produced_quantity;
             }
 
@@ -81,29 +110,42 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public int Broke_quantity
+        internal Recipe Recipe
         {
             get
             {
-                return broke_quantity;
+                return recipe;
             }
 
             set
             {
-                broke_quantity = value;
+                recipe = value;
             }
         }
 
-        public string Status
+        public int Quantity_warehouse
         {
             get
             {
-                return status;
+                return quantity_warehouse;
             }
 
             set
             {
-                status = value;
+                quantity_warehouse = value;
+            }
+        }
+
+        public ProductWarehouse Warehouse
+        {
+            get
+            {
+                return warehouse;
+            }
+
+            set
+            {
+                warehouse = value;
             }
         }
 

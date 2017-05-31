@@ -16,5 +16,10 @@ namespace WindowsFormsApp1.Views
         {
             InitializeComponent();
         }
+
+        private void button_Register_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

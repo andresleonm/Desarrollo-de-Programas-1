@@ -19,6 +19,9 @@ namespace WindowsFormsApp1.Views
         {
             InitializeComponent();
             this.Style = mStyle.Style;
+            uC_ProductWarehouse1.Visible = true;
+            uC_MaterialWarehouse1.Visible = false;
+
         }
 
         private bool validate_data(String name,String type,int m_capacity,int a_capacity,String u1,String u2)
@@ -86,6 +89,18 @@ namespace WindowsFormsApp1.Views
         private void metroTextBox5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void select_products_Click(object sender, EventArgs e)
+        {
+            uC_ProductWarehouse1.Visible = true;
+            uC_MaterialWarehouse1.Visible = false;
+        }
+
+        private void select_materials_Click(object sender, EventArgs e)
+        {
+            uC_MaterialWarehouse1.Visible = true;
+            uC_ProductWarehouse1.Visible = false;
         }
     }
 }
