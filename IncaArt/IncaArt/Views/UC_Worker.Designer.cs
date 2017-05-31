@@ -317,6 +317,7 @@
             this.btn_search.UseCustomBackColor = true;
             this.btn_search.UseCustomForeColor = true;
             this.btn_search.UseSelectable = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // textbox_name_s
             // 
@@ -864,7 +865,7 @@
             // 
             this.datetime_birthday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datetime_birthday.Location = new System.Drawing.Point(148, 146);
-            this.datetime_birthday.MinimumSize = new System.Drawing.Size(0, 29);
+            this.datetime_birthday.MinimumSize = new System.Drawing.Size(4, 29);
             this.datetime_birthday.Name = "datetime_birthday";
             this.datetime_birthday.Size = new System.Drawing.Size(119, 29);
             this.datetime_birthday.TabIndex = 15;

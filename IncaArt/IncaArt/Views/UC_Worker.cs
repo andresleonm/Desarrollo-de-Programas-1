@@ -34,7 +34,10 @@ namespace WindowsFormsApp1.Views
             currencyController = new Controller.CurrencyController(user, password);
             Load_Data();
             //Cargar los combobox
+
+            //Turno
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
+            combo_data.Add(0, "Seleccionar");
             foreach (var item in shift_list)
             {
                 combo_data.Add(item.Id, item.Description);
@@ -43,12 +46,13 @@ namespace WindowsFormsApp1.Views
             combobox_shift.DataSource = new BindingSource(combo_data, null);
             combobox_shift.DisplayMember = "Value";
             combobox_shift.ValueMember = "Key";
-
             combobox_shift_s.DataSource = new BindingSource(combo_data, null);
             combobox_shift_s.DisplayMember = "Value";
             combobox_shift_s.ValueMember = "Key";
 
+            //Moneda
             combo_data = new Dictionary<int, string>();
+            combo_data.Add(0, "Seleccionar");
             foreach (var item in currency_list)
             {
                 combo_data.Add(item.Id, item.Symbol);
@@ -295,5 +299,26 @@ namespace WindowsFormsApp1.Views
         {
             Clean();
         }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            Models.Worker worker = new Models.Worker();
+            worker.Name = textbox_name_s.Text;
+            worker.Paternal_name = textbox_paternal_s.Text;
+            worker.Maternal_name = textbox_maternal_s.Text;
+            worker.Doi = textbox_paternal_s.Text;
+            worker.Shift_id= ((KeyValuePair<int, string>)combobox_shift_s.SelectedItem).Key;
+            result = workerController.getWokers(worker);
+            if (result.data == null)
+            {
+                MessageBox.Show(result.message, "Error al buscar producto con filtro", MessageBoxButtons.OK);
+            }
+            else
+            {
+                worker_list = (List<Models.Worker>)result.data;
+                Load_DataGridView();
+            }
+        }
     }
 }
+
