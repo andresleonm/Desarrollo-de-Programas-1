@@ -73,8 +73,6 @@ namespace WindowsFormsApp1.Views
             this.uC_ProductWarehouse1 = new WindowsFormsApp1.Views.UC_ProductWarehouse();
             this.uc_ProductionMenu = new WindowsFormsApp1.Views.Production_Module.UC_ProductionMenu();
             this.uc_workstation = new WindowsFormsApp1.Views.UC_Workstation();
-            this.uc_warehousemovement = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement(userName,password);
-
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -170,7 +168,6 @@ namespace WindowsFormsApp1.Views
             this.btn_production.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_production.ForeColor = System.Drawing.Color.White;
             this.btn_production.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_production.ImageIndex = 1;
             this.btn_production.ImageList = this.purchase_imagelist;
             this.btn_production.Location = new System.Drawing.Point(0, 213);
             this.btn_production.Name = "btn_production";
@@ -381,13 +378,6 @@ namespace WindowsFormsApp1.Views
             this.uC_SalesMain1.Name = "uC_SalesMain1";
             this.uC_SalesMain1.Size = new System.Drawing.Size(819, 514);
             this.uC_SalesMain1.TabIndex = 31;
-
-            this.uc_warehousemovement.BackColor = System.Drawing.SystemColors.Control;
-            this.uc_warehousemovement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_warehousemovement.Location = new System.Drawing.Point(132, 72);
-            this.uc_warehousemovement.Name = "uc_warehousemovement";
-            this.uc_warehousemovement.Size = new System.Drawing.Size(819, 514);
-            this.uc_warehousemovement.TabIndex = 31;
             // 
             // parameters1
             // 
@@ -412,6 +402,7 @@ namespace WindowsFormsApp1.Views
             this.supplier1.Name = "supplier1";
             this.supplier1.Size = new System.Drawing.Size(1064, 652);
             this.supplier1.TabIndex = 18;
+            this.supplier1.UseSelectable = true;
             // 
             // workstation1
             // 
@@ -429,10 +420,13 @@ namespace WindowsFormsApp1.Views
             // 
             // client1
             // 
+            this.client1.AutoSize = true;
             this.client1.Location = new System.Drawing.Point(132, 72);
             this.client1.Name = "client1";
-            this.client1.Size = new System.Drawing.Size(898, 532);
+            this.client1.Size = new System.Drawing.Size(971, 672);
+            this.client1.Style = MetroFramework.MetroColorStyle.Teal;
             this.client1.TabIndex = 18;
+            this.client1.UseSelectable = true;
             // 
             // uC_PurchasesMenu1
             // 
@@ -460,6 +454,7 @@ namespace WindowsFormsApp1.Views
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(1017, 439);
             this.user.TabIndex = 24;
+            this.user.UseCustomBackColor = true;
             this.user.UseSelectable = true;
             this.user.Visible = false;
             // 
@@ -470,8 +465,8 @@ namespace WindowsFormsApp1.Views
             this.profile.Name = "profile";
             this.profile.Size = new System.Drawing.Size(873, 442);
             this.profile.TabIndex = 27;
+            this.profile.UseCustomBackColor = true;
             this.profile.UseSelectable = true;
-            this.user.Visible = false;
             // 
             // shift
             // 
@@ -537,6 +532,7 @@ namespace WindowsFormsApp1.Views
             this.uC_ProductWarehouse1.Size = new System.Drawing.Size(1004, 656);
             this.uC_ProductWarehouse1.TabIndex = 43;
             this.uC_ProductWarehouse1.UseSelectable = true;
+            // 
             // uc_ProductionMenu
             // 
             this.uc_ProductionMenu.BackColor = System.Drawing.SystemColors.Control;
@@ -546,6 +542,7 @@ namespace WindowsFormsApp1.Views
             this.uc_ProductionMenu.Name = "uc_ProductionMenu";
             this.uc_ProductionMenu.Size = new System.Drawing.Size(819, 514);
             this.uc_ProductionMenu.TabIndex = 34;
+            // 
             // uc_workstation
             // 
             this.uc_workstation.Location = new System.Drawing.Point(132, 72);
@@ -562,7 +559,6 @@ namespace WindowsFormsApp1.Views
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(951, 586);
             this.Controls.Add(this.uC_ProductWarehouse1);
-            this.Controls.Add(this.uc_warehousemovement);
             this.Controls.Add(this.uC_SalesMain1);
             this.Controls.Add(this.parameters1);
             this.Controls.Add(this.warehouse1);
@@ -602,6 +598,7 @@ namespace WindowsFormsApp1.Views
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
