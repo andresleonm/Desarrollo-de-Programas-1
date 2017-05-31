@@ -23,9 +23,14 @@ namespace WindowsFormsApp1.Controller
             {
                 foreach (Row r in result.data)
                 {
-                    sales_orders.Add(new SalesOrder(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2),
-                                                    DateTime.Parse(r.getColumn(3)), DateTime.Parse(r.getColumn(4)), 
-                                                    double.Parse(r.getColumn(5)), r.getColumn(6)));
+                    SalesOrderLineController solc = new SalesOrderLineController(user, password);
+                    var detail = (List<SalesOrderLine>)solc.getSalesOrderLines(Int32.Parse(r.getColumn(0))).data;
+                    sales_orders.Add(new SalesOrder(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
+                                                        r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
+                                                        r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
+                                                        r.getColumn(9), DateTime.Parse(r.getColumn(10)),
+                                                        DateTime.Parse(r.getColumn(11)), Double.Parse(r.getColumn(12)),
+                                                        r.getColumn(13), detail));
                 }
                 return new Result(sales_orders, true, "");
             }
