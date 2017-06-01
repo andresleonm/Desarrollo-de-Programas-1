@@ -238,6 +238,18 @@
     <Compile Include="Views\UC_Product.Designer.cs">
       <DependentUpon>UC_Product.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_Simulation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_Simulation.Designer.cs">
+      <DependentUpon>UC_Simulation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_SimulationConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_SimulationConfig.Designer.cs">
+      <DependentUpon>UC_SimulationConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Warehouse_M_Module\UC_MaterialTypeWarehouse.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -493,6 +505,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderWorkLine.resx">
       <DependentUpon>UC_ProductionOrderWorkLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Simulation.resx">
+      <DependentUpon>UC_Simulation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_SimulationConfig.resx">
+      <DependentUpon>UC_SimulationConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_M_Module\UC_MaterialTypeWarehouse.resx">
       <DependentUpon>UC_MaterialTypeWarehouse.cs</DependentUpon>
