@@ -32,6 +32,11 @@ namespace WindowsFormsApp1.Views.Sales_Module
             this.cliente = client;
         }
 
+        private void SalesOrderSearchClient_Load(object sender, EventArgs e)
+        {
+            txt_name.Select();
+        }
+
         private void btn_Search_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txt_name.Text))
@@ -40,7 +45,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
             else
             {
-                string text = "%" + txt_name.Text + "%";
+                string text = "%" + (txt_name.Text).ToLower() + "%";
                 CustomerController customer_controller = new CustomerController(user, password);
                 Result result = customer_controller.getCustomer_by_text(text);
                 List<Customer> customers_found = new List<Customer>();
@@ -66,6 +71,14 @@ namespace WindowsFormsApp1.Views.Sales_Module
             Customer cliente= (Customer)grid_clients.CurrentRow.DataBoundItem;
             this.cliente.Add(cliente);
             this.Close();
+        }
+
+        private void txt_name_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_Search.PerformClick();
+            }
         }
     }
 }
