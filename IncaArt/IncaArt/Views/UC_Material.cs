@@ -34,6 +34,8 @@ namespace WindowsFormsApp1.Views
 
             //Cargar los combobox
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
+            //Unidades
+            combo_data.Add(0, "Seleccionar");
             foreach (var item in unit_list)
             {
                 combo_data.Add(item.Id, item.Symbol);
@@ -43,13 +45,6 @@ namespace WindowsFormsApp1.Views
             combobox_unit.DisplayMember = "Value";
             combobox_unit.ValueMember = "Key";
 
-            combo_data = new Dictionary<int, string>();
-            combo_data.Add(0, "Seleccionar");
-            foreach (var item in unit_list)
-            {
-                combo_data.Add(item.Id, item.Symbol);
-
-            }
             combobox_unit_s.DataSource = new BindingSource(combo_data, null);
             combobox_unit_s.DisplayMember = "Value";
             combobox_unit_s.ValueMember = "Key";
@@ -67,38 +62,50 @@ namespace WindowsFormsApp1.Views
             else material_list = (List<Models.Material>)result.data;
         }
 
-        private bool validate_data(String name, String unit, String max_stock, String min_stock)
+        private bool validate_data()
         {
             bool isCorrect = true;
+            int unit_id = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Key;
             int max, min;
+            string name = textbox_name.Text;
+            string stock_min = textbox_stock_min.Text;
+            string stock_max = textbox_stock_max.Text;
             String message = "";
             if (name == "")
             {
                 isCorrect = false;
                 message += "- Debe ingresar el nombre del material.\n";
             }
-            if (unit == "")
+            if (unit_id == 0)
             {
                 isCorrect = false;
                 message += "- Debe seleccionar la unidad del material. \n";
             }
 
-            if (max_stock == "")
-            {
-                isCorrect = false;
-                message += "- Debe ingresar stock máximo. \n";
-            }
-
-            if (min_stock == "")
+            if (stock_min == "")
             {
                 isCorrect = false;
                 message += "- Debe ingresar stock mínimo. \n";
             }
-
-            if (max_stock != "" && min_stock != "")
+            else if (!Int32.TryParse(stock_min, out min))
             {
-                max = int.Parse(max_stock);
-                min = int.Parse(min_stock);
+                isCorrect = false;
+                message += "- stock mínimo debe ser número. \n";
+            }
+
+            if (stock_max == "")
+            {
+                isCorrect = false;
+                message += "- Debe ingresar stock máximo. \n";
+            }
+            else if (!Int32.TryParse(stock_max, out max))
+            {
+                isCorrect = false;
+                message += "- stock máximo debe ser número. \n";
+            }
+
+            if (Int32.TryParse(stock_max, out max) && Int32.TryParse(stock_min, out min))
+            {
                 if (max < min)
                 {
                     isCorrect = false;
@@ -143,6 +150,8 @@ namespace WindowsFormsApp1.Views
         private void Clean()
         {
             ClearTextBoxes(this);
+            combobox_unit.SelectedIndex = 0;
+            combobox_unit_s.SelectedIndex = 0;
         }
 
         private void ClearTextBoxes(Control control)
@@ -175,19 +184,23 @@ namespace WindowsFormsApp1.Views
 
         private Models.Material CreateMaterial(int operacion)
         {
+            //if (!validate_data())
+            //{
+            //    return null;
+            //}
             String name, unit;
             name = textbox_name.Text;
             unit = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Value;
 
-            int min_stock, max_stock,id=0;
+            int min_stock, max_stock, id = 0;
             min_stock = int.Parse(textbox_stock_min.Text);
             max_stock = int.Parse(textbox_stock_max.Text);
             int unit_id = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Key;
             Models.Material mat = new Models.Material();
 
-            if (operacion== 1) //UPDATE
+            if (operacion == 1) //UPDATE
             {
-                id= int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
+                id = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
             }
             mat = new Models.Material(id, unit_id, name, min_stock, max_stock);
 
@@ -199,19 +212,23 @@ namespace WindowsFormsApp1.Views
         {
 
             Models.Material mat = CreateMaterial(0);
-            result = materialController.insertMaterial(mat);
-            if (result.data == null)
+            if (mat != null)
             {
-                MessageBox.Show(result.message, "Error al registrar material", MessageBoxButtons.OK);
-            }
-            else
-            {
-                Load_Data();
+                result = materialController.insertMaterial(mat);
+                if (result.data == null)
+                {
+                    MessageBox.Show(result.message, "Error al registrar material", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    Load_Data();
+                }
+
+                Load_DataGridView();
+                Clean();
+                metroTabControl1.SelectedIndex = 0;
             }
 
-            Load_DataGridView();
-            Clean();
-            metroTabControl1.SelectedIndex = 0;
 
         }
 
@@ -249,20 +266,24 @@ namespace WindowsFormsApp1.Views
         private void btn_edit_Click(object sender, EventArgs e)
         {
             Models.Material mat = CreateMaterial(1);
-            result = materialController.updateMaterial(mat);
-            if (result.data == null)
+            if (mat != null)
             {
-                MessageBox.Show(result.message, "Error al modificar material", MessageBoxButtons.OK);
-            }
-            else
-            {
-                int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
-                material_list[index] = mat;
+                result = materialController.updateMaterial(mat);
+                if (result.data == null)
+                {
+                    MessageBox.Show(result.message, "Error al modificar material", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+                    material_list[index] = mat;
+                }
+
+                Load_DataGridView();
+                Clean();
+                metroTabControl1.SelectedIndex = 0;
             }
 
-            Load_DataGridView();
-            Clean();
-            metroTabControl1.SelectedIndex = 0;
 
         }
 
@@ -276,7 +297,8 @@ namespace WindowsFormsApp1.Views
             if (result.data == null)
             {
                 MessageBox.Show(result.message, "Error al buscar material con filtros", MessageBoxButtons.OK);
-            } else
+            }
+            else
             {
                 material_list = (List<Models.Material>)result.data;
                 Load_DataGridView();
@@ -307,8 +329,61 @@ namespace WindowsFormsApp1.Views
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
+            if (ValidateChildren(ValidationConstraints.Enabled))
+            {
+                MessageBox.Show("Ya2", "Ya", MessageBoxButtons.OK);
+            }
             Clean();
             metroTabControl1.SelectedIndex = 0;
+        }
+
+        private bool Validate_Data()
+        {
+            string nameText = textbox_name.Text;
+
+            if (String.IsNullOrEmpty(nameText))
+            {
+                errorProvider.SetError(textbox_name, "Nombre plz");
+                return false;
+            }
+            errorProvider.SetError(textbox_name, null);
+            return true;
+        }
+
+        private void textbox_name_Validating(object sender, CancelEventArgs e)
+        {
+            string nameText = ((MetroFramework.Controls.MetroTextBox)sender).Text;
+            
+            if (String.IsNullOrEmpty(nameText))
+            {
+                //e.Cancel = true;
+                errorProvider.SetError((MetroFramework.Controls.MetroTextBox)sender, ((MetroFramework.Controls.MetroTextBox)sender).Name);
+
+            }
+            else
+            {
+                //e.Cancel = false;
+                errorProvider.SetError(textbox_name, null);
+            }
+            
+            
+        }
+
+        private void combobox_unit_Validating(object sender, CancelEventArgs e)
+        {
+            int unit_id = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Key;
+
+            if (unit_id==0)
+            {
+                //e.Cancel = true;
+                errorProvider.SetError(combobox_unit, "combo plz");
+
+            }
+            else
+            {
+                //e.Cancel = false;
+                errorProvider.SetError(combobox_unit, null);
+            }
         }
     }
 }
