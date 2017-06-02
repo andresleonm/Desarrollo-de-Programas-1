@@ -329,41 +329,45 @@ namespace WindowsFormsApp1.Views
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled))
+            
+            if (this.ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.ImmediateChildren))
             {
-                MessageBox.Show("Ya2", "Ya", MessageBoxButtons.OK);
-            }
-            Clean();
-            metroTabControl1.SelectedIndex = 0;
-        }
-
-        private bool Validate_Data()
-        {
-            string nameText = textbox_name.Text;
-
-            if (String.IsNullOrEmpty(nameText))
+                MessageBox.Show("All's well", "Valid", MessageBoxButtons.OK);
+            }else
             {
-                errorProvider.SetError(textbox_name, "Nombre plz");
-                return false;
+                MessageBox.Show("All is ruin and woe!", "Invalid", MessageBoxButtons.OK);
             }
-            errorProvider.SetError(textbox_name, null);
-            return true;
+            //Clean();
+            //metroTabControl1.SelectedIndex = 0;
         }
 
         private void textbox_name_Validating(object sender, CancelEventArgs e)
         {
-            string nameText = ((MetroFramework.Controls.MetroTextBox)sender).Text;
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            string text = textbox.Text;
             
-            if (String.IsNullOrEmpty(nameText))
+            if (String.IsNullOrEmpty(text))
             {
-                //e.Cancel = true;
-                errorProvider.SetError((MetroFramework.Controls.MetroTextBox)sender, ((MetroFramework.Controls.MetroTextBox)sender).Name);
+                e.Cancel = true;
+                errorProvider.SetError(textbox, textbox.Name);
 
             }
             else
             {
                 //e.Cancel = false;
-                errorProvider.SetError(textbox_name, null);
+                errorProvider.SetError(textbox, null);
+                if (textbox.Name== "textbox_stock_max" || textbox.Name == "textbox_stock_min")
+                {
+                    int number;
+                    if (!Int32.TryParse(text,out number))
+                    {
+                        e.Cancel = true;
+                        errorProvider.SetError(textbox, "stock debe ser número");
+                    }else
+                    {
+                        errorProvider.SetError(textbox, null);
+                    }
+                }
             }
             
             
@@ -375,8 +379,8 @@ namespace WindowsFormsApp1.Views
 
             if (unit_id==0)
             {
-                //e.Cancel = true;
-                errorProvider.SetError(combobox_unit, "combo plz");
+                e.Cancel = true;
+                errorProvider.SetError(combobox_unit, combobox_unit.Name);
 
             }
             else
