@@ -14,13 +14,15 @@ using WindowsFormsApp1.Controller;
 namespace WindowsFormsApp1.Views
 {           
     public partial class UC_SalesOrder : MetroFramework.Controls.MetroUserControl
-    {
+    {        
+        private string user = "dp1admin";
+        private string password = "dp1admin";
         private List<SalesOrder> sales_orders;
         private List<Customer> customerL;
         private List<Currency> currencies;
         private List<SalesOrderLine> lines;
-        private string user = "dp1admin";
-        private string password = "dp1admin";
+        private SalesOrderController sales_order_controller;
+        private CurrencyController currency_controller;
 
         public UC_SalesOrder()
         {
@@ -32,18 +34,30 @@ namespace WindowsFormsApp1.Views
         {
             mbStyle.Style = MetroFramework.MetroColorStyle.Teal;
 
-            SalesOrderController sales_order_controller = new SalesOrderController(user, password);
+            sales_order_controller = new SalesOrderController(user, password);
+            currency_controller = new CurrencyController(user, password);
+
             Result result = sales_order_controller.getSalesOrders();
-            this.sales_orders = (List<SalesOrder>)result.data;
+            sales_orders = (List<SalesOrder>)result.data;
 
-            fill_gridView(sales_orders);
-
-            CurrencyController currency_controller = new CurrencyController(user, password);
             result = currency_controller.getCurrencies();
-            this.currencies = (List<Currency>)result.data;
-            foreach (Currency curr in currencies)
+            currencies = (List<Currency>)result.data;
+
+            fill_gridView_Order(sales_orders);            
+            
+            foreach (Currency curr in currencies)            
+                this.cbo_Currency.Items.Add(curr.Symbol + "  -  " + curr.Name);
+
+        }
+
+        private void tab_Order_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tab_Order.SelectedIndex == 0) // Orders
             {
-                this.cbo_Currency.Items.Add(curr.Symbol + " - " + curr.Name);
+                ctxt_order_id.Text = "";
+                ctxt_customer.Text = "";
+                clean_gridView_Order();
+                fill_gridView_Order(sales_orders);
             }
         }
 
@@ -52,6 +66,7 @@ namespace WindowsFormsApp1.Views
             customerL= new List<Customer>();
             Sales_Module.SalesOrderSearchClient search_view = new Sales_Module.SalesOrderSearchClient(ref customerL, user, password);
             search_view.ShowDialog();
+
             if (customerL.Count != 0)
             {
                 Customer customer = customerL[0];
@@ -68,18 +83,11 @@ namespace WindowsFormsApp1.Views
             Sales_Module.SalesOrderLine order_line = new Sales_Module.SalesOrderLine(ref lines, user,password);
             order_line.ShowDialog();
 
-            List<Models.SalesOrderLine> current = (List<Models.SalesOrderLine>)this.grid_order_lines.DataSource;
-            if (current == null)
-                current = new List<SalesOrderLine>();
-            current = current.Concat(lines).ToList();
-            this.grid_order_lines.DataSource = current;
-            AdjustColumnOrder();
+            fill_gridView_OrderLine(lines);
 
             double acumulate = 0;
-            for (int i = 0; i < grid_order_lines.RowCount; i++)
-            {
+            for (int i = 0; i < grid_order_lines.RowCount; i++)        
                 acumulate += double.Parse(grid_order_lines.Rows[i].Cells["amount"].Value.ToString());
-            }
             txt_amount.Text = acumulate.ToString();
 
         }
@@ -156,8 +164,37 @@ namespace WindowsFormsApp1.Views
         {
             this.Visible = false;
         }
+        
+        private void btn_Clean_Click(object sender, EventArgs e)
+        {
+            txt_address.Text = "";
+            txt_amount.Text = "";
+            txt_Doi.Text = "";
+            txt_idOrder.Text = "";
+            txt_name.Text = "";
+            txt_observation.Text = "";
+            txt_phone.Text = "";
+            txt_Status.Text = "";
+            cbo_Currency.Text = "";
+            List<SalesOrderLine> empty_list = new List<SalesOrderLine>();
+            grid_order_lines.DataSource = empty_list;
+        }
 
-        private void fill_gridView(List<SalesOrder> list)
+        private void btn_Search_Order_Click(object sender, EventArgs e)
+        {
+            if (ctxt_order_id.Text != "")
+            {
+                List<SalesOrder> sales_orders_filtered = new List<SalesOrder>();
+                Result result = sales_order_controller.getSalesOrder(Int32.Parse(ctxt_order_id.Text));
+                SalesOrder sol = (SalesOrder)result.data;                
+                sales_orders_filtered.Add(sol);
+
+                clean_gridView_Order();
+                fill_gridView_Order(sales_orders_filtered);
+            }
+        }
+
+        private void fill_gridView_Order(List<SalesOrder> list)
         {
             List<SalesOrder> current = (List<SalesOrder>)this.grid_orders.DataSource;
             if (current == null)
@@ -165,6 +202,22 @@ namespace WindowsFormsApp1.Views
             current = current.Concat(list).ToList();
             this.grid_orders.DataSource = current;
             AdjustColumnOrder_byOrder();
+        }
+
+        private void fill_gridView_OrderLine(List<SalesOrderLine> list)
+        {
+            List<SalesOrderLine> current = (List<SalesOrderLine>)this.grid_order_lines.DataSource;
+            if (current == null)
+                current = new List<SalesOrderLine>();
+            current = current.Concat(list).ToList();
+            this.grid_order_lines.DataSource = current;
+            AdjustColumnOrder();
+        }
+
+        private void clean_gridView_Order()
+        {
+            List<SalesOrder> empty_list = new List<SalesOrder>();
+            grid_orders.DataSource = empty_list;
         }
 
         private void AdjustColumnOrder()
@@ -190,60 +243,5 @@ namespace WindowsFormsApp1.Views
             grid_orders.Columns["status"].DisplayIndex = 7;
         }
 
-        private void btn_Clean_Click(object sender, EventArgs e)
-        {
-            txt_address.Text = "";
-            txt_amount.Text = "";
-            txt_Doi.Text = "";
-            txt_idOrder.Text = "";
-            txt_name.Text = "";
-            txt_observation.Text = "";
-            txt_phone.Text = "";
-            txt_Status.Text = "";
-            cbo_Currency.Text = "";
-            List<SalesOrderLine> empty_list = new List<SalesOrderLine>();
-            grid_order_lines.DataSource = empty_list;
-        }
-
-        private void tab_Order_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tab_Order.SelectedIndex == 0) // Orders
-            {
-                List<SalesOrder> empty_list = new List<SalesOrder>();
-                grid_orders.DataSource = empty_list;
-                List<SalesOrder> current = (List<SalesOrder>)this.grid_orders.DataSource;
-                if (current == null)
-                    current = new List<SalesOrder>();
-                current = current.Concat(sales_orders).ToList();
-                this.grid_orders.DataSource = current;
-                AdjustColumnOrder_byOrder();
-            }
-            else if (tab_Order.SelectedIndex == 1) // NewOrder
-            {
-                
-            }
-
-        }
-
-        private void btn_Search_Order_Click(object sender, EventArgs e)
-        {
-            if (mtxt_order_id.Text != "")
-            {
-                List<SalesOrder> sales_orders_filtered = new List<SalesOrder>();
-                grid_orders.DataSource = sales_orders_filtered;
-                SalesOrderController sales_order_controller = new SalesOrderController(user, password);
-
-                Result result = sales_order_controller.getSalesOrder(Int32.Parse(mtxt_order_id.Text));
-                SalesOrder sol = (SalesOrder)result.data;                
-                sales_orders_filtered.Add(sol);
-
-                List <SalesOrder> current = (List<SalesOrder>)this.grid_orders.DataSource;
-                if (current == null)
-                    current = new List<SalesOrder>();
-                current = current.Concat(sales_orders_filtered).ToList();
-                this.grid_orders.DataSource = current;
-                AdjustColumnOrder_byOrder();
-            }
-        }
     }
 }

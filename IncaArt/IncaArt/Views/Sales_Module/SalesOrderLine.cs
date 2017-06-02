@@ -13,19 +13,19 @@ using WindowsFormsApp1.Controller;
 namespace WindowsFormsApp1.Views.Sales_Module
 {
     public partial class SalesOrderLine : Form
-    {        
-        List<Models.SalesOrderLine> lines;
+    {  
         private string user = "dp1admin";
         private string password = "dp1admin";
-        ProductMovementDetailController dc;
-        ProductsController pc;
-        bool flg = true;
+        private List<Models.SalesOrderLine> lines;
+        private ProductMovementDetailController dc;
+        private ProductsController pc;
+        private bool flg = true;
 
         public SalesOrderLine(ref List<Models.SalesOrderLine> lines, string user, string password)
         {
-            InitializeComponent();            
-            this.lines = lines;
+            InitializeComponent();
             dc = new ProductMovementDetailController(user, password);
+            this.lines = lines;
             fillProducts();
         }
 
@@ -34,7 +34,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
             MaximizeBox = false;    
         }
 
-
         private void btn_Save_Click(object sender, EventArgs e)
         {
             List<ProductWarehouseS> warehouses = (List<ProductWarehouseS>)grid_products.DataSource;
@@ -42,9 +41,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             foreach (ProductWarehouseS warehouse in warehouses)
             {
                 if (warehouse.selected)
-                {
                     lines.Add(new Models.SalesOrderLine(warehouse));
-                }
                 i++;
             }
             this.Close();
