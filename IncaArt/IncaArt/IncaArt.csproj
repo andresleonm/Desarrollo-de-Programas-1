@@ -85,6 +85,8 @@
     <Compile Include="Controller\ProductMovementDetailController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
     <Compile Include="Controller\WorkstationsController.cs" />
+    <Compile Include="Models\Assignment.cs" />
+    <Compile Include="Models\ProductLineAssignment.cs" />
     <Compile Include="Models\ProductMovementLine.cs" />
     <Compile Include="Models\ProductMovementType.cs" />
     <Compile Include="Models\MaterialMovementType.cs" />
@@ -119,9 +121,12 @@
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\ProductTypeWarehouse.cs" />
+    <Compile Include="Models\Ratio.cs" />
+    <Compile Include="Models\RatioType.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipeDetail.cs" />
     <Compile Include="Models\Shift.cs" />
+    <Compile Include="Models\TabuSearch.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\Material.cs" />

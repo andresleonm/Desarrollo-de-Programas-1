@@ -22,6 +22,7 @@ namespace WindowsFormsApp1.Models
         DateTime birthday;
         double salary;
         int currency_id;
+        public List<Ratio> ratios { get; set; }
 
         public Worker(int id,int shift_id, string name,string paternal_name,string maternal_name, string doi)
         {
