@@ -29,7 +29,8 @@ namespace WindowsFormsApp1
 
         private void Btn_Login_Click(object sender, EventArgs e)
         {
-            this.UseWaitCursor = true;
+            this.Cursor = Cursors.WaitCursor;
+
             Result userResult = usersController.getUserByNickname(textBoxNickname.Text);
 
             if (userResult.success)
@@ -38,28 +39,29 @@ namespace WindowsFormsApp1
 
                 if (user.isPassword(this.textBoxPassword.Text))
                 {
-                    this.UseWaitCursor = false;
-
                     if (user.State == "PENDING")
                     {
                         ChangePassword change = new ChangePassword(user);
-                        change.ShowDialog();
+                        this.Cursor = Cursors.Arrow;
+                        change.ShowDialog(this);
                     }
 
+                    this.Cursor = Cursors.WaitCursor;
                     Dashboard main_form = new Dashboard();
+                    this.Cursor = Cursors.Arrow;
                     MessageBox.Show("Bienvenido " + user.Name);
                     main_form.Show();
                     Hide();
                 }
                 else
                 {
-                    this.UseWaitCursor = false;
+                    this.Cursor = Cursors.Arrow;
                     MessageBox.Show("La contraseña es incorrecta");
                 }
             }
             else
             {
-                this.UseWaitCursor = false;
+                this.Cursor = Cursors.Arrow;
                 MessageBox.Show(userResult.message);
             }
         }

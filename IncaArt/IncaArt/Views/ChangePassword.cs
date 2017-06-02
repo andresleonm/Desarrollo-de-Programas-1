@@ -29,18 +29,29 @@ namespace WindowsFormsApp1.Views
         {
             string pass = text_box_password.Text;
             string confirm = text_box_confirmation.Text;
-            
 
+            this.Owner.Cursor = Cursors.WaitCursor;
+            
             if (pass == confirm)
             {
-                user.setPassword(pass);
-                user.State = "ACTIVE";
-                user_controller.updateUser(user);
-                should_close = true;
-                Close();
+                if (pass == "")
+                {
+                    this.Owner.Cursor = Cursors.Arrow;
+                    MessageBox.Show("Las contraseñas no puede ser vacia.");
+                }
+
+                else
+                {
+                    user.setPassword(pass);
+                    user.State = "ACTIVE";
+                    user_controller.updateUser(user);
+                    should_close = true;
+                    Close();
+                }
             }
             else
             {
+                this.Owner.Cursor = Cursors.Arrow;
                 MessageBox.Show("Las contraseñas ingresadas no son iguales.");
             }
         }
