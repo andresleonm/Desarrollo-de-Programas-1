@@ -209,7 +209,7 @@ namespace WindowsFormsApp1.Views
                 }
                 else
                 {
-                    User user_to_add = new User(0, profile, name, paternal, maternal, phone, email, gender, address, username, password, "ACTIVE");
+                    User user_to_add = new User(0, profile, name, paternal, maternal, phone, email, gender, address, username, password, "PENDING");
                     transaction_result = user_controller.insertUser(user_to_add);
                     message = "Usuario ingresado correctamente.";
                 }

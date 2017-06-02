@@ -71,6 +71,7 @@
             this.metroButton1.UseCustomBackColor = true;
             this.metroButton1.UseCustomForeColor = true;
             this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // text_box_nickname
             // 
@@ -90,7 +91,7 @@
             this.text_box_nickname.Location = new System.Drawing.Point(113, 139);
             this.text_box_nickname.MaxLength = 32767;
             this.text_box_nickname.Name = "text_box_nickname";
-            this.text_box_nickname.PasswordChar = '*';
+            this.text_box_nickname.PasswordChar = '\0';
             this.text_box_nickname.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.text_box_nickname.SelectedText = "";
             this.text_box_nickname.SelectionLength = 0;

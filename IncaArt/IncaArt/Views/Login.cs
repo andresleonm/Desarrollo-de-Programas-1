@@ -63,5 +63,11 @@ namespace WindowsFormsApp1
                 MessageBox.Show(userResult.message);
             }
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ForgotPassword forgot = new ForgotPassword();
+            forgot.ShowDialog();
+        }
     }
 }
