@@ -120,6 +120,7 @@
             this.Controls.Add(this.Lbl_Password);
             this.Controls.Add(this.textBoxNickname);
             this.Controls.Add(this.Lbl_Username);
+            this.MinimizeBox = false;
             this.Name = "Frm_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inca Art";

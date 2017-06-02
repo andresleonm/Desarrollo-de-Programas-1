@@ -147,6 +147,12 @@
     <Compile Include="Views\BOM.Designer.cs">
       <DependentUpon>BOM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Client.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -447,6 +453,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\BOM.resx">
       <DependentUpon>BOM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
