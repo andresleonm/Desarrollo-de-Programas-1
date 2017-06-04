@@ -12,6 +12,12 @@ namespace WindowsFormsApp1.Views
 {
     public partial class UC_Product : MetroFramework.Controls.MetroUserControl
     {
+        bool name_flag;
+        bool unit_flag;
+        bool max_flag;
+        bool min_flag;
+        bool price_flag;
+        bool currency_flag;
         int cur_row;
         List<Models.Product> product_list;
         List<Models.UnitOfMeasure> unit_list;
@@ -36,6 +42,8 @@ namespace WindowsFormsApp1.Views
 
             //Cargar los combobox
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
+            //Unidad
+            combo_data.Add(0, "Seleccionar");
             foreach (var item in unit_list)
             {
                 combo_data.Add(item.Id, item.Symbol);
@@ -45,18 +53,13 @@ namespace WindowsFormsApp1.Views
             combobox_unit.DisplayMember = "Value";
             combobox_unit.ValueMember = "Key";
 
-            combo_data = new Dictionary<int, string>();
-            combo_data.Add(0, "Seleccionar");
-            foreach (var item in unit_list)
-            {
-                combo_data.Add(item.Id, item.Symbol);
-
-            }
             combobox_unit_s.DataSource = new BindingSource(combo_data, null);
             combobox_unit_s.DisplayMember = "Value";
             combobox_unit_s.ValueMember = "Key";
 
+            //Moneda
             combo_data = new Dictionary<int, string>();
+            combo_data.Add(0, "-");
             foreach (var item in currency_list)
             {
                 combo_data.Add(item.Id, item.Symbol);
@@ -114,6 +117,9 @@ namespace WindowsFormsApp1.Views
         private void Clean()
         {
             ClearTextBoxes(this);
+            combobox_unit.SelectedIndex = 0;
+            combobox_unit_s.SelectedIndex = 0;
+            combobox_currency.SelectedIndex = 0;
         }
 
         private void ClearTextBoxes(Control control)
@@ -144,31 +150,56 @@ namespace WindowsFormsApp1.Views
             }
         }
 
+        private Models.Product CreateProduct(int operation)
+        {
+            if (!Validate_Data())
+            {
+                MessageBox.Show("Hay campos inválidos", "Error", MessageBoxButtons.OK);
+                return null;
+            }
+            string name = textbox_name.Text;
+            int unit_id = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Key;
+            int stock_min = int.Parse(textbox_stock_min.Text);
+            int stock_max = int.Parse(textbox_stock_max.Text);
+            int currency_id = ((KeyValuePair<int, string>)combobox_currency.SelectedItem).Key;
+            double price = double.Parse(textbox_price.Text);
+
+            Models.Product product = new Models.Product();
+            product.Name = name;
+            product.Unit_id = unit_id;
+            product.Stock_min = stock_min;
+            product.Stock_max = stock_max;
+            product.Currency_id = currency_id;
+            product.Unit_price = price;
+            int id = 0;
+            if (operation == 1)
+            {
+                id = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
+            }
+            return product;
+        }
+
         private void button_New_Click(object sender, EventArgs e)
         {
-            String name = textbox_name.Text;
-            int unit_id = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Key;
-            int stock_min, stock_max,currency_id;
-            stock_min = int.Parse(textbox_stock_min.Text);
-            stock_max = int.Parse(textbox_stock_max.Text);
-            currency_id = ((KeyValuePair<int, string>)combobox_currency.SelectedItem).Key;
-            double price = double.Parse(textbox_price.Text);
-            Models.Product product = new Models.Product(0, unit_id, name, stock_min, stock_max, price);
-            product.Currency_id = currency_id;
-            result = productController.insertProduct(product);
-            if (result.data == null)
-            {
-                MessageBox.Show(result.message, "Error al registrar producto", MessageBoxButtons.OK);
-            }
-            else
-            {
-                Load_Data();
-            }
 
-            Load_DataGridView();
-            Clean();
-            metroTabControl1.SelectedIndex = 0;
-
+            Models.Product product = CreateProduct(0);
+            if (product != null)
+            {
+                result = productController.insertProduct(product);
+                if (result.data == null)
+                {
+                    MessageBox.Show(result.message, "Error al registrar producto", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Producto registrado correctamente", "Registrar producto", MessageBoxButtons.OK);
+                    Load_Data();
+                }
+                Set_Flag_All(false);
+                Load_DataGridView();
+                Clean();
+                metroTabControl1.SelectedIndex = 0;
+            }
         }
 
         private void button_Cancel_Click(object sender, EventArgs e)
@@ -191,44 +222,58 @@ namespace WindowsFormsApp1.Views
             cur_row = e.RowIndex;
             if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
             {
-                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                for (int i = 0; i < unit_list.Count(); i++)
+                int id = Int32.Parse(metroGrid1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                result = productController.getProduct(id);
+                Models.Product product;
+                if (result.data != null)
                 {
-                    if (unit_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
+                    product = (Models.Product)result.data;
+                    textbox_name.Text = product.Name;
+                    for (int i = 0; i < unit_list.Count(); i++)
                     {
-                        combobox_unit.SelectedIndex = i;
+                        if (unit_list[i].Id == product.Unit_id)
+                        {
+                            combobox_unit.SelectedIndex = i + 1;
+                        }
                     }
+                    for (int i = 0; i < currency_list.Count(); i++)
+                    {
+                        if (currency_list[i].Id == product.Currency_id)
+                        {
+                            combobox_currency.SelectedIndex = i + 1;
+                        }
+                    }
+                    Set_Flag_All(true);
+                    textbox_stock_max.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    textbox_stock_min.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    textbox_price.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    metroTabControl1.SelectedIndex = 1;
                 }
-                textbox_stock_max.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
-                textbox_stock_min.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
-                textbox_price.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                metroTabControl1.SelectedIndex = 1;
+                
             }
         }
 
         private void button_Edit_Click(object sender, EventArgs e)
         {
-            String name = textbox_name.Text;
-            int id = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
-            int unit_id = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Key;
-            int stock_min, stock_max;
-            stock_min = int.Parse(textbox_stock_min.Text);
-            stock_max = int.Parse(textbox_stock_max.Text);
-            double price = double.Parse(textbox_price.Text);
-            Models.Product product = new Models.Product(id, unit_id, name, stock_min, stock_max, price);
-            result = productController.updateProduct(product);
-            if (result.data == null)
+            Models.Product product = CreateProduct(1);
+            if (product != null)
             {
-                MessageBox.Show(result.message, "Error al modificar producto", MessageBoxButtons.OK);
-            }
-            else
-            {
-                product_list[int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString())] = product;
+                result = productController.updateProduct(product);
+                if (result.data == null)
+                {
+                    MessageBox.Show(result.message, "Error al modificar producto", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Producto editado correctamente", "Editar producto", MessageBoxButtons.OK);
+                    Load_Data();
+                }
+                Set_Flag_All(false);
+                Load_DataGridView();
+                Clean();
+                metroTabControl1.SelectedIndex = 0;
             }
 
-            Load_DataGridView();
-            Clean();
-            metroTabControl1.SelectedIndex = 0;
         }
 
         private void button_Delete_Click(object sender, EventArgs e)
@@ -241,7 +286,8 @@ namespace WindowsFormsApp1.Views
             }
             else
             {
-                product_list.Remove(product_list[index]);
+                MessageBox.Show("Producto eliminado correctamente", "Eliminar producto", MessageBoxButtons.OK);
+                Load_Data();
             }
             Load_DataGridView();
         }
@@ -267,5 +313,146 @@ namespace WindowsFormsApp1.Views
                 Load_DataGridView();
             }
         }
+
+        private void textbox_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            string text = textbox.Text;
+
+            if (String.IsNullOrEmpty(text))
+            {
+                //e.Cancel = true;
+                Set_Flag(textbox.Name, false);
+                errorProvider.SetError(textbox, "Campo requerido");
+
+            }
+            else
+            {
+                //e.Cancel = false;
+                Set_Flag(textbox.Name, true);
+                errorProvider.SetError(textbox, null);
+            }
+        }
+
+        private void textbox_number_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            string text = textbox.Text;
+
+            if (String.IsNullOrEmpty(text))
+            {
+                Set_Flag(textbox.Name, false);
+                errorProvider.SetError(textbox, "Campo requerido");
+
+            }
+            else
+            {
+                errorProvider.SetError(textbox, null);
+                if (textbox.Name == "textbox_price")
+                {
+                    double number;
+                    if (!Double.TryParse(text, out number))
+                    {
+                        Set_Flag(textbox.Name, false);
+                        errorProvider.SetError(textbox, "Precio debe ser número");
+                    }else
+                    {
+                        Set_Flag(textbox.Name, true);
+                    }
+                }
+                else
+                {
+                    int number;
+                    if (!Int32.TryParse(text, out number))
+                    {
+                        Set_Flag(textbox.Name, false);
+                        errorProvider.SetError(textbox, "Stock debe ser número");
+                    }
+                    else
+                    {
+                        errorProvider.SetError(textbox, null);
+                    }
+                    int max, min;
+                    if (Int32.TryParse(textbox_stock_max.Text, out max) && Int32.TryParse(textbox_stock_min.Text, out min))
+                    {
+                        if (max < min)
+                        {
+                            Set_Flag(textbox.Name, false);
+                            errorProvider.SetError(textbox, "El Stock Máximo debe ser Mayor que el stock mínimo");
+                        }
+                        else
+                        {
+                            Set_Flag(textbox.Name, true);
+                            errorProvider.SetError(textbox, null);
+                        }
+
+                    }
+                }
+
+
+            }
+        }
+
+        private void combobox_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroComboBox combobox = (MetroFramework.Controls.MetroComboBox)sender;
+            int id = ((KeyValuePair<int, string>)combobox.SelectedItem).Key;
+            if (id == 0)
+            {
+                Set_Flag(combobox.Name, false);
+                errorProvider.SetError(combobox, "Se debe seleccionar");
+
+            }
+            else
+            {
+                Set_Flag(combobox.Name, true);
+                errorProvider.SetError(combobox, null);
+            }
+        }
+
+        private bool Validate_Data()
+        {
+            if (name_flag && unit_flag && max_flag && min_flag && price_flag && currency_flag)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void Set_Flag_All(bool value)
+        {
+            name_flag = value;
+            min_flag = value;
+            max_flag = value;
+            unit_flag = value;
+            price_flag = value;
+            currency_flag = value;
+        }
+
+        private void Set_Flag(string name, bool value)
+        {
+            switch (name)
+            {
+                case "textbox_name":
+                    name_flag = value;
+                    break;
+                case "textbox_stock_min":
+                    min_flag = value;
+                    break;
+                case "textbox_stock_max":
+                    max_flag = value;
+                    break;
+                case "combobox_unit":
+                    unit_flag = value;
+                    break;
+                case "textbox_price":
+                    price_flag = value;
+                    break;
+                case "combobox_currency":
+                    currency_flag = value;
+                    break;
+            }
+        }
+
     }
 }

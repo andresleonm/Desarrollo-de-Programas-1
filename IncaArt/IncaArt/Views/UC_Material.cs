@@ -131,10 +131,6 @@ namespace WindowsFormsApp1.Views
 
         private Models.Material CreateMaterial(int operacion)
         {
-            //if (!validate_data())
-            //{
-            //    return null;
-            //}
             if (!Validate_Data())
             {
                 MessageBox.Show("Hay campos inválidos", "Error", MessageBoxButtons.OK);
@@ -173,6 +169,7 @@ namespace WindowsFormsApp1.Views
                 }
                 else
                 {
+                    MessageBox.Show("material agregado correctamente", "Registrar material", MessageBoxButtons.OK);
                     Load_Data();
                 }
                 Set_Flag_All(false);
@@ -180,8 +177,6 @@ namespace WindowsFormsApp1.Views
                 Clean();
                 metroTabControl1.SelectedIndex = 0;
             }
-
-
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -204,13 +199,14 @@ namespace WindowsFormsApp1.Views
                 {
                     if (unit_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
                     {
-                        combobox_unit.SelectedIndex = i;
+                        combobox_unit.SelectedIndex = i+1;
                         break;
                     }
                 }
                 textbox_stock_min.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
                 textbox_stock_max.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
                 metroTabControl1.SelectedIndex = 1;
+                Set_Flag_All(true);
             }
         }
 
@@ -227,8 +223,8 @@ namespace WindowsFormsApp1.Views
                 }
                 else
                 {
-                    int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
-                    material_list[index] = mat;
+                    MessageBox.Show("material editado correctamente", "Editar material", MessageBoxButtons.OK);
+                    Load_Data();
                 }
                 Set_Flag_All(false);
                 Load_DataGridView();
@@ -268,7 +264,8 @@ namespace WindowsFormsApp1.Views
             }
             else
             {
-                material_list.Remove(material_list[index]);
+                MessageBox.Show("material eliminado correctamente", "Eliminar material", MessageBoxButtons.OK);
+                Load_Data();
             }
             btn_delete.Enabled = false;
             Load_DataGridView();
@@ -281,15 +278,6 @@ namespace WindowsFormsApp1.Views
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            
-            //if (Validate_Data())
-            //{
-            //    MessageBox.Show(result.message, "OK", MessageBoxButtons.OK);
-            //}
-            //else
-            //{
-            //    MessageBox.Show(result.message, "Nope", MessageBoxButtons.OK);
-            //}
             Clean();
             metroTabControl1.SelectedIndex = 0;
         }
@@ -311,7 +299,7 @@ namespace WindowsFormsApp1.Views
             unit_flag = value;
         }
 
-        private void Set_Flag(string name,bool value)
+        private void Set_Flag(string name, bool value)
         {
             switch (name)
             {
@@ -334,7 +322,7 @@ namespace WindowsFormsApp1.Views
         {
             MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
             string text = textbox.Text;
-            
+
             if (String.IsNullOrEmpty(text))
             {
                 //e.Cancel = true;
@@ -364,33 +352,32 @@ namespace WindowsFormsApp1.Views
             else
             {
                 errorProvider.SetError(textbox, null);
-                if (textbox.Name == "textbox_stock_max" || textbox.Name == "textbox_stock_min")
+                int number;
+                if (!Int32.TryParse(text, out number))
                 {
-                    int number;
-                    if (!Int32.TryParse(text, out number))
+                    Set_Flag(textbox.Name, false);
+                    errorProvider.SetError(textbox, "Stock debe ser número");
+                }
+                else
+                {
+                    errorProvider.SetError(textbox, null);
+                }
+                int max, min;
+                if (Int32.TryParse(textbox_stock_max.Text, out max) && Int32.TryParse(textbox_stock_min.Text, out min))
+                {
+                    if (max < min)
                     {
                         Set_Flag(textbox.Name, false);
-                        errorProvider.SetError(textbox, "Stock debe ser número");
+                        errorProvider.SetError(textbox, "El Stock Máximo debe ser Mayor que el stock mínimo");
                     }
                     else
                     {
+                        Set_Flag(textbox.Name, true);
                         errorProvider.SetError(textbox, null);
                     }
-                    int max, min;
-                    if (Int32.TryParse(textbox_stock_max.Text, out max) && Int32.TryParse(textbox_stock_min.Text, out min))
-                    {
-                        if (max < min)
-                        {
-                            Set_Flag(textbox.Name, false);
-                            errorProvider.SetError(textbox, "El Stock Máximo debe ser Mayor que el stock mínimo");
-                        }else
-                        {
-                            Set_Flag(textbox.Name, true);
-                            errorProvider.SetError(textbox, null);
-                        }
-                        
-                    }
+
                 }
+
             }
         }
 
@@ -399,7 +386,7 @@ namespace WindowsFormsApp1.Views
             MetroFramework.Controls.MetroComboBox combobox = (MetroFramework.Controls.MetroComboBox)sender;
             int unit_id = ((KeyValuePair<int, string>)combobox.SelectedItem).Key;
 
-            if (unit_id==0)
+            if (unit_id == 0)
             {
                 Set_Flag(combobox.Name, false);
                 errorProvider.SetError(combobox_unit, combobox_unit.Name);
