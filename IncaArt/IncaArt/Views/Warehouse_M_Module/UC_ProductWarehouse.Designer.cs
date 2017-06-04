@@ -63,10 +63,20 @@
             this.textbox_name = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.delete = new MetroFramework.Controls.MetroButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_Search_Order = new System.Windows.Forms.Button();
+            this.btn_SearchClient = new MetroFramework.Controls.MetroTile();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.metroComboBox2 = new MetroFramework.Controls.MetroComboBox();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.metroTabPage3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -83,6 +93,7 @@
             // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.groupBox2);
             this.metroTabPage2.Controls.Add(this.metroButton5);
             this.metroTabPage2.Controls.Add(this.search);
             this.metroTabPage2.Controls.Add(this.metroGrid1);
@@ -487,6 +498,117 @@
             this.delete.UseSelectable = true;
             this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.metroComboBox2);
+            this.groupBox2.Controls.Add(this.metroComboBox1);
+            this.groupBox2.Controls.Add(this.btn_Search_Order);
+            this.groupBox2.Controls.Add(this.btn_SearchClient);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.Black;
+            this.groupBox2.Location = new System.Drawing.Point(23, 261);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(807, 161);
+            this.groupBox2.TabIndex = 41;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Filtros";
+            // 
+            // btn_Search_Order
+            // 
+            this.btn_Search_Order.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Search_Order.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Search_Order.ForeColor = System.Drawing.Color.White;
+            this.btn_Search_Order.Location = new System.Drawing.Point(431, 119);
+            this.btn_Search_Order.Name = "btn_Search_Order";
+            this.btn_Search_Order.Size = new System.Drawing.Size(85, 29);
+            this.btn_Search_Order.TabIndex = 50;
+            this.btn_Search_Order.Text = "Buscar";
+            this.btn_Search_Order.UseVisualStyleBackColor = false;
+            // 
+            // btn_SearchClient
+            // 
+            this.btn_SearchClient.ActiveControl = null;
+            this.btn_SearchClient.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_SearchClient.Location = new System.Drawing.Point(327, 73);
+            this.btn_SearchClient.Name = "btn_SearchClient";
+            this.btn_SearchClient.Size = new System.Drawing.Size(41, 29);
+            this.btn_SearchClient.TabIndex = 43;
+            this.btn_SearchClient.TileImage = global::WindowsFormsApp1.Properties.Resources.Search_16;
+            this.btn_SearchClient.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_SearchClient.UseCustomBackColor = true;
+            this.btn_SearchClient.UseCustomForeColor = true;
+            this.btn_SearchClient.UseSelectable = true;
+            this.btn_SearchClient.UseStyleColors = true;
+            this.btn_SearchClient.UseTileImage = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label10.Location = new System.Drawing.Point(428, 76);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(116, 13);
+            this.label10.TabIndex = 39;
+            this.label10.Text = "Fecha de Entrega :";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label13.Location = new System.Drawing.Point(6, 35);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(67, 13);
+            this.label13.TabIndex = 34;
+            this.label13.Text = "N° Orden :";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label14.Location = new System.Drawing.Point(6, 80);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(54, 13);
+            this.label14.TabIndex = 32;
+            this.label14.Text = "Cliente :";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label15.Location = new System.Drawing.Point(428, 34);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(66, 13);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Producto :";
+            // 
+            // metroComboBox1
+            // 
+            this.metroComboBox1.FormattingEnabled = true;
+            this.metroComboBox1.ItemHeight = 23;
+            this.metroComboBox1.Location = new System.Drawing.Point(81, 24);
+            this.metroComboBox1.Name = "metroComboBox1";
+            this.metroComboBox1.Size = new System.Drawing.Size(227, 29);
+            this.metroComboBox1.TabIndex = 51;
+            this.metroComboBox1.UseSelectable = true;
+            // 
+            // metroComboBox2
+            // 
+            this.metroComboBox2.FormattingEnabled = true;
+            this.metroComboBox2.ItemHeight = 23;
+            this.metroComboBox2.Location = new System.Drawing.Point(549, 24);
+            this.metroComboBox2.Name = "metroComboBox2";
+            this.metroComboBox2.Size = new System.Drawing.Size(218, 29);
+            this.metroComboBox2.TabIndex = 52;
+            this.metroComboBox2.UseSelectable = true;
+            // 
             // UC_ProductWarehouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -502,6 +624,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
             this.metroTabPage3.ResumeLayout(false);
             this.metroTabPage3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -540,5 +664,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private MetroFramework.Controls.MetroButton Cancel;
         private MetroFramework.Controls.MetroButton delete;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private MetroFramework.Controls.MetroComboBox metroComboBox2;
+        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private System.Windows.Forms.Button btn_Search_Order;
+        private MetroFramework.Controls.MetroTile btn_SearchClient;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
     }
 }
