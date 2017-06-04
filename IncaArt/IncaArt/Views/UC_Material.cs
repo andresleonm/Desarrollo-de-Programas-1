@@ -12,6 +12,10 @@ namespace WindowsFormsApp1.Views
 {
     public partial class UC_Material : MetroFramework.Controls.MetroUserControl
     {
+        bool name_flag;
+        bool unit_flag;
+        bool max_flag;
+        bool min_flag;
         int cur_row;
         List<Models.Material> material_list;
         List<Models.UnitOfMeasure> unit_list;
@@ -25,6 +29,7 @@ namespace WindowsFormsApp1.Views
 
         private void UC_Material_Load(object sender, EventArgs e)
         {
+            Set_Flag_All(false);
             string user = "dp1admin";
             string password = "dp1admin";
             materialController = new Controller.MaterialsController(user, password);
@@ -60,64 +65,6 @@ namespace WindowsFormsApp1.Views
             result = materialController.getMaterials();
             if (result.data == null) MessageBox.Show(result.message, "Error al listar material", MessageBoxButtons.OK);
             else material_list = (List<Models.Material>)result.data;
-        }
-
-        private bool validate_data()
-        {
-            bool isCorrect = true;
-            int unit_id = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Key;
-            int max, min;
-            string name = textbox_name.Text;
-            string stock_min = textbox_stock_min.Text;
-            string stock_max = textbox_stock_max.Text;
-            String message = "";
-            if (name == "")
-            {
-                isCorrect = false;
-                message += "- Debe ingresar el nombre del material.\n";
-            }
-            if (unit_id == 0)
-            {
-                isCorrect = false;
-                message += "- Debe seleccionar la unidad del material. \n";
-            }
-
-            if (stock_min == "")
-            {
-                isCorrect = false;
-                message += "- Debe ingresar stock mínimo. \n";
-            }
-            else if (!Int32.TryParse(stock_min, out min))
-            {
-                isCorrect = false;
-                message += "- stock mínimo debe ser número. \n";
-            }
-
-            if (stock_max == "")
-            {
-                isCorrect = false;
-                message += "- Debe ingresar stock máximo. \n";
-            }
-            else if (!Int32.TryParse(stock_max, out max))
-            {
-                isCorrect = false;
-                message += "- stock máximo debe ser número. \n";
-            }
-
-            if (Int32.TryParse(stock_max, out max) && Int32.TryParse(stock_min, out min))
-            {
-                if (max < min)
-                {
-                    isCorrect = false;
-                    message += "- El stock mínimo debe ser menor al stock máximo\n";
-                }
-            }
-
-            if (!isCorrect)
-            {
-                MessageBox.Show(message, "Error al registrar material", MessageBoxButtons.OK);
-            }
-            return isCorrect;
         }
 
         private void Load_DataGridView()
@@ -188,6 +135,11 @@ namespace WindowsFormsApp1.Views
             //{
             //    return null;
             //}
+            if (!Validate_Data())
+            {
+                MessageBox.Show("Hay campos inválidos", "Error", MessageBoxButtons.OK);
+                return null;
+            }
             String name, unit;
             name = textbox_name.Text;
             unit = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Value;
@@ -223,7 +175,7 @@ namespace WindowsFormsApp1.Views
                 {
                     Load_Data();
                 }
-
+                Set_Flag_All(false);
                 Load_DataGridView();
                 Clean();
                 metroTabControl1.SelectedIndex = 0;
@@ -278,7 +230,7 @@ namespace WindowsFormsApp1.Views
                     int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
                     material_list[index] = mat;
                 }
-
+                Set_Flag_All(false);
                 Load_DataGridView();
                 Clean();
                 metroTabControl1.SelectedIndex = 0;
@@ -330,62 +282,132 @@ namespace WindowsFormsApp1.Views
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             
-            if (this.ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.ImmediateChildren))
-            {
-                MessageBox.Show("All's well", "Valid", MessageBoxButtons.OK);
-            }else
-            {
-                MessageBox.Show("All is ruin and woe!", "Invalid", MessageBoxButtons.OK);
-            }
-            //Clean();
-            //metroTabControl1.SelectedIndex = 0;
+            //if (Validate_Data())
+            //{
+            //    MessageBox.Show(result.message, "OK", MessageBoxButtons.OK);
+            //}
+            //else
+            //{
+            //    MessageBox.Show(result.message, "Nope", MessageBoxButtons.OK);
+            //}
+            Clean();
+            metroTabControl1.SelectedIndex = 0;
         }
 
-        private void textbox_name_Validating(object sender, CancelEventArgs e)
+        private bool Validate_Data()
+        {
+            if (name_flag && unit_flag && max_flag && min_flag)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void Set_Flag_All(bool value)
+        {
+            name_flag = value;
+            min_flag = value;
+            max_flag = value;
+            unit_flag = value;
+        }
+
+        private void Set_Flag(string name,bool value)
+        {
+            switch (name)
+            {
+                case "textbox_name":
+                    name_flag = value;
+                    break;
+                case "textbox_stock_min":
+                    min_flag = value;
+                    break;
+                case "textbox_stock_max":
+                    max_flag = value;
+                    break;
+                case "combobox_unit":
+                    unit_flag = value;
+                    break;
+            }
+        }
+
+        private void textbox_Validating(object sender, CancelEventArgs e)
         {
             MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
             string text = textbox.Text;
             
             if (String.IsNullOrEmpty(text))
             {
-                e.Cancel = true;
-                errorProvider.SetError(textbox, textbox.Name);
+                //e.Cancel = true;
+                Set_Flag(textbox.Name, false);
+                errorProvider.SetError(textbox, "Campo requerido");
 
             }
             else
             {
                 //e.Cancel = false;
+                Set_Flag(textbox.Name, true);
                 errorProvider.SetError(textbox, null);
-                if (textbox.Name== "textbox_stock_max" || textbox.Name == "textbox_stock_min")
+            }
+        }
+
+        private void textbox_number_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            string text = textbox.Text;
+
+            if (String.IsNullOrEmpty(text))
+            {
+                Set_Flag(textbox.Name, false);
+                errorProvider.SetError(textbox, "Campo requerido");
+
+            }
+            else
+            {
+                errorProvider.SetError(textbox, null);
+                if (textbox.Name == "textbox_stock_max" || textbox.Name == "textbox_stock_min")
                 {
                     int number;
-                    if (!Int32.TryParse(text,out number))
+                    if (!Int32.TryParse(text, out number))
                     {
-                        e.Cancel = true;
-                        errorProvider.SetError(textbox, "stock debe ser número");
-                    }else
+                        Set_Flag(textbox.Name, false);
+                        errorProvider.SetError(textbox, "Stock debe ser número");
+                    }
+                    else
                     {
                         errorProvider.SetError(textbox, null);
                     }
+                    int max, min;
+                    if (Int32.TryParse(textbox_stock_max.Text, out max) && Int32.TryParse(textbox_stock_min.Text, out min))
+                    {
+                        if (max < min)
+                        {
+                            Set_Flag(textbox.Name, false);
+                            errorProvider.SetError(textbox, "El Stock Máximo debe ser Mayor que el stock mínimo");
+                        }else
+                        {
+                            Set_Flag(textbox.Name, true);
+                            errorProvider.SetError(textbox, null);
+                        }
+                        
+                    }
                 }
             }
-            
-            
         }
 
-        private void combobox_unit_Validating(object sender, CancelEventArgs e)
+        private void combobox_Validating(object sender, CancelEventArgs e)
         {
-            int unit_id = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Key;
+            MetroFramework.Controls.MetroComboBox combobox = (MetroFramework.Controls.MetroComboBox)sender;
+            int unit_id = ((KeyValuePair<int, string>)combobox.SelectedItem).Key;
 
             if (unit_id==0)
             {
-                e.Cancel = true;
+                Set_Flag(combobox.Name, false);
                 errorProvider.SetError(combobox_unit, combobox_unit.Name);
 
             }
             else
             {
-                //e.Cancel = false;
+                Set_Flag(combobox.Name, true);
                 errorProvider.SetError(combobox_unit, null);
             }
         }
