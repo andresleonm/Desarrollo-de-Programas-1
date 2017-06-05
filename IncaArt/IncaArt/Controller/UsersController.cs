@@ -87,6 +87,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("gender", user.Gender.ToString()));
             parameters.Add(new Parameter("profile", user.Profile.Id.ToString()));
             parameters.Add(new Parameter("nickname", user.Nickname));
+            parameters.Add(new Parameter("state", user.State));
 
             GenericResult result = execute_transaction("insert_user", parameters);
 

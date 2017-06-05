@@ -123,5 +123,24 @@ namespace WindowsFormsApp1.Controller
 
             return new Result(null, result.success, result.message);
         }
+
+        public Result updateProfile(Profile profile)
+        {
+            string funcs = String.Join(",", profile.Functionalities.Select(f => f.Id).ToList());
+
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", profile.Id.ToString()));
+            parameters.Add(new Parameter("description", profile.Description));
+            parameters.Add(new Parameter("functionalities_id", funcs));
+
+            GenericResult result = execute_transaction("update_profile", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+
+            return new Result(null, result.success, result.message);
+        }
     }
 }
