@@ -53,5 +53,25 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result updateSalesOrderLine(SalesOrderLine line)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("order_id", line.Order_id.ToString()));
+            parameters.Add(new Parameter("order_detail_id", line.Id.ToString()));
+            parameters.Add(new Parameter("unit_of_measure_id", line.Unit_measure_id.ToString()));
+            parameters.Add(new Parameter("quantity", line.Quantity.ToString()));
+            parameters.Add(new Parameter("price", line.Unit_price.ToString()));
+            parameters.Add(new Parameter("state", line.Status));
+            parameters.Add(new Parameter("deliver_quantity", line.Delivery_quantity.ToString()));
+            parameters.Add(new Parameter("product_id", line.Product_id.ToString()));
+            parameters.Add(new Parameter("warehouse_id", line.Prod_warehouse_id.ToString()));
+            GenericResult result = execute_transaction("update_sales_order_line", parameters);
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
     }
 }
