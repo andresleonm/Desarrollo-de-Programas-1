@@ -87,6 +87,8 @@
     <Compile Include="Controller\ProductMovementDetailController.cs" />
     <Compile Include="Controller\SalesDocumentController.cs" />
     <Compile Include="Controller\SalesDocumentLineController.cs" />
+    <Compile Include="Controller\RefundController.cs" />
+    <Compile Include="Controller\RefundDetailController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
     <Compile Include="Controller\WorkstationsController.cs" />
     <Compile Include="Models\MaterialMovement.cs" />
@@ -216,6 +218,12 @@
       <DependentUpon>UC_ProductionOrderProductLine.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Sales_Module\ProductWarehouseS.cs" />
+    <Compile Include="Views\Sales_Module\Refunds\Refund.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Sales_Module\Refunds\Refund.Designer.cs">
+      <DependentUpon>Refund.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Sales_Module\SalesOrderSearchClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -502,6 +510,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionMenu.resx">
       <DependentUpon>UC_ProductionMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales_Module\Refunds\Refund.resx">
+      <DependentUpon>Refund.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\SalesOrderSearchClient.resx">
       <DependentUpon>SalesOrderSearchClient.cs</DependentUpon>
