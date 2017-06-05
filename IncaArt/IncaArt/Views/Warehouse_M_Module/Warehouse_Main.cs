@@ -18,7 +18,7 @@ namespace WindowsFormsApp1.Views
         public Warehouse()
         {
             InitializeComponent();
-            this.Style = mStyle.Style;
+          //  this.Style = mStyle.Style;
             uC_ProductWarehouse1.Visible = true;
             uC_MaterialWarehouse1.Visible = false;
 
@@ -52,7 +52,7 @@ namespace WindowsFormsApp1.Views
 
         private void Warehouse_Load(object sender, EventArgs e)
         {
-            mStyle.Style = MetroFramework.MetroColorStyle.Silver;
+            //mStyle.Style = MetroFramework.MetroColorStyle.Silver;
         }
 
         private void newA_Click(object sender, EventArgs e)

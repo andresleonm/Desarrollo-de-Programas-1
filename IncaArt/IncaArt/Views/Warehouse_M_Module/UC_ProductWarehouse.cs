@@ -264,15 +264,6 @@ namespace WindowsFormsApp1.Views
             metroTabControl1.SelectedIndex = 0;
         }
 
-        private void metroGrid1_CellClick22(object sender, DataGridViewCellEventArgs e)
-        {
-
-            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
-            {
-                cur_row = e.RowIndex;
-            }
-        }
-
         //Limpiar
         private void search_Click(object sender, EventArgs e)
         {
@@ -371,7 +362,7 @@ namespace WindowsFormsApp1.Views
 
         private void delete_Click(object sender, EventArgs e)
         {
-            int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+            int index = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
             result = productWarehouseController.deleteProductWarehouse(warehouse_list[index]);
             if (result.data == null)
             {
