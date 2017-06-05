@@ -264,7 +264,7 @@ namespace WindowsFormsApp1.Views
             metroTabControl1.SelectedIndex = 0;
         }
 
-        private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void metroGrid1_CellClick22(object sender, DataGridViewCellEventArgs e)
         {
 
             if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
@@ -273,58 +273,7 @@ namespace WindowsFormsApp1.Views
             }
         }
 
-        private void metroGrid1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //Id, Nombre,Tipo,Producto,Unidad,capacidad Actual,capacidad Maxima
-            cur_row = e.RowIndex;
-            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
-            {
-                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                for (int i = 0; i < products_list.Count(); i++)
-                {
-                    if (products_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
-                    {
-                        combobox_products.SelectedIndex = i+1;
-                        break;
-                    }
-                }
-
-                for (int i = 0; i < types_list.Count(); i++) 
-                {
-                    if (types_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString())
-                    {
-                        combobox_type.SelectedIndex = i+1;
-                        break;
-                    }
-                }
-
-                textbox_max_capacity.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
-            
-                metroTabControl1.SelectedIndex = 1;
-            }
-        }
-
         //Limpiar
-        private void metroButton5_Click(object sender, EventArgs e)
-        {
-            Clean();
-        }
-
-        private void delete_Click(object sender, EventArgs e)
-        {
-            int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
-            result = productWarehouseController.deleteProductWarehouse(warehouse_list[index]);
-            if (result.data == null)
-            {
-                MessageBox.Show(result.message, "Error al eliminar almacén", MessageBoxButtons.OK);
-            }
-            else
-            {
-                warehouse_list.Remove(warehouse_list[index]);
-            }
-            Load_DataGridView();
-        }
-
         private void search_Click(object sender, EventArgs e)
         {
             metroGrid1.Rows.Clear();
@@ -353,11 +302,12 @@ namespace WindowsFormsApp1.Views
                     Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
                     result = unitController.getUnit(product.Unit_id);
                     unit = (Models.UnitOfMeasure)result.data;
-                    
+
                     String nameSelect = ((KeyValuePair<int, string>)combobox_product_s.SelectedItem).Value;
                     String typeSelect = ((KeyValuePair<int, string>)combobox_type_s.SelectedItem).Value;
-                    if (product.Name==nameSelect && type.Name ==typeSelect){
-                        
+                    if (product.Name == nameSelect && type.Name == typeSelect)
+                    {
+
                         //Grilla
                         String[] row = new String[7];
                         row[0] = warehouse_list[i].Id.ToString();
@@ -373,6 +323,65 @@ namespace WindowsFormsApp1.Views
                 }
 
             }
+        }
+
+        private void btn_clean_Click(object sender, EventArgs e)
+        {
+            Clean();
+        }
+
+        private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
+            {
+                cur_row = e.RowIndex;
+            }
+        }
+
+        private void metroGrid1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Id, Nombre,Tipo,Producto,Unidad,capacidad Actual,capacidad Maxima
+            cur_row = e.RowIndex;
+            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
+            {
+                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                for (int i = 0; i < products_list.Count(); i++)
+                {
+                    if (products_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
+                    {
+                        combobox_products.SelectedIndex = i + 1;
+                        break;
+                    }
+                }
+
+                for (int i = 0; i < types_list.Count(); i++)
+                {
+                    if (types_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString())
+                    {
+                        combobox_type.SelectedIndex = i + 1;
+                        break;
+                    }
+                }
+
+                textbox_max_capacity.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
+
+                metroTabControl1.SelectedIndex = 1;
+            }
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+            result = productWarehouseController.deleteProductWarehouse(warehouse_list[index]);
+            if (result.data == null)
+            {
+                MessageBox.Show(result.message, "Error al eliminar almacén", MessageBoxButtons.OK);
+            }
+            else
+            {
+                warehouse_list.Remove(warehouse_list[index]);
+            }
+            Load_DataGridView();
         }
     }
 }
