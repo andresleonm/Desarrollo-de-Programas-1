@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.consulta = new MetroFramework.Controls.MetroTabPage();
             this.btn_delete = new MetroFramework.Controls.MetroButton();
@@ -65,11 +65,17 @@
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.registro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -85,14 +91,8 @@
             // 
             // consulta
             // 
-            this.consulta.Controls.Add(this.btn_delete);
-            this.consulta.Controls.Add(this.btn_clean_s);
-            this.consulta.Controls.Add(this.btn_search);
-            this.consulta.Controls.Add(this.combobox_unit_s);
-            this.consulta.Controls.Add(this.textbox_name_s);
-            this.consulta.Controls.Add(this.metroLabel2);
-            this.consulta.Controls.Add(this.metroLabel1);
-            this.consulta.Controls.Add(this.metroGrid1);
+            this.consulta.Controls.Add(this.groupBox2);
+            this.consulta.Controls.Add(this.groupBox1);
             this.consulta.HorizontalScrollbarBarColor = true;
             this.consulta.HorizontalScrollbarHighlightOnWheel = false;
             this.consulta.HorizontalScrollbarSize = 10;
@@ -109,7 +109,7 @@
             // 
             this.btn_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_delete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_delete.Location = new System.Drawing.Point(524, 340);
+            this.btn_delete.Location = new System.Drawing.Point(495, 203);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(75, 23);
             this.btn_delete.TabIndex = 13;
@@ -123,7 +123,7 @@
             // 
             this.btn_clean_s.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_clean_s.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_clean_s.Location = new System.Drawing.Point(447, 109);
+            this.btn_clean_s.Location = new System.Drawing.Point(495, 93);
             this.btn_clean_s.Name = "btn_clean_s";
             this.btn_clean_s.Size = new System.Drawing.Size(75, 23);
             this.btn_clean_s.TabIndex = 12;
@@ -137,7 +137,7 @@
             // 
             this.btn_search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_search.Location = new System.Drawing.Point(351, 109);
+            this.btn_search.Location = new System.Drawing.Point(414, 93);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(75, 23);
             this.btn_search.TabIndex = 11;
@@ -151,7 +151,7 @@
             // 
             this.combobox_unit_s.FormattingEnabled = true;
             this.combobox_unit_s.ItemHeight = 23;
-            this.combobox_unit_s.Location = new System.Drawing.Point(401, 21);
+            this.combobox_unit_s.Location = new System.Drawing.Point(77, 51);
             this.combobox_unit_s.Name = "combobox_unit_s";
             this.combobox_unit_s.Size = new System.Drawing.Size(121, 29);
             this.combobox_unit_s.TabIndex = 10;
@@ -172,7 +172,7 @@
             this.textbox_name_s.CustomButton.UseSelectable = true;
             this.textbox_name_s.CustomButton.Visible = false;
             this.textbox_name_s.Lines = new string[0];
-            this.textbox_name_s.Location = new System.Drawing.Point(103, 22);
+            this.textbox_name_s.Location = new System.Drawing.Point(77, 19);
             this.textbox_name_s.MaxLength = 32767;
             this.textbox_name_s.Name = "textbox_name_s";
             this.textbox_name_s.PasswordChar = '\0';
@@ -191,7 +191,7 @@
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.metroLabel2.Location = new System.Drawing.Point(341, 26);
+            this.metroLabel2.Location = new System.Drawing.Point(17, 56);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(54, 19);
             this.metroLabel2.TabIndex = 4;
@@ -202,7 +202,7 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.metroLabel1.Location = new System.Drawing.Point(35, 23);
+            this.metroLabel1.Location = new System.Drawing.Point(9, 20);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(62, 19);
             this.metroLabel1.TabIndex = 3;
@@ -216,14 +216,14 @@
             this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.metroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.metroGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -233,28 +233,28 @@
             this.price,
             this.stock_minimo,
             this.stock_maximo});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle14;
             this.metroGrid1.EnableHeadersVisualStyles = false;
             this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid1.Location = new System.Drawing.Point(35, 147);
+            this.metroGrid1.Location = new System.Drawing.Point(6, 19);
             this.metroGrid1.Name = "metroGrid1";
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid1.Size = new System.Drawing.Size(564, 178);
@@ -303,20 +303,10 @@
             // 
             // registro
             // 
-            this.registro.Controls.Add(this.combobox_currency);
-            this.registro.Controls.Add(this.textbox_price);
-            this.registro.Controls.Add(this.metroLabel3);
+            this.registro.Controls.Add(this.groupBox3);
             this.registro.Controls.Add(this.btn_cancel);
             this.registro.Controls.Add(this.btn_edit);
             this.registro.Controls.Add(this.btn_new);
-            this.registro.Controls.Add(this.combobox_unit);
-            this.registro.Controls.Add(this.textbox_stock_min);
-            this.registro.Controls.Add(this.textbox_stock_max);
-            this.registro.Controls.Add(this.textbox_name);
-            this.registro.Controls.Add(this.metroLabel8);
-            this.registro.Controls.Add(this.metroLabel7);
-            this.registro.Controls.Add(this.metroLabel6);
-            this.registro.Controls.Add(this.metroLabel5);
             this.registro.HorizontalScrollbarBarColor = true;
             this.registro.HorizontalScrollbarHighlightOnWheel = false;
             this.registro.HorizontalScrollbarSize = 10;
@@ -333,7 +323,7 @@
             // 
             this.combobox_currency.FormattingEnabled = true;
             this.combobox_currency.ItemHeight = 23;
-            this.combobox_currency.Location = new System.Drawing.Point(266, 92);
+            this.combobox_currency.Location = new System.Drawing.Point(253, 93);
             this.combobox_currency.Name = "combobox_currency";
             this.combobox_currency.Size = new System.Drawing.Size(52, 29);
             this.combobox_currency.TabIndex = 15;
@@ -355,7 +345,7 @@
             this.textbox_price.CustomButton.UseSelectable = true;
             this.textbox_price.CustomButton.Visible = false;
             this.textbox_price.Lines = new string[0];
-            this.textbox_price.Location = new System.Drawing.Point(122, 92);
+            this.textbox_price.Location = new System.Drawing.Point(109, 93);
             this.textbox_price.MaxLength = 32767;
             this.textbox_price.Name = "textbox_price";
             this.textbox_price.PasswordChar = '\0';
@@ -375,7 +365,7 @@
             // 
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.metroLabel3.Location = new System.Drawing.Point(19, 92);
+            this.metroLabel3.Location = new System.Drawing.Point(6, 93);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(49, 19);
             this.metroLabel3.TabIndex = 13;
@@ -386,7 +376,7 @@
             // 
             this.btn_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_cancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_cancel.Location = new System.Drawing.Point(206, 350);
+            this.btn_cancel.Location = new System.Drawing.Point(263, 247);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 12;
@@ -400,7 +390,7 @@
             // 
             this.btn_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_edit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_edit.Location = new System.Drawing.Point(113, 350);
+            this.btn_edit.Location = new System.Drawing.Point(170, 247);
             this.btn_edit.Name = "btn_edit";
             this.btn_edit.Size = new System.Drawing.Size(75, 23);
             this.btn_edit.TabIndex = 11;
@@ -414,7 +404,7 @@
             // 
             this.btn_new.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.btn_new.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_new.Location = new System.Drawing.Point(19, 350);
+            this.btn_new.Location = new System.Drawing.Point(76, 247);
             this.btn_new.Name = "btn_new";
             this.btn_new.Size = new System.Drawing.Size(75, 23);
             this.btn_new.TabIndex = 10;
@@ -428,7 +418,7 @@
             // 
             this.combobox_unit.FormattingEnabled = true;
             this.combobox_unit.ItemHeight = 23;
-            this.combobox_unit.Location = new System.Drawing.Point(122, 54);
+            this.combobox_unit.Location = new System.Drawing.Point(109, 55);
             this.combobox_unit.Name = "combobox_unit";
             this.combobox_unit.Size = new System.Drawing.Size(196, 29);
             this.combobox_unit.TabIndex = 9;
@@ -441,7 +431,7 @@
             // 
             // 
             this.textbox_stock_min.CustomButton.Image = null;
-            this.textbox_stock_min.CustomButton.Location = new System.Drawing.Point(157, 1);
+            this.textbox_stock_min.CustomButton.Location = new System.Drawing.Point(174, 1);
             this.textbox_stock_min.CustomButton.Name = "";
             this.textbox_stock_min.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.textbox_stock_min.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -450,7 +440,7 @@
             this.textbox_stock_min.CustomButton.UseSelectable = true;
             this.textbox_stock_min.CustomButton.Visible = false;
             this.textbox_stock_min.Lines = new string[0];
-            this.textbox_stock_min.Location = new System.Drawing.Point(122, 131);
+            this.textbox_stock_min.Location = new System.Drawing.Point(109, 132);
             this.textbox_stock_min.MaxLength = 32767;
             this.textbox_stock_min.Name = "textbox_stock_min";
             this.textbox_stock_min.PasswordChar = '\0';
@@ -472,7 +462,7 @@
             // 
             // 
             this.textbox_stock_max.CustomButton.Image = null;
-            this.textbox_stock_max.CustomButton.Location = new System.Drawing.Point(157, 1);
+            this.textbox_stock_max.CustomButton.Location = new System.Drawing.Point(174, 1);
             this.textbox_stock_max.CustomButton.Name = "";
             this.textbox_stock_max.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.textbox_stock_max.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -481,7 +471,7 @@
             this.textbox_stock_max.CustomButton.UseSelectable = true;
             this.textbox_stock_max.CustomButton.Visible = false;
             this.textbox_stock_max.Lines = new string[0];
-            this.textbox_stock_max.Location = new System.Drawing.Point(122, 163);
+            this.textbox_stock_max.Location = new System.Drawing.Point(109, 164);
             this.textbox_stock_max.MaxLength = 32767;
             this.textbox_stock_max.Name = "textbox_stock_max";
             this.textbox_stock_max.PasswordChar = '\0';
@@ -503,7 +493,7 @@
             // 
             // 
             this.textbox_name.CustomButton.Image = null;
-            this.textbox_name.CustomButton.Location = new System.Drawing.Point(157, 1);
+            this.textbox_name.CustomButton.Location = new System.Drawing.Point(174, 1);
             this.textbox_name.CustomButton.Name = "";
             this.textbox_name.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.textbox_name.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -512,7 +502,7 @@
             this.textbox_name.CustomButton.UseSelectable = true;
             this.textbox_name.CustomButton.Visible = false;
             this.textbox_name.Lines = new string[0];
-            this.textbox_name.Location = new System.Drawing.Point(122, 20);
+            this.textbox_name.Location = new System.Drawing.Point(109, 21);
             this.textbox_name.MaxLength = 32767;
             this.textbox_name.Name = "textbox_name";
             this.textbox_name.PasswordChar = '\0';
@@ -532,7 +522,7 @@
             // 
             this.metroLabel8.AutoSize = true;
             this.metroLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.metroLabel8.Location = new System.Drawing.Point(19, 167);
+            this.metroLabel8.Location = new System.Drawing.Point(6, 168);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(95, 19);
             this.metroLabel8.TabIndex = 5;
@@ -543,7 +533,7 @@
             // 
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.metroLabel7.Location = new System.Drawing.Point(19, 131);
+            this.metroLabel7.Location = new System.Drawing.Point(6, 132);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(88, 19);
             this.metroLabel7.TabIndex = 4;
@@ -554,7 +544,7 @@
             // 
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.metroLabel6.Location = new System.Drawing.Point(19, 58);
+            this.metroLabel6.Location = new System.Drawing.Point(6, 59);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(54, 19);
             this.metroLabel6.TabIndex = 3;
@@ -565,7 +555,7 @@
             // 
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.metroLabel5.Location = new System.Drawing.Point(19, 25);
+            this.metroLabel5.Location = new System.Drawing.Point(6, 26);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(62, 19);
             this.metroLabel5.TabIndex = 2;
@@ -575,6 +565,55 @@
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox1.Controls.Add(this.textbox_name_s);
+            this.groupBox1.Controls.Add(this.metroLabel1);
+            this.groupBox1.Controls.Add(this.metroLabel2);
+            this.groupBox1.Controls.Add(this.combobox_unit_s);
+            this.groupBox1.Controls.Add(this.btn_clean_s);
+            this.groupBox1.Controls.Add(this.btn_search);
+            this.groupBox1.Location = new System.Drawing.Point(35, 29);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(587, 122);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filtros";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox2.Controls.Add(this.metroGrid1);
+            this.groupBox2.Controls.Add(this.btn_delete);
+            this.groupBox2.Location = new System.Drawing.Point(35, 158);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(587, 237);
+            this.groupBox2.TabIndex = 15;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Resultados";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox3.Controls.Add(this.metroLabel5);
+            this.groupBox3.Controls.Add(this.metroLabel6);
+            this.groupBox3.Controls.Add(this.metroLabel7);
+            this.groupBox3.Controls.Add(this.combobox_currency);
+            this.groupBox3.Controls.Add(this.metroLabel8);
+            this.groupBox3.Controls.Add(this.textbox_price);
+            this.groupBox3.Controls.Add(this.textbox_name);
+            this.groupBox3.Controls.Add(this.metroLabel3);
+            this.groupBox3.Controls.Add(this.textbox_stock_max);
+            this.groupBox3.Controls.Add(this.textbox_stock_min);
+            this.groupBox3.Controls.Add(this.combobox_unit);
+            this.groupBox3.Location = new System.Drawing.Point(3, 18);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(335, 214);
+            this.groupBox3.TabIndex = 16;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Datos de Producto";
             // 
             // UC_Product
             // 
@@ -586,11 +625,14 @@
             this.Load += new System.EventHandler(this.UC_Product_Load);
             this.metroTabControl1.ResumeLayout(false);
             this.consulta.ResumeLayout(false);
-            this.consulta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
             this.registro.ResumeLayout(false);
-            this.registro.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -630,5 +672,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn stock_minimo;
         private System.Windows.Forms.DataGridViewTextBoxColumn stock_maximo;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
