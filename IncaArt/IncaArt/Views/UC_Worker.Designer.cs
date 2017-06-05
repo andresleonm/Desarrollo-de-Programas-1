@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -86,12 +87,14 @@
             this.btn_cancel = new MetroFramework.Controls.MetroButton();
             this.btn_edit = new MetroFramework.Controls.MetroButton();
             this.btn_new = new MetroFramework.Controls.MetroButton();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.registro.SuspendLayout();
             this.group.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -100,7 +103,7 @@
             this.metroTabControl1.Controls.Add(this.registro);
             this.metroTabControl1.Location = new System.Drawing.Point(16, 23);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(721, 450);
             this.metroTabControl1.TabIndex = 1;
             this.metroTabControl1.UseSelectable = true;
@@ -488,11 +491,12 @@
             // 
             this.combobox_currency.FormattingEnabled = true;
             this.combobox_currency.ItemHeight = 23;
-            this.combobox_currency.Location = new System.Drawing.Point(191, 60);
+            this.combobox_currency.Location = new System.Drawing.Point(210, 60);
             this.combobox_currency.Name = "combobox_currency";
             this.combobox_currency.Size = new System.Drawing.Size(41, 29);
             this.combobox_currency.TabIndex = 4;
             this.combobox_currency.UseSelectable = true;
+            this.combobox_currency.Validating += new System.ComponentModel.CancelEventHandler(this.combobox_Validating);
             // 
             // textbox_salary
             // 
@@ -523,6 +527,7 @@
             this.textbox_salary.UseSelectable = true;
             this.textbox_salary.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_salary.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textbox_salary.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_number_Validating);
             // 
             // combobox_shift
             // 
@@ -530,9 +535,10 @@
             this.combobox_shift.ItemHeight = 23;
             this.combobox_shift.Location = new System.Drawing.Point(63, 24);
             this.combobox_shift.Name = "combobox_shift";
-            this.combobox_shift.Size = new System.Drawing.Size(121, 29);
+            this.combobox_shift.Size = new System.Drawing.Size(188, 29);
             this.combobox_shift.TabIndex = 2;
             this.combobox_shift.UseSelectable = true;
+            this.combobox_shift.Validating += new System.ComponentModel.CancelEventHandler(this.combobox_Validating);
             // 
             // metroLabel14
             // 
@@ -692,6 +698,7 @@
             this.textbox_doi.UseSelectable = true;
             this.textbox_doi.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_doi.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textbox_doi.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_number_Validating);
             // 
             // textbox_maternal
             // 
@@ -722,6 +729,7 @@
             this.textbox_maternal.UseSelectable = true;
             this.textbox_maternal.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_maternal.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textbox_maternal.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             // 
             // textbox_email
             // 
@@ -865,11 +873,12 @@
             // 
             this.datetime_birthday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datetime_birthday.Location = new System.Drawing.Point(148, 146);
-            this.datetime_birthday.MinimumSize = new System.Drawing.Size(4, 29);
+            this.datetime_birthday.MinimumSize = new System.Drawing.Size(0, 29);
             this.datetime_birthday.Name = "datetime_birthday";
             this.datetime_birthday.Size = new System.Drawing.Size(119, 29);
             this.datetime_birthday.TabIndex = 15;
             this.datetime_birthday.Value = new System.DateTime(2017, 5, 28, 14, 18, 3, 0);
+            this.datetime_birthday.Validating += new System.ComponentModel.CancelEventHandler(this.datetimepicker_Validating);
             // 
             // metroLabel6
             // 
@@ -912,6 +921,7 @@
             this.textbox_paternal.UseSelectable = true;
             this.textbox_paternal.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_paternal.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textbox_paternal.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             // 
             // metroLabel7
             // 
@@ -978,6 +988,7 @@
             this.textbox_name.UseSelectable = true;
             this.textbox_name.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_name.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textbox_name.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             // 
             // btn_cancel
             // 
@@ -1021,6 +1032,10 @@
             this.btn_new.UseSelectable = true;
             this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // UC_Worker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1038,6 +1053,7 @@
             this.group.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1099,5 +1115,6 @@
         private MetroFramework.Controls.MetroButton btn_edit;
         private MetroFramework.Controls.MetroButton btn_new;
         private MetroFramework.Controls.MetroComboBox combobox_currency;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

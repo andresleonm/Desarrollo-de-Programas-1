@@ -12,6 +12,14 @@ namespace WindowsFormsApp1.Views
 {
     public partial class UC_Worker : MetroFramework.Controls.MetroUserControl
     {
+        bool name_flag;
+        bool paternal_flag;
+        bool maternal_flag;
+        bool doi_flag;
+        bool birthday_flag;
+        bool shift_flag;
+        bool salary_flag;
+        bool currency_flag;
         int cur_row;
         List<Models.Shift> shift_list;
         List<Models.Worker> worker_list;
@@ -27,6 +35,7 @@ namespace WindowsFormsApp1.Views
 
         private void UC_Worker_Load(object sender, EventArgs e)
         {
+            Set_Flag_All(false);
             string user = "dp1admin";
             string password = "dp1admin";
             workerController = new Controller.WorkerController(user, password);
@@ -142,6 +151,11 @@ namespace WindowsFormsApp1.Views
 
         private Models.Worker CreateWorker(int operacion)
         {
+            if (!Validate_Data())
+            {
+                MessageBox.Show("Hay campos inválidos", "Error", MessageBoxButtons.OK);
+                return null;
+            }
             Models.Worker worker = new Models.Worker();
             worker.Name = textbox_name.Text;
             worker.Paternal_name = textbox_paternal.Text;
@@ -175,19 +189,24 @@ namespace WindowsFormsApp1.Views
         private void btn_new_Click(object sender, EventArgs e)
         {
             Models.Worker worker = CreateWorker(0);
-            result = workerController.insertWorker(worker);
-            if (result.data == null)
+            if (worker != null)
             {
-                MessageBox.Show(result.message, "Error al registrar trabajador", MessageBoxButtons.OK);
+                result = workerController.insertWorker(worker);
+                if (result.data == null)
+                {
+                    MessageBox.Show(result.message, "Error al registrar trabajador", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Trabajador registrado correctamente", "Registrar trabajador", MessageBoxButtons.OK);
+                    Load_Data();
+                }
+                Set_Flag_All(false);
+                Load_DataGridView();
+                Clean();
+                metroTabControl1.SelectedIndex = 0;
             }
-            else
-            {
-                Load_Data();
-            }
-
-            Load_DataGridView();
-            Clean();
-            metroTabControl1.SelectedIndex = 0;
+            
         }
 
         private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -220,7 +239,7 @@ namespace WindowsFormsApp1.Views
                 {
                     if (shift_list[i].Description == metroGrid1.Rows[cur_row].Cells[6].Value.ToString())
                     {
-                        combobox_shift.SelectedIndex = i;
+                        combobox_shift.SelectedIndex = i+1;
                         break;
                     }
                 }
@@ -228,7 +247,7 @@ namespace WindowsFormsApp1.Views
                 {
                     if (currency_list[i].Id ==worker.Currency_id)
                     {
-                        combobox_currency.SelectedIndex = i;
+                        combobox_currency.SelectedIndex = i+1;
                         break;
                     }
                 }
@@ -250,6 +269,7 @@ namespace WindowsFormsApp1.Views
                 textbox_email.Text = worker.Email;
                 textbox_address.Text = worker.Address;
                 textbox_salary.Text = worker.Salary.ToString();
+                Set_Flag_All(true);
             }
         }
 
@@ -257,20 +277,24 @@ namespace WindowsFormsApp1.Views
         private void btn_edit_Click(object sender, EventArgs e)
         {
             Models.Worker worker = CreateWorker(1);
-            result = workerController.updateWorker(worker);
-            if (result.data == null)
+            if (worker != null)
             {
-                MessageBox.Show(result.message, "Error al editar trabajador", MessageBoxButtons.OK);
+                result = workerController.updateWorker(worker);
+                if (result.data == null)
+                {
+                    MessageBox.Show(result.message, "Error al editar trabajador", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Trabajador editado correctamente", "Editar trabajador", MessageBoxButtons.OK);
+                    Load_Data();
+                }
+                Set_Flag_All(false);
+                Load_DataGridView();
+                Clean();
+                metroTabControl1.SelectedIndex = 0;
             }
-            else
-            {
-                int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
-                worker_list[index] = worker;
-            }
-
-            Load_DataGridView();
-            Clean();
-            metroTabControl1.SelectedIndex = 0;
+            
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -283,7 +307,8 @@ namespace WindowsFormsApp1.Views
             }
             else
             {
-                worker_list.Remove(worker_list[index]);
+                MessageBox.Show("Trabajador eliminado correctamente", "Eliminar trabajador", MessageBoxButtons.OK);
+                Load_Data();
             }
             //btn_delete.Enabled = false;
             Load_DataGridView();
@@ -317,6 +342,137 @@ namespace WindowsFormsApp1.Views
             {
                 worker_list = (List<Models.Worker>)result.data;
                 Load_DataGridView();
+            }
+        }
+
+        private void textbox_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            string text = textbox.Text;
+
+            if (String.IsNullOrEmpty(text))
+            {
+                //e.Cancel = true;
+                Set_Flag(textbox.Name, false);
+                errorProvider.SetError(textbox, "Campo requerido");
+
+            }
+            else
+            {
+                //e.Cancel = false;
+                Set_Flag(textbox.Name, true);
+                errorProvider.SetError(textbox, null);
+            }
+        }
+
+        private void textbox_number_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            string text = textbox.Text;
+
+            if (String.IsNullOrEmpty(text))
+            {
+                Set_Flag(textbox.Name, false);
+                errorProvider.SetError(textbox, "Campo requerido");
+            }
+            else
+            {
+                errorProvider.SetError(textbox, null);
+                    double number;
+                    if (!Double.TryParse(text, out number))
+                    {
+                        Set_Flag(textbox.Name, false);
+                        errorProvider.SetError(textbox, "Campo debe ser número");
+                    }
+                    else
+                    {
+                        Set_Flag(textbox.Name, true);
+                    }
+            }
+        }
+
+        private void combobox_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroComboBox combobox = (MetroFramework.Controls.MetroComboBox)sender;
+            int id = ((KeyValuePair<int, string>)combobox.SelectedItem).Key;
+            if (id == 0)
+            {
+                Set_Flag(combobox.Name, false);
+                errorProvider.SetError(combobox, "Se debe seleccionar");
+
+            }
+            else
+            {
+                Set_Flag(combobox.Name, true);
+                errorProvider.SetError(combobox, null);
+            }
+        }
+
+        private void datetimepicker_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroDateTime datetimepicker = (MetroFramework.Controls.MetroDateTime)sender;
+            if (datetimepicker.Text==null)
+            {
+                Set_Flag(datetimepicker.Name, false);
+                errorProvider.SetError(datetimepicker, "Se debe seleccionar");
+
+            }
+            else
+            {
+                Set_Flag(datetimepicker.Name, true);
+                errorProvider.SetError(datetimepicker, null);
+            }
+        }
+
+        private bool Validate_Data()
+        {
+            if (name_flag && paternal_flag && maternal_flag && doi_flag && birthday_flag && shift_flag && salary_flag && currency_flag)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void Set_Flag_All(bool value)
+        {
+            name_flag = value;
+            paternal_flag = value;
+            maternal_flag = value;
+            doi_flag = value;
+            birthday_flag = value;
+            shift_flag = value;
+            salary_flag = value;
+            currency_flag = value;
+        }
+
+        private void Set_Flag(string name, bool value)
+        {
+            switch (name)
+            {
+                case "textbox_name":
+                    name_flag = value;
+                    break;
+                case "textbox_paternal":
+                    paternal_flag = value;
+                    break;
+                case "textbox_maternal":
+                    maternal_flag = value;
+                    break;
+                case "textbox_doi":
+                    doi_flag = value;
+                    break;
+                case "datetime_birthday":
+                    birthday_flag = value;
+                    break;
+                case "combobox_shift":
+                    shift_flag = value;
+                    break;
+                case "textbox_salary":
+                    salary_flag = value;
+                    break;
+                case "combobox_currency":
+                    currency_flag = value;
+                    break;
             }
         }
     }
