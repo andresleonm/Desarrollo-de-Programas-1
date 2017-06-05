@@ -152,6 +152,8 @@ namespace WindowsFormsApp1.Views
 
         private void register_Click(object sender, EventArgs e)
         {
+
+            validate_data(textbox_name.Text, ((KeyValuePair<int, string>)combobox_products.SelectedItem).Key,Int32.Parse(textbox_max_capacity.Text));
             int id = 0;
             String name = textbox_name.Text;
             int product_id = ((KeyValuePair<int, string>)combobox_products.SelectedItem).Key;
@@ -160,6 +162,9 @@ namespace WindowsFormsApp1.Views
             int type_id = ((KeyValuePair<int, string>)combobox_type.SelectedItem).Key;
             String state = "ACTIVE";
             int logical_stock = 0;
+
+            
+
 
             Models.ProductWarehouse warehouse = new Models.ProductWarehouse(id, name, product_id, physical_stock, max_capacity, type_id, state, logical_stock);
             result = productWarehouseController.insertProductWarehouse(warehouse);
@@ -374,5 +379,40 @@ namespace WindowsFormsApp1.Views
             }
             Load_DataGridView();
         }
+
+
+
+
+
+        private bool validate_data(String name, int type, int m_capacity)
+        {
+            bool isCorrect = true;
+            //String message = "";
+            if (name == "")
+            {
+                isCorrect = false;
+                nameErrorProvider.SetError(this.textbox_name, "El nombre es requerido");
+                //message += "- Debe ingresar el nombre del almacén.\n";
+            }
+            if (type == -1)
+            {
+                isCorrect = false;
+                //nameErrorProvider.SetError(, "El nombre es requerido");
+               // message += "- Debe seleccionar el producto/material del almacén. \n";
+            }
+
+            if (m_capacity < 0 )
+            {
+                isCorrect = false;
+                nameErrorProvider.SetError(this.textbox_max_capacity, "Debe ingresar una capacidad válida");
+             //   message += "- Las capacidades deben ser valores positivos. \n";
+            }
+
+            
+           // MessageBox.Show(message, "Error al registrar un nuevo almacén", MessageBoxButtons.OK);
+            return isCorrect;
+        }
+
+       
     }
 }
