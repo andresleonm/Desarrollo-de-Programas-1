@@ -110,7 +110,7 @@ namespace WindowsFormsApp1.Models
 
 
         // Construct for controller
-        public SalesDocumentLine(int id, int document_id,  int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int ref_quantity, int prod_warehouse_id, string prod_warehouse_name, int movemement_id_line)
+        public SalesDocumentLine(int id, int document_id,  int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int ref_quantity, int prod_warehouse_id, string prod_warehouse_name, string status, int movemement_id_line)
         {
             this.id = id;
             this.document_id = document_id;
@@ -123,8 +123,8 @@ namespace WindowsFormsApp1.Models
             this.refund_quantity = ref_quantity;
             this.prod_warehouse_id = prod_warehouse_id;
             this.prod_warehouse_name = prod_warehouse_name;
+            this.status = status;
             this.movemement_id_line = movemement_id_line;
-            this.status = "Por facturar";
         }
     }
 }
