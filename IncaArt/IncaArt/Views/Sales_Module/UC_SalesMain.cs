@@ -20,30 +20,31 @@ namespace WindowsFormsApp1.Views
         private void UC_SalesMain_Load(object sender, EventArgs e)
         {
             uC_SalesOrder1.Visible = false;
-            uC_SalesInvoice1.Visible = false;
+            uC_SalesDocument1.Visible = false;
         }
 
         private void orders_Click(object sender, EventArgs e)
         {
             uC_SalesOrder1.Visible = true;
-            uC_SalesInvoice1.Visible = false;
+            uC_SalesDocument1.Visible = false;
         }
 
-        private void invoices_Click(object sender, EventArgs e)
+        private void documents_Click(object sender, EventArgs e)
         {
-            uC_SalesInvoice1.Visible = true;
+            uC_SalesDocument1.Visible = true;
             uC_SalesOrder1.Visible = false;
         }
 
         private void refunds_Click(object sender, EventArgs e)
         {
             uC_SalesOrder1.Visible = false;
-            uC_SalesInvoice1.Visible = false;
+            uC_SalesDocument1.Visible = false;
         }
 
         private void credit_notes_Click(object sender, EventArgs e)
         {
             uC_SalesOrder1.Visible = false;
+            uC_SalesDocument1.Visible = false;
         }
     }
 }

@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    public class SalesOrder
-    {        
+    public class SalesDocument
+    {
         private int id;
+        private char type_document_id;
+        private int movement_id;
         private int currency_id;
         private string currency_name;
         private string currency_symbol;
@@ -22,13 +24,25 @@ namespace WindowsFormsApp1.Models
         private DateTime issue_date;
         private DateTime delivery_date;
         private string observation;
-        private List<SalesOrderLine> lines;
+        private List<SalesDocumentLine> lines;
 
         public int Id
         {
             get { return id; }
             set { id = value; }
-        }        
+        }
+
+        public char Type_document_id
+        {
+            get { return type_document_id; }
+            set { type_document_id = value; }
+        }
+
+        public int Movement_id
+        {
+            get { return movement_id; }
+            set { movement_id = value; }
+        }
 
         public int Currency_id
         {
@@ -108,16 +122,17 @@ namespace WindowsFormsApp1.Models
             set { observation = value; }
         }
 
-        public List<SalesOrderLine> Lines
+        public List<SalesDocumentLine> Lines
         {
             get { return lines; }
             set { lines = value; }
         }
 
+
         // Construct for controller
-        public SalesOrder(int order_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, DateTime delivery_date, double amount, string observation, List<SalesOrderLine> lines)
+        public SalesDocument(int document_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, DateTime delivery_date, double amount, string observation, int movement_id, char type_document_id, List<SalesDocumentLine> lines)
         {
-            this.id = order_id;
+            this.id = document_id;
             this.currency_id = currency_id;
             this.currency_name = currency_name;
             this.currency_symbol = currency_symbol;
@@ -130,23 +145,10 @@ namespace WindowsFormsApp1.Models
             this.issue_date = issue_date;
             this.delivery_date = delivery_date;
             this.amount = amount;
-            this.observation = observation;
+            this.observation = observation;            
+            this.movement_id = movement_id;
+            this.type_document_id = type_document_id;
             this.lines = lines;
         }
-
-        public SalesOrder() { }
-
-        // For SalesOrderList
-        public SalesOrder(int order_id, string cli_name, string observation, DateTime issue_date, DateTime delivery_date, double amount, string status)
-        {
-            this.id = order_id;
-            this.customer_name = cli_name;
-            this.observation = observation;
-            this.issue_date = issue_date;
-            this.delivery_date = delivery_date;
-            this.amount = amount;
-            this.status = status;
-        }
-
     }
 }

@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    public class SalesOrderLine
+    public class SalesDocumentLine
     {
         private int id;
-        private int order_id;
+        private int document_id;
+        private int movemement_id_line;
         private int product_id;
         private string product_name;
         private int unit_measure_id;
         private string unit_measure_name;
         private int quantity;
         private double unit_price;
-        private int delivery_quantity;
+        private int refund_quantity;
         private int prod_warehouse_id;
         private string prod_warehouse_name;
         private double amount;
@@ -28,10 +29,16 @@ namespace WindowsFormsApp1.Models
             set { id = value; }
         }
 
-        public int Order_id
+        public int Document_id
         {
-            get { return order_id; }
-            set { order_id = value; }
+            get { return document_id; }
+            set { document_id = value; }
+        }
+
+        public int Movemement_id_line
+        {
+            get { return movemement_id_line; }
+            set { movemement_id_line = value; }
         }
 
         public int Product_id
@@ -70,10 +77,10 @@ namespace WindowsFormsApp1.Models
             set { unit_price = value; }
         }
 
-        public int Delivery_quantity
+        public int Refund_quantity
         {
-            get { return delivery_quantity; }
-            set { delivery_quantity = value; }
+            get { return refund_quantity; }
+            set { refund_quantity = value; }
         }
 
 
@@ -100,56 +107,24 @@ namespace WindowsFormsApp1.Models
             get { return status; }
             set { status = value; }
         }
-        
+
 
         // Construct for controller
-        public SalesOrderLine(int id, int order_id, int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int del_quantity, int prod_warehouse_id, string prod_warehouse_name)
+        public SalesDocumentLine(int id, int document_id,  int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int ref_quantity, int prod_warehouse_id, string prod_warehouse_name, int movemement_id_line)
         {
             this.id = id;
-            this.order_id = order_id;
+            this.document_id = document_id;
             this.Product_id = product_id;
             this.product_name = product_name;
             this.unit_measure_id = unit_measure_id;
             this.unit_measure_name = unit_measure_name;
             this.Quantity = quantity;
             this.Unit_price = price;
-            this.delivery_quantity = del_quantity;
+            this.refund_quantity = ref_quantity;
             this.prod_warehouse_id = prod_warehouse_id;
             this.prod_warehouse_name = prod_warehouse_name;
-            this.status = "Registrado";
+            this.movemement_id_line = movemement_id_line;
+            this.status = "Por facturar";
         }
-
-        public SalesOrderLine(int id, int order_id, int product_id, int unit_measure_id, int quantity, double price, int prod_warehouse_id)
-        {
-            this.id = id;
-            this.order_id = order_id;
-            this.Product_id = product_id;            
-            this.unit_measure_id = unit_measure_id;
-            this.Quantity = quantity;
-            this.Unit_price = price;
-            this.delivery_quantity = 0;
-            this.prod_warehouse_id = prod_warehouse_id;
-            this.status = "Registrado";
-        }
-
-        public SalesOrderLine()
-        {
-        }
-
-        public SalesOrderLine(WindowsFormsApp1.Views.Sales_Module.ProductWarehouseS prod_WS)
-        {
-            this.Product_id = prod_WS.Product_id;
-            this.Product_name = prod_WS.productName;
-            this.Unit_measure_id = prod_WS.unitId;
-            this.Unit_measure_name = prod_WS.unitName;
-            this.Quantity = prod_WS.quantity;
-            this.Unit_price = prod_WS.unit_price;
-            this.prod_warehouse_id = prod_WS.Id;
-            this.prod_warehouse_name = prod_WS.Name;
-            this.amount = prod_WS.quantity * prod_WS.unit_price;
-            this.status = "Active";
-        }
-
-
     }
 }

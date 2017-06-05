@@ -85,6 +85,8 @@
     <Compile Include="Controller\ProductTypeWarehouseController.cs" />
     <Compile Include="Controller\ProductMovementController.cs" />
     <Compile Include="Controller\ProductMovementDetailController.cs" />
+    <Compile Include="Controller\SalesDocumentController.cs" />
+    <Compile Include="Controller\SalesDocumentLineController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
     <Compile Include="Controller\WorkstationsController.cs" />
     <Compile Include="Models\MaterialMovement.cs" />
@@ -125,6 +127,8 @@
     <Compile Include="Models\ProductTypeWarehouse.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipeDetail.cs" />
+    <Compile Include="Models\SalesDocument.cs" />
+    <Compile Include="Models\SalesDocumentLine.cs" />
     <Compile Include="Models\Shift.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Currency.cs" />
@@ -218,6 +222,12 @@
     <Compile Include="Views\Sales_Module\SalesOrderSearchClient.Designer.cs">
       <DependentUpon>SalesOrderSearchClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Sales_Module\UC_SalesDocument.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Sales_Module\UC_SalesDocument.Designer.cs">
+      <DependentUpon>UC_SalesDocument.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UC_Material.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -283,12 +293,6 @@
     </Compile>
     <Compile Include="Views\Sales_Module\SalesOrderLine.Designer.cs">
       <DependentUpon>SalesOrderLine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Sales_Module\UC_SalesInvoice.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Sales_Module\UC_SalesInvoice.Designer.cs">
-      <DependentUpon>UC_SalesInvoice.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_Recipe.cs">
       <SubType>UserControl</SubType>
@@ -502,6 +506,9 @@
     <EmbeddedResource Include="Views\Sales_Module\SalesOrderSearchClient.resx">
       <DependentUpon>SalesOrderSearchClient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales_Module\UC_SalesDocument.resx">
+      <DependentUpon>UC_SalesDocument.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Material.resx">
       <DependentUpon>UC_Material.cs</DependentUpon>
     </EmbeddedResource>
@@ -543,9 +550,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\SalesOrderLine.resx">
       <DependentUpon>SalesOrderLine.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Sales_Module\UC_SalesInvoice.resx">
-      <DependentUpon>UC_SalesInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Recipe.resx">
       <DependentUpon>UC_Recipe.cs</DependentUpon>

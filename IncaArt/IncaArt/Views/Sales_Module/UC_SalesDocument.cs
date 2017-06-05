@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1.Views
+namespace WindowsFormsApp1.Views.Sales_Module
 {
-    public partial class UC_SalesInvoice : UserControl
+    public partial class UC_SalesDocument : UserControl
     {
-        public UC_SalesInvoice()
+        public UC_SalesDocument()
         {
             InitializeComponent();
         }
