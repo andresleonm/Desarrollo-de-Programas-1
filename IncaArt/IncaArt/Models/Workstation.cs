@@ -15,6 +15,8 @@ namespace WindowsFormsApp1.Models
         int next_workstation;
         int previous_workstation;
         int quantity;
+        double break_cost;
+        int currency_id;
 
         public int Id
         {
@@ -104,6 +106,32 @@ namespace WindowsFormsApp1.Models
             set
             {
                 quantity = value;
+            }
+        }
+
+        public double Break_cost
+        {
+            get
+            {
+                return break_cost;
+            }
+
+            set
+            {
+                break_cost = value;
+            }
+        }
+
+        public int Currency_id
+        {
+            get
+            {
+                return currency_id;
+            }
+
+            set
+            {
+                currency_id = value;
             }
         }
     }

@@ -203,12 +203,13 @@ namespace WindowsFormsApp1.Views
                 {
                     User user_to_update = new User(0, profile, name, paternal, maternal, phone, email, gender, address, username, password, "", false);
                     user_to_update.Id = currentUser.Id;
+                    user_to_update.State = currentUser.State;
                     transaction_result = user_controller.updateUser(user_to_update);
                     message = "Usuario editado correctamente.";
                 }
                 else
                 {
-                    User user_to_add = new User(0, profile, name, paternal, maternal, phone, email, gender, address, username, password, "");
+                    User user_to_add = new User(0, profile, name, paternal, maternal, phone, email, gender, address, username, password, "PENDING");
                     transaction_result = user_controller.insertUser(user_to_add);
                     message = "Usuario ingresado correctamente.";
                 }
