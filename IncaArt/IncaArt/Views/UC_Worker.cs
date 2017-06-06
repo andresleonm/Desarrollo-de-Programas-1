@@ -61,7 +61,7 @@ namespace WindowsFormsApp1.Views
 
             //Moneda
             combo_data = new Dictionary<int, string>();
-            combo_data.Add(0, "Seleccionar");
+            combo_data.Add(0, "-");
             foreach (var item in currency_list)
             {
                 combo_data.Add(item.Id, item.Symbol);

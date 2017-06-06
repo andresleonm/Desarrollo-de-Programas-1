@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.consulta = new MetroFramework.Controls.MetroTabPage();
+            this.btn_delete = new MetroFramework.Controls.MetroButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,7 +44,6 @@
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stock_maximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_delete = new MetroFramework.Controls.MetroButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textbox_name_s = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -85,7 +85,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(15, 24);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(721, 450);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.metroTabControl1.TabIndex = 1;
@@ -109,6 +109,20 @@
             this.consulta.VerticalScrollbarHighlightOnWheel = false;
             this.consulta.VerticalScrollbarSize = 10;
             // 
+            // btn_delete
+            // 
+            this.btn_delete.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_delete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            this.btn_delete.Location = new System.Drawing.Point(567, 372);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(75, 23);
+            this.btn_delete.TabIndex = 13;
+            this.btn_delete.Text = "Eliminar";
+            this.btn_delete.UseCustomBackColor = true;
+            this.btn_delete.UseCustomForeColor = true;
+            this.btn_delete.UseSelectable = true;
+            this.btn_delete.Click += new System.EventHandler(this.button_Delete_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -116,7 +130,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupBox2.Location = new System.Drawing.Point(35, 158);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(587, 208);
+            this.groupBox2.Size = new System.Drawing.Size(613, 208);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultados";
@@ -169,7 +183,7 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(564, 178);
+            this.metroGrid1.Size = new System.Drawing.Size(601, 178);
             this.metroGrid1.TabIndex = 2;
             this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
             this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
@@ -213,20 +227,6 @@
             this.stock_maximo.Name = "stock_maximo";
             this.stock_maximo.Width = 110;
             // 
-            // btn_delete
-            // 
-            this.btn_delete.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_delete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_delete.Location = new System.Drawing.Point(541, 372);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(75, 23);
-            this.btn_delete.TabIndex = 13;
-            this.btn_delete.Text = "Eliminar";
-            this.btn_delete.UseCustomBackColor = true;
-            this.btn_delete.UseCustomForeColor = true;
-            this.btn_delete.UseSelectable = true;
-            this.btn_delete.Click += new System.EventHandler(this.button_Delete_Click);
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -239,7 +239,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupBox1.Location = new System.Drawing.Point(35, 29);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(587, 122);
+            this.groupBox1.Size = new System.Drawing.Size(613, 122);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros";
@@ -282,7 +282,7 @@
             this.metroLabel1.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel1.Location = new System.Drawing.Point(9, 20);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(62, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(56, 15);
             this.metroLabel1.TabIndex = 3;
             this.metroLabel1.Text = "Nombre:";
             this.metroLabel1.UseCustomForeColor = true;
@@ -295,7 +295,7 @@
             this.metroLabel2.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel2.Location = new System.Drawing.Point(17, 56);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(54, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(49, 15);
             this.metroLabel2.TabIndex = 4;
             this.metroLabel2.Text = "Unidad:";
             this.metroLabel2.UseCustomForeColor = true;
@@ -314,7 +314,7 @@
             // 
             this.btn_clean_s.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_clean_s.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_clean_s.Location = new System.Drawing.Point(506, 93);
+            this.btn_clean_s.Location = new System.Drawing.Point(532, 93);
             this.btn_clean_s.Name = "btn_clean_s";
             this.btn_clean_s.Size = new System.Drawing.Size(75, 23);
             this.btn_clean_s.TabIndex = 12;
@@ -328,7 +328,7 @@
             // 
             this.btn_search.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_search.Location = new System.Drawing.Point(425, 93);
+            this.btn_search.Location = new System.Drawing.Point(451, 93);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(75, 23);
             this.btn_search.TabIndex = 11;
@@ -386,7 +386,7 @@
             this.metroLabel5.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel5.Location = new System.Drawing.Point(6, 26);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(62, 19);
+            this.metroLabel5.Size = new System.Drawing.Size(56, 15);
             this.metroLabel5.TabIndex = 2;
             this.metroLabel5.Text = "Nombre:";
             this.metroLabel5.UseCustomForeColor = true;
@@ -399,7 +399,7 @@
             this.metroLabel6.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel6.Location = new System.Drawing.Point(6, 59);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(54, 19);
+            this.metroLabel6.Size = new System.Drawing.Size(49, 15);
             this.metroLabel6.TabIndex = 3;
             this.metroLabel6.Text = "Unidad:";
             this.metroLabel6.UseCustomForeColor = true;
@@ -412,7 +412,7 @@
             this.metroLabel7.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel7.Location = new System.Drawing.Point(6, 132);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(88, 19);
+            this.metroLabel7.Size = new System.Drawing.Size(84, 15);
             this.metroLabel7.TabIndex = 4;
             this.metroLabel7.Text = "StockMínimo:";
             this.metroLabel7.UseCustomForeColor = true;
@@ -436,7 +436,7 @@
             this.metroLabel8.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel8.Location = new System.Drawing.Point(6, 168);
             this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(95, 19);
+            this.metroLabel8.Size = new System.Drawing.Size(90, 15);
             this.metroLabel8.TabIndex = 5;
             this.metroLabel8.Text = "Stock Máximo:";
             this.metroLabel8.UseCustomForeColor = true;
@@ -511,7 +511,7 @@
             this.metroLabel3.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel3.Location = new System.Drawing.Point(6, 93);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(49, 19);
+            this.metroLabel3.Size = new System.Drawing.Size(45, 15);
             this.metroLabel3.TabIndex = 13;
             this.metroLabel3.Text = "Precio:";
             this.metroLabel3.UseCustomForeColor = true;
