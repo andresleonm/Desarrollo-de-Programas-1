@@ -14,14 +14,16 @@ namespace WindowsFormsApp1.Views
     {
         bool name_flag;
         bool product_flag;
-        bool previous_flag;
-        bool next_flag;
         bool quantity_flag;
+        bool break_flag;
+        bool currency_flag;
         int cur_row;
         List<Models.Product> product_list;
         List<Models.Workstation> workstation_list;
+        List<Models.Currency> currency_list;
         Controller.ProductsController productController;
         Controller.WorkstationsController workstationController;
+        Controller.CurrencyController currencyController;
         Controller.Result result;
         public UC_Workstation()
         {
@@ -35,6 +37,7 @@ namespace WindowsFormsApp1.Views
             string password = "dp1admin";
             productController = new Controller.ProductsController(user, password);
             workstationController = new Controller.WorkstationsController(user, password);
+            currencyController = new Controller.CurrencyController(user, password);
             Load_Data();
 
             //Cargar los combobox
@@ -71,12 +74,26 @@ namespace WindowsFormsApp1.Views
             combobox_previous.DisplayMember = "Value";
             combobox_previous.ValueMember = "Key";
 
+            //Moneda
+            combo_data = new Dictionary<int, string>();
+            combo_data.Add(0, "-");
+            foreach (var item in currency_list)
+            {
+                combo_data.Add(item.Id, item.Symbol);
+
+            }
+            combobox_currency.DataSource = new BindingSource(combo_data, null);
+            combobox_currency.DisplayMember = "Value";
+            combobox_currency.ValueMember = "Key";
+
             Load_DataGridView();
             metroTabControl1.SelectedIndex = 0;
         }
 
         private void Load_Data()
         {
+            result = currencyController.getCurrencies();
+            currency_list = (List<Models.Currency>)result.data;
             product_list = new List<Models.Product>();
             result = productController.getProducts();
             if (result.data == null) MessageBox.Show(result.message, "Error al listar Producto", MessageBoxButtons.OK);
@@ -145,6 +162,7 @@ namespace WindowsFormsApp1.Views
             combobox_previous.SelectedIndex = 0;
             combobox_product.SelectedIndex = 0;
             combobox_product_s.SelectedIndex = 0;
+            combobox_currency.SelectedIndex = 0;
         }
 
         private void ClearTextBoxes(Control control)
@@ -184,17 +202,22 @@ namespace WindowsFormsApp1.Views
             String name;
             name = textbox_name.Text;
 
-            int previous_id, next_id, product_id, quantity;
+            int previous_id, next_id, product_id, quantity,currency_id;
+            double break_cost;
             previous_id = ((KeyValuePair<int, string>)combobox_previous.SelectedItem).Key;
             next_id = ((KeyValuePair<int, string>)combobox_next.SelectedItem).Key;
             product_id = ((KeyValuePair<int, string>)combobox_product.SelectedItem).Key;
             quantity = Int32.Parse(textbox_quantity.Text);
+            currency_id = ((KeyValuePair<int, string>)combobox_currency.SelectedItem).Key;
+            break_cost = double.Parse(textbox_break.Text);
             Models.Workstation workstation = new Models.Workstation();
             workstation.Product_id = product_id;
             workstation.Previous_workstation = previous_id;
             workstation.Next_workstation = next_id;
             workstation.Quantity = quantity;
             workstation.Name = name;
+            workstation.Break_cost = break_cost;
+            workstation.Currency_id = currency_id;
             int id = 0;
             if (operacion == 1) //UPDATE
             {
@@ -259,6 +282,14 @@ namespace WindowsFormsApp1.Views
                             break;
                         }
                     }
+                    for (int i = 0; i < currency_list.Count(); i++)
+                    {
+                        if (currency_list[i].Id == workstation.Currency_id)
+                        {
+                            combobox_currency.SelectedIndex = i + 1;
+                            break;
+                        }
+                    }
                     if (workstation.Previous_workstation == 0)
                     {
                         combobox_previous.SelectedIndex = 0;
@@ -290,6 +321,7 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                     Set_Flag_All(true);
+                    textbox_break.Text = workstation.Break_cost.ToString();
                     textbox_name.Text = workstation.Name;
                     textbox_quantity.Text = workstation.Quantity.ToString();
                     metroTabControl1.SelectedIndex = 1;
@@ -400,16 +432,33 @@ namespace WindowsFormsApp1.Views
             else
             {
                 errorProvider.SetError(textbox, null);
-                int number;
-                if (!int.TryParse(text, out number))
+                if (textbox.Name== "textbox_break")
                 {
-                    Set_Flag(textbox.Name, false);
-                    errorProvider.SetError(textbox, "Cantidad debe ser número");
+                    double number;
+                    if (!double.TryParse(text, out number))
+                    {
+                        Set_Flag(textbox.Name, false);
+                        errorProvider.SetError(textbox, "Costo debe ser número");
+                    }
+                    else
+                    {
+                        Set_Flag(textbox.Name, true);
+                    }
                 }
                 else
                 {
-                    Set_Flag(textbox.Name, true);
+                    int number;
+                    if (!int.TryParse(text, out number))
+                    {
+                        Set_Flag(textbox.Name, false);
+                        errorProvider.SetError(textbox, "Cantidad debe ser número");
+                    }
+                    else
+                    {
+                        Set_Flag(textbox.Name, true);
+                    }
                 }
+                
             }
         }
 
@@ -432,7 +481,7 @@ namespace WindowsFormsApp1.Views
 
         private bool Validate_Data()
         {
-            if (name_flag && product_flag && previous_flag && next_flag && quantity_flag)
+            if (name_flag && product_flag && quantity_flag)
             {
                 return true;
             }
@@ -442,10 +491,10 @@ namespace WindowsFormsApp1.Views
         private void Set_Flag_All(bool value)
         {
             name_flag = value;
-            product_flag = value; ;
-            previous_flag = value; ;
-            next_flag = value; ;
-            quantity_flag = value; ;
+            product_flag = value;
+            quantity_flag = value;
+            break_flag = value;
+            currency_flag = value;
         }
 
         private void Set_Flag(string name, bool value)
@@ -458,14 +507,14 @@ namespace WindowsFormsApp1.Views
                 case "combobox_product":
                     product_flag = value;
                     break;
-                case "combobox_previous":
-                    previous_flag = value;
-                    break;
-                case "combobox_next":
-                    next_flag = value;
-                    break;
                 case "textbox_quantity":
                     quantity_flag = value;
+                    break;
+                case "textbox_break":
+                    break_flag = value;
+                    break;
+                case "combobox_currency":
+                    currency_flag = value;
                     break;
             }
         }
