@@ -149,6 +149,7 @@
             this.comboBox_Product.Name = "comboBox_Product";
             this.comboBox_Product.Size = new System.Drawing.Size(163, 21);
             this.comboBox_Product.TabIndex = 38;
+            this.comboBox_Product.SelectedIndexChanged += new System.EventHandler(this.comboBox_Product_SelectedIndexChanged);
             // 
             // metroLabel2
             // 

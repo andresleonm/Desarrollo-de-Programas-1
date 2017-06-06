@@ -46,5 +46,21 @@ namespace WindowsFormsApp1.Controller
             }
             return new Result(null, result.success, result.message);
         }
+
+        public Result getProductionOrder(int id)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("order_id", id.ToString()));
+            GenericResult result = execute_function("get_production_order", parameters);
+            if (result.success)
+            {
+                var r = result.data[0];
+                //"PRODUCTION_ORDER_ID","PRODUCTION_ORDER_NAME","PRODUCTION_ORDER_OBSERVATION","PRODUCTION_ORDER_DATE", "STATE","PRODUCTION_ORDER_DATE_END"
+                ProductionOrder production_order = new ProductionOrder(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2), DateTime.Parse(r.getColumn(3)),
+                                        r.getColumn(4), DateTime.Parse(r.getColumn(5)));
+                return new Result(production_order, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
     }
 }

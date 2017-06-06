@@ -18,6 +18,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         MaterialMovementController pc;
         PurchaseOrderController poc;
         PurchaseOrderLineController pocl;
+        ProductionOrderMaterialLineController pomlc;
         bool flgBegin = true;
         int claseAnt = -1;
         string idAnt;
@@ -29,6 +30,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             pc = new MaterialMovementController(user, password);
             poc = new PurchaseOrderController(user, password);
             pocl = new PurchaseOrderLineController(user, password);
+            pomlc = new ProductionOrderMaterialLineController(user, password);
             AdjustColumnOrder();
             fillTypeMovements();
             clearGrid();
@@ -124,6 +126,21 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             AdjustColumnOrder();
         }
 
+        private void populateDetail(List<ProductionOrderMaterialLine> production)
+        {
+            clearGrid();
+            var lines = production;
+            var movs_lines = new List<Models.MaterialMovementLine>();
+            int i = 1;
+            foreach (ProductionOrderMaterialLine line in lines)
+            {
+                movs_lines.Add(new Models.MaterialMovementLine(line, i, user, password));
+                i++;
+            }
+            this.grid_movement_lines.DataSource = movs_lines;
+            AdjustColumnOrder();
+        }
+
         private void documents_list_SelectedIndexChanged(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -138,7 +155,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
                 if (clase == 0)
                 {
-
+                    var productionLines = (List<Models.ProductionOrderMaterialLine>)pomlc.getMaterialLines(Int32.Parse(doc.id)).data;
+                    populateDetail(productionLines);
                 }
                 else
                 {

@@ -56,7 +56,6 @@ namespace WindowsFormsApp1.Views
             this.parameters1 = new WindowsFormsApp1.Views.Parameters();
             this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
             this.supplier1 = new WindowsFormsApp1.Views.Supplier();
-            this.workstation1 = new WindowsFormsApp1.Views.Workstation();
             this.bom1 = new WindowsFormsApp1.Views.BOM();
             this.client1 = new WindowsFormsApp1.Views.Client();
             this.uC_PurchasesMenu1 = new WindowsFormsApp1.Views.UC_PurchasesMenu();
@@ -64,7 +63,6 @@ namespace WindowsFormsApp1.Views
             this.user = new WindowsFormsApp1.Views.UC_User();
             this.profile = new WindowsFormsApp1.Views.UC_Profile();
             this.shift = new WindowsFormsApp1.Views.UC_Shift();
-            this.product = new WindowsFormsApp1.Views.UC_Product2();
             this.material = new WindowsFormsApp1.Views.UC_Material2();
             this.uc_material = new WindowsFormsApp1.Views.UC_Material();
             this.uc_product = new WindowsFormsApp1.Views.UC_Product();
@@ -413,13 +411,6 @@ namespace WindowsFormsApp1.Views
             this.supplier1.TabIndex = 18;
             this.supplier1.UseSelectable = true;
             // 
-            // workstation1
-            // 
-            this.workstation1.Location = new System.Drawing.Point(132, 72);
-            this.workstation1.Name = "workstation1";
-            this.workstation1.Size = new System.Drawing.Size(850, 489);
-            this.workstation1.TabIndex = 20;
-            // 
             // bom1
             // 
             this.bom1.Location = new System.Drawing.Point(132, 72);
@@ -483,13 +474,6 @@ namespace WindowsFormsApp1.Views
             this.shift.Name = "shift";
             this.shift.Size = new System.Drawing.Size(819, 447);
             this.shift.TabIndex = 28;
-            // 
-            // product
-            // 
-            this.product.Location = new System.Drawing.Point(132, 72);
-            this.product.Name = "product";
-            this.product.Size = new System.Drawing.Size(915, 549);
-            this.product.TabIndex = 29;
             // 
             // material
             // 
@@ -573,7 +557,6 @@ namespace WindowsFormsApp1.Views
             this.Controls.Add(this.parameters1);
             this.Controls.Add(this.warehouse1);
             this.Controls.Add(this.supplier1);
-            this.Controls.Add(this.workstation1);
             this.Controls.Add(this.bom1);
             this.Controls.Add(this.client1);
             this.Controls.Add(this.uC_PurchasesMenu1);
@@ -585,7 +568,6 @@ namespace WindowsFormsApp1.Views
             this.Controls.Add(this.user);
             this.Controls.Add(this.profile);
             this.Controls.Add(this.shift);
-            this.Controls.Add(this.product);
             this.Controls.Add(this.material);
             this.Controls.Add(this.uc_material);
             this.Controls.Add(this.uc_product);
@@ -636,11 +618,9 @@ namespace WindowsFormsApp1.Views
         private Warehouse warehouse1;
         private Client client1;
         private BOM bom1;
-        private Workstation workstation1;
         private Parameters parameters1;
         private UC_User user;
         private UC_Profile profile;
-        private UC_Product2 product;
         private UC_Shift shift;
         private UC_SalesMain uC_SalesMain1;
         private UC_WarehouseMovement uc_warehousemovement;

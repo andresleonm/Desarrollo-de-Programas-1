@@ -22,10 +22,17 @@ namespace WindowsFormsApp1.Views
         List<Recipe> recipes;
         string user = "dp1admin";
         string password = "dp1admin";
-
+        ProductsController product_controller;
+        ProductWarehouseController product_warehouse_controller;
+        RecipesController recipe_controller;
+        UnitController unit_controller;
         public ProductionOrderProductLine()
         {
             InitializeComponent();
+            product_controller = new ProductsController(user, password);
+            product_warehouse_controller = new ProductWarehouseController(user, password);
+            recipe_controller = new RecipesController(user, password);
+            unit_controller = new UnitController(user, password);
         }
 
         internal Models.ProductionOrderProductLine Line
@@ -62,16 +69,33 @@ namespace WindowsFormsApp1.Views
         {
             if (validate_data()) {
                 IsRegistered = true;
+
                 int selectedIndex = comboBox_Product.SelectedIndex;
-                line.Product = products[selectedIndex];
-                UnitController unit_controller = new UnitController(user, password);
-                Result result = unit_controller.getUnit(line.Product.Unit_id);
-                line.Product.Unit = (UnitOfMeasure)result.data;
+                Product product_selected= products[selectedIndex];
+                line.Product_id = product_selected.Id;
+                line.Product_name = product_selected.Name;
+             
+                Result result = unit_controller.getUnit(product_selected.Unit_id);
+                UnitOfMeasure unit= (UnitOfMeasure)result.data;
+                line.Unit_id = unit.Id;
+                line.Unit_name = unit.Name;
+
                 line.Quantity = Int32.Parse(metroTextBox_Quantity.Text);
+                Line.Produced_quantity = 0;
+                Line.Quantity_warehouse = 0;
+                Line.State = "Registrado";
+
+
                 selectedIndex = comboBox_Recipe.SelectedIndex;
-                line.Recipe = recipes[selectedIndex];
+                Recipe recipe = recipes[selectedIndex];
+                line.Recipe_id = recipe.Id;
+                line.Recipe_name = recipe.Name;
+
                 selectedIndex = comboBox_Warehouse.SelectedIndex;
-                line.Warehouse = product_warehouses[selectedIndex];
+                ProductWarehouse warehouse = product_warehouses[selectedIndex];
+                line.Warehouse_id = warehouse.Id;
+                line.Warehouse_name = warehouse.Name;
+
                 this.Close();
             }
         }
@@ -84,13 +108,6 @@ namespace WindowsFormsApp1.Views
         private void ProductionOrderProductLine_Load(object sender, EventArgs e)
         {
             MaximizeBox = false;
-           
-
-            // ComboBox
-            ProductsController product_controller = new ProductsController(user, password);
-            ProductWarehouseController product_warehouse_controller = new ProductWarehouseController(user, password);
-            RecipesController recipe_controller = new RecipesController(user, password);
-           
             Result result = product_controller.getProducts();
             this.products = (List<Product>)result.data;
 
@@ -100,23 +117,31 @@ namespace WindowsFormsApp1.Views
             result = recipe_controller.getRecipes();
             this.recipes=(List<Recipe>)result.data;
 
-            
+            comboBox_Product.DataSource = products;
+            comboBox_Product.DisplayMember = "name";
+            comboBox_Warehouse.DataSource = product_warehouses;
+            comboBox_Warehouse.DisplayMember = "name";
+            comboBox_Recipe.DataSource =recipes;
+            comboBox_Recipe.DisplayMember = "name";
+        }
 
-            foreach (Product prod in products)
-            {
-                this.comboBox_Product.Items.Add(prod.Name);
-            }                   
+        private void comboBox_Product_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int product_id = ((Product)comboBox_Product.SelectedItem).Id;
 
-            foreach (ProductWarehouse prod_ware in product_warehouses)
-            {
-                this.comboBox_Warehouse.Items.Add(prod_ware.Name);
-            }
+            Result result = product_warehouse_controller.getProductWarehouses();
+            this.product_warehouses = (List<ProductWarehouse>)result.data;
 
-            foreach (Recipe recipe in recipes)
-            {
-                this.comboBox_Recipe.Items.Add(recipe.Name);
-            }
+            Recipe recipe = new Recipe();
+            recipe.Product_id = product_id;
+            result = recipe_controller.getRecipes(recipe);
+            this.recipes = (List<Recipe>)result.data;
 
+            comboBox_Warehouse.DataSource = product_warehouses;
+            comboBox_Warehouse.DisplayMember = "name";
+            comboBox_Recipe.SelectedIndex = -1;
+            comboBox_Recipe.DataSource = recipes;
+            comboBox_Recipe.DisplayMember = "name";
         }
     }
 }

@@ -73,6 +73,8 @@
     <Compile Include="Controller\FunctionalityController.cs" />
     <Compile Include="Controller\MaterialMovementController.cs" />
     <Compile Include="Controller\MaterialMovementDetailController.cs" />
+    <Compile Include="Controller\ProductionOrderMaterialLineController.cs" />
+    <Compile Include="Controller\ProductionOrderWorkLineController.cs" />
     <Compile Include="Controller\ProfileController.cs" />
     <Compile Include="Controller\CurrencyController.cs" />
     <Compile Include="Controller\CustomerController.cs" />
@@ -267,12 +269,6 @@
     </Compile>
     <Compile Include="Views\UC_Product.Designer.cs">
       <DependentUpon>UC_Product.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UC_Product2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\UC_Product2.Designer.cs">
-      <DependentUpon>UC_Product2.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Warehouse_Module\MaterialMovementLine.cs">
       <SubType>Form</SubType>
@@ -483,12 +479,6 @@
     <Compile Include="Views\Purchase_Module\PurchaseOrderLine.Designer.cs">
       <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Workstation.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Workstation.Designer.cs">
-      <DependentUpon>Workstation.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -542,9 +532,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Product.resx">
       <DependentUpon>UC_Product.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_Product2.resx">
-      <DependentUpon>UC_Product2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderMaterialLine.resx">
       <DependentUpon>UC_ProductionOrderMaterialLine.cs</DependentUpon>
@@ -656,9 +643,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrderLine.resx">
       <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Workstation.resx">
-      <DependentUpon>Workstation.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

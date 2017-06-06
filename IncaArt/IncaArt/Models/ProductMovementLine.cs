@@ -65,6 +65,39 @@ namespace WindowsFormsApp1.Models
             this.idDocumentLine = line.Id;
         }
 
+        public ProductMovementLine(SalesRefundLine line, int id, string user, string password)
+        {
+            this.warehouse_id = line.Prod_warehouse_id;
+            this.product_id = line.Product_id;
+            this.unit_id = line.Unit_measure_id;
+            warehouse_name = line.Prod_warehouse_name;
+            product_name = line.Product_name;
+            unit_name = line.Unit_measure_name;
+            ProductWarehouseController pwc = new ProductWarehouseController(user, password);
+            Models.ProductWarehouse warehouse = (Models.ProductWarehouse)pwc.getProductWarehouse(warehouse_id).data;
+            this.warehouseQuantity = warehouse.Current_physical_stock;
+            this.documentQuantity = line.Quantity - line.Refund_quantity
+                ;
+            this.State = "Active";
+            this.idDocumentLine = line.Id;
+        }
+
+        public ProductMovementLine(ProductionOrderProductLine line, int id, string user, string password)
+        {
+            this.warehouse_id = line.Warehouse_id;
+            this.product_id = line.Product_id;
+            this.unit_id = line.Unit_id;
+            warehouse_name = line.Warehouse_name;
+            product_name = line.Product_name;
+            unit_name = line.Unit_name;
+            ProductWarehouseController pwc = new ProductWarehouseController(user, password);
+            Models.ProductWarehouse warehouse = (Models.ProductWarehouse)pwc.getProductWarehouse(warehouse_id).data;
+            this.warehouseQuantity = warehouse.Current_physical_stock;
+            this.documentQuantity = line.Produced_quantity - line.Quantity_warehouse;
+            this.State = "Active";
+            this.idDocumentLine = line.Id;
+        }
+
         public ProductMovementLine(string user,string password,ProductWarehouseM line, int id)
         {
             this.warehouse_id = line.Id;

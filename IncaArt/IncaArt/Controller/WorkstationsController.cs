@@ -19,7 +19,7 @@ namespace WindowsFormsApp1.Controller
             List<Parameter> parameters = new List<Parameter>();
             GenericResult result = execute_function("get_workstations", parameters);
             List<Models.Workstation> workstations = new List<Models.Workstation>();
-            if (result.success)4
+            if (result.success)
             {
                 foreach (Row r in result.data)
                 {
