@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.Controller
         {
         }
 
-        public Result getSalesOrders()
+        public Result getRefunds()
         {
             List<Parameter> parameters = new List<Parameter>();
             GenericResult result = execute_function("get_sales_orders", parameters);
@@ -37,7 +37,7 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result getSalesOrder(int id)
+        public Result getRefund(int id)
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("id", id.ToString()));
@@ -58,7 +58,7 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result insertSalesOrder(SalesOrder sales_order)
+        public Result insertRefund(SalesOrder sales_order)
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("currency", sales_order.Currency_id.ToString()));
@@ -79,7 +79,7 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result updateSalesOrder(SalesOrder sales_order)
+        public Result updateRefund(SalesOrder sales_order)
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("id", sales_order.Id.ToString()));

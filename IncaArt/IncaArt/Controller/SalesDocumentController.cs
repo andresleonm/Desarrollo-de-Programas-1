@@ -28,9 +28,9 @@ namespace WindowsFormsApp1.Controller
                     sales_documents.Add(new SalesDocument(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
                                                         r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
                                                         r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
-                                                        r.getColumn(9), DateTime.Parse(r.getColumn(10)), Double.Parse(r.getColumn(11)),
-                                                        r.getColumn(12), Int32.Parse(r.getColumn(13)), Char.Parse(r.getColumn(14)),
-                                                        int.Parse(r.getColumn(15)), detail));
+                                                        r.getColumn(9), DateTime.Parse(r.getColumn(10)), Double.Parse(r.getColumn(11)), 
+                                                        Double.Parse(r.getColumn(12)), r.getColumn(13), Int32.Parse(r.getColumn(14)), 
+                                                        Char.Parse(r.getColumn(15)), r.getColumn(16), detail));
                 }
                 return new Result(sales_documents, true, "");
             }
@@ -52,8 +52,8 @@ namespace WindowsFormsApp1.Controller
                                                                 r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
                                                                 r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
                                                                 r.getColumn(9), DateTime.Parse(r.getColumn(10)), Double.Parse(r.getColumn(11)),
-                                                                r.getColumn(12), Int32.Parse(r.getColumn(13)), Char.Parse(r.getColumn(14)),
-                                                                int.Parse(r.getColumn(15)), detail);
+                                                                Double.Parse(r.getColumn(12)), r.getColumn(13), Int32.Parse(r.getColumn(14)),
+                                                                Char.Parse(r.getColumn(15)), r.getColumn(16), detail);
                 return new Result(sales_document, true, "");
             }
             return new Result(null, result.success, result.message);
@@ -62,6 +62,7 @@ namespace WindowsFormsApp1.Controller
         public Result insertSalesDocument(SalesDocument sales_document)
         {
             List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("order_id", sales_document.Order_id.ToString()));
             parameters.Add(new Parameter("type_document_id", sales_document.Type_document_id.ToString()));
             parameters.Add(new Parameter("currency_id", sales_document.Currency_id.ToString()));
             parameters.Add(new Parameter("customer_id", sales_document.Customer_id.ToString()));
@@ -69,6 +70,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("customer_address", sales_document.Customer_address));
             parameters.Add(new Parameter("customer_phone", sales_document.Customer_phone));
             parameters.Add(new Parameter("amount", sales_document.Amount.ToString()));
+            parameters.Add(new Parameter("porc_igv", sales_document.Porc_igv.ToString()));
             parameters.Add(new Parameter("state", sales_document.Status));
             parameters.Add(new Parameter("customer_doi", sales_document.Customer_doi));
             parameters.Add(new Parameter("date", sales_document.Issue_date.ToString("MM/dd/yyyy")));

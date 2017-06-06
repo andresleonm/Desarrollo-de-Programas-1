@@ -217,7 +217,21 @@ namespace WindowsFormsApp1.Views
 
         private void grid_order_lines_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            
+            if (e.RowIndex != -1)
+            {
+                if (e.ColumnIndex == 7 || e.ColumnIndex == 8)
+                {
+                    double update_amount = double.Parse(grid_order_lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString()) * double.Parse(grid_order_lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
+                    grid_order_lines.Rows[e.RowIndex].Cells["amount"].Value = update_amount;
+
+                    double acumulate = 0;
+                    for (int i = 0; i < grid_order_lines.RowCount; i++)
+                    {
+                        acumulate += double.Parse(grid_order_lines.Rows[i].Cells["amount"].Value.ToString());
+                    }
+                    txt_amount.Text = acumulate.ToString();
+                }
+            }
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -232,8 +246,7 @@ namespace WindowsFormsApp1.Views
         }
 
         private void Clean()
-        {
-            
+        {            
             txt_address.Text = "";
             txt_amount.Text = "";
             txt_Doi.Text = "";
@@ -257,8 +270,8 @@ namespace WindowsFormsApp1.Views
             {
                 sales_orders = new List<SalesOrder>();
                 Result result = sales_order_controller.getSalesOrder(Int32.Parse(ctxt_order_id.Text));
-                SalesOrder sol = (SalesOrder)result.data;
-                sales_orders.Add(sol);
+                SalesOrder so = (SalesOrder)result.data;
+                sales_orders.Add(so);
                 fill_gridView_Order(sales_orders);
             }
         }
@@ -394,6 +407,24 @@ namespace WindowsFormsApp1.Views
 
             }
             
+        }
+
+        private void txt_name_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                txt_Doi.Select();
+        }
+
+        private void txt_Doi_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                txt_address.Select();
+        }
+
+        private void txt_address_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                txt_phone.Select();
         }
     }
 }

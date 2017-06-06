@@ -34,7 +34,7 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result insertSalesOrderLine(SalesDocumentLine line)
+        public Result insertSalesDocumentLine(SalesDocumentLine line)
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("document_id", line.Document_id.ToString()));

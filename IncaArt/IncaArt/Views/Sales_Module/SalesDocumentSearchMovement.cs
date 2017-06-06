@@ -15,19 +15,21 @@ namespace WindowsFormsApp1.Views.Sales_Module
 {
     public partial class SalesDocumentSearchMovement : Form
     {
+        private char type_document;
         public List<ProductMovement> prodMovementList;
         private ProductMovementController pc;
 
-        public SalesDocumentSearchMovement(ref List<ProductMovement> prodMovement, string user, string password)
+        public SalesDocumentSearchMovement(ref List<ProductMovement> prodMovement,char type_doc, string user, string password)
         {
             InitializeComponent();
             this.prodMovementList = prodMovement;
+            this.type_document = type_doc;
             pc = new ProductMovementController(user, password);
         }
 
         private void btn_Search_Click(object sender, EventArgs e)
         {
-            var movements = (List<ProductMovement>)pc.getMovements().data;
+            var movements = (List<ProductMovement>)pc.getMovements(type_document).data;
             if (movements == null)
                 movements = new List<ProductMovement>();
             grid_Movements.DataSource = movements;
