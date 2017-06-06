@@ -21,6 +21,8 @@ namespace WindowsFormsApp1.Views
           //  this.Style = mStyle.Style;
             uC_ProductWarehouse1.Visible = true;
             uC_MaterialWarehouse1.Visible = false;
+            uC_MaterialTypeWarehouse1.Visible = false;
+            uC_ProductTypeWarehouse1.Visible = false;
 
         }
 
@@ -95,12 +97,33 @@ namespace WindowsFormsApp1.Views
         {
             uC_ProductWarehouse1.Visible = true;
             uC_MaterialWarehouse1.Visible = false;
+            uC_MaterialTypeWarehouse1.Visible = false;
+            uC_ProductTypeWarehouse1.Visible = false;
         }
 
         private void select_materials_Click(object sender, EventArgs e)
         {
             uC_MaterialWarehouse1.Visible = true;
             uC_ProductWarehouse1.Visible = false;
+            uC_MaterialTypeWarehouse1.Visible = false;
+            uC_ProductTypeWarehouse1.Visible = false;
+        }
+
+        private void select_warehouseTypeMaterial_Click(object sender, EventArgs e)
+        {
+            uC_MaterialTypeWarehouse1.Visible = true;
+            uC_MaterialWarehouse1.Visible = false;
+            uC_ProductWarehouse1.Visible = false;
+            uC_ProductTypeWarehouse1.Visible = false;
+        }
+
+        private void select_warehouseTypeProduct_Click(object sender, EventArgs e)
+        {
+            uC_ProductTypeWarehouse1.Visible = true;
+            uC_MaterialTypeWarehouse1.Visible = false;
+            uC_MaterialWarehouse1.Visible = false;
+            uC_ProductWarehouse1.Visible = false;
+            
         }
     }
 }

@@ -121,5 +121,27 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+
+        public Result getProductWarehouses(Models.ProductWarehouse warehouse)
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            //if (warehouse.Max_capacity != "") parameters.Add(new Parameter("max_capacity", warehouse.Max_capacity));
+            if (warehouse.Product_id != 0) parameters.Add(new Parameter("product_id", warehouse.Product_id.ToString()));
+            if (warehouse.Type_id != 0) parameters.Add(new Parameter("type_id", warehouse.Type_id.ToString()));
+            GenericResult result = execute_function("get_productwarehouses2", parameters);
+            List<Models.ProductWarehouse> warehouses = new List<Models.ProductWarehouse>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    warehouses.Add(new Models.ProductWarehouse(Int32.Parse(r.getColumn(0)), r.getColumn(1), Int32.Parse(r.getColumn(2)), int.Parse(r.getColumn(3)), int.Parse(r.getColumn(4)),
+                        Int32.Parse(r.getColumn(5)), r.getColumn(6), int.Parse(r.getColumn(7))));
+                }
+                return new Result(warehouses, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
     }
 }

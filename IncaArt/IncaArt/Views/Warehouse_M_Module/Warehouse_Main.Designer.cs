@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.select_warehouseTypeMaterial = new MetroFramework.Controls.MetroTile();
+            this.select_warehouseTypeProduct = new MetroFramework.Controls.MetroTile();
             this.select_products = new MetroFramework.Controls.MetroTile();
             this.select_materials = new MetroFramework.Controls.MetroTile();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.uC_MaterialWarehouse1 = new WindowsFormsApp1.Views.Warehouse_M_Module.UC_MaterialWarehouse();
             this.uC_ProductWarehouse1 = new WindowsFormsApp1.Views.UC_ProductWarehouse();
-            this.select_warehouseTypeProduct = new MetroFramework.Controls.MetroTile();
-            this.select_warehouseTypeMaterial = new MetroFramework.Controls.MetroTile();
+            this.uC_MaterialTypeWarehouse1 = new WindowsFormsApp1.Views.Warehouse_M_Module.UC_MaterialTypeWarehouse();
+            this.uC_ProductTypeWarehouse1 = new WindowsFormsApp1.Views.Warehouse_M_Module.UC_ProductTypeWarehouse();
             this.metroPanel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +62,40 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // select_warehouseTypeMaterial
+            // 
+            this.select_warehouseTypeMaterial.ActiveControl = null;
+            this.select_warehouseTypeMaterial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.select_warehouseTypeMaterial.Location = new System.Drawing.Point(621, 3);
+            this.select_warehouseTypeMaterial.Name = "select_warehouseTypeMaterial";
+            this.select_warehouseTypeMaterial.Size = new System.Drawing.Size(177, 62);
+            this.select_warehouseTypeMaterial.TabIndex = 43;
+            this.select_warehouseTypeMaterial.Text = "Almacén Material";
+            this.select_warehouseTypeMaterial.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.select_warehouseTypeMaterial.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.select_warehouseTypeMaterial.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.select_warehouseTypeMaterial.UseCustomBackColor = true;
+            this.select_warehouseTypeMaterial.UseSelectable = true;
+            this.select_warehouseTypeMaterial.UseTileImage = true;
+            this.select_warehouseTypeMaterial.Click += new System.EventHandler(this.select_warehouseTypeMaterial_Click);
+            // 
+            // select_warehouseTypeProduct
+            // 
+            this.select_warehouseTypeProduct.ActiveControl = null;
+            this.select_warehouseTypeProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.select_warehouseTypeProduct.Location = new System.Drawing.Point(211, 3);
+            this.select_warehouseTypeProduct.Name = "select_warehouseTypeProduct";
+            this.select_warehouseTypeProduct.Size = new System.Drawing.Size(177, 62);
+            this.select_warehouseTypeProduct.TabIndex = 42;
+            this.select_warehouseTypeProduct.Text = "Almacén Producto";
+            this.select_warehouseTypeProduct.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.select_warehouseTypeProduct.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.select_warehouseTypeProduct.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.select_warehouseTypeProduct.UseCustomBackColor = true;
+            this.select_warehouseTypeProduct.UseSelectable = true;
+            this.select_warehouseTypeProduct.UseTileImage = true;
+            this.select_warehouseTypeProduct.Click += new System.EventHandler(this.select_warehouseTypeProduct_Click);
             // 
             // select_products
             // 
@@ -100,6 +136,8 @@
             // metroPanel2
             // 
             this.metroPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.metroPanel2.Controls.Add(this.uC_ProductTypeWarehouse1);
+            this.metroPanel2.Controls.Add(this.uC_MaterialTypeWarehouse1);
             this.metroPanel2.Controls.Add(this.uC_MaterialWarehouse1);
             this.metroPanel2.Controls.Add(this.uC_ProductWarehouse1);
             this.metroPanel2.HorizontalScrollbarBarColor = true;
@@ -134,37 +172,22 @@
             this.uC_ProductWarehouse1.TabIndex = 2;
             this.uC_ProductWarehouse1.UseSelectable = true;
             // 
-            // select_warehouseTypeProduct
+            // uC_MaterialTypeWarehouse1
             // 
-            this.select_warehouseTypeProduct.ActiveControl = null;
-            this.select_warehouseTypeProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.select_warehouseTypeProduct.Location = new System.Drawing.Point(211, 3);
-            this.select_warehouseTypeProduct.Name = "select_warehouseTypeProduct";
-            this.select_warehouseTypeProduct.Size = new System.Drawing.Size(177, 62);
-            this.select_warehouseTypeProduct.TabIndex = 42;
-            this.select_warehouseTypeProduct.Text = "Almacén Producto";
-            this.select_warehouseTypeProduct.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.select_warehouseTypeProduct.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.select_warehouseTypeProduct.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.select_warehouseTypeProduct.UseCustomBackColor = true;
-            this.select_warehouseTypeProduct.UseSelectable = true;
-            this.select_warehouseTypeProduct.UseTileImage = true;
+            this.uC_MaterialTypeWarehouse1.Location = new System.Drawing.Point(0, 0);
+            this.uC_MaterialTypeWarehouse1.Name = "uC_MaterialTypeWarehouse1";
+            this.uC_MaterialTypeWarehouse1.Size = new System.Drawing.Size(527, 868);
+            this.uC_MaterialTypeWarehouse1.TabIndex = 4;
+            this.uC_MaterialTypeWarehouse1.UseSelectable = true;
             // 
-            // select_warehouseTypeMaterial
+            // uC_ProductTypeWarehouse1
             // 
-            this.select_warehouseTypeMaterial.ActiveControl = null;
-            this.select_warehouseTypeMaterial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.select_warehouseTypeMaterial.Location = new System.Drawing.Point(621, 3);
-            this.select_warehouseTypeMaterial.Name = "select_warehouseTypeMaterial";
-            this.select_warehouseTypeMaterial.Size = new System.Drawing.Size(177, 62);
-            this.select_warehouseTypeMaterial.TabIndex = 43;
-            this.select_warehouseTypeMaterial.Text = "Almacén Material";
-            this.select_warehouseTypeMaterial.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.select_warehouseTypeMaterial.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.select_warehouseTypeMaterial.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.select_warehouseTypeMaterial.UseCustomBackColor = true;
-            this.select_warehouseTypeMaterial.UseSelectable = true;
-            this.select_warehouseTypeMaterial.UseTileImage = true;
+            this.uC_ProductTypeWarehouse1.BackColor = System.Drawing.Color.White;
+            this.uC_ProductTypeWarehouse1.Location = new System.Drawing.Point(0, 0);
+            this.uC_ProductTypeWarehouse1.Name = "uC_ProductTypeWarehouse1";
+            this.uC_ProductTypeWarehouse1.Size = new System.Drawing.Size(527, 868);
+            this.uC_ProductTypeWarehouse1.TabIndex = 5;
+            this.uC_ProductTypeWarehouse1.UseSelectable = true;
             // 
             // Warehouse
             // 
@@ -198,5 +221,7 @@
         private Warehouse_M_Module.UC_MaterialWarehouse uC_MaterialWarehouse1;
         private MetroFramework.Controls.MetroTile select_warehouseTypeMaterial;
         private MetroFramework.Controls.MetroTile select_warehouseTypeProduct;
+        private Warehouse_M_Module.UC_MaterialTypeWarehouse uC_MaterialTypeWarehouse1;
+        private Warehouse_M_Module.UC_ProductTypeWarehouse uC_ProductTypeWarehouse1;
     }
 }
