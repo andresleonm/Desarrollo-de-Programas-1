@@ -31,7 +31,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_SearchClient = new MetroFramework.Controls.MetroTile();
             this.metroTextBox_observations = new MetroFramework.Controls.MetroTextBox();
-            this.metroTextBox_production_time = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox_quantity_produced = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox_quantity_broken = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox_quantity_required = new MetroFramework.Controls.MetroTextBox();
@@ -48,15 +47,24 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_Register = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDown_Hours = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_Minute = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Hours)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Minute)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.numericUpDown_Minute);
+            this.groupBox1.Controls.Add(this.numericUpDown_Hours);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btn_SearchClient);
             this.groupBox1.Controls.Add(this.metroTextBox_observations);
-            this.groupBox1.Controls.Add(this.metroTextBox_production_time);
             this.groupBox1.Controls.Add(this.metroTextBox_quantity_produced);
             this.groupBox1.Controls.Add(this.metroTextBox_quantity_broken);
             this.groupBox1.Controls.Add(this.metroTextBox_quantity_required);
@@ -131,40 +139,6 @@
             this.metroTextBox_observations.UseSelectable = true;
             this.metroTextBox_observations.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox_observations.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroTextBox_production_time
-            // 
-            this.metroTextBox_production_time.BackColor = System.Drawing.SystemColors.Window;
-            // 
-            // 
-            // 
-            this.metroTextBox_production_time.CustomButton.BackColor = System.Drawing.SystemColors.Control;
-            this.metroTextBox_production_time.CustomButton.Image = null;
-            this.metroTextBox_production_time.CustomButton.Location = new System.Drawing.Point(143, 1);
-            this.metroTextBox_production_time.CustomButton.Name = "";
-            this.metroTextBox_production_time.CustomButton.Size = new System.Drawing.Size(19, 19);
-            this.metroTextBox_production_time.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox_production_time.CustomButton.TabIndex = 1;
-            this.metroTextBox_production_time.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox_production_time.CustomButton.UseSelectable = true;
-            this.metroTextBox_production_time.CustomButton.UseVisualStyleBackColor = false;
-            this.metroTextBox_production_time.CustomButton.Visible = false;
-            this.metroTextBox_production_time.Lines = new string[0];
-            this.metroTextBox_production_time.Location = new System.Drawing.Point(550, 134);
-            this.metroTextBox_production_time.MaxLength = 32767;
-            this.metroTextBox_production_time.Name = "metroTextBox_production_time";
-            this.metroTextBox_production_time.PasswordChar = '\0';
-            this.metroTextBox_production_time.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox_production_time.SelectedText = "";
-            this.metroTextBox_production_time.SelectionLength = 0;
-            this.metroTextBox_production_time.SelectionStart = 0;
-            this.metroTextBox_production_time.ShortcutsEnabled = true;
-            this.metroTextBox_production_time.Size = new System.Drawing.Size(163, 21);
-            this.metroTextBox_production_time.TabIndex = 62;
-            this.metroTextBox_production_time.UseCustomBackColor = true;
-            this.metroTextBox_production_time.UseSelectable = true;
-            this.metroTextBox_production_time.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox_production_time.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroTextBox_quantity_produced
             // 
@@ -399,7 +373,7 @@
             this.metroLabel1.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel1.Location = new System.Drawing.Point(27, 29);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(68, 15);
+            this.metroLabel1.Size = new System.Drawing.Size(69, 15);
             this.metroLabel1.TabIndex = 30;
             this.metroLabel1.Text = "Trabajador:";
             this.metroLabel1.UseCustomBackColor = true;
@@ -432,6 +406,38 @@
             this.button_Register.UseVisualStyleBackColor = false;
             this.button_Register.Click += new System.EventHandler(this.button_Register_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(609, 142);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 66;
+            this.label1.Text = "horas";
+            // 
+            // numericUpDown_Hours
+            // 
+            this.numericUpDown_Hours.Location = new System.Drawing.Point(550, 135);
+            this.numericUpDown_Hours.Name = "numericUpDown_Hours";
+            this.numericUpDown_Hours.Size = new System.Drawing.Size(59, 20);
+            this.numericUpDown_Hours.TabIndex = 67;
+            // 
+            // numericUpDown_Minute
+            // 
+            this.numericUpDown_Minute.Location = new System.Drawing.Point(653, 134);
+            this.numericUpDown_Minute.Name = "numericUpDown_Minute";
+            this.numericUpDown_Minute.Size = new System.Drawing.Size(59, 20);
+            this.numericUpDown_Minute.TabIndex = 68;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(718, 142);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 13);
+            this.label2.TabIndex = 69;
+            this.label2.Text = "min";
+            // 
             // ProductionOrderWorkLine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -444,6 +450,8 @@
             this.Load += new System.EventHandler(this.ProductionOrderWorkLine_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Hours)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Minute)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,7 +461,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private MetroFramework.Controls.MetroTextBox metroTextBox_observations;
-        private MetroFramework.Controls.MetroTextBox metroTextBox_production_time;
         private MetroFramework.Controls.MetroTextBox metroTextBox_quantity_produced;
         private MetroFramework.Controls.MetroTextBox metroTextBox_quantity_broken;
         private MetroFramework.Controls.MetroTextBox metroTextBox_quantity_required;
@@ -471,5 +478,9 @@
         private System.Windows.Forms.Button button_Cancel;
         private System.Windows.Forms.Button button_Register;
         private MetroFramework.Controls.MetroTile btn_SearchClient;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Minute;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Hours;
     }
 }

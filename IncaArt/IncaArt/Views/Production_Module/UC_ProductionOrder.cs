@@ -291,7 +291,10 @@ namespace WindowsFormsApp1.Views
                     row[9] = work_lines[i].Quantity_required.ToString();
                     row[10] = work_lines[i].Quantity_produced.ToString();
                     row[11] = work_lines[i].Quantity_broken.ToString();
-                    row[12] = work_lines[i].Production_time.ToString();
+                    int minute = (int)(work_lines[i].Production_time) % 60;
+                    int hour = (int)(work_lines[i].Production_time) / 60;
+                    //row[12] = work_lines[i].Production_time.ToString();
+                    row[12] = hour.ToString() + "h " + minute.ToString() + "min";
                     row[13] = work_lines[i].Observation;
                     row[14] = work_lines[i].State;
                     this.metroGrid_Work.Rows.Add(row);
@@ -390,15 +393,22 @@ namespace WindowsFormsApp1.Views
         {
             if (metroGrid_Work.Rows.Count > 0)
             {
-                int selected_index = metroGrid_Material.SelectedRows[0].Index;
-                Production_Module.ProductionOrderWorkLine work_line = new Production_Module.ProductionOrderWorkLine();
-                work_line.Line = work_lines[selected_index];
-                work_line.Editing = true;
-                work_line.ShowDialog();
-                if (work_line.IsRegistered)
+                if (datagrid_Products.SelectedRows[0] == null)
                 {
-                    work_lines[selected_index] = work_line.Line;
-                    Load_Work_DataGridView();
+                    MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    int selected_index = metroGrid_Work.SelectedRows[0].Index;
+                    Production_Module.ProductionOrderWorkLine work_line = new Production_Module.ProductionOrderWorkLine();
+                    work_line.Line = work_lines[selected_index];
+                    work_line.Editing = true;
+                    work_line.ShowDialog();
+                    if (work_line.IsRegistered)
+                    {
+                        work_lines[selected_index] = work_line.Line;
+                        Load_Work_DataGridView();
+                    }
                 }
             }
             update_SummaryProduct();
@@ -487,7 +497,7 @@ namespace WindowsFormsApp1.Views
         }
         private void update_SummaryMaterial()
         {
-            calculate_materials_summary();
+           // calculate_materials_summary();
             Load_SummaryMaterial_DataGridView();
         }
 

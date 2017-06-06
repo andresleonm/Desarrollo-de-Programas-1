@@ -135,5 +135,10 @@ namespace WindowsFormsApp1.Views.Production_Module
                 this.Text = "Edición de material";
             }
         }
+
+        private void comboBox_Warehouse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
