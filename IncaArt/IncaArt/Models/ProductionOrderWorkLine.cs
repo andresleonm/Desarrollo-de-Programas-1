@@ -220,6 +220,19 @@ namespace WindowsFormsApp1.Models
             }
         }
 
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
         public ProductionOrderWorkLine() {
         }
 
@@ -227,7 +240,7 @@ namespace WindowsFormsApp1.Models
             int work_station_id,string work_station_name, int quantity_required,int quantity_produced,int quantity_broken,double production_time,
             int product_id, string product_name,int unit_of_measure,string unit_of_measure_name, string observation,string state)
         {
-            this.id = id;
+            this.Id = id;
             this.order_Id = order_id;
             this.worker_id = worker_id;
             this.worker_name = worker_name+" "+ worker_paternal_name+" "+ worker_maternal_name;         

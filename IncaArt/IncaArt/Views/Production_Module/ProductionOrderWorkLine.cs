@@ -16,6 +16,7 @@ namespace WindowsFormsApp1.Views.Production_Module
     {
         private Models.ProductionOrderWorkLine line = new Models.ProductionOrderWorkLine();
         private bool isRegistered = false;
+        private bool editing = false;
 
         List<Product> products;
         List<Workstation> workstations;
@@ -51,6 +52,19 @@ namespace WindowsFormsApp1.Views.Production_Module
             set
             {
                 line = value;
+            }
+        }
+
+        public bool Editing
+        {
+            get
+            {
+                return editing;
+            }
+
+            set
+            {
+                editing = value;
             }
         }
 
@@ -131,6 +145,19 @@ namespace WindowsFormsApp1.Views.Production_Module
             
             for(int i = 0; i < workers.Count; i++) {
                 comboBox_Worker.Items.Add(workers[i].Name+" "+ workers[i].Paternal_name+" "+ workers[i].Maternal_name);
+            }
+
+            if (Editing)
+            {
+                comboBox_Product.Text = line.Product_name;
+                comboBox_Workstation.Text = line.Workstation_name;
+                comboBox_Worker.Text = line.Worker_name;
+                metroTextBox_observations.Text = line.Observation;
+                metroTextBox_quantity_required.Text = line.Quantity_required.ToString();
+                metroTextBox_quantity_produced.Text = line.Quantity_produced.ToString();
+                metroTextBox_quantity_broken.Text = line.Quantity_broken.ToString();
+                metroTextBox_production_time.Text = line.Production_time.ToString();
+                this.Text = "Edición de notificación de trabajo";
             }
         }
     }

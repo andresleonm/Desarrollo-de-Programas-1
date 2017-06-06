@@ -16,7 +16,7 @@ namespace WindowsFormsApp1.Views
     {
         private Models.ProductionOrderProductLine line=new Models.ProductionOrderProductLine();
         private bool isRegistered=false;
-
+        private bool editing = false;
         List<Product> products;
         List<ProductWarehouse> product_warehouses;
         List<Recipe> recipes;
@@ -34,6 +34,7 @@ namespace WindowsFormsApp1.Views
             recipe_controller = new RecipesController(user, password);
             unit_controller = new UnitController(user, password);
         }
+
 
         internal Models.ProductionOrderProductLine Line
         {
@@ -61,6 +62,19 @@ namespace WindowsFormsApp1.Views
             }
         }
 
+        public bool Editing
+        {
+            get
+            {
+                return editing;
+            }
+
+            set
+            {
+                editing = value;
+            }
+        }
+
         private bool validate_data()
         {
             return true;
@@ -81,8 +95,8 @@ namespace WindowsFormsApp1.Views
                 line.Unit_name = unit.Name;
 
                 line.Quantity = Int32.Parse(metroTextBox_Quantity.Text);
-                Line.Produced_quantity = 0;
-                Line.Quantity_warehouse = 0;
+                Line.Produced_quantity = Int32.Parse(metroTextBox_quantity_produced.Text);
+                Line.Quantity_warehouse = Int32.Parse(metroTextBox_quantity_warehouse.Text); ;
                 Line.State = "Registrado";
 
 
@@ -123,6 +137,17 @@ namespace WindowsFormsApp1.Views
             comboBox_Warehouse.DisplayMember = "name";
             comboBox_Recipe.DataSource =recipes;
             comboBox_Recipe.DisplayMember = "name";
+
+            if (Editing)
+            {
+                comboBox_Product.Text = line.Product_name;
+                metroTextBox_Quantity.Text = line.Quantity.ToString();
+                metroTextBox_quantity_produced.Text = line.Produced_quantity.ToString();
+                metroTextBox_quantity_warehouse.Text = line.Quantity_warehouse.ToString();
+                comboBox_Recipe.Text = line.Recipe_name;
+                comboBox_Warehouse.Text = line.Warehouse_name;
+                this.Text = "Edición de producto";
+            }
         }
 
         private void comboBox_Product_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,6 +167,7 @@ namespace WindowsFormsApp1.Views
             comboBox_Recipe.SelectedIndex = -1;
             comboBox_Recipe.DataSource = recipes;
             comboBox_Recipe.DisplayMember = "name";
+
         }
     }
 }

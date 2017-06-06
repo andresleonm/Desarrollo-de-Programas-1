@@ -53,5 +53,25 @@ namespace WindowsFormsApp1.Controller
             }
             return new Result(null, result.success, result.message);
         }
+
+        public Result updateMaterialLine(ProductionOrderMaterialLine material_line)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("production_order_id", material_line.Order_Id.ToString()));
+            parameters.Add(new Parameter("production_detail_materials_id", material_line.Id.ToString()));
+            parameters.Add(new Parameter("material_id", material_line.Material_id.ToString()));
+            parameters.Add(new Parameter("quantity_required", material_line.Quantity_required.ToString()));
+            parameters.Add(new Parameter("quantity_taken_real", material_line.Quantity_taken_real.ToString()));
+            parameters.Add(new Parameter("unit_of_measure", material_line.Unit_id.ToString()));
+            parameters.Add(new Parameter("state", material_line.State));
+            parameters.Add(new Parameter("warehouse_id", material_line.Warehouse_id.ToString()));
+
+            GenericResult result = execute_transaction("update_production_detail_material", parameters);
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
     }
 }
