@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    public class Refund
+    public class SalesRefund
     {        
         private int id;
         private int currency_id;
@@ -24,7 +24,7 @@ namespace WindowsFormsApp1.Models
         private int refund_reason_id;
         private string refund_reason_name;
         private int document_id;
-        private List<RefundLine> lines;
+        private List<SalesRefundLine> lines;
 
         public int Id
         {
@@ -104,14 +104,14 @@ namespace WindowsFormsApp1.Models
             set { observation = value; }
         }
 
-        public List<RefundLine> Lines
+        public List<SalesRefundLine> Lines
         {
             get { return lines; }
             set { lines = value; }
         }
 
         // Construct for controller
-        public Refund(int order_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, double amount, string observation, List<RefundLine> lines)
+        public SalesRefund(int order_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, double amount, string observation, List<SalesRefundLine> lines)
         {
             this.id = order_id;
             this.currency_id = currency_id;
@@ -129,10 +129,10 @@ namespace WindowsFormsApp1.Models
             this.lines = lines;
         }
 
-        public Refund() { }
+        public SalesRefund() { }
 
         // For SalesOrderList
-        public Refund(int order_id, string cli_name, string observation, DateTime issue_date, double amount, string status)
+        public SalesRefund(int order_id, string cli_name, string observation, DateTime issue_date, double amount, string status)
         {
             this.id = order_id;
             this.customer_name = cli_name;

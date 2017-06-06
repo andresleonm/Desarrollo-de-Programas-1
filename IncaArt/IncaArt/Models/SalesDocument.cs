@@ -10,6 +10,7 @@ namespace WindowsFormsApp1.Models
     {
         private int id;
         private int order_id;
+        public string type_name;
         private char type_document_id;
         private int movement_id;
         private int currency_id;
@@ -32,6 +33,19 @@ namespace WindowsFormsApp1.Models
         {
             get { return id; }
             set { id = value; }
+        }
+
+        public string Type_name
+        {
+            get
+            {
+                if (type_document_id == 'B') return "Boleta";
+                if (type_document_id == 'F') return "Factura";
+                if (type_document_id == 'N') return "Nota de Crédito";
+                return "";
+            }
+        
+            set { type_name = value; }
         }
 
         public int Order_id

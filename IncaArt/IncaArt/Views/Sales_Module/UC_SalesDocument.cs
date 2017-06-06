@@ -18,9 +18,10 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private string password = "dp1admin";
         private double igv = 0.18;
         private SalesOrder so;
-        private Refund rf;
-        private List<SalesDocument> sales_documents;
+        private SalesRefund rf;
+        private SalesDocument sd_see;
         private ProductMovement prodMovement;
+        private List<SalesDocument> sales_documents;
         private ProductMovementController pmc;
         private SalesDocumentController sales_document_controller;
         private SalesDocumentLineController sales_document_line_controller;
@@ -100,7 +101,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             if (cbo_document_type.Text[0] == 'N')
             {
                 RefundController rc = new RefundController(user, password);
-                rf = (Refund)rc.getRefund(Int32.Parse(pm.NroDocumentoOrigen)).data;
+                rf = (SalesRefund)rc.getRefund(Int32.Parse(pm.NroDocumentoOrigen)).data;
                 txt_name.Text = rf.Customer_name;
                 txt_address.Text = rf.Customer_address;
                 txt_Doi.Text = rf.Customer_doi;
@@ -125,6 +126,36 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 txt_Currency.Text = so.Currency_symbol + "  -  " + so.Currency_name;
                 dt_IssueDate.Text = so.Issue_date.ToString();
             }           
+        }
+
+        private void fill_Sales_Document_Form(SalesDocument sd)
+        {
+            Clean();
+            txt_name.Text = sd.Customer_name;
+            txt_address.Text = sd.Customer_address;
+            txt_Doi.Text = sd.Customer_doi;
+            txt_phone.Text = sd.Customer_phone;
+            txt_Document_id.Text = sd.Id.ToString();
+            txt_Currency.Text = sd.Currency_symbol + "  -  " + sd.Currency_name;
+            dt_IssueDate.Text = sd.Issue_date.ToString();
+            txt_Movement_id.Text = sd.Movement_id.ToString();
+            txt_external.Text = sd.External_number;
+            txt_observation.Text = sd.Observation;
+            txt_amount.Text = sd.Amount.ToString();
+            txt_igv.Text = (sd.Amount * sd.Porc_igv).ToString();
+            txt_total.Text = (sd.Amount * (1 + sd.Porc_igv)).ToString();
+            txt_Status.Text = sd.Status;
+
+            if (sd.Type_document_id.ToString().Equals('F'))
+                cbo_document_type.Text = "Factura";
+            else if (sd.Type_document_id.ToString().Equals('B'))
+                cbo_document_type.Text = "Boleta";
+            else if (sd.Type_document_id.ToString().Equals('N'))
+                cbo_document_type.Text = "Nota de Crédito";
+            cbo_document_type.Refresh();
+
+            grid_Document_Lines.DataSource = sd.Lines;
+            AdjustColumnDocumentLine();
         }
 
         private void Clean()
@@ -236,7 +267,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     btn_Clean.PerformClick();
                     tab_Order.SelectedIndex = 0;
                     MessageBox.Show(this, "Documento creado exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
-
                 }
                 else
                 {
@@ -288,6 +318,29 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private void btn_Clean_Click(object sender, EventArgs e)
         {
             Clean();
+        }
+
+        private void btn_Detail_Click(object sender, EventArgs e)
+        {
+            int selectedRowCount = grid_Documents.Rows.GetRowCount(DataGridViewElementStates.Selected);
+
+            if (selectedRowCount <= 0)
+            {
+                MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (selectedRowCount > 1)
+            {
+                MessageBox.Show(this, "Solo debe seleccionar una fila para poder ver el detalle", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (selectedRowCount == 1)
+            {
+                int index = grid_Documents.SelectedRows[0].Index;
+                var id = sales_documents[index].Id;
+                sd_see = (Models.SalesDocument)sales_document_controller.getSalesDocument(id).data;
+                grid_Document_Lines.DataSource = sd_see.Lines;
+                tab_Order.SelectedIndex = 1;
+                fill_Sales_Document_Form(sd_see);
+            }
         }
     }
 }
