@@ -67,6 +67,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("unit", line.unit_id.ToString()));
             parameters.Add(new Parameter("documentquantity", line.documentQuantity.ToString()));
             parameters.Add(new Parameter("id_document_line", line.idDocumentLine.ToString()));
+            parameters.Add(new Parameter("unit_price", line.unit_price.ToString()));
 
             GenericResult result = execute_transaction("insert_movement_line", parameters);
 

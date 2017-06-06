@@ -33,7 +33,7 @@ namespace WindowsFormsApp1.Models
             int unit_id,String warehouse_name,
                                 String product_name,String unit_name,int warehouseQuantity,
                                 int documentQuantity,int quantity,
-                                String state,int idDocumentLine)
+                                String state,int idDocumentLine,double unit_price)
         {
             this.movementId = movementId;
             this.id = id;
@@ -48,6 +48,7 @@ namespace WindowsFormsApp1.Models
             this.quantity = quantity;
             this.State = state;
             this.idDocumentLine = idDocumentLine;
+            this.unit_price = unit_price;
         }
         public ProductMovementLine(SalesOrderLine line,int id, string user, string password)
         {
@@ -61,6 +62,7 @@ namespace WindowsFormsApp1.Models
             Models.ProductWarehouse warehouse = (Models.ProductWarehouse)pwc.getProductWarehouse(warehouse_id).data;
             this.warehouseQuantity = warehouse.Current_physical_stock;
             this.documentQuantity = line.Quantity - line.Delivery_quantity;
+            this.unit_price = line.Unit_price;
             this.State = "Active";
             this.idDocumentLine = line.Id;
         }
@@ -76,8 +78,8 @@ namespace WindowsFormsApp1.Models
             ProductWarehouseController pwc = new ProductWarehouseController(user, password);
             Models.ProductWarehouse warehouse = (Models.ProductWarehouse)pwc.getProductWarehouse(warehouse_id).data;
             this.warehouseQuantity = warehouse.Current_physical_stock;
-            this.documentQuantity = line.Quantity - line.Refund_quantity
-                ;
+            this.documentQuantity = line.Quantity - line.Refund_quantity;
+            this.unit_price = line.Unit_price;
             this.State = "Active";
             this.idDocumentLine = line.Id;
         }
