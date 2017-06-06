@@ -62,7 +62,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("quantity", line.Quantity.ToString()));
             parameters.Add(new Parameter("price", line.Unit_price.ToString()));
             parameters.Add(new Parameter("state", line.Status));
-            parameters.Add(new Parameter("deliver_quantity", line.Refund_quantity.ToString()));
+            //parameters.Add(new Parameter("deliver_quantity", line.Refund_quantity.ToString()));
             parameters.Add(new Parameter("product_id", line.Product_id.ToString()));
             parameters.Add(new Parameter("warehouse_id", line.Prod_warehouse_id.ToString()));
             GenericResult result = execute_transaction("update_sales_order_line", parameters);
