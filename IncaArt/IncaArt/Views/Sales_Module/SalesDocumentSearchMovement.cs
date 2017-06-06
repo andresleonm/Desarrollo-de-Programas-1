@@ -43,9 +43,23 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            ProductMovement movement_found = (ProductMovement)grid_Movements.CurrentRow.DataBoundItem;
-            prodMovementList.Add(movement_found);
-            this.Close();
+            int selectedRowCount = grid_Movements.Rows.GetRowCount(DataGridViewElementStates.Selected);
+
+            if (selectedRowCount <= 0)
+            {
+                MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (selectedRowCount > 1)
+            {
+                MessageBox.Show(this, "Solo debe seleccionar una fila para poder ver el detalle", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (selectedRowCount == 1)
+            {
+                ProductMovement movement_found = (ProductMovement)grid_Movements.CurrentRow.DataBoundItem;
+                prodMovementList.Add(movement_found);
+                this.Close();
+            }
+            
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)

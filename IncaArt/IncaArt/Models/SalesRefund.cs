@@ -104,6 +104,18 @@ namespace WindowsFormsApp1.Models
             set { observation = value; }
         }
 
+        public int Refund_reason_id
+        {
+            get { return refund_reason_id; }
+            set { refund_reason_id = value; }
+        }
+
+        public int Document_id
+        {
+            get { return document_id; }
+            set { document_id = value; }
+        }
+
         public List<SalesRefundLine> Lines
         {
             get { return lines; }
@@ -111,7 +123,7 @@ namespace WindowsFormsApp1.Models
         }
 
         // Construct for controller
-        public SalesRefund(int order_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, double amount, string observation, List<SalesRefundLine> lines)
+        public SalesRefund(int order_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, double amount, string observation, int doc_id, List<SalesRefundLine> lines)
         {
             this.id = order_id;
             this.currency_id = currency_id;
@@ -126,6 +138,7 @@ namespace WindowsFormsApp1.Models
             this.issue_date = issue_date;
             this.amount = amount;
             this.observation = observation;
+            this.document_id = doc_id;
             this.lines = lines;
         }
 

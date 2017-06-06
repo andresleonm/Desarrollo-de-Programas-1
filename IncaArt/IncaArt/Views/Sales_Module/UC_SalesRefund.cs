@@ -20,12 +20,15 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private List<SalesRefund> sales_refunds;
         private SalesRefundController sales_refund_controller;
         private SalesRefundLineController sales_refund_line_controller;
+        private SalesDocumentController sdc;
 
         public UC_SalesRefund()
         {
             InitializeComponent();
             sales_refund_controller = new SalesRefundController(user,password);
             sales_refund_line_controller = new SalesRefundLineController(user, password);
+            sdc = new SalesDocumentController(user, password);
+            fill_Sales_Refunds();
         }
 
         private void btn_Search_Document_Click(object sender, EventArgs e)
@@ -38,7 +41,13 @@ namespace WindowsFormsApp1.Views.Sales_Module
             {
                 document = documentL[0];
                 fill_Sales_Refund_Form(document);
-                grid_Refund_Lines.DataSource = document.Lines;
+                SalesDocument sd = (SalesDocument)sdc.getSalesDocument(document.Id).data;
+
+                List<SalesRefundLine> ref_lines = new List<SalesRefundLine>();
+                foreach (SalesDocumentLine line in sd.Lines)
+                    ref_lines.Add(new SalesRefundLine(line));
+
+                grid_Refund_Lines.DataSource = ref_lines;
                 AdjustColumnRefundLine();
             }            
         }
@@ -70,6 +79,13 @@ namespace WindowsFormsApp1.Views.Sales_Module
         }
 
         private void fill_Sales_Refund_Grid()
+        {
+            Result result = sales_refund_controller.getSalesRefunds();
+            sales_refunds = (List<SalesRefund>)result.data;
+            fill_gridView_Refund(sales_refunds);
+        }
+
+        private void fill_Sales_Refunds()
         {
             Result result = sales_refund_controller.getSalesRefunds();
             sales_refunds = (List<SalesRefund>)result.data;
@@ -112,34 +128,41 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
             else
             {
+                Result result;
                 SalesRefund sales_refund = new SalesRefund();
                 fill_Sales_Refund_Object(sales_refund);
 
                 sales_refund.Lines = (List<SalesRefundLine>)grid_Refund_Lines.DataSource;
 
                 int sales_refund_id = Int32.Parse(sales_refund_controller.insertSalesRefund(sales_refund).data.ToString());
+                sales_refund.Document_id = document.Id;
 
-                if (sales_document_id > 0)
+                if (sales_refund_id > 0)
                 {
                     int i = 1;
-                    foreach (SalesDocumentLine sdl in sales_document.Lines)
+                    foreach (SalesRefundLine srl in sales_refund.Lines)
                     {
-                        sdl.Id = i;
-                        sdl.Document_id = sales_document_id;
-                        sdl.Status = "Registrado";
+                        srl.Id = i;
+                        srl.Refund_id = sales_refund_id;
+                        srl.Status = "Registrado";                        
+                        result = sales_refund_line_controller.insertSalesRefundLine(srl);
+                        if (!result.success)
+                        {
+                            MessageBox.Show(this, result.message + "  -  Error fila " + i.ToString(), "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
                         i++;
-                        sales_document_line_controller.insertSalesDocumentLine(sdl);
                     }
-                    txt_Document_id.Text = sales_document_id.ToString();
-                    txt_Status.Text = sales_document.Status;
-                    fill_Sales_Documents();
+                    txt_Refund_id.Text = sales_refund_id.ToString();
+                    txt_Status.Text = sales_refund.Status;
+                    fill_Sales_Refunds();
                     btn_Clean.PerformClick();
-                    tab_Document.SelectedIndex = 0;
-                    MessageBox.Show(this, "Documento creado exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    tab_Refund.SelectedIndex = 0;
+                    MessageBox.Show(this, "Devolución creada exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo crear el documento", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No se pudo crear la devolución", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }

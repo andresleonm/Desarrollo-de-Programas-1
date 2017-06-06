@@ -9,7 +9,8 @@ namespace WindowsFormsApp1.Models
     public class SalesRefundLine 
     {
         private int id;
-        private int order_id;
+        private int refund_id;
+        private int document_id_line;
         private int product_id;
         private string product_name;
         private int unit_measure_id;
@@ -29,10 +30,16 @@ namespace WindowsFormsApp1.Models
             set { id = value; }
         }
 
-        public int Order_id
+        public int Refund_id
         {
-            get { return order_id; }
-            set { order_id = value; }
+            get { return refund_id; }
+            set { refund_id = value; }
+        }
+
+        public int Document_id_line
+        {
+            get { return document_id_line; }
+            set { document_id_line = value; }
         }
 
         public int Product_id
@@ -57,6 +64,12 @@ namespace WindowsFormsApp1.Models
         {
             get { return unit_measure_name; }
             set { unit_measure_name = value; }
+        }
+
+        public int Quantity_available
+        {
+            get { return quantity_available; }
+            set { quantity_available = value; }
         }
 
         public int Quantity
@@ -104,26 +117,26 @@ namespace WindowsFormsApp1.Models
         
 
         // Construct for controller
-        public SalesRefundLine(int id, int order_id, int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int del_quantity, int prod_warehouse_id, string prod_warehouse_name, string status)
+        public SalesRefundLine(int id, int refund_id, int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int ref_quantity, int prod_warehouse_id, string prod_warehouse_name, string status)
         {
             this.id = id;
-            this.order_id = order_id;
+            this.refund_id = refund_id;
             this.Product_id = product_id;
             this.product_name = product_name;
             this.unit_measure_id = unit_measure_id;
             this.unit_measure_name = unit_measure_name;
             this.Quantity = quantity;
             this.Unit_price = price;
-            this.refund_quantity = del_quantity;
+            this.refund_quantity = ref_quantity;
             this.prod_warehouse_id = prod_warehouse_id;
             this.prod_warehouse_name = prod_warehouse_name;
             this.status = status;
         }
 
-        public SalesRefundLine(int id, int order_id, int product_id, int unit_measure_id, int quantity, double price, int prod_warehouse_id)
+        public SalesRefundLine(int id, int refund_id, int product_id, int unit_measure_id, int quantity, double price, int prod_warehouse_id)
         {
             this.id = id;
-            this.order_id = order_id;
+            this.refund_id = refund_id;
             this.Product_id = product_id;            
             this.unit_measure_id = unit_measure_id;
             this.Quantity = quantity;
@@ -137,18 +150,20 @@ namespace WindowsFormsApp1.Models
         {
         }
 
-        public SalesRefundLine(WindowsFormsApp1.Views.Sales_Module.ProductWarehouseS prod_WS)
+        public SalesRefundLine(WindowsFormsApp1.Models.SalesDocumentLine sdl)
         {
-            this.Product_id = prod_WS.Product_id;
-            this.Product_name = prod_WS.productName;
-            this.Unit_measure_id = prod_WS.unitId;
-            this.Unit_measure_name = prod_WS.unitName;
-            this.Quantity = prod_WS.quantity;
-            this.Unit_price = prod_WS.unit_price;
-            this.prod_warehouse_id = prod_WS.Id;
-            this.prod_warehouse_name = prod_WS.Name;
-            this.amount = prod_WS.quantity * prod_WS.unit_price;
-            this.status = "Active";
+            this.Product_id = sdl.Product_id;
+            this.Product_name = sdl.Product_name;
+            this.Unit_measure_id = sdl.Unit_measure_id;
+            this.Unit_measure_name = sdl.Unit_measure_name;
+            this.Quantity = sdl.Quantity;
+            this.quantity_available = sdl.Quantity - sdl.Refund_quantity;
+            this.Unit_price = sdl.Unit_price;
+            this.prod_warehouse_id = sdl.Prod_warehouse_id;
+            this.prod_warehouse_name = sdl.Prod_warehouse_name;
+            this.amount = sdl.Quantity * sdl.Unit_price;
+            this.document_id_line = sdl.Id;
+            this.status = "Registrado";
         }
 
 

@@ -54,9 +54,22 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            Customer client_found = (Customer)grid_clients.CurrentRow.DataBoundItem;
-            clientList.Add(client_found);
-            this.Close();
+            int selectedRowCount = grid_clients.Rows.GetRowCount(DataGridViewElementStates.Selected);
+
+            if (selectedRowCount <= 0)
+            {
+                MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (selectedRowCount > 1)
+            {
+                MessageBox.Show(this, "Solo debe seleccionar una fila para poder ver el detalle", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (selectedRowCount == 1)
+            {
+                Customer client_found = (Customer)grid_clients.CurrentRow.DataBoundItem;
+                clientList.Add(client_found);
+                this.Close();
+            }
         }
 
         private void txt_name_KeyDown(object sender, KeyEventArgs e)

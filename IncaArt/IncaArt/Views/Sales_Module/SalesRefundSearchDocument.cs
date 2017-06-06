@@ -45,9 +45,22 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            SalesDocument document_found = (SalesDocument)grid_Documents.CurrentRow.DataBoundItem;
-            documentList.Add(document_found);
-            this.Close();
+            int selectedRowCount = grid_Documents.Rows.GetRowCount(DataGridViewElementStates.Selected);
+
+            if (selectedRowCount <= 0)
+            {
+                MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (selectedRowCount > 1)
+            {
+                MessageBox.Show(this, "Solo debe seleccionar una fila para poder ver el detalle", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (selectedRowCount == 1)
+            {
+                SalesDocument document_found = (SalesDocument)grid_Documents.CurrentRow.DataBoundItem;
+                documentList.Add(document_found);
+                this.Close();
+            }
         }
     }
 }
