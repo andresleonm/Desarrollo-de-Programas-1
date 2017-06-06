@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ComponentModel.DataAnnotations;
 
 namespace WindowsFormsApp1.Views
 {
@@ -20,6 +21,7 @@ namespace WindowsFormsApp1.Views
         bool shift_flag;
         bool salary_flag;
         bool currency_flag;
+        bool email_flag;
         int cur_row;
         List<Models.Shift> shift_list;
         List<Models.Worker> worker_list;
@@ -368,6 +370,34 @@ namespace WindowsFormsApp1.Views
             }
         }
 
+        private void textbox_email_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            string text = textbox.Text;
+
+            if (String.IsNullOrWhiteSpace(text))
+            {
+                Set_Flag(textbox.Name, false);
+                errorProvider.SetError(textbox, "Campo requerido");
+
+            }
+            else
+            {
+                errorProvider.SetError(textbox, null);
+                var validation = new EmailAddressAttribute();
+                if (validation.IsValid(text))
+                {
+                    Set_Flag(textbox.Name, true);
+                    errorProvider.SetError(textbox, null);
+                }
+                else
+                {
+                    Set_Flag(textbox.Name, false);
+                    errorProvider.SetError(textbox, "Correo inválido");
+                }
+            }
+        }
+
         private void textbox_number_Validating(object sender, CancelEventArgs e)
         {
             MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
@@ -429,7 +459,7 @@ namespace WindowsFormsApp1.Views
 
         private bool Validate_Data()
         {
-            if (name_flag && paternal_flag && maternal_flag && doi_flag && birthday_flag && shift_flag && salary_flag && currency_flag)
+            if (name_flag && paternal_flag && maternal_flag && doi_flag && birthday_flag && shift_flag && salary_flag && currency_flag && email_flag)
             {
                 return true;
             }
@@ -446,6 +476,7 @@ namespace WindowsFormsApp1.Views
             shift_flag = value;
             salary_flag = value;
             currency_flag = value;
+            email_flag = value;
         }
 
         private void Set_Flag(string name, bool value)
@@ -475,6 +506,9 @@ namespace WindowsFormsApp1.Views
                     break;
                 case "combobox_currency":
                     currency_flag = value;
+                    break;
+                case "textbox_email":
+                    email_flag = value;
                     break;
             }
         }
