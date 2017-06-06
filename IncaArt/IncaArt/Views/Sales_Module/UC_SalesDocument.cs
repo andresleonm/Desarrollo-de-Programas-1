@@ -16,5 +16,10 @@ namespace WindowsFormsApp1.Views.Sales_Module
         {
             InitializeComponent();
         }
+
+        private void btn_Search_Documents_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
