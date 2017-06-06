@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.Controller
         {
         }
 
-        public Result getSalesDocuments()
+        public Result getSalesDocuments(int idDocument = 0, int idClient = 0, string iniDate = "", string endDate = "")
         {
             List<Parameter> parameters = new List<Parameter>();
             GenericResult result = execute_function("get_sales_documents", parameters);
@@ -28,10 +28,9 @@ namespace WindowsFormsApp1.Controller
                     sales_documents.Add(new SalesDocument(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
                                                         r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
                                                         r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
-                                                        r.getColumn(9), DateTime.Parse(r.getColumn(10)),
-                                                        DateTime.Parse(r.getColumn(11)), Double.Parse(r.getColumn(12)),
-                                                        r.getColumn(13), Int32.Parse(r.getColumn(14)), Char.Parse(r.getColumn(15)),
-                                                        detail));
+                                                        r.getColumn(9), DateTime.Parse(r.getColumn(10)), Double.Parse(r.getColumn(11)),
+                                                        r.getColumn(12), Int32.Parse(r.getColumn(13)), Char.Parse(r.getColumn(14)),
+                                                        int.Parse(r.getColumn(15)), detail));
                 }
                 return new Result(sales_documents, true, "");
             }
@@ -52,10 +51,9 @@ namespace WindowsFormsApp1.Controller
                 SalesDocument sales_document = new SalesDocument(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
                                                                 r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
                                                                 r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
-                                                                r.getColumn(9), DateTime.Parse(r.getColumn(10)),
-                                                                DateTime.Parse(r.getColumn(11)), Double.Parse(r.getColumn(12)),
-                                                                r.getColumn(13), Int32.Parse(r.getColumn(14)), Char.Parse(r.getColumn(15)),
-                                                                detail);
+                                                                r.getColumn(9), DateTime.Parse(r.getColumn(10)), Double.Parse(r.getColumn(11)),
+                                                                r.getColumn(12), Int32.Parse(r.getColumn(13)), Char.Parse(r.getColumn(14)),
+                                                                int.Parse(r.getColumn(15)), detail);
                 return new Result(sales_document, true, "");
             }
             return new Result(null, result.success, result.message);
@@ -75,8 +73,8 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("customer_doi", sales_document.Customer_doi));
             parameters.Add(new Parameter("date", sales_document.Issue_date.ToString("MM/dd/yyyy")));
             parameters.Add(new Parameter("observation", sales_document.Observation));
-            parameters.Add(new Parameter("delivery_date", sales_document.Delivery_date.ToString("MM/dd/yyyy")));
             parameters.Add(new Parameter("movement_id", sales_document.Movement_id.ToString()));
+            parameters.Add(new Parameter("external_number", sales_document.External_number.ToString()));
             GenericResult result = execute_transaction("insert_sales_document", parameters);
             if (result.success)
             {

@@ -20,9 +20,8 @@ namespace WindowsFormsApp1.Views
         private bool edit = false;
         private SalesOrder so_edit;
         private List<SalesOrder> sales_orders;
-        private List<Customer> customerL;
+        private Customer customer;
         private List<Currency> currencies;
-        private List<SalesOrderLine> lines;
         private CurrencyController currency_controller;
         private SalesOrderController sales_order_controller;
         private SalesOrderLineController sales_order_line_controller;
@@ -72,13 +71,13 @@ namespace WindowsFormsApp1.Views
 
         private void btn_Search_Click(object sender, EventArgs e)
         {
-            customerL = new List<Customer>();
+            var customerL = new List<Customer>();
             Sales_Module.SalesOrderSearchClient search_view = new Sales_Module.SalesOrderSearchClient(ref customerL, user, password);
             search_view.ShowDialog();
 
             if (customerL.Count != 0)
             {
-                Customer customer = customerL[0];
+                customer = customerL[0];
                 txt_name.Text = customer.Name;
                 txt_address.Text = customer.Address;
                 txt_Doi.Text = customer.Doi;
@@ -88,7 +87,7 @@ namespace WindowsFormsApp1.Views
 
         private void btn_New_Click(object sender, EventArgs e)
         {
-            lines = new List<SalesOrderLine>();
+            var lines = new List<SalesOrderLine>();
             Sales_Module.SalesOrderLine order_line = new Sales_Module.SalesOrderLine(ref lines, user, password);
             order_line.ShowDialog();
 
@@ -101,15 +100,27 @@ namespace WindowsFormsApp1.Views
 
         }
 
+        private int getMaxId(List<SalesOrderLine> lines)
+        {
+            int max = 0;
+            foreach(SalesOrderLine line in lines) {
+                if (line.Id > max)
+                    max = line.Id;
+            }
+            return max;
+        }
+
         private void btn_Save_Click(object sender, EventArgs e)
         {
+            if (customer == null)
+                customer = new Customer(txt_name.Text,txt_address.Text, txt_phone.Text, txt_Doi.Text);
             if (edit)
             {
                 fill_Sales_Order_Object(so_edit);
 
-                if (customerL != null)
-                    so_edit.Customer_id = customerL[0].Id;
-                
+                if (customer != null)
+                    so_edit.Customer_id = customer.Id;
+                var lines = (List<SalesOrderLine>)grid_order_lines.DataSource;
                 if (lines.Count > 0)
                     so_edit.Lines = lines;
 
@@ -119,15 +130,27 @@ namespace WindowsFormsApp1.Views
 
                 if (result.success)
                 {
+                    int id = getMaxId(so_edit.Lines);
                     foreach (SalesOrderLine sol in so_edit.Lines)
                     {
-                        sales_order_line_controller.updateSalesOrderLine(sol);
+                       
+                        if (sol.Id == 0)
+                        {
+                            sol.Id = id + 1;
+                            sol.Order_id = so_edit.Id;
+                            sales_order_line_controller.insertSalesOrderLine(sol);
+                            id++;
+                        }                           
+                        else
+                            sales_order_line_controller.updateSalesOrderLine(sol);
+                        
                     }
                     fill_Sales_Order();
-                    edit = false;
+                    
                     btn_Clean.PerformClick();
                     tab_Order.SelectedIndex = 0;
                     MessageBox.Show(this, "Orden actualizada exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    edit = false;
                 }
                 else
                 {
@@ -136,7 +159,8 @@ namespace WindowsFormsApp1.Views
             }
             else
             {
-                if (customerL == null || lines == null || String.IsNullOrWhiteSpace(cbo_Currency.Text) || String.IsNullOrWhiteSpace(txt_name.Text) || String.IsNullOrWhiteSpace(txt_address.Text) || String.IsNullOrWhiteSpace(txt_Doi.Text) || String.IsNullOrWhiteSpace(txt_phone.Text))
+                if (customer.Name == "" || customer.Phone == "" 
+                    || customer.Doi == "" || grid_order_lines.DataSource == null || String.IsNullOrWhiteSpace(cbo_Currency.Text) || String.IsNullOrWhiteSpace(txt_name.Text) || String.IsNullOrWhiteSpace(txt_address.Text) || String.IsNullOrWhiteSpace(txt_Doi.Text) || String.IsNullOrWhiteSpace(txt_phone.Text))
                 {
                     MessageBox.Show(this, "Debe completar los campos de cliente y/o moneda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -144,17 +168,16 @@ namespace WindowsFormsApp1.Views
                 {
                     SalesOrder sales_order = new SalesOrder();
                     fill_Sales_Order_Object(sales_order);
-                    sales_order.Customer_id = customerL[0].Id;
-                    sales_order.Issue_date = DateTime.Now;
+                    sales_order.Customer_id = customer.Id;
                     sales_order.Status = "Registrado";
-                    sales_order.Lines = lines;
+                    sales_order.Lines = (List<SalesOrderLine>)grid_order_lines.DataSource;
 
                     int sales_order_id = Int32.Parse(sales_order_controller.insertSalesOrder(sales_order).data.ToString());
 
                     if (sales_order_id > 0)
                     {
                         int i = 1;
-                        foreach (SalesOrderLine sol in lines)
+                        foreach (SalesOrderLine sol in sales_order.Lines)
                         {
                             sol.Id = i;
                             sol.Order_id = sales_order_id;
@@ -175,7 +198,7 @@ namespace WindowsFormsApp1.Views
                     }
                 }
             }
-            edit = false;
+            
         }
 
         private void fill_Sales_Order_Object(SalesOrder so)
@@ -187,31 +210,14 @@ namespace WindowsFormsApp1.Views
             so.Currency_id = currencies.ElementAt(cbo_Currency.SelectedIndex).Id;
             so.Currency_name = currencies.ElementAt(cbo_Currency.SelectedIndex).Name;
             so.Currency_symbol = currencies.ElementAt(cbo_Currency.SelectedIndex).Symbol;
-            so.Delivery_date = DateTime.Parse(dt_DeliveryDate.Text);
+            so.Issue_date = DateTime.Parse(dt_IssueDate.Text);
             so.Observation = txt_observation.Text;
             so.Amount = double.Parse(txt_amount.Text);
         }        
 
         private void grid_order_lines_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1)
-            {
-                if (e.ColumnIndex == 7 || e.ColumnIndex == 8)
-                {
-                    lines[e.RowIndex].Quantity = int.Parse(grid_order_lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString());
-                    lines[e.RowIndex].Unit_price = int.Parse(grid_order_lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
-
-                    double update_amount = double.Parse(grid_order_lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString()) * double.Parse(grid_order_lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
-                    grid_order_lines.Rows[e.RowIndex].Cells["amount"].Value = update_amount;
-
-                    double acumulate = 0;
-                    for (int i = 0; i < grid_order_lines.RowCount; i++)
-                    {
-                        acumulate += double.Parse(grid_order_lines.Rows[i].Cells["amount"].Value.ToString());
-                    }
-                    txt_amount.Text = acumulate.ToString();
-                }
-            }
+            
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -222,6 +228,12 @@ namespace WindowsFormsApp1.Views
         private void btn_Clean_Click(object sender, EventArgs e)
         {
             edit = false;
+            Clean();
+        }
+
+        private void Clean()
+        {
+            
             txt_address.Text = "";
             txt_amount.Text = "";
             txt_Doi.Text = "";
@@ -231,8 +243,7 @@ namespace WindowsFormsApp1.Views
             txt_phone.Text = "";
             txt_Status.Text = "";
             cbo_Currency.Text = "";
-            customerL = new List<Customer>();
-            lines = new List<SalesOrderLine>();
+            customer = new Customer();
             clean_gridView_OrderLine();
         }
 
@@ -270,9 +281,8 @@ namespace WindowsFormsApp1.Views
             AdjustColumnOrder_byOrder();
         }
 
-        private void fill_gridView_OrderLine(List<SalesOrderLine> list)
-        {
-            clean_gridView_OrderLine();
+        private void fill_gridView_OrderLine(List<SalesOrderLine> list)        {
+            
             List<SalesOrderLine> current = (List<SalesOrderLine>)this.grid_order_lines.DataSource;
             if (current == null)
                 current = new List<SalesOrderLine>();
@@ -309,11 +319,10 @@ namespace WindowsFormsApp1.Views
             grid_orders.Columns["order_id2"].DisplayIndex = 0;
             grid_orders.Columns["customer_name"].DisplayIndex = 1;
             grid_orders.Columns["issue_date"].DisplayIndex = 2;
-            grid_orders.Columns["delivery_date"].DisplayIndex = 3;
-            grid_orders.Columns["currency_name"].DisplayIndex = 4;
-            grid_orders.Columns["amount2"].DisplayIndex = 5;
-            grid_orders.Columns["observation"].DisplayIndex = 6;
-            grid_orders.Columns["status"].DisplayIndex = 7;
+            grid_orders.Columns["currency_name"].DisplayIndex = 3;
+            grid_orders.Columns["amount2"].DisplayIndex = 4;
+            grid_orders.Columns["observation"].DisplayIndex = 5;
+            grid_orders.Columns["status"].DisplayIndex = 6;
         }
 
         private void btn_Edit_Click(object sender, EventArgs e)
@@ -332,8 +341,9 @@ namespace WindowsFormsApp1.Views
             {
                 edit = true;
                 int index = grid_orders.SelectedRows[0].Index;
-                so_edit = sales_orders[index];
-                lines = so_edit.Lines;
+                var id = sales_orders[index].Id;
+                so_edit = (Models.SalesOrder)sales_order_controller.getSalesOrder(id).data;
+                grid_order_lines.DataSource = so_edit.Lines;
                 tab_Order.SelectedIndex = 1;
                 fill_Sales_Order_Form(so_edit);
             }
@@ -341,6 +351,8 @@ namespace WindowsFormsApp1.Views
 
         private void fill_Sales_Order_Form(SalesOrder so)
         {
+            Clean();
+            clean_gridView_OrderLine();
             txt_idOrder.Text = so.Id.ToString();
             txt_name.Text = so.Customer_name;
             txt_address.Text = so.Customer_address;
@@ -350,7 +362,7 @@ namespace WindowsFormsApp1.Views
             txt_amount.Text = so.Amount.ToString();
             txt_Status.Text = so.Status;
             cbo_Currency.Text = so.Currency_symbol + "  -  " + so.Currency_name;
-            dt_DeliveryDate.Text = so.Delivery_date.ToString();
+            dt_IssueDate.Text = so.Issue_date.ToString();
 
             fill_gridView_OrderLine(so.Lines);
 
@@ -361,6 +373,27 @@ namespace WindowsFormsApp1.Views
                 i++;
             }
         }
-        
+
+       
+
+        private void grid_order_lines_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            try
+            {
+                if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0)
+                {
+                    List<SalesOrderLine> lines = (List<SalesOrderLine>)senderGrid.DataSource;
+                    lines.RemoveAt(e.RowIndex);
+                    senderGrid.DataSource = lines;
+                }
+            }
+            catch (Exception exception)
+            {
+
+            }
+            
+        }
     }
 }

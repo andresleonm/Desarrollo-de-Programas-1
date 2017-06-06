@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    public class SalesOrderLine
+    public class RefundLine 
     {
         private int id;
         private int order_id;
@@ -103,7 +103,7 @@ namespace WindowsFormsApp1.Models
         
 
         // Construct for controller
-        public SalesOrderLine(int id, int order_id, int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int del_quantity, int prod_warehouse_id, string prod_warehouse_name, string status)
+        public RefundLine(int id, int order_id, int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int del_quantity, int prod_warehouse_id, string prod_warehouse_name, string status)
         {
             this.id = id;
             this.order_id = order_id;
@@ -119,7 +119,7 @@ namespace WindowsFormsApp1.Models
             this.status = status;
         }
 
-        public SalesOrderLine(int id, int order_id, int product_id, int unit_measure_id, int quantity, double price, int prod_warehouse_id)
+        public RefundLine(int id, int order_id, int product_id, int unit_measure_id, int quantity, double price, int prod_warehouse_id)
         {
             this.id = id;
             this.order_id = order_id;
@@ -132,11 +132,11 @@ namespace WindowsFormsApp1.Models
             this.status = "Registrado";
         }
 
-        public SalesOrderLine()
+        public RefundLine()
         {
         }
 
-        public SalesOrderLine(WindowsFormsApp1.Views.Sales_Module.ProductWarehouseS prod_WS)
+        public RefundLine(WindowsFormsApp1.Views.Sales_Module.ProductWarehouseS prod_WS)
         {
             this.Product_id = prod_WS.Product_id;
             this.Product_name = prod_WS.productName;

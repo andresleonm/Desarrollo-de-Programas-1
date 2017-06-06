@@ -22,8 +22,8 @@ namespace WindowsFormsApp1.Models
         private double amount;
         private string status;
         private DateTime issue_date;
-        private DateTime delivery_date;
         private string observation;
+        private int external_number;
         private List<SalesDocumentLine> lines;
 
         public int Id
@@ -110,16 +110,16 @@ namespace WindowsFormsApp1.Models
             set { issue_date = value; }
         }
 
-        public DateTime Delivery_date
-        {
-            get { return delivery_date; }
-            set { delivery_date = value; }
-        }
-
         public string Observation
         {
             get { return observation; }
             set { observation = value; }
+        }
+
+        public int External_number
+        {
+            get { return external_number; }
+            set { external_number = value; }
         }
 
         public List<SalesDocumentLine> Lines
@@ -130,7 +130,7 @@ namespace WindowsFormsApp1.Models
 
 
         // Construct for controller
-        public SalesDocument(int document_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, DateTime delivery_date, double amount, string observation, int movement_id, char type_document_id, List<SalesDocumentLine> lines)
+        public SalesDocument(int document_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, double amount, string observation, int movement_id, char type_document_id, int external_number, List<SalesDocumentLine> lines)
         {
             this.id = document_id;
             this.currency_id = currency_id;
@@ -143,11 +143,11 @@ namespace WindowsFormsApp1.Models
             this.customer_doi = cli_doi;
             this.status = status;
             this.issue_date = issue_date;
-            this.delivery_date = delivery_date;
             this.amount = amount;
             this.observation = observation;            
             this.movement_id = movement_id;
             this.type_document_id = type_document_id;
+            this.external_number = external_number;
             this.lines = lines;
         }
     }

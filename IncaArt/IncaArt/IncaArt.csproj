@@ -129,6 +129,8 @@
     <Compile Include="Models\ProductTypeWarehouse.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipeDetail.cs" />
+    <Compile Include="Models\Refund.cs" />
+    <Compile Include="Models\RefundLine.cs" />
     <Compile Include="Models\SalesDocument.cs" />
     <Compile Include="Models\SalesDocumentLine.cs" />
     <Compile Include="Models\Shift.cs" />

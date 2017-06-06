@@ -20,7 +20,6 @@ namespace WindowsFormsApp1.Models
         private double amount;
         private string status;
         private DateTime issue_date;
-        private DateTime delivery_date;
         private string observation;
         private int refund_reason_id;
         private string refund_reason_name;
@@ -99,26 +98,20 @@ namespace WindowsFormsApp1.Models
             set { issue_date = value; }
         }
 
-        public DateTime Delivery_date
-        {
-            get { return delivery_date; }
-            set { delivery_date = value; }
-        }
-
         public string Observation
         {
             get { return observation; }
             set { observation = value; }
         }
 
-        public List<SalesOrderLine> Lines
+        public List<RefundLine> Lines
         {
             get { return lines; }
             set { lines = value; }
         }
 
         // Construct for controller
-        public SalesOrder(int order_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, DateTime delivery_date, double amount, string observation, List<SalesOrderLine> lines)
+        public Refund(int order_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, double amount, string observation, List<RefundLine> lines)
         {
             this.id = order_id;
             this.currency_id = currency_id;
@@ -131,22 +124,20 @@ namespace WindowsFormsApp1.Models
             this.customer_doi = cli_doi;
             this.status = status;
             this.issue_date = issue_date;
-            this.delivery_date = delivery_date;
             this.amount = amount;
             this.observation = observation;
             this.lines = lines;
         }
 
-        public SalesOrder() { }
+        public Refund() { }
 
         // For SalesOrderList
-        public SalesOrder(int order_id, string cli_name, string observation, DateTime issue_date, DateTime delivery_date, double amount, string status)
+        public Refund(int order_id, string cli_name, string observation, DateTime issue_date, double amount, string status)
         {
             this.id = order_id;
             this.customer_name = cli_name;
             this.observation = observation;
             this.issue_date = issue_date;
-            this.delivery_date = delivery_date;
             this.amount = amount;
             this.status = status;
         }
