@@ -10,11 +10,13 @@ namespace WindowsFormsApp1.Models
     {
         int id;
         int product_id;
-        string name;        
+        string name;
+        int assigned_worker;
         int next_workstation;
         int previous_workstation;
         int quantity;
         double break_cost;
+        int currency_id;
 
         public Workstation(int product_id, string name)
         {
@@ -25,7 +27,7 @@ namespace WindowsFormsApp1.Models
         public Workstation()
         {
 
-        }
+        }       
 
         public int Id
         {
@@ -105,6 +107,7 @@ namespace WindowsFormsApp1.Models
             }
         }
 
+        
         public double Break_cost
         {
             get
@@ -115,6 +118,19 @@ namespace WindowsFormsApp1.Models
             set
             {
                 break_cost = value;
+            }
+        }
+
+        public int Currency_id
+        {
+            get
+            {
+                return currency_id;
+            }
+
+            set
+            {
+                currency_id = value;
             }
         }
     }

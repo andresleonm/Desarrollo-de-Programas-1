@@ -36,6 +36,34 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result getWokers(Models.Worker worker)
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            if (worker.Name != "") parameters.Add(new Parameter("name", worker.Name));
+            if (worker.Doi != "") parameters.Add(new Parameter("doi", worker.Doi));
+            if (worker.Paternal_name != "") parameters.Add(new Parameter("paternal_name", worker.Paternal_name));
+            if (worker.Maternal_name != "") parameters.Add(new Parameter("maternal_name", worker.Maternal_name));
+            if (worker.Shift_id != 0) parameters.Add(new Parameter("shift_id", worker.Shift_id.ToString()));
+            GenericResult result = execute_function("get_workers2", parameters);
+            List<Models.Worker> workers = new List<Models.Worker>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    //"WORKER_ID",      0
+                    //"SHIFT_ID",       1
+                    //"NAME",           2
+                    //"PATERNAL_NAME",  3
+                    //"MATERNAL_NAME",  4
+                    //"DOI"             5
+                    workers.Add(new Models.Worker(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), r.getColumn(2), r.getColumn(3), r.getColumn(4), r.getColumn(5)));
+                }
+                return new Result(workers, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
         public Result getWorker(int id)
         {
             //consultar permisos

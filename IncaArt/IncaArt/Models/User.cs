@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using WindowsFormsApp1.Services;
 
 namespace WindowsFormsApp1.Models
 {
@@ -21,9 +22,7 @@ namespace WindowsFormsApp1.Models
         private string nickname;
         private string password;
         private string state;
-
-        static private string salt = "9aff81a04032f4387e353179e92e12743edbcc6e";
-        static private HashAlgorithm hasher = new SHA1CryptoServiceProvider();
+        private HashService hash_service;
 
         public int Id
         {
@@ -178,6 +177,7 @@ namespace WindowsFormsApp1.Models
 
         public User(int id, Profile profile, string name, string middlename, string lastname, string phone, string email, char gender, string address, string nickname, string password, string state, bool encode = true)
         {
+            hash_service = new HashService();
             this.id = id;
             this.profile = profile;
             this.name = name;
@@ -192,26 +192,22 @@ namespace WindowsFormsApp1.Models
 
             if (encode)
             {
-                this.password =  HashText(password, User.salt, User.hasher);
+                this.password = hash_service.HashText(password);
             }
             else
             {
                 this.password = password;
             }
-            
         }
 
         public bool isPassword(string source)
         {
-            return (HashText(source, User.salt, User.hasher) == password);
+            return (hash_service.HashText(source) == password);
         }
 
-        private string HashText(string text, string salt, HashAlgorithm hasher)
+        public void setPassword(string password)
         {
-            byte[] textWithSaltBytes = Encoding.UTF8.GetBytes(string.Concat(text, salt));
-            byte[] hashedBytes = hasher.ComputeHash(textWithSaltBytes);
-            //hasher.Clear();
-            return Convert.ToBase64String(hashedBytes);
+            this.password = hash_service.HashText(password);
         }
     }
 }
