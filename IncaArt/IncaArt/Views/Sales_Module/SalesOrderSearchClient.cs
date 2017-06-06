@@ -85,5 +85,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
             AdjustColumnOrder();
         }
 
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

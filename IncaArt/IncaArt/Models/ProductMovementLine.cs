@@ -26,6 +26,7 @@ namespace WindowsFormsApp1.Models
         public int quantity { get; set; }
         public String State { get; set; }
         public int idDocumentLine { get; set; }
+        public double unit_price { get; set; }
 
 
         public ProductMovementLine(int movementId,int id,int warehouse_id,int product_id,

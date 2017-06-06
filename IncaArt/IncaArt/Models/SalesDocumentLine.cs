@@ -126,5 +126,20 @@ namespace WindowsFormsApp1.Models
             this.status = status;
             this.movemement_id_line = movemement_id_line;
         }
+
+        // Parseador
+        public SalesDocumentLine(WindowsFormsApp1.Models.ProductMovementLine prodML)
+        {
+            this.Product_id = prodML.product_id;
+            this.Product_name = prodML.product_name;
+            this.Unit_measure_id = prodML.unit_id;
+            this.Unit_measure_name = prodML.unit_name;
+            this.Quantity = prodML.quantity;
+            this.Unit_price = prodML.p;
+            this.prod_warehouse_id = prodML.Id;
+            this.prod_warehouse_name = prodML.Name;
+            this.amount = prodML.quantity * prodML.unit_price;
+            this.status = "Active";
+        }
     }
 }

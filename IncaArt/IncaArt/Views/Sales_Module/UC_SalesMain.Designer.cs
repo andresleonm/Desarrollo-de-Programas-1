@@ -34,8 +34,8 @@
             this.orders = new MetroFramework.Controls.MetroTile();
             this.refunds = new MetroFramework.Controls.MetroTile();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.uC_SalesOrder1 = new WindowsFormsApp1.Views.UC_SalesOrder();
             this.uC_SalesDocument1 = new WindowsFormsApp1.Views.Sales_Module.UC_SalesDocument();
+            this.uC_SalesOrder1 = new WindowsFormsApp1.Views.UC_SalesOrder();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -127,8 +127,15 @@
             this.panel2.Controls.Add(this.uC_SalesOrder1);
             this.panel2.Location = new System.Drawing.Point(3, 79);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(894, 618);
+            this.panel2.Size = new System.Drawing.Size(1070, 618);
             this.panel2.TabIndex = 42;
+            // 
+            // uC_SalesDocument1
+            // 
+            this.uC_SalesDocument1.Location = new System.Drawing.Point(4, 4);
+            this.uC_SalesDocument1.Name = "uC_SalesDocument1";
+            this.uC_SalesDocument1.Size = new System.Drawing.Size(1061, 615);
+            this.uC_SalesDocument1.TabIndex = 1;
             // 
             // uC_SalesOrder1
             // 
@@ -140,13 +147,6 @@
             this.uC_SalesOrder1.TabIndex = 0;
             this.uC_SalesOrder1.UseSelectable = true;
             // 
-            // uC_SalesDocument1
-            // 
-            this.uC_SalesDocument1.Location = new System.Drawing.Point(4, 4);
-            this.uC_SalesDocument1.Name = "uC_SalesDocument1";
-            this.uC_SalesDocument1.Size = new System.Drawing.Size(875, 615);
-            this.uC_SalesDocument1.TabIndex = 1;
-            // 
             // UC_SalesMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,7 +156,7 @@
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Name = "UC_SalesMain";
-            this.Size = new System.Drawing.Size(900, 700);
+            this.Size = new System.Drawing.Size(1072, 700);
             this.Load += new System.EventHandler(this.UC_SalesMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
