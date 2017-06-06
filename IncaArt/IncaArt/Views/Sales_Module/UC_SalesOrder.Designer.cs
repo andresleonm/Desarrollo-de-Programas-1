@@ -58,7 +58,7 @@
             this.newOrder = new System.Windows.Forms.TabPage();
             this.gbOrder = new System.Windows.Forms.GroupBox();
             this.cbo_Currency = new MetroFramework.Controls.MetroComboBox();
-            this.dt_DeliveryDate = new MetroFramework.Controls.MetroDateTime();
+            this.dt_IssueDate = new MetroFramework.Controls.MetroDateTime();
             this.txt_idOrder = new MetroFramework.Controls.MetroTextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -110,7 +110,6 @@
             this.order_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delivery_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currency_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -147,7 +146,7 @@
             this.tab_Order.Controls.Add(this.newOrder);
             this.tab_Order.Location = new System.Drawing.Point(11, 6);
             this.tab_Order.Name = "tab_Order";
-            this.tab_Order.SelectedIndex = 0;
+            this.tab_Order.SelectedIndex = 1;
             this.tab_Order.Size = new System.Drawing.Size(849, 608);
             this.tab_Order.Style = MetroFramework.MetroColorStyle.Teal;
             this.tab_Order.TabIndex = 41;
@@ -250,7 +249,6 @@
             this.order_id2,
             this.customer_name,
             this.issue_date,
-            this.delivery_date,
             this.currency_name,
             this.amount2,
             this.observation,
@@ -309,7 +307,7 @@
             this.btn_Search_Order.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_Search_Order.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Search_Order.ForeColor = System.Drawing.Color.White;
-            this.btn_Search_Order.Location = new System.Drawing.Point(431, 119);
+            this.btn_Search_Order.Location = new System.Drawing.Point(358, 126);
             this.btn_Search_Order.Name = "btn_Search_Order";
             this.btn_Search_Order.Size = new System.Drawing.Size(85, 29);
             this.btn_Search_Order.TabIndex = 50;
@@ -479,7 +477,7 @@
             // gbOrder
             // 
             this.gbOrder.Controls.Add(this.cbo_Currency);
-            this.gbOrder.Controls.Add(this.dt_DeliveryDate);
+            this.gbOrder.Controls.Add(this.dt_IssueDate);
             this.gbOrder.Controls.Add(this.txt_idOrder);
             this.gbOrder.Controls.Add(this.label11);
             this.gbOrder.Controls.Add(this.label8);
@@ -498,19 +496,19 @@
             // 
             this.cbo_Currency.FormattingEnabled = true;
             this.cbo_Currency.ItemHeight = 23;
-            this.cbo_Currency.Location = new System.Drawing.Point(116, 64);
+            this.cbo_Currency.Location = new System.Drawing.Point(134, 64);
             this.cbo_Currency.Name = "cbo_Currency";
-            this.cbo_Currency.Size = new System.Drawing.Size(230, 29);
+            this.cbo_Currency.Size = new System.Drawing.Size(227, 29);
             this.cbo_Currency.TabIndex = 48;
             this.cbo_Currency.UseSelectable = true;
             // 
-            // dt_DeliveryDate
+            // dt_IssueDate
             // 
-            this.dt_DeliveryDate.Location = new System.Drawing.Point(116, 105);
-            this.dt_DeliveryDate.MinimumSize = new System.Drawing.Size(0, 29);
-            this.dt_DeliveryDate.Name = "dt_DeliveryDate";
-            this.dt_DeliveryDate.Size = new System.Drawing.Size(230, 29);
-            this.dt_DeliveryDate.TabIndex = 47;
+            this.dt_IssueDate.Location = new System.Drawing.Point(134, 105);
+            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_IssueDate.Name = "dt_IssueDate";
+            this.dt_IssueDate.Size = new System.Drawing.Size(227, 29);
+            this.dt_IssueDate.TabIndex = 47;
             // 
             // txt_idOrder
             // 
@@ -520,7 +518,7 @@
             // 
             this.txt_idOrder.CustomButton.BackColor = System.Drawing.SystemColors.Control;
             this.txt_idOrder.CustomButton.Image = null;
-            this.txt_idOrder.CustomButton.Location = new System.Drawing.Point(202, 1);
+            this.txt_idOrder.CustomButton.Location = new System.Drawing.Point(199, 1);
             this.txt_idOrder.CustomButton.Name = "";
             this.txt_idOrder.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.txt_idOrder.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -531,7 +529,7 @@
             this.txt_idOrder.CustomButton.Visible = false;
             this.txt_idOrder.Enabled = false;
             this.txt_idOrder.Lines = new string[0];
-            this.txt_idOrder.Location = new System.Drawing.Point(116, 22);
+            this.txt_idOrder.Location = new System.Drawing.Point(134, 22);
             this.txt_idOrder.MaxLength = 32767;
             this.txt_idOrder.Name = "txt_idOrder";
             this.txt_idOrder.PasswordChar = '\0';
@@ -541,7 +539,7 @@
             this.txt_idOrder.SelectionLength = 0;
             this.txt_idOrder.SelectionStart = 0;
             this.txt_idOrder.ShortcutsEnabled = true;
-            this.txt_idOrder.Size = new System.Drawing.Size(230, 29);
+            this.txt_idOrder.Size = new System.Drawing.Size(227, 29);
             this.txt_idOrder.TabIndex = 38;
             this.txt_idOrder.UseCustomBackColor = true;
             this.txt_idOrder.UseSelectable = true;
@@ -555,9 +553,9 @@
             this.label11.ForeColor = System.Drawing.Color.DarkCyan;
             this.label11.Location = new System.Drawing.Point(6, 115);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(98, 13);
+            this.label11.Size = new System.Drawing.Size(115, 13);
             this.label11.TabIndex = 34;
-            this.label11.Text = "Fecha Entrega :";
+            this.label11.Text = "Fecha de Emisión :";
             // 
             // label8
             // 
@@ -1223,14 +1221,6 @@
             this.issue_date.Name = "issue_date";
             this.issue_date.ReadOnly = true;
             // 
-            // delivery_date
-            // 
-            this.delivery_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.delivery_date.DataPropertyName = "delivery_date";
-            this.delivery_date.HeaderText = "Fecha de Entrega";
-            this.delivery_date.Name = "delivery_date";
-            this.delivery_date.ReadOnly = true;
-            // 
             // currency_name
             // 
             this.currency_name.DataPropertyName = "currency_name";
@@ -1319,7 +1309,7 @@
         private System.Windows.Forms.TabPage newOrder;
         private System.Windows.Forms.GroupBox gbOrder;
         private MetroFramework.Controls.MetroComboBox cbo_Currency;
-        private MetroFramework.Controls.MetroDateTime dt_DeliveryDate;
+        private MetroFramework.Controls.MetroDateTime dt_IssueDate;
         private MetroFramework.Controls.MetroTextBox txt_idOrder;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;
@@ -1370,7 +1360,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn order_id2;
         private System.Windows.Forms.DataGridViewTextBoxColumn customer_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn issue_date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn delivery_date;
         private System.Windows.Forms.DataGridViewTextBoxColumn currency_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount2;
         private System.Windows.Forms.DataGridViewTextBoxColumn observation;

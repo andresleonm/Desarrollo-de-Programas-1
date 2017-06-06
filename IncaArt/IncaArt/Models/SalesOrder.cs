@@ -19,8 +19,7 @@ namespace WindowsFormsApp1.Models
         private string customer_doi;
         private double amount;
         private string status;
-        private DateTime issue_date;
-        private DateTime delivery_date;
+        private DateTime issue_date;        
         private string observation;
         private List<SalesOrderLine> lines;
 
@@ -95,13 +94,7 @@ namespace WindowsFormsApp1.Models
             get { return issue_date; }
             set { issue_date = value; }
         }
-
-        public DateTime Delivery_date
-        {
-            get { return delivery_date; }
-            set { delivery_date = value; }
-        }
-
+               
         public string Observation
         {
             get { return observation; }
@@ -115,7 +108,7 @@ namespace WindowsFormsApp1.Models
         }
 
         // Construct for controller
-        public SalesOrder(int order_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, DateTime delivery_date, double amount, string observation, List<SalesOrderLine> lines)
+        public SalesOrder(int order_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, double amount, string observation, List<SalesOrderLine> lines)
         {
             this.id = order_id;
             this.currency_id = currency_id;
@@ -128,7 +121,6 @@ namespace WindowsFormsApp1.Models
             this.customer_doi = cli_doi;
             this.status = status;
             this.issue_date = issue_date;
-            this.delivery_date = delivery_date;
             this.amount = amount;
             this.observation = observation;
             this.lines = lines;
@@ -137,13 +129,12 @@ namespace WindowsFormsApp1.Models
         public SalesOrder() { }
 
         // For SalesOrderList
-        public SalesOrder(int order_id, string cli_name, string observation, DateTime issue_date, DateTime delivery_date, double amount, string status)
+        public SalesOrder(int order_id, string cli_name, string observation, DateTime issue_date, double amount, string status)
         {
             this.id = order_id;
             this.customer_name = cli_name;
             this.observation = observation;
             this.issue_date = issue_date;
-            this.delivery_date = delivery_date;
             this.amount = amount;
             this.status = status;
         }

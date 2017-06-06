@@ -145,7 +145,6 @@ namespace WindowsFormsApp1.Views
                     SalesOrder sales_order = new SalesOrder();
                     fill_Sales_Order_Object(sales_order);
                     sales_order.Customer_id = customerL[0].Id;
-                    sales_order.Issue_date = DateTime.Now;
                     sales_order.Status = "Registrado";
                     sales_order.Lines = lines;
 
@@ -187,7 +186,7 @@ namespace WindowsFormsApp1.Views
             so.Currency_id = currencies.ElementAt(cbo_Currency.SelectedIndex).Id;
             so.Currency_name = currencies.ElementAt(cbo_Currency.SelectedIndex).Name;
             so.Currency_symbol = currencies.ElementAt(cbo_Currency.SelectedIndex).Symbol;
-            so.Delivery_date = DateTime.Parse(dt_DeliveryDate.Text);
+            so.Issue_date = DateTime.Parse(dt_IssueDate.Text);
             so.Observation = txt_observation.Text;
             so.Amount = double.Parse(txt_amount.Text);
         }        
@@ -350,7 +349,7 @@ namespace WindowsFormsApp1.Views
             txt_amount.Text = so.Amount.ToString();
             txt_Status.Text = so.Status;
             cbo_Currency.Text = so.Currency_symbol + "  -  " + so.Currency_name;
-            dt_DeliveryDate.Text = so.Delivery_date.ToString();
+            dt_IssueDate.Text = so.Issue_date.ToString();
 
             fill_gridView_OrderLine(so.Lines);
 
