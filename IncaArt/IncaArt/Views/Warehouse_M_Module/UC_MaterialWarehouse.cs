@@ -185,6 +185,78 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             }
         }
 
+        private void search_Click(object sender, EventArgs e)
+        {
+            metroGrid1.Rows.Clear();
+            for (int i = 0; i < warehouse_list.Count(); i++)
+            {
+                //Producto
+                Models.Material product = new Models.Material();
+                resultP = materialController.getMaterial(warehouse_list[i].Material_id);
+
+
+                //Tipo
+                Models.MaterialTypeWarehouse type = new Models.MaterialTypeWarehouse();
+                resultT = typeController.getMaterialTypeWarehouse(warehouse_list[i].Type_id);
+
+                if (resultP.data == null || resultT.data == null)
+                {
+                    MessageBox.Show(result.message, "Error en las búsquedas de Productos o Tipos de Almacén", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    // Producto
+                    product = (Models.Material)resultP.data;
+                    //Tipo
+                    type = (Models.MaterialTypeWarehouse)resultT.data;
+                    //Unidad
+                    Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
+                    result = unitController.getUnit(product.Unit_id);
+                    unit = (Models.UnitOfMeasure)result.data;
+
+                    String nameSelect = ((KeyValuePair<int, string>)combobox_product_s.SelectedItem).Value;
+                    String typeSelect = ((KeyValuePair<int, string>)combobox_type_s.SelectedItem).Value;
+                    if (product.Name == nameSelect && type.Name == typeSelect)
+                    {
+
+                        //Grilla
+                        String[] row = new String[7];
+                        row[0] = warehouse_list[i].Id.ToString();
+                        row[1] = warehouse_list[i].Name;
+                        row[2] = type.Name;
+                        row[3] = product.Name;
+                        row[4] = unit.Symbol;
+                        row[5] = warehouse_list[i].Current_physical_stock.ToString();
+                        row[6] = warehouse_list[i].Max_capacity.ToString();
+                        this.metroGrid1.Rows.Add(row);
+
+                    }
+                }
+
+            }
+        }
+
+        private void btn_clean_Click(object sender, EventArgs e)
+        {
+            Clean();
+        }
+
+        //Delete
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+            result = materialWarehouseController.deleteMaterialWarehouse(warehouse_list[index]);
+            if (result.data == null)
+            {
+                MessageBox.Show(result.message, "Error al eliminar almacén", MessageBoxButtons.OK);
+            }
+            else
+            {
+                warehouse_list.Remove(warehouse_list[index]);
+            }
+            Load_DataGridView();
+        }
+
         private void register_Click(object sender, EventArgs e)
         {
             int id = 0;
@@ -249,7 +321,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             metroTabControl1.SelectedIndex = 0;
         }
 
-        private void cancel_Click(object sender, EventArgs e)
+        private void Cancel_Click(object sender, EventArgs e)
         {
             Clean();
             metroTabControl1.SelectedIndex = 0;
@@ -292,77 +364,6 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
                 textbox_max_capacity.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
 
                 metroTabControl1.SelectedIndex = 1;
-            }
-        }
-
-        private void metroButton5_Click(object sender, EventArgs e)
-        {
-            Clean();
-        }
-
-        private void delete_Click(object sender, EventArgs e)
-        {
-            int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
-            result = materialWarehouseController.deleteMaterialWarehouse(warehouse_list[index]);
-            if (result.data == null)
-            {
-                MessageBox.Show(result.message, "Error al eliminar almacén", MessageBoxButtons.OK);
-            }
-            else
-            {
-                warehouse_list.Remove(warehouse_list[index]);
-            }
-            Load_DataGridView();
-        }
-
-        private void search_Click(object sender, EventArgs e)
-        {
-            metroGrid1.Rows.Clear();
-            for (int i = 0; i < warehouse_list.Count(); i++)
-            {
-                //Producto
-                Models.Material product = new Models.Material();
-                resultP = materialController.getMaterial(warehouse_list[i].Material_id);
-
-
-                //Tipo
-                Models.MaterialTypeWarehouse type = new Models.MaterialTypeWarehouse();
-                resultT = typeController.getMaterialTypeWarehouse(warehouse_list[i].Type_id);
-
-                if (resultP.data == null || resultT.data == null)
-                {
-                    MessageBox.Show(result.message, "Error en las búsquedas de Productos o Tipos de Almacén", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    // Producto
-                    product = (Models.Material)resultP.data;
-                    //Tipo
-                    type = (Models.MaterialTypeWarehouse)resultT.data;
-                    //Unidad
-                    Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
-                    result = unitController.getUnit(product.Unit_id);
-                    unit = (Models.UnitOfMeasure)result.data;
-
-                    String nameSelect = ((KeyValuePair<int, string>)combobox_product_s.SelectedItem).Value;
-                    String typeSelect = ((KeyValuePair<int, string>)combobox_type_s.SelectedItem).Value;
-                    if (product.Name == nameSelect && type.Name == typeSelect)
-                    {
-
-                        //Grilla
-                        String[] row = new String[7];
-                        row[0] = warehouse_list[i].Id.ToString();
-                        row[1] = warehouse_list[i].Name;
-                        row[2] = type.Name;
-                        row[3] = product.Name;
-                        row[4] = unit.Symbol;
-                        row[5] = warehouse_list[i].Current_physical_stock.ToString();
-                        row[6] = warehouse_list[i].Max_capacity.ToString();
-                        this.metroGrid1.Rows.Add(row);
-
-                    }
-                }
-
             }
         }
     }

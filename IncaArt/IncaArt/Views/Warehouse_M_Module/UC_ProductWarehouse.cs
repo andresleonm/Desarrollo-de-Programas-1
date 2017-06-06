@@ -45,7 +45,6 @@ namespace WindowsFormsApp1.Views
 
             //Cargar los combobox - Products
             Dictionary<int, string> combo_data_products = new Dictionary<int, string>();
-            combo_data_products.Add(-1, "");
             foreach (var item in products_list)
             {
                 combo_data_products.Add(item.Id, item.Name);
@@ -61,7 +60,6 @@ namespace WindowsFormsApp1.Views
 
             //Cargar los combobox - Types
             Dictionary<int, string> combo_data_types = new Dictionary<int, string>();
-            combo_data_types.Add(-1,"");
             foreach (var item in types_list)
             {
                 combo_data_types.Add(item.Id, item.Name);
@@ -80,7 +78,6 @@ namespace WindowsFormsApp1.Views
             metroTabControl1.SelectedIndex = 0;
         }
 
-
         /*
 
         WAREHOUSE_ID
@@ -92,7 +89,6 @@ namespace WindowsFormsApp1.Views
         STATE
         WAREHOUSE_CURRENT_LOGICAL_STOCK
 */
-
         private void Load_Data()
         {
             result = unitController.getUnits();
@@ -140,11 +136,6 @@ namespace WindowsFormsApp1.Views
                 if (c is RadioButton)
                 {
                     ((RadioButton)c).Checked = false;
-                }
-
-                if (c is ComboBox)
-                {
-                    ((ComboBox)c).SelectedItem = -1;
                 }
 
             }
@@ -328,7 +319,7 @@ namespace WindowsFormsApp1.Views
 
         private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
+            if (metroGrid1.Rows[e.RowIndex].Cells[0].Value != null)
             {
                 cur_row = e.RowIndex;
             }
@@ -345,7 +336,7 @@ namespace WindowsFormsApp1.Views
                 {
                     if (products_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
                     {
-                        combobox_products.SelectedIndex = i + 1;
+                        combobox_products.SelectedIndex = i ;
                         break;
                     }
                 }
@@ -354,7 +345,7 @@ namespace WindowsFormsApp1.Views
                 {
                     if (types_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString())
                     {
-                        combobox_type.SelectedIndex = i + 1;
+                        combobox_type.SelectedIndex = i ;
                         break;
                     }
                 }
@@ -379,10 +370,6 @@ namespace WindowsFormsApp1.Views
             }
             Load_DataGridView();
         }
-
-
-
-
 
         private bool validate_data(String name, int type, int m_capacity)
         {
@@ -413,6 +400,5 @@ namespace WindowsFormsApp1.Views
             return isCorrect;
         }
 
-       
     }
 }

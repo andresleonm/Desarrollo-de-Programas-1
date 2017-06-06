@@ -158,24 +158,6 @@ namespace WindowsFormsApp1.Views
             }
         }
 
-        private void search_Click(object sender, EventArgs e)
-        {
-            metroGrid1.Rows.Clear();
-            for (int i = 0; i < supplier_list.Count(); i++)
-            {
-                if (textbox_priority_s.Text == supplier_list[i].Priority.ToString()) { 
-                String[] row = new String[6];
-                row[0] = supplier_list[i].Id.ToString();
-                row[1] = supplier_list[i].Name.ToString();
-                row[2] = supplier_list[i].Address.ToString();
-                row[3] = supplier_list[i].Phone.ToString();
-                row[4] = supplier_list[i].Email.ToString();
-                row[5] = supplier_list[i].Priority.ToString();
-                this.metroGrid1.Rows.Add(row);
-                }
-            }
-        }
-
         private void edit_Click(object sender, EventArgs e)
         {
             Models.Supplier sup = new Models.Supplier();
@@ -212,12 +194,38 @@ namespace WindowsFormsApp1.Views
             metroTabControl1.SelectedIndex = 0;
         }
 
+        private void search_Click(object sender, EventArgs e)
+        {/*
+            metroGrid1.Rows.Clear();
+            for (int i = 0; i < supplier_list.Count(); i++)
+            {
+                if (textbox_priority_s.Text == supplier_list[i].Priority.ToString())
+                {
+                    String[] row = new String[6];
+                    row[0] = supplier_list[i].Id.ToString();
+                    row[1] = supplier_list[i].Name.ToString();
+                    row[2] = supplier_list[i].Address.ToString();
+                    row[3] = supplier_list[i].Phone.ToString();
+                    row[4] = supplier_list[i].Email.ToString();
+                    row[5] = supplier_list[i].Priority.ToString();
+                    this.metroGrid1.Rows.Add(row);
+                }
+            }*/
+        }
+
+        private void btn_clean_Click(object sender, EventArgs e)
+        {
+            Clean();
+           
+        }
+
         private void delete_Click(object sender, EventArgs e)
         {
             int i;
             int index = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
 
-            for (i = 0; i < supplier_list.Count(); i++) {
+            for (i = 0; i < supplier_list.Count(); i++)
+            {
                 if (int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString()) == supplier_list[i].Id)
                     break;
             }
