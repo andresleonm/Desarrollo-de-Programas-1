@@ -292,5 +292,37 @@ namespace WindowsFormsApp1.Views
                 metroTabControl1.SelectedIndex = 0;
             }
         }
+
+        private void metroButtonEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("¿Está seguro que desea eliminar el usuario " + metroGrid1.CurrentRow.Cells[4].Value + " (" + metroGrid1.CurrentRow.Cells[1].Value + " " + metroGrid1.CurrentRow.Cells[2].Value + ")?", "Eliminar Usuario", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                User user_to_delete = user_list.Find(u => u.Id == Int32.Parse(metroGrid1.CurrentRow.Cells[0].Value.ToString()));
+                User session_user = ((Dashboard)Parent).sessionUser;
+
+                if (session_user.Id == user_to_delete.Id)
+                {
+                    MessageBox.Show("¡No puedes eliminar la sesión actual!");
+                }
+                else
+                {
+                    Result deleteResult = user_controller.deleteUser(user_to_delete);
+
+                    if (deleteResult.success)
+                    {
+                        MessageBox.Show("Usuario eliminado correctamente");
+                        Clean();
+                        Load_Data();
+                        Load_DataGridView();
+                    }
+                    else
+                    {
+                        MessageBox.Show(deleteResult.message);
+                    }
+                }
+            }
+        }
     }
 }
