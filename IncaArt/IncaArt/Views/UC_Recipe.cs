@@ -172,6 +172,9 @@ namespace WindowsFormsApp1.Views
         private void Clean()
         {
             ClearTextBoxes(this);
+            combobox_material.SelectedIndex = 0;
+            combobox_product.SelectedIndex = 0;
+            combobox_product_s.SelectedIndex = 0;
         }
 
         private void Clean_Material()

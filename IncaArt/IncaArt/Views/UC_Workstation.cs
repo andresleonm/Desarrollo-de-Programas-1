@@ -141,6 +141,10 @@ namespace WindowsFormsApp1.Views
         private void Clean()
         {
             ClearTextBoxes(this);
+            combobox_next.SelectedIndex = 0;
+            combobox_previous.SelectedIndex = 0;
+            combobox_product.SelectedIndex = 0;
+            combobox_product_s.SelectedIndex = 0;
         }
 
         private void ClearTextBoxes(Control control)

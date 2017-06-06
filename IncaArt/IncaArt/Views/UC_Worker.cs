@@ -119,6 +119,9 @@ namespace WindowsFormsApp1.Views
         private void Clean()
         {
             ClearTextBoxes(this);
+            combobox_currency.SelectedIndex = 0;
+            combobox_shift.SelectedIndex = 0;
+            combobox_shift_s.SelectedIndex = 0;
         }
 
         private void ClearTextBoxes(Control control)
@@ -331,7 +334,7 @@ namespace WindowsFormsApp1.Views
             worker.Name = textbox_name_s.Text;
             worker.Paternal_name = textbox_paternal_s.Text;
             worker.Maternal_name = textbox_maternal_s.Text;
-            worker.Doi = textbox_paternal_s.Text;
+            worker.Doi = textbox_doi_s.Text;
             worker.Shift_id= ((KeyValuePair<int, string>)combobox_shift_s.SelectedItem).Key;
             result = workerController.getWokers(worker);
             if (result.data == null)
