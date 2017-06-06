@@ -49,13 +49,13 @@
             this.buttonCancel = new MetroFramework.Controls.MetroButton();
             this.buttonSave = new MetroFramework.Controls.MetroButton();
             this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
+            this.textbox_name = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textbox_name = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
@@ -70,7 +70,7 @@
             this.metroLabel22.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel22.Location = new System.Drawing.Point(34, 34);
             this.metroLabel22.Name = "metroLabel22";
-            this.metroLabel22.Size = new System.Drawing.Size(75, 25);
+            this.metroLabel22.Size = new System.Drawing.Size(74, 25);
             this.metroLabel22.TabIndex = 28;
             this.metroLabel22.Text = "Perfiles";
             this.metroLabel22.UseCustomBackColor = true;
@@ -275,28 +275,6 @@
             this.metroGrid2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellValueChanged);
             this.metroGrid2.CurrentCellDirtyStateChanged += new System.EventHandler(this.metroGrid2_CurrentCellDirtyStateChanged);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // ColumnIndex
-            // 
-            this.ColumnIndex.HeaderText = "Index";
-            this.ColumnIndex.Name = "ColumnIndex";
-            this.ColumnIndex.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Permiso";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Agregar";
-            this.Column3.Name = "Column3";
-            // 
             // textbox_name
             // 
             // 
@@ -344,6 +322,28 @@
             this.metroLabel1.Size = new System.Drawing.Size(62, 19);
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "Nombre:";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Id";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // ColumnIndex
+            // 
+            this.ColumnIndex.HeaderText = "Index";
+            this.ColumnIndex.Name = "ColumnIndex";
+            this.ColumnIndex.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Permiso";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Agregar";
+            this.Column3.Name = "Column3";
             // 
             // UC_Profile
             // 

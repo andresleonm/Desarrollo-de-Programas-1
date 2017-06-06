@@ -68,6 +68,23 @@ namespace WindowsFormsApp1.Models
             this.idDocumentLine = line.Id;
         }
 
+        public MaterialMovementLine(ProductionOrderMaterialLine line, int id, string user, string password)
+        {
+            this.warehouse_id = line.Warehouse_id;
+            this.material_id = line.Material_id;
+            this.unit_id = line.Unit_id;
+            MaterialWarehouseController mwc = new MaterialWarehouseController(user, password);
+            Models.MaterialWarehouse warehouse = (Models.MaterialWarehouse)mwc.getMaterialWarehouse(line.Warehouse_id).data;
+            warehouse_name = warehouse.Name;            
+            material_name = line.Material_name;            
+            unit_name = line.Unit_name;
+            this.warehouseQuantity = warehouse.Current_physical_stock;
+            this.documentQuantity = line.Quantity_required - line.Quantity_taken_real;
+            this.State = "Active";
+            this.idDocumentLine = line.Id;
+        }
+
+
         public MaterialMovementLine(string user,string password,MaterialWarehouseM line, int id)
         {
             this.warehouse_id = line.Id;

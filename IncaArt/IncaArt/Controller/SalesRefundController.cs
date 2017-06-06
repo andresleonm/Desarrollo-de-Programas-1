@@ -58,7 +58,7 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result insertSalesRefund(SalesOrder sales_order)
+        public Result insertSalesRefund(SalesRefund sales_order)
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("currency", sales_order.Currency_id.ToString()));
@@ -79,7 +79,7 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result updateSalesRefund(SalesOrder sales_order)
+        public Result updateSalesRefund(SalesRefund sales_order)
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("id", sales_order.Id.ToString()));

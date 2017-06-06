@@ -17,6 +17,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         string password;
         ProductMovementController pc;
         SalesOrderController soc;
+        SalesRefundLineController src;
+        ProductionOrderProductLineController prc;
         bool flgBegin=true;
         int claseAnt=-1;
         string idAnt;
@@ -27,6 +29,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             this.password = password;
             pc = new ProductMovementController(user, password);
             soc= new SalesOrderController(user, password);
+            src = new SalesRefundLineController(user, password);
+            prc = new ProductionOrderProductLineController(user, password);
             AdjustColumnOrder();
             fillTypeMovements();
             clearGrid();
@@ -122,6 +126,36 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             AdjustColumnOrder();
         }
 
+        private void populateDetail(List<Models.ProductionOrderProductLine> production)
+        {
+            clearGrid();
+            var lines = production;
+            var movs_lines = new List<Models.ProductMovementLine>();
+            int i = 1;
+            foreach (Models.ProductionOrderProductLine line in lines)
+            {
+                movs_lines.Add(new Models.ProductMovementLine(line, i, user, password));
+                i++;
+            }
+            this.grid_movement_lines.DataSource = movs_lines;
+            AdjustColumnOrder();
+        }
+
+        private void populateDetail(List<Models.SalesRefundLine> production)
+        {
+            clearGrid();
+            var lines = production;
+            var movs_lines = new List<Models.ProductMovementLine>();
+            int i = 1;
+            foreach (Models.SalesRefundLine line in lines)
+            {
+                movs_lines.Add(new Models.ProductMovementLine(line, i, user, password));
+                i++;
+            }
+            this.grid_movement_lines.DataSource = movs_lines;
+            AdjustColumnOrder();
+        }
+
         private void documents_list_SelectedIndexChanged(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -139,10 +173,14 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                     var Order = (Models.SalesOrder)soc.getSalesOrder(Int32.Parse(doc.id)).data;
                     populateDetail(Order);
                 }
-                else
+                else if (clase==1)
                 {
-                    //
-
+                    var lines = (List<Models.SalesRefundLine> )src.getSalesRefundLines(Int32.Parse(doc.id)).data;
+                    populateDetail(lines);
+                }else if (clase == 2)
+                {
+                    var productionLines = (List<Models.ProductionOrderProductLine>)prc.getProductLines(Int32.Parse(doc.id)).data;
+                    populateDetail(productionLines);
                 }
                 claseAnt = clase;
                 idAnt = doc.id;

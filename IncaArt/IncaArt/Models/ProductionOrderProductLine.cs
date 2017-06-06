@@ -6,17 +6,22 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class ProductionOrderProductLine
+    public class ProductionOrderProductLine
     {
         private int order_Id;
         private int id;
-        private Product product;
+        private int product_id;
+        private string product_name;
+        private int unit_id;
+        private string unit_name;
         private int quantity;
         private int produced_quantity;
         private string state;
-        private Recipe recipe;
+        private int recipe_id;
+        private string recipe_name;
         private int quantity_warehouse;
-        private ProductWarehouse warehouse;
+        private int warehouse_id;
+        private string warehouse_name;
 
         public int Order_Id
         {
@@ -43,20 +48,7 @@ namespace WindowsFormsApp1.Models
                 id = value;
             }
         }
-
-        public Product Product
-        {
-            get
-            {
-                return product;
-            }
-
-            set
-            {
-                product = value;
-            }
-        }
-
+      
         public int Quantity
         {
             get
@@ -74,12 +66,12 @@ namespace WindowsFormsApp1.Models
         {
             get
             {
-                return Produced_quantity1;
+                return produced_quantity;
             }
 
             set
             {
-                Produced_quantity1 = value;
+                produced_quantity = value;
             }
         }
 
@@ -95,33 +87,7 @@ namespace WindowsFormsApp1.Models
             {
                 state = value;
             }
-        }
-
-        public int Produced_quantity1
-        {
-            get
-            {
-                return produced_quantity;
-            }
-
-            set
-            {
-                produced_quantity = value;
-            }
-        }
-
-        internal Recipe Recipe
-        {
-            get
-            {
-                return recipe;
-            }
-
-            set
-            {
-                recipe = value;
-            }
-        }
+        }     
 
         public int Quantity_warehouse
         {
@@ -136,23 +102,133 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public ProductWarehouse Warehouse
+        public int Product_id
         {
             get
             {
-                return warehouse;
+                return product_id;
             }
 
             set
             {
-                warehouse = value;
+                product_id = value;
             }
         }
+
+        public string Product_name
+        {
+            get
+            {
+                return product_name;
+            }
+
+            set
+            {
+                product_name = value;
+            }
+        }
+
+        public int Unit_id
+        {
+            get
+            {
+                return unit_id;
+            }
+
+            set
+            {
+                unit_id = value;
+            }
+        }
+
+        public string Unit_name
+        {
+            get
+            {
+                return unit_name;
+            }
+
+            set
+            {
+                unit_name = value;
+            }
+        }
+
+        public int Recipe_id
+        {
+            get
+            {
+                return recipe_id;
+            }
+
+            set
+            {
+                recipe_id = value;
+            }
+        }
+
+        public string Recipe_name
+        {
+            get
+            {
+                return recipe_name;
+            }
+
+            set
+            {
+                recipe_name = value;
+            }
+        }
+
+        public int Warehouse_id
+        {
+            get
+            {
+                return warehouse_id;
+            }
+
+            set
+            {
+                warehouse_id = value;
+            }
+        }
+
+        public string Warehouse_name
+        {
+            get
+            {
+                return warehouse_name;
+            }
+
+            set
+            {
+                warehouse_name = value;
+            }
+        }
+     
 
         public ProductionOrderProductLine()
         {
 
         }
 
+        public ProductionOrderProductLine(int id, int order_Id, int product_id, string product_name, int unit_of_measure,
+            string unit_of_measure_name, int quantity, int produced_quantity, int warehouse_id, string warehouse_name, string state,
+            int recipe_id, string recipe_name)
+        {
+            this.id = id;
+            this.order_Id = order_Id;
+            this.Product_id = product_id;
+            this.Product_name = product_name;
+            this.Unit_id = unit_of_measure;
+            this.Unit_name = unit_of_measure_name;
+            this.quantity = quantity;
+            this.produced_quantity = produced_quantity;
+            this.Warehouse_id = warehouse_id;
+            this.Warehouse_name = warehouse_name;
+            this.state = state;
+            this.Recipe_id = recipe_id;
+            this.Recipe_name = recipe_name;
+        }
     }
 }

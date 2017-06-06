@@ -392,26 +392,22 @@ namespace WindowsFormsApp1.Views
             }
         }
 
-       
 
-        private void grid_order_lines_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var senderGrid = (DataGridView)sender;
-            try
-            {
-                if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                e.RowIndex >= 0)
-                {
-                    List<SalesOrderLine> lines = (List<SalesOrderLine>)senderGrid.DataSource;
-                    lines.RemoveAt(e.RowIndex);
-                    senderGrid.DataSource = lines;
-                }
-            }
-            catch (Exception exception)
-            {
+            //if click is on new row or header row
+            if (e.RowIndex == grid_order_lines.NewRowIndex || e.RowIndex < 0)
+                return;
 
+            //Check if click is on specific column 
+            if (e.ColumnIndex == grid_order_lines.Columns["action"].Index)
+            {
+                //Put some logic here, for example to remove row from your binding list.
+                List<SalesOrderLine> list = (List<SalesOrderLine>)grid_order_lines.DataSource;
+                list.RemoveAt(e.RowIndex);
+                grid_order_lines.DataSource = list;
             }
-            
         }
 
         private void txt_name_KeyDown(object sender, KeyEventArgs e)

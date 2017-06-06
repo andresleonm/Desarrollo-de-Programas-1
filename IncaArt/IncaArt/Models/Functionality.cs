@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    public class Functionality
+    public class Functionality : IEquatable<Functionality>
     {
         int id;
         string name;
@@ -56,6 +56,30 @@ namespace WindowsFormsApp1.Models
             this.id = id;
             this.name = name;
             this.description = description;
+        }
+
+        public bool Equals(Functionality obj)
+        {
+            if (obj == null) return false;
+
+            return this.id == obj.id;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+                return false;
+
+            Functionality funcObj = obj as Functionality;
+            if (funcObj == null)
+                return false;
+            else
+                return Equals(funcObj);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.id.GetHashCode();
         }
     }
 }

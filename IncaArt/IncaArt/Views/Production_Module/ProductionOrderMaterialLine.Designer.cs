@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox_Warehouse = new System.Windows.Forms.ComboBox();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox_Quantity = new MetroFramework.Controls.MetroTextBox();
             this.comboBox_Material = new System.Windows.Forms.ComboBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_Register = new System.Windows.Forms.Button();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.comboBox_Warehouse = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +60,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Línea de Material de Orden";
             // 
+            // comboBox_Warehouse
+            // 
+            this.comboBox_Warehouse.FormattingEnabled = true;
+            this.comboBox_Warehouse.Location = new System.Drawing.Point(153, 103);
+            this.comboBox_Warehouse.Name = "comboBox_Warehouse";
+            this.comboBox_Warehouse.Size = new System.Drawing.Size(163, 21);
+            this.comboBox_Warehouse.TabIndex = 51;
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel3.ForeColor = System.Drawing.Color.DarkCyan;
+            this.metroLabel3.Location = new System.Drawing.Point(33, 103);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(61, 15);
+            this.metroLabel3.TabIndex = 50;
+            this.metroLabel3.Text = "Almacén :";
+            this.metroLabel3.UseCustomBackColor = true;
+            this.metroLabel3.UseCustomForeColor = true;
+            // 
             // metroTextBox_Quantity
             // 
             this.metroTextBox_Quantity.BackColor = System.Drawing.SystemColors.Window;
@@ -77,13 +99,11 @@
             this.metroTextBox_Quantity.CustomButton.UseSelectable = true;
             this.metroTextBox_Quantity.CustomButton.UseVisualStyleBackColor = false;
             this.metroTextBox_Quantity.CustomButton.Visible = false;
-            this.metroTextBox_Quantity.Enabled = false;
             this.metroTextBox_Quantity.Lines = new string[0];
             this.metroTextBox_Quantity.Location = new System.Drawing.Point(153, 68);
             this.metroTextBox_Quantity.MaxLength = 32767;
             this.metroTextBox_Quantity.Name = "metroTextBox_Quantity";
             this.metroTextBox_Quantity.PasswordChar = '\0';
-            this.metroTextBox_Quantity.ReadOnly = true;
             this.metroTextBox_Quantity.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.metroTextBox_Quantity.SelectedText = "";
             this.metroTextBox_Quantity.SelectionLength = 0;
@@ -159,28 +179,6 @@
             this.button_Register.UseVisualStyleBackColor = false;
             this.button_Register.Click += new System.EventHandler(this.button_Register_Click);
             // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel3.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel3.Location = new System.Drawing.Point(33, 103);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(61, 15);
-            this.metroLabel3.TabIndex = 50;
-            this.metroLabel3.Text = "Almacén :";
-            this.metroLabel3.UseCustomBackColor = true;
-            this.metroLabel3.UseCustomForeColor = true;
-            // 
-            // comboBox_Warehouse
-            // 
-            this.comboBox_Warehouse.FormattingEnabled = true;
-            this.comboBox_Warehouse.Location = new System.Drawing.Point(153, 103);
-            this.comboBox_Warehouse.Name = "comboBox_Warehouse";
-            this.comboBox_Warehouse.Size = new System.Drawing.Size(163, 21);
-            this.comboBox_Warehouse.TabIndex = 51;
-            // 
             // ProductionOrderMaterialLine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,6 +188,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "ProductionOrderMaterialLine";
             this.Text = "Registro de material";
+            this.Load += new System.EventHandler(this.ProductionOrderMaterialLine_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

@@ -14,9 +14,10 @@ namespace WindowsFormsApp1.Models
         private string product_name;
         private int unit_measure_id;
         private string unit_measure_name;
+        private int quantity_available;
         private int quantity;
         private double unit_price;
-        private int delivery_quantity;
+        private int refund_quantity;
         private int prod_warehouse_id;
         private string prod_warehouse_name;
         private double amount;
@@ -70,10 +71,10 @@ namespace WindowsFormsApp1.Models
             set { unit_price = value; }
         }
 
-        public int Delivery_quantity
+        public int Refund_quantity
         {
-            get { return delivery_quantity; }
-            set { delivery_quantity = value; }
+            get { return refund_quantity; }
+            set { refund_quantity = value; }
         }
 
 
@@ -113,7 +114,7 @@ namespace WindowsFormsApp1.Models
             this.unit_measure_name = unit_measure_name;
             this.Quantity = quantity;
             this.Unit_price = price;
-            this.delivery_quantity = del_quantity;
+            this.refund_quantity = del_quantity;
             this.prod_warehouse_id = prod_warehouse_id;
             this.prod_warehouse_name = prod_warehouse_name;
             this.status = status;
@@ -127,7 +128,7 @@ namespace WindowsFormsApp1.Models
             this.unit_measure_id = unit_measure_id;
             this.Quantity = quantity;
             this.Unit_price = price;
-            this.delivery_quantity = 0;
+            this.refund_quantity = 0;
             this.prod_warehouse_id = prod_warehouse_id;
             this.status = "Registrado";
         }

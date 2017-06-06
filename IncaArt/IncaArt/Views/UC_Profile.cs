@@ -20,7 +20,7 @@ namespace WindowsFormsApp1.Views
         List<Profile> profile_list;
         List<Functionality> functionality_list;
         bool data_loaded;
-        List<int> selected_functionalities = new List<int>();
+        List<Functionality> selected_functionalities = new List<Functionality>();
         Profile current_profile;
 
         public UC_Profile()
@@ -68,18 +68,27 @@ namespace WindowsFormsApp1.Views
             if (validate_data(name))
             {
                 Profile profile = new Profile(0, name);
+                Result transaction_result;
+                string message = "";
 
-                foreach (int index in selected_functionalities)
+                profile.Functionalities =  new List<Functionality>(selected_functionalities);
+
+                if (current_profile != null)
                 {
-                    profile.Functionalities.Add(functionality_list[index]);
+                    profile.Id = current_profile.Id;
+                    transaction_result = profile_controller.updateProfile(profile);
+                    message = "Perfil editado correctamente.";
+                }
+                else
+                {
+                    transaction_result = profile_controller.insertProfile(profile);
+                    message = "Perfil ingresado correctamente.";
                 }
 
-                Result insert_result = profile_controller.insertProfile(profile);
-
-                if (insert_result.success)
+                if (transaction_result.success)
                 {
                     Load_Data();
-                    MessageBox.Show("Perfile agregado correctamente");
+                    MessageBox.Show(message);
                     Load_DataGridView();
                     metroTabControl1.SelectedIndex = 0;
                     Clean();
@@ -87,7 +96,7 @@ namespace WindowsFormsApp1.Views
                 }
                 else
                 {
-                    MessageBox.Show(insert_result.message);
+                    MessageBox.Show(transaction_result.message);
                 }
             }
         }
@@ -193,13 +202,14 @@ namespace WindowsFormsApp1.Views
             {
                 DataGridViewRow row = metroGrid2.Rows[e.RowIndex];
                 DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)row.Cells[e.ColumnIndex];
+                int findex = Int32.Parse(row.Cells[1].Value.ToString());
 
                 if ((Boolean)checkCell.Value)
                 {
-                    selected_functionalities.Add(Int32.Parse(row.Cells[1].Value.ToString()));
+                    selected_functionalities.Add(functionality_list[findex]);
                 } else
                 {
-                    selected_functionalities.Remove(Int32.Parse(row.Cells[1].Value.ToString()));
+                    selected_functionalities.Remove(functionality_list[findex]);
                 }
             }
         }
@@ -212,18 +222,19 @@ namespace WindowsFormsApp1.Views
             {
                 current_profile = profile_list[Int32.Parse(row.Cells[1].Value.ToString())];
                 textbox_name.Text = current_profile.Description;
-                selected_functionalities = current_profile.Functionalities.Select(f => f.Id).ToList();
 
-                foreach(DataGridViewRow funcGridRow in metroGrid2.Rows)
+                foreach (DataGridViewRow funcGridRow in metroGrid2.Rows)
                 {
                     if (funcGridRow.Cells[0].Value != null)
                     {
-                        int cellIndex = Int32.Parse(funcGridRow.Cells[0].Value.ToString());
-                        funcGridRow.Cells[3].Value = selected_functionalities.Contains(cellIndex);
+                        int findex = Int32.Parse(funcGridRow.Cells[1].Value.ToString());
+                        Functionality f = functionality_list[findex];
+                        funcGridRow.Cells[3].Value = current_profile.Functionalities.Contains(f);
                     }
                 }
 
-                buttonSave.Text = "Registrar";
+                selected_functionalities = new List<Functionality>(current_profile.Functionalities);
+                buttonSave.Text = "Editar";
                 metroTabControl1.SelectedIndex = 1;
             }
         }
@@ -233,7 +244,8 @@ namespace WindowsFormsApp1.Views
             Clean();
             Clean_FuncGrid();
             selected_functionalities.Clear();
-            buttonSave.Text = "Guardar";
+            buttonSave.Text = "Registrar";
+            current_profile = null;
         }
     }
 }
