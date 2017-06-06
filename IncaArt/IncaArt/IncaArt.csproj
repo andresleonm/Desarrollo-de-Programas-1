@@ -663,6 +663,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Algorithm.ProductLineAssignment.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApp1.Algorithm.Workstation.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.Worker.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.Workstation.datasource" />
     <None Include="Properties\Settings.settings">

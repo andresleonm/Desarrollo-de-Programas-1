@@ -35,6 +35,8 @@ namespace WindowsFormsApp1.Views
             products = (List<Product>)product_controller.getProducts().data;            
 
             workers_grid.DataSource = workers;
+
+
             
             workstations_grid.DataSource = workstations;
 
@@ -74,16 +76,13 @@ namespace WindowsFormsApp1.Views
                     {
                         prod_name = "retablo";
                     }
-
-                    //for (int i = 0; i < int.Parse(row.Cells[1].Value.ToString()); i++)
-                    //{
-                        Algorithm.Workstation wkst = new Algorithm.Workstation(
-                            new Algorithm.Product(prod_name, 0, aux_prod.Unit_price),
-                            row.Cells[0].Value.ToString(), int.Parse(row.Cells[1].Value.ToString()),
-                            ((Workstation)row.DataBoundItem).Break_cost);
-                        wkst.id = ((Workstation)row.DataBoundItem).Id;
-                        tabu_wkstations.Add(wkst);
-                    //}
+                    
+                    Algorithm.Workstation wkst = new Algorithm.Workstation(
+                        new Algorithm.Product(prod_name, 0, aux_prod.Unit_price),
+                        row.Cells[0].Value.ToString(), int.Parse(row.Cells[1].Value.ToString()),
+                        ((Workstation)row.DataBoundItem).Break_cost);
+                    wkst.id = ((Workstation)row.DataBoundItem).Id;
+                    tabu_wkstations.Add(wkst);                    
                 }
             }
 

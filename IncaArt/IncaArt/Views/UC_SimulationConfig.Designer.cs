@@ -74,6 +74,14 @@
             this.workstationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.workstation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workstation_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nextworkstationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.previousworkstationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.breakcostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currencyidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -294,7 +302,15 @@
             this.workstations_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.workstations_grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.workstation,
-            this.workstation_quantity});
+            this.workstation_quantity,
+            this.idDataGridViewTextBoxColumn1,
+            this.productidDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn1,
+            this.nextworkstationDataGridViewTextBoxColumn,
+            this.previousworkstationDataGridViewTextBoxColumn,
+            this.quantityDataGridViewTextBoxColumn,
+            this.breakcostDataGridViewTextBoxColumn,
+            this.currencyidDataGridViewTextBoxColumn});
             this.workstations_grid.DataSource = this.workstationBindingSource;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -551,6 +567,62 @@
             this.workstation_quantity.Name = "workstation_quantity";
             this.workstation_quantity.Width = 77;
             // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // productidDataGridViewTextBoxColumn
+            // 
+            this.productidDataGridViewTextBoxColumn.DataPropertyName = "Product_id";
+            this.productidDataGridViewTextBoxColumn.HeaderText = "Product_id";
+            this.productidDataGridViewTextBoxColumn.Name = "productidDataGridViewTextBoxColumn";
+            this.productidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // nextworkstationDataGridViewTextBoxColumn
+            // 
+            this.nextworkstationDataGridViewTextBoxColumn.DataPropertyName = "Next_workstation";
+            this.nextworkstationDataGridViewTextBoxColumn.HeaderText = "Next_workstation";
+            this.nextworkstationDataGridViewTextBoxColumn.Name = "nextworkstationDataGridViewTextBoxColumn";
+            this.nextworkstationDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // previousworkstationDataGridViewTextBoxColumn
+            // 
+            this.previousworkstationDataGridViewTextBoxColumn.DataPropertyName = "Previous_workstation";
+            this.previousworkstationDataGridViewTextBoxColumn.HeaderText = "Previous_workstation";
+            this.previousworkstationDataGridViewTextBoxColumn.Name = "previousworkstationDataGridViewTextBoxColumn";
+            this.previousworkstationDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // breakcostDataGridViewTextBoxColumn
+            // 
+            this.breakcostDataGridViewTextBoxColumn.DataPropertyName = "Break_cost";
+            this.breakcostDataGridViewTextBoxColumn.HeaderText = "Break_cost";
+            this.breakcostDataGridViewTextBoxColumn.Name = "breakcostDataGridViewTextBoxColumn";
+            this.breakcostDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // currencyidDataGridViewTextBoxColumn
+            // 
+            this.currencyidDataGridViewTextBoxColumn.DataPropertyName = "Currency_id";
+            this.currencyidDataGridViewTextBoxColumn.HeaderText = "Currency_id";
+            this.currencyidDataGridViewTextBoxColumn.Name = "currencyidDataGridViewTextBoxColumn";
+            this.currencyidDataGridViewTextBoxColumn.Visible = false;
+            // 
             // UC_SimulationConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -617,5 +689,13 @@
         private System.Windows.Forms.BindingSource workstationBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn workstation;
         private System.Windows.Forms.DataGridViewTextBoxColumn workstation_quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nextworkstationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn previousworkstationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn breakcostDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currencyidDataGridViewTextBoxColumn;
     }
 }
