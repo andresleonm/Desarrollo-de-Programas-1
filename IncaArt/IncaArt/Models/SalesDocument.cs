@@ -9,6 +9,8 @@ namespace WindowsFormsApp1.Models
     public class SalesDocument
     {
         private int id;
+        private int order_id;
+        public string type_name;
         private char type_document_id;
         private int movement_id;
         private int currency_id;
@@ -20,16 +22,36 @@ namespace WindowsFormsApp1.Models
         private string customer_phone;
         private string customer_doi;
         private double amount;
+        private double porc_igv;
         private string status;
         private DateTime issue_date;
         private string observation;
-        private int external_number;
+        private string external_number;
         private List<SalesDocumentLine> lines;
 
         public int Id
         {
             get { return id; }
             set { id = value; }
+        }
+
+        public string Type_name
+        {
+            get
+            {
+                if (type_document_id == 'B') return "Boleta";
+                if (type_document_id == 'F') return "Factura";
+                if (type_document_id == 'N') return "Nota de Crédito";
+                return "";
+            }
+        
+            set { type_name = value; }
+        }
+
+        public int Order_id
+        {
+            get { return order_id; }
+            set { order_id = value; }
         }
 
         public char Type_document_id
@@ -98,6 +120,12 @@ namespace WindowsFormsApp1.Models
             set { amount = value; }
         }
 
+        public double Porc_igv
+        {
+            get { return porc_igv; }
+            set { porc_igv = value; }
+        }
+
         public string Status
         {
             get { return status; }
@@ -116,7 +144,7 @@ namespace WindowsFormsApp1.Models
             set { observation = value; }
         }
 
-        public int External_number
+        public string External_number
         {
             get { return external_number; }
             set { external_number = value; }
@@ -130,7 +158,7 @@ namespace WindowsFormsApp1.Models
 
 
         // Construct for controller
-        public SalesDocument(int document_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, double amount, string observation, int movement_id, char type_document_id, int external_number, List<SalesDocumentLine> lines)
+        public SalesDocument(int document_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, double amount, double porc_igv, string observation, int movement_id, char type_document_id, string external_number, List<SalesDocumentLine> lines)
         {
             this.id = document_id;
             this.currency_id = currency_id;
@@ -144,11 +172,14 @@ namespace WindowsFormsApp1.Models
             this.status = status;
             this.issue_date = issue_date;
             this.amount = amount;
+            this.porc_igv = porc_igv;
             this.observation = observation;            
             this.movement_id = movement_id;
             this.type_document_id = type_document_id;
             this.external_number = external_number;
             this.lines = lines;
         }
+
+        public SalesDocument() { }
     }
 }

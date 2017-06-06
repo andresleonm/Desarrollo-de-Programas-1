@@ -129,8 +129,8 @@
     <Compile Include="Models\ProductTypeWarehouse.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipeDetail.cs" />
-    <Compile Include="Models\Refund.cs" />
-    <Compile Include="Models\RefundLine.cs" />
+    <Compile Include="Models\SalesRefund.cs" />
+    <Compile Include="Models\SalesRefundLine.cs" />
     <Compile Include="Models\SalesDocument.cs" />
     <Compile Include="Models\SalesDocumentLine.cs" />
     <Compile Include="Models\Shift.cs" />
@@ -225,6 +225,12 @@
     </Compile>
     <Compile Include="Views\Sales_Module\Refunds\Refund.Designer.cs">
       <DependentUpon>Refund.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales_Module\SalesDocumentSearchMovement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales_Module\SalesDocumentSearchMovement.Designer.cs">
+      <DependentUpon>SalesDocumentSearchMovement.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Sales_Module\SalesOrderSearchClient.cs">
       <SubType>Form</SubType>
@@ -515,6 +521,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\Refunds\Refund.resx">
       <DependentUpon>Refund.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales_Module\SalesDocumentSearchMovement.resx">
+      <DependentUpon>SalesDocumentSearchMovement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\SalesOrderSearchClient.resx">
       <DependentUpon>SalesOrderSearchClient.cs</DependentUpon>

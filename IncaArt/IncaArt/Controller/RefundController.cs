@@ -14,18 +14,18 @@ namespace WindowsFormsApp1.Controller
         {
         }
 
-        public Result getSalesOrders()
+        public Result getRefunds()
         {
             List<Parameter> parameters = new List<Parameter>();
             GenericResult result = execute_function("get_sales_orders", parameters);
-            List<Refund> refunds = new List<Refund>();
+            List<SalesRefund> refunds = new List<SalesRefund>();
             if (result.success)
             {
                 foreach (Row r in result.data)
                 {
                     RefundLineController rlc = new RefundLineController(user, password);
                     //var detail = (List<SalesOrderLine>)solc.getSalesOrderLines(Int32.Parse(r.getColumn(0))).data;
-                    refunds.Add(new Refund(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
+                    refunds.Add(new SalesRefund(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
                                                         r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
                                                         r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
                                                         r.getColumn(9), DateTime.Parse(r.getColumn(10))
@@ -37,7 +37,7 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result getSalesOrder(int id)
+        public Result getRefund(int id)
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("id", id.ToString()));
@@ -46,8 +46,8 @@ namespace WindowsFormsApp1.Controller
             {
                 var r = result.data[0];
                 RefundLineController rlc = new RefundLineController(user, password);
-                var detail= (List<RefundLine>)rlc.getSalesOrderLines(Int32.Parse(r.getColumn(0))).data;            
-                Refund refund = new Refund(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
+                var detail= (List<SalesRefundLine>)rlc.getSalesOrderLines(Int32.Parse(r.getColumn(0))).data;            
+                SalesRefund refund = new SalesRefund(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
                                                         r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
                                                         r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
                                                         r.getColumn(9), DateTime.Parse(r.getColumn(10)), 
@@ -58,7 +58,7 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result insertSalesOrder(SalesOrder sales_order)
+        public Result insertRefund(SalesOrder sales_order)
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("currency", sales_order.Currency_id.ToString()));
@@ -79,7 +79,7 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result updateSalesOrder(SalesOrder sales_order)
+        public Result updateRefund(SalesOrder sales_order)
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("id", sales_order.Id.ToString()));

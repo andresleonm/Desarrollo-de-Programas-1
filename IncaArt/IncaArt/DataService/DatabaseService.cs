@@ -70,7 +70,7 @@ namespace WindowsFormsApp1.DataService
             }
             catch(Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.Message + function);
                 return new GenericResult(null, false, e.Message,"");
             }
             

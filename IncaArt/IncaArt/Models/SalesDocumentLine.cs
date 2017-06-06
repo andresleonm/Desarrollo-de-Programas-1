@@ -10,7 +10,7 @@ namespace WindowsFormsApp1.Models
     {
         private int id;
         private int document_id;
-        private int movemement_id_line;
+        private int movement_id_line;
         private int product_id;
         private string product_name;
         private int unit_measure_id;
@@ -35,10 +35,10 @@ namespace WindowsFormsApp1.Models
             set { document_id = value; }
         }
 
-        public int Movemement_id_line
+        public int Movement_id_line
         {
-            get { return movemement_id_line; }
-            set { movemement_id_line = value; }
+            get { return movement_id_line; }
+            set { movement_id_line = value; }
         }
 
         public int Product_id
@@ -124,7 +124,23 @@ namespace WindowsFormsApp1.Models
             this.prod_warehouse_id = prod_warehouse_id;
             this.prod_warehouse_name = prod_warehouse_name;
             this.status = status;
-            this.movemement_id_line = movemement_id_line;
+            this.movement_id_line = movemement_id_line;
+        }
+
+        // Parseador
+        public SalesDocumentLine(WindowsFormsApp1.Models.ProductMovementLine prodML)
+        {
+            this.Product_id = prodML.product_id;
+            this.Product_name = prodML.product_name;
+            this.Unit_measure_id = prodML.unit_id;
+            this.Unit_measure_name = prodML.unit_name;
+            this.Quantity = prodML.quantity;
+            this.Unit_price = prodML.unit_price;
+            this.prod_warehouse_id = prodML.warehouse_id;
+            this.prod_warehouse_name = prodML.warehouse_name;
+            this.amount = prodML.quantity * prodML.unit_price;
+            this.movement_id_line = prodML.id;
+            this.status = "Active";
         }
     }
 }

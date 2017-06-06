@@ -13,9 +13,7 @@ using WindowsFormsApp1.Controller;
 namespace WindowsFormsApp1.Views.Sales_Module
 {
     public partial class SalesOrderSearchClient : Form
-    {        
-        private string user = "dp1admin";
-        private string password = "dp1admin";
+    {   
         private List<Customer> customers;
         public List<Customer> clientList;
         private CustomerController customer_controller;
@@ -85,5 +83,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
             AdjustColumnOrder();
         }
 
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result insertSalesOrderLine(SalesDocumentLine line)
+        public Result insertSalesDocumentLine(SalesDocumentLine line)
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("document_id", line.Document_id.ToString()));
@@ -46,7 +46,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("refund_quantity", line.Refund_quantity.ToString()));
             parameters.Add(new Parameter("product_id", line.Product_id.ToString()));
             parameters.Add(new Parameter("warehouse_id", line.Prod_warehouse_id.ToString()));
-            parameters.Add(new Parameter("movement_id_line", line.Movemement_id_line.ToString()));
+            parameters.Add(new Parameter("movement_id_line", line.Movement_id_line.ToString()));
             GenericResult result = execute_transaction("insert_sales_document_line", parameters);
             if (result.success)
             {
