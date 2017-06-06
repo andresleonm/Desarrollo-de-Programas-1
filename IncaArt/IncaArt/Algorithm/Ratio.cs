@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Algorithm
 {
-    class Ratio
+    public class Ratio
     {
 
         public double value { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Algorithm
 {
-    class ProductLineAssignment
+    public class ProductLineAssignment
     {
         public List<Assignment> assignments { get; set; }
 

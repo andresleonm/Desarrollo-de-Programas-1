@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Algorithm
 {
-    class Product
+    public class Product
     {
         public string name { get; set; }
         public int stock { get; set; }
@@ -23,7 +23,7 @@ namespace WindowsFormsApp1.Algorithm
             this.name = name;
             this.stock = stock;
             this.unit_price = unit_price;
-            if (name == "Ceramico")
+            if (name.ToLower() == "ceramico")
             {
                 List<string> line = new List<string>();
                 line.Add("MoldeadoC");
@@ -31,13 +31,13 @@ namespace WindowsFormsApp1.Algorithm
                 line.Add("Horneado");
                 this.production_line = line;
             }
-            else if (name == "Piedra")
+            else if (name.ToLower() == "piedra")
             {
                 List<string> line = new List<string>();
                 line.Add("Tallado");
                 this.production_line = line;
             }
-            else if (name == "Retablo")
+            else if (name.ToLower() == "retablo")
             {
                 List<string> line = new List<string>();
                 line.Add("MoldeadoR");

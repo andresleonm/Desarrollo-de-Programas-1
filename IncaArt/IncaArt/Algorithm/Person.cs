@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Algorithm
 {
-    class Person
+    public class Person
     {
     
         public String name;

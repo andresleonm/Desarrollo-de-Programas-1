@@ -11,7 +11,7 @@ namespace WindowsFormsApp1.Models
 
         public double value { get; set; }
 
-        public int workstation_id;
+        public int workstation_id { get; set; }
         public int ratio_type { get; set; }
         public int worker_id { get; set; }
 

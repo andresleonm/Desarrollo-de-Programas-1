@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -35,7 +36,9 @@
             this.execution_workers = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.execution_workstation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.production_line = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productLineAssignmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productLineAssignmentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // metroGrid1
@@ -87,6 +90,7 @@
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid1.Size = new System.Drawing.Size(715, 475);
             this.metroGrid1.TabIndex = 0;
+            this.metroGrid1.VisibleChanged += new System.EventHandler(this.metroGrid1_VisibleChanged);
             // 
             // execution_workers
             // 
@@ -109,6 +113,10 @@
             this.production_line.Name = "production_line";
             this.production_line.ReadOnly = true;
             // 
+            // productLineAssignmentBindingSource
+            // 
+            this.productLineAssignmentBindingSource.DataSource = typeof(WindowsFormsApp1.Algorithm.ProductLineAssignment);
+            // 
             // UC_SimulationExecution
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -117,6 +125,7 @@
             this.Name = "UC_SimulationExecution";
             this.Size = new System.Drawing.Size(715, 475);
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productLineAssignmentBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -127,5 +136,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn execution_workers;
         private System.Windows.Forms.DataGridViewTextBoxColumn execution_workstation;
         private System.Windows.Forms.DataGridViewTextBoxColumn production_line;
+        private System.Windows.Forms.BindingSource productLineAssignmentBindingSource;
     }
 }

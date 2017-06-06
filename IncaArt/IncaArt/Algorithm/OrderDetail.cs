@@ -13,7 +13,7 @@ namespace WindowsFormsApp1.Algorithm
 
         public OrderDetail()
         {
-
+            lines = new List<OrderDetailLine>();
         }
 
         public OrderDetail(List<OrderDetailLine> lines)

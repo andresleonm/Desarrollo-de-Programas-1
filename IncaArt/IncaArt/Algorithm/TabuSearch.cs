@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApp1.Algorithm;
 
 namespace WindowsFormsApp1.Algorithm
 {
@@ -55,7 +57,7 @@ namespace WindowsFormsApp1.Algorithm
             {
                 foreach (OrderDetailLine line in order.order_detail.lines)
                 {
-                    if (workstation.product.Equals(line.product))
+                    if (workstation.product.name == (line.product.name))
                     {
                         admissible_workstations.Add(workstation);
                         if (workstation.name == "MoldeadoR")
@@ -63,7 +65,7 @@ namespace WindowsFormsApp1.Algorithm
                             retablo_sets = workstation.quantity;
                             foreach (Tuple<int, Product> tuple in products_quantities)
                             {
-                                if (tuple.Item2.name == "Retablo")
+                                if (tuple.Item2.name.ToLower() == "retablo")
                                 {
                                     needed_retablo = Math.Min(retablo_sets, tuple.Item1);
                                 }
@@ -79,7 +81,7 @@ namespace WindowsFormsApp1.Algorithm
                             piedra_sets = workstation.quantity;
                             foreach (Tuple<int, Product> tuple in products_quantities)
                             {
-                                if (tuple.Item2.name == "Piedra")
+                                if (tuple.Item2.name.ToLower() == "piedra")
                                 {
                                     needed_piedra = Math.Min(piedra_sets, tuple.Item1);
                                 }
@@ -95,7 +97,7 @@ namespace WindowsFormsApp1.Algorithm
                             ceramico_sets = workstation.quantity;
                             foreach (Tuple<int, Product> tuple in products_quantities)
                             {
-                                if (tuple.Item2.name == "Ceramico")
+                                if (tuple.Item2.name.ToLower() == "ceramico")
                                 {
                                     needed_ceramico = Math.Min(ceramico_sets, tuple.Item1);
                                 }
@@ -177,13 +179,13 @@ namespace WindowsFormsApp1.Algorithm
 
             }            
 
-            //DateTime tiempo1 = DateTime.Now;
+            DateTime tiempo1 = DateTime.Now;
             List<ProductLineAssignment> final_solution = tabuSearch(solution, products_quantities, workers);
             return final_solution;
             //DateTime tiempo2 = DateTime.Now;
             //TimeSpan total = new TimeSpan(tiempo2.Ticks - tiempo1.Ticks);
             //double ahorro = Math.Round((((fitness(final_solution, products_quantities)) - fitness(solution, products_quantities)) / fitness(final_solution, products_quantities)) * 100, 2);
-            //generateReport(solution, final_solution, products_quantities, total, ahorro, numA);
+            //generateReport(solution, final_solution, products_quantities, total, ahorro);
 
         }
 
@@ -339,7 +341,50 @@ namespace WindowsFormsApp1.Algorithm
                     aux.assignments.ElementAt(j).assigned_workstation = pla2.ElementAt(i).assignments.ElementAt(j).assigned_workstation;
                 }
                 pla1.Add(aux);
+            }            
+        }
+
+        private void generateReport(List<ProductLineAssignment> ini_solution, List<ProductLineAssignment> solution, List<Tuple<int, Product>> product_quantities, TimeSpan time, double ahorro)
+        {
+
+            double fit = Math.Round(1 / fitness(solution, product_quantities), 2);
+            StreamWriter file = new System.IO.StreamWriter("TabuSearch_" + fit.ToString() + ".txt");
+
+            file.WriteLine("RESULTADOS DE LA SOLUCIÓN INICIAL");
+            file.WriteLine("----------------------------");
+            file.WriteLine("Fitness: " + Math.Round(1 / fitness(ini_solution, product_quantities), 2));
+            file.WriteLine("");
+
+            file.WriteLine("RESULTADOS DE LA SOLUCIÓN FINAL");
+            file.WriteLine("----------------------------");
+            file.WriteLine("Fitness: " + fit);
+            file.WriteLine("Ahorro: " + ahorro);
+            file.WriteLine("Tiempo de Ejecución: " + time.ToString());
+            file.WriteLine("");
+
+            file.WriteLine("ASIGNACIÓN");
+            file.WriteLine("----------------------------");
+
+            for (int i = 0; i < solution.Count(); i++)
+            {
+                file.WriteLine("LINEA DE PRODUCCION " + (i + 1));
+                foreach (Assignment assignment in solution.ElementAt(i).assignments)
+                {
+                    file.Write("Trabajador: " + assignment.assigned_worker.name + " " + assignment.assigned_worker.lastname);
+                    for (int j = 0; j < assignment.assigned_worker.ratios.Count(); j++)
+                    {
+                        if (assignment.assigned_worker.ratios.ElementAt(j).workstation.name == assignment.assigned_workstation.name)
+                        {
+                            file.Write(" Eficiencia: " + assignment.assigned_worker.ratios.ElementAt(j).value);
+                            file.WriteLine(" (" + assignment.assigned_worker.ratios.ElementAt(j).workstation.name + ")");
+                            break;
+                        }
+                    }
+                    file.WriteLine("Puesto de trabajo: " + assignment.assigned_workstation.name);
+                    file.WriteLine();
+                }
             }
+            file.Close();
         }
 
 
