@@ -7,19 +7,187 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
+using WindowsFormsApp1.Controller;
 
 namespace WindowsFormsApp1.Views.Sales_Module
 {
     public partial class UC_SalesRefund : UserControl
     {
+        private string user = "dp1admin";
+        private string password = "dp1admin";
+        private SalesDocument document;
+        private SalesRefundController sales_refund_controller;
+        private SalesRefundLineController sales_refund_line_controller;
+
         public UC_SalesRefund()
         {
             InitializeComponent();
+            sales_refund_controller = new SalesRefundController(user,password);
+            sales_refund_line_controller = new SalesRefundLineController(user, password);
         }
 
         private void btn_Search_Document_Click(object sender, EventArgs e)
-        {
+        {            
+            var documentL = new List<SalesDocument>();
+            Sales_Module.SalesRefundSearchDocument search_view = new Sales_Module.SalesRefundSearchDocument(ref documentL, user, password);
+            search_view.ShowDialog();
 
+            if (documentL.Count != 0)
+            {
+                document = documentL[0];
+                fill_Sales_Refund_Form(document);
+                grid_Refund_Lines.DataSource = document.Lines;
+                AdjustColumnRefundLine();
+            }            
         }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
+
+        private void btn_Clean_Click(object sender, EventArgs e)
+        {
+            Clean();
+        }
+
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+            if (document == null || String.IsNullOrWhiteSpace(txt_Refund_id.Text))
+            {
+                MessageBox.Show(this, "Debe seleccionar un documento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                SalesRefund sales_refund = new SalesRefund();
+                fill_Sales_Refund_Object(sales_refund);
+
+                sales_refund.Lines = (List<SalesRefundLine>)grid_Refund_Lines.DataSource;
+
+                //int sales_refund_id = Int32.Parse(sales_refund_controller.insertSalesRefund(sales_refund).data.ToString());
+
+                //if (sales_document_id > 0)
+                //{
+                //    int i = 1;
+                //    foreach (SalesDocumentLine sdl in sales_document.Lines)
+                //    {
+                //        sdl.Id = i;
+                //        sdl.Document_id = sales_document_id;
+                //        sdl.Status = "Registrado";
+                //        i++;
+                //        sales_document_line_controller.insertSalesDocumentLine(sdl);
+                //    }
+                //    txt_Document_id.Text = sales_document_id.ToString();
+                //    txt_Status.Text = sales_document.Status;
+                //    fill_Sales_Documents();
+                //    btn_Clean.PerformClick();
+                //    tab_Document.SelectedIndex = 0;
+                //    MessageBox.Show(this, "Documento creado exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                //}
+                //else
+                //{
+                //    MessageBox.Show("No se pudo crear el documento", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+            }
+        }
+
+        private void fill_Sales_Refund_Object(SalesRefund sr)
+        {
+            sr.Currency_id = document.Currency_id;
+            sr.Currency_name = document.Currency_name;
+            sr.Currency_symbol = document.Currency_symbol;
+
+            sr.Customer_id = document.Customer_id;
+            sr.Customer_name = txt_name.Text;
+            sr.Customer_address = txt_address.Text;
+            sr.Customer_doi = txt_Doi.Text;
+            sr.Customer_phone = txt_phone.Text;
+
+            sr.Issue_date = DateTime.Parse(dt_IssueDate.Text);
+            sr.Observation = txt_observation.Text;
+            sr.Amount = double.Parse(txt_amount.Text);
+            sr.Status = "Registrado";
+        }
+
+        private void fill_Sales_Refund_Form(SalesDocument sd)
+        {
+            Clean();
+            txt_name.Text = sd.Customer_name;
+            txt_address.Text = sd.Customer_address;
+            txt_Doi.Text = sd.Customer_doi;
+            txt_phone.Text = sd.Customer_phone;
+
+            txt_Document_id.Text = sd.Id.ToString();
+            txt_Currency.Text = sd.Currency_symbol + "  -  " + sd.Currency_name;
+            dt_IssueDate.Text = sd.Issue_date.ToString();
+
+            txt_observation.Text = sd.Observation;
+            txt_amount.Text = sd.Amount.ToString();
+            txt_igv.Text = (sd.Amount * sd.Porc_igv).ToString();
+            txt_total.Text = (sd.Amount * (1 + sd.Porc_igv)).ToString();
+            txt_Status.Text = sd.Status;
+
+            grid_Refund_Lines.DataSource = sd.Lines;
+            AdjustColumnRefundLine();
+        }
+
+        private void Clean()
+        {
+            txt_name.Text = "";
+            txt_address.Text = "";
+            txt_Doi.Text = "";
+            txt_phone.Text = "";
+
+            txt_Document_id.Text = "";
+            txt_Refund_id.Text = "";
+            txt_Currency.Text = "";
+            
+            txt_observation.Text = "";
+            txt_amount.Text = "";
+            txt_igv.Text = "";
+            txt_total.Text = "";
+            txt_Status.Text = "";
+            clean_gridView_RefundLine();
+        }
+
+        private void clean_gridView_RefundLine()
+        {
+            List<SalesRefundLine> empty_list = new List<SalesRefundLine>();
+            grid_Refund_Lines.DataSource = empty_list;
+        }
+
+        private void AdjustColumnRefundLine()
+        {
+            grid_Refund_Lines.Columns["product"].DisplayIndex = 0;
+            grid_Refund_Lines.Columns["unit"].DisplayIndex = 1;
+            grid_Refund_Lines.Columns["warehouse"].DisplayIndex = 2;
+            grid_Refund_Lines.Columns["quantity_available"].DisplayIndex = 3;
+            grid_Refund_Lines.Columns["quantity"].DisplayIndex = 4;
+            grid_Refund_Lines.Columns["Refund_quantity"].DisplayIndex = 5;
+            grid_Refund_Lines.Columns["unit_price"].DisplayIndex = 6;
+            grid_Refund_Lines.Columns["amount"].DisplayIndex = 7;
+        }
+
+        private void grid_Refund_Lines_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                if (e.ColumnIndex == 7 || e.ColumnIndex == 8)
+                {
+                    //double update_amount = double.Parse(grid_order_lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString()) * double.Parse(grid_order_lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
+                    //grid_order_lines.Rows[e.RowIndex].Cells["amount"].Value = update_amount;
+
+                    //double acumulate = 0;
+                    //for (int i = 0; i < grid_order_lines.RowCount; i++)
+                    //{
+                    //    acumulate += double.Parse(grid_order_lines.Rows[i].Cells["amount"].Value.ToString());
+                    //}
+                    //txt_amount.Text = acumulate.ToString();
+                }
+            }
+        }
+
+        
     }
 }

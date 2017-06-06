@@ -8,9 +8,9 @@ using WindowsFormsApp1.DataService;
 
 namespace WindowsFormsApp1.Controller
 {
-     public class RefundLineController: DataService.DatabaseService
+     public class SalesRefundLineController: DataService.DatabaseService
     {
-        public RefundLineController(string user, string password) : base( user, password)
+        public SalesRefundLineController(string user, string password) : base( user, password)
         {
         }
 

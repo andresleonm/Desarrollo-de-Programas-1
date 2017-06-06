@@ -131,7 +131,7 @@ namespace WindowsFormsApp1.Models
 
         public SalesRefund() { }
 
-        // For SalesOrderList
+        // For SalesRefundList
         public SalesRefund(int order_id, string cli_name, string observation, DateTime issue_date, double amount, string status)
         {
             this.id = order_id;

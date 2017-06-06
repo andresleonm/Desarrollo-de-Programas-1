@@ -87,8 +87,8 @@
     <Compile Include="Controller\ProductMovementDetailController.cs" />
     <Compile Include="Controller\SalesDocumentController.cs" />
     <Compile Include="Controller\SalesDocumentLineController.cs" />
-    <Compile Include="Controller\RefundController.cs" />
-    <Compile Include="Controller\RefundDetailController.cs" />
+    <Compile Include="Controller\SalesRefundController.cs" />
+    <Compile Include="Controller\SalesRefundLineController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
     <Compile Include="Controller\WorkstationsController.cs" />
     <Compile Include="Models\MaterialMovement.cs" />
