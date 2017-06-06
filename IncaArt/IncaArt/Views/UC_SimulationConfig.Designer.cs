@@ -37,11 +37,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btn_execution_product = new System.Windows.Forms.Button();
@@ -56,22 +56,6 @@
             this.btn_execution_wkstation = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.workstations_grid = new MetroFramework.Controls.MetroGrid();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.btn_execution_worker = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.workers_grid = new MetroFramework.Controls.MetroGrid();
-            this.select_all = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
-            this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paternalnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.workstationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.workstation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workstation_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,6 +66,22 @@
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.breakcostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currencyidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workstationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btn_execution_worker = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.workers_grid = new MetroFramework.Controls.MetroGrid();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paternalnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.select_all = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.workerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
+            this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.tabPage2.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -91,15 +91,15 @@
             this.panel8.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.workstations_grid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workstationBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.workers_grid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.workstationBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage2
@@ -341,6 +341,85 @@
             this.workstations_grid.Size = new System.Drawing.Size(625, 369);
             this.workstations_grid.TabIndex = 5;
             // 
+            // workstation
+            // 
+            this.workstation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.workstation.DataPropertyName = "Name";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.workstation.DefaultCellStyle = dataGridViewCellStyle7;
+            this.workstation.HeaderText = "Puesto de Trabajo";
+            this.workstation.Name = "workstation";
+            this.workstation.ReadOnly = true;
+            // 
+            // workstation_quantity
+            // 
+            this.workstation_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle8.NullValue = "0";
+            this.workstation_quantity.DefaultCellStyle = dataGridViewCellStyle8;
+            this.workstation_quantity.HeaderText = "Cantidad";
+            this.workstation_quantity.Name = "workstation_quantity";
+            this.workstation_quantity.Width = 77;
+            // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // productidDataGridViewTextBoxColumn
+            // 
+            this.productidDataGridViewTextBoxColumn.DataPropertyName = "Product_id";
+            this.productidDataGridViewTextBoxColumn.HeaderText = "Product_id";
+            this.productidDataGridViewTextBoxColumn.Name = "productidDataGridViewTextBoxColumn";
+            this.productidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // nextworkstationDataGridViewTextBoxColumn
+            // 
+            this.nextworkstationDataGridViewTextBoxColumn.DataPropertyName = "Next_workstation";
+            this.nextworkstationDataGridViewTextBoxColumn.HeaderText = "Next_workstation";
+            this.nextworkstationDataGridViewTextBoxColumn.Name = "nextworkstationDataGridViewTextBoxColumn";
+            this.nextworkstationDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // previousworkstationDataGridViewTextBoxColumn
+            // 
+            this.previousworkstationDataGridViewTextBoxColumn.DataPropertyName = "Previous_workstation";
+            this.previousworkstationDataGridViewTextBoxColumn.HeaderText = "Previous_workstation";
+            this.previousworkstationDataGridViewTextBoxColumn.Name = "previousworkstationDataGridViewTextBoxColumn";
+            this.previousworkstationDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // breakcostDataGridViewTextBoxColumn
+            // 
+            this.breakcostDataGridViewTextBoxColumn.DataPropertyName = "Break_cost";
+            this.breakcostDataGridViewTextBoxColumn.HeaderText = "Break_cost";
+            this.breakcostDataGridViewTextBoxColumn.Name = "breakcostDataGridViewTextBoxColumn";
+            this.breakcostDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // currencyidDataGridViewTextBoxColumn
+            // 
+            this.currencyidDataGridViewTextBoxColumn.DataPropertyName = "Currency_id";
+            this.currencyidDataGridViewTextBoxColumn.HeaderText = "Currency_id";
+            this.currencyidDataGridViewTextBoxColumn.Name = "currencyidDataGridViewTextBoxColumn";
+            this.currencyidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // workstationBindingSource
+            // 
+            this.workstationBindingSource.DataSource = typeof(WindowsFormsApp1.Models.Workstation);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -471,6 +550,27 @@
             this.workers_grid.TabIndex = 7;
             this.workers_grid.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.workers_grid_ColumnHeaderMouseDoubleClick);
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // paternalnameDataGridViewTextBoxColumn
+            // 
+            this.paternalnameDataGridViewTextBoxColumn.DataPropertyName = "Paternal_name";
+            this.paternalnameDataGridViewTextBoxColumn.HeaderText = "Apellido";
+            this.paternalnameDataGridViewTextBoxColumn.Name = "paternalnameDataGridViewTextBoxColumn";
+            this.paternalnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // select_all
             // 
             this.select_all.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -479,6 +579,10 @@
             this.select_all.MinimumWidth = 30;
             this.select_all.Name = "select_all";
             this.select_all.Width = 69;
+            // 
+            // workerBindingSource
+            // 
+            this.workerBindingSource.DataSource = typeof(WindowsFormsApp1.Models.Worker);
             // 
             // panel1
             // 
@@ -519,110 +623,6 @@
             this.metroTabControl1.TabIndex = 53;
             this.metroTabControl1.UseSelectable = true;
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // paternalnameDataGridViewTextBoxColumn
-            // 
-            this.paternalnameDataGridViewTextBoxColumn.DataPropertyName = "Paternal_name";
-            this.paternalnameDataGridViewTextBoxColumn.HeaderText = "Apellido";
-            this.paternalnameDataGridViewTextBoxColumn.Name = "paternalnameDataGridViewTextBoxColumn";
-            this.paternalnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // workerBindingSource
-            // 
-            this.workerBindingSource.DataSource = typeof(WindowsFormsApp1.Models.Worker);
-            // 
-            // workstationBindingSource
-            // 
-            this.workstationBindingSource.DataSource = typeof(WindowsFormsApp1.Models.Workstation);
-            // 
-            // workstation
-            // 
-            this.workstation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.workstation.DataPropertyName = "Name";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.workstation.DefaultCellStyle = dataGridViewCellStyle7;
-            this.workstation.HeaderText = "Puesto de Trabajo";
-            this.workstation.Name = "workstation";
-            this.workstation.ReadOnly = true;
-            // 
-            // workstation_quantity
-            // 
-            this.workstation_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle8.NullValue = "0";
-            this.workstation_quantity.DefaultCellStyle = dataGridViewCellStyle8;
-            this.workstation_quantity.HeaderText = "Cantidad";
-            this.workstation_quantity.Name = "workstation_quantity";
-            this.workstation_quantity.Width = 77;
-            // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            this.idDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // productidDataGridViewTextBoxColumn
-            // 
-            this.productidDataGridViewTextBoxColumn.DataPropertyName = "Product_id";
-            this.productidDataGridViewTextBoxColumn.HeaderText = "Product_id";
-            this.productidDataGridViewTextBoxColumn.Name = "productidDataGridViewTextBoxColumn";
-            this.productidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nameDataGridViewTextBoxColumn1
-            // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            this.nameDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // nextworkstationDataGridViewTextBoxColumn
-            // 
-            this.nextworkstationDataGridViewTextBoxColumn.DataPropertyName = "Next_workstation";
-            this.nextworkstationDataGridViewTextBoxColumn.HeaderText = "Next_workstation";
-            this.nextworkstationDataGridViewTextBoxColumn.Name = "nextworkstationDataGridViewTextBoxColumn";
-            this.nextworkstationDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // previousworkstationDataGridViewTextBoxColumn
-            // 
-            this.previousworkstationDataGridViewTextBoxColumn.DataPropertyName = "Previous_workstation";
-            this.previousworkstationDataGridViewTextBoxColumn.HeaderText = "Previous_workstation";
-            this.previousworkstationDataGridViewTextBoxColumn.Name = "previousworkstationDataGridViewTextBoxColumn";
-            this.previousworkstationDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // breakcostDataGridViewTextBoxColumn
-            // 
-            this.breakcostDataGridViewTextBoxColumn.DataPropertyName = "Break_cost";
-            this.breakcostDataGridViewTextBoxColumn.HeaderText = "Break_cost";
-            this.breakcostDataGridViewTextBoxColumn.Name = "breakcostDataGridViewTextBoxColumn";
-            this.breakcostDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // currencyidDataGridViewTextBoxColumn
-            // 
-            this.currencyidDataGridViewTextBoxColumn.DataPropertyName = "Currency_id";
-            this.currencyidDataGridViewTextBoxColumn.HeaderText = "Currency_id";
-            this.currencyidDataGridViewTextBoxColumn.Name = "currencyidDataGridViewTextBoxColumn";
-            this.currencyidDataGridViewTextBoxColumn.Visible = false;
-            // 
             // UC_SimulationConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -641,17 +641,17 @@
             this.panel8.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.workstations_grid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workstationBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.metroTabPage1.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.workers_grid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.metroTabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.workstationBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

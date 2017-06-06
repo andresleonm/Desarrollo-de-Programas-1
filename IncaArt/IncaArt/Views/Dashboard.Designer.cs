@@ -462,10 +462,11 @@ namespace WindowsFormsApp1.Views
             // 
             // user
             // 
+            this.user.AutoSize = true;
             this.user.BackColor = System.Drawing.SystemColors.Window;
             this.user.Location = new System.Drawing.Point(132, 72);
             this.user.Name = "user";
-            this.user.Size = new System.Drawing.Size(1017, 439);
+            this.user.Size = new System.Drawing.Size(1017, 497);
             this.user.TabIndex = 24;
             this.user.UseCustomBackColor = true;
             this.user.UseSelectable = true;
@@ -497,6 +498,7 @@ namespace WindowsFormsApp1.Views
             // 
             // uc_material
             // 
+            this.uc_material.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.uc_material.Location = new System.Drawing.Point(132, 72);
             this.uc_material.Name = "uc_material";
             this.uc_material.Size = new System.Drawing.Size(711, 493);

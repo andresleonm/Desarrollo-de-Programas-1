@@ -42,7 +42,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_delete = new MetroFramework.Controls.MetroButton();
             this.btn_edit = new MetroFramework.Controls.MetroButton();
-            this.datagrid_Products = new MetroFramework.Controls.MetroGrid();
+            this.datagrid_ProductionOrders = new MetroFramework.Controls.MetroGrid();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,7 +51,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagrid_Products)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagrid_ProductionOrders)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -187,7 +187,7 @@
             this.groupBox2.BackColor = System.Drawing.SystemColors.Window;
             this.groupBox2.Controls.Add(this.btn_delete);
             this.groupBox2.Controls.Add(this.btn_edit);
-            this.groupBox2.Controls.Add(this.datagrid_Products);
+            this.groupBox2.Controls.Add(this.datagrid_ProductionOrders);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(31, 194);
             this.groupBox2.Name = "groupBox2";
@@ -211,6 +211,7 @@
             this.btn_delete.UseCustomForeColor = true;
             this.btn_delete.UseSelectable = true;
             this.btn_delete.UseStyleColors = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_edit
             // 
@@ -227,16 +228,17 @@
             this.btn_edit.UseCustomForeColor = true;
             this.btn_edit.UseSelectable = true;
             this.btn_edit.UseStyleColors = true;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
-            // datagrid_Products
+            // datagrid_ProductionOrders
             // 
-            this.datagrid_Products.AllowUserToResizeRows = false;
-            this.datagrid_Products.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.datagrid_Products.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.datagrid_Products.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.datagrid_Products.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.datagrid_Products.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.datagrid_Products.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.datagrid_ProductionOrders.AllowUserToResizeRows = false;
+            this.datagrid_ProductionOrders.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.datagrid_ProductionOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.datagrid_ProductionOrders.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.datagrid_ProductionOrders.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.datagrid_ProductionOrders.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.datagrid_ProductionOrders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(170)))), ((int)(((byte)(173)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -244,9 +246,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(201)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datagrid_Products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.datagrid_Products.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagrid_Products.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.datagrid_ProductionOrders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.datagrid_ProductionOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagrid_ProductionOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
@@ -259,13 +261,13 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(201)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.datagrid_Products.DefaultCellStyle = dataGridViewCellStyle2;
-            this.datagrid_Products.EnableHeadersVisualStyles = false;
-            this.datagrid_Products.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.datagrid_Products.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.datagrid_Products.Location = new System.Drawing.Point(28, 29);
-            this.datagrid_Products.Name = "datagrid_Products";
-            this.datagrid_Products.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.datagrid_ProductionOrders.DefaultCellStyle = dataGridViewCellStyle2;
+            this.datagrid_ProductionOrders.EnableHeadersVisualStyles = false;
+            this.datagrid_ProductionOrders.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.datagrid_ProductionOrders.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.datagrid_ProductionOrders.Location = new System.Drawing.Point(28, 29);
+            this.datagrid_ProductionOrders.Name = "datagrid_ProductionOrders";
+            this.datagrid_ProductionOrders.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(170)))), ((int)(((byte)(173)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -273,12 +275,12 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(201)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datagrid_Products.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.datagrid_Products.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.datagrid_Products.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagrid_Products.Size = new System.Drawing.Size(718, 201);
-            this.datagrid_Products.Style = MetroFramework.MetroColorStyle.Teal;
-            this.datagrid_Products.TabIndex = 52;
+            this.datagrid_ProductionOrders.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.datagrid_ProductionOrders.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.datagrid_ProductionOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datagrid_ProductionOrders.Size = new System.Drawing.Size(718, 201);
+            this.datagrid_ProductionOrders.Style = MetroFramework.MetroColorStyle.Teal;
+            this.datagrid_ProductionOrders.TabIndex = 52;
             // 
             // Column1
             // 
@@ -325,10 +327,11 @@
             this.Name = "UC_ProductionOrderSearch";
             this.Size = new System.Drawing.Size(838, 508);
             this.Load += new System.EventHandler(this.UC_ProductionOrderSearch_Load);
+            this.VisibleChanged += new System.EventHandler(this.UC_ProductionOrderSearch_VisibleChanged);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.datagrid_Products)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagrid_ProductionOrders)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -344,7 +347,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroButton btn_search;
         private System.Windows.Forms.GroupBox groupBox2;
-        private MetroFramework.Controls.MetroGrid datagrid_Products;
+        private MetroFramework.Controls.MetroGrid datagrid_ProductionOrders;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
