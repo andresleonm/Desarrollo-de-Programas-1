@@ -51,7 +51,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
         }
 
-        private void btn_Search_Document_Click(object sender, EventArgs e)
+        private void btn_Search_Movement_Click(object sender, EventArgs e)
         {
             if (cbo_document_type.Text != "") {
                 var movementL = new List<ProductMovement>();
@@ -265,7 +265,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     txt_Status.Text = sales_document.Status;
                     fill_Sales_Documents();
                     btn_Clean.PerformClick();
-                    tab_Order.SelectedIndex = 0;
+                    tab_Document.SelectedIndex = 0;
                     MessageBox.Show(this, "Documento creado exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                 }
                 else
@@ -338,7 +338,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 var id = sales_documents[index].Id;
                 sd_see = (Models.SalesDocument)sales_document_controller.getSalesDocument(id).data;
                 grid_Document_Lines.DataSource = sd_see.Lines;
-                tab_Order.SelectedIndex = 1;
+                tab_Document.SelectedIndex = 1;
                 fill_Sales_Document_Form(sd_see);
             }
         }

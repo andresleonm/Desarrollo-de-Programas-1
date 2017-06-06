@@ -21,22 +21,26 @@ namespace WindowsFormsApp1.Views
         {
             uC_SalesOrder2.Visible = false;
             uC_SalesDocument2.Visible = false;
+            uC_SalesRefund1.Visible = false;
         }
 
         private void orders_Click(object sender, EventArgs e)
         {
             uC_SalesOrder2.Visible = true;
             uC_SalesDocument2.Visible = false;
+            uC_SalesRefund1.Visible = false;
         }
 
         private void documents_Click(object sender, EventArgs e)
         {
             uC_SalesDocument2.Visible = true;
             uC_SalesOrder2.Visible = false;
+            uC_SalesRefund1.Visible = false;
         }
 
         private void refunds_Click(object sender, EventArgs e)
         {
+            uC_SalesRefund1.Visible = true;
             uC_SalesDocument2.Visible = false;
             uC_SalesOrder2.Visible = false;
         }
