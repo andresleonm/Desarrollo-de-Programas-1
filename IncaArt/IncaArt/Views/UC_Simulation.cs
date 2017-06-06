@@ -19,7 +19,16 @@ namespace WindowsFormsApp1.Views
 
         private void btn_purchase_orders_Click(object sender, EventArgs e)
         {
-            uC_SimulationConfig1.Visible = true;
+            uC_SimulationConfig2.Visible = true;
+            uC_SimulationExecution1.Visible = false;
+        }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+            uC_SimulationExecution1.Visible = true;
+            uC_SimulationConfig2.Visible = false;
+
+            //Algorithm.TabuSearch tabu = new Algorithm.TabuSearch();
         }
     }
 }

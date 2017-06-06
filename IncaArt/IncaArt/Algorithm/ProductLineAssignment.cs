@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1.Models
+namespace WindowsFormsApp1.Algorithm
 {
     class ProductLineAssignment
     {
@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Models
             assignments = new List<Assignment>(product.production_line.Count());
             for (int i = 0; i < assignments.Capacity; i++)
             {
-                assignments.Add(new Assignment(new Workstation(product.Id, product.production_line.ElementAt(i))));
+                assignments.Add(new Assignment(new Workstation(product, product.production_line.ElementAt(i))));
             }
         }
 

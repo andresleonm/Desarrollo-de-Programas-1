@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.52">
+      <HintPath>..\..\..\..\..\Desktop\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
       <Private>True</Private>
@@ -70,6 +73,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithm\Order.cs" />
+    <Compile Include="Algorithm\OrderDetail.cs" />
+    <Compile Include="Algorithm\OrderDetailLine.cs" />
+    <Compile Include="Algorithm\Person.cs" />
+    <Compile Include="Algorithm\Product.cs" />
+    <Compile Include="Algorithm\Ratio.cs" />
+    <Compile Include="Algorithm\RatioType.cs" />
+    <Compile Include="Algorithm\Worker.cs" />
+    <Compile Include="Algorithm\Workstation.cs" />
     <Compile Include="Controller\FunctionalityController.cs" />
     <Compile Include="Controller\ProfileController.cs" />
     <Compile Include="Controller\CurrencyController.cs" />
@@ -85,8 +97,8 @@
     <Compile Include="Controller\ProductMovementDetailController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
     <Compile Include="Controller\WorkstationsController.cs" />
-    <Compile Include="Models\Assignment.cs" />
-    <Compile Include="Models\ProductLineAssignment.cs" />
+    <Compile Include="Algorithm\Assignment.cs" />
+    <Compile Include="Algorithm\ProductLineAssignment.cs" />
     <Compile Include="Models\ProductMovementLine.cs" />
     <Compile Include="Models\ProductMovementType.cs" />
     <Compile Include="Models\MaterialMovementType.cs" />
@@ -126,7 +138,7 @@
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipeDetail.cs" />
     <Compile Include="Models\Shift.cs" />
-    <Compile Include="Models\TabuSearch.cs" />
+    <Compile Include="Algorithm\TabuSearch.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\Material.cs" />
@@ -254,6 +266,12 @@
     </Compile>
     <Compile Include="Views\UC_SimulationConfig.Designer.cs">
       <DependentUpon>UC_SimulationConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_SimulationExecution.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_SimulationExecution.Designer.cs">
+      <DependentUpon>UC_SimulationExecution.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Warehouse_M_Module\UC_MaterialTypeWarehouse.cs">
       <SubType>UserControl</SubType>
@@ -517,6 +535,9 @@
     <EmbeddedResource Include="Views\UC_SimulationConfig.resx">
       <DependentUpon>UC_SimulationConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_SimulationExecution.resx">
+      <DependentUpon>UC_SimulationExecution.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_M_Module\UC_MaterialTypeWarehouse.resx">
       <DependentUpon>UC_MaterialTypeWarehouse.cs</DependentUpon>
     </EmbeddedResource>
@@ -617,6 +638,7 @@
       <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\WindowsFormsApp1.Models.Worker.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -630,9 +652,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\Minimize Window_52px.png" />
     <None Include="Resources\Close Window_52px.png" />

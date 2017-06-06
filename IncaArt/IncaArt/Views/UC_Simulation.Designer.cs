@@ -29,19 +29,38 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.btn_purchase_orders = new MetroFramework.Controls.MetroTile();
-            this.uC_SimulationConfig1 = new WindowsFormsApp1.Views.UC_SimulationConfig();
+            this.uC_SimulationConfig2 = new WindowsFormsApp1.Views.UC_SimulationConfig();
+            this.uC_SimulationExecution1 = new WindowsFormsApp1.Views.UC_SimulationExecution();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.metroTile1);
             this.panel1.Controls.Add(this.btn_purchase_orders);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(764, 70);
             this.panel1.TabIndex = 2;
+            // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.BackColor = System.Drawing.Color.DarkCyan;
+            this.metroTile1.Location = new System.Drawing.Point(294, 4);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(177, 62);
+            this.metroTile1.TabIndex = 3;
+            this.metroTile1.Text = "Ejecución";
+            this.metroTile1.TileImage = global::WindowsFormsApp1.Properties.Resources.Documents_40px;
+            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile1.UseCustomBackColor = true;
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.UseTileImage = true;
+            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
             // btn_purchase_orders
             // 
@@ -59,19 +78,29 @@
             this.btn_purchase_orders.UseTileImage = true;
             this.btn_purchase_orders.Click += new System.EventHandler(this.btn_purchase_orders_Click);
             // 
-            // uC_SimulationConfig1
+            // uC_SimulationConfig2
             // 
-            this.uC_SimulationConfig1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_SimulationConfig1.Location = new System.Drawing.Point(0, 70);
-            this.uC_SimulationConfig1.Name = "uC_SimulationConfig1";
-            this.uC_SimulationConfig1.Size = new System.Drawing.Size(764, 461);
-            this.uC_SimulationConfig1.TabIndex = 5;
+            this.uC_SimulationConfig2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_SimulationConfig2.Location = new System.Drawing.Point(0, 70);
+            this.uC_SimulationConfig2.Name = "uC_SimulationConfig2";
+            this.uC_SimulationConfig2.Size = new System.Drawing.Size(764, 461);
+            this.uC_SimulationConfig2.TabIndex = 4;
+            // 
+            // uC_SimulationExecution1
+            // 
+            this.uC_SimulationExecution1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_SimulationExecution1.Location = new System.Drawing.Point(0, 70);
+            this.uC_SimulationExecution1.Name = "uC_SimulationExecution1";
+            this.uC_SimulationExecution1.Size = new System.Drawing.Size(764, 461);
+            this.uC_SimulationExecution1.TabIndex = 3;
+            this.uC_SimulationExecution1.Visible = false;
             // 
             // UC_Simulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.uC_SimulationConfig1);
+            this.Controls.Add(this.uC_SimulationConfig2);
+            this.Controls.Add(this.uC_SimulationExecution1);
             this.Controls.Add(this.panel1);
             this.Name = "UC_Simulation";
             this.Size = new System.Drawing.Size(764, 531);
@@ -85,5 +114,8 @@
         private System.Windows.Forms.Panel panel1;
         private MetroFramework.Controls.MetroTile btn_purchase_orders;
         private UC_SimulationConfig uC_SimulationConfig1;
+        private MetroFramework.Controls.MetroTile metroTile1;
+        private UC_SimulationExecution uC_SimulationExecution1;
+        private UC_SimulationConfig uC_SimulationConfig2;
     }
 }

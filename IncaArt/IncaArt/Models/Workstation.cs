@@ -14,11 +14,17 @@ namespace WindowsFormsApp1.Models
         int next_workstation;
         int previous_workstation;
         int quantity;
+        double break_cost;
 
         public Workstation(int product_id, string name)
         {
             this.product_id = product_id;
             this.name = name;
+        }
+
+        public Workstation()
+        {
+
         }
 
         public int Id
@@ -96,6 +102,19 @@ namespace WindowsFormsApp1.Models
             set
             {
                 quantity = value;
+            }
+        }
+
+        public double Break_cost
+        {
+            get
+            {
+                return break_cost;
+            }
+
+            set
+            {
+                break_cost = value;
             }
         }
     }
