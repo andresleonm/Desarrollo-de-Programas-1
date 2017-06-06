@@ -117,30 +117,30 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
                 sales_refund.Lines = (List<SalesRefundLine>)grid_Refund_Lines.DataSource;
 
-                //int sales_refund_id = Int32.Parse(sales_refund_controller.insertSalesRefund(sales_refund).data.ToString());
+                int sales_refund_id = Int32.Parse(sales_refund_controller.insertSalesRefund(sales_refund).data.ToString());
 
-                //if (sales_document_id > 0)
-                //{
-                //    int i = 1;
-                //    foreach (SalesDocumentLine sdl in sales_document.Lines)
-                //    {
-                //        sdl.Id = i;
-                //        sdl.Document_id = sales_document_id;
-                //        sdl.Status = "Registrado";
-                //        i++;
-                //        sales_document_line_controller.insertSalesDocumentLine(sdl);
-                //    }
-                //    txt_Document_id.Text = sales_document_id.ToString();
-                //    txt_Status.Text = sales_document.Status;
-                //    fill_Sales_Documents();
-                //    btn_Clean.PerformClick();
-                //    tab_Document.SelectedIndex = 0;
-                //    MessageBox.Show(this, "Documento creado exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
-                //}
-                //else
-                //{
-                //    MessageBox.Show("No se pudo crear el documento", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
+                if (sales_document_id > 0)
+                {
+                    int i = 1;
+                    foreach (SalesDocumentLine sdl in sales_document.Lines)
+                    {
+                        sdl.Id = i;
+                        sdl.Document_id = sales_document_id;
+                        sdl.Status = "Registrado";
+                        i++;
+                        sales_document_line_controller.insertSalesDocumentLine(sdl);
+                    }
+                    txt_Document_id.Text = sales_document_id.ToString();
+                    txt_Status.Text = sales_document.Status;
+                    fill_Sales_Documents();
+                    btn_Clean.PerformClick();
+                    tab_Document.SelectedIndex = 0;
+                    MessageBox.Show(this, "Documento creado exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo crear el documento", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 

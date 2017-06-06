@@ -38,7 +38,8 @@
             this.tab_Document = new MetroFramework.Controls.MetroTabControl();
             this.order = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btn_Detail = new System.Windows.Forms.Button();
+            this.btn_Delete = new System.Windows.Forms.Button();
+            this.btn_Edit = new System.Windows.Forms.Button();
             this.gbDocuments = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.grid_Documents = new MetroFramework.Controls.MetroGrid();
@@ -158,7 +159,7 @@
             this.tab_Document.Controls.Add(this.newOrder);
             this.tab_Document.Location = new System.Drawing.Point(11, 4);
             this.tab_Document.Name = "tab_Document";
-            this.tab_Document.SelectedIndex = 1;
+            this.tab_Document.SelectedIndex = 0;
             this.tab_Document.Size = new System.Drawing.Size(1042, 605);
             this.tab_Document.Style = MetroFramework.MetroColorStyle.Teal;
             this.tab_Document.TabIndex = 43;
@@ -166,6 +167,7 @@
             this.tab_Document.UseCustomForeColor = true;
             this.tab_Document.UseSelectable = true;
             this.tab_Document.UseStyleColors = true;
+            this.tab_Document.SelectedIndexChanged += new System.EventHandler(this.tab_Document_SelectedIndexChanged);
             // 
             // order
             // 
@@ -179,7 +181,8 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btn_Detail);
+            this.panel3.Controls.Add(this.btn_Delete);
+            this.panel3.Controls.Add(this.btn_Edit);
             this.panel3.Controls.Add(this.gbDocuments);
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Location = new System.Drawing.Point(3, 3);
@@ -187,18 +190,30 @@
             this.panel3.Size = new System.Drawing.Size(1028, 539);
             this.panel3.TabIndex = 1;
             // 
-            // btn_Detail
+            // btn_Delete
             // 
-            this.btn_Detail.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Detail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Detail.ForeColor = System.Drawing.Color.White;
-            this.btn_Detail.Location = new System.Drawing.Point(462, 493);
-            this.btn_Detail.Name = "btn_Detail";
-            this.btn_Detail.Size = new System.Drawing.Size(99, 29);
-            this.btn_Detail.TabIndex = 48;
-            this.btn_Detail.Text = "Detalle";
-            this.btn_Detail.UseVisualStyleBackColor = false;
-            this.btn_Detail.Click += new System.EventHandler(this.btn_Detail_Click);
+            this.btn_Delete.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Delete.ForeColor = System.Drawing.Color.White;
+            this.btn_Delete.Location = new System.Drawing.Point(560, 494);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(99, 29);
+            this.btn_Delete.TabIndex = 49;
+            this.btn_Delete.Text = "Anular";
+            this.btn_Delete.UseVisualStyleBackColor = false;
+            // 
+            // btn_Edit
+            // 
+            this.btn_Edit.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Edit.ForeColor = System.Drawing.Color.White;
+            this.btn_Edit.Location = new System.Drawing.Point(382, 494);
+            this.btn_Edit.Name = "btn_Edit";
+            this.btn_Edit.Size = new System.Drawing.Size(99, 29);
+            this.btn_Edit.TabIndex = 48;
+            this.btn_Edit.Text = "Editar";
+            this.btn_Edit.UseVisualStyleBackColor = false;
+            this.btn_Edit.Click += new System.EventHandler(this.btn_Edit_Click);
             // 
             // gbDocuments
             // 
@@ -989,7 +1004,7 @@
             // 
             this.dt_IssueDate.CalendarMonthBackground = System.Drawing.Color.White;
             this.dt_IssueDate.Location = new System.Drawing.Point(434, 114);
-            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_IssueDate.Name = "dt_IssueDate";
             this.dt_IssueDate.Size = new System.Drawing.Size(196, 29);
             this.dt_IssueDate.TabIndex = 64;
@@ -1614,7 +1629,7 @@
         private MetroFramework.Controls.MetroTabControl tab_Document;
         private System.Windows.Forms.TabPage order;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btn_Detail;
+        private System.Windows.Forms.Button btn_Edit;
         private System.Windows.Forms.GroupBox gbDocuments;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1703,5 +1718,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amount2;
         private System.Windows.Forms.DataGridViewTextBoxColumn observation;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.Button btn_Delete;
     }
 }

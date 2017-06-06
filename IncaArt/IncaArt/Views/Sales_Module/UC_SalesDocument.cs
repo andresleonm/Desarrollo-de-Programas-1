@@ -17,9 +17,10 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private string user = "dp1admin";
         private string password = "dp1admin";
         private double igv = 0.18;
+        private bool edit = false;
         private SalesOrder so;
         private SalesRefund rf;
-        private SalesDocument sd_see;
+        private SalesDocument sd_edit;
         private ProductMovement prodMovement;
         private List<SalesDocument> sales_documents;
         private ProductMovementController pmc;
@@ -173,6 +174,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_amount.Text = "";
             txt_igv.Text = "";
             txt_total.Text = "";
+            prodMovement = new ProductMovement();
             clean_gridView_DocumentLine();
         }
 
@@ -238,6 +240,13 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
+            //if (edit)
+            //{
+
+            //}
+            //else { }
+
+
             if ( prodMovement == null || String.IsNullOrWhiteSpace(cbo_document_type.Text) || String.IsNullOrWhiteSpace(txt_external.Text) || String.IsNullOrWhiteSpace(txt_Movement_id.Text))
             {
                 MessageBox.Show(this, "Debe completar los datos del documento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -312,15 +321,16 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void cbo_document_type_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Clean();
+            //Clean();
         }
 
         private void btn_Clean_Click(object sender, EventArgs e)
         {
+            edit = false;
             Clean();
         }
 
-        private void btn_Detail_Click(object sender, EventArgs e)
+        private void btn_Edit_Click(object sender, EventArgs e)
         {
             int selectedRowCount = grid_Documents.Rows.GetRowCount(DataGridViewElementStates.Selected);
 
@@ -334,12 +344,30 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
             else if (selectedRowCount == 1)
             {
+                edit = true;
                 int index = grid_Documents.SelectedRows[0].Index;
                 var id = sales_documents[index].Id;
-                sd_see = (Models.SalesDocument)sales_document_controller.getSalesDocument(id).data;
-                grid_Document_Lines.DataSource = sd_see.Lines;
+                sd_edit = (Models.SalesDocument)sales_document_controller.getSalesDocument(id).data;
+                grid_Document_Lines.DataSource = sd_edit.Lines;
                 tab_Document.SelectedIndex = 1;
-                fill_Sales_Document_Form(sd_see);
+                fill_Sales_Document_Form(sd_edit);
+            }
+        }
+
+        private void tab_Document_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tab_Document.SelectedIndex == 0) // Documents
+            {
+                ctxt_document_id.Text = "";
+                ctxt_customer.Text = "";
+            }
+            else if (tab_Document.SelectedIndex == 1) // New_Document
+            {
+                if (!edit)
+                {
+                    btn_Clean.PerformClick();
+                    txt_Document_id.Text = (sales_documents.Count + 1).ToString();
+                }
             }
         }
     }

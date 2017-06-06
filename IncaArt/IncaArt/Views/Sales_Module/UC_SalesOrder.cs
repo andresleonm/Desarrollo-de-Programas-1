@@ -127,23 +127,28 @@ namespace WindowsFormsApp1.Views
                 //so_edit.Status = "Registrado";
 
                 Result result = sales_order_controller.updateSalesOrder(so_edit);
-
+                
                 if (result.success)
                 {
                     int id = getMaxId(so_edit.Lines);
+                    int i = 1;
                     foreach (SalesOrderLine sol in so_edit.Lines)
-                    {
-                       
+                    {                       
                         if (sol.Id == 0)
                         {
                             sol.Id = id + 1;
                             sol.Order_id = so_edit.Id;
-                            sales_order_line_controller.insertSalesOrderLine(sol);
+                            result = sales_order_line_controller.insertSalesOrderLine(sol);
                             id++;
                         }                           
                         else
-                            sales_order_line_controller.updateSalesOrderLine(sol);
-                        
+                            result = sales_order_line_controller.updateSalesOrderLine(sol);
+
+                        if (!result.success) {
+                            MessageBox.Show(this, result.message + "  -  Error fila " + i.ToString() , "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        i++;
                     }
                     fill_Sales_Order();
                     
