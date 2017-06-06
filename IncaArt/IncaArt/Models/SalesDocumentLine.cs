@@ -135,9 +135,9 @@ namespace WindowsFormsApp1.Models
             this.Unit_measure_id = prodML.unit_id;
             this.Unit_measure_name = prodML.unit_name;
             this.Quantity = prodML.quantity;
-            this.Unit_price = prodML.p;
-            this.prod_warehouse_id = prodML.Id;
-            this.prod_warehouse_name = prodML.Name;
+            this.Unit_price = prodML.unit_price;
+            this.prod_warehouse_id = prodML.warehouse_id;
+            this.prod_warehouse_name = prodML.warehouse_name;
             this.amount = prodML.quantity * prodML.unit_price;
             this.status = "Active";
         }
