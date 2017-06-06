@@ -319,7 +319,7 @@ namespace WindowsFormsApp1.Views
             MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
             string text = textbox.Text;
 
-            if (String.IsNullOrEmpty(text))
+            if (String.IsNullOrWhiteSpace(text))
             {
                 //e.Cancel = true;
                 Set_Flag(textbox.Name, false);
@@ -339,7 +339,7 @@ namespace WindowsFormsApp1.Views
             MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
             string text = textbox.Text;
 
-            if (String.IsNullOrEmpty(text))
+            if (String.IsNullOrWhiteSpace(text))
             {
                 Set_Flag(textbox.Name, false);
                 errorProvider.SetError(textbox, "Campo requerido");

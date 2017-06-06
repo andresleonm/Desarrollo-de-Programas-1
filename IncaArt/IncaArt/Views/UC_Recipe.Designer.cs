@@ -79,6 +79,8 @@
             this.btn_search = new MetroFramework.Controls.MetroButton();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.registro.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -273,6 +275,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox2.Controls.Add(this.metroLabel8);
             this.groupBox2.Controls.Add(this.textbox_name);
             this.groupBox2.Controls.Add(this.metroLabel5);
             this.groupBox2.Controls.Add(this.metroLabel2);
@@ -326,9 +329,9 @@
             this.metroLabel5.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel5.Location = new System.Drawing.Point(15, 34);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(56, 15);
+            this.metroLabel5.Size = new System.Drawing.Size(69, 15);
             this.metroLabel5.TabIndex = 2;
-            this.metroLabel5.Text = "Nombre:";
+            this.metroLabel5.Text = "Nombre (*)";
             this.metroLabel5.UseCustomForeColor = true;
             // 
             // metroLabel2
@@ -339,16 +342,16 @@
             this.metroLabel2.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel2.Location = new System.Drawing.Point(15, 72);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(75, 15);
+            this.metroLabel2.Size = new System.Drawing.Size(88, 15);
             this.metroLabel2.TabIndex = 13;
-            this.metroLabel2.Text = "Descripción:";
+            this.metroLabel2.Text = "Descripción (*)";
             this.metroLabel2.UseCustomForeColor = true;
             // 
             // combobox_product
             // 
             this.combobox_product.FormattingEnabled = true;
             this.combobox_product.ItemHeight = 23;
-            this.combobox_product.Location = new System.Drawing.Point(118, 167);
+            this.combobox_product.Location = new System.Drawing.Point(118, 156);
             this.combobox_product.Name = "combobox_product";
             this.combobox_product.Size = new System.Drawing.Size(179, 29);
             this.combobox_product.TabIndex = 16;
@@ -392,16 +395,17 @@
             this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel3.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel3.Location = new System.Drawing.Point(15, 170);
+            this.metroLabel3.Location = new System.Drawing.Point(15, 160);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(61, 15);
+            this.metroLabel3.Size = new System.Drawing.Size(74, 15);
             this.metroLabel3.TabIndex = 15;
-            this.metroLabel3.Text = "Producto:";
+            this.metroLabel3.Text = "Producto (*)";
             this.metroLabel3.UseCustomForeColor = true;
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox1.Controls.Add(this.metroLabel9);
             this.groupBox1.Controls.Add(this.btn_mat_delete);
             this.groupBox1.Controls.Add(this.btn_mat_edit);
             this.groupBox1.Controls.Add(this.btn_mat_add);
@@ -498,9 +502,9 @@
             this.metroLabel6.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel6.Location = new System.Drawing.Point(2, 75);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(58, 15);
+            this.metroLabel6.Size = new System.Drawing.Size(71, 15);
             this.metroLabel6.TabIndex = 2;
-            this.metroLabel6.Text = "Cantidad:";
+            this.metroLabel6.Text = "Cantidad (*)";
             this.metroLabel6.UseCustomForeColor = true;
             // 
             // combobox_material
@@ -520,11 +524,11 @@
             this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel4.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel4.Location = new System.Drawing.Point(7, 34);
+            this.metroLabel4.Location = new System.Drawing.Point(2, 36);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(56, 15);
+            this.metroLabel4.Size = new System.Drawing.Size(69, 15);
             this.metroLabel4.TabIndex = 0;
-            this.metroLabel4.Text = "Material:";
+            this.metroLabel4.Text = "Material (*)";
             this.metroLabel4.UseCustomForeColor = true;
             // 
             // consulta
@@ -749,6 +753,32 @@
             this.metroTabControl1.UseCustomForeColor = true;
             this.metroTabControl1.UseSelectable = true;
             // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel8.ForeColor = System.Drawing.Color.DarkCyan;
+            this.metroLabel8.Location = new System.Drawing.Point(6, 197);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(134, 15);
+            this.metroLabel8.TabIndex = 18;
+            this.metroLabel8.Text = "(*) Campos obligatorios";
+            this.metroLabel8.UseCustomForeColor = true;
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel9.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel9.ForeColor = System.Drawing.Color.DarkCyan;
+            this.metroLabel9.Location = new System.Drawing.Point(7, 166);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(134, 15);
+            this.metroLabel9.TabIndex = 18;
+            this.metroLabel9.Text = "(*) Campos obligatorios";
+            this.metroLabel9.UseCustomForeColor = true;
+            // 
             // UC_Recipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -820,5 +850,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroLabel metroLabel9;
     }
 }
