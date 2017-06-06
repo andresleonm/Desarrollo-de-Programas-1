@@ -8,31 +8,31 @@ using WindowsFormsApp1.DataService;
 
 namespace WindowsFormsApp1.Controller
 {
-    public class SalesOrderController: DataService.DatabaseService
+    public class RefundController: DataService.DatabaseService
     {
-        public SalesOrderController(string user, string password) : base( user, password)
+        public RefundController(string user, string password) : base( user, password)
         {
         }
 
-        public Result getSalesOrders(int idOrder=0,int idClient=0,string iniDate="",string endDate = "")
+        public Result getSalesOrders()
         {
             List<Parameter> parameters = new List<Parameter>();
             GenericResult result = execute_function("get_sales_orders", parameters);
-            List<SalesOrder> sales_orders = new List<SalesOrder>();
+            List<Refund> refunds = new List<Refund>();
             if (result.success)
             {
                 foreach (Row r in result.data)
                 {
-                    SalesOrderLineController solc = new SalesOrderLineController(user, password);
+                    RefundLineController rlc = new RefundLineController(user, password);
                     //var detail = (List<SalesOrderLine>)solc.getSalesOrderLines(Int32.Parse(r.getColumn(0))).data;
-                    sales_orders.Add(new SalesOrder(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
+                    refunds.Add(new Refund(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
                                                         r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
                                                         r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
-                                                        r.getColumn(9), DateTime.Parse(r.getColumn(10)),
-                                                         Double.Parse(r.getColumn(11)),
-                                                        r.getColumn(12), null));
+                                                        r.getColumn(9), DateTime.Parse(r.getColumn(10))
+                                                        , Double.Parse(r.getColumn(12)),
+                                                        r.getColumn(13), null));
                 }
-                return new Result(sales_orders, true, "");
+                return new Result(refunds, true, "");
             }
             return new Result(null, result.success, result.message);
         }
@@ -45,16 +45,15 @@ namespace WindowsFormsApp1.Controller
             if (result.success)
             {
                 var r = result.data[0];
-                SalesOrderLineController solc = new SalesOrderLineController(user, password);
-                var detail= (List<SalesOrderLine>)solc.getSalesOrderLines(Int32.Parse(r.getColumn(0))).data;
-            
-                SalesOrder sales_order = new SalesOrder(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
+                RefundLineController rlc = new RefundLineController(user, password);
+                var detail= (List<RefundLine>)rlc.getSalesOrderLines(Int32.Parse(r.getColumn(0))).data;            
+                Refund refund = new Refund(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
                                                         r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
                                                         r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
                                                         r.getColumn(9), DateTime.Parse(r.getColumn(10)), 
-                                                        Double.Parse(r.getColumn(11)),
+                                                         Double.Parse(r.getColumn(11)),
                                                         r.getColumn(12),detail);
-                return new Result(sales_order, true, "");
+                return new Result(refund, true, "");
             }
             return new Result(null, result.success, result.message);
         }
