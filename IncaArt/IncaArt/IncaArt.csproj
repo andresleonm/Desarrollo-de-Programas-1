@@ -98,6 +98,7 @@
     <Compile Include="Controller\ProductTypeWarehouseController.cs" />
     <Compile Include="Controller\ProductMovementController.cs" />
     <Compile Include="Controller\ProductMovementDetailController.cs" />
+    <Compile Include="Controller\RatioController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
     <Compile Include="Controller\WorkstationsController.cs" />
     <Compile Include="Algorithm\Assignment.cs" />
