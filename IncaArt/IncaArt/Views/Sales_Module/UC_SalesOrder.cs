@@ -69,7 +69,7 @@ namespace WindowsFormsApp1.Views
             }
         }
 
-        private void btn_Search_Click(object sender, EventArgs e)
+        private void btn_Search_Client_Click(object sender, EventArgs e)
         {
             var customerL = new List<Customer>();
             Sales_Module.SalesOrderSearchClient search_view = new Sales_Module.SalesOrderSearchClient(ref customerL, user, password);
@@ -247,7 +247,7 @@ namespace WindowsFormsApp1.Views
             clean_gridView_OrderLine();
         }
 
-        private void btn_Search_Order_Click(object sender, EventArgs e)
+        private void btn_Search_Orders_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(ctxt_order_id.Text))
             {
