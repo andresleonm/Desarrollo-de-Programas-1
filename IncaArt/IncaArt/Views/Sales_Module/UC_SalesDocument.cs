@@ -51,7 +51,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
         }
 
-        private void btn_Search_Document_Click(object sender, EventArgs e)
+        private void btn_Search_Movement_Click(object sender, EventArgs e)
         {
             if (cbo_document_type.Text != "") {
                 var movementL = new List<ProductMovement>();
@@ -60,9 +60,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
                 if (movementL.Count != 0)
                 {
-                    prodMovement = movementL[0];
-                    txt_Movement_id.Text = prodMovement.id.ToString();
+                    prodMovement = movementL[0];                    
                     fill_Sales_Document_Form(prodMovement);
+                    txt_Movement_id.Text = prodMovement.id.ToString();
                     ProductMovement pm = (ProductMovement)pmc.getMovement(prodMovement.id).data;
 
                     List<SalesDocumentLine> doc_lines = new List<SalesDocumentLine>();
@@ -100,8 +100,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
             if (cbo_document_type.Text[0] == 'N')
             {
-                RefundController rc = new RefundController(user, password);
-                rf = (SalesRefund)rc.getRefund(Int32.Parse(pm.NroDocumentoOrigen)).data;
+                SalesRefundController rc = new SalesRefundController(user, password);
+                rf = (SalesRefund)rc.getSalesRefund(Int32.Parse(pm.NroDocumentoOrigen)).data;
                 txt_name.Text = rf.Customer_name;
                 txt_address.Text = rf.Customer_address;
                 txt_Doi.Text = rf.Customer_doi;
@@ -164,7 +164,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_address.Text = "";
             txt_Doi.Text = "";
             txt_phone.Text = "";
-            txt_Document_id.Text = ""; 
+            txt_Document_id.Text = "";
+            txt_Movement_id.Text = "";
             txt_Currency.Text = "";
             txt_external.Text = "";
             txt_Status.Text = "";
@@ -265,7 +266,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     txt_Status.Text = sales_document.Status;
                     fill_Sales_Documents();
                     btn_Clean.PerformClick();
-                    tab_Order.SelectedIndex = 0;
+                    tab_Document.SelectedIndex = 0;
                     MessageBox.Show(this, "Documento creado exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                 }
                 else
@@ -292,7 +293,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 sd.Currency_symbol = so.Currency_symbol;
                 sd.Customer_id = so.Customer_id;
                 sd.Order_id = so.Id;
-
             }
             
             sd.Customer_name = txt_name.Text;
@@ -338,7 +338,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 var id = sales_documents[index].Id;
                 sd_see = (Models.SalesDocument)sales_document_controller.getSalesDocument(id).data;
                 grid_Document_Lines.DataSource = sd_see.Lines;
-                tab_Order.SelectedIndex = 1;
+                tab_Document.SelectedIndex = 1;
                 fill_Sales_Document_Form(sd_see);
             }
         }

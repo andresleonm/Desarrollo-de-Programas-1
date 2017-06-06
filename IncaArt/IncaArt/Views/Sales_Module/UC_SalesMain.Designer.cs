@@ -35,6 +35,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.uC_SalesDocument2 = new WindowsFormsApp1.Views.Sales_Module.UC_SalesDocument();
             this.uC_SalesOrder2 = new WindowsFormsApp1.Views.UC_SalesOrder();
+            this.uC_SalesRefund1 = new WindowsFormsApp1.Views.Sales_Module.UC_SalesRefund();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -104,6 +105,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.Controls.Add(this.uC_SalesRefund1);
             this.panel2.Controls.Add(this.uC_SalesDocument2);
             this.panel2.Controls.Add(this.uC_SalesOrder2);
             this.panel2.Location = new System.Drawing.Point(3, 79);
@@ -127,6 +129,14 @@
             this.uC_SalesOrder2.Style = MetroFramework.MetroColorStyle.Blue;
             this.uC_SalesOrder2.TabIndex = 0;
             this.uC_SalesOrder2.UseSelectable = true;
+            // 
+            // uC_SalesRefund1
+            // 
+            this.uC_SalesRefund1.BackColor = System.Drawing.SystemColors.Control;
+            this.uC_SalesRefund1.Location = new System.Drawing.Point(4, 0);
+            this.uC_SalesRefund1.Name = "uC_SalesRefund1";
+            this.uC_SalesRefund1.Size = new System.Drawing.Size(1065, 625);
+            this.uC_SalesRefund1.TabIndex = 2;
             // 
             // UC_SalesMain
             // 
@@ -154,5 +164,6 @@
         private System.Windows.Forms.Panel panel2;
         private Sales_Module.UC_SalesDocument uC_SalesDocument2;
         private UC_SalesOrder uC_SalesOrder2;
+        private Sales_Module.UC_SalesRefund uC_SalesRefund1;
     }
 }

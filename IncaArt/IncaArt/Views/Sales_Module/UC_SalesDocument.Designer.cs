@@ -35,13 +35,32 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tab_Order = new MetroFramework.Controls.MetroTabControl();
+            this.tab_Document = new MetroFramework.Controls.MetroTabControl();
             this.order = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_Detail = new System.Windows.Forms.Button();
             this.gbDocuments = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.grid_Documents = new MetroFramework.Controls.MetroGrid();
+            this.currency_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.order_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.porc_igv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.movement_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currency_symbol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.document_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type_document_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.external_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currency_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_Search_Documents = new System.Windows.Forms.Button();
             this.dt_iniDate = new MetroFramework.Controls.MetroDateTime();
@@ -77,7 +96,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txt_Movement_id = new MetroFramework.Controls.MetroTextBox();
             this.txt_external = new MetroFramework.Controls.MetroTextBox();
-            this.btn_Search_Document = new MetroFramework.Controls.MetroTile();
+            this.btn_Search_Movement = new MetroFramework.Controls.MetroTile();
             this.label16 = new System.Windows.Forms.Label();
             this.cbo_document_type = new MetroFramework.Controls.MetroComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -108,27 +127,8 @@
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currency_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.order_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.porc_igv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.movement_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currency_symbol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.document_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type_document_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.external_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currency_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
-            this.tab_Order.SuspendLayout();
+            this.tab_Document.SuspendLayout();
             this.order.SuspendLayout();
             this.panel3.SuspendLayout();
             this.gbDocuments.SuspendLayout();
@@ -145,27 +145,27 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.tab_Order);
+            this.panel1.Controls.Add(this.tab_Document);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1056, 611);
             this.panel1.TabIndex = 0;
             // 
-            // tab_Order
+            // tab_Document
             // 
-            this.tab_Order.CausesValidation = false;
-            this.tab_Order.Controls.Add(this.order);
-            this.tab_Order.Controls.Add(this.newOrder);
-            this.tab_Order.Location = new System.Drawing.Point(11, 4);
-            this.tab_Order.Name = "tab_Order";
-            this.tab_Order.SelectedIndex = 0;
-            this.tab_Order.Size = new System.Drawing.Size(1042, 605);
-            this.tab_Order.Style = MetroFramework.MetroColorStyle.Teal;
-            this.tab_Order.TabIndex = 43;
-            this.tab_Order.UseCustomBackColor = true;
-            this.tab_Order.UseCustomForeColor = true;
-            this.tab_Order.UseSelectable = true;
-            this.tab_Order.UseStyleColors = true;
+            this.tab_Document.CausesValidation = false;
+            this.tab_Document.Controls.Add(this.order);
+            this.tab_Document.Controls.Add(this.newOrder);
+            this.tab_Document.Location = new System.Drawing.Point(11, 4);
+            this.tab_Document.Name = "tab_Document";
+            this.tab_Document.SelectedIndex = 1;
+            this.tab_Document.Size = new System.Drawing.Size(1042, 605);
+            this.tab_Document.Style = MetroFramework.MetroColorStyle.Teal;
+            this.tab_Document.TabIndex = 43;
+            this.tab_Document.UseCustomBackColor = true;
+            this.tab_Document.UseCustomForeColor = true;
+            this.tab_Document.UseSelectable = true;
+            this.tab_Document.UseStyleColors = true;
             // 
             // order
             // 
@@ -288,6 +288,151 @@
             this.grid_Documents.Size = new System.Drawing.Size(975, 255);
             this.grid_Documents.TabIndex = 52;
             // 
+            // currency_id
+            // 
+            this.currency_id.DataPropertyName = "currency_id";
+            this.currency_id.HeaderText = "currency_id";
+            this.currency_id.Name = "currency_id";
+            this.currency_id.ReadOnly = true;
+            this.currency_id.Visible = false;
+            // 
+            // order_id
+            // 
+            this.order_id.DataPropertyName = "order_id";
+            this.order_id.HeaderText = "order_id";
+            this.order_id.Name = "order_id";
+            this.order_id.ReadOnly = true;
+            this.order_id.Visible = false;
+            // 
+            // porc_igv
+            // 
+            this.porc_igv.DataPropertyName = "porc_igv";
+            this.porc_igv.HeaderText = "porc_igv";
+            this.porc_igv.Name = "porc_igv";
+            this.porc_igv.ReadOnly = true;
+            this.porc_igv.Visible = false;
+            // 
+            // movement_id
+            // 
+            this.movement_id.DataPropertyName = "movement_id";
+            this.movement_id.HeaderText = "movement_id";
+            this.movement_id.Name = "movement_id";
+            this.movement_id.ReadOnly = true;
+            this.movement_id.Visible = false;
+            // 
+            // currency_symbol
+            // 
+            this.currency_symbol.DataPropertyName = "currency_symbol";
+            this.currency_symbol.HeaderText = "currency_symbol";
+            this.currency_symbol.Name = "currency_symbol";
+            this.currency_symbol.ReadOnly = true;
+            this.currency_symbol.Visible = false;
+            // 
+            // customer_id
+            // 
+            this.customer_id.DataPropertyName = "customer_id";
+            this.customer_id.HeaderText = "customer_id";
+            this.customer_id.Name = "customer_id";
+            this.customer_id.ReadOnly = true;
+            this.customer_id.Visible = false;
+            // 
+            // customer_address
+            // 
+            this.customer_address.DataPropertyName = "customer_address";
+            this.customer_address.HeaderText = "customer_address";
+            this.customer_address.Name = "customer_address";
+            this.customer_address.ReadOnly = true;
+            this.customer_address.Visible = false;
+            // 
+            // customer_phone
+            // 
+            this.customer_phone.DataPropertyName = "customer_phone";
+            this.customer_phone.HeaderText = "customer_phone";
+            this.customer_phone.Name = "customer_phone";
+            this.customer_phone.ReadOnly = true;
+            this.customer_phone.Visible = false;
+            // 
+            // customer_doi
+            // 
+            this.customer_doi.DataPropertyName = "customer_doi";
+            this.customer_doi.HeaderText = "customer_doi";
+            this.customer_doi.Name = "customer_doi";
+            this.customer_doi.ReadOnly = true;
+            this.customer_doi.Visible = false;
+            // 
+            // document_id2
+            // 
+            this.document_id2.DataPropertyName = "id";
+            this.document_id2.HeaderText = "Documento";
+            this.document_id2.Name = "document_id2";
+            this.document_id2.ReadOnly = true;
+            // 
+            // type_document_id
+            // 
+            this.type_document_id.DataPropertyName = "type_name";
+            this.type_document_id.HeaderText = "Tipo Documento";
+            this.type_document_id.Name = "type_document_id";
+            this.type_document_id.ReadOnly = true;
+            // 
+            // tipoid
+            // 
+            this.tipoid.DataPropertyName = "type_document_id";
+            this.tipoid.HeaderText = "tipoid";
+            this.tipoid.Name = "tipoid";
+            this.tipoid.ReadOnly = true;
+            this.tipoid.Visible = false;
+            // 
+            // external_number
+            // 
+            this.external_number.DataPropertyName = "external_number";
+            this.external_number.HeaderText = "Numero externo";
+            this.external_number.Name = "external_number";
+            this.external_number.ReadOnly = true;
+            // 
+            // customer_name
+            // 
+            this.customer_name.DataPropertyName = "customer_name";
+            this.customer_name.HeaderText = "Cliente";
+            this.customer_name.Name = "customer_name";
+            this.customer_name.ReadOnly = true;
+            // 
+            // issue_date
+            // 
+            this.issue_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.issue_date.DataPropertyName = "issue_date";
+            this.issue_date.HeaderText = "Fecha de Emisión";
+            this.issue_date.Name = "issue_date";
+            this.issue_date.ReadOnly = true;
+            // 
+            // currency_name
+            // 
+            this.currency_name.DataPropertyName = "currency_name";
+            this.currency_name.HeaderText = "Moneda";
+            this.currency_name.Name = "currency_name";
+            this.currency_name.ReadOnly = true;
+            // 
+            // amount2
+            // 
+            this.amount2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.amount2.DataPropertyName = "amount";
+            this.amount2.HeaderText = "Total";
+            this.amount2.Name = "amount2";
+            this.amount2.ReadOnly = true;
+            // 
+            // observation
+            // 
+            this.observation.DataPropertyName = "observation";
+            this.observation.HeaderText = "Observación";
+            this.observation.Name = "observation";
+            this.observation.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.HeaderText = "Estado";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btn_Search_Documents);
@@ -325,7 +470,7 @@
             // dt_iniDate
             // 
             this.dt_iniDate.Location = new System.Drawing.Point(664, 22);
-            this.dt_iniDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_iniDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_iniDate.Name = "dt_iniDate";
             this.dt_iniDate.Size = new System.Drawing.Size(222, 29);
             this.dt_iniDate.TabIndex = 59;
@@ -333,7 +478,7 @@
             // dt_endDate
             // 
             this.dt_endDate.Location = new System.Drawing.Point(664, 74);
-            this.dt_endDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_endDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_endDate.Name = "dt_endDate";
             this.dt_endDate.Size = new System.Drawing.Size(222, 29);
             this.dt_endDate.TabIndex = 58;
@@ -789,7 +934,7 @@
             this.gbDocument.Controls.Add(this.label4);
             this.gbDocument.Controls.Add(this.txt_Movement_id);
             this.gbDocument.Controls.Add(this.txt_external);
-            this.gbDocument.Controls.Add(this.btn_Search_Document);
+            this.gbDocument.Controls.Add(this.btn_Search_Movement);
             this.gbDocument.Controls.Add(this.label16);
             this.gbDocument.Controls.Add(this.cbo_document_type);
             this.gbDocument.Controls.Add(this.label17);
@@ -844,7 +989,7 @@
             // 
             this.dt_IssueDate.CalendarMonthBackground = System.Drawing.Color.White;
             this.dt_IssueDate.Location = new System.Drawing.Point(434, 114);
-            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_IssueDate.Name = "dt_IssueDate";
             this.dt_IssueDate.Size = new System.Drawing.Size(196, 29);
             this.dt_IssueDate.TabIndex = 64;
@@ -995,22 +1140,22 @@
             this.txt_external.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txt_external.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // btn_Search_Document
+            // btn_Search_Movement
             // 
-            this.btn_Search_Document.ActiveControl = null;
-            this.btn_Search_Document.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Search_Document.Location = new System.Drawing.Point(249, 71);
-            this.btn_Search_Document.Name = "btn_Search_Document";
-            this.btn_Search_Document.Size = new System.Drawing.Size(41, 29);
-            this.btn_Search_Document.TabIndex = 43;
-            this.btn_Search_Document.TileImage = global::WindowsFormsApp1.Properties.Resources.Search_16;
-            this.btn_Search_Document.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_Search_Document.UseCustomBackColor = true;
-            this.btn_Search_Document.UseCustomForeColor = true;
-            this.btn_Search_Document.UseSelectable = true;
-            this.btn_Search_Document.UseStyleColors = true;
-            this.btn_Search_Document.UseTileImage = true;
-            this.btn_Search_Document.Click += new System.EventHandler(this.btn_Search_Document_Click);
+            this.btn_Search_Movement.ActiveControl = null;
+            this.btn_Search_Movement.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Search_Movement.Location = new System.Drawing.Point(249, 71);
+            this.btn_Search_Movement.Name = "btn_Search_Movement";
+            this.btn_Search_Movement.Size = new System.Drawing.Size(41, 29);
+            this.btn_Search_Movement.TabIndex = 43;
+            this.btn_Search_Movement.TileImage = global::WindowsFormsApp1.Properties.Resources.Search_16;
+            this.btn_Search_Movement.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_Search_Movement.UseCustomBackColor = true;
+            this.btn_Search_Movement.UseCustomForeColor = true;
+            this.btn_Search_Movement.UseSelectable = true;
+            this.btn_Search_Movement.UseStyleColors = true;
+            this.btn_Search_Movement.UseTileImage = true;
+            this.btn_Search_Movement.Click += new System.EventHandler(this.btn_Search_Movement_Click);
             // 
             // label16
             // 
@@ -1211,7 +1356,7 @@
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(82, 29);
             this.btn_Save.TabIndex = 56;
-            this.btn_Save.Text = "Facturar";
+            this.btn_Save.Text = "Guardar";
             this.btn_Save.UseVisualStyleBackColor = false;
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
@@ -1434,151 +1579,6 @@
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
             // 
-            // currency_id
-            // 
-            this.currency_id.DataPropertyName = "currency_id";
-            this.currency_id.HeaderText = "currency_id";
-            this.currency_id.Name = "currency_id";
-            this.currency_id.ReadOnly = true;
-            this.currency_id.Visible = false;
-            // 
-            // order_id
-            // 
-            this.order_id.DataPropertyName = "order_id";
-            this.order_id.HeaderText = "order_id";
-            this.order_id.Name = "order_id";
-            this.order_id.ReadOnly = true;
-            this.order_id.Visible = false;
-            // 
-            // porc_igv
-            // 
-            this.porc_igv.DataPropertyName = "porc_igv";
-            this.porc_igv.HeaderText = "porc_igv";
-            this.porc_igv.Name = "porc_igv";
-            this.porc_igv.ReadOnly = true;
-            this.porc_igv.Visible = false;
-            // 
-            // movement_id
-            // 
-            this.movement_id.DataPropertyName = "movement_id";
-            this.movement_id.HeaderText = "movement_id";
-            this.movement_id.Name = "movement_id";
-            this.movement_id.ReadOnly = true;
-            this.movement_id.Visible = false;
-            // 
-            // currency_symbol
-            // 
-            this.currency_symbol.DataPropertyName = "currency_symbol";
-            this.currency_symbol.HeaderText = "currency_symbol";
-            this.currency_symbol.Name = "currency_symbol";
-            this.currency_symbol.ReadOnly = true;
-            this.currency_symbol.Visible = false;
-            // 
-            // customer_id
-            // 
-            this.customer_id.DataPropertyName = "customer_id";
-            this.customer_id.HeaderText = "customer_id";
-            this.customer_id.Name = "customer_id";
-            this.customer_id.ReadOnly = true;
-            this.customer_id.Visible = false;
-            // 
-            // customer_address
-            // 
-            this.customer_address.DataPropertyName = "customer_address";
-            this.customer_address.HeaderText = "customer_address";
-            this.customer_address.Name = "customer_address";
-            this.customer_address.ReadOnly = true;
-            this.customer_address.Visible = false;
-            // 
-            // customer_phone
-            // 
-            this.customer_phone.DataPropertyName = "customer_phone";
-            this.customer_phone.HeaderText = "customer_phone";
-            this.customer_phone.Name = "customer_phone";
-            this.customer_phone.ReadOnly = true;
-            this.customer_phone.Visible = false;
-            // 
-            // customer_doi
-            // 
-            this.customer_doi.DataPropertyName = "customer_doi";
-            this.customer_doi.HeaderText = "customer_doi";
-            this.customer_doi.Name = "customer_doi";
-            this.customer_doi.ReadOnly = true;
-            this.customer_doi.Visible = false;
-            // 
-            // document_id2
-            // 
-            this.document_id2.DataPropertyName = "id";
-            this.document_id2.HeaderText = "Documento";
-            this.document_id2.Name = "document_id2";
-            this.document_id2.ReadOnly = true;
-            // 
-            // type_document_id
-            // 
-            this.type_document_id.DataPropertyName = "type_name";
-            this.type_document_id.HeaderText = "Tipo Documento";
-            this.type_document_id.Name = "type_document_id";
-            this.type_document_id.ReadOnly = true;
-            // 
-            // tipoid
-            // 
-            this.tipoid.DataPropertyName = "type_document_id";
-            this.tipoid.HeaderText = "tipoid";
-            this.tipoid.Name = "tipoid";
-            this.tipoid.ReadOnly = true;
-            this.tipoid.Visible = false;
-            // 
-            // external_number
-            // 
-            this.external_number.DataPropertyName = "external_number";
-            this.external_number.HeaderText = "Numero externo";
-            this.external_number.Name = "external_number";
-            this.external_number.ReadOnly = true;
-            // 
-            // customer_name
-            // 
-            this.customer_name.DataPropertyName = "customer_name";
-            this.customer_name.HeaderText = "Cliente";
-            this.customer_name.Name = "customer_name";
-            this.customer_name.ReadOnly = true;
-            // 
-            // issue_date
-            // 
-            this.issue_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.issue_date.DataPropertyName = "issue_date";
-            this.issue_date.HeaderText = "Fecha de Emisión";
-            this.issue_date.Name = "issue_date";
-            this.issue_date.ReadOnly = true;
-            // 
-            // currency_name
-            // 
-            this.currency_name.DataPropertyName = "currency_name";
-            this.currency_name.HeaderText = "Moneda";
-            this.currency_name.Name = "currency_name";
-            this.currency_name.ReadOnly = true;
-            // 
-            // amount2
-            // 
-            this.amount2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.amount2.DataPropertyName = "amount";
-            this.amount2.HeaderText = "Total";
-            this.amount2.Name = "amount2";
-            this.amount2.ReadOnly = true;
-            // 
-            // observation
-            // 
-            this.observation.DataPropertyName = "observation";
-            this.observation.HeaderText = "Observación";
-            this.observation.Name = "observation";
-            this.observation.ReadOnly = true;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.HeaderText = "Estado";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
-            // 
             // UC_SalesDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1587,7 +1587,7 @@
             this.Name = "UC_SalesDocument";
             this.Size = new System.Drawing.Size(1062, 626);
             this.panel1.ResumeLayout(false);
-            this.tab_Order.ResumeLayout(false);
+            this.tab_Document.ResumeLayout(false);
             this.order.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.gbDocuments.ResumeLayout(false);
@@ -1611,7 +1611,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private MetroFramework.Controls.MetroTabControl tab_Order;
+        private MetroFramework.Controls.MetroTabControl tab_Document;
         private System.Windows.Forms.TabPage order;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btn_Detail;
@@ -1642,7 +1642,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private MetroFramework.Controls.MetroGrid grid_Documents;
-        private MetroFramework.Controls.MetroTile btn_Search_Document;
+        private MetroFramework.Controls.MetroTile btn_Search_Movement;
         private System.Windows.Forms.GroupBox gbDocument;
         private System.Windows.Forms.Label label16;
         private MetroFramework.Controls.MetroComboBox cbo_document_type;

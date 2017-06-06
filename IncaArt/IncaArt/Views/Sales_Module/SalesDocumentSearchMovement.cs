@@ -47,6 +47,10 @@ namespace WindowsFormsApp1.Views.Sales_Module
             prodMovementList.Add(movement_found);
             this.Close();
         }
-        
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
