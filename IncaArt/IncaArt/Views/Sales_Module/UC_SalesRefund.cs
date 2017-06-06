@@ -17,6 +17,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private string user = "dp1admin";
         private string password = "dp1admin";
         private SalesDocument document;
+        private List<SalesRefund> sales_refunds;
         private SalesRefundController sales_refund_controller;
         private SalesRefundLineController sales_refund_line_controller;
 
@@ -50,6 +51,57 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private void btn_Clean_Click(object sender, EventArgs e)
         {
             Clean();
+        }
+
+        private void btn_Search_Refunds_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(ctxt_refund_id.Text))
+            {
+                fill_Sales_Refund_Grid();
+            }
+            else
+            {
+                sales_refunds = new List<SalesRefund>();
+                Result result = sales_refund_controller.getSalesRefund(Int32.Parse(ctxt_refund_id.Text));
+                SalesRefund sr = (SalesRefund)result.data;
+                sales_refunds.Add(sr);
+                fill_gridView_Refund(sales_refunds);
+            }
+        }
+
+        private void fill_Sales_Refund_Grid()
+        {
+            Result result = sales_refund_controller.getSalesRefunds();
+            sales_refunds = (List<SalesRefund>)result.data;
+            fill_gridView_Refund(sales_refunds);
+        }
+
+        private void fill_gridView_Refund(List<SalesRefund> list)
+        {
+            clean_gridView_Refund();
+            List<SalesRefund> current = (List<SalesRefund>)this.grid_Refunds.DataSource;
+            if (current == null)
+                current = new List<SalesRefund>();
+            current = current.Concat(list).ToList();
+            this.grid_Refunds.DataSource = current;
+            AdjustColumnRefund();
+        }
+
+        private void clean_gridView_Refund()
+        {
+            List<SalesRefund> empty_list = new List<SalesRefund>();
+            grid_Refunds.DataSource = empty_list;
+        }
+
+        private void AdjustColumnRefund()
+        {
+            grid_Refunds.Columns["refund_id"].DisplayIndex = 0;
+            grid_Refunds.Columns["customer_name"].DisplayIndex = 1;
+            grid_Refunds.Columns["issue_date"].DisplayIndex = 2;
+            grid_Refunds.Columns["currency_name"].DisplayIndex = 3;
+            grid_Refunds.Columns["amount2"].DisplayIndex = 4;
+            grid_Refunds.Columns["observation"].DisplayIndex = 5;
+            grid_Refunds.Columns["status"].DisplayIndex = 6;
         }
 
         private void btn_Save_Click(object sender, EventArgs e)

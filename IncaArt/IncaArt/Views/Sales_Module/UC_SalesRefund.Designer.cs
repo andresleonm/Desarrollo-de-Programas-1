@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tab_Refund = new MetroFramework.Controls.MetroTabControl();
             this.refund = new System.Windows.Forms.TabPage();
@@ -42,31 +42,12 @@
             this.gbDocuments = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.grid_Refunds = new MetroFramework.Controls.MetroGrid();
-            this.currency_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.order_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.porc_igv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.movement_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currency_symbol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.document_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type_document_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.external_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currency_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_Search_Documents = new System.Windows.Forms.Button();
+            this.btn_Search_Refunds = new System.Windows.Forms.Button();
             this.dt_iniDate = new MetroFramework.Controls.MetroDateTime();
             this.dt_endDate = new MetroFramework.Controls.MetroDateTime();
             this.btn_Search_Client = new MetroFramework.Controls.MetroTile();
-            this.ctxt_document_id = new MetroFramework.Controls.MetroTextBox();
+            this.ctxt_refund_id = new MetroFramework.Controls.MetroTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.ctxt_customer = new MetroFramework.Controls.MetroTextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -124,6 +105,23 @@
             this.Refund_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currency_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.order_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.porc_igv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.movement_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currency_symbol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.refund_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.refund_reason_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currency_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.tab_Refund.SuspendLayout();
             this.refund.SuspendLayout();
@@ -155,7 +153,7 @@
             this.tab_Refund.Controls.Add(this.newRefund);
             this.tab_Refund.Location = new System.Drawing.Point(10, 9);
             this.tab_Refund.Name = "tab_Refund";
-            this.tab_Refund.SelectedIndex = 1;
+            this.tab_Refund.SelectedIndex = 0;
             this.tab_Refund.Size = new System.Drawing.Size(1042, 605);
             this.tab_Refund.Style = MetroFramework.MetroColorStyle.Teal;
             this.tab_Refund.TabIndex = 44;
@@ -226,14 +224,14 @@
             this.grid_Refunds.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.grid_Refunds.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.grid_Refunds.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_Refunds.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_Refunds.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grid_Refunds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid_Refunds.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.currency_id,
@@ -245,24 +243,22 @@
             this.customer_address,
             this.customer_phone,
             this.customer_doi,
-            this.document_id2,
-            this.type_document_id,
-            this.tipoid,
-            this.external_number,
+            this.refund_id,
             this.customer_name,
+            this.refund_reason_id,
             this.issue_date,
             this.currency_name,
             this.amount2,
             this.observation,
             this.status});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid_Refunds.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid_Refunds.DefaultCellStyle = dataGridViewCellStyle2;
             this.grid_Refunds.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_Refunds.EnableHeadersVisualStyles = false;
             this.grid_Refunds.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -271,171 +267,26 @@
             this.grid_Refunds.Name = "grid_Refunds";
             this.grid_Refunds.ReadOnly = true;
             this.grid_Refunds.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_Refunds.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_Refunds.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.grid_Refunds.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.grid_Refunds.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_Refunds.Size = new System.Drawing.Size(975, 255);
             this.grid_Refunds.TabIndex = 52;
             // 
-            // currency_id
-            // 
-            this.currency_id.DataPropertyName = "currency_id";
-            this.currency_id.HeaderText = "currency_id";
-            this.currency_id.Name = "currency_id";
-            this.currency_id.ReadOnly = true;
-            this.currency_id.Visible = false;
-            // 
-            // order_id
-            // 
-            this.order_id.DataPropertyName = "order_id";
-            this.order_id.HeaderText = "order_id";
-            this.order_id.Name = "order_id";
-            this.order_id.ReadOnly = true;
-            this.order_id.Visible = false;
-            // 
-            // porc_igv
-            // 
-            this.porc_igv.DataPropertyName = "porc_igv";
-            this.porc_igv.HeaderText = "porc_igv";
-            this.porc_igv.Name = "porc_igv";
-            this.porc_igv.ReadOnly = true;
-            this.porc_igv.Visible = false;
-            // 
-            // movement_id
-            // 
-            this.movement_id.DataPropertyName = "movement_id";
-            this.movement_id.HeaderText = "movement_id";
-            this.movement_id.Name = "movement_id";
-            this.movement_id.ReadOnly = true;
-            this.movement_id.Visible = false;
-            // 
-            // currency_symbol
-            // 
-            this.currency_symbol.DataPropertyName = "currency_symbol";
-            this.currency_symbol.HeaderText = "currency_symbol";
-            this.currency_symbol.Name = "currency_symbol";
-            this.currency_symbol.ReadOnly = true;
-            this.currency_symbol.Visible = false;
-            // 
-            // customer_id
-            // 
-            this.customer_id.DataPropertyName = "customer_id";
-            this.customer_id.HeaderText = "customer_id";
-            this.customer_id.Name = "customer_id";
-            this.customer_id.ReadOnly = true;
-            this.customer_id.Visible = false;
-            // 
-            // customer_address
-            // 
-            this.customer_address.DataPropertyName = "customer_address";
-            this.customer_address.HeaderText = "customer_address";
-            this.customer_address.Name = "customer_address";
-            this.customer_address.ReadOnly = true;
-            this.customer_address.Visible = false;
-            // 
-            // customer_phone
-            // 
-            this.customer_phone.DataPropertyName = "customer_phone";
-            this.customer_phone.HeaderText = "customer_phone";
-            this.customer_phone.Name = "customer_phone";
-            this.customer_phone.ReadOnly = true;
-            this.customer_phone.Visible = false;
-            // 
-            // customer_doi
-            // 
-            this.customer_doi.DataPropertyName = "customer_doi";
-            this.customer_doi.HeaderText = "customer_doi";
-            this.customer_doi.Name = "customer_doi";
-            this.customer_doi.ReadOnly = true;
-            this.customer_doi.Visible = false;
-            // 
-            // document_id2
-            // 
-            this.document_id2.DataPropertyName = "id";
-            this.document_id2.HeaderText = "Documento";
-            this.document_id2.Name = "document_id2";
-            this.document_id2.ReadOnly = true;
-            // 
-            // type_document_id
-            // 
-            this.type_document_id.DataPropertyName = "type_name";
-            this.type_document_id.HeaderText = "Tipo Documento";
-            this.type_document_id.Name = "type_document_id";
-            this.type_document_id.ReadOnly = true;
-            // 
-            // tipoid
-            // 
-            this.tipoid.DataPropertyName = "type_document_id";
-            this.tipoid.HeaderText = "tipoid";
-            this.tipoid.Name = "tipoid";
-            this.tipoid.ReadOnly = true;
-            this.tipoid.Visible = false;
-            // 
-            // external_number
-            // 
-            this.external_number.DataPropertyName = "external_number";
-            this.external_number.HeaderText = "Numero externo";
-            this.external_number.Name = "external_number";
-            this.external_number.ReadOnly = true;
-            // 
-            // customer_name
-            // 
-            this.customer_name.DataPropertyName = "customer_name";
-            this.customer_name.HeaderText = "Cliente";
-            this.customer_name.Name = "customer_name";
-            this.customer_name.ReadOnly = true;
-            // 
-            // issue_date
-            // 
-            this.issue_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.issue_date.DataPropertyName = "issue_date";
-            this.issue_date.HeaderText = "Fecha de Emisión";
-            this.issue_date.Name = "issue_date";
-            this.issue_date.ReadOnly = true;
-            // 
-            // currency_name
-            // 
-            this.currency_name.DataPropertyName = "currency_name";
-            this.currency_name.HeaderText = "Moneda";
-            this.currency_name.Name = "currency_name";
-            this.currency_name.ReadOnly = true;
-            // 
-            // amount2
-            // 
-            this.amount2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.amount2.DataPropertyName = "amount";
-            this.amount2.HeaderText = "Total";
-            this.amount2.Name = "amount2";
-            this.amount2.ReadOnly = true;
-            // 
-            // observation
-            // 
-            this.observation.DataPropertyName = "observation";
-            this.observation.HeaderText = "Observación";
-            this.observation.Name = "observation";
-            this.observation.ReadOnly = true;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.HeaderText = "Estado";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
-            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btn_Search_Documents);
+            this.groupBox2.Controls.Add(this.btn_Search_Refunds);
             this.groupBox2.Controls.Add(this.dt_iniDate);
             this.groupBox2.Controls.Add(this.dt_endDate);
             this.groupBox2.Controls.Add(this.btn_Search_Client);
-            this.groupBox2.Controls.Add(this.ctxt_document_id);
+            this.groupBox2.Controls.Add(this.ctxt_refund_id);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.ctxt_customer);
             this.groupBox2.Controls.Add(this.label13);
@@ -450,22 +301,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtros";
             // 
-            // btn_Search_Documents
+            // btn_Search_Refunds
             // 
-            this.btn_Search_Documents.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Search_Documents.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Search_Documents.ForeColor = System.Drawing.Color.White;
-            this.btn_Search_Documents.Location = new System.Drawing.Point(448, 117);
-            this.btn_Search_Documents.Name = "btn_Search_Documents";
-            this.btn_Search_Documents.Size = new System.Drawing.Size(99, 29);
-            this.btn_Search_Documents.TabIndex = 60;
-            this.btn_Search_Documents.Text = "Buscar";
-            this.btn_Search_Documents.UseVisualStyleBackColor = false;
+            this.btn_Search_Refunds.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Search_Refunds.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Search_Refunds.ForeColor = System.Drawing.Color.White;
+            this.btn_Search_Refunds.Location = new System.Drawing.Point(448, 117);
+            this.btn_Search_Refunds.Name = "btn_Search_Refunds";
+            this.btn_Search_Refunds.Size = new System.Drawing.Size(99, 29);
+            this.btn_Search_Refunds.TabIndex = 60;
+            this.btn_Search_Refunds.Text = "Buscar";
+            this.btn_Search_Refunds.UseVisualStyleBackColor = false;
+            this.btn_Search_Refunds.Click += new System.EventHandler(this.btn_Search_Refunds_Click);
             // 
             // dt_iniDate
             // 
             this.dt_iniDate.Location = new System.Drawing.Point(664, 22);
-            this.dt_iniDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_iniDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_iniDate.Name = "dt_iniDate";
             this.dt_iniDate.Size = new System.Drawing.Size(222, 29);
             this.dt_iniDate.TabIndex = 59;
@@ -473,7 +325,7 @@
             // dt_endDate
             // 
             this.dt_endDate.Location = new System.Drawing.Point(664, 74);
-            this.dt_endDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_endDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_endDate.Name = "dt_endDate";
             this.dt_endDate.Size = new System.Drawing.Size(222, 29);
             this.dt_endDate.TabIndex = 58;
@@ -494,35 +346,35 @@
             this.btn_Search_Client.UseStyleColors = true;
             this.btn_Search_Client.UseTileImage = true;
             // 
-            // ctxt_document_id
+            // ctxt_refund_id
             // 
             // 
             // 
             // 
-            this.ctxt_document_id.CustomButton.Image = null;
-            this.ctxt_document_id.CustomButton.Location = new System.Drawing.Point(188, 1);
-            this.ctxt_document_id.CustomButton.Name = "";
-            this.ctxt_document_id.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.ctxt_document_id.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.ctxt_document_id.CustomButton.TabIndex = 1;
-            this.ctxt_document_id.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.ctxt_document_id.CustomButton.UseSelectable = true;
-            this.ctxt_document_id.CustomButton.Visible = false;
-            this.ctxt_document_id.Lines = new string[0];
-            this.ctxt_document_id.Location = new System.Drawing.Point(127, 22);
-            this.ctxt_document_id.MaxLength = 32767;
-            this.ctxt_document_id.Name = "ctxt_document_id";
-            this.ctxt_document_id.PasswordChar = '\0';
-            this.ctxt_document_id.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ctxt_document_id.SelectedText = "";
-            this.ctxt_document_id.SelectionLength = 0;
-            this.ctxt_document_id.SelectionStart = 0;
-            this.ctxt_document_id.ShortcutsEnabled = true;
-            this.ctxt_document_id.Size = new System.Drawing.Size(216, 29);
-            this.ctxt_document_id.TabIndex = 56;
-            this.ctxt_document_id.UseSelectable = true;
-            this.ctxt_document_id.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.ctxt_document_id.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.ctxt_refund_id.CustomButton.Image = null;
+            this.ctxt_refund_id.CustomButton.Location = new System.Drawing.Point(188, 1);
+            this.ctxt_refund_id.CustomButton.Name = "";
+            this.ctxt_refund_id.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.ctxt_refund_id.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.ctxt_refund_id.CustomButton.TabIndex = 1;
+            this.ctxt_refund_id.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.ctxt_refund_id.CustomButton.UseSelectable = true;
+            this.ctxt_refund_id.CustomButton.Visible = false;
+            this.ctxt_refund_id.Lines = new string[0];
+            this.ctxt_refund_id.Location = new System.Drawing.Point(127, 22);
+            this.ctxt_refund_id.MaxLength = 32767;
+            this.ctxt_refund_id.Name = "ctxt_refund_id";
+            this.ctxt_refund_id.PasswordChar = '\0';
+            this.ctxt_refund_id.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.ctxt_refund_id.SelectedText = "";
+            this.ctxt_refund_id.SelectionLength = 0;
+            this.ctxt_refund_id.SelectionStart = 0;
+            this.ctxt_refund_id.ShortcutsEnabled = true;
+            this.ctxt_refund_id.Size = new System.Drawing.Size(216, 29);
+            this.ctxt_refund_id.TabIndex = 56;
+            this.ctxt_refund_id.UseSelectable = true;
+            this.ctxt_refund_id.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.ctxt_refund_id.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // label10
             // 
@@ -1335,14 +1187,14 @@
             this.grid_Refund_Lines.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.grid_Refund_Lines.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.grid_Refund_Lines.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_Refund_Lines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_Refund_Lines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.grid_Refund_Lines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid_Refund_Lines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.document_id,
@@ -1360,14 +1212,14 @@
             this.Refund_quantity,
             this.unit_Price,
             this.amount});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid_Refund_Lines.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid_Refund_Lines.DefaultCellStyle = dataGridViewCellStyle5;
             this.grid_Refund_Lines.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_Refund_Lines.EnableHeadersVisualStyles = false;
             this.grid_Refund_Lines.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -1375,14 +1227,14 @@
             this.grid_Refund_Lines.Location = new System.Drawing.Point(0, 0);
             this.grid_Refund_Lines.Name = "grid_Refund_Lines";
             this.grid_Refund_Lines.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_Refund_Lines.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_Refund_Lines.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.grid_Refund_Lines.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.grid_Refund_Lines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_Refund_Lines.Size = new System.Drawing.Size(984, 191);
@@ -1508,6 +1360,137 @@
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
             // 
+            // currency_id
+            // 
+            this.currency_id.DataPropertyName = "currency_id";
+            this.currency_id.HeaderText = "currency_id";
+            this.currency_id.Name = "currency_id";
+            this.currency_id.ReadOnly = true;
+            this.currency_id.Visible = false;
+            // 
+            // order_id
+            // 
+            this.order_id.DataPropertyName = "order_id";
+            this.order_id.HeaderText = "order_id";
+            this.order_id.Name = "order_id";
+            this.order_id.ReadOnly = true;
+            this.order_id.Visible = false;
+            // 
+            // porc_igv
+            // 
+            this.porc_igv.DataPropertyName = "porc_igv";
+            this.porc_igv.HeaderText = "porc_igv";
+            this.porc_igv.Name = "porc_igv";
+            this.porc_igv.ReadOnly = true;
+            this.porc_igv.Visible = false;
+            // 
+            // movement_id
+            // 
+            this.movement_id.DataPropertyName = "movement_id";
+            this.movement_id.HeaderText = "movement_id";
+            this.movement_id.Name = "movement_id";
+            this.movement_id.ReadOnly = true;
+            this.movement_id.Visible = false;
+            // 
+            // currency_symbol
+            // 
+            this.currency_symbol.DataPropertyName = "currency_symbol";
+            this.currency_symbol.HeaderText = "currency_symbol";
+            this.currency_symbol.Name = "currency_symbol";
+            this.currency_symbol.ReadOnly = true;
+            this.currency_symbol.Visible = false;
+            // 
+            // customer_id
+            // 
+            this.customer_id.DataPropertyName = "customer_id";
+            this.customer_id.HeaderText = "customer_id";
+            this.customer_id.Name = "customer_id";
+            this.customer_id.ReadOnly = true;
+            this.customer_id.Visible = false;
+            // 
+            // customer_address
+            // 
+            this.customer_address.DataPropertyName = "customer_address";
+            this.customer_address.HeaderText = "customer_address";
+            this.customer_address.Name = "customer_address";
+            this.customer_address.ReadOnly = true;
+            this.customer_address.Visible = false;
+            // 
+            // customer_phone
+            // 
+            this.customer_phone.DataPropertyName = "customer_phone";
+            this.customer_phone.HeaderText = "customer_phone";
+            this.customer_phone.Name = "customer_phone";
+            this.customer_phone.ReadOnly = true;
+            this.customer_phone.Visible = false;
+            // 
+            // customer_doi
+            // 
+            this.customer_doi.DataPropertyName = "customer_doi";
+            this.customer_doi.HeaderText = "customer_doi";
+            this.customer_doi.Name = "customer_doi";
+            this.customer_doi.ReadOnly = true;
+            this.customer_doi.Visible = false;
+            // 
+            // refund_id
+            // 
+            this.refund_id.DataPropertyName = "id";
+            this.refund_id.HeaderText = "Devolución";
+            this.refund_id.Name = "refund_id";
+            this.refund_id.ReadOnly = true;
+            // 
+            // customer_name
+            // 
+            this.customer_name.DataPropertyName = "customer_name";
+            this.customer_name.HeaderText = "Cliente";
+            this.customer_name.Name = "customer_name";
+            this.customer_name.ReadOnly = true;
+            // 
+            // refund_reason_id
+            // 
+            this.refund_reason_id.DataPropertyName = "refund_reason_id";
+            this.refund_reason_id.HeaderText = "Refund Reason";
+            this.refund_reason_id.Name = "refund_reason_id";
+            this.refund_reason_id.ReadOnly = true;
+            this.refund_reason_id.Visible = false;
+            // 
+            // issue_date
+            // 
+            this.issue_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.issue_date.DataPropertyName = "issue_date";
+            this.issue_date.HeaderText = "Fecha de Emisión";
+            this.issue_date.Name = "issue_date";
+            this.issue_date.ReadOnly = true;
+            // 
+            // currency_name
+            // 
+            this.currency_name.DataPropertyName = "currency_name";
+            this.currency_name.HeaderText = "Moneda";
+            this.currency_name.Name = "currency_name";
+            this.currency_name.ReadOnly = true;
+            // 
+            // amount2
+            // 
+            this.amount2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.amount2.DataPropertyName = "amount";
+            this.amount2.HeaderText = "Total";
+            this.amount2.Name = "amount2";
+            this.amount2.ReadOnly = true;
+            // 
+            // observation
+            // 
+            this.observation.DataPropertyName = "observation";
+            this.observation.HeaderText = "Observación";
+            this.observation.Name = "observation";
+            this.observation.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.HeaderText = "Estado";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            // 
             // UC_SalesRefund
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1548,31 +1531,12 @@
         private System.Windows.Forms.GroupBox gbDocuments;
         private System.Windows.Forms.Panel panel4;
         private MetroFramework.Controls.MetroGrid grid_Refunds;
-        private System.Windows.Forms.DataGridViewTextBoxColumn currency_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn order_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn porc_igv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn movement_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn currency_symbol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customer_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customer_address;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customer_phone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customer_doi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn document_id2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn type_document_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn external_number;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customer_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn issue_date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn currency_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amount2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn observation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btn_Search_Documents;
+        private System.Windows.Forms.Button btn_Search_Refunds;
         private MetroFramework.Controls.MetroDateTime dt_iniDate;
         private MetroFramework.Controls.MetroDateTime dt_endDate;
         private MetroFramework.Controls.MetroTile btn_Search_Client;
-        private MetroFramework.Controls.MetroTextBox ctxt_document_id;
+        private MetroFramework.Controls.MetroTextBox ctxt_refund_id;
         private System.Windows.Forms.Label label10;
         private MetroFramework.Controls.MetroTextBox ctxt_customer;
         private System.Windows.Forms.Label label13;
@@ -1630,5 +1594,22 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Refund_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currency_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn order_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn porc_igv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn movement_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currency_symbol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customer_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customer_address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customer_phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customer_doi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn refund_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customer_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn refund_reason_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn issue_date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currency_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amount2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn observation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
     }
 }
