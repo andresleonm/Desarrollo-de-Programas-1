@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views
 {
@@ -19,7 +20,6 @@ namespace WindowsFormsApp1.Views
 
         private void MainDashboard_Load(object sender, EventArgs e)
         {
-
         }
     }
 }
