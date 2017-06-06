@@ -12,7 +12,11 @@ namespace WindowsFormsApp1.Views
 {
     public partial class Parameters : MetroFramework.Controls.MetroUserControl
     {
+        bool name_flag;
+        bool value_flag;
+
         List<Models.Parameters> parameters_list;
+        List<Models.Parameters> parameters_list_init;
         Controller.ParametersController parameterController;
         int cur_row;
         Controller.Result result;
@@ -26,6 +30,7 @@ namespace WindowsFormsApp1.Views
             string user = "dp1admin";
             string password = "dp1admin";
             parameterController = new Controller.ParametersController(user, password);
+            Set_Flag_All(false);
             Load_Data();
             Load_DataGridView();
             metroTabControl1.SelectedIndex = 0;
@@ -91,6 +96,12 @@ namespace WindowsFormsApp1.Views
         {
             int id=0;
             String name, value,state;
+
+            if (!Validate_Data())
+            {
+                MessageBox.Show("Hay campos inválidos", "Error", MessageBoxButtons.OK);
+                return null;
+            }
             name = textbox_name.Text;
             value = textbox_value.Text;
             state = "ACTIVE";
@@ -107,42 +118,47 @@ namespace WindowsFormsApp1.Views
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-            
             Models.Parameters param = new Models.Parameters();
             param.Name = textbox_name_s.Text;
-            result = parameterController.getParameters(param);
-            if (result.data == null)
-            {
-                MessageBox.Show(result.message, "Error al buscar parámetro con filtro", MessageBoxButtons.OK);
-            }
-            else
-            {
-                parameters_list = (List<Models.Parameters>)result.data;
-                Load_DataGridView();
+            if (!String.IsNullOrWhiteSpace(param.Name)) {
+                result = parameterController.getParameters(param);
+                if (result.data == null)
+                {
+                    MessageBox.Show(result.message, "Error al buscar parámetro con filtros", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    parameters_list = (List<Models.Parameters>)result.data;
+                    Load_DataGridView();
+                }
             }
         }
 
         private void register_Click(object sender, EventArgs e)
         {
             Models.Parameters param = CreateParameter(0);
-            result = parameterController.insertParameter(param);
-            if (result.data == null)
+            if (param != null)
             {
-                MessageBox.Show(result.message, "Error al registrar parámetro", MessageBoxButtons.OK);
+                result = parameterController.insertParameter(param);
+                if (result.data == null)
+                {
+                    MessageBox.Show(result.message, "Error al registrar parámetro", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Parámetro registrado correctamente", "Registrar material", MessageBoxButtons.OK);
+                    Load_Data();
+                }
+                Set_Flag_All(false);
+                Load_DataGridView();
+                Clean();
+                metroTabControl1.SelectedIndex = 0;
             }
-            else
-            {
-                Load_Data();
-            }
-
-            Load_DataGridView();
-            Clean();
-            metroTabControl1.SelectedIndex = 0;
         }
 
         private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
+            if (metroGrid1.Rows[e.RowIndex].Cells[0].Value != null)
             {
                 cur_row = e.RowIndex;
                 btn_delete.Enabled = true;
@@ -157,27 +173,30 @@ namespace WindowsFormsApp1.Views
                 textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 textbox_value.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
                 metroTabControl1.SelectedIndex = 1;
+                Set_Flag_All(true);
             }
         }
 
         private void edit_Click(object sender, EventArgs e)
         {
             Models.Parameters param = CreateParameter(1);
-            result = parameterController.updateParameter(param);
-            if (result.data == null)
+            if (param != null)
             {
-                MessageBox.Show(result.message, "Error al modificar parámetro", MessageBoxButtons.OK);
+                result = parameterController.updateParameter(param);
+                if (result.data == null)
+                {
+                    MessageBox.Show(result.message, "Error al modificar parámetro", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Parámetro editado correctamente", "Editar parámetro", MessageBoxButtons.OK);
+                    Load_Data();
+                }
+                Set_Flag_All(false);
+                Load_DataGridView();
+                Clean();
+                metroTabControl1.SelectedIndex = 0;
             }
-            else
-            {
-                int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
-                parameters_list[index] = param;
-            }
-
-            Load_DataGridView();
-            Clean();
-            metroTabControl1.SelectedIndex = 0;
-
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -190,7 +209,8 @@ namespace WindowsFormsApp1.Views
             }
             else
             {
-                parameters_list.Remove(parameters_list[index]);
+                MessageBox.Show("Parámetro eliminado correctamente", "Eliminar material", MessageBoxButtons.OK);
+                Load_Data();
             }
             btn_delete.Enabled = false;
             Load_DataGridView();
@@ -204,7 +224,58 @@ namespace WindowsFormsApp1.Views
         private void cancel_Click(object sender, EventArgs e)
         {
             Clean();
+            Load_Data();
+            Load_DataGridView();
             metroTabControl1.SelectedIndex = 0;
+            
+        }
+        // Validate Data 
+
+        private bool Validate_Data()
+        {
+            if (name_flag && name_flag && value_flag)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void Set_Flag_All(bool value)
+        {
+            name_flag = value;
+            value_flag = value;
+        }
+
+        private void Set_Flag(string name, bool value)
+        {
+            switch (name)
+            {
+                case "textbox_name":
+                    name_flag = value;
+                    break;
+                case "textbox_value":
+                    value_flag = value;
+                    break;
+            }
+        }
+
+        private void textbox_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            string text = textbox.Text;
+            if (String.IsNullOrWhiteSpace(text))
+            {
+                //e.Cancel = true;
+                Set_Flag(textbox.Name, false);
+                errorProvider.SetError(textbox, "Campo requerido");
+
+            }
+            else
+            {
+                //e.Cancel = false;
+                Set_Flag(textbox.Name, true);
+                errorProvider.SetError(textbox, null);
+            }
         }
     }
 }

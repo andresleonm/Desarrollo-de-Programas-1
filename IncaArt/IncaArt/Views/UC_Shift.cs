@@ -51,5 +51,10 @@ namespace WindowsFormsApp1.Views
         {
 
         }
+
+        private void register_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
