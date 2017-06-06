@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         string password;
         ProductMovementController pc;
         SalesOrderController soc;
-        RefundController src;
+        SalesRefundLineController src;
         ProductionOrderProductLineController prc;
         bool flgBegin=true;
         int claseAnt=-1;
@@ -29,7 +29,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             this.password = password;
             pc = new ProductMovementController(user, password);
             soc= new SalesOrderController(user, password);
-            src = new RefundController(user, password);
+            src = new SalesRefundLineController(user, password);
             prc = new ProductionOrderProductLineController(user, password);
             AdjustColumnOrder();
             fillTypeMovements();
@@ -175,8 +175,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 }
                 else if (clase==1)
                 {
-                    var Refund = (Models.SalesRefund)src.getRefund(Int32.Parse(doc.id)).data;
-                    populateDetail(Refund.Lines);
+                    var lines = (List<Models.SalesRefundLine> )src.getSalesRefundLines(Int32.Parse(doc.id)).data;
+                    populateDetail(lines);
                 }else if (clase == 2)
                 {
                     var productionLines = (List<Models.ProductionOrderProductLine>)prc.getProductLines(Int32.Parse(doc.id)).data;
