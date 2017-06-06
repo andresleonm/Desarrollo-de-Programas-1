@@ -101,5 +101,21 @@ namespace WindowsFormsApp1.Views
                 }
             }
         }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            int order_Id;
+            if (!Int32.TryParse(metroTextBox_numOrder.Text, out order_Id))
+            {
+                order_Id = 0;
+            }
+            string description = metroTextBox_description.Text;
+            DateTime begin=metroDateTime_Begin.Value;
+            DateTime end = metroDateTime_End.Value;
+
+            orders.Clear();
+            orders = (List < Models.ProductionOrder>)(order_controller.getProductionOrders(order_Id, description, begin, end).data);
+            Load_ProductionOrder_DataGridView();
+        }
     }
 }

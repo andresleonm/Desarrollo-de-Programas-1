@@ -16,6 +16,10 @@ namespace WindowsFormsApp1.Views
         private List<Models.ProductionOrderProductLine> product_lines = new List<Models.ProductionOrderProductLine>();
         private List<Models.ProductionOrderWorkLine> work_lines = new List<Models.ProductionOrderWorkLine>();
         private List<Models.ProductionOrderMaterialLine> material_lines = new List<Models.ProductionOrderMaterialLine>();
+        //Resumen
+        private List<Models.ProductionOrderProductLine> product_summary_lines = new List<Models.ProductionOrderProductLine>();
+        private List<Models.ProductionOrderMaterialLine> material_summary_lines = new List<Models.ProductionOrderMaterialLine>();
+  
 
         string user = "dp1admin";
         string password= "dp1admin";
@@ -23,6 +27,8 @@ namespace WindowsFormsApp1.Views
         ProductionOrderProductLineController product_line_controller;
         ProductionOrderMaterialLineController material_line_controller;
         ProductionOrderWorkLineController work_line_controller;
+        RecipesController recipe_controller;
+
         public bool editing = false;
 
         public UC_ProductionOrder()
@@ -32,6 +38,7 @@ namespace WindowsFormsApp1.Views
             product_line_controller = new ProductionOrderProductLineController(user, password);
             material_line_controller = new ProductionOrderMaterialLineController(user, password);
             work_line_controller = new ProductionOrderWorkLineController(user, password);
+            recipe_controller = new RecipesController(user,password);
             hide_buttons();
         }
         
@@ -102,8 +109,8 @@ namespace WindowsFormsApp1.Views
                     MessageBox.Show("Order de producción registrada.");
                 }
                 else
-                {                
-                   
+                {
+                    production_order.Id = Int32.Parse(this.metroTextBox_OrderNumber.Text);
                     //UPDATE HEADER
                     Result result=production_controller.updateProductionOrder(production_order);
                     //List of products
@@ -170,6 +177,7 @@ namespace WindowsFormsApp1.Views
             {
                 product_lines.Add(product_line.Line);
                 Load_Product_DataGridView();
+                update_SummaryProduct();
             }
             
         }
@@ -315,6 +323,8 @@ namespace WindowsFormsApp1.Views
             Load_Product_DataGridView();
             Load_Material_DataGridView();
             Load_Work_DataGridView();
+            update_SummaryMaterial();
+            update_SummaryProduct();
             hide_buttons();
         }
 
@@ -342,83 +352,103 @@ namespace WindowsFormsApp1.Views
 
         private void metroButton_EditProduct_Click(object sender, EventArgs e)
         {
-            int selected_index = datagrid_Products.SelectedRows[0].Index;
-            ProductionOrderProductLine product_line = new ProductionOrderProductLine();
-            product_line.Line = product_lines[selected_index];
-            product_line.Editing = true;
-            product_line.ShowDialog();
-            if (product_line.IsRegistered)
+            if (datagrid_Products.Rows.Count > 0)
             {
-                product_lines[selected_index]=product_line.Line;
-                Load_Product_DataGridView();
+                int selected_index = datagrid_Products.SelectedRows[0].Index;
+                ProductionOrderProductLine product_line = new ProductionOrderProductLine();
+                product_line.Line = product_lines[selected_index];
+                product_line.Editing = true;
+                product_line.ShowDialog();
+                if (product_line.IsRegistered)
+                {
+                    product_lines[selected_index] = product_line.Line;
+                    Load_Product_DataGridView();
+                }
             }
+            update_SummaryProduct();
         }
 
         private void metroButton_EditMaterial_Click(object sender, EventArgs e)
         {
-            int selected_index = metroGrid_Material.SelectedRows[0].Index;
-            Production_Module.ProductionOrderMaterialLine material_line = new Production_Module.ProductionOrderMaterialLine();
-            material_line.Line = material_lines[selected_index];
-            material_line.Editing = true;
-            material_line.ShowDialog();
-            if (material_line.IsRegistered)
+            if (metroGrid_Material.Rows.Count > 0)
             {
-                material_lines[selected_index] = material_line.Line;
-                Load_Material_DataGridView();
+                int selected_index = metroGrid_Material.SelectedRows[0].Index;
+                Production_Module.ProductionOrderMaterialLine material_line = new Production_Module.ProductionOrderMaterialLine();
+                material_line.Line = material_lines[selected_index];
+                material_line.Editing = true;
+                material_line.ShowDialog();
+                if (material_line.IsRegistered)
+                {
+                    material_lines[selected_index] = material_line.Line;
+                    Load_Material_DataGridView();
+                }
             }
+           
         }
 
         private void metroButton_EditWork_Click(object sender, EventArgs e)
         {
-            int selected_index = metroGrid_Material.SelectedRows[0].Index;
-            Production_Module.ProductionOrderWorkLine work_line = new Production_Module.ProductionOrderWorkLine();
-            work_line.Line = work_lines[selected_index];
-            work_line.Editing = true;
-            work_line.ShowDialog();
-            if (work_line.IsRegistered)
+            if (metroGrid_Work.Rows.Count > 0)
             {
-                work_lines[selected_index] = work_line.Line;
-                Load_Work_DataGridView();
+                int selected_index = metroGrid_Material.SelectedRows[0].Index;
+                Production_Module.ProductionOrderWorkLine work_line = new Production_Module.ProductionOrderWorkLine();
+                work_line.Line = work_lines[selected_index];
+                work_line.Editing = true;
+                work_line.ShowDialog();
+                if (work_line.IsRegistered)
+                {
+                    work_lines[selected_index] = work_line.Line;
+                    Load_Work_DataGridView();
+                }
             }
+            update_SummaryProduct();
+
         }
 
         private void metroButton_DeleteProduct_Click(object sender, EventArgs e)
         {
-           if (datagrid_Products.SelectedRows[0] == null)
+            if (datagrid_Products.Rows.Count > 0)
             {
-                MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show(this, "¿Está seguro que desea eliminar este producto?", "Confirmación", MessageBoxButtons.YesNoCancel);
+                if (datagrid_Products.SelectedRows[0] == null)
                 {
-                    if (result == DialogResult.Yes)
+                    MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show(this, "¿Está seguro que desea eliminar este producto?", "Confirmación", MessageBoxButtons.YesNoCancel);
                     {
-                        int selected_index = datagrid_Products.SelectedRows[0].Index;
-                        Models.ProductionOrderProductLine product_line = product_lines[selected_index];
-                        product_line.State = "Eliminado";
-                        Load_Product_DataGridView();
+                        if (result == DialogResult.Yes)
+                        {
+                            int selected_index = datagrid_Products.SelectedRows[0].Index;
+                            Models.ProductionOrderProductLine product_line = product_lines[selected_index];
+                            product_line.State = "Eliminado";
+                            Load_Product_DataGridView();
+                        }
                     }
+                    update_SummaryProduct();
                 }
             }
         }
 
         private void metroButton_DeleteMaterial_Click(object sender, EventArgs e)
         {
-            if (metroGrid_Material.SelectedRows[0] == null)
-            {
-                MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show(this, "¿Está seguro que desea eliminar este material?", "Confirmación", MessageBoxButtons.YesNoCancel);
+            if (metroGrid_Material.Rows.Count > 0)
+            {       
+                if (metroGrid_Material.SelectedRows[0] == null)
                 {
-                    if (result == DialogResult.Yes)
+                    MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show(this, "¿Está seguro que desea eliminar este material?", "Confirmación", MessageBoxButtons.YesNoCancel);
                     {
-                        int selected_index = metroGrid_Material.SelectedRows[0].Index;
-                        Models.ProductionOrderMaterialLine material_line = material_lines[selected_index];
-                        material_line.State = "Eliminado";
-                        Load_Material_DataGridView();
+                        if (result == DialogResult.Yes)
+                        {
+                            int selected_index = metroGrid_Material.SelectedRows[0].Index;
+                            Models.ProductionOrderMaterialLine material_line = material_lines[selected_index];
+                            material_line.State = "Eliminado";
+                            Load_Material_DataGridView();
+                        }
                     }
                 }
             }
@@ -426,23 +456,130 @@ namespace WindowsFormsApp1.Views
 
         private void metroButton_DeleteWork_Click(object sender, EventArgs e)
         {
-            if (metroGrid_Work.SelectedRows[0] == null)
+            if (metroGrid_Work.Rows.Count > 0)
             {
-                MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show(this, "¿Está seguro que desea eliminar esta notificación de trabajo?", "Confirmación", MessageBoxButtons.YesNoCancel);
+                if (metroGrid_Work.SelectedRows[0] == null)
                 {
-                    if (result == DialogResult.Yes)
+                    MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show(this, "¿Está seguro que desea eliminar esta notificación de trabajo?", "Confirmación", MessageBoxButtons.YesNoCancel);
                     {
-                        int selected_index = metroGrid_Work.SelectedRows[0].Index;
-                        Models.ProductionOrderWorkLine work_line = work_lines[selected_index];
-                        work_line.State = "Eliminado";
-                        Load_Work_DataGridView();
+                        if (result == DialogResult.Yes)
+                        {
+                            int selected_index = metroGrid_Work.SelectedRows[0].Index;
+                            Models.ProductionOrderWorkLine work_line = work_lines[selected_index];
+                            work_line.State = "Eliminado";
+                            Load_Work_DataGridView();
+                        }
                     }
                 }
             }
         }
+
+
+        //Tablas de resumen
+        private void update_SummaryProduct()
+        {
+            calculate_products_summary();
+            Load_SummaryProduct_DataGridView();
+        }
+        private void update_SummaryMaterial()
+        {
+            calculate_materials_summary();
+            Load_SummaryMaterial_DataGridView();
+        }
+
+
+        private void Load_SummaryProduct_DataGridView()
+        {
+            metroGrid_products_summary.Rows.Clear();
+            for (int i = 0; i < product_summary_lines.Count(); i++)
+            {
+                String[] row = new String[4];
+                    row[0] = product_lines[i].Product_name;                   
+                    row[1] = product_lines[i].Quantity.ToString();
+                    row[2] = product_lines[i].Produced_quantity.ToString();                               
+                    row[3] = product_lines[i].Unit_name.ToString();
+                this.metroGrid_products_summary.Rows.Add(row);
+            }
+        }
+        private void Load_SummaryMaterial_DataGridView()
+        {
+            metroGrid_materials_summary.Rows.Clear();
+            for (int i = 0; i < material_summary_lines.Count(); i++)
+            {
+                String[] row = new String[4];      
+                row[0] = material_lines[i].Material_name;
+                row[1] = material_lines[i].Quantity_required.ToString();
+                row[2] = material_lines[i].Quantity_taken_real.ToString();       
+                row[3] = material_lines[i].Unit_name;
+            
+                this.metroGrid_materials_summary.Rows.Add(row);
+            }
+        }
+
+        public void calculate_products_summary()
+        {
+            product_summary_lines.Clear();
+            foreach (Models.ProductionOrderProductLine product_line in product_lines)
+            {
+
+                Models.ProductionOrderProductLine line = product_summary_lines.Find(p => p.Product_id == product_line.Product_id);
+                if (line == null) //No se encuentra
+                {
+                    Models.ProductionOrderProductLine new_line = new Models.ProductionOrderProductLine();
+                    new_line.Product_id = product_line.Product_id;
+                    new_line.Product_name = product_line.Product_name;
+                    new_line.Quantity = product_line.Quantity;
+                    new_line.Produced_quantity = 0;
+                    new_line.Unit_id = product_line.Unit_id;
+                    new_line.Unit_name = product_line.Unit_name;
+                    product_summary_lines.Add(new_line);
+                }
+                else
+                {
+                    line.Quantity += product_line.Quantity;
+                    line.Produced_quantity += 0;
+ 
+                }
+
+
+            }
+        }
+
+        public void calculate_materials_summary() //De la receta de productos
+        {
+            material_summary_lines.Clear();
+            //Por cada producto
+            foreach (Models.ProductionOrderProductLine product_line in product_lines)
+            {
+                //Por cada ingrediente de la receta
+                List<Models.RecipeDetail> recipe_details = (List<Models.RecipeDetail>)recipe_controller.getRecipeDetails(product_line.Recipe_id).data;
+
+                foreach (Models.RecipeDetail detail in recipe_details)
+                {
+                    Models.ProductionOrderMaterialLine material_line = material_summary_lines.Find(m => m.Material_id == detail.Material_id);
+                    if (material_line == null) //No se encuentra
+                    {
+                        Models.ProductionOrderMaterialLine line_found = material_lines.Find(m => m.Material_id == detail.Material_id);
+                        Models.ProductionOrderMaterialLine new_line = new Models.ProductionOrderMaterialLine();
+                        new_line.Material_id = line_found.Material_id;
+                        new_line.Material_name = line_found.Material_name;
+                        new_line.Quantity_required = detail.Quantity * product_line.Quantity;
+                        new_line.Unit_id = line_found.Unit_id;
+                        new_line.Unit_name = line_found.Unit_name;
+                        material_summary_lines.Add(new_line);
+                    }
+                    else
+                    {
+                        material_line.Quantity_required += detail.Quantity * product_line.Quantity;
+                    }
+
+                }
+            }
+        }
+
     }
 }
