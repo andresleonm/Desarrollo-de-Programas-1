@@ -122,7 +122,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            if (document == null || String.IsNullOrWhiteSpace(txt_Refund_id.Text))
+            if (document == null || String.IsNullOrWhiteSpace(txt_Document_id.Text))
             {
                 MessageBox.Show(this, "Debe seleccionar un documento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -203,8 +203,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_total.Text = (sd.Amount * (1 + sd.Porc_igv)).ToString();
             txt_Status.Text = sd.Status;
 
-            grid_Refund_Lines.DataSource = sd.Lines;
-            AdjustColumnRefundLine();
         }
 
         private void Clean()

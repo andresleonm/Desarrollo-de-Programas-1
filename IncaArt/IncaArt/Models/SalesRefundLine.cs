@@ -156,7 +156,7 @@ namespace WindowsFormsApp1.Models
             this.Product_name = sdl.Product_name;
             this.Unit_measure_id = sdl.Unit_measure_id;
             this.Unit_measure_name = sdl.Unit_measure_name;
-            this.Quantity = sdl.Quantity;
+            this.Quantity = 0;
             this.quantity_available = sdl.Quantity - sdl.Refund_quantity;
             this.Unit_price = sdl.Unit_price;
             this.prod_warehouse_id = sdl.Prod_warehouse_id;

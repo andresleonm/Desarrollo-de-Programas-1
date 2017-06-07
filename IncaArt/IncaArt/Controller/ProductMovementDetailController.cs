@@ -93,7 +93,8 @@ namespace WindowsFormsApp1.Controller
                     lines.Add(new Models.ProductMovementLine(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
                                                         Int32.Parse(r.getColumn(2)), Int32.Parse(r.getColumn(3)),
                         Int32.Parse(r.getColumn(4)), r.getColumn(5), r.getColumn(6),r.getColumn(7), Int32.Parse(r.getColumn(8)), 
-                        Int32.Parse(r.getColumn(9)), Int32.Parse(r.getColumn(10)), r.getColumn(11), Int32.Parse(r.getColumn(12))));
+                        Int32.Parse(r.getColumn(9)), Int32.Parse(r.getColumn(10)), r.getColumn(11), Int32.Parse(r.getColumn(12)),
+                        Double.Parse(r.getColumn(13))));
                 }
                 return new Result(lines, true, "");
             }

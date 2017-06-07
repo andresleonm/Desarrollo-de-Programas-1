@@ -174,7 +174,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_amount.Text = "";
             txt_igv.Text = "";
             txt_total.Text = "";
-            prodMovement = new ProductMovement();
             clean_gridView_DocumentLine();
         }
 

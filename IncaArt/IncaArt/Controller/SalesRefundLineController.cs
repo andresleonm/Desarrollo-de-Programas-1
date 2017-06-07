@@ -19,12 +19,12 @@ namespace WindowsFormsApp1.Controller
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("refund_id", id.ToString()));
              GenericResult result = execute_function("get_sales_refund_lines", parameters);
-            List<SalesOrderLine> sales_refund_lines = new List<SalesOrderLine>();
+            List<SalesRefundLine> sales_refund_lines = new List<SalesRefundLine>();
             if (result.success)
             {
                 foreach (Row r in result.data)
                 {
-                    sales_refund_lines.Add(new SalesOrderLine(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2)),
+                    sales_refund_lines.Add(new SalesRefundLine(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2)),
                                                     r.getColumn(3), Int32.Parse(r.getColumn(4)), r.getColumn(5), int.Parse(r.getColumn(6)), 
                                                     double.Parse(r.getColumn(7)), int.Parse(r.getColumn(8)), Int32.Parse(r.getColumn(9)), r.getColumn(10), r.getColumn(11)));
                 }

@@ -114,6 +114,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         private void  populateDetail(SalesOrder order)
         {
             clearGrid();
+            if (order == null)
+                return;
             var lines = order.Lines;
             var movs_lines = new List<Models.ProductMovementLine>();
             int i = 1;
@@ -129,6 +131,9 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         private void populateDetail(List<Models.ProductionOrderProductLine> production)
         {
             clearGrid();
+            if (production == null)
+                return;
+            
             var lines = production;
             var movs_lines = new List<Models.ProductMovementLine>();
             int i = 1;
@@ -144,6 +149,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         private void populateDetail(List<Models.SalesRefundLine> production)
         {
             clearGrid();
+            if (production == null)
+                return;            
             var lines = production;
             var movs_lines = new List<Models.ProductMovementLine>();
             int i = 1;
