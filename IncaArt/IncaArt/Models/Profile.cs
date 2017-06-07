@@ -51,6 +51,19 @@ namespace WindowsFormsApp1.Models
             }
         }
 
+        public bool HasFunctionality(string func)
+        {
+            foreach (Functionality f in functionalities)
+            {
+                if (f.Name == func)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public Profile(int id, string description, List<Functionality> functionalities)
         {
             this.id = id;

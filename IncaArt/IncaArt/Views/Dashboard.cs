@@ -27,6 +27,7 @@ namespace WindowsFormsApp1.Views
         public User sessionUser;
         public Dashboard(User sessionUser)
         {
+            this.sessionUser = sessionUser;
             InitializeComponent();
             hide_UserControls();            
             mainDashboard1.Visible = true;
@@ -44,7 +45,6 @@ namespace WindowsFormsApp1.Views
             this.mainDashboard1.Controls.Find("metroTile4", false)[0].Click += btn_profile_Click;
             this.mainDashboard1.Controls.Find("metroTile6", false)[0].Click += btn_product_Click;
             this.mainDashboard1.Controls.Find("metroTile12", false)[0].Click += btn_shift_Click;
-            this.sessionUser = sessionUser;
             label_user_role.Text = "(" + sessionUser.Profile.Description + ")";
             label_user_name.Text = sessionUser.Name + " " + sessionUser.Middlename;
         }

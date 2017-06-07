@@ -19,7 +19,8 @@ namespace WindowsFormsApp1.Views
         List<Profile> profile_list;
         ProfileController profile_controller;
         UsersController user_controller;
-        User currentUser;
+        User selectedUser;
+        User sessionUser;
         bool data_loaded;
 
         public UC_User()
@@ -199,11 +200,11 @@ namespace WindowsFormsApp1.Views
                 string message = " ";
 
 
-                if (currentUser != null)
+                if (selectedUser != null)
                 {
                     User user_to_update = new User(0, profile, name, paternal, maternal, phone, email, gender, address, username, password, "", false);
-                    user_to_update.Id = currentUser.Id;
-                    user_to_update.State = currentUser.State;
+                    user_to_update.Id = selectedUser.Id;
+                    user_to_update.State = selectedUser.State;
                     transaction_result = user_controller.updateUser(user_to_update);
                     message = "Usuario editado correctamente.";
                 }
@@ -241,18 +242,18 @@ namespace WindowsFormsApp1.Views
 
             if (row.Cells[0].Value != null)
             {
-                currentUser = user_list.Find(u => u.Id == Int32.Parse(row.Cells[0].Value.ToString()));
-                textbox_email.Text = currentUser.Email;
-                textbox_maternal.Text = currentUser.Lastname;
-                textbox_name.Text = currentUser.Name;
-                textbox_paternal.Text = currentUser.Middlename;
-                textbox_phone.Text = currentUser.Phone;
-                textbox_password.Text = currentUser.Password;
-                textbox_address.Text = currentUser.Address;
-                textbox_username.Text = currentUser.Nickname;
-                combobox_profile.Text = currentUser.Profile.Description;
+                selectedUser = user_list.Find(u => u.Id == Int32.Parse(row.Cells[0].Value.ToString()));
+                textbox_email.Text = selectedUser.Email;
+                textbox_maternal.Text = selectedUser.Lastname;
+                textbox_name.Text = selectedUser.Name;
+                textbox_paternal.Text = selectedUser.Middlename;
+                textbox_phone.Text = selectedUser.Phone;
+                textbox_password.Text = selectedUser.Password;
+                textbox_address.Text = selectedUser.Address;
+                textbox_username.Text = selectedUser.Nickname;
+                combobox_profile.Text = selectedUser.Profile.Description;
 
-                if (currentUser.Gender == 'M')
+                if (selectedUser.Gender == 'M')
                 {
                     radioButton1.Checked = true;
                 }
@@ -263,8 +264,13 @@ namespace WindowsFormsApp1.Views
 
                 metroTabControl1.SelectedIndex = 1;
                 btn_new.Text = "Editar";
+                btn_new.Visible = true;
                 textbox_password.Enabled = false;
 
+                if (!sessionUser.Profile.HasFunctionality("EDIT_USERS"))
+                {
+                    btn_new.Visible = false;
+                }
             }
         }
 
@@ -272,8 +278,14 @@ namespace WindowsFormsApp1.Views
         {
             Clean();
             btn_new.Text = "Guardar";
+            btn_new.Visible = true;
             textbox_password.Enabled = true;
-            currentUser = null;
+            selectedUser = null;
+
+            if (!sessionUser.Profile.HasFunctionality("ADD_USERS"))
+            {
+                btn_new.Visible = false;
+            }
         }
 
         private void UC_User_VisibleChanged(object sender, EventArgs e)
@@ -323,6 +335,20 @@ namespace WindowsFormsApp1.Views
                     }
                 }
             }
+        }
+
+        private void UC_User_Load()
+        {
+            if (!sessionUser.Profile.HasFunctionality("DELETE_USERS"))
+            {
+                metroButtonEliminar.Visible = false;
+            }
+        }
+
+        private void UC_User_ParentChanged(object sender, EventArgs e)
+        {
+            sessionUser = ((Dashboard)Parent).sessionUser;
+            UC_User_Load();
         }
     }
 }

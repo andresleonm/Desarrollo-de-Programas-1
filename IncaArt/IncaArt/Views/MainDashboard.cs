@@ -20,6 +20,17 @@ namespace WindowsFormsApp1.Views
 
         private void MainDashboard_Load(object sender, EventArgs e)
         {
+            User sessionUser = ((Dashboard)Parent).sessionUser;
+
+            if (!sessionUser.Profile.HasFunctionality("VIEW_USERS"))
+            {
+                metroTile1.Visible = false;
+            }
+
+            if (!sessionUser.Profile.HasFunctionality("VIEW_PROFILES"))
+            {
+                metroTile4.Visible = false;
+            }
         }
     }
 }
