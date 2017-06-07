@@ -86,18 +86,7 @@ namespace WindowsFormsApp1.Controller
 
                 foreach (Row row in result.data)
                 {
-                    List<Functionality> list = new List<Functionality>();
-                    JObject[] raw_collection = JsonConvert.DeserializeObject<JObject[]>(row.getColumn(2));
-
-                    foreach (JObject raw_f in raw_collection)
-                    {
-                        int id = Int32.Parse(raw_f.GetValue("FUNCTIONALITY_ID").ToString());
-                        string name = raw_f.GetValue("FUNCTIONALITY_NAME").ToString();
-                        string description = raw_f.GetValue("FUNCTIONALITY_DESCRIPTION").ToString();
-                        list.Add(new Functionality(id, name, description));
-                    }
-
-                    profiles.Add(new Profile(Int32.Parse(row.getColumn(0)), row.getColumn(1), list));
+                    profiles.Add(new Profile(Int32.Parse(row.getColumn(0)), row.getColumn(1), getFunctionalitiesFromJSON(row.getColumn(2))));
                 }
 
                 return new Result(profiles, true, "");
@@ -106,6 +95,21 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, false, result.message);
         }
 
+        public List<Functionality> getFunctionalitiesFromJSON(string json)
+        {
+            List<Functionality> list = new List<Functionality>();
+            JObject[] raw_collection = JsonConvert.DeserializeObject<JObject[]>(json);
+
+            foreach (JObject raw_f in raw_collection)
+            {
+                int id = Int32.Parse(raw_f.GetValue("FUNCTIONALITY_ID").ToString());
+                string name = raw_f.GetValue("FUNCTIONALITY_NAME").ToString();
+                string description = raw_f.GetValue("FUNCTIONALITY_DESCRIPTION").ToString();
+                list.Add(new Functionality(id, name, description));
+            }
+
+            return list;
+        }
         public Result insertProfile(Profile profile)
         {
             string funcs = String.Join(",", profile.Functionalities.Select(f => f.Id).ToList());

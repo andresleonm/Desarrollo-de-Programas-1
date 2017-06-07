@@ -36,6 +36,33 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+
+        public Result getWorkstations(Models.Workstation workstation_search)
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            if (workstation_search.Name!="") parameters.Add(new Parameter("name", workstation_search.Name));
+            if (workstation_search.Product_id!=0)parameters.Add(new Parameter("product_id", workstation_search.Product_id.ToString()));
+            GenericResult result = execute_function("get_workstations2", parameters);
+            List<Models.Workstation> workstations = new List<Models.Workstation>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    Models.Workstation workstation = new Models.Workstation();
+                    workstation.Id = Int32.Parse(r.getColumn(0));
+                    workstation.Product_id = Int32.Parse(r.getColumn(1));
+                    workstation.Previous_workstation = Int32.Parse(r.getColumn(2));
+                    workstation.Next_workstation = Int32.Parse(r.getColumn(3));
+                    workstation.Name = r.getColumn(4);
+                    workstations.Add(workstation);
+                }
+                return new Result(workstations, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+
         public Result getWorkstation(int id)
         {
             //consultar permisos
@@ -52,6 +79,8 @@ namespace WindowsFormsApp1.Controller
                 workstation.Next_workstation = Int32.Parse(r.getColumn(3));
                 workstation.Name = r.getColumn(4);
                 workstation.Quantity = Int32.Parse(r.getColumn(5));
+                workstation.Break_cost = Double.Parse(r.getColumn(6));
+                workstation.Currency_id = Int32.Parse(r.getColumn(7));
                 return new Result(workstation, true, "");
             }
             return new Result(null, result.success, result.message);
@@ -66,6 +95,8 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("next_workstation", workstation.Next_workstation.ToString()));
             parameters.Add(new Parameter("name", workstation.Name));
             parameters.Add(new Parameter("quantity", workstation.Quantity.ToString()));
+            parameters.Add(new Parameter("break_cost", workstation.Break_cost.ToString()));
+            parameters.Add(new Parameter("currency_id", workstation.Currency_id.ToString()));
             GenericResult result = execute_transaction("insert_workstation", parameters);
             if (result.success)
             {
@@ -83,6 +114,8 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("next_workstation", workstation.Next_workstation.ToString()));
             parameters.Add(new Parameter("name", workstation.Name));
             parameters.Add(new Parameter("quantity", workstation.Quantity.ToString()));
+            parameters.Add(new Parameter("break_cost", workstation.Break_cost.ToString()));
+            parameters.Add(new Parameter("currency_id", workstation.Currency_id.ToString()));
             GenericResult result = execute_transaction("update_workstation", parameters);
             if (result.success)
             {

@@ -62,5 +62,23 @@ namespace WindowsFormsApp1.Controller
             }
             return new Result(null, result.success, result.message);
         }
+
+        public Result updateProductionOrder(ProductionOrder production_order)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("production_order_id",production_order.Id.ToString()));
+            parameters.Add(new Parameter("production_order_name", production_order.Description));
+            parameters.Add(new Parameter("production_order_observation", production_order.Observation));
+            parameters.Add(new Parameter("production_order_date", production_order.Begin.ToString("MM/dd/yyyy")));
+            parameters.Add(new Parameter("state", production_order.State));
+            parameters.Add(new Parameter("production_order_date_end", production_order.End.ToString("MM/dd/yyyy")));
+
+            GenericResult result = execute_transaction("update_production_order", parameters);
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
     }
 }

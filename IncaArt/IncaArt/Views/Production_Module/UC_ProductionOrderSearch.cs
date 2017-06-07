@@ -14,6 +14,7 @@ namespace WindowsFormsApp1.Views
     {
         string user = "dp1admin";
         string password = "dp1admin";
+        List<Models.ProductionOrder> orders = new List<Models.ProductionOrder>();
 
         Controller.ProductionOrderController order_controller;
         public UC_ProductionOrderSearch()
@@ -26,24 +27,30 @@ namespace WindowsFormsApp1.Views
 
         public void datagrid_Products_Fill() 
         {
-            List<Models.ProductionOrder> orders = new List<Models.ProductionOrder>();         
+                  
             Controller.Result result = order_controller.getProductionOrders();
-
-            if (((List<Models.ProductionOrder>)result.data).Count != 0)
+            orders = (List<Models.ProductionOrder>)result.data;
+            Load_ProductionOrder_DataGridView();
+        }
+         
+        private void Load_ProductionOrder_DataGridView()
+        {
+            datagrid_ProductionOrders.Rows.Clear();
+            string[] grid_row = new string[5];
+            foreach (Models.ProductionOrder po in orders)
             {
-                datagrid_Products.Rows.Clear();
-                string[] grid_row = new string[5];
-                foreach (Models.ProductionOrder po in (List<Models.ProductionOrder>)result.data)
-                {
+                if (po.State == "Registrado") { 
                     grid_row[0] = po.Id.ToString();
                     grid_row[1] = po.Begin.ToShortDateString();
                     grid_row[2] = po.End.ToShortDateString();
                     grid_row[3] = po.Description;
                     grid_row[4] = po.Observation;
-                    this.datagrid_Products.Rows.Add(grid_row);
+                    this.datagrid_ProductionOrders.Rows.Add(grid_row);
                 }
             }
         }
+
+
 
         private void UC_ProductionOrderSearch_Load(object sender, EventArgs e)
         {
@@ -54,23 +61,44 @@ namespace WindowsFormsApp1.Views
         {
             if (Visible)
             {
-                datagrid_Products_Fill();
+                Load_ProductionOrder_DataGridView();
             }
         }
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            if(datagrid_Products.SelectedRows[0]==null)
+            if(datagrid_ProductionOrders.SelectedRows[0]==null)
             {
                 MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }else
             {
-                int selected_index = Int32.Parse(this.datagrid_Products.SelectedRows[0].Cells[0].Value.ToString());
+                int selected_index = Int32.Parse(this.datagrid_ProductionOrders.SelectedRows[0].Cells[0].Value.ToString());
                 UC_ProductionOrder uc_productionOrder = (UC_ProductionOrder)(this.Parent.Controls.Find("production_register", false)[0]);
                 uc_productionOrder.editing = true;
                 uc_productionOrder.fillEditForm(selected_index);
                 uc_productionOrder.Visible = true;
                 this.Visible = false;
+            }
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            if (datagrid_ProductionOrders.SelectedRows[0] == null)
+            {
+                MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }else
+            {
+                DialogResult result = MessageBox.Show(this, "¿Está seguro que desea eliminar esta orden de producción?", "Confirmación", MessageBoxButtons.YesNoCancel);
+                {
+                    if (result == DialogResult.Yes)
+                    {
+                        int selected_index = Int32.Parse(this.datagrid_ProductionOrders.SelectedRows[0].Cells[0].Value.ToString());
+                        Models.ProductionOrder order=orders.Find(o => o.Id == selected_index);
+                        order.State = "Eliminado";
+                        order_controller.updateProductionOrder(order);
+                        Load_ProductionOrder_DataGridView();
+                    }
+                }
             }
         }
     }

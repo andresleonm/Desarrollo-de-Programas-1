@@ -33,20 +33,10 @@ namespace WindowsFormsApp1.Controller
                 else
                 {
                     Row row = result.data[0];
-                    int profile_id = Int32.Parse(row.getColumn(1));
-                    Result profile_result = profile_controller.getProfileById(profile_id);
+                    Profile profile = new Profile(Int32.Parse(row.getColumn(1)), row.getColumn(12), profile_controller.getFunctionalitiesFromJSON(row.getColumn(13)));
+                    User user = new User(Int32.Parse(row.getColumn(0)), profile, row.getColumn(2), row.getColumn(3), row.getColumn(4), row.getColumn(5), row.getColumn(6), row.getColumn(7)[0], row.getColumn(8), row.getColumn(9), row.getColumn(10), row.getColumn(11), false);
 
-                    if (profile_result.success)
-                    {
-                        Profile profile = (Profile)profile_result.data;
-                        User user = new User(Int32.Parse(row.getColumn(0)), profile, row.getColumn(2), row.getColumn(3), row.getColumn(4), row.getColumn(5), row.getColumn(6), row.getColumn(7)[0], row.getColumn(8), row.getColumn(9), row.getColumn(10), row.getColumn(11), false);
-
-                        return new Result(user, true, "");
-                    }
-                    else
-                    {
-                        return new Result(null, false, "getProfileById " + profile_result.message);
-                    }
+                    return new Result(user, true, "");
                     
                 }
             }
@@ -87,6 +77,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("gender", user.Gender.ToString()));
             parameters.Add(new Parameter("profile", user.Profile.Id.ToString()));
             parameters.Add(new Parameter("nickname", user.Nickname));
+            parameters.Add(new Parameter("state", user.State));
 
             GenericResult result = execute_transaction("insert_user", parameters);
 
@@ -115,6 +106,21 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("status", user.State));
 
             GenericResult result = execute_transaction("update_user", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result deleteUser(User user)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", user.Id.ToString()));
+
+            GenericResult result = execute_transaction("delete_user", parameters);
 
             if (result.success)
             {

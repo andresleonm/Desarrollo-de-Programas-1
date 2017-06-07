@@ -35,7 +35,9 @@ namespace WindowsFormsApp1.Controller
 
         public Result insertSalesOrderLine(SalesOrderLine line)
         {
-            List<Parameter> parameters = new List<Parameter>();
+            if (line.Quantity <= 0)
+                return new Result("TRUE", true, "");
+            List <Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("order_id", line.Order_id.ToString()));
             parameters.Add(new Parameter("order_detail_id", line.Id.ToString()));
             parameters.Add(new Parameter("unit_of_measure_id", line.Unit_measure_id.ToString()));

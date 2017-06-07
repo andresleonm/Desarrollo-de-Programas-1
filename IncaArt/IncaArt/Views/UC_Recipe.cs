@@ -12,6 +12,11 @@ namespace WindowsFormsApp1.Views
 {
     public partial class UC_Recipe : MetroFramework.Controls.MetroUserControl
     {
+        bool name_flag;
+        bool description_flag;
+        bool product_flag;
+        bool material_flag;
+        bool quantity_flag;
         int cur_row;
         int cur_row_detail;
         List<Models.Recipe> recipe_list;
@@ -41,6 +46,7 @@ namespace WindowsFormsApp1.Views
             //Cargar los combobox
 
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
+            combo_data.Add(0, "Seleccionar");
             foreach (var item in material_list)
             {
                 combo_data.Add(item.Id, item.Name);
@@ -52,6 +58,7 @@ namespace WindowsFormsApp1.Views
             combobox_material.DataSource = new BindingSource(combo_data, null);
 
             combo_data = new Dictionary<int, string>();
+            combo_data.Add(0, "Seleccionar");
             foreach (var item in product_list)
             {
                 combo_data.Add(item.Id, item.Name);
@@ -61,13 +68,6 @@ namespace WindowsFormsApp1.Views
             combobox_product.ValueMember = "Key";
             combobox_product.DataSource = new BindingSource(combo_data, null);
 
-            combo_data = new Dictionary<int, string>();
-            combo_data.Add(0, "Seleccionar");
-            foreach (var item in product_list)
-            {
-                combo_data.Add(item.Id, item.Name);
-
-            }
             combobox_product_s.DisplayMember = "Value";
             combobox_product_s.ValueMember = "Key";
             combobox_product_s.DataSource = new BindingSource(combo_data, null);
@@ -139,7 +139,7 @@ namespace WindowsFormsApp1.Views
         {
             metroGrid2.Rows.Clear();
             Controller.Result unit_result;
-            Models.UnitOfMeasure unit=new Models.UnitOfMeasure();
+            Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
             for (int i = 0; i < detail_list.Count(); i++)
             {
                 Models.Material material = new Models.Material();
@@ -172,6 +172,9 @@ namespace WindowsFormsApp1.Views
         private void Clean()
         {
             ClearTextBoxes(this);
+            combobox_material.SelectedIndex = 0;
+            combobox_product.SelectedIndex = 0;
+            combobox_product_s.SelectedIndex = 0;
         }
 
         private void Clean_Material()
@@ -214,6 +217,11 @@ namespace WindowsFormsApp1.Views
 
         private Models.Recipe CreateRecipe(int operation)
         {
+            if (!Validate_Data(true))
+            {
+                MessageBox.Show("Hay campos inválidos", "Error", MessageBoxButtons.OK);
+                return null;
+            }
             string name, description;
             int product_id = ((KeyValuePair<int, string>)combobox_product.SelectedItem).Key;
             name = textbox_name.Text;
@@ -231,26 +239,32 @@ namespace WindowsFormsApp1.Views
         private void btn_new_Click(object sender, EventArgs e)
         {
             Models.Recipe recipe = CreateRecipe(0);
-            result = recipeController.insertRecipe(recipe);
-            if (result.data == null)
+            if (recipe != null)
             {
-                MessageBox.Show(result.message, "Error al registrar receta", MessageBoxButtons.OK);
-            }
-            else
-            {
-                Load_Data();
-                int id = recipe_list[recipe_list.Count - 1].Id;
-                foreach (var item in detail_list)
+                result = recipeController.insertRecipe(recipe);
+                if (result.data == null)
                 {
-                    item.Recipe_id = id;
+                    MessageBox.Show(result.message, "Error al registrar receta", MessageBoxButtons.OK);
                 }
-                Detail_Operation();
+                else
+                {
+                    Load_Data();
+                    int id = recipe_list[recipe_list.Count - 1].Id;
+                    foreach (var item in detail_list)
+                    {
+                        item.Recipe_id = id;
+                    }
+                    Detail_Operation();
+                    MessageBox.Show("Receta registrada correctamente", "Registrar receta", MessageBoxButtons.OK);
+                    Set_Flag_All(false);
+                }
+
+                Load_DataGridView();
+                Clean();
+                detail_list = new List<Models.RecipeDetail>();
+                metroTabControl1.SelectedIndex = 0;
             }
             
-            Load_DataGridView();
-            Clean();
-            detail_list = new List<Models.RecipeDetail>();
-            metroTabControl1.SelectedIndex = 0;
         }
 
         private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -281,7 +295,7 @@ namespace WindowsFormsApp1.Views
                     {
                         if (product_list[i].Id == recipe.Product_id)
                         {
-                            combobox_product.SelectedIndex = i;
+                            combobox_product.SelectedIndex = i+1;
                             break;
                         }
                     }
@@ -289,6 +303,7 @@ namespace WindowsFormsApp1.Views
                     Load_DataDetail(id);
                     Load_DataGridViewDetail();
                     metroTabControl1.SelectedIndex = 1;
+                    Set_Flag_All(true);
                 }
 
             }
@@ -298,22 +313,28 @@ namespace WindowsFormsApp1.Views
         private void btn_edit_Click(object sender, EventArgs e)
         {
             Models.Recipe recipe = CreateRecipe(1);
-            result = recipeController.updateRecipe(recipe);
-            if (result.data == null)
+            if (recipe != null)
             {
-                MessageBox.Show(result.message, "Error al modificar receta", MessageBoxButtons.OK);
+                result = recipeController.updateRecipe(recipe);
+                if (result.data == null)
+                {
+                    MessageBox.Show(result.message, "Error al modificar receta", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+                    recipe_list[index] = recipe;
+                    Load_Data();
+                    Detail_Operation();
+                }
+                Load_DataGridView();
+                Clean();
+                detail_list = new List<Models.RecipeDetail>();
+                metroTabControl1.SelectedIndex = 0;
+                Set_Flag_All(false);
+                MessageBox.Show("Receta editado correctamente", "Editar receta", MessageBoxButtons.OK);
             }
-            else
-            {
-                int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
-                recipe_list[index] = recipe;
-                Load_Data();
-                Detail_Operation();
-            }
-            Load_DataGridView();
-            Clean();
-            detail_list = new List<Models.RecipeDetail>();
-            metroTabControl1.SelectedIndex = 0;
+            
         }
 
         //Eliminar Receta
@@ -327,7 +348,8 @@ namespace WindowsFormsApp1.Views
             }
             else
             {
-                recipe_list.Remove(recipe_list[index]);
+                MessageBox.Show("Receta eliminado correctamente", "Eliminar receta", MessageBoxButtons.OK);
+                Load_Data();
             }
             //btn_delete.Enabled = false;
             detail_list = new List<Models.RecipeDetail>();
@@ -343,20 +365,25 @@ namespace WindowsFormsApp1.Views
 
         private Models.RecipeDetail CreateRecipeDetail(int operation)
         {
+            if (!Validate_Data(false))
+            {
+                return null;
+            }
             int material_id = ((KeyValuePair<int, string>)combobox_material.SelectedItem).Key;
             int quantity = Int32.Parse(textbox_quantity.Text);
             int recipe_id = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
-            char antOp='N',op = 'C';
+            char antOp = 'N', op = 'C';
             int index = Int32.Parse(metroGrid1.Rows[cur_row_detail].Cells[1].Value.ToString());
-            if (operation!=0)antOp = detail_list[index].Operation;
+            if (operation != 0) antOp = detail_list[index].Operation;
             if (operation == 1)//UPDATE
             {
                 if (antOp != 'C')
                 {
-                    op = 'U'; 
+                    op = 'U';
                 }
-                
-            } else if (operation ==2) //DELETE
+
+            }
+            else if (operation == 2) //DELETE
             {
                 if (antOp != 'C') op = 'D';
                 else op = 'E';
@@ -370,19 +397,30 @@ namespace WindowsFormsApp1.Views
         private void btn_mat_add_Click(object sender, EventArgs e)
         {
             Models.RecipeDetail detail = CreateRecipeDetail(0);
-            detail_list.Add(detail);
-            Clean_Material();
-            Load_DataGridViewDetail();
+            if (detail != null)
+            {
+                detail_list.Add(detail);
+                Clean_Material();
+                Load_DataGridViewDetail();
+                quantity_flag = false;
+                material_flag = false;
+            }
         }
 
         //Editar detalle
         private void btn_mat_edit_Click(object sender, EventArgs e)
         {
             Models.RecipeDetail detail = CreateRecipeDetail(1);
-            int index = int.Parse(metroGrid1.Rows[cur_row_detail].Cells[1].Value.ToString());
-            detail_list[index] = detail;
-            Clean_Material();
-            Load_DataGridViewDetail();
+            if (detail != null)
+            {
+                int index = int.Parse(metroGrid1.Rows[cur_row_detail].Cells[1].Value.ToString());
+                detail_list[index] = detail;
+                Clean_Material();
+                Load_DataGridViewDetail();
+                quantity_flag = false;
+                material_flag = false;
+            }
+            
         }
 
         //Eliminar detalle
@@ -393,7 +431,8 @@ namespace WindowsFormsApp1.Views
             if (detail.Operation == 'E')
             {
                 detail_list.RemoveAt(index);
-            }else
+            }
+            else
             {
                 detail_list[index] = detail;
             }
@@ -420,9 +459,11 @@ namespace WindowsFormsApp1.Views
                 {
                     if (material_list[i].Name == material_name)
                     {
-                        combobox_material.SelectedIndex = i;
+                        combobox_material.SelectedIndex = i+1;
                         material_id = material_list[i].Id;
                         textbox_quantity.Text = metroGrid2.Rows[cur_row_detail].Cells[5].Value.ToString();
+                        quantity_flag = true;
+                        material_flag = true;
                         break;
                     }
                 }
@@ -472,10 +513,126 @@ namespace WindowsFormsApp1.Views
             if (result.data == null)
             {
                 MessageBox.Show(result.message, "Error al buscar receta con filtros", MessageBoxButtons.OK);
-            } else
+            }
+            else
             {
                 recipe_list = (List<Models.Recipe>)result.data;
                 Load_DataGridView();
+            }
+        }
+
+        private void textbox_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            string text = textbox.Text;
+
+            if (String.IsNullOrWhiteSpace(text))
+            {
+                //e.Cancel = true;
+                Set_Flag(textbox.Name, false);
+                errorProvider.SetError(textbox, "Campo requerido");
+
+            }
+            else
+            {
+                //e.Cancel = false;
+                Set_Flag(textbox.Name, true);
+                errorProvider.SetError(textbox, null);
+            }
+        }
+
+        private void textbox_number_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            string text = textbox.Text;
+
+            if (String.IsNullOrWhiteSpace(text))
+            {
+                Set_Flag(textbox.Name, false);
+                errorProvider.SetError(textbox, "Campo requerido");
+
+            }
+            else
+            {
+                errorProvider.SetError(textbox, null);
+                int number;
+                if (!int.TryParse(text, out number))
+                {
+                    Set_Flag(textbox.Name, false);
+                    errorProvider.SetError(textbox, "Cantidad debe ser número");
+                }
+                else
+                {
+                    Set_Flag(textbox.Name, true);
+                }
+            }
+        }
+
+        private void combobox_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroComboBox combobox = (MetroFramework.Controls.MetroComboBox)sender;
+            int id = ((KeyValuePair<int, string>)combobox.SelectedItem).Key;
+            if (id == 0)
+            {
+                Set_Flag(combobox.Name, false);
+                errorProvider.SetError(combobox, "Se debe seleccionar");
+
+            }
+            else
+            {
+                Set_Flag(combobox.Name, true);
+                errorProvider.SetError(combobox, null);
+            }
+        }
+
+        private bool Validate_Data(bool recipe)
+        {
+            if (recipe) //Receta
+            {
+                if (name_flag && description_flag && product_flag)
+                {
+                    return true;
+                }
+                return false;
+            }
+            else //Detalle
+            {
+                if (material_flag && quantity_flag)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        private void Set_Flag_All(bool value)
+        {
+            name_flag = value;
+            description_flag = value;
+            product_flag = value;
+            material_flag = value;
+            quantity_flag = value;
+        }
+
+        private void Set_Flag(string name, bool value)
+        {
+            switch (name)
+            {
+                case "textbox_name":
+                    name_flag = value;
+                    break;
+                case "textbox_description":
+                    description_flag = value;
+                    break;
+                case "combobox_product":
+                    product_flag = value;
+                    break;
+                case "combobox_material":
+                    material_flag = value;
+                    break;
+                case "textbox_quantity":
+                    quantity_flag = value;
+                    break;
             }
         }
     }

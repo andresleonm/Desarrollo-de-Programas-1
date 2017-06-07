@@ -203,12 +203,13 @@ namespace WindowsFormsApp1.Views
                 {
                     User user_to_update = new User(0, profile, name, paternal, maternal, phone, email, gender, address, username, password, "", false);
                     user_to_update.Id = currentUser.Id;
+                    user_to_update.State = currentUser.State;
                     transaction_result = user_controller.updateUser(user_to_update);
                     message = "Usuario editado correctamente.";
                 }
                 else
                 {
-                    User user_to_add = new User(0, profile, name, paternal, maternal, phone, email, gender, address, username, password, "");
+                    User user_to_add = new User(0, profile, name, paternal, maternal, phone, email, gender, address, username, password, "PENDING");
                     transaction_result = user_controller.insertUser(user_to_add);
                     message = "Usuario ingresado correctamente.";
                 }
@@ -289,6 +290,38 @@ namespace WindowsFormsApp1.Views
             else if (!Visible)
             {
                 metroTabControl1.SelectedIndex = 0;
+            }
+        }
+
+        private void metroButtonEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("¿Está seguro que desea eliminar el usuario " + metroGrid1.CurrentRow.Cells[4].Value + " (" + metroGrid1.CurrentRow.Cells[1].Value + " " + metroGrid1.CurrentRow.Cells[2].Value + ")?", "Eliminar Usuario", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                User user_to_delete = user_list.Find(u => u.Id == Int32.Parse(metroGrid1.CurrentRow.Cells[0].Value.ToString()));
+                User session_user = ((Dashboard)Parent).sessionUser;
+
+                if (session_user.Id == user_to_delete.Id)
+                {
+                    MessageBox.Show("¡No puedes eliminar la sesión actual!");
+                }
+                else
+                {
+                    Result deleteResult = user_controller.deleteUser(user_to_delete);
+
+                    if (deleteResult.success)
+                    {
+                        MessageBox.Show("Usuario eliminado correctamente");
+                        Clean();
+                        Load_Data();
+                        Load_DataGridView();
+                    }
+                    else
+                    {
+                        MessageBox.Show(deleteResult.message);
+                    }
+                }
             }
         }
     }
