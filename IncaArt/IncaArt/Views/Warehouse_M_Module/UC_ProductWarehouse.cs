@@ -275,7 +275,7 @@ namespace WindowsFormsApp1.Views
                 {
                     if (products_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
                     {
-                        combobox_products.SelectedIndex = i;
+                        combobox_products.SelectedIndex = i+1;
                         break;
                     }
                 }
@@ -284,7 +284,7 @@ namespace WindowsFormsApp1.Views
                 {
                     if (types_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString())
                     {
-                        combobox_type.SelectedIndex = i;
+                        combobox_type.SelectedIndex = i+1;
                         break;
                     }
                 }
@@ -482,7 +482,7 @@ namespace WindowsFormsApp1.Views
             {
                 errorProvider.SetError(textbox, null);
                 int number;
-                if (!Int32.TryParse(text, out number))
+                if (Int32.TryParse(text, out number))
                 {
                     Set_Flag(textbox.Name, false);
                     errorProvider.SetError(textbox, "Capacidad debe ser número");
@@ -504,13 +504,13 @@ namespace WindowsFormsApp1.Views
             if (unit_id == 0)
             {
                 Set_Flag(combobox.Name, false);
-                errorProvider.SetError(combobox_unit, combobox_unit.Name);
+                errorProvider.SetError(combobox, combobox.Name);
 
             }
             else
             {
                 Set_Flag(combobox.Name, true);
-                errorProvider.SetError(combobox_unit, null);
+                errorProvider.SetError(combobox, null);
             }
         }
 

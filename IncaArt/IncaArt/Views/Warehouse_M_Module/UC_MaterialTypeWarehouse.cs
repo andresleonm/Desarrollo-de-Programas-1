@@ -114,13 +114,14 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
                     row[0] = types_list[i].Id.ToString();
                     row[1] = types_list[i].Name;
                     String clase;
+                /*
                 if (types_list[i].Wclass.CompareTo('0') == 0) clase = "Producción".ToString();
                 else clase = "Observación";
 
                     row[2] = clase;
                     row[3] = types_list[i].State;
 
-                    this.metroGrid1.Rows.Add(row);
+                    this.metroGrid1.Rows.Add(row);*/
 
             }
         }

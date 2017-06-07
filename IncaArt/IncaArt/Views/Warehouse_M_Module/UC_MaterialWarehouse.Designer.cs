@@ -49,10 +49,8 @@
             this.btn_clean = new System.Windows.Forms.Button();
             this.search = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.combobox_type_s = new MetroFramework.Controls.MetroComboBox();
-            this.current_capacity_s = new MetroFramework.Controls.MetroTextBox();
             this.combobox_product_s = new MetroFramework.Controls.MetroComboBox();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.Cancel = new MetroFramework.Controls.MetroButton();
@@ -255,10 +253,8 @@
             this.groupBox2.Controls.Add(this.btn_clean);
             this.groupBox2.Controls.Add(this.search);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.combobox_type_s);
-            this.groupBox2.Controls.Add(this.current_capacity_s);
             this.groupBox2.Controls.Add(this.combobox_product_s);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
@@ -310,18 +306,6 @@
             this.label13.Text = "Tipo Almacén:";
             this.label13.UseWaitCursor = true;
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label14.Location = new System.Drawing.Point(19, 89);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(75, 13);
-            this.label14.TabIndex = 32;
-            this.label14.Text = "Capacidad :";
-            this.label14.UseWaitCursor = true;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -344,38 +328,6 @@
             this.combobox_type_s.TabIndex = 22;
             this.combobox_type_s.UseSelectable = true;
             this.combobox_type_s.UseWaitCursor = true;
-            // 
-            // current_capacity_s
-            // 
-            // 
-            // 
-            // 
-            this.current_capacity_s.CustomButton.Image = null;
-            this.current_capacity_s.CustomButton.Location = new System.Drawing.Point(79, 1);
-            this.current_capacity_s.CustomButton.Name = "";
-            this.current_capacity_s.CustomButton.Size = new System.Drawing.Size(25, 25);
-            this.current_capacity_s.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.current_capacity_s.CustomButton.TabIndex = 1;
-            this.current_capacity_s.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.current_capacity_s.CustomButton.UseSelectable = true;
-            this.current_capacity_s.CustomButton.UseWaitCursor = true;
-            this.current_capacity_s.CustomButton.Visible = false;
-            this.current_capacity_s.Lines = new string[0];
-            this.current_capacity_s.Location = new System.Drawing.Point(112, 75);
-            this.current_capacity_s.MaxLength = 32767;
-            this.current_capacity_s.Name = "current_capacity_s";
-            this.current_capacity_s.PasswordChar = '\0';
-            this.current_capacity_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.current_capacity_s.SelectedText = "";
-            this.current_capacity_s.SelectionLength = 0;
-            this.current_capacity_s.SelectionStart = 0;
-            this.current_capacity_s.ShortcutsEnabled = true;
-            this.current_capacity_s.Size = new System.Drawing.Size(105, 27);
-            this.current_capacity_s.TabIndex = 26;
-            this.current_capacity_s.UseSelectable = true;
-            this.current_capacity_s.UseWaitCursor = true;
-            this.current_capacity_s.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.current_capacity_s.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // combobox_product_s
             // 
@@ -641,7 +593,6 @@
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
         private MetroFramework.Controls.MetroGrid metroGrid1;
         private MetroFramework.Controls.MetroComboBox combobox_product_s;
-        private MetroFramework.Controls.MetroTextBox current_capacity_s;
         private MetroFramework.Controls.MetroComboBox combobox_type_s;
         private MetroFramework.Controls.MetroTabPage metroTabPage3;
         private MetroFramework.Controls.MetroComboBox combobox_products;
@@ -653,7 +604,6 @@
         private System.Windows.Forms.Button btn_clean;
         private System.Windows.Forms.Button search;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Almacén;
