@@ -145,7 +145,7 @@ namespace WindowsFormsApp1.Views
                     unit = (Models.UnitOfMeasure)result.data;
 
                     //Grilla
-                    String[] row = new String[7];
+                    String[] row = new String[8];
                     row[0] = warehouse_list[i].Id.ToString();
                     row[1] = warehouse_list[i].Name;
                     row[2] = type.Name;
@@ -153,6 +153,8 @@ namespace WindowsFormsApp1.Views
                     row[4] = unit.Symbol;
                     row[5] = warehouse_list[i].Current_physical_stock.ToString();
                     row[6] = warehouse_list[i].Max_capacity.ToString();
+                    row[7] = warehouse_list[i].State;
+                    
                     this.metroGrid1.Rows.Add(row);
                 }
 
