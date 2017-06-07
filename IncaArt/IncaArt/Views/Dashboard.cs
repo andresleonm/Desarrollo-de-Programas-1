@@ -255,5 +255,11 @@ namespace WindowsFormsApp1.Views
             hide_UserControls();
             uc_ProductionMenu.Visible = true;
         }
+
+        private void btn_simulation_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            uC_Simulation1.Visible = true;
+        }
     }
 }

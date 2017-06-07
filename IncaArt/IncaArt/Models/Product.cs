@@ -18,6 +18,8 @@ namespace WindowsFormsApp1.Models
         private int stock;
         private double average_cost;
         private double unit_price;
+        public List<string> production_line { get; set; }
+
         public int Id
         {
             get { return id; }
@@ -116,6 +118,7 @@ namespace WindowsFormsApp1.Models
             this.stock_min = min_stock;
             this.average_cost = avg_cost;
             this.unit_price = price;
+            createProductionLine();
         }
 
         public Product(int id, int unit_id, string name, int stock_min, int stock_max,double price)
@@ -126,6 +129,7 @@ namespace WindowsFormsApp1.Models
             this.stock_max = stock_max;
             this.stock_min = stock_min;
             this.unit_price = price;
+            createProductionLine();
         }
 
         public Product(int id, int unit_id, string name, int stock_min, int stock_max)
@@ -135,6 +139,7 @@ namespace WindowsFormsApp1.Models
             this.name = name;
             this.stock_max = stock_max;
             this.stock_min = stock_min;
+            createProductionLine();
         }
 
         public Product()
@@ -144,6 +149,31 @@ namespace WindowsFormsApp1.Models
         public override string ToString()
         {
             return name;
+        }
+
+        private void createProductionLine()
+        {
+            if (name == "Ceramico")
+            {
+                List<string> line = new List<string>();
+                line.Add("MoldeadoC");
+                line.Add("PintadoC");
+                line.Add("Horneado");
+                this.production_line = line;
+            }
+            else if (name == "Piedra")
+            {
+                List<string> line = new List<string>();
+                line.Add("Tallado");
+                this.production_line = line;
+            }
+            else if (name == "Retablo")
+            {
+                List<string> line = new List<string>();
+                line.Add("MoldeadoR");
+                line.Add("PintadoR");
+                this.production_line = line;
+            }
         }
 
     }
