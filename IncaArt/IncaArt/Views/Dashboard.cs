@@ -1,24 +1,17 @@
-﻿using MetroFramework;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
-using WindowsFormsApp1.Views.Production_Module;
-using WindowsFormsApp1.Views.Warehouse_Module;
 
 namespace WindowsFormsApp1.Views
 {
     public partial class Dashboard : Form
     {
-        public string userName="dp1";
-        public string password="pass";
-        public List<PurchaseOrder> purchase_order_list = new List<PurchaseOrder>();        
+        public string userName = "dp1";
+        public string password = "pass";
+        public List<PurchaseOrder> purchase_order_list = new List<PurchaseOrder>();
         public List<Models.Material> material_list = new List<Material>();
         public List<Models.Warehouse> warehouse_list;
         public List<Models.User> user_list = new List<User>();
@@ -28,22 +21,22 @@ namespace WindowsFormsApp1.Views
         public Dashboard(User sessionUser)
         {
             InitializeComponent();
-            hide_UserControls();            
+            hide_UserControls();
             mainDashboard1.Visible = true;
             Cursor = Cursors.Arrow;
-            this.mainDashboard1.Controls.Find("metroTile11", false)[0].Click += btn_supplier_Click;
-            this.mainDashboard1.Controls.Find("metroTile10", false)[0].Click += btn_warehouse_Click;
-            this.mainDashboard1.Controls.Find("metroTile11", false)[0].Click += btn_supplier_Click;
-            this.mainDashboard1.Controls.Find("metroTile2", false)[0].Click += btn_client_Click;
-            this.mainDashboard1.Controls.Find("metroTile5", false)[0].Click += btn_bom_Click;
-            this.mainDashboard1.Controls.Find("metroTile8", false)[0].Click += btn_workstation_Click;
-            this.mainDashboard1.Controls.Find("metroTile9", false)[0].Click += btn_parameters_Click;
-            this.mainDashboard1.Controls.Find("metroTile1", false)[0].Click += btn_user_Click;
-            this.mainDashboard1.Controls.Find("metroTile3", false)[0].Click += btn_worker_Click;
-            this.mainDashboard1.Controls.Find("metroTile7", false)[0].Click += btn_material_Click;
-            this.mainDashboard1.Controls.Find("metroTile4", false)[0].Click += btn_profile_Click;
-            this.mainDashboard1.Controls.Find("metroTile6", false)[0].Click += btn_product_Click;
-            this.mainDashboard1.Controls.Find("metroTile12", false)[0].Click += btn_shift_Click;
+            mainDashboard1.Controls.Find("metroTile11", false)[0].Click += btn_supplier_Click;
+            mainDashboard1.Controls.Find("metroTile10", false)[0].Click += btn_warehouse_Click;
+            mainDashboard1.Controls.Find("metroTile11", false)[0].Click += btn_supplier_Click;
+            mainDashboard1.Controls.Find("metroTile2", false)[0].Click += btn_client_Click;
+            mainDashboard1.Controls.Find("metroTile5", false)[0].Click += btn_bom_Click;
+            mainDashboard1.Controls.Find("metroTile8", false)[0].Click += btn_workstation_Click;
+            mainDashboard1.Controls.Find("metroTile9", false)[0].Click += btn_parameters_Click;
+            mainDashboard1.Controls.Find("metroTile1", false)[0].Click += btn_user_Click;
+            mainDashboard1.Controls.Find("metroTile3", false)[0].Click += btn_worker_Click;
+            mainDashboard1.Controls.Find("metroTile7", false)[0].Click += btn_material_Click;
+            mainDashboard1.Controls.Find("metroTile4", false)[0].Click += btn_profile_Click;
+            mainDashboard1.Controls.Find("metroTile6", false)[0].Click += btn_product_Click;
+            mainDashboard1.Controls.Find("metroTile12", false)[0].Click += btn_shift_Click;
             this.sessionUser = sessionUser;
             label_user_role.Text = "(" + sessionUser.Profile.Description + ")";
             label_user_name.Text = sessionUser.Name + " " + sessionUser.Middlename;
@@ -51,7 +44,7 @@ namespace WindowsFormsApp1.Views
 
         private void menuButton_Click(object sender, MouseEventArgs e)
         {
-            highlightButtons(sender);            
+            highlightButtons(sender);
         }
 
         private void highlightButtons(object sender)
@@ -81,6 +74,11 @@ namespace WindowsFormsApp1.Views
             btn_production.FlatAppearance.BorderColor = Color.FromArgb(64, 104, 104);
             btn_production.ImageIndex = 1;
 
+            btn_simulation.BackColor = Color.FromArgb(64, 104, 104);
+            btn_simulation.ForeColor = Color.White;
+            btn_simulation.FlatAppearance.BorderColor = Color.FromArgb(64, 104, 104);
+            btn_simulation.ImageIndex = 1;
+
             ((Button)sender).BackColor = Color.FromArgb(222, 234, 198);
             ((Button)sender).ForeColor = Color.FromArgb(64, 104, 104);
             ((Button)sender).FlatAppearance.BorderColor = Color.FromArgb(222, 234, 198);
@@ -94,7 +92,7 @@ namespace WindowsFormsApp1.Views
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            WindowState = FormWindowState.Minimized;
         }
 
         private void pictureBox_MouseHover(object sender, EventArgs e)
@@ -150,14 +148,13 @@ namespace WindowsFormsApp1.Views
         {
             hide_UserControls();
             btn_config_Click((object)btn_config, e);
-            menuButton_Click((object)btn_config,(MouseEventArgs)e);
-            //mainDashboard1.Visible = true;
+            menuButton_Click((object)btn_config, (MouseEventArgs)e);
         }
 
         private void btn_purchase_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            uC_PurchasesMenu1.Visible = true;                        
+            uC_PurchasesMenu1.Visible = true;
         }
 
         private void btn_client_Click(object sender, EventArgs e)
@@ -169,14 +166,14 @@ namespace WindowsFormsApp1.Views
         private void btn_bom_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            //bom1.Visible = true;
+
             uc_recipe.Visible = true;
         }
 
         private void btn_workstation_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            //workstation1.Visible = true;
+
             uc_workstation.Visible = true;
         }
 
@@ -195,7 +192,7 @@ namespace WindowsFormsApp1.Views
         private void btn_material_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            //material.Visible = true;
+
             uc_material.Visible = true;
         }
 
@@ -208,7 +205,7 @@ namespace WindowsFormsApp1.Views
         private void btn_product_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            //product.Visible = true;
+
             uc_product.Visible = true;
         }
 
@@ -226,28 +223,28 @@ namespace WindowsFormsApp1.Views
 
         private void hide_UserControls()
         {
-            foreach (UserControl uc in this.Controls.OfType<UserControl>()){
+            foreach (UserControl uc in Controls.OfType<UserControl>())
+            {
                 uc.Visible = false;
             }
         }
-       
+
         private void btn_warehouse_Click_2(object sender, EventArgs e)
         {
-            hide_UserControls();
+            hide_UserControls();            
             uc_warehousemovement.Visible = true;
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            if(this.WindowState == FormWindowState.Maximized)
+            if (WindowState == FormWindowState.Maximized)
             {
-                this.WindowState = FormWindowState.Normal;
+                WindowState = FormWindowState.Normal;
             }
             else
             {
-                this.WindowState = FormWindowState.Maximized;
+                WindowState = FormWindowState.Maximized;
             }
-            
         }
 
         private void btn_production_Click(object sender, EventArgs e)
