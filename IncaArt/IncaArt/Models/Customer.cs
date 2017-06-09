@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MetroFramework.Controls;
 
 namespace WindowsFormsApp1.Models
 {
@@ -17,7 +18,18 @@ namespace WindowsFormsApp1.Models
         String type;
         int priority;
         String state;
+        
+
         public Customer() { }
+
+        public Customer(string txt_name, string txt_address, string txt_phone, string txt_Doi)
+        {
+            this.name = txt_name;
+            this.address = txt_address;
+            this.phone = txt_phone;
+            this.doi = txt_Doi;
+        }
+
         public Customer(int id, string name,string address, string doi, string phone, string email, string type, int priority, string state)
         {
             this.id = id;

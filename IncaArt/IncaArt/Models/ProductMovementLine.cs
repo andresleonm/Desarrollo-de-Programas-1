@@ -26,13 +26,14 @@ namespace WindowsFormsApp1.Models
         public int quantity { get; set; }
         public String State { get; set; }
         public int idDocumentLine { get; set; }
+        public double unit_price { get; set; }
 
 
         public ProductMovementLine(int movementId,int id,int warehouse_id,int product_id,
             int unit_id,String warehouse_name,
                                 String product_name,String unit_name,int warehouseQuantity,
                                 int documentQuantity,int quantity,
-                                String state,int idDocumentLine)
+                                String state,int idDocumentLine,double unit_price)
         {
             this.movementId = movementId;
             this.id = id;
@@ -47,6 +48,7 @@ namespace WindowsFormsApp1.Models
             this.quantity = quantity;
             this.State = state;
             this.idDocumentLine = idDocumentLine;
+            this.unit_price = unit_price;
         }
         public ProductMovementLine(SalesOrderLine line,int id, string user, string password)
         {
@@ -60,6 +62,40 @@ namespace WindowsFormsApp1.Models
             Models.ProductWarehouse warehouse = (Models.ProductWarehouse)pwc.getProductWarehouse(warehouse_id).data;
             this.warehouseQuantity = warehouse.Current_physical_stock;
             this.documentQuantity = line.Quantity - line.Delivery_quantity;
+            this.unit_price = line.Unit_price;
+            this.State = "Active";
+            this.idDocumentLine = line.Id;
+        }
+
+        public ProductMovementLine(SalesRefundLine line, int id, string user, string password)
+        {
+            this.warehouse_id = line.Prod_warehouse_id;
+            this.product_id = line.Product_id;
+            this.unit_id = line.Unit_measure_id;
+            warehouse_name = line.Prod_warehouse_name;
+            product_name = line.Product_name;
+            unit_name = line.Unit_measure_name;
+            ProductWarehouseController pwc = new ProductWarehouseController(user, password);
+            Models.ProductWarehouse warehouse = (Models.ProductWarehouse)pwc.getProductWarehouse(warehouse_id).data;
+            this.warehouseQuantity = warehouse.Current_physical_stock;
+            this.documentQuantity = line.Quantity - line.Refund_quantity;
+            this.unit_price = line.Unit_price;
+            this.State = "Active";
+            this.idDocumentLine = line.Id;
+        }
+
+        public ProductMovementLine(ProductionOrderProductLine line, int id, string user, string password)
+        {
+            this.warehouse_id = line.Warehouse_id;
+            this.product_id = line.Product_id;
+            this.unit_id = line.Unit_id;
+            warehouse_name = line.Warehouse_name;
+            product_name = line.Product_name;
+            unit_name = line.Unit_name;
+            ProductWarehouseController pwc = new ProductWarehouseController(user, password);
+            Models.ProductWarehouse warehouse = (Models.ProductWarehouse)pwc.getProductWarehouse(warehouse_id).data;
+            this.warehouseQuantity = warehouse.Current_physical_stock;
+            this.documentQuantity = line.Produced_quantity - line.Quantity_warehouse;
             this.State = "Active";
             this.idDocumentLine = line.Id;
         }

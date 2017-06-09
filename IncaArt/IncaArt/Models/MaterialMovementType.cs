@@ -26,5 +26,9 @@ namespace WindowsFormsApp1.Models
             this.clase = clase;
             this.state = state;
         }
+        public override string ToString()
+        {
+            return name;
+        }
     }
 }

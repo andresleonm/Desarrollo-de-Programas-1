@@ -8,6 +8,7 @@ namespace WindowsFormsApp1.Models
 {
     public class ProductMovement
     {
+        public string movementName;
         public int id { get; set; }
         public ProductMovementType Tipo { get; set; }
         public String Observacion { get; set; }
@@ -44,6 +45,17 @@ namespace WindowsFormsApp1.Models
 
         }
 
-        
+        public string MovementName
+        {
+            get
+            {
+                return "Movimiento Nro - " + id.ToString();
+            }
+
+            set
+            {
+                movementName = value;
+            }
+        }
     }
 }

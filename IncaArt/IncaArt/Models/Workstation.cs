@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class Workstation
+    public class Workstation
     {
         int id;
         int product_id;
@@ -17,6 +17,17 @@ namespace WindowsFormsApp1.Models
         int quantity;
         double break_cost;
         int currency_id;
+
+        public Workstation(int product_id, string name)
+        {
+            this.product_id = product_id;
+            this.name = name;
+        }
+
+        public Workstation()
+        {
+
+        }       
 
         public int Id
         {
@@ -54,19 +65,6 @@ namespace WindowsFormsApp1.Models
             set
             {
                 name = value;
-            }
-        }
-
-        public int Assigned_worker
-        {
-            get
-            {
-                return assigned_worker;
-            }
-
-            set
-            {
-                assigned_worker = value;
             }
         }
 
@@ -109,6 +107,7 @@ namespace WindowsFormsApp1.Models
             }
         }
 
+        
         public double Break_cost
         {
             get
