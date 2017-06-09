@@ -36,6 +36,7 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+
         public Result getWorkstations(Models.Workstation workstation_search)
         {
             //consultar permisos
@@ -60,6 +61,7 @@ namespace WindowsFormsApp1.Controller
             }
             return new Result(null, result.success, result.message);
         }
+
 
         public Result getWorkstation(int id)
         {

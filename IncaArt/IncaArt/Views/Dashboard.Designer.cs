@@ -70,6 +70,8 @@ namespace WindowsFormsApp1.Views
             this.uc_recipe = new WindowsFormsApp1.Views.UC_Recipe();
             this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
             this.uc_workstation = new WindowsFormsApp1.Views.UC_Workstation();
+            this.uc_warehousemovement = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement(userName,password);
+            this.uc_ProductionMenu = new Production_Module.UC_ProductionMenu();
             this.uC_Simulation1 = new WindowsFormsApp1.Views.UC_Simulation();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -398,6 +400,22 @@ namespace WindowsFormsApp1.Views
             this.uC_SalesMain1.Name = "uC_SalesMain1";
             this.uC_SalesMain1.Size = new System.Drawing.Size(819, 514);
             this.uC_SalesMain1.TabIndex = 31;
+
+            this.uc_warehousemovement.BackColor = System.Drawing.SystemColors.Control;
+            this.uc_warehousemovement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_warehousemovement.Location = new System.Drawing.Point(132, 72);
+            this.uc_warehousemovement.Name = "uc_warehousemovement";
+            this.uc_warehousemovement.Size = new System.Drawing.Size(819, 514);
+            this.uc_warehousemovement.TabIndex = 31;
+
+            this.uc_ProductionMenu.BackColor = System.Drawing.SystemColors.Control;
+            this.uc_ProductionMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_ProductionMenu.Location = new System.Drawing.Point(132, 72);
+            this.uc_ProductionMenu.Name = "uc_ProductionMenu";
+            this.uc_ProductionMenu.Size = new System.Drawing.Size(819, 514);
+            this.uc_ProductionMenu.TabIndex = 31;
+
+
             // 
             // parameters1
             // 
@@ -556,6 +574,9 @@ namespace WindowsFormsApp1.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(951, 586);
+            this.Controls.Add(this.uc_ProductionMenu);
+            this.Controls.Add(this.uc_warehousemovement);
+            this.Controls.Add(this.uC_ProductWarehouse1);
             this.Controls.Add(this.uC_Simulation1);
             this.Controls.Add(this.uC_SalesMain1);
             this.Controls.Add(this.parameters1);

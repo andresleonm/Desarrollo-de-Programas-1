@@ -16,10 +16,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         string user;
         string password;
         ProductMovementController pc;
-        SalesOrderController soc;
-        bool flgBegin = true;
-        int claseAnt = -1;
-        string idAnt;
+        SalesOrderController soc;        
         Models.ProductMovement pm;
 
         

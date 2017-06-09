@@ -118,6 +118,7 @@
             this.txt_name.UseSelectable = true;
             this.txt_name.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txt_name.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txt_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_name_KeyDown);
             // 
             // groupBox2
             // 
@@ -225,16 +226,14 @@
             // 
             // address
             // 
-            this.address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.address.DataPropertyName = "address";
             this.address.HeaderText = "Dirección";
             this.address.Name = "address";
             this.address.ReadOnly = true;
-            this.address.Width = 78;
             // 
             // doi
             // 
-            this.doi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.doi.DataPropertyName = "doi";
             this.doi.HeaderText = "RUC / DNI";
             this.doi.Name = "doi";
@@ -251,12 +250,11 @@
             // 
             // email
             // 
-            this.email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.email.DataPropertyName = "email";
             this.email.HeaderText = "E-mail";
             this.email.Name = "email";
             this.email.ReadOnly = true;
-            this.email.Width = 61;
+            this.email.Width = 160;
             // 
             // priority
             // 
@@ -279,6 +277,7 @@
             this.btn_Cancel.TabIndex = 17;
             this.btn_Cancel.Text = "Cancelar";
             this.btn_Cancel.UseVisualStyleBackColor = false;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // btn_Save
             // 
@@ -300,9 +299,9 @@
             this.label1.ForeColor = System.Drawing.Color.DarkCyan;
             this.label1.Location = new System.Drawing.Point(85, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 13);
+            this.label1.Size = new System.Drawing.Size(111, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Campos del cliente :";
+            this.label1.Text = "Datos del cliente :";
             // 
             // SalesOrderSearchClient
             // 
@@ -313,6 +312,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "SalesOrderSearchClient";
             this.Text = "Búsqueda de Cliente";
+            this.Load += new System.EventHandler(this.SalesOrderSearchClient_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
