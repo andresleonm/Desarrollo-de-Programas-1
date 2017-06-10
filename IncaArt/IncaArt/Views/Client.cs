@@ -30,6 +30,8 @@ namespace WindowsFormsApp1.Views
         int type_list = 4;
         Dictionary<int, string> combo_priority;
         Dictionary<int, string> combo_type;
+
+        Models.Customer curCustomer;
         public Client()
         {
             InitializeComponent();
@@ -94,15 +96,16 @@ namespace WindowsFormsApp1.Views
             metroGrid1.Rows.Clear();
             for (int i = 0; i < customer_list.Count(); i++)
             {
-                String[] row = new String[8];
+                String[] row = new String[9];
                 row[0] = customer_list[i].Id.ToString();
-                row[1] = customer_list[i].Doi.ToString();
-                row[2] = customer_list[i].Name.ToString();
-                row[3] = customer_list[i].Address.ToString();
-                row[4] = customer_list[i].Phone.ToString();
-                row[5] = customer_list[i].Email.ToString();
-                row[6] = customer_list[i].Type.ToString();
-                row[7] = customer_list[i].Priority.ToString();
+                row[1] = i.ToString();
+                row[2] = customer_list[i].Doi.ToString();
+                row[3] = customer_list[i].Name.ToString();
+                row[4] = customer_list[i].Address.ToString();
+                row[5] = customer_list[i].Phone.ToString();
+                row[6] = customer_list[i].Email.ToString();
+                row[7] = customer_list[i].Type.ToString();
+                row[8] = customer_list[i].Priority.ToString();
                 this.metroGrid1.Rows.Add(row);
             }
         }
@@ -110,6 +113,11 @@ namespace WindowsFormsApp1.Views
         private void Clean()
         {
             ClearTextBoxes(this);
+            combobox_priority.SelectedIndex = 0;
+            combobox_priority_s.SelectedIndex = 0;
+            combobox_type.SelectedIndex = 0;
+            combobox_type_s.SelectedIndex = 0;
+
         }
 
         private void ClearTextBoxes(Control control)
@@ -164,15 +172,54 @@ namespace WindowsFormsApp1.Views
 
             if (operacion == 1) //UPDATE
             {
-                id = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
+                id = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
             }
             customer = new Models.Customer(id,name,address,doi,phone,email,type,priority,state);
 
             return customer;
         }
 
+        private void tabIndex_Enter(object sender, EventArgs e)
+        {
+            Clean();
+            register.Text = "Guardar";
+            curCustomer = null;
+        }
         private void register_Click(object sender, EventArgs e)
         {
+            
+            
+            Models.Customer customer;
+            string message = " ";
+
+            if (curCustomer != null)
+            {
+                customer = CreateCustomer(1);
+                result = customerController.updateCustomer(customer);
+                message = "Cliente editado correctamente";
+            }
+            else {
+                customer = CreateCustomer(0);
+                result = customerController.insertCustomer(customer);
+                message = "Cliente agregado correctamente";
+            }
+
+            if (result.success)
+            {
+                MessageBox.Show(message,"Registro", MessageBoxButtons.OK);
+                Set_Flag_All(false);
+                Clean();
+                Load_Data();
+                Load_DataGridView();
+                metroTabControl1.SelectedIndex = 0;
+            }
+            else
+            {
+                MessageBox.Show(result.message,"Error en la transacción", MessageBoxButtons.OK);
+            }
+        }
+        
+ /*
             Models.Customer customer = CreateCustomer(0);
             if (customer != null)
             {
@@ -191,58 +238,8 @@ namespace WindowsFormsApp1.Views
                 Clean();
                 metroTabControl1.SelectedIndex = 0;
             }
-        }
 
 
-        private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (metroGrid1.Rows[e.RowIndex].Cells[0].Value != null)
-            {
-                cur_row = e.RowIndex;
-                delete.Enabled = true;
-            }
-        }
-
-
-        private void metroGrid1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            cur_row = e.RowIndex;
-            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
-            {
-                textbox_doi.Text  = metroGrid1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                textbox_address.Text = metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                textbox_phone.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                textbox_email.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
-
-                //Tipo 
-                for (int i = 0; i < combo_type.Count() ; i++)
-                {
-                    if (combo_type[i]== metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString())
-                    {
-                        combobox_type.SelectedIndex = i;
-                        break;
-                    }
-                }
-
-                //Tipo 
-                for (int i = 0; i < combo_priority.Count(); i++)
-                {
-                    if (combo_priority[i] == metroGrid1.Rows[e.RowIndex].Cells[7].Value.ToString())
-                    {
-                        combobox_priority.SelectedIndex = i ;
-                        break;
-                    }
-                }
-
-                metroTabControl1.SelectedIndex = 1;
-                Set_Flag_All(true);
-            }
-        }
-
-
-        private void edit_Click(object sender, EventArgs e)
-        {
             Models.Customer customer = CreateCustomer(1);
             if (customer != null)
             {
@@ -260,6 +257,57 @@ namespace WindowsFormsApp1.Views
                 Load_DataGridView();
                 Clean();
                 metroTabControl1.SelectedIndex = 0;
+            }*/
+        
+
+
+        private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
+            {
+                cur_row = e.RowIndex;
+                delete.Enabled = true;
+            }
+        }
+
+
+        private void metroGrid1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            cur_row = e.RowIndex;
+            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
+            {
+                int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+                curCustomer = customer_list[index];
+
+                textbox_doi.Text  = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                textbox_address.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                textbox_phone.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                textbox_email.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
+
+                //Tipo 
+                for (int i = 0; i < combo_type.Count() ; i++)
+                {
+                    if (combo_type[i]== metroGrid1.Rows[e.RowIndex].Cells[7].Value.ToString())
+                    {
+                        combobox_type.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                //Tipo 
+                for (int i = 0; i < combo_priority.Count(); i++)
+                {
+                    if (combo_priority[i] == metroGrid1.Rows[e.RowIndex].Cells[8].Value.ToString())
+                    {
+                        combobox_priority.SelectedIndex = i ;
+                        break;
+                    }
+                }
+
+                metroTabControl1.SelectedIndex = 1;
+                Set_Flag_All(true);
             }
         }
 
