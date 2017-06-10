@@ -62,7 +62,7 @@ namespace WindowsFormsApp1.Views
         {
             if (Visible)
             {
-                Load_ProductionOrder_DataGridView();
+                datagrid_Products_Fill();
             }
         }
 

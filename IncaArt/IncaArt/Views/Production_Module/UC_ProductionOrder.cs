@@ -28,6 +28,9 @@ namespace WindowsFormsApp1.Views
         ProductionOrderMaterialLineController material_line_controller;
         ProductionOrderWorkLineController work_line_controller;
         RecipesController recipe_controller;
+        WorkstationsController workstation_controller;
+        MaterialsController material_controller;
+        UnitController unit_controller;
 
         public bool editing = false;
 
@@ -39,6 +42,9 @@ namespace WindowsFormsApp1.Views
             material_line_controller = new ProductionOrderMaterialLineController(user, password);
             work_line_controller = new ProductionOrderWorkLineController(user, password);
             recipe_controller = new RecipesController(user,password);
+            workstation_controller = new WorkstationsController(user,password);
+            material_controller = new MaterialsController(user,password);
+            unit_controller = new UnitController(user,password);
             hide_buttons();
         }
         
@@ -179,6 +185,8 @@ namespace WindowsFormsApp1.Views
                 Load_Product_DataGridView();
                 update_SummaryProduct();
             }
+            update_SummaryMaterial();
+            update_SummaryProduct();
             
         }
 
@@ -191,7 +199,7 @@ namespace WindowsFormsApp1.Views
             {
                 material_lines.Add(material_line.Line);
                 Load_Material_DataGridView();
-            }           
+            }
         }
 
         private void metroButton_AddWorker_Click(object sender, EventArgs e)
@@ -204,6 +212,7 @@ namespace WindowsFormsApp1.Views
                 work_lines.Add(work_line.Line);
                 Load_Work_DataGridView();
             }
+            update_SummaryProduct();
         }
         private void clear_Form()
         {
@@ -213,6 +222,11 @@ namespace WindowsFormsApp1.Views
             product_lines.Clear();
             material_lines.Clear();
             work_lines.Clear();
+            product_summary_lines.Clear();
+            material_summary_lines.Clear();
+            metroGrid_materials_summary.Rows.Clear();
+            metroGrid_products_summary.Rows.Clear();
+                
             //header
             metroTextBox_OrderNumber.Text = "";
             metroTextBox_Description.Text = "";
@@ -369,6 +383,7 @@ namespace WindowsFormsApp1.Views
                 }
             }
             update_SummaryProduct();
+            update_SummaryMaterial();
         }
 
         private void metroButton_EditMaterial_Click(object sender, EventArgs e)
@@ -436,6 +451,7 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                     update_SummaryProduct();
+                    update_SummaryMaterial();
                 }
             }
         }
@@ -484,6 +500,7 @@ namespace WindowsFormsApp1.Views
                             Load_Work_DataGridView();
                         }
                     }
+                    update_SummaryProduct();
                 }
             }
         }
@@ -497,7 +514,7 @@ namespace WindowsFormsApp1.Views
         }
         private void update_SummaryMaterial()
         {
-           // calculate_materials_summary();
+            calculate_materials_summary();
             Load_SummaryMaterial_DataGridView();
         }
 
@@ -508,10 +525,10 @@ namespace WindowsFormsApp1.Views
             for (int i = 0; i < product_summary_lines.Count(); i++)
             {
                 String[] row = new String[4];
-                    row[0] = product_lines[i].Product_name;                   
-                    row[1] = product_lines[i].Quantity.ToString();
-                    row[2] = product_lines[i].Produced_quantity.ToString();                               
-                    row[3] = product_lines[i].Unit_name.ToString();
+                    row[0] = product_summary_lines[i].Product_name;                   
+                    row[1] = product_summary_lines[i].Quantity.ToString();
+                    row[2] = product_summary_lines[i].Produced_quantity.ToString();                               
+                    row[3] = product_summary_lines[i].Unit_name.ToString();
                 this.metroGrid_products_summary.Rows.Add(row);
             }
         }
@@ -520,11 +537,10 @@ namespace WindowsFormsApp1.Views
             metroGrid_materials_summary.Rows.Clear();
             for (int i = 0; i < material_summary_lines.Count(); i++)
             {
-                String[] row = new String[4];      
-                row[0] = material_lines[i].Material_name;
-                row[1] = material_lines[i].Quantity_required.ToString();
-                row[2] = material_lines[i].Quantity_taken_real.ToString();       
-                row[3] = material_lines[i].Unit_name;
+                String[] row = new String[3];      
+                row[0] = material_summary_lines[i].Material_name;
+                row[1] = material_summary_lines[i].Quantity_required.ToString();   
+                row[2] = material_summary_lines[i].Unit_name;
             
                 this.metroGrid_materials_summary.Rows.Add(row);
             }
@@ -535,9 +551,8 @@ namespace WindowsFormsApp1.Views
             product_summary_lines.Clear();
             foreach (Models.ProductionOrderProductLine product_line in product_lines)
             {
-
-                Models.ProductionOrderProductLine line = product_summary_lines.Find(p => p.Product_id == product_line.Product_id);
-                if (line == null) //No se encuentra
+                int index = product_summary_lines.FindIndex(p => p.Product_id == product_line.Product_id);
+                if (index==-1) //No se encuentra
                 {
                     Models.ProductionOrderProductLine new_line = new Models.ProductionOrderProductLine();
                     new_line.Product_id = product_line.Product_id;
@@ -550,11 +565,22 @@ namespace WindowsFormsApp1.Views
                 }
                 else
                 {
-                    line.Quantity += product_line.Quantity;
-                    line.Produced_quantity += 0;
- 
+                    product_summary_lines[index].Quantity += product_line.Quantity;
                 }
+            }
 
+            Result result = workstation_controller.getWorkstations();
+            List<Models.Workstation> workstations = (List<Models.Workstation>)result.data;
+
+            foreach (Models.ProductionOrderProductLine product_line in product_summary_lines)
+            {
+                foreach(Models.ProductionOrderWorkLine work_line in work_lines)
+                {
+                    if ((work_line.Product_id==product_line.Product_id)&&(workstations.Find(w=>w.Id==work_line.Workstation_id).Next_workstation==0)) {
+                            
+                            product_line.Produced_quantity += work_line.Quantity_produced;
+                    }            
+                }
 
             }
         }
@@ -562,29 +588,31 @@ namespace WindowsFormsApp1.Views
         public void calculate_materials_summary() //De la receta de productos
         {
             material_summary_lines.Clear();
+            List<Models.Material> materials = (List<Models.Material>)material_controller.getMaterials().data;
+            List<Models.UnitOfMeasure> units = (List<Models.UnitOfMeasure>)unit_controller.getUnits().data;
             //Por cada producto
             foreach (Models.ProductionOrderProductLine product_line in product_lines)
             {
-                //Por cada ingrediente de la receta
+                //Detalle de receta de cada producto
                 List<Models.RecipeDetail> recipe_details = (List<Models.RecipeDetail>)recipe_controller.getRecipeDetails(product_line.Recipe_id).data;
-
+                //Por cada ingrediente de la receta
                 foreach (Models.RecipeDetail detail in recipe_details)
                 {
-                    Models.ProductionOrderMaterialLine material_line = material_summary_lines.Find(m => m.Material_id == detail.Material_id);
-                    if (material_line == null) //No se encuentra
+                    int index = material_summary_lines.FindIndex(m => m.Material_id == detail.Material_id);
+                    if (index==-1) //No se encuentra
                     {
-                        Models.ProductionOrderMaterialLine line_found = material_lines.Find(m => m.Material_id == detail.Material_id);
+                        Models.Material material_found = materials.Find(m => m.Id == detail.Material_id);
                         Models.ProductionOrderMaterialLine new_line = new Models.ProductionOrderMaterialLine();
-                        new_line.Material_id = line_found.Material_id;
-                        new_line.Material_name = line_found.Material_name;
+                        new_line.Material_id = material_found.Id;
+                        new_line.Material_name = material_found.Name;
                         new_line.Quantity_required = detail.Quantity * product_line.Quantity;
-                        new_line.Unit_id = line_found.Unit_id;
-                        new_line.Unit_name = line_found.Unit_name;
+                        new_line.Unit_id = material_found.Unit_id;
+                        new_line.Unit_name = units.Find(u=>u.Id==material_found.Unit_id).Name;
                         material_summary_lines.Add(new_line);
                     }
                     else
                     {
-                        material_line.Quantity_required += detail.Quantity * product_line.Quantity;
+                        material_summary_lines[index].Quantity_required += detail.Quantity * product_line.Quantity;
                     }
 
                 }

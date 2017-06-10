@@ -102,6 +102,10 @@
             this.state_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.metroGrid_products_summary = new MetroFramework.Controls.MetroGrid();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroDateTime_End = new MetroFramework.Controls.MetroDateTime();
@@ -121,12 +125,7 @@
             this.metroGrid_materials_summary = new MetroFramework.Controls.MetroGrid();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage_Products.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_Products)).BeginInit();
@@ -154,7 +153,7 @@
             this.metroTabControl1.ItemSize = new System.Drawing.Size(135, 25);
             this.metroTabControl1.Location = new System.Drawing.Point(14, 254);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 2;
             this.metroTabControl1.Size = new System.Drawing.Size(683, 320);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 33;
@@ -278,6 +277,7 @@
             this.datagrid_Products.Location = new System.Drawing.Point(-2, 32);
             this.datagrid_Products.MultiSelect = false;
             this.datagrid_Products.Name = "datagrid_Products";
+            this.datagrid_Products.ReadOnly = true;
             this.datagrid_Products.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(170)))), ((int)(((byte)(173)))));
@@ -307,6 +307,7 @@
             this.product_id.DataPropertyName = "product_id";
             this.product_id.HeaderText = "product_id";
             this.product_id.Name = "product_id";
+            this.product_id.ReadOnly = true;
             this.product_id.Visible = false;
             // 
             // product_name
@@ -314,24 +315,28 @@
             this.product_name.DataPropertyName = "product_name";
             this.product_name.HeaderText = "Nombre del producto";
             this.product_name.Name = "product_name";
+            this.product_name.ReadOnly = true;
             // 
             // quantity
             // 
             this.quantity.DataPropertyName = "quantity";
             this.quantity.HeaderText = "Cantidad";
             this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
             // 
             // quantity_produced
             // 
             this.quantity_produced.DataPropertyName = "quantity_produced";
             this.quantity_produced.HeaderText = "Cantidad producida";
             this.quantity_produced.Name = "quantity_produced";
+            this.quantity_produced.ReadOnly = true;
             // 
             // unit_id
             // 
             this.unit_id.DataPropertyName = "unit_id";
             this.unit_id.HeaderText = "unit_id";
             this.unit_id.Name = "unit_id";
+            this.unit_id.ReadOnly = true;
             this.unit_id.Visible = false;
             // 
             // unit_name
@@ -339,12 +344,14 @@
             this.unit_name.DataPropertyName = "unit_name";
             this.unit_name.HeaderText = "Unidad de medida";
             this.unit_name.Name = "unit_name";
+            this.unit_name.ReadOnly = true;
             // 
             // recipe_id
             // 
             this.recipe_id.DataPropertyName = "recipe_id";
             this.recipe_id.HeaderText = "recipe_id";
             this.recipe_id.Name = "recipe_id";
+            this.recipe_id.ReadOnly = true;
             this.recipe_id.Visible = false;
             // 
             // recipe_name
@@ -352,12 +359,14 @@
             this.recipe_name.DataPropertyName = "recipe_name";
             this.recipe_name.HeaderText = "Receta";
             this.recipe_name.Name = "recipe_name";
+            this.recipe_name.ReadOnly = true;
             // 
             // warehouse_id
             // 
             this.warehouse_id.DataPropertyName = "warehouse_id";
             this.warehouse_id.HeaderText = "warehouse_id";
             this.warehouse_id.Name = "warehouse_id";
+            this.warehouse_id.ReadOnly = true;
             this.warehouse_id.Visible = false;
             // 
             // warehouse_name
@@ -365,17 +374,20 @@
             this.warehouse_name.DataPropertyName = "warehouse_name";
             this.warehouse_name.HeaderText = "Almacén";
             this.warehouse_name.Name = "warehouse_name";
+            this.warehouse_name.ReadOnly = true;
             // 
             // quantity_warehouse
             // 
             this.quantity_warehouse.HeaderText = "Cantidad en almacén";
             this.quantity_warehouse.Name = "quantity_warehouse";
+            this.quantity_warehouse.ReadOnly = true;
             // 
             // state
             // 
             this.state.DataPropertyName = "state";
             this.state.HeaderText = "state";
             this.state.Name = "state";
+            this.state.ReadOnly = true;
             this.state.Visible = false;
             // 
             // label3
@@ -507,7 +519,9 @@
             this.metroGrid_Material.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid_Material.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid_Material.Location = new System.Drawing.Point(13, 34);
+            this.metroGrid_Material.MultiSelect = false;
             this.metroGrid_Material.Name = "metroGrid_Material";
+            this.metroGrid_Material.ReadOnly = true;
             this.metroGrid_Material.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(170)))), ((int)(((byte)(173)))));
@@ -527,55 +541,65 @@
             // 
             this.idMaterialLine.HeaderText = "id";
             this.idMaterialLine.Name = "idMaterialLine";
+            this.idMaterialLine.ReadOnly = true;
             this.idMaterialLine.Visible = false;
             // 
             // material_id
             // 
             this.material_id.HeaderText = "material_id";
             this.material_id.Name = "material_id";
+            this.material_id.ReadOnly = true;
             this.material_id.Visible = false;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Nombre de material";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // quantity_required
             // 
             this.quantity_required.HeaderText = "Cantidad requerida";
             this.quantity_required.Name = "quantity_required";
+            this.quantity_required.ReadOnly = true;
             // 
             // quantity_taken_real
             // 
             this.quantity_taken_real.HeaderText = "Cantidad real solicitada";
             this.quantity_taken_real.Name = "quantity_taken_real";
+            this.quantity_taken_real.ReadOnly = true;
             // 
             // unit_id_2
             // 
             this.unit_id_2.HeaderText = "unit_id";
             this.unit_id_2.Name = "unit_id_2";
+            this.unit_id_2.ReadOnly = true;
             this.unit_id_2.Visible = false;
             // 
             // unit_name_2
             // 
             this.unit_name_2.HeaderText = "Unidad de medida";
             this.unit_name_2.Name = "unit_name_2";
+            this.unit_name_2.ReadOnly = true;
             // 
             // warehouse_id_2
             // 
             this.warehouse_id_2.HeaderText = "warehouse_id";
             this.warehouse_id_2.Name = "warehouse_id_2";
+            this.warehouse_id_2.ReadOnly = true;
             this.warehouse_id_2.Visible = false;
             // 
             // warehouse_name_2
             // 
             this.warehouse_name_2.HeaderText = "Almacén";
             this.warehouse_name_2.Name = "warehouse_name_2";
+            this.warehouse_name_2.ReadOnly = true;
             // 
             // state_2
             // 
             this.state_2.HeaderText = "state";
             this.state_2.Name = "state_2";
+            this.state_2.ReadOnly = true;
             this.state_2.Visible = false;
             // 
             // richTextBox1
@@ -696,7 +720,9 @@
             this.metroGrid_Work.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid_Work.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid_Work.Location = new System.Drawing.Point(-11, 37);
+            this.metroGrid_Work.MultiSelect = false;
             this.metroGrid_Work.Name = "metroGrid_Work";
+            this.metroGrid_Work.ReadOnly = true;
             this.metroGrid_Work.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(170)))), ((int)(((byte)(173)))));
@@ -716,90 +742,105 @@
             // 
             this.idWorkLine.HeaderText = "id";
             this.idWorkLine.Name = "idWorkLine";
+            this.idWorkLine.ReadOnly = true;
             this.idWorkLine.Visible = false;
             // 
             // worker_id
             // 
             this.worker_id.HeaderText = "worker_id";
             this.worker_id.Name = "worker_id";
+            this.worker_id.ReadOnly = true;
             this.worker_id.Visible = false;
             // 
             // worker_name
             // 
             this.worker_name.HeaderText = "Nombre del trabajador";
             this.worker_name.Name = "worker_name";
+            this.worker_name.ReadOnly = true;
             this.worker_name.Width = 72;
             // 
             // product_id_2
             // 
             this.product_id_2.HeaderText = "product_id";
             this.product_id_2.Name = "product_id_2";
+            this.product_id_2.ReadOnly = true;
             this.product_id_2.Visible = false;
             // 
             // product_name_2
             // 
             this.product_name_2.HeaderText = "Producto";
             this.product_name_2.Name = "product_name_2";
+            this.product_name_2.ReadOnly = true;
             this.product_name_2.Width = 71;
             // 
             // workstation_id
             // 
             this.workstation_id.HeaderText = "workstation_id";
             this.workstation_id.Name = "workstation_id";
+            this.workstation_id.ReadOnly = true;
             this.workstation_id.Visible = false;
             // 
             // workstation_name
             // 
             this.workstation_name.HeaderText = "Puesto del trabajo";
             this.workstation_name.Name = "workstation_name";
+            this.workstation_name.ReadOnly = true;
             this.workstation_name.Width = 72;
             // 
             // unit_id_3
             // 
             this.unit_id_3.HeaderText = "unit_id";
             this.unit_id_3.Name = "unit_id_3";
+            this.unit_id_3.ReadOnly = true;
             this.unit_id_3.Visible = false;
             // 
             // unit_name_3
             // 
             this.unit_name_3.HeaderText = "Unidad de medida";
             this.unit_name_3.Name = "unit_name_3";
+            this.unit_name_3.ReadOnly = true;
             this.unit_name_3.Width = 71;
             // 
             // Column7
             // 
             this.Column7.HeaderText = "Cantidad requerida";
             this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             this.Column7.Width = 73;
             // 
             // Column8
             // 
             this.Column8.HeaderText = "Cantidad producida";
             this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
             this.Column8.Width = 72;
             // 
             // Column9
             // 
             this.Column9.HeaderText = "Cantidad de rotura";
             this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
             this.Column9.Width = 73;
             // 
             // Column10
             // 
             this.Column10.HeaderText = "Tiempo de producción";
             this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
             this.Column10.Width = 72;
             // 
             // Column11
             // 
             this.Column11.HeaderText = "Observaciones";
             this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
             this.Column11.Width = 73;
             // 
             // state_3
             // 
             this.state_3.HeaderText = "state";
             this.state_3.Name = "state_3";
+            this.state_3.ReadOnly = true;
             this.state_3.Visible = false;
             // 
             // richTextBox2
@@ -846,7 +887,9 @@
             this.metroGrid_products_summary.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid_products_summary.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid_products_summary.Location = new System.Drawing.Point(7, 29);
+            this.metroGrid_products_summary.MultiSelect = false;
             this.metroGrid_products_summary.Name = "metroGrid_products_summary";
+            this.metroGrid_products_summary.ReadOnly = true;
             this.metroGrid_products_summary.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(170)))), ((int)(((byte)(173)))));
@@ -861,6 +904,30 @@
             this.metroGrid_products_summary.Size = new System.Drawing.Size(468, 230);
             this.metroGrid_products_summary.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroGrid_products_summary.TabIndex = 52;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Nombre del producto";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Cantidad requerida";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Cantidad producida";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Unidad de medida";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // metroLabel1
             // 
@@ -1160,7 +1227,6 @@
             this.metroGrid_materials_summary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn10});
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -1174,7 +1240,9 @@
             this.metroGrid_materials_summary.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid_materials_summary.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid_materials_summary.Location = new System.Drawing.Point(6, 21);
+            this.metroGrid_materials_summary.MultiSelect = false;
             this.metroGrid_materials_summary.Name = "metroGrid_materials_summary";
+            this.metroGrid_materials_summary.ReadOnly = true;
             this.metroGrid_materials_summary.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(170)))), ((int)(((byte)(173)))));
@@ -1194,41 +1262,19 @@
             // 
             this.dataGridViewTextBoxColumn3.HeaderText = "Nombre de material";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.HeaderText = "Cantidad requerida";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Cantidad real solicitada";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.HeaderText = "Unidad de medida";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Nombre del producto";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Cantidad requerida";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Cantidad producida";
-            this.Column1.Name = "Column1";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Unidad de medida";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
             // UC_ProductionOrder
             // 
@@ -1342,13 +1388,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn warehouse_id_2;
         private System.Windows.Forms.DataGridViewTextBoxColumn warehouse_name_2;
         private System.Windows.Forms.DataGridViewTextBoxColumn state_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
     }
 }
