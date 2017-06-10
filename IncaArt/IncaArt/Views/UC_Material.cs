@@ -17,6 +17,7 @@ namespace WindowsFormsApp1.Views
         bool max_flag;
         bool min_flag;
         int cur_row;
+        int operation_value;// 0 para Create, 1 para Update
         List<Models.Material> material_list;
         List<Models.UnitOfMeasure> unit_list;
         Controller.MaterialsController materialController;
@@ -30,6 +31,7 @@ namespace WindowsFormsApp1.Views
         private void UC_Material_Load(object sender, EventArgs e)
         {
             Set_Flag_All(false);
+            operation_value = 0;
             string user = "dp1admin";
             string password = "dp1admin";
             materialController = new Controller.MaterialsController(user, password);
@@ -199,7 +201,7 @@ namespace WindowsFormsApp1.Views
                 {
                     if (unit_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
                     {
-                        combobox_unit.SelectedIndex = i+1;
+                        combobox_unit.SelectedIndex = i + 1;
                         break;
                     }
                 }
@@ -207,6 +209,7 @@ namespace WindowsFormsApp1.Views
                 textbox_stock_max.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
                 metroTabControl1.SelectedIndex = 1;
                 Set_Flag_All(true);
+                operation_value = 1;
             }
         }
 
@@ -396,6 +399,45 @@ namespace WindowsFormsApp1.Views
             {
                 Set_Flag(combobox.Name, true);
                 errorProvider.SetError(combobox_unit, null);
+            }
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            Models.Material mat = CreateMaterial(operation_value);
+            if (mat != null)
+            {
+                if (mat.Id == 0)//Registrar
+                {
+                    result = materialController.insertMaterial(mat);
+                    if (result.data == null)
+                    {
+                        MessageBox.Show(result.message, "Error al registrar material", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("material agregado correctamente", "Registrar material", MessageBoxButtons.OK);
+                        Load_Data();
+                    }
+                }
+                else //Editar
+                {
+                    result = materialController.updateMaterial(mat);
+                    if (result.data == null)
+                    {
+                        MessageBox.Show(result.message, "Error al modificar material", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("material editado correctamente", "Editar material", MessageBoxButtons.OK);
+                        Load_Data();
+                    }
+                }
+                Set_Flag_All(false);
+                Load_DataGridView();
+                Clean();
+                metroTabControl1.SelectedIndex = 0;
+                operation_value = 0;
             }
         }
     }

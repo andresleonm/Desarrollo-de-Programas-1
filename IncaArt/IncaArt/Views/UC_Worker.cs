@@ -23,6 +23,7 @@ namespace WindowsFormsApp1.Views
         bool currency_flag;
         bool email_flag;
         int cur_row;
+        int operation_value;// 0 para Create, 1 para Update
         List<Models.Shift> shift_list;
         List<Models.Worker> worker_list;
         List<Models.Currency> currency_list;
@@ -38,6 +39,7 @@ namespace WindowsFormsApp1.Views
         private void UC_Worker_Load(object sender, EventArgs e)
         {
             Set_Flag_All(false);
+            operation_value = 0;
             string user = "dp1admin";
             string password = "dp1admin";
             workerController = new Controller.WorkerController(user, password);
@@ -275,6 +277,7 @@ namespace WindowsFormsApp1.Views
                 textbox_address.Text = worker.Address;
                 textbox_salary.Text = worker.Salary.ToString();
                 Set_Flag_All(true);
+                operation_value = 1;
             }
         }
 
@@ -323,6 +326,7 @@ namespace WindowsFormsApp1.Views
         {
             Clean();
             metroTabControl1.SelectedIndex = 0;
+            operation_value = 0;
         }
 
         private void btn_clean_s_Click(object sender, EventArgs e)
@@ -511,6 +515,43 @@ namespace WindowsFormsApp1.Views
                     email_flag = value;
                     break;
             }
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            Models.Worker worker = CreateWorker(operation_value);
+            if (worker != null)
+            {
+                if (worker.Id == 0)
+                {
+                    result = workerController.insertWorker(worker);
+                    if (result.data == null)
+                    {
+                        MessageBox.Show(result.message, "Error al registrar trabajador", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Trabajador registrado correctamente", "Registrar trabajador", MessageBoxButtons.OK);
+                    }
+                }else
+                {
+                    result = workerController.updateWorker(worker);
+                    if (result.data == null)
+                    {
+                        MessageBox.Show(result.message, "Error al editar trabajador", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Trabajador editado correctamente", "Editar trabajador", MessageBoxButtons.OK);
+                    }
+                }
+                Load_Data();
+                Set_Flag_All(false);
+                Load_DataGridView();
+                Clean();
+                metroTabControl1.SelectedIndex = 0;
+            }
+            operation_value = 0;
         }
     }
 }
