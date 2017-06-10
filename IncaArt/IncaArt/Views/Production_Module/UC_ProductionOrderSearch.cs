@@ -37,6 +37,7 @@ namespace WindowsFormsApp1.Views
         private void Load_ProductionOrder_DataGridView()
         {
             datagrid_ProductionOrders.Rows.Clear();
+
             string[] grid_row = new string[5];
             foreach (Models.ProductionOrder po in orders)
             {
@@ -94,10 +95,8 @@ namespace WindowsFormsApp1.Views
                     if (result == DialogResult.Yes)
                     {
                         int selected_index = Int32.Parse(this.datagrid_ProductionOrders.SelectedRows[0].Cells[0].Value.ToString());
-                        Models.ProductionOrder order=orders.Find(o => o.Id == selected_index);
-                        order.State = "Eliminado";
-                        order_controller.updateProductionOrder(order);
-                        Load_ProductionOrder_DataGridView();
+                        order_controller.deleteProductionOrder(selected_index);
+                        datagrid_Products_Fill();
                     }
                 }
             }
