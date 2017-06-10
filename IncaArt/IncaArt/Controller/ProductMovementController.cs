@@ -88,6 +88,21 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result deleteMovement(int id,string tipo)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("tipo",tipo));
+            parameters.Add(new Parameter("id", id.ToString()));
+
+            GenericResult result = execute_transaction("delete_movement", parameters);
+           
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
         public Result insertMovement(Models.ProductMovement movement)
         {
             List<Parameter> parameters = new List<Parameter>();
@@ -100,25 +115,42 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("nrodf", movement.NroDocumentoFin));
 
             GenericResult result = execute_transaction("insert_movement", parameters);
-
+            int id;
             if (result.success)
             {
                 try
                 {
-                    int id = Int32.Parse(result.singleValue);
+                    id= Int32.Parse(result.singleValue);
+                }
+                catch (Exception e)
+                {
+                    
+                    return new Result(null, false, e.Message);
+                }
+                
+                try
+                {                    
                     int n = 1;
                     foreach (Models.ProductMovementLine line in movement.detail)
                     {
-                        line.id = n;
-                        line.movementId = id;
-                        Result resultD=pd.insertLine(line);
-                        if (!resultD.success)
-                            return new Result(null, resultD.success, resultD.message);
-                        n++;
+                        if (line.quantity != 0)
+                        {
+                            line.id = n;
+                            line.movementId = id;
+                            Result resultD = pd.insertLine(line);
+                            if (!resultD.success)
+                            {
+                                deleteMovement(id, "P");
+                                return new Result(null, resultD.success, resultD.message);
+                            }
+
+                            n++;
+                        }                         
                     }
                     return new Result(id, true, "");
                 }catch(Exception e)
                 {
+                    deleteMovement(id, "P");
                     return new Result(null, false, e.Message);
                 }
                 
@@ -140,6 +172,27 @@ namespace WindowsFormsApp1.Controller
                     var movementType = getMovementType(Int32.Parse(r.getColumn(1)),mov_types);
                     var detail =new List<Models.ProductMovementLine>();
                     movements.Add(new ProductMovement(Int32.Parse(r.getColumn(0)),movementType, r.getColumn(2), r.getColumn(3),
+                         r.getColumn(4), r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8), detail));
+                }
+                return new Result(movements, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+        
+        public Result getMovements(char type)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("type", type.ToString()));
+            GenericResult result = execute_function("get_movements", parameters);
+            List<Models.ProductMovement> movements = new List<ProductMovement>();
+            if (result.success)
+            {
+                List<ProductMovementType> mov_types = (List<ProductMovementType>)getMovementTypes().data;
+                foreach (Row r in result.data)
+                {
+                    var movementType = getMovementType(Int32.Parse(r.getColumn(1)), mov_types);
+                    var detail = new List<Models.ProductMovementLine>();
+                    movements.Add(new ProductMovement(Int32.Parse(r.getColumn(0)), movementType, r.getColumn(2), r.getColumn(3),
                          r.getColumn(4), r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8), detail));
                 }
                 return new Result(movements, true, "");

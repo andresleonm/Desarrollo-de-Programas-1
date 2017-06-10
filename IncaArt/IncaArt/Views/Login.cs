@@ -47,7 +47,7 @@ namespace WindowsFormsApp1
                     }
 
                     this.Cursor = Cursors.WaitCursor;
-                    Dashboard main_form = new Dashboard();
+                    Dashboard main_form = new Dashboard(user);
                     this.Cursor = Cursors.Arrow;
                     MessageBox.Show("Bienvenido " + user.Name);
                     main_form.Show();

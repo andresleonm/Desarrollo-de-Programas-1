@@ -67,6 +67,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("unit", line.unit_id.ToString()));
             parameters.Add(new Parameter("documentquantity", line.documentQuantity.ToString()));
             parameters.Add(new Parameter("id_document_line", line.idDocumentLine.ToString()));
+            parameters.Add(new Parameter("unit_price", line.unit_price.ToString()));
 
             GenericResult result = execute_transaction("insert_movement_line", parameters);
 
@@ -92,7 +93,8 @@ namespace WindowsFormsApp1.Controller
                     lines.Add(new Models.ProductMovementLine(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
                                                         Int32.Parse(r.getColumn(2)), Int32.Parse(r.getColumn(3)),
                         Int32.Parse(r.getColumn(4)), r.getColumn(5), r.getColumn(6),r.getColumn(7), Int32.Parse(r.getColumn(8)), 
-                        Int32.Parse(r.getColumn(9)), Int32.Parse(r.getColumn(10)), r.getColumn(11), Int32.Parse(r.getColumn(12))));
+                        Int32.Parse(r.getColumn(9)), Int32.Parse(r.getColumn(10)), r.getColumn(11), Int32.Parse(r.getColumn(12)),
+                        Double.Parse(r.getColumn(13))));
                 }
                 return new Result(lines, true, "");
             }
