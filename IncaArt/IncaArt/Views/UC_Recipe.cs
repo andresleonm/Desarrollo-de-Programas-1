@@ -257,6 +257,7 @@ namespace WindowsFormsApp1.Views
                     Detail_Operation();
                     MessageBox.Show("Receta registrada correctamente", "Registrar receta", MessageBoxButtons.OK);
                     Set_Flag_All(false);
+                    metroGrid2.Rows.Clear();
                 }
 
                 Load_DataGridView();
@@ -326,6 +327,7 @@ namespace WindowsFormsApp1.Views
                     recipe_list[index] = recipe;
                     Load_Data();
                     Detail_Operation();
+                    metroGrid2.Rows.Clear();
                 }
                 Load_DataGridView();
                 Clean();
@@ -399,11 +401,20 @@ namespace WindowsFormsApp1.Views
             Models.RecipeDetail detail = CreateRecipeDetail(0);
             if (detail != null)
             {
-                detail_list.Add(detail);
                 Clean_Material();
                 Load_DataGridViewDetail();
                 quantity_flag = false;
                 material_flag = false;
+                foreach (var item in detail_list)
+                {
+                    if (item.Material_id == detail.Material_id)
+                    {
+                        MessageBox.Show("Material existente en la receta", "Error", MessageBoxButtons.OK);
+                        return;
+                    }
+                }
+                detail_list.Add(detail);
+                
             }
         }
 
@@ -414,7 +425,14 @@ namespace WindowsFormsApp1.Views
             if (detail != null)
             {
                 int index = int.Parse(metroGrid1.Rows[cur_row_detail].Cells[1].Value.ToString());
-                detail_list[index] = detail;
+                if (detail.Operation == 'C')
+                {
+                    detail_list[index].Quantity = detail.Quantity;
+                }else
+                {
+                    detail_list[index] = detail;
+                }
+                
                 Clean_Material();
                 Load_DataGridViewDetail();
                 quantity_flag = false;
