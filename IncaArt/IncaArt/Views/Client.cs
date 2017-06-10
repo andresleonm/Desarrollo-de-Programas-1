@@ -172,7 +172,7 @@ namespace WindowsFormsApp1.Views
 
             if (operacion == 1) //UPDATE
             {
-                id = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+                id = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
             }
             customer = new Models.Customer(id,name,address,doi,phone,email,type,priority,state);
 
