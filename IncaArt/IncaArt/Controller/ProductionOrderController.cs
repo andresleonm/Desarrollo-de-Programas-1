@@ -50,10 +50,10 @@ namespace WindowsFormsApp1.Controller
         public Result getProductionOrders(int order_Id, string description,DateTime begin, DateTime end)
         {
             List<Parameter> parameters = new List<Parameter>();
-            if (order_Id != 0) parameters.Add(new Parameter("order_Id", order_Id.ToString()));
+            if (order_Id != 0) parameters.Add(new Parameter("order_id", order_Id.ToString()));
             if (description!= "") parameters.Add(new Parameter("description", description));
             parameters.Add(new Parameter("begin",begin.ToString("MM/dd/yyyy")));
-            parameters.Add(new Parameter("end", end.ToString("MM/dd/yyyy")));
+            parameters.Add(new Parameter("end_date", end.ToString("MM/dd/yyyy")));
 
             GenericResult result = execute_function("get_production_orders2", parameters);
             List<ProductionOrder> production_orders = new List<ProductionOrder>();

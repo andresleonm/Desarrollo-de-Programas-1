@@ -408,7 +408,7 @@ namespace WindowsFormsApp1.Views
         {
             if (metroGrid_Work.Rows.Count > 0)
             {
-                if (datagrid_Products.SelectedRows[0] == null)
+                if (metroGrid_Work.SelectedRows[0] == null)
                 {
                     MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
