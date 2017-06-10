@@ -47,6 +47,29 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result getProductionOrders(int order_Id, string description,DateTime begin, DateTime end)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            if (order_Id != 0) parameters.Add(new Parameter("order_Id", order_Id.ToString()));
+            if (description!= "") parameters.Add(new Parameter("description", description));
+            parameters.Add(new Parameter("begin",begin.ToString("MM/dd/yyyy")));
+            parameters.Add(new Parameter("end", end.ToString("MM/dd/yyyy")));
+
+            GenericResult result = execute_function("get_production_orders2", parameters);
+            List<ProductionOrder> production_orders = new List<ProductionOrder>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    //PRODUCTION_ORDER_ID","PRODUCTION_ORDER_NAME","PRODUCTION_ORDER_OBSERVATION","PRODUCTION_ORDER_DATE","STATE","PRODUCTION_ORDER_DATE_END"
+                    production_orders.Add(new ProductionOrder(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2),
+                                                    DateTime.Parse(r.getColumn(3)), r.getColumn(4), DateTime.Parse(r.getColumn(5))));
+                }
+                return new Result(production_orders, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
         public Result getProductionOrder(int id)
         {
             List<Parameter> parameters = new List<Parameter>();
