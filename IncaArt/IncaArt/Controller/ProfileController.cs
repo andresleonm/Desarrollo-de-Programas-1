@@ -86,7 +86,7 @@ namespace WindowsFormsApp1.Controller
 
                 foreach (Row row in result.data)
                 {
-                    profiles.Add(new Profile(Int32.Parse(row.getColumn(0)), row.getColumn(1), getFunctionalitiesFromJSON(row.getColumn(2))));
+                    profiles.Add(new Profile(Int32.Parse(row.getColumn(0)), row.getColumn(1), getFunctionalitiesFromJSON(row.getColumn(2)), row.getColumn(3)));
                 }
 
                 return new Result(profiles, true, "");
@@ -136,8 +136,24 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("id", profile.Id.ToString()));
             parameters.Add(new Parameter("description", profile.Description));
             parameters.Add(new Parameter("functionalities_id", funcs));
+            parameters.Add(new Parameter("state", profile.State));
 
             GenericResult result = execute_transaction("update_profile", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result deleteProfile(Profile profile)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", profile.Id.ToString()));
+
+            GenericResult result = execute_transaction("delete_profile", parameters);
 
             if (result.success)
             {
