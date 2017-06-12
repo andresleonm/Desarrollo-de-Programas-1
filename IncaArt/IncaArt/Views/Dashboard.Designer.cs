@@ -73,6 +73,7 @@ namespace WindowsFormsApp1.Views
             this.uc_product = new WindowsFormsApp1.Views.UC_Product();
             this.uc_recipe = new WindowsFormsApp1.Views.UC_Recipe();
             this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
+            this.uc_ProductionMenu = new WindowsFormsApp1.Views.Production_Module.UC_ProductionMenu();
             this.uc_workstation = new WindowsFormsApp1.Views.UC_Workstation();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -428,7 +429,7 @@ namespace WindowsFormsApp1.Views
             // 
             // uC_SalesMain1
             // 
-            this.uC_SalesMain1.BackColor = System.Drawing.SystemColors.Control;
+            this.uC_SalesMain1.BackColor = System.Drawing.Color.White;
             this.uC_SalesMain1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_SalesMain1.Location = new System.Drawing.Point(132, 72);
             this.uC_SalesMain1.Name = "uC_SalesMain1";
@@ -445,12 +446,18 @@ namespace WindowsFormsApp1.Views
             // 
             // warehouse1
             // 
+            this.warehouse1.AutoScroll = true;
+            this.warehouse1.AutoSize = true;
+            this.warehouse1.BackColor = System.Drawing.Color.White;
             this.warehouse1.Location = new System.Drawing.Point(132, 72);
             this.warehouse1.Name = "warehouse1";
-            this.warehouse1.Size = new System.Drawing.Size(1023, 531);
+            this.warehouse1.Size = new System.Drawing.Size(1023, 665);
             this.warehouse1.Style = MetroFramework.MetroColorStyle.Blue;
             this.warehouse1.TabIndex = 20;
+            this.warehouse1.UseCustomBackColor = true;
+            this.warehouse1.UseCustomForeColor = true;
             this.warehouse1.UseSelectable = true;
+            this.warehouse1.UseStyleColors = true;
             // 
             // supplier1
             // 
@@ -569,6 +576,16 @@ namespace WindowsFormsApp1.Views
             this.uc_worker.UseSelectable = true;
             this.uc_worker.Visible = false;
             // 
+            // uc_ProductionMenu
+            // 
+            this.uc_ProductionMenu.BackColor = System.Drawing.SystemColors.Control;
+            this.uc_ProductionMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.uc_ProductionMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_ProductionMenu.Location = new System.Drawing.Point(132, 72);
+            this.uc_ProductionMenu.Name = "uc_ProductionMenu";
+            this.uc_ProductionMenu.Size = new System.Drawing.Size(819, 514);
+            this.uc_ProductionMenu.TabIndex = 34;
+            // 
             // uc_workstation
             // 
             this.uc_workstation.Location = new System.Drawing.Point(132, 72);
@@ -663,7 +680,6 @@ namespace WindowsFormsApp1.Views
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private UC_Worker uc_worker;
-        private UC_ProductWarehouse uC_ProductWarehouse1;
         private System.Windows.Forms.Button btn_production;
         private Production_Module.UC_ProductionMenu uc_ProductionMenu;
         private UC_Workstation uc_workstation;

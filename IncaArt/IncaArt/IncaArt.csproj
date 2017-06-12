@@ -88,6 +88,7 @@
     <Compile Include="Algorithm\Worker.cs" />
     <Compile Include="Algorithm\Workstation.cs" />
     <Compile Include="Controller\FunctionalityController.cs" />
+    <Compile Include="Controller\ParametersController.cs" />
     <Compile Include="Controller\MaterialMovementController.cs" />
     <Compile Include="Controller\MaterialMovementDetailController.cs" />
     <Compile Include="Controller\ProductionOrderMaterialLineController.cs" />
@@ -354,6 +355,12 @@
     </Compile>
     <Compile Include="Views\Warehouse_M_Module\UC_MaterialWarehouse.Designer.cs">
       <DependentUpon>UC_MaterialWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Warehouse_M_Module\UC_ProductTypeWarehouse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_M_Module\UC_ProductTypeWarehouse.Designer.cs">
+      <DependentUpon>UC_ProductTypeWarehouse.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Warehouse_M_Module\UC_ProductWarehouse.cs">
       <SubType>UserControl</SubType>
@@ -638,6 +645,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_M_Module\UC_MaterialWarehouse.resx">
       <DependentUpon>UC_MaterialWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_M_Module\UC_ProductTypeWarehouse.resx">
+      <DependentUpon>UC_ProductTypeWarehouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_M_Module\UC_ProductWarehouse.resx">
       <DependentUpon>UC_ProductWarehouse.cs</DependentUpon>

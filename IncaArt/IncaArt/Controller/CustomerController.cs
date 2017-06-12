@@ -121,5 +121,28 @@ namespace WindowsFormsApp1.Controller
             }
             return new Result(null, result.success, result.message);
         }
+
+        public Result getCustomers(Models.Customer customer)
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            if (customer.Name != "") parameters.Add(new Parameter("name", customer.Name));
+            if (customer.Doi != "") parameters.Add(new Parameter("doi", customer.Doi));
+            if (customer.Type != "") parameters.Add(new Parameter("type", customer.Type));
+            if (customer.Priority != 0) parameters.Add(new Parameter("priority", customer.Priority.ToString()));
+           
+            GenericResult result = execute_function("get_customers2", parameters);
+            List<Models.Customer> customers = new List<Models.Customer>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    customers.Add(new Models.Customer(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2), r.getColumn(3), r.getColumn(4), r.getColumn(5), r.getColumn(6),
+                                                    Int32.Parse(r.getColumn(7)), r.getColumn(8)));
+                }
+                return new Result(customers, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
     }
 }

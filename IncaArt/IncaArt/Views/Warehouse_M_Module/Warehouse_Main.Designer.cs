@@ -28,25 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.mStyle = new MetroFramework.Components.MetroStyleManager(this.components);
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.select_products = new MetroFramework.Controls.MetroTile();
             this.select_materials = new MetroFramework.Controls.MetroTile();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.uC_MaterialWarehouse1 = new WindowsFormsApp1.Views.Warehouse_M_Module.UC_MaterialWarehouse();
             this.uC_ProductWarehouse1 = new WindowsFormsApp1.Views.UC_ProductWarehouse();
-            ((System.ComponentModel.ISupportInitialize)(this.mStyle)).BeginInit();
             this.metroPanel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // mStyle
-            // 
-            this.mStyle.Owner = this;
-            // 
             // metroPanel1
             // 
+            this.metroPanel1.BackColor = System.Drawing.Color.Transparent;
             this.metroPanel1.Controls.Add(this.select_products);
             this.metroPanel1.Controls.Add(this.select_materials);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
@@ -54,8 +48,11 @@
             this.metroPanel1.HorizontalScrollbarSize = 10;
             this.metroPanel1.Location = new System.Drawing.Point(20, 21);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(969, 70);
+            this.metroPanel1.Size = new System.Drawing.Size(972, 71);
             this.metroPanel1.TabIndex = 42;
+            this.metroPanel1.UseCustomBackColor = true;
+            this.metroPanel1.UseCustomForeColor = true;
+            this.metroPanel1.UseStyleColors = true;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
@@ -82,7 +79,7 @@
             // 
             this.select_materials.ActiveControl = null;
             this.select_materials.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.select_materials.Location = new System.Drawing.Point(222, 3);
+            this.select_materials.Location = new System.Drawing.Point(205, 3);
             this.select_materials.Name = "select_materials";
             this.select_materials.Size = new System.Drawing.Size(177, 62);
             this.select_materials.TabIndex = 41;
@@ -98,6 +95,7 @@
             // 
             // metroPanel2
             // 
+            this.metroPanel2.BackColor = System.Drawing.Color.Transparent;
             this.metroPanel2.Controls.Add(this.uC_MaterialWarehouse1);
             this.metroPanel2.Controls.Add(this.uC_ProductWarehouse1);
             this.metroPanel2.HorizontalScrollbarBarColor = true;
@@ -105,19 +103,25 @@
             this.metroPanel2.HorizontalScrollbarSize = 10;
             this.metroPanel2.Location = new System.Drawing.Point(20, 98);
             this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(938, 492);
+            this.metroPanel2.Size = new System.Drawing.Size(972, 564);
             this.metroPanel2.TabIndex = 43;
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
             // 
+            // 
             // uC_MaterialWarehouse1
             // 
-            this.uC_MaterialWarehouse1.Location = new System.Drawing.Point(0, 0);
+            this.uC_MaterialWarehouse1.AutoSize = true;
+            this.uC_MaterialWarehouse1.BackColor = System.Drawing.Color.Transparent;
+            this.uC_MaterialWarehouse1.Location = new System.Drawing.Point(0, -6);
             this.uC_MaterialWarehouse1.Name = "uC_MaterialWarehouse1";
-            this.uC_MaterialWarehouse1.Size = new System.Drawing.Size(972, 658);
+            this.uC_MaterialWarehouse1.Size = new System.Drawing.Size(983, 716);
             this.uC_MaterialWarehouse1.TabIndex = 3;
+            this.uC_MaterialWarehouse1.UseCustomBackColor = true;
+            this.uC_MaterialWarehouse1.UseCustomForeColor = true;
             this.uC_MaterialWarehouse1.UseSelectable = true;
+            this.uC_MaterialWarehouse1.UseStyleColors = true;
             // 
             // uC_ProductWarehouse1
             // 
@@ -131,21 +135,26 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.metroPanel2);
             this.Controls.Add(this.metroPanel1);
             this.DoubleBuffered = true;
             this.Name = "Warehouse";
-            this.Size = new System.Drawing.Size(992, 729);
+            this.Size = new System.Drawing.Size(1008, 665);
+            this.UseCustomBackColor = true;
+            this.UseCustomForeColor = true;
+            this.UseStyleColors = true;
             this.Load += new System.EventHandler(this.Warehouse_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mStyle)).EndInit();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
+            this.metroPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private MetroFramework.Components.MetroStyleManager mStyle;
         private MetroFramework.Controls.MetroTile select_products;
         private MetroFramework.Controls.MetroTile select_materials;
         private MetroFramework.Controls.MetroPanel metroPanel2;
