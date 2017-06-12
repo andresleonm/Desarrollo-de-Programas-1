@@ -203,6 +203,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Microsoft_Excel_40px {
+            get {
+                object obj = ResourceManager.GetObject("Microsoft Excel_40px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Minimize_Window_52px {
             get {
                 object obj = ResourceManager.GetObject("Minimize Window_52px", resourceCulture);
