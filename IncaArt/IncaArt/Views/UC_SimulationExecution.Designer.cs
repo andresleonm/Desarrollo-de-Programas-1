@@ -32,14 +32,58 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_export = new System.Windows.Forms.Button();
+            this.productLineAssignmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
             this.execution_workers = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.execution_workstation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.production_line = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productLineAssignmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productLineAssignmentBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.btn_export);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(715, 37);
+            this.panel2.TabIndex = 1;
+            // 
+            // btn_export
+            // 
+            this.btn_export.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_export.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_export.Image = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
+            this.btn_export.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_export.Location = new System.Drawing.Point(0, 0);
+            this.btn_export.Name = "btn_export";
+            this.btn_export.Size = new System.Drawing.Size(133, 37);
+            this.btn_export.TabIndex = 0;
+            this.btn_export.Text = "Exportar a Excel";
+            this.btn_export.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_export.UseVisualStyleBackColor = true;
+            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
+            // 
+            // productLineAssignmentBindingSource
+            // 
+            this.productLineAssignmentBindingSource.DataSource = typeof(WindowsFormsApp1.Algorithm.ProductLineAssignment);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.metroGrid1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 37);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(715, 438);
+            this.panel1.TabIndex = 2;
             // 
             // metroGrid1
             // 
@@ -62,6 +106,7 @@
             this.metroGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.execution_workers,
             this.execution_workstation,
+            this.product,
             this.production_line});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -88,9 +133,8 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(715, 475);
-            this.metroGrid1.TabIndex = 0;
-            this.metroGrid1.VisibleChanged += new System.EventHandler(this.metroGrid1_VisibleChanged);
+            this.metroGrid1.Size = new System.Drawing.Size(715, 438);
+            this.metroGrid1.TabIndex = 2;
             // 
             // execution_workers
             // 
@@ -106,6 +150,13 @@
             this.execution_workstation.Name = "execution_workstation";
             this.execution_workstation.ReadOnly = true;
             // 
+            // product
+            // 
+            this.product.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.product.HeaderText = "Producto";
+            this.product.Name = "product";
+            this.product.ReadOnly = true;
+            // 
             // production_line
             // 
             this.production_line.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -113,29 +164,32 @@
             this.production_line.Name = "production_line";
             this.production_line.ReadOnly = true;
             // 
-            // productLineAssignmentBindingSource
-            // 
-            this.productLineAssignmentBindingSource.DataSource = typeof(WindowsFormsApp1.Algorithm.ProductLineAssignment);
-            // 
             // UC_SimulationExecution
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.metroGrid1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Name = "UC_SimulationExecution";
             this.Size = new System.Drawing.Size(715, 475);
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
+            this.VisibleChanged += new System.EventHandler(this.UC_SimulationExecution_VisibleChanged);
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.productLineAssignmentBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
+        private System.Windows.Forms.BindingSource productLineAssignmentBindingSource;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btn_export;
+        private System.Windows.Forms.Panel panel1;
         private MetroFramework.Controls.MetroGrid metroGrid1;
         private System.Windows.Forms.DataGridViewTextBoxColumn execution_workers;
         private System.Windows.Forms.DataGridViewTextBoxColumn execution_workstation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn product;
         private System.Windows.Forms.DataGridViewTextBoxColumn production_line;
-        private System.Windows.Forms.BindingSource productLineAssignmentBindingSource;
     }
 }

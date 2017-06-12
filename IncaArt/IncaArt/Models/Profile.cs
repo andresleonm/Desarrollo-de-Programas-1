@@ -11,6 +11,7 @@ namespace WindowsFormsApp1.Models
         int id;
         string description;
         List<Functionality> functionalities;
+        string state;
 
         public int Id
         {
@@ -49,6 +50,40 @@ namespace WindowsFormsApp1.Models
             {
                 functionalities = value;
             }
+        }
+
+        public string State
+        {
+            get
+            {
+                return state;
+            }
+
+            set
+            {
+                state = value;
+            }
+        }
+
+        public bool HasFunctionality(string func)
+        {
+            foreach (Functionality f in functionalities)
+            {
+                if (f.Name == func)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public Profile(int id, string description, List<Functionality> functionalities, string state)
+        {
+            this.id = id;
+            this.description = description;
+            this.functionalities = functionalities;
+            this.state = state;
         }
 
         public Profile(int id, string description, List<Functionality> functionalities)
