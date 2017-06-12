@@ -22,12 +22,12 @@ namespace WindowsFormsApp1.Views
         {
             User sessionUser = ((Dashboard)Parent).sessionUser;
 
-            if (!sessionUser.Profile.HasFunctionality("VIEW_USERS"))
+            if (!sessionUser.Profile.HasFunctionality("VIEW USERS"))
             {
                 metroTile1.Visible = false;
             }
 
-            if (!sessionUser.Profile.HasFunctionality("VIEW_PROFILES"))
+            if (!sessionUser.Profile.HasFunctionality("VIEW PROFILES"))
             {
                 metroTile4.Visible = false;
             }

@@ -267,7 +267,7 @@ namespace WindowsFormsApp1.Views
                 btn_new.Visible = true;
                 textbox_password.Enabled = false;
 
-                if (!sessionUser.Profile.HasFunctionality("EDIT_USERS"))
+                if (!sessionUser.Profile.HasFunctionality("EDIT USERS"))
                 {
                     btn_new.Visible = false;
                 }
@@ -282,7 +282,7 @@ namespace WindowsFormsApp1.Views
             textbox_password.Enabled = true;
             selectedUser = null;
 
-            if (!sessionUser.Profile.HasFunctionality("ADD_USERS"))
+            if (!sessionUser.Profile.HasFunctionality("CREATE USERS"))
             {
                 btn_new.Visible = false;
             }
@@ -292,8 +292,8 @@ namespace WindowsFormsApp1.Views
         {
             if (!data_loaded && Visible)
             {
-                this.profile_controller = new ProfileController("", "");
-                this.user_controller = new UsersController("", "");
+                this.profile_controller = new ProfileController(sessionUser.Nickname, sessionUser.Password);
+                this.user_controller = new UsersController(sessionUser.Nickname, sessionUser.Password);
 
                 Load_Data();
                 Load_DataGridView();
@@ -339,7 +339,7 @@ namespace WindowsFormsApp1.Views
 
         private void UC_User_Load()
         {
-            if (!sessionUser.Profile.HasFunctionality("DELETE_USERS"))
+            if (!sessionUser.Profile.HasFunctionality("DELETE USERS"))
             {
                 metroButtonEliminar.Visible = false;
             }
