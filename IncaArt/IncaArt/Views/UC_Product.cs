@@ -19,6 +19,7 @@ namespace WindowsFormsApp1.Views
         bool price_flag;
         bool currency_flag;
         int cur_row;
+        int operation_value;// 0 para Create, 1 para Update
         List<Models.Product> product_list;
         List<Models.UnitOfMeasure> unit_list;
         List<Models.Currency> currency_list;
@@ -35,6 +36,7 @@ namespace WindowsFormsApp1.Views
         {
             string user = "dp1admin";
             string password = "dp1admin";
+            operation_value = 0;
             productController = new Controller.ProductsController(user, password);
             unitController = new Controller.UnitController(user, password);
             currencyController = new Controller.CurrencyController(user, password);
@@ -176,6 +178,7 @@ namespace WindowsFormsApp1.Views
             {
                 id = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
             }
+            product.Id=id;
             return product;
         }
 
@@ -248,6 +251,7 @@ namespace WindowsFormsApp1.Views
                     textbox_stock_min.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
                     textbox_price.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
                     metroTabControl1.SelectedIndex = 1;
+                    operation_value = 1;
                 }
                 
             }
@@ -454,5 +458,43 @@ namespace WindowsFormsApp1.Views
             }
         }
 
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            Models.Product product = CreateProduct(operation_value);
+            if (product != null)
+            {
+                if (product.Id == 0)
+                {
+                    result = productController.insertProduct(product);
+                    if (result.data == null)
+                    {
+                        MessageBox.Show(result.message, "Error al registrar producto", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Producto registrado correctamente", "Registrar producto", MessageBoxButtons.OK);
+                        Load_Data();
+                    }
+                   
+                }else
+                {
+                    result = productController.updateProduct(product);
+                    if (result.data == null)
+                    {
+                        MessageBox.Show(result.message, "Error al modificar producto", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Producto editado correctamente", "Editar producto", MessageBoxButtons.OK);
+                        Load_Data();
+                    }
+                }
+                operation_value = 0;
+                Set_Flag_All(false);
+                Load_DataGridView();
+                Clean();
+                metroTabControl1.SelectedIndex = 0;
+            }
+        }
     }
 }
