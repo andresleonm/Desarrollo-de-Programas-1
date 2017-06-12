@@ -465,7 +465,7 @@ namespace WindowsFormsApp1.Views
                 Range datarange;
                 string name = "", unit = "";
                 double max = -1, min = -1, number;
-                bool name_error, unit_error, min_error, max_error; //error individual
+                bool error; //error individual
                 List<string> error_list, string_list; //para hacer control de cada error de fila
                 Models.Material material;
                 int unit_id;
@@ -473,10 +473,7 @@ namespace WindowsFormsApp1.Views
                 //En Interop Excel el indice comienza en 1
                 for (int i = 2; i <= row_count; i++) //Fila 2 comienza las filas de materiales
                 {
-                    name_error = false;
-                    unit_error = false;
-                    min_error = false;
-                    max_error = false;
+                    error = false;
                     MaterialError material_error = new MaterialError();
                     error_list = new List<string>();
                     string_list = new List<string>();
@@ -485,7 +482,7 @@ namespace WindowsFormsApp1.Views
                     string_list.Add((string)datarange.Text);
                     if (string.IsNullOrWhiteSpace((string)datarange.Value2))
                     {
-                        name_error = true;
+                        error = true;
                         error_list.Add("name");
                     }
                     else
@@ -496,7 +493,7 @@ namespace WindowsFormsApp1.Views
                     string_list.Add((string)datarange.Text);
                     if (string.IsNullOrWhiteSpace((string)datarange.Value2))
                     {
-                        unit_error = true;
+                        error = true;
                         error_list.Add("unit");
                     }
                     else
@@ -512,7 +509,7 @@ namespace WindowsFormsApp1.Views
                         }
                         if (unit_id == -1)
                         {
-                            unit_error = true;
+                            error = true;
                             error_list.Add("unit_find");
                         }
                     }
@@ -520,7 +517,7 @@ namespace WindowsFormsApp1.Views
                     string_list.Add((string)datarange.Text);
                     if (datarange.Value2 == null || !double.TryParse((string)datarange.Text, out number))
                     {
-                        min_error = true;
+                        error = true;
                         error_list.Add("min");
                     }
                     else
@@ -531,14 +528,14 @@ namespace WindowsFormsApp1.Views
                     string_list.Add((string)datarange.Text);
                     if (datarange.Value2 == null || !double.TryParse((string)datarange.Text, out number))
                     {
-                        max_error = true;
+                        error = true;
                         error_list.Add("max");
                     }
                     else
                     {
                         max = (double)datarange.Value2;
                     }
-                    if (name_error || unit_error || min_error || max_error)//Si hay error entonces, se agrega a la lista de material error
+                    if (error)//Si hay error entonces, se agrega a la lista de material error
                     {
                         material_error.error_list = error_list;
                         material_error.string_list = string_list;
