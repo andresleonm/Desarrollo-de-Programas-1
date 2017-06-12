@@ -44,6 +44,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.btn_execution_product = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.products_grid = new MetroFramework.Controls.MetroGrid();
@@ -53,6 +54,7 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_execution_wkstation = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.workstations_grid = new MetroFramework.Controls.MetroGrid();
@@ -116,6 +118,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.White;
+            this.panel7.Controls.Add(this.button2);
             this.panel7.Controls.Add(this.btn_execution_product);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel7.Location = new System.Drawing.Point(0, 370);
@@ -123,12 +126,25 @@
             this.panel7.Size = new System.Drawing.Size(623, 27);
             this.panel7.TabIndex = 6;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.DarkCyan;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(204, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(82, 25);
+            this.button2.TabIndex = 64;
+            this.button2.Text = "Anterior";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btn_execution_product
             // 
             this.btn_execution_product.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_execution_product.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_execution_product.ForeColor = System.Drawing.Color.White;
-            this.btn_execution_product.Location = new System.Drawing.Point(271, 2);
+            this.btn_execution_product.Location = new System.Drawing.Point(331, 2);
             this.btn_execution_product.Name = "btn_execution_product";
             this.btn_execution_product.Size = new System.Drawing.Size(82, 25);
             this.btn_execution_product.TabIndex = 61;
@@ -254,6 +270,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.Controls.Add(this.button1);
             this.panel8.Controls.Add(this.btn_execution_wkstation);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel8.Location = new System.Drawing.Point(0, 370);
@@ -261,18 +278,31 @@
             this.panel8.Size = new System.Drawing.Size(623, 27);
             this.panel8.TabIndex = 7;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkCyan;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(200, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(82, 25);
+            this.button1.TabIndex = 63;
+            this.button1.Text = "Anterior";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btn_execution_wkstation
             // 
             this.btn_execution_wkstation.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_execution_wkstation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_execution_wkstation.ForeColor = System.Drawing.Color.White;
-            this.btn_execution_wkstation.Location = new System.Drawing.Point(270, 1);
+            this.btn_execution_wkstation.Location = new System.Drawing.Point(325, 2);
             this.btn_execution_wkstation.Name = "btn_execution_wkstation";
             this.btn_execution_wkstation.Size = new System.Drawing.Size(82, 25);
             this.btn_execution_wkstation.TabIndex = 62;
-            this.btn_execution_wkstation.Text = "Ejecutar";
+            this.btn_execution_wkstation.Text = "Siguiente";
             this.btn_execution_wkstation.UseVisualStyleBackColor = false;
-            this.btn_execution_wkstation.Click += new System.EventHandler(this.execute_algorithm);
+            this.btn_execution_wkstation.Click += new System.EventHandler(this.btn_execution_worker_Click);
             // 
             // panel5
             // 
@@ -478,13 +508,13 @@
             this.btn_execution_worker.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_execution_worker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_execution_worker.ForeColor = System.Drawing.Color.White;
-            this.btn_execution_worker.Location = new System.Drawing.Point(270, 1);
+            this.btn_execution_worker.Location = new System.Drawing.Point(247, 0);
             this.btn_execution_worker.Name = "btn_execution_worker";
             this.btn_execution_worker.Size = new System.Drawing.Size(82, 25);
             this.btn_execution_worker.TabIndex = 62;
-            this.btn_execution_worker.Text = "Ejecutar";
+            this.btn_execution_worker.Text = "Siguiente";
             this.btn_execution_worker.UseVisualStyleBackColor = false;
-            this.btn_execution_worker.Click += new System.EventHandler(this.execute_algorithm);
+            this.btn_execution_worker.Click += new System.EventHandler(this.btn_execution_worker_Click);
             // 
             // panel4
             // 
@@ -617,7 +647,7 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 2;
             this.metroTabControl1.Size = new System.Drawing.Size(631, 462);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 53;
@@ -697,5 +727,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn breakcostDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn currencyidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

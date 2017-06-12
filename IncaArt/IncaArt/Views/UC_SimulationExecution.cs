@@ -15,18 +15,78 @@ namespace WindowsFormsApp1.Views
         public UC_SimulationExecution()
         {
             InitializeComponent();
+        }   
+
+        private void btn_export_Click(object sender, EventArgs e)
+        {
+            // Creating a Excel object. 
+            Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+
+            try
+            {
+
+                worksheet = workbook.ActiveSheet;
+
+                worksheet.Name = "Simulación";
+
+                int cellRowIndex = 1;
+                int cellColumnIndex = 1;
+
+                //Loop through each row and read value from each column. 
+                for (int i = -1; i < metroGrid1.Rows.Count; i++)
+                {
+                    for (int j = 0; j < metroGrid1.Columns.Count; j++)
+                    {
+                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check. 
+                        if (cellRowIndex == 1)
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = metroGrid1.Columns[j].HeaderText;
+                        }
+                        else
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = metroGrid1.Rows[i].Cells[j].Value.ToString();
+                        }
+                        cellColumnIndex++;
+                    }
+                    cellColumnIndex = 1;
+                    cellRowIndex++;
+                }
+
+                //Getting the location and file name of the excel to save from user. 
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                saveDialog.FilterIndex = 2;
+
+                if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    workbook.SaveAs(saveDialog.FileName);
+                    MessageBox.Show("Exportado correctamente", "Notificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                excel.Quit();
+                workbook = null;
+                excel = null;
+            }
         }
 
-        private void metroGrid1_VisibleChanged(object sender, EventArgs e)
+        private void UC_SimulationExecution_VisibleChanged(object sender, EventArgs e)
         {
-            if(this.Visible == true)
+            if (this.Visible == true)
             {
                 this.metroGrid1.Rows.Clear();
                 List<Algorithm.ProductLineAssignment> solution =
                     ((UC_SimulationConfig)(Parent.Controls.Find("UC_SimulationConfig2", true))[0]).solution;
                 if (solution.Count >= 1)
                 {
-                    string[] row = new string[3];
+                    string[] row = new string[4];
                     int count = 1;
                     foreach (Algorithm.ProductLineAssignment pla in solution)
                     {
@@ -34,7 +94,8 @@ namespace WindowsFormsApp1.Views
                         {
                             row[0] = assig.assigned_worker.name + " " + assig.assigned_worker.lastname;
                             row[1] = assig.assigned_workstation.name;
-                            row[2] = count.ToString();
+                            row[2] = assig.assigned_workstation.product.name;
+                            row[3] = count.ToString();
                             this.metroGrid1.Rows.Add(row);
                         }
                         count++;
