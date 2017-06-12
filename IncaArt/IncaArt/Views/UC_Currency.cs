@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class UC_SalesInvoice : UserControl
+    public partial class UC_Currency : MetroFramework.Controls.MetroUserControl
     {
-        public UC_SalesInvoice()
+        public UC_Currency()
         {
             InitializeComponent();
         }

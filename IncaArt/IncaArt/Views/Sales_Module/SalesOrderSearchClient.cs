@@ -13,43 +13,71 @@ using WindowsFormsApp1.Controller;
 namespace WindowsFormsApp1.Views.Sales_Module
 {
     public partial class SalesOrderSearchClient : Form
-    {
+    {   
         private List<Customer> customers;
-        private string user = "dp1admin";
-        private string password = "dp1admin";
-        public List<Customer> cliente;
+        public List<Customer> clientList;
+        private CustomerController customer_controller;
 
         public SalesOrderSearchClient( ref List<Customer> client, string user, string password)
         {
             InitializeComponent();
+            clientList = client;
 
-            CustomerController customer_controller = new CustomerController(user, password);
+            customer_controller = new CustomerController(user, password);
             Result result = customer_controller.getCustomers();
-            this.customers = (List<Customer>)result.data;
-            grid_clients.DataSource = new List<Customer>();
-            grid_clients.DataSource = customers;
-            AdjustColumnOrder();
-            this.cliente = client;
+            customers = (List<Customer>)result.data;
+            fill_GridView(customers);           
+            
+        }
+
+        private void SalesOrderSearchClient_Load(object sender, EventArgs e)
+        {
+            txt_name.Select();
         }
 
         private void btn_Search_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txt_name.Text))
             {
-                grid_clients.DataSource = customers;                
+                grid_clients.DataSource = customers;
+                AdjustColumnOrder();
             }
             else
             {
-                string text = "%" + txt_name.Text + "%";
-                CustomerController customer_controller = new CustomerController(user, password);
+                string text = "%" + (txt_name.Text).ToLower() + "%";
                 Result result = customer_controller.getCustomer_by_text(text);
                 List<Customer> customers_found = new List<Customer>();
                 customers_found = (List<Customer>)result.data;
-                grid_clients.DataSource = new List<Customer>();
-                grid_clients.DataSource = customers_found;                
+                fill_GridView(customers_found);               
             }
-            AdjustColumnOrder();
         }
+
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+            int selectedRowCount = grid_clients.Rows.GetRowCount(DataGridViewElementStates.Selected);
+
+            if (selectedRowCount <= 0)
+            {
+                MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (selectedRowCount > 1)
+            {
+                MessageBox.Show(this, "Solo debe seleccionar una fila para poder ver el detalle", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (selectedRowCount == 1)
+            {
+                Customer client_found = (Customer)grid_clients.CurrentRow.DataBoundItem;
+                clientList.Add(client_found);
+                this.Close();
+            }
+        }
+
+        private void txt_name_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btn_Search.PerformClick();
+        }
+
 
         private void AdjustColumnOrder()
         {
@@ -61,10 +89,15 @@ namespace WindowsFormsApp1.Views.Sales_Module
             grid_clients.Columns["priority"].DisplayIndex = 5;
         }
 
-        private void btn_Save_Click(object sender, EventArgs e)
+        private void fill_GridView(List<Customer> list)
         {
-            Customer cliente= (Customer)grid_clients.CurrentRow.DataBoundItem;
-            this.cliente.Add(cliente);
+            grid_clients.DataSource = new List<Customer>();
+            grid_clients.DataSource = list;
+            AdjustColumnOrder();
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

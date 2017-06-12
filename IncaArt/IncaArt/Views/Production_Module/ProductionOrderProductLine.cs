@@ -18,19 +18,21 @@ namespace WindowsFormsApp1.Views
         private bool isRegistered=false;
         private bool editing = false;
         List<Product> products;
-        List<ProductWarehouse> product_warehouses;
+        List<Warehouse_Module.ProductWarehouseM> product_warehouses;
         List<Recipe> recipes;
         string user = "dp1admin";
         string password = "dp1admin";
         ProductsController product_controller;
         ProductWarehouseController product_warehouse_controller;
+        ProductMovementDetailController product_movement_controller;
         RecipesController recipe_controller;
         UnitController unit_controller;
         public ProductionOrderProductLine()
         {
             InitializeComponent();
             product_controller = new ProductsController(user, password);
-            product_warehouse_controller = new ProductWarehouseController(user, password);
+            product_warehouse_controller=new ProductWarehouseController(user,password);
+            product_movement_controller = new ProductMovementDetailController(user, password);
             recipe_controller = new RecipesController(user, password);
             unit_controller = new UnitController(user, password);
         }
@@ -96,7 +98,6 @@ namespace WindowsFormsApp1.Views
 
                 line.Quantity = Int32.Parse(metroTextBox_Quantity.Text);
                 Line.Produced_quantity = Int32.Parse(metroTextBox_quantity_produced.Text);
-                Line.Quantity_warehouse = Int32.Parse(metroTextBox_quantity_warehouse.Text); ;
                 Line.State = "Registrado";
 
 
@@ -125,8 +126,8 @@ namespace WindowsFormsApp1.Views
             Result result = product_controller.getProducts();
             this.products = (List<Product>)result.data;
 
-            result = product_warehouse_controller.getProductWarehouses();
-            this.product_warehouses = (List<ProductWarehouse>)result.data;
+            result = product_movement_controller.getWarehouses(products[0].Id);
+            this.product_warehouses = (List<Warehouse_Module.ProductWarehouseM>)result.data;
 
             result = recipe_controller.getRecipes();
             this.recipes=(List<Recipe>)result.data;
@@ -138,12 +139,13 @@ namespace WindowsFormsApp1.Views
             comboBox_Recipe.DataSource =recipes;
             comboBox_Recipe.DisplayMember = "name";
 
+            metroTextBox_quantity_produced.Text = "0";
+
             if (Editing)
             {
                 comboBox_Product.Text = line.Product_name;
                 metroTextBox_Quantity.Text = line.Quantity.ToString();
-                metroTextBox_quantity_produced.Text = line.Produced_quantity.ToString();
-                metroTextBox_quantity_warehouse.Text = line.Quantity_warehouse.ToString();
+                metroTextBox_quantity_produced.Text = line.Produced_quantity.ToString();                
                 comboBox_Recipe.Text = line.Recipe_name;
                 comboBox_Warehouse.Text = line.Warehouse_name;
                 this.Text = "Edición de producto";
@@ -154,14 +156,15 @@ namespace WindowsFormsApp1.Views
         {
             int product_id = ((Product)comboBox_Product.SelectedItem).Id;
 
-            Result result = product_warehouse_controller.getProductWarehouses();
-            this.product_warehouses = (List<ProductWarehouse>)result.data;
+            Result result = product_movement_controller.getWarehouses(product_id);
+            this.product_warehouses = (List<Warehouse_Module.ProductWarehouseM>)result.data;
 
             Recipe recipe = new Recipe();
             recipe.Product_id = product_id;
             result = recipe_controller.getRecipes(recipe);
             this.recipes = (List<Recipe>)result.data;
 
+            comboBox_Warehouse.SelectedIndex = -1;
             comboBox_Warehouse.DataSource = product_warehouses;
             comboBox_Warehouse.DisplayMember = "name";
             comboBox_Recipe.SelectedIndex = -1;

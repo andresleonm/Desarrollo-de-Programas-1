@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bunifu_UI_v1.52">
-      <HintPath>..\..\..\..\..\Desktop\Bunifu_UI_v1.52.dll</HintPath>
-    </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
       <Private>True</Private>
@@ -45,6 +42,11 @@
     </Reference>
     <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -87,6 +89,8 @@
     <Compile Include="Algorithm\Workstation.cs" />
     <Compile Include="Controller\FunctionalityController.cs" />
     <Compile Include="Controller\ParametersController.cs" />
+    <Compile Include="Controller\MaterialMovementController.cs" />
+    <Compile Include="Controller\MaterialMovementDetailController.cs" />
     <Compile Include="Controller\ProductionOrderMaterialLineController.cs" />
     <Compile Include="Controller\ProductionOrderWorkLineController.cs" />
     <Compile Include="Controller\ProfileController.cs" />
@@ -101,8 +105,14 @@
     <Compile Include="Controller\ProductTypeWarehouseController.cs" />
     <Compile Include="Controller\ProductMovementController.cs" />
     <Compile Include="Controller\ProductMovementDetailController.cs" />
-    <Compile Include="Controller\RatioController.cs" />
+    <Compile Include="Controller\SalesDocumentController.cs" />
+    <Compile Include="Controller\SalesDocumentLineController.cs" />
+    <Compile Include="Controller\SalesRefundController.cs" />
+    <Compile Include="Controller\SalesRefundLineController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
+    <Compile Include="Models\MaterialMovement.cs" />
+    <Compile Include="Models\MaterialMovementLine.cs" />
+    <Compile Include="Controller\RatioController.cs" />
     <Compile Include="Controller\WorkstationsController.cs" />
     <Compile Include="Algorithm\Assignment.cs" />
     <Compile Include="Algorithm\ProductLineAssignment.cs" />
@@ -144,6 +154,10 @@
     <Compile Include="Models\RatioType.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipeDetail.cs" />
+    <Compile Include="Models\SalesRefund.cs" />
+    <Compile Include="Models\SalesRefundLine.cs" />
+    <Compile Include="Models\SalesDocument.cs" />
+    <Compile Include="Models\SalesDocumentLine.cs" />
     <Compile Include="Models\Shift.cs" />
     <Compile Include="Algorithm\TabuSearch.cs" />
     <Compile Include="Models\User.cs" />
@@ -246,11 +260,41 @@
       <DependentUpon>UC_ProductionOrderProductLine.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Sales_Module\ProductWarehouseS.cs" />
+    <Compile Include="Views\Sales_Module\Refunds\Refund.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Sales_Module\Refunds\Refund.Designer.cs">
+      <DependentUpon>Refund.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales_Module\SalesDocumentSearchMovement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales_Module\SalesDocumentSearchMovement.Designer.cs">
+      <DependentUpon>SalesDocumentSearchMovement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Sales_Module\SalesOrderSearchClient.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Sales_Module\SalesOrderSearchClient.Designer.cs">
       <DependentUpon>SalesOrderSearchClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales_Module\SalesRefundSearchDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales_Module\SalesRefundSearchDocument.Designer.cs">
+      <DependentUpon>SalesRefundSearchDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales_Module\UC_SalesDocument.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Sales_Module\UC_SalesDocument.Designer.cs">
+      <DependentUpon>UC_SalesDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales_Module\UC_SalesRefund.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Sales_Module\UC_SalesRefund.Designer.cs">
+      <DependentUpon>UC_SalesRefund.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_Material.cs">
       <SubType>UserControl</SubType>
@@ -275,6 +319,12 @@
     </Compile>
     <Compile Include="Views\UC_Product.Designer.cs">
       <DependentUpon>UC_Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\MaterialMovementLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\MaterialMovementLine.Designer.cs">
+      <DependentUpon>MaterialMovementLine.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_Simulation.cs">
       <SubType>UserControl</SubType>
@@ -329,12 +379,6 @@
     </Compile>
     <Compile Include="Views\Sales_Module\SalesOrderLine.Designer.cs">
       <DependentUpon>SalesOrderLine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Sales_Module\UC_SalesInvoice.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Sales_Module\UC_SalesInvoice.Designer.cs">
-      <DependentUpon>UC_SalesInvoice.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_Recipe.cs">
       <SubType>UserControl</SubType>
@@ -397,6 +441,19 @@
       <DependentUpon>UC_Workstation.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Warehouse_Module\Document.cs" />
+    <Compile Include="Views\Warehouse_Module\MaterialWarehouseM.cs" />
+    <Compile Include="Views\Warehouse_Module\UC_WarehouseMovementM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\UC_WarehouseMovementM.Designer.cs">
+      <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\ViewWarehouseMovementM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\ViewWarehouseMovementM.Designer.cs">
+      <DependentUpon>ViewWarehouseMovementM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Warehouse_Module\ViewWarehouseMovementP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -421,12 +478,6 @@
     </Compile>
     <Compile Include="Views\Warehouse_Module\UC_WarehouseMovementP.Designer.cs">
       <DependentUpon>UC_WarehouseMovementP.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Warehouse_Module\UC_WarehouseMovementM.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Warehouse_Module\UC_WarehouseMovementM.Designer.cs">
-      <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_User.cs">
       <SubType>UserControl</SubType>
@@ -538,8 +589,23 @@
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionMenu.resx">
       <DependentUpon>UC_ProductionMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales_Module\Refunds\Refund.resx">
+      <DependentUpon>Refund.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales_Module\SalesDocumentSearchMovement.resx">
+      <DependentUpon>SalesDocumentSearchMovement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\SalesOrderSearchClient.resx">
       <DependentUpon>SalesOrderSearchClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales_Module\SalesRefundSearchDocument.resx">
+      <DependentUpon>SalesRefundSearchDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales_Module\UC_SalesDocument.resx">
+      <DependentUpon>UC_SalesDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales_Module\UC_SalesRefund.resx">
+      <DependentUpon>UC_SalesRefund.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Material.resx">
       <DependentUpon>UC_Material.cs</DependentUpon>
@@ -561,6 +627,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderWorkLine.resx">
       <DependentUpon>UC_ProductionOrderWorkLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_Module\MaterialMovementLine.resx">
+      <DependentUpon>MaterialMovementLine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Simulation.resx">
       <DependentUpon>UC_Simulation.cs</DependentUpon>
@@ -589,9 +658,6 @@
     <EmbeddedResource Include="Views\Sales_Module\SalesOrderLine.resx">
       <DependentUpon>SalesOrderLine.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Sales_Module\UC_SalesInvoice.resx">
-      <DependentUpon>UC_SalesInvoice.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Recipe.resx">
       <DependentUpon>UC_Recipe.cs</DependentUpon>
     </EmbeddedResource>
@@ -619,6 +685,12 @@
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesOrder.resx">
       <DependentUpon>UC_SalesOrder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_Module\UC_WarehouseMovementM.resx">
+      <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_Module\ViewWarehouseMovementM.resx">
+      <DependentUpon>ViewWarehouseMovementM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_Module\ViewWarehouseMovementP.resx">
       <DependentUpon>ViewWarehouseMovementP.cs</DependentUpon>
     </EmbeddedResource>
@@ -633,9 +705,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_Module\UC_WarehouseMovementP.resx">
       <DependentUpon>UC_WarehouseMovementP.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Warehouse_Module\UC_WarehouseMovementM.resx">
-      <DependentUpon>UC_WarehouseMovementM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_User.resx">
       <DependentUpon>UC_User.cs</DependentUpon>
@@ -678,25 +747,36 @@
     <None Include="Properties\DataSources\WindowsFormsApp1.Algorithm.Workstation.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.Worker.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.Workstation.datasource" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Minimize Window_52px.png" />
     <None Include="Resources\Close Window_52px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Microsoft Excel_40px.png" />
     <None Include="Resources\Maximize Window_64px.png" />
     <None Include="Resources\Search_16.png" />
     <None Include="Resources\Cash Register_40px.png" />

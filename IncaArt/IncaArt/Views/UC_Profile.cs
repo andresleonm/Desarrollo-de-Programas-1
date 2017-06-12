@@ -247,5 +247,28 @@ namespace WindowsFormsApp1.Views
             buttonSave.Text = "Registrar";
             current_profile = null;
         }
+
+        private void metroButtonDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("¿Está seguro que desea eliminar el perfil " + metroGrid1.CurrentRow.Cells[2].Value + ")?", "Eliminar Perfil", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                Profile profile_to_delete = profile_list.Find(p => p.Id == Int32.Parse(metroGrid1.CurrentRow.Cells[0].Value.ToString()));
+                Result delete_user = profile_controller.deleteProfile(profile_to_delete);
+
+                if (delete_user.success)
+                {
+                    MessageBox.Show("Perfil eliminado correctamente");
+                    Clean();
+                    Load_Data();
+                    Load_DataGridView();
+                }
+                else
+                {
+                    MessageBox.Show(delete_user.message);
+                }
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class MaterialWarehouse
+    public class MaterialWarehouse
     {
         int id;
         String name;
