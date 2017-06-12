@@ -30,6 +30,7 @@ namespace WindowsFormsApp1.Views
                   
             Controller.Result result = order_controller.getProductionOrders();
             orders = (List<Models.ProductionOrder>)result.data;
+            if (orders == null) orders = new List<Models.ProductionOrder>();
             Load_ProductionOrder_DataGridView();
         }
          
@@ -61,7 +62,7 @@ namespace WindowsFormsApp1.Views
         {
             if (Visible)
             {
-                Load_ProductionOrder_DataGridView();
+                datagrid_Products_Fill();
             }
         }
 
@@ -100,6 +101,25 @@ namespace WindowsFormsApp1.Views
                     }
                 }
             }
+        }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            /*
+            int order_Id;
+            if (!Int32.TryParse(metroTextBox_numOrder.Text, out order_Id))
+            {
+                order_Id = 0;
+            }
+            string description = metroTextBox_description.Text;
+            DateTime begin=metroDateTime_Begin.Value;
+            DateTime end = metroDateTime_End.Value;
+
+            orders.Clear();
+            orders = (List < Models.ProductionOrder>)(order_controller.getProductionOrders(order_Id, description, begin, end).data);
+            if (orders == null) orders = new List<Models.ProductionOrder>();
+            Load_ProductionOrder_DataGridView();
+            */
         }
     }
 }

@@ -20,6 +20,7 @@ namespace WindowsFormsApp1.Views
         public User sessionUser;
         public Dashboard(User sessionUser)
         {
+            this.sessionUser = sessionUser;
             InitializeComponent();
             hide_UserControls();
             mainDashboard1.Visible = true;

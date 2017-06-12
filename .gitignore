@@ -2,7 +2,8 @@
 # Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
 ################################################################################
 
-IncaArt/IncaArt/bin/Debug
-IncaArt/IncaArt/obj/Debug
+/IncaArt/IncaArt/bin/Debug
+/IncaArt/IncaArt/obj/
+/IncaArt/.vs/IncaArt/
 /IncaArt/IncaArt/Properties/licenses.licx
 /IncaArt/__SkipCodeRush

@@ -19,12 +19,12 @@ namespace WindowsFormsApp1.Views.Production_Module
         private bool editing = false;
 
         List<Material> materials;
-        List<MaterialWarehouse> warehouses;
+        List<Warehouse_Module.MaterialWarehouseM> warehouses;
         string user = "dp1admin";
         string password = "dp1admin";
 
         MaterialsController material_controller;
-        MaterialWarehouseController material_warehouse_controller;
+        MaterialMovementDetailController material_warehouse_controller;
         UnitController unit_controller;
 
         internal Models.ProductionOrderMaterialLine Line
@@ -70,7 +70,7 @@ namespace WindowsFormsApp1.Views.Production_Module
         {
             InitializeComponent();
             material_controller = new MaterialsController(user, password);
-            material_warehouse_controller = new MaterialWarehouseController(user, password);
+            material_warehouse_controller = new MaterialMovementDetailController(user, password);
             unit_controller = new UnitController(user, password);
         }
 
@@ -93,9 +93,7 @@ namespace WindowsFormsApp1.Views.Production_Module
                 Line.Unit_name = unit.Name;
 
                 Line.Quantity_required = Int32.Parse(metroTextBox_Quantity.Text);
-                Line.Quantity_taken_real = Int32.Parse(metroTextBox_quantity_taken_real.Text);
                 Line.State = "Registrado";
-
                 MaterialWarehouse warehouse = warehouses[comboBox_Warehouse.SelectedIndex];
                 Line.Warehouse_id = warehouse.Id;
                 Line.Warehouse_name = warehouse.Name;
@@ -117,8 +115,8 @@ namespace WindowsFormsApp1.Views.Production_Module
             Result result = material_controller.getMaterials();
             this.materials = (List<Material>)result.data;
 
-            result = material_warehouse_controller.getMaterialWarehouses();
-            this.warehouses = (List<MaterialWarehouse>)result.data;
+            result = material_warehouse_controller.getWarehouses(materials[0].Id);
+            this.warehouses = (List<Warehouse_Module.MaterialWarehouseM>)result.data;
 
             comboBox_Material.DataSource = materials;
             comboBox_Material.DisplayMember = "name";
@@ -131,9 +129,26 @@ namespace WindowsFormsApp1.Views.Production_Module
                 comboBox_Material.Text = line.Material_name;
                 comboBox_Warehouse.Text = line.Warehouse_name;
                 metroTextBox_Quantity.Text = line.Quantity_required.ToString();
-                metroTextBox_quantity_taken_real.Text = line.Quantity_taken_real.ToString();
                 this.Text = "Edición de material";
             }
+        }
+
+        private void comboBox_Warehouse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+                       
+        }
+
+        private void comboBox_Material_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int material_id = ((Material)comboBox_Material.SelectedItem).Id;
+
+            Result result = material_warehouse_controller.getWarehouses(material_id);
+            this.warehouses = (List<Warehouse_Module.MaterialWarehouseM>)result.data;
+
+            comboBox_Warehouse.DataSource = warehouses;
+            comboBox_Warehouse.DisplayMember = "name";
+            comboBox_Warehouse.SelectedIndex = -1;
         }
     }
 }

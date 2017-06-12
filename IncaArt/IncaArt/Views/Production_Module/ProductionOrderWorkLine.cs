@@ -112,7 +112,7 @@ namespace WindowsFormsApp1.Views.Production_Module
                 line.Quantity_required=Int32.Parse(metroTextBox_quantity_required.Text);
                 line.Quantity_produced=Int32.Parse(metroTextBox_quantity_produced.Text);
                 line.Quantity_broken=Int32.Parse(metroTextBox_quantity_broken.Text);
-                line.Production_time=Double.Parse(metroTextBox_production_time.Text);
+                line.Production_time=(double)(numericUpDown_Hours.Value*60+numericUpDown_Minute.Value);
                 line.Observation=metroTextBox_observations.Text;
                 line.State = "Registrado";
 
@@ -156,9 +156,17 @@ namespace WindowsFormsApp1.Views.Production_Module
                 metroTextBox_quantity_required.Text = line.Quantity_required.ToString();
                 metroTextBox_quantity_produced.Text = line.Quantity_produced.ToString();
                 metroTextBox_quantity_broken.Text = line.Quantity_broken.ToString();
-                metroTextBox_production_time.Text = line.Production_time.ToString();
+                //metroTextBox_production_time.Text = line.Production_time.ToString();
+                numericUpDown_Minute.Value = (int)(line.Production_time) % 60;
+                numericUpDown_Hours.Value= (int)(line.Production_time) / 60;
+
                 this.Text = "Edición de notificación de trabajo";
             }
+        }
+
+        private void metroTextBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
