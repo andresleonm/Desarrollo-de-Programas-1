@@ -34,6 +34,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.consulta = new MetroFramework.Controls.MetroTabPage();
+            this.btn_template = new MetroFramework.Controls.MetroButton();
+            this.btn_import = new MetroFramework.Controls.MetroButton();
             this.btn_delete = new MetroFramework.Controls.MetroButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
@@ -64,8 +66,6 @@
             this.textbox_stock_min = new MetroFramework.Controls.MetroTextBox();
             this.btn_cancel = new MetroFramework.Controls.MetroButton();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btn_import = new MetroFramework.Controls.MetroButton();
-            this.btn_template = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -108,6 +108,34 @@
             this.consulta.VerticalScrollbarBarColor = true;
             this.consulta.VerticalScrollbarHighlightOnWheel = false;
             this.consulta.VerticalScrollbarSize = 10;
+            // 
+            // btn_template
+            // 
+            this.btn_template.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_template.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            this.btn_template.Location = new System.Drawing.Point(35, 367);
+            this.btn_template.Name = "btn_template";
+            this.btn_template.Size = new System.Drawing.Size(75, 23);
+            this.btn_template.TabIndex = 17;
+            this.btn_template.Text = "Plantilla";
+            this.btn_template.UseCustomBackColor = true;
+            this.btn_template.UseCustomForeColor = true;
+            this.btn_template.UseSelectable = true;
+            this.btn_template.Click += new System.EventHandler(this.btn_template_Click);
+            // 
+            // btn_import
+            // 
+            this.btn_import.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_import.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            this.btn_import.Location = new System.Drawing.Point(116, 367);
+            this.btn_import.Name = "btn_import";
+            this.btn_import.Size = new System.Drawing.Size(75, 23);
+            this.btn_import.TabIndex = 16;
+            this.btn_import.Text = "Importar";
+            this.btn_import.UseCustomBackColor = true;
+            this.btn_import.UseCustomForeColor = true;
+            this.btn_import.UseSelectable = true;
+            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
             // 
             // btn_delete
             // 
@@ -577,34 +605,6 @@
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // btn_import
-            // 
-            this.btn_import.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_import.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_import.Location = new System.Drawing.Point(35, 367);
-            this.btn_import.Name = "btn_import";
-            this.btn_import.Size = new System.Drawing.Size(75, 23);
-            this.btn_import.TabIndex = 16;
-            this.btn_import.Text = "Importar";
-            this.btn_import.UseCustomBackColor = true;
-            this.btn_import.UseCustomForeColor = true;
-            this.btn_import.UseSelectable = true;
-            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
-            // 
-            // btn_template
-            // 
-            this.btn_template.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_template.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_template.Location = new System.Drawing.Point(116, 367);
-            this.btn_template.Name = "btn_template";
-            this.btn_template.Size = new System.Drawing.Size(75, 23);
-            this.btn_template.TabIndex = 17;
-            this.btn_template.Text = "Plantilla";
-            this.btn_template.UseCustomBackColor = true;
-            this.btn_template.UseCustomForeColor = true;
-            this.btn_template.UseSelectable = true;
-            this.btn_template.Click += new System.EventHandler(this.btn_template_Click);
             // 
             // UC_Material
             // 

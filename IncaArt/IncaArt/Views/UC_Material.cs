@@ -438,6 +438,12 @@ namespace WindowsFormsApp1.Views
             }
         }
 
+        private partial class MaterialError //Clase temporal para manejo de Excel con filas con errores
+        {
+            public List<string> error_list;
+            public List<string> string_list;
+        }
+
         private void btn_import_Click(object sender, EventArgs e)
         {
             OpenFileDialog openDialog = new OpenFileDialog();
@@ -457,28 +463,41 @@ namespace WindowsFormsApp1.Views
                 int row_count = range.Rows.Count;
                 int column_count = range.Columns.Count;
                 Range datarange;
-                string name = "", unit = "", error_line="Error en las líneas:\n";
+                string name = "", unit = "";
                 double max = -1, min = -1, number;
-                Boolean error,found_error=false;
+                bool name_error, unit_error, min_error, max_error; //error individual
+                List<string> error_list, string_list; //para hacer control de cada error de fila
                 Models.Material material;
                 int unit_id;
-                for (int i = 2; i <= row_count; i++)
+                List<MaterialError> material_error_list = new List<MaterialError>(); //Lista de materiales para el Excel con error
+                //En Interop Excel el indice comienza en 1
+                for (int i = 2; i <= row_count; i++) //Fila 2 comienza las filas de materiales
                 {
-                    error = false;
+                    name_error = false;
+                    unit_error = false;
+                    min_error = false;
+                    max_error = false;
+                    MaterialError material_error = new MaterialError();
+                    error_list = new List<string>();
+                    string_list = new List<string>();
                     unit_id = -1;
-                    datarange = (Range)ws.Cells[i, 1];
+                    datarange = (Range)ws.Cells[i, 1];//Nombre
+                    string_list.Add((string)datarange.Text);
                     if (string.IsNullOrWhiteSpace((string)datarange.Value2))
                     {
-                        error = true;
+                        name_error = true;
+                        error_list.Add("name");
                     }
                     else
                     {
                         name = (string)datarange.Value2;
                     }
-                    datarange = (Range)ws.Cells[i, 2];
+                    datarange = (Range)ws.Cells[i, 2];//Unidad
+                    string_list.Add((string)datarange.Text);
                     if (string.IsNullOrWhiteSpace((string)datarange.Value2))
                     {
-                        error = true;
+                        unit_error = true;
+                        error_list.Add("unit");
                     }
                     else
                     {
@@ -493,31 +512,40 @@ namespace WindowsFormsApp1.Views
                         }
                         if (unit_id == -1)
                         {
-                            error = true;
+                            unit_error = true;
+                            error_list.Add("unit_find");
                         }
                     }
-                    datarange = (Range)ws.Cells[i, 3];
+                    datarange = (Range)ws.Cells[i, 3];//Stock minimo
+                    string_list.Add((string)datarange.Text);
                     if (datarange.Value2 == null || !double.TryParse((string)datarange.Text, out number))
                     {
-                        error = true;
+                        min_error = true;
+                        error_list.Add("min");
                     }
                     else
                     {
                         min = (double)datarange.Value2;
                     }
-                    datarange = (Range)ws.Cells[i, 4];
+                    datarange = (Range)ws.Cells[i, 4];//Stock maximo
+                    string_list.Add((string)datarange.Text);
                     if (datarange.Value2 == null || !double.TryParse((string)datarange.Text, out number))
                     {
-                        error = true;
+                        max_error = true;
+                        error_list.Add("max");
                     }
                     else
                     {
                         max = (double)datarange.Value2;
                     }
-                    if (!error)
+                    if (name_error || unit_error || min_error || max_error)//Si hay error entonces, se agrega a la lista de material error
                     {
-                        //string temp =""+ name + "\n" + unit + "\n" + min + "\n" + max;
-                        //MessageBox.Show(temp);
+                        material_error.error_list = error_list;
+                        material_error.string_list = string_list;
+                        material_error_list.Add(material_error);
+                    }
+                    else
+                    {
                         material = new Models.Material();
                         material.Name = name;
                         material.Stock_max = Convert.ToInt32(max);
@@ -529,18 +557,76 @@ namespace WindowsFormsApp1.Views
                             MessageBox.Show("Error en registro material");
                         }
                     }
-                    else
-                    {
-                        error_line += i+"\n";
-                        found_error = true;
-                    }
                 }
-                if (found_error)
+                if (material_error_list.Count>0) //Hubo por lo menos una fila con error
                 {
-                    MessageBox.Show(error_line);
+                    CreateExcelError(material_error_list);
                 }
             }
             openDialog.Dispose();
+        }
+
+        private void CreateExcelError(List<MaterialError> list)
+        {
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            if (excel == null)
+            {
+                Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
+                return;
+            }
+            excel.Visible = true;
+
+            Workbook wb = excel.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
+            Worksheet ws = (Worksheet)wb.Worksheets[1];
+            ws.Name = "Materiales";
+            if (ws == null)
+            {
+                Console.WriteLine("Worksheet could not be created. Check that your office installation and project references are correct.");
+            }
+
+            ws.Range["A1"].Value2 = "Nombre";
+            ws.Range["B1"].Value2 = "Unidad";
+            ws.Range["C1"].Value2 = "Stock minimo";
+            ws.Range["D1"].Value2 = "Stock maximo";
+            ws.Range["E1"].Value2 = "Observaciones";
+            string observation;
+            MaterialError material_error;
+            for (int i = 0; i < list.Count(); i++)
+            {
+                observation = "";
+                material_error = list[i];
+                for (int j = 0; j < list[i].string_list.Count(); j++)//Se pone los datos del material escrito
+                {
+                    ((Range)ws.Cells[i + 2, j+1]).Value2= material_error.string_list[j];
+                    //ws.Cells[i+2,j]= material_error.string_list[j];
+
+                }
+                foreach (var item in material_error.error_list)
+                {
+                    switch (item)
+                    {
+                        case "name":
+                            observation += "Nombre vacío. ";
+                            break;
+                        case "unit":
+                            observation += "Unidad vacía. ";
+                            break;
+                        case "unit_find":
+                            observation += "Unidad inválida. ";
+                            break;
+                        case "min":
+                            observation += "Stock mínimo inválido. ";
+                            break;
+                        case "max":
+                            observation += "Stock máximo inválido. ";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                ((Range)ws.Cells[i + 2, 5]).Value2 = observation;
+                //ws.Cells[i + 2, 5] = observation;
+            }
         }
 
         private void btn_template_Click(object sender, EventArgs e)
@@ -565,8 +651,6 @@ namespace WindowsFormsApp1.Views
             ws.Range["B1"].Value2 = "Unidad";
             ws.Range["C1"].Value2 = "Stock minimo";
             ws.Range["D1"].Value2 = "Stock maximo";
-
-
         }
     }
 }
