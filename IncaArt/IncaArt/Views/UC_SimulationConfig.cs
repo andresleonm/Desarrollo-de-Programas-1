@@ -113,33 +113,46 @@ namespace WindowsFormsApp1.Views
             }
 
             Algorithm.OrderDetail detail = new Algorithm.OrderDetail();
-
+            bool contains = false;
             foreach (DataGridViewRow row in products_grid.Rows)
             {
-                Algorithm.OrderDetailLine line = new Algorithm.OrderDetailLine();
-                Models.Product aux_prod = products.Where(p => p.Name == row.Cells[0].Value.ToString()).ElementAt(0);
-                string prod_name = "";
-                if (aux_prod.Name.ToLower().Contains("ceramico") || aux_prod.Name.ToLower().Contains("cerámico"))
+                if (int.Parse(row.Cells[1].Value.ToString()) > 0)
                 {
-                    prod_name = "ceramico";
-                }
-                else if (aux_prod.Name.ToLower().Contains("piedra"))
-                {
-                    prod_name = "piedra";
-                }
-                else if (aux_prod.Name.ToLower().Contains("retablo"))
-                {
-                    prod_name = "retablo";
-                }
-                line.product = new Algorithm.Product(prod_name, 0, aux_prod.Unit_price);
-                line.quantity = int.Parse(row.Cells[1].Value.ToString());
-                detail.lines.Add(line);
+                    foreach(Algorithm.OrderDetailLine l in detail.lines)
+                    {
+                        if (row.Cells[0].Value.ToString().ToLower().Contains(l.product.name.ToLower()))
+                        {
+                            l.quantity += int.Parse(row.Cells[1].Value.ToString());
+                            contains = true;
+                            break;
+                        }
+                    }
+                    if (contains) continue;
+                    Algorithm.OrderDetailLine line = new Algorithm.OrderDetailLine();
+                    Models.Product aux_prod = products.Where(p => p.Name == row.Cells[0].Value.ToString()).ElementAt(0);
+                    string prod_name = "";
+                    if (aux_prod.Name.ToLower().Contains("ceramico") || aux_prod.Name.ToLower().Contains("cerámico"))
+                    {
+                        prod_name = "ceramico";
+                    }
+                    else if (aux_prod.Name.ToLower().Contains("piedra"))
+                    {
+                        prod_name = "piedra";
+                    }
+                    else if (aux_prod.Name.ToLower().Contains("retablo"))
+                    {
+                        prod_name = "retablo";
+                    }
+                    line.product = new Algorithm.Product(prod_name, 0, aux_prod.Unit_price);
+                    line.quantity = int.Parse(row.Cells[1].Value.ToString());
+                    detail.lines.Add(line);
+                }                
             }
             order.order_detail = detail;
             Algorithm.TabuSearch tabu = new Algorithm.TabuSearch(order, tabu_workers, tabu_wkstations);
-            solution =  tabu.generateSolution();
+            solution = tabu.generateSolution();
             this.Visible = false;
-            this.Parent.Parent.Controls.Find("UC_SimulationExecution1",true)[0].Visible = true;
+            this.Parent.Parent.Controls.Find("UC_SimulationExecution1", true)[0].Visible = true;
         }
 
         private void workers_grid_ColumnHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
