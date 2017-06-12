@@ -558,7 +558,7 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }
-                if (material_error_list.Count>0) //Hubo por lo menos una fila con error
+                if (material_error_list.Count > 0) //Hubo por lo menos una fila con error
                 {
                     CreateExcelError(material_error_list);
                 }
@@ -597,9 +597,7 @@ namespace WindowsFormsApp1.Views
                 material_error = list[i];
                 for (int j = 0; j < list[i].string_list.Count(); j++)//Se pone los datos del material escrito
                 {
-                    ((Range)ws.Cells[i + 2, j+1]).Value2= material_error.string_list[j];
-                    //ws.Cells[i+2,j]= material_error.string_list[j];
-
+                    ((Range)ws.Cells[i + 2, j + 1]).Value2 = material_error.string_list[j];
                 }
                 foreach (var item in material_error.error_list)
                 {
@@ -625,8 +623,8 @@ namespace WindowsFormsApp1.Views
                     }
                 }
                 ((Range)ws.Cells[i + 2, 5]).Value2 = observation;
-                //ws.Cells[i + 2, 5] = observation;
             }
+            ws.Columns.AutoFit();
         }
 
         private void btn_template_Click(object sender, EventArgs e)
@@ -651,6 +649,7 @@ namespace WindowsFormsApp1.Views
             ws.Range["B1"].Value2 = "Unidad";
             ws.Range["C1"].Value2 = "Stock minimo";
             ws.Range["D1"].Value2 = "Stock maximo";
+            ws.Columns.AutoFit();
         }
     }
 }
