@@ -195,16 +195,22 @@ namespace WindowsFormsApp1.Views
             if (curCustomer != null)
             {
                 customer = CreateCustomer(1);
-                result = customerController.updateCustomer(customer);
-                message = "Cliente editado correctamente";
+                if (customer != null)
+                {
+                    result = customerController.updateCustomer(customer);
+                    message = "Cliente editado correctamente";
+                }
             }
             else {
                 customer = CreateCustomer(0);
-                result = customerController.insertCustomer(customer);
-                message = "Cliente agregado correctamente";
+                if (customer != null)
+                {
+                    result = customerController.insertCustomer(customer);
+                    message = "Cliente agregado correctamente";
+                }
             }
 
-            if (result.success)
+            if (result.success && result.data != null)
             {
                 MessageBox.Show(message,"Registro", MessageBoxButtons.OK);
                 Set_Flag_All(false);
@@ -263,11 +269,13 @@ namespace WindowsFormsApp1.Views
 
         private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
-            {
-                cur_row = e.RowIndex;
-                delete.Enabled = true;
-            }
+            
+                if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
+                {
+                    cur_row = e.RowIndex;
+                    delete.Enabled = true;
+                }
+            
         }
 
 
@@ -306,6 +314,7 @@ namespace WindowsFormsApp1.Views
                     }
                 }
 
+                register.Text = "Editar";
                 metroTabControl1.SelectedIndex = 1;
                 Set_Flag_All(true);
             }

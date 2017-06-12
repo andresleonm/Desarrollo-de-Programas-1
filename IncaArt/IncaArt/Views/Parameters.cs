@@ -16,10 +16,11 @@ namespace WindowsFormsApp1.Views
         bool value_flag;
 
         List<Models.Parameters> parameters_list;
-        List<Models.Parameters> parameters_list_init;
         Controller.ParametersController parameterController;
         int cur_row;
         Controller.Result result;
+
+        Models.Parameters curParameter;
         public Parameters()
         {
             InitializeComponent();
@@ -50,11 +51,12 @@ namespace WindowsFormsApp1.Views
             metroGrid1.Rows.Clear();
             for (int i = 0; i < parameters_list.Count(); i++)
             {
-                    String[] row = new String[6];
+                    String[] row = new String[5];
                     row[0] = parameters_list[i].Id.ToString();
-                    row[1] = parameters_list[i].Name;
-                    row[2] = parameters_list[i].Value;
-                    row[3] = parameters_list[i].State;
+                    row[1] = i.ToString();
+                    row[2] = parameters_list[i].Name;
+                    row[3] = parameters_list[i].Value;
+                    row[4] = parameters_list[i].State;
                     this.metroGrid1.Rows.Add(row);
             }
         }
@@ -134,25 +136,44 @@ namespace WindowsFormsApp1.Views
             }
         }
 
+        private void tabIndex_Enter(object sender, EventArgs e)
+        {
+            Clean();
+            register.Text = "Guardar";
+            curParameter = null;
+        }
+
         private void register_Click(object sender, EventArgs e)
         {
-            Models.Parameters param = CreateParameter(0);
-            if (param != null)
+
+            Models.Parameters param;
+            string message = " ";
+
+            if (curParameter != null)
             {
+                param = CreateParameter(1);
+                result = parameterController.updateParameter(param);
+                message = "Parámetro editado correctamente";
+            }
+            else
+            {
+                param = CreateParameter(0);
                 result = parameterController.insertParameter(param);
-                if (result.data == null)
-                {
-                    MessageBox.Show(result.message, "Error al registrar parámetro", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    MessageBox.Show("Parámetro registrado correctamente", "Registrar material", MessageBoxButtons.OK);
-                    Load_Data();
-                }
+                message = "Parámetro agregado correctamente";
+            }
+
+            if (result.success)
+            {
+                MessageBox.Show(message, "Registro", MessageBoxButtons.OK);
                 Set_Flag_All(false);
-                Load_DataGridView();
                 Clean();
+                Load_Data();
+                Load_DataGridView();
                 metroTabControl1.SelectedIndex = 0;
+            }
+            else
+            {
+                MessageBox.Show(result.message, "Error en la transacción", MessageBoxButtons.OK);
             }
         }
 
@@ -170,9 +191,12 @@ namespace WindowsFormsApp1.Views
             cur_row = e.RowIndex;
             if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
             {
-                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                textbox_value.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+                curParameter = parameters_list[index];
+                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                textbox_value.Text = metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString();
                 metroTabControl1.SelectedIndex = 1;
+                register.Text = "Editar";
                 Set_Flag_All(true);
             }
         }

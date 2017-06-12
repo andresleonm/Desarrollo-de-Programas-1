@@ -40,13 +40,17 @@
             this.metroTile3 = new MetroFramework.Controls.MetroTile();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroTile13 = new MetroFramework.Controls.MetroTile();
+            this.metroTile14 = new MetroFramework.Controls.MetroTile();
+            this.metroTile15 = new MetroFramework.Controls.MetroTile();
+            this.metroTile16 = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
             // metroTile9
             // 
             this.metroTile9.ActiveControl = null;
             this.metroTile9.BackColor = System.Drawing.Color.DarkCyan;
-            this.metroTile9.Location = new System.Drawing.Point(689, 304);
+            this.metroTile9.Location = new System.Drawing.Point(689, 405);
             this.metroTile9.Name = "metroTile9";
             this.metroTile9.Size = new System.Drawing.Size(177, 81);
             this.metroTile9.Style = MetroFramework.MetroColorStyle.Blue;
@@ -249,11 +253,85 @@
             this.metroTile1.UseSelectable = true;
             this.metroTile1.UseTileImage = true;
             // 
+            // metroTile13
+            // 
+            this.metroTile13.ActiveControl = null;
+            this.metroTile13.BackColor = System.Drawing.Color.DarkCyan;
+            this.metroTile13.Location = new System.Drawing.Point(689, 304);
+            this.metroTile13.Name = "metroTile13";
+            this.metroTile13.Size = new System.Drawing.Size(177, 81);
+            this.metroTile13.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTile13.TabIndex = 37;
+            this.metroTile13.Text = "Tipo Almacén Producto";
+            this.metroTile13.TileImage = global::WindowsFormsApp1.Properties.Resources.Product_40px;
+            this.metroTile13.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile13.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.metroTile13.UseCustomBackColor = true;
+            this.metroTile13.UseSelectable = true;
+            this.metroTile13.UseTileImage = true;
+            // 
+            // metroTile14
+            // 
+            this.metroTile14.ActiveControl = null;
+            this.metroTile14.BackColor = System.Drawing.Color.DarkCyan;
+            this.metroTile14.Location = new System.Drawing.Point(26, 405);
+            this.metroTile14.Name = "metroTile14";
+            this.metroTile14.Size = new System.Drawing.Size(177, 81);
+            this.metroTile14.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTile14.TabIndex = 38;
+            this.metroTile14.Text = "Tipo Almacén Material";
+            this.metroTile14.TileImage = global::WindowsFormsApp1.Properties.Resources.Hangar_40px;
+            this.metroTile14.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile14.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.metroTile14.UseCustomBackColor = true;
+            this.metroTile14.UseSelectable = true;
+            this.metroTile14.UseTileImage = true;
+            // 
+            // metroTile15
+            // 
+            this.metroTile15.ActiveControl = null;
+            this.metroTile15.BackColor = System.Drawing.Color.DarkCyan;
+            this.metroTile15.Location = new System.Drawing.Point(468, 405);
+            this.metroTile15.Name = "metroTile15";
+            this.metroTile15.Size = new System.Drawing.Size(177, 81);
+            this.metroTile15.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTile15.TabIndex = 39;
+            this.metroTile15.Text = "Tipo Movimientos Material";
+            this.metroTile15.TileImage = global::WindowsFormsApp1.Properties.Resources.Documents_40px;
+            this.metroTile15.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile15.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile15.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.metroTile15.UseCustomBackColor = true;
+            this.metroTile15.UseSelectable = true;
+            this.metroTile15.UseTileImage = true;
+            // 
+            // metroTile16
+            // 
+            this.metroTile16.ActiveControl = null;
+            this.metroTile16.BackColor = System.Drawing.Color.DarkCyan;
+            this.metroTile16.Location = new System.Drawing.Point(247, 405);
+            this.metroTile16.Name = "metroTile16";
+            this.metroTile16.Size = new System.Drawing.Size(177, 81);
+            this.metroTile16.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTile16.TabIndex = 40;
+            this.metroTile16.Text = "Tipo Movimientos Producto";
+            this.metroTile16.TileImage = global::WindowsFormsApp1.Properties.Resources.Documents_40px;
+            this.metroTile16.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile16.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.metroTile16.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.metroTile16.UseCustomBackColor = true;
+            this.metroTile16.UseSelectable = true;
+            this.metroTile16.UseTileImage = true;
+            // 
             // MainDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.metroTile16);
+            this.Controls.Add(this.metroTile15);
+            this.Controls.Add(this.metroTile14);
+            this.Controls.Add(this.metroTile13);
             this.Controls.Add(this.metroTile9);
             this.Controls.Add(this.metroTile10);
             this.Controls.Add(this.metroTile11);
@@ -267,7 +345,7 @@
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.metroTile1);
             this.Name = "MainDashboard";
-            this.Size = new System.Drawing.Size(894, 502);
+            this.Size = new System.Drawing.Size(894, 673);
             this.Load += new System.EventHandler(this.MainDashboard_Load);
             this.ResumeLayout(false);
 
@@ -286,5 +364,9 @@
         private MetroFramework.Controls.MetroTile metroTile2;
         private MetroFramework.Controls.MetroTile metroTile1;
         private MetroFramework.Controls.MetroTile metroTile9;
+        private MetroFramework.Controls.MetroTile metroTile13;
+        private MetroFramework.Controls.MetroTile metroTile14;
+        private MetroFramework.Controls.MetroTile metroTile15;
+        private MetroFramework.Controls.MetroTile metroTile16;
     }
 }

@@ -129,6 +129,7 @@ namespace WindowsFormsApp1.Controller
             //if (warehouse.Max_capacity != "") parameters.Add(new Parameter("max_capacity", warehouse.Max_capacity));
             if (warehouse.Product_id != 0) parameters.Add(new Parameter("product_id", warehouse.Product_id.ToString()));
             if (warehouse.Type_id != 0) parameters.Add(new Parameter("type_id", warehouse.Type_id.ToString()));
+            if (warehouse.Name != "") parameters.Add(new Parameter("name", warehouse.Name.ToString()));
             GenericResult result = execute_function("get_productwarehouses2", parameters);
             List<Models.ProductWarehouse> warehouses = new List<Models.ProductWarehouse>();
             if (result.success)

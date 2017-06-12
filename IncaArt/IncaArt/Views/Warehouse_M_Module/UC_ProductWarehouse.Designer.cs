@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textbox_name_s = new MetroFramework.Controls.MetroTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btn_clean = new System.Windows.Forms.Button();
             this.combobox_product_s = new MetroFramework.Controls.MetroComboBox();
             this.combobox_type_s = new MetroFramework.Controls.MetroComboBox();
@@ -44,14 +46,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type_warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.physical_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.max_capacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delete = new System.Windows.Forms.Button();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
@@ -61,12 +55,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Cancel = new MetroFramework.Controls.MetroButton();
             this.combobox_products = new MetroFramework.Controls.MetroComboBox();
-            this.edit = new MetroFramework.Controls.MetroButton();
             this.register = new MetroFramework.Controls.MetroButton();
             this.textbox_max_capacity = new MetroFramework.Controls.MetroTextBox();
             this.combobox_type = new MetroFramework.Controls.MetroComboBox();
             this.textbox_name = new MetroFramework.Controls.MetroTextBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type_warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.physical_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.max_capacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textbox_unit = new MetroFramework.Controls.MetroTextBox();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -113,10 +116,13 @@
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
+            this.metroTabPage2.Enter += new System.EventHandler(this.tabIndex_Enter);
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.textbox_name_s);
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.btn_clean);
             this.groupBox2.Controls.Add(this.combobox_product_s);
             this.groupBox2.Controls.Add(this.combobox_type_s);
@@ -132,12 +138,53 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtros";
             // 
+            // textbox_name_s
+            // 
+            // 
+            // 
+            // 
+            this.textbox_name_s.CustomButton.Image = null;
+            this.textbox_name_s.CustomButton.Location = new System.Drawing.Point(199, 1);
+            this.textbox_name_s.CustomButton.Name = "";
+            this.textbox_name_s.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.textbox_name_s.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textbox_name_s.CustomButton.TabIndex = 1;
+            this.textbox_name_s.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textbox_name_s.CustomButton.UseSelectable = true;
+            this.textbox_name_s.CustomButton.Visible = false;
+            this.textbox_name_s.Lines = new string[0];
+            this.textbox_name_s.Location = new System.Drawing.Point(112, 24);
+            this.textbox_name_s.MaxLength = 32767;
+            this.textbox_name_s.Name = "textbox_name_s";
+            this.textbox_name_s.PasswordChar = '\0';
+            this.textbox_name_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textbox_name_s.SelectedText = "";
+            this.textbox_name_s.SelectionLength = 0;
+            this.textbox_name_s.SelectionStart = 0;
+            this.textbox_name_s.ShortcutsEnabled = true;
+            this.textbox_name_s.Size = new System.Drawing.Size(227, 29);
+            this.textbox_name_s.TabIndex = 55;
+            this.textbox_name_s.UseSelectable = true;
+            this.textbox_name_s.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textbox_name_s.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label5.Location = new System.Drawing.Point(6, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 54;
+            this.label5.Text = "Nombre :";
+            // 
             // btn_clean
             // 
             this.btn_clean.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_clean.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_clean.ForeColor = System.Drawing.Color.White;
-            this.btn_clean.Location = new System.Drawing.Point(742, 119);
+            this.btn_clean.Location = new System.Drawing.Point(431, 123);
             this.btn_clean.Name = "btn_clean";
             this.btn_clean.Size = new System.Drawing.Size(85, 29);
             this.btn_clean.TabIndex = 53;
@@ -159,7 +206,7 @@
             // 
             this.combobox_type_s.FormattingEnabled = true;
             this.combobox_type_s.ItemHeight = 23;
-            this.combobox_type_s.Location = new System.Drawing.Point(112, 24);
+            this.combobox_type_s.Location = new System.Drawing.Point(112, 77);
             this.combobox_type_s.Name = "combobox_type_s";
             this.combobox_type_s.Size = new System.Drawing.Size(227, 29);
             this.combobox_type_s.TabIndex = 51;
@@ -170,7 +217,7 @@
             this.search.BackColor = System.Drawing.Color.DarkCyan;
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search.ForeColor = System.Drawing.Color.White;
-            this.search.Location = new System.Drawing.Point(624, 119);
+            this.search.Location = new System.Drawing.Point(313, 123);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(85, 29);
             this.search.TabIndex = 50;
@@ -183,7 +230,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label13.Location = new System.Drawing.Point(6, 35);
+            this.label13.Location = new System.Drawing.Point(6, 88);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(88, 13);
             this.label13.TabIndex = 34;
@@ -230,17 +277,18 @@
             this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.metroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.metroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.metroGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
+            this.index,
             this.name,
             this.type_warehouse,
             this.product,
@@ -248,14 +296,14 @@
             this.physical_stock,
             this.max_capacity,
             this.state});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle5;
             this.metroGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroGrid1.EnableHeadersVisualStyles = false;
             this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -263,14 +311,14 @@
             this.metroGrid1.Location = new System.Drawing.Point(0, 0);
             this.metroGrid1.Name = "metroGrid1";
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid1.Size = new System.Drawing.Size(895, 246);
@@ -280,46 +328,6 @@
             this.metroGrid1.UseStyleColors = true;
             this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
             this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Nombre";
-            this.name.Name = "name";
-            // 
-            // type_warehouse
-            // 
-            this.type_warehouse.HeaderText = "Tipo Almacén";
-            this.type_warehouse.Name = "type_warehouse";
-            // 
-            // product
-            // 
-            this.product.HeaderText = "Producto";
-            this.product.Name = "product";
-            // 
-            // unity
-            // 
-            this.unity.HeaderText = "Unidad";
-            this.unity.Name = "unity";
-            // 
-            // physical_stock
-            // 
-            this.physical_stock.HeaderText = "Stock Actual";
-            this.physical_stock.Name = "physical_stock";
-            // 
-            // max_capacity
-            // 
-            this.max_capacity.HeaderText = "Capacidad Máxima";
-            this.max_capacity.Name = "max_capacity";
-            // 
-            // state
-            // 
-            this.state.HeaderText = "Estado";
-            this.state.Name = "state";
             // 
             // delete
             // 
@@ -349,13 +357,13 @@
             // 
             // metroTabPage3
             // 
+            this.metroTabPage3.Controls.Add(this.textbox_unit);
             this.metroTabPage3.Controls.Add(this.label4);
             this.metroTabPage3.Controls.Add(this.label3);
             this.metroTabPage3.Controls.Add(this.label2);
             this.metroTabPage3.Controls.Add(this.label1);
             this.metroTabPage3.Controls.Add(this.Cancel);
             this.metroTabPage3.Controls.Add(this.combobox_products);
-            this.metroTabPage3.Controls.Add(this.edit);
             this.metroTabPage3.Controls.Add(this.register);
             this.metroTabPage3.Controls.Add(this.textbox_max_capacity);
             this.metroTabPage3.Controls.Add(this.combobox_type);
@@ -424,7 +432,7 @@
             // 
             this.Cancel.BackColor = System.Drawing.Color.DarkCyan;
             this.Cancel.ForeColor = System.Drawing.Color.White;
-            this.Cancel.Location = new System.Drawing.Point(558, 264);
+            this.Cancel.Location = new System.Drawing.Point(474, 264);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(98, 27);
             this.Cancel.TabIndex = 70;
@@ -444,32 +452,18 @@
             this.combobox_products.Size = new System.Drawing.Size(245, 29);
             this.combobox_products.TabIndex = 69;
             this.combobox_products.UseSelectable = true;
+            this.combobox_products.SelectedIndexChanged += new System.EventHandler(this.put_unit);
             this.combobox_products.Validating += new System.ComponentModel.CancelEventHandler(this.combobox_Validating);
-            // 
-            // edit
-            // 
-            this.edit.BackColor = System.Drawing.Color.DarkCyan;
-            this.edit.ForeColor = System.Drawing.Color.White;
-            this.edit.Location = new System.Drawing.Point(423, 264);
-            this.edit.Name = "edit";
-            this.edit.Size = new System.Drawing.Size(98, 27);
-            this.edit.TabIndex = 67;
-            this.edit.Text = "Editar";
-            this.edit.UseCustomBackColor = true;
-            this.edit.UseCustomForeColor = true;
-            this.edit.UseSelectable = true;
-            this.edit.UseStyleColors = true;
-            this.edit.Click += new System.EventHandler(this.edit_Click);
             // 
             // register
             // 
             this.register.BackColor = System.Drawing.Color.DarkCyan;
             this.register.ForeColor = System.Drawing.Color.White;
-            this.register.Location = new System.Drawing.Point(282, 264);
+            this.register.Location = new System.Drawing.Point(327, 264);
             this.register.Name = "register";
             this.register.Size = new System.Drawing.Size(98, 27);
             this.register.TabIndex = 66;
-            this.register.Text = "Registro";
+            this.register.Text = "Editar";
             this.register.UseCustomBackColor = true;
             this.register.UseCustomForeColor = true;
             this.register.UseSelectable = true;
@@ -553,6 +547,91 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // index
+            // 
+            this.index.HeaderText = "index";
+            this.index.Name = "index";
+            this.index.Visible = false;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Nombre";
+            this.name.Name = "name";
+            this.name.Width = 250;
+            // 
+            // type_warehouse
+            // 
+            this.type_warehouse.HeaderText = "Tipo Almacén";
+            this.type_warehouse.Name = "type_warehouse";
+            this.type_warehouse.Width = 220;
+            // 
+            // product
+            // 
+            this.product.HeaderText = "Producto";
+            this.product.Name = "product";
+            this.product.Width = 150;
+            // 
+            // unity
+            // 
+            this.unity.HeaderText = "Unidad";
+            this.unity.Name = "unity";
+            this.unity.Width = 50;
+            // 
+            // physical_stock
+            // 
+            this.physical_stock.HeaderText = "Stock Actual";
+            this.physical_stock.Name = "physical_stock";
+            // 
+            // max_capacity
+            // 
+            this.max_capacity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.max_capacity.HeaderText = "Capacidad Máxima";
+            this.max_capacity.Name = "max_capacity";
+            // 
+            // state
+            // 
+            this.state.HeaderText = "Estado";
+            this.state.Name = "state";
+            this.state.Visible = false;
+            // 
+            // textbox_unit
+            // 
+            // 
+            // 
+            // 
+            this.textbox_unit.CustomButton.Image = null;
+            this.textbox_unit.CustomButton.Location = new System.Drawing.Point(72, 1);
+            this.textbox_unit.CustomButton.Name = "";
+            this.textbox_unit.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.textbox_unit.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textbox_unit.CustomButton.TabIndex = 1;
+            this.textbox_unit.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textbox_unit.CustomButton.UseSelectable = true;
+            this.textbox_unit.CustomButton.Visible = false;
+            this.textbox_unit.Enabled = false;
+            this.textbox_unit.Lines = new string[0];
+            this.textbox_unit.Location = new System.Drawing.Point(482, 178);
+            this.textbox_unit.MaxLength = 32767;
+            this.textbox_unit.Name = "textbox_unit";
+            this.textbox_unit.PasswordChar = '\0';
+            this.textbox_unit.ReadOnly = true;
+            this.textbox_unit.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textbox_unit.SelectedText = "";
+            this.textbox_unit.SelectionLength = 0;
+            this.textbox_unit.SelectionStart = 0;
+            this.textbox_unit.ShortcutsEnabled = true;
+            this.textbox_unit.Size = new System.Drawing.Size(98, 27);
+            this.textbox_unit.TabIndex = 75;
+            this.textbox_unit.UseSelectable = true;
+            this.textbox_unit.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textbox_unit.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // UC_ProductWarehouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -581,7 +660,6 @@
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
         private MetroFramework.Controls.MetroTabPage metroTabPage3;
         private MetroFramework.Controls.MetroComboBox combobox_products;
-        private MetroFramework.Controls.MetroButton edit;
         private MetroFramework.Controls.MetroButton register;
         private MetroFramework.Controls.MetroTextBox textbox_max_capacity;
         private MetroFramework.Controls.MetroComboBox combobox_type;
@@ -598,7 +676,16 @@
         private System.Windows.Forms.Panel panel4;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroGrid metroGrid1;
+        private System.Windows.Forms.Button delete;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private MetroFramework.Controls.MetroTextBox textbox_name_s;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn index;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn type_warehouse;
         private System.Windows.Forms.DataGridViewTextBoxColumn product;
@@ -606,11 +693,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn physical_stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn max_capacity;
         private System.Windows.Forms.DataGridViewTextBoxColumn state;
-        private System.Windows.Forms.Button delete;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ErrorProvider errorProvider;
+        private MetroFramework.Controls.MetroTextBox textbox_unit;
     }
 }

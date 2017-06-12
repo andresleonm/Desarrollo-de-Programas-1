@@ -33,6 +33,8 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
         Controller.Result resultP;
         Controller.Result resultT;
 
+
+        Models.MaterialWarehouse curWarehouse;
         public UC_MaterialWarehouse()
         {
             InitializeComponent();
@@ -101,50 +103,61 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
 
             warehouse_list = new List<Models.MaterialWarehouse>();
             result = materialWarehouseController.getMaterialWarehouses();
-            if (result.data == null) MessageBox.Show(result.message, "Error al listar almacén", MessageBoxButtons.OK);
+            if (!result.success) MessageBox.Show(result.message, "Error al listar almacén", MessageBoxButtons.OK);
             else warehouse_list = (List<Models.MaterialWarehouse>)result.data;
         }
 
 
         private void Load_DataGridView()
         {
+            Models.Material material = new Models.Material();
+            Models.MaterialTypeWarehouse type = new Models.MaterialTypeWarehouse();
+            Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
+
             metroGrid1.Rows.Clear();
             for (int i = 0; i < warehouse_list.Count(); i++)
             {
+                material = materials_list.Find(u => u.Id == warehouse_list[i].Material_id);
+                type = types_list.Find(u => u.Id == warehouse_list[i].Type_id);
+                //User user_to_delete = user_list.Find(u => u.Id == Int32.Parse(metroGrid1.CurrentRow.Cells[0].Value.ToString()));
+
+                /*
                 //Producto
-                Models.Material product = new Models.Material();
-                resultP = materialController.getMaterial(warehouse_list[i].Material_id);
+                Models.Product product = new Models.Product();
+                resultP = productController.getProduct(warehouse_list[i].Product_id);
 
 
                 //Tipo
-                Models.MaterialTypeWarehouse type = new Models.MaterialTypeWarehouse();
-                resultT = typeController.getMaterialTypeWarehouse(warehouse_list[i].Type_id);
-
-                if (resultP.data == null || resultT.data == null)
+                Models.ProductTypeWarehouse type = new Models.ProductTypeWarehouse();
+                resultT = typeController.getProductWarehouse(warehouse_list[i].Type_id);
+                (resultP.data == null || resultT.data == null
+                */
+                if (material == null || type == null)
                 {
-                    MessageBox.Show(result.message, "Error en las búsquedas de Materiales o Tipos de Almacén", MessageBoxButtons.OK);
+                    MessageBox.Show("Error en transacción","Error en las búsquedas de Materiales o Tipos de Almacén", MessageBoxButtons.OK);
                 }
                 else
                 {
+                    /*
                     // Producto
-                    product = (Models.Material)resultP.data;
+                    product = (Models.Product)resultP.data;
                     //Tipo
-                    type = (Models.MaterialTypeWarehouse)resultT.data;
+                    type = (Models.ProductTypeWarehouse)resultT.data;*/
                     //Unidad
-                    Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
-                    result = unitController.getUnit(product.Unit_id);
-                    unit = (Models.UnitOfMeasure)result.data;
+
+                    unit = unit_list.Find(u => u.Id == material.Unit_id);
 
                     //Grilla
-                    String[] row = new String[8];
+                    String[] row = new String[9];
                     row[0] = warehouse_list[i].Id.ToString();
-                    row[1] = warehouse_list[i].Name;
-                    row[2] = type.Name;
-                    row[3] = product.Name;
-                    row[4] = unit.Symbol;
-                    row[5] = warehouse_list[i].Current_physical_stock.ToString();
-                    row[6] = warehouse_list[i].Max_capacity.ToString();
-                    row[7] = warehouse_list[i].State;
+                    row[1] = i.ToString();
+                    row[2] = warehouse_list[i].Name;
+                    row[3] = type.Name;
+                    row[4] = material.Name;
+                    row[5] = unit.Symbol;
+                    row[6] = warehouse_list[i].Current_physical_stock.ToString();
+                    row[7] = warehouse_list[i].Max_capacity.ToString();
+                    row[8] = warehouse_list[i].State;
 
                     this.metroGrid1.Rows.Add(row);
                 }
@@ -229,25 +242,40 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
 
         private void register_Click(object sender, EventArgs e)
         {
-            // validate_data(textbox_name.Text, ((KeyValuePair<int, string>)combobox_products.SelectedItem).Key,Int32.Parse(textbox_max_capacity.Text));
+            Models.MaterialWarehouse warehouse;
+            string message = " ";
 
-            Models.MaterialWarehouse warehouse = CreateMaterialWarehouse(0);
-            if (warehouse != null)
+            if (curWarehouse != null)
             {
-                result = materialWarehouseController.insertMaterialWarehouse(warehouse);
-                if (result.data == null)
+                warehouse = CreateMaterialWarehouse(1);
+                if (warehouse != null)
                 {
-                    MessageBox.Show(result.message, "Error al registrar almacén", MessageBoxButtons.OK);
+                    result = materialWarehouseController.updateMaterialWarehouse(warehouse);
+                    message = "Almacén editado correctamente";
                 }
-                else
+            }
+            else
+            {
+                warehouse = CreateMaterialWarehouse(0);
+                if (warehouse != null)
                 {
-                    MessageBox.Show("Almacén agregado correctamente", "Registrar almacén", MessageBoxButtons.OK);
-                    Load_Data();
+                    result = materialWarehouseController.insertMaterialWarehouse(warehouse);
+                    message = "Almacén agregado correctamente";
                 }
+            }
+
+            if (result.success && result.data != null)
+            {
+                MessageBox.Show(message, "Registro", MessageBoxButtons.OK);
                 Set_Flag_All(false);
-                Load_DataGridView();
                 Clean();
+                Load_Data();
+                Load_DataGridView();
                 metroTabControl1.SelectedIndex = 0;
+            }
+            else
+            {
+                MessageBox.Show(result.message, "Error en la transacción", MessageBoxButtons.OK);
             }
         }
 
@@ -267,10 +295,10 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             cur_row = e.RowIndex;
             if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
             {
-                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
                 for (int i = 0; i < materials_list.Count(); i++)
                 {
-                    if (materials_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
+                    if (materials_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString())
                     {
                         combobox_products.SelectedIndex = i + 1;
                         break;
@@ -279,15 +307,16 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
 
                 for (int i = 0; i < types_list.Count(); i++)
                 {
-                    if (types_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString())
+                    if (types_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
                     {
                         combobox_type.SelectedIndex = i + 1;
                         break;
                     }
                 }
 
-                textbox_max_capacity.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                textbox_max_capacity.Text = metroGrid1.Rows[e.RowIndex].Cells[7].Value.ToString();
                 Set_Flag_All(true);
+                register.Text = "Editar";
                 metroTabControl1.SelectedIndex = 1;
             }
         }
@@ -319,8 +348,9 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             Models.MaterialWarehouse warehouse = new Models.MaterialWarehouse();
             warehouse.Material_id = ((KeyValuePair<int, string>)combobox_product_s.SelectedItem).Key;
             warehouse.Type_id = ((KeyValuePair<int, string>)combobox_type_s.SelectedItem).Key;
+            warehouse.Name = textbox_name_s.Text;
             result = materialWarehouseController.getMaterialWarehouses(warehouse);
-            if (result.data == null)
+            if (!result.success)
             {
                 MessageBox.Show(result.message, "Error al buscar almacén con filtros", MessageBoxButtons.OK);
             }
@@ -331,9 +361,16 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             }
         }
 
+        private void tabIndex_Enter(object sender, EventArgs e)
+        {
+            Clean();
+            register.Text = "Guardar";
+            curWarehouse = null;
+        }
+
         private void delete_Click(object sender, EventArgs e)
         {
-            int index = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
+            int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
             result = materialWarehouseController.deleteMaterialWarehouse(warehouse_list[index]);
             if (result.data == null)
             {
@@ -426,6 +463,20 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             }
         }
 
+        private bool IsNumeric(string num)
+        {
+            try
+            {
+                double x = Convert.ToDouble(num);
+                if (x < 0) return false;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         private void textbox_number_Validating(object sender, CancelEventArgs e)
         {
             MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
@@ -439,12 +490,10 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             }
             else
             {
-                errorProvider.SetError(textbox, null);
-                int number;
-                if (Int32.TryParse(text, out number))
+                if (!IsNumeric(text))
                 {
                     Set_Flag(textbox.Name, false);
-                    errorProvider.SetError(textbox, "Capacidad debe ser número");
+                    errorProvider.SetError(textbox, "Capacidad debe ser número positivo");
                 }
                 else
                 {
@@ -463,7 +512,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             if (unit_id == 0)
             {
                 Set_Flag(combobox.Name, false);
-                errorProvider.SetError(combobox, combobox.Name);
+                errorProvider.SetError(combobox,"Seleccionar una opción válida");
 
             }
             else
@@ -473,5 +522,19 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             }
         }
 
+        private void put_unit(object sender, EventArgs e)
+        {
+           
+            if (combobox_products.SelectedIndex !=0) {
+                int id = ((KeyValuePair<int, string>)combobox_products.SelectedItem).Key;
+                Models.Material material = materials_list.Find(u => u.Id == id);
+                textbox_unit.Text = id.ToString();
+                if (material != null)
+                {
+                    Models.UnitOfMeasure unit = unit_list.Find(u => u.Id == material.Unit_id);
+                    textbox_unit.Text = unit.Symbol;
+                }
+            }
+        }
     }
 }

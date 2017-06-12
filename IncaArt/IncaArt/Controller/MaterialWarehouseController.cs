@@ -122,13 +122,14 @@ namespace WindowsFormsApp1.Controller
             //if (warehouse.Max_capacity != "") parameters.Add(new Parameter("max_capacity", warehouse.Max_capacity));
             if (warehouse.Material_id != 0) parameters.Add(new Parameter("material_id", warehouse.Material_id.ToString()));
             if (warehouse.Type_id != 0) parameters.Add(new Parameter("type_id", warehouse.Type_id.ToString()));
+            if (warehouse.Name !="" ) parameters.Add(new Parameter("name", warehouse.Name.ToString()));
             GenericResult result = execute_function("get_materialwarehouses2", parameters);
-            List<Models.ProductWarehouse> warehouses = new List<Models.ProductWarehouse>();
+            List<Models.MaterialWarehouse> warehouses = new List<Models.MaterialWarehouse>();
             if (result.success)
             {
                 foreach (Row r in result.data)
                 {
-                    warehouses.Add(new Models.ProductWarehouse(Int32.Parse(r.getColumn(0)), r.getColumn(1), Int32.Parse(r.getColumn(2)), int.Parse(r.getColumn(3)), int.Parse(r.getColumn(4)),
+                    warehouses.Add(new Models.MaterialWarehouse(Int32.Parse(r.getColumn(0)), r.getColumn(1), Int32.Parse(r.getColumn(2)), int.Parse(r.getColumn(3)), int.Parse(r.getColumn(4)),
                         Int32.Parse(r.getColumn(5)), r.getColumn(6), int.Parse(r.getColumn(7))));
                 }
                 return new Result(warehouses, true, "");

@@ -29,6 +29,8 @@ namespace WindowsFormsApp1.Views
         int type_list = 4;
         Dictionary<int, string> combo_priority;
         Dictionary<int, string> combo_type;
+
+        Models.Supplier curSupplier;
         public Supplier()
         {
             InitializeComponent();
@@ -91,22 +93,29 @@ namespace WindowsFormsApp1.Views
             metroGrid1.Rows.Clear();
             for (int i = 0; i < supplier_list.Count(); i++)
             {
-                String[] row = new String[8];
+                String[] row = new String[9];
                 row[0] = supplier_list[i].Id.ToString();
-                row[1] = supplier_list[i].Doi.ToString();
-                row[2] = supplier_list[i].Name.ToString();
-                row[3] = supplier_list[i].Address.ToString();
-                row[4] = supplier_list[i].Phone.ToString();
-                row[5] = supplier_list[i].Email.ToString();
-                row[6] = supplier_list[i].Type.ToString();
-                row[7] = supplier_list[i].Priority.ToString();
+                row[1] = i.ToString();
+                row[2] = supplier_list[i].Doi.ToString();
+                row[3] = supplier_list[i].Name.ToString();
+                row[4] = supplier_list[i].Address.ToString();
+                row[5] = supplier_list[i].Phone.ToString();
+                row[6] = supplier_list[i].Email.ToString();
+                row[7] = supplier_list[i].Type.ToString();
+                row[8] = supplier_list[i].Priority.ToString();
                 this.metroGrid1.Rows.Add(row);
             }
         }
 
         private void Clean()
         {
+            
+            combobox_priority.SelectedIndex = 0;
+            combobox_priority_s.SelectedIndex = 0;
+            combobox_type.SelectedIndex = 0;
+            combobox_type_s.SelectedIndex = 0;
             ClearTextBoxes(this);
+
         }
 
         private void ClearTextBoxes(Control control)
@@ -171,33 +180,52 @@ namespace WindowsFormsApp1.Views
         
         private void register_Click(object sender, EventArgs e)
         {
-            Models.Supplier supplier = CreateSupplier(0);
-            if (supplier != null)
+            Models.Supplier supplier;
+            string message = " ";
+
+            if (curSupplier != null)
             {
+                supplier = CreateSupplier(1);
+                result = supplierController.updateSupplier(supplier);
+                message = "Proveedor editado correctamente";
+            }
+            else
+            {
+                supplier = CreateSupplier(0);
                 result = supplierController.insertSupplier(supplier);
-                if (result.data == null)
-                {
-                    MessageBox.Show(result.message, "Error al registrar proveedor", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    MessageBox.Show("Proveedor agregado correctamente", "Registrar Proveedor", MessageBoxButtons.OK);
-                    Load_Data();
-                }
+                message = "Proveedor agregado correctamente";
+            }
+
+            if (result.success)
+            {
+                MessageBox.Show(message, "Registro", MessageBoxButtons.OK);
                 Set_Flag_All(false);
-                Load_DataGridView();
                 Clean();
+                Load_Data();
+                Load_DataGridView();
                 metroTabControl1.SelectedIndex = 0;
+            }
+            else
+            {
+                MessageBox.Show(result.message, "Error en la transacción", MessageBoxButtons.OK);
             }
         }
 
         private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (metroGrid1.Rows[e.RowIndex].Cells[0].Value != null)
+            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
             {
                 cur_row = e.RowIndex;
                 delete.Enabled = true;
             }
+        }
+
+        //
+        private void tabIndex_Enter(object sender, EventArgs e)
+        {
+            Clean();
+            register.Text = "Guardar";
+            curSupplier = null;
         }
 
         private void metroGrid1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -205,16 +233,18 @@ namespace WindowsFormsApp1.Views
             cur_row = e.RowIndex;
             if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
             {
-                textbox_doi.Text = metroGrid1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                textbox_address.Text = metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                textbox_phone.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                textbox_email.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+                curSupplier = supplier_list[index];
+                textbox_doi.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                textbox_address.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                textbox_phone.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                textbox_email.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
 
                 //Tipo 
                 for (int i = 0; i < combo_type.Count(); i++)
                 {
-                    if (combo_type[i] == metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString())
+                    if (combo_type[i] == metroGrid1.Rows[e.RowIndex].Cells[7].Value.ToString())
                     {
                         combobox_type.SelectedIndex = i;
                         break;
@@ -224,7 +254,7 @@ namespace WindowsFormsApp1.Views
                 //Tipo 
                 for (int i = 0; i < combo_priority.Count(); i++)
                 {
-                    if (combo_priority[i] == metroGrid1.Rows[e.RowIndex].Cells[7].Value.ToString())
+                    if (combo_priority[i] == metroGrid1.Rows[e.RowIndex].Cells[8].Value.ToString())
                     {
                         combobox_priority.SelectedIndex = i;
                         break;
@@ -232,31 +262,11 @@ namespace WindowsFormsApp1.Views
                 }
 
                 metroTabControl1.SelectedIndex = 1;
+                register.Text = "Editar";
                 Set_Flag_All(true);
             }
         }
 
-        private void edit_Click(object sender, EventArgs e)
-        {
-            Models.Supplier supplier = CreateSupplier(1);
-            if (supplier != null)
-            {
-                result = supplierController.updateSupplier(supplier);
-                if (result.data == null)
-                {
-                    MessageBox.Show(result.message, "Error al modificar proveedor", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    MessageBox.Show("Proveedor editado correctamente", "Editar Proveedor", MessageBoxButtons.OK);
-                    Load_Data();
-                }
-                Set_Flag_All(false);
-                Load_DataGridView();
-                Clean();
-                metroTabControl1.SelectedIndex = 0;
-            }
-        }
 
         private void search_Click(object sender, EventArgs e)
         {

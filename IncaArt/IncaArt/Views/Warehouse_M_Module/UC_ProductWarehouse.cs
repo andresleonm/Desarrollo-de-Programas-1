@@ -32,6 +32,12 @@ namespace WindowsFormsApp1.Views
         Controller.Result result;
         Controller.Result resultP;
         Controller.Result resultT;
+
+        Models.ProductWarehouse curWarehouse;
+
+        Dictionary<int, string> combo_data_products;
+        Dictionary<int, string> combo_data_types;
+
         public UC_ProductWarehouse()
         {
             InitializeComponent();
@@ -50,7 +56,7 @@ namespace WindowsFormsApp1.Views
             Load_Data();
 
             //Cargar los combobox - Products
-            Dictionary<int, string> combo_data_products = new Dictionary<int, string>();
+            combo_data_products = new Dictionary<int, string>();
             combo_data_products.Add(0, "Seleccionar");
             foreach (var item in products_list)
             {
@@ -66,7 +72,7 @@ namespace WindowsFormsApp1.Views
             combobox_product_s.ValueMember = "Key";
 
             //Cargar los combobox - Types
-            Dictionary<int, string> combo_data_types = new Dictionary<int, string>();
+            combo_data_types = new Dictionary<int, string>();
             combo_data_types.Add(0, "Seleccionar");
             foreach (var item in types_list)
             {
@@ -110,16 +116,25 @@ namespace WindowsFormsApp1.Views
 
             warehouse_list = new List<Models.ProductWarehouse>();
             result = productWarehouseController.getProductWarehouses();
-            if (result.data == null) MessageBox.Show(result.message, "Error al listar almacén", MessageBoxButtons.OK);
+            if (!result.success) MessageBox.Show(result.message, "Error al listar almacén", MessageBoxButtons.OK);
             else warehouse_list = (List<Models.ProductWarehouse>)result.data;
         }
 
 
         private void Load_DataGridView()
         {
+            Models.Product product = new Models.Product();
+            Models.ProductTypeWarehouse type = new Models.ProductTypeWarehouse();
+            Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
+
             metroGrid1.Rows.Clear();
             for (int i = 0; i < warehouse_list.Count(); i++)
-            {
+            {           
+                product = products_list.Find(u => u.Id == warehouse_list[i].Product_id);
+                type = types_list.Find(u => u.Id == warehouse_list[i].Type_id);
+                //User user_to_delete = user_list.Find(u => u.Id == Int32.Parse(metroGrid1.CurrentRow.Cells[0].Value.ToString()));
+
+                /*
                 //Producto
                 Models.Product product = new Models.Product();
                 resultP = productController.getProduct(warehouse_list[i].Product_id);
@@ -128,32 +143,34 @@ namespace WindowsFormsApp1.Views
                 //Tipo
                 Models.ProductTypeWarehouse type = new Models.ProductTypeWarehouse();
                 resultT = typeController.getProductWarehouse(warehouse_list[i].Type_id);
-
-                if (resultP.data == null || resultT.data == null)
+                (resultP.data == null || resultT.data == null
+                */
+                if (product==null || type == null)
                 {
-                    MessageBox.Show(result.message, "Error en las búsquedas de Productos o Tipos de Almacén", MessageBoxButtons.OK);
+                    MessageBox.Show("Error en transacción","Error en las búsquedas de Productos o Tipos de Almacén", MessageBoxButtons.OK);
                 }
                 else
                 {
+                    /*
                     // Producto
                     product = (Models.Product)resultP.data;
                     //Tipo
-                    type = (Models.ProductTypeWarehouse)resultT.data;
+                    type = (Models.ProductTypeWarehouse)resultT.data;*/
                     //Unidad
-                    Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
-                    result = unitController.getUnit(product.Unit_id);
-                    unit = (Models.UnitOfMeasure)result.data;
+
+                    unit = unit_list.Find(u => u.Id == product.Unit_id);
 
                     //Grilla
-                    String[] row = new String[8];
+                    String[] row = new String[9];
                     row[0] = warehouse_list[i].Id.ToString();
-                    row[1] = warehouse_list[i].Name;
-                    row[2] = type.Name;
-                    row[3] = product.Name;
-                    row[4] = unit.Symbol;
-                    row[5] = warehouse_list[i].Current_physical_stock.ToString();
-                    row[6] = warehouse_list[i].Max_capacity.ToString();
-                    row[7] = warehouse_list[i].State;
+                    row[1] = i.ToString();
+                    row[2] = warehouse_list[i].Name;
+                    row[3] = type.Name;
+                    row[4] = product.Name;
+                    row[5] = unit.Symbol;
+                    row[6] = warehouse_list[i].Current_physical_stock.ToString();
+                    row[7] = warehouse_list[i].Max_capacity.ToString();
+                    row[8] = warehouse_list[i].State;
                     
                     this.metroGrid1.Rows.Add(row);
                 }
@@ -233,25 +250,40 @@ namespace WindowsFormsApp1.Views
         private void register_Click(object sender, EventArgs e)
         {
 
-            // validate_data(textbox_name.Text, ((KeyValuePair<int, string>)combobox_products.SelectedItem).Key,Int32.Parse(textbox_max_capacity.Text));
+            Models.ProductWarehouse warehouse;
+            string message = " ";
 
-            Models.ProductWarehouse warehouse = CreateProductWarehouse(0);
-            if (warehouse != null)
+            if (curWarehouse != null)
             {
-                result = productWarehouseController.insertProductWarehouse(warehouse);
-                if (result.data == null)
+                warehouse = CreateProductWarehouse(1);
+                if (warehouse != null)
                 {
-                    MessageBox.Show(result.message, "Error al registrar almacén", MessageBoxButtons.OK);
+                    result = productWarehouseController.updateProductWarehouse(warehouse);
+                    message = "Almacén editado correctamente";
                 }
-                else
+            }
+            else
+            {
+                warehouse = CreateProductWarehouse(0);
+                if (warehouse != null)
                 {
-                    MessageBox.Show("Almacén agregado correctamente", "Registrar almacén", MessageBoxButtons.OK);
-                    Load_Data();
+                    result = productWarehouseController.insertProductWarehouse(warehouse);
+                    message = "Almacén agregado correctamente";
                 }
+            }
+
+            if (result.success && result.data!=null)
+            {
+                MessageBox.Show(message, "Registro", MessageBoxButtons.OK);
                 Set_Flag_All(false);
-                Load_DataGridView();
                 Clean();
+                Load_Data();
+                Load_DataGridView();
                 metroTabControl1.SelectedIndex = 0;
+            }
+            else
+            {
+                MessageBox.Show(result.message, "Error en la transacción", MessageBoxButtons.OK);
             }
         }
 
@@ -259,7 +291,7 @@ namespace WindowsFormsApp1.Views
 
         private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (metroGrid1.Rows[e.RowIndex].Cells[0].Value != null)
+            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
             {
                 cur_row = e.RowIndex;
                 delete.Enabled = true;
@@ -272,10 +304,12 @@ namespace WindowsFormsApp1.Views
             cur_row = e.RowIndex;
             if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
             {
-                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+                curWarehouse = warehouse_list[index];
+                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
                 for (int i = 0; i < products_list.Count(); i++)
                 {
-                    if (products_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
+                    if (products_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString())
                     {
                         combobox_products.SelectedIndex = i+1;
                         break;
@@ -284,88 +318,29 @@ namespace WindowsFormsApp1.Views
 
                 for (int i = 0; i < types_list.Count(); i++)
                 {
-                    if (types_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString())
+                    if (types_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
                     {
                         combobox_type.SelectedIndex = i+1;
                         break;
                     }
                 }
 
-                textbox_max_capacity.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                textbox_max_capacity.Text = metroGrid1.Rows[e.RowIndex].Cells[7].Value.ToString();
                 Set_Flag_All(true);
+                register.Text = "Editar";
                 metroTabControl1.SelectedIndex = 1;
             }
         }
 
-
-
-
-
-
-
-        private void edit_Click(object sender, EventArgs e)
-        {
-
-            Models.ProductWarehouse warehouse = CreateProductWarehouse(1);
-            if (warehouse != null)
-            {
-                result = productWarehouseController.updateProductWarehouse(warehouse);
-                if (result.data == null)
-                {
-                    MessageBox.Show(result.message, "Error al modificar almacén", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    MessageBox.Show("Almacén editado correctamente", "Editar almacén", MessageBoxButtons.OK);
-                    Load_Data();
-                }
-                Set_Flag_All(false);
-                Load_DataGridView();
-                Clean();
-                metroTabControl1.SelectedIndex = 0;
-            }
-
-            /*
-
-            String name = textbox_name.Text;
-            int id = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
-            int product_id = ((KeyValuePair<int, string>)combobox_products.SelectedItem).Key;
-            int type_id = ((KeyValuePair<int, string>)combobox_type.SelectedItem).Key;
-            int max_capacity = int.Parse(textbox_max_capacity.Text);
-            int i=0;
-            for (i = 0; i < warehouse_list.Count(); i++) {
-                if (warehouse_list[i].Id == id) {
-                    break;
-                } 
-            }
-            int physical_stock = warehouse_list[i].Current_physical_stock;
-            int logical_stock = warehouse_list[i].Current_logical_stock;
-            String state = warehouse_list[i].State;
-
-
-            Models.ProductWarehouse warehouse = new Models.ProductWarehouse(id,name,product_id,physical_stock,max_capacity,type_id,state,logical_stock);
-            result = productWarehouseController.updateProductWarehouse(warehouse);
-            if (result.data == null)
-            {
-                MessageBox.Show(result.message, "Error al modificar producto", MessageBoxButtons.OK);
-            }
-            else
-            {
-                warehouse_list[i] = warehouse;
-            }
-
-            Load_DataGridView();
-            Clean();
-            metroTabControl1.SelectedIndex = 0;*/
-        }
 
         private void search_Click(object sender, EventArgs e)
         {
             Models.ProductWarehouse warehouse = new Models.ProductWarehouse();
             warehouse.Product_id = ((KeyValuePair<int, string>)combobox_product_s.SelectedItem).Key;
             warehouse.Type_id = ((KeyValuePair<int, string>)combobox_type_s.SelectedItem).Key;
+            warehouse.Name = textbox_name_s.Text;
             result = productWarehouseController.getProductWarehouses(warehouse);
-            if (result.data == null)
+            if (!result.success)
             {
                 MessageBox.Show(result.message, "Error al buscar almacén con filtros", MessageBoxButtons.OK);
             }
@@ -380,7 +355,7 @@ namespace WindowsFormsApp1.Views
         //-----------------------
         private void delete_Click(object sender, EventArgs e)
         {
-            int index = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
+            int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
             result = productWarehouseController.deleteProductWarehouse(warehouse_list[index]);
             if (result.data == null)
             {
@@ -396,7 +371,12 @@ namespace WindowsFormsApp1.Views
 
 
         //Limpiar
-
+        private void tabIndex_Enter(object sender, EventArgs e)
+        {
+            Clean();
+            register.Text = "Guardar";
+            curWarehouse = null;
+        }
 
         private void btn_clean_Click(object sender, EventArgs e)
         {
@@ -482,12 +462,10 @@ namespace WindowsFormsApp1.Views
             }
             else
             {
-                errorProvider.SetError(textbox, null);
-                int number;
-                if (Int32.TryParse(text, out number))
+                if (!IsNumeric(text))
                 {
                     Set_Flag(textbox.Name, false);
-                    errorProvider.SetError(textbox, "Capacidad debe ser número");
+                    errorProvider.SetError(textbox, "Capacidad debe ser número positivo");
                 }
                 else
                 {
@@ -495,6 +473,20 @@ namespace WindowsFormsApp1.Views
                     errorProvider.SetError(textbox, null);
                 }
 
+            }
+        }
+
+        private bool IsNumeric(string num)
+        {
+            try
+            {
+                double x = Convert.ToDouble(num);
+                if (x < 0) return false;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
 
@@ -506,13 +498,31 @@ namespace WindowsFormsApp1.Views
             if (unit_id == 0)
             {
                 Set_Flag(combobox.Name, false);
-                errorProvider.SetError(combobox, combobox.Name);
+                errorProvider.SetError(combobox, "Seleccionar una opción válida");
 
             }
             else
             {
                 Set_Flag(combobox.Name, true);
                 errorProvider.SetError(combobox, null);
+            }
+        }
+
+
+
+        private void put_unit(object sender, EventArgs e)
+        {
+
+            if (combobox_products.SelectedIndex != 0)
+            {
+                int id = ((KeyValuePair<int, string>)combobox_products.SelectedItem).Key;
+                Models.Product product = products_list.Find(u => u.Id == id);
+                textbox_unit.Text = id.ToString();
+                if (product != null)
+                {
+                    Models.UnitOfMeasure unit = unit_list.Find(u => u.Id == product.Unit_id);
+                    textbox_unit.Text = unit.Symbol;
+                }
             }
         }
 
