@@ -92,12 +92,14 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             {
                 this.buttonAddRow.Visible = false;
                 this.documents_list.Visible = true;
-                this.document_input.Visible = true;               
+                this.document_input.Visible = true;
+                this.btn_delete.Visible = false;
                 grid_movement_lines.Columns["documentQuantity"].Visible = true;
                 populate_document_combo_box(mov.clase);
                 flgBegin = true;
             }else            
             {
+                this.btn_delete.Visible = true;
                 this.buttonAddRow.Visible = true;
                 grid_movement_lines.Columns["documentQuantity"].Visible = false;
                 this.documents_list.Visible = false;
