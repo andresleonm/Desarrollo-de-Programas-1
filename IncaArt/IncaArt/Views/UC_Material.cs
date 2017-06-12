@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Office.Interop.Excel;
+using System.Reflection;
 
 namespace WindowsFormsApp1.Views
 {
@@ -107,9 +109,9 @@ namespace WindowsFormsApp1.Views
         {
             foreach (Control c in control.Controls)
             {
-                if (c is TextBox)
+                if (c is System.Windows.Forms.TextBox)
                 {
-                    ((TextBox)c).Clear();
+                    ((System.Windows.Forms.TextBox)c).Clear();
                 }
 
                 if (c.HasChildren)
@@ -118,11 +120,6 @@ namespace WindowsFormsApp1.Views
                 }
 
 
-                if (c is CheckBox)
-                {
-
-                    ((CheckBox)c).Checked = false;
-                }
 
                 if (c is RadioButton)
                 {
@@ -439,6 +436,137 @@ namespace WindowsFormsApp1.Views
                 metroTabControl1.SelectedIndex = 0;
                 operation_value = 0;
             }
+        }
+
+        private void btn_import_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Filter = "Excel |*.xlsx;*.xls";
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                //MessageBox.Show(openDialog.FileName, "Ventana", MessageBoxButtons.OK);
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                if (excel == null)
+                {
+                    Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
+                    return;
+                }
+                Workbook wb = excel.Workbooks.Open(openDialog.FileName);
+                Worksheet ws = (Worksheet)wb.Worksheets[1];
+                Range range = ws.UsedRange;
+                int row_count = range.Rows.Count;
+                int column_count = range.Columns.Count;
+                Range datarange;
+                string name = "", unit = "", error_line="Error en las líneas:\n";
+                double max = -1, min = -1, number;
+                Boolean error,found_error=false;
+                Models.Material material;
+                int unit_id;
+                for (int i = 2; i <= row_count; i++)
+                {
+                    error = false;
+                    unit_id = -1;
+                    datarange = (Range)ws.Cells[i, 1];
+                    if (string.IsNullOrWhiteSpace((string)datarange.Value2))
+                    {
+                        error = true;
+                    }
+                    else
+                    {
+                        name = (string)datarange.Value2;
+                    }
+                    datarange = (Range)ws.Cells[i, 2];
+                    if (string.IsNullOrWhiteSpace((string)datarange.Value2))
+                    {
+                        error = true;
+                    }
+                    else
+                    {
+                        unit = (string)datarange.Value2;
+                        foreach (var item in unit_list)
+                        {
+                            if (item.Symbol.Equals(unit))
+                            {
+                                unit_id = item.Id;
+                                break;
+                            }
+                        }
+                        if (unit_id == -1)
+                        {
+                            error = true;
+                        }
+                    }
+                    datarange = (Range)ws.Cells[i, 3];
+                    if (datarange.Value2 == null || !double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                    }
+                    else
+                    {
+                        min = (double)datarange.Value2;
+                    }
+                    datarange = (Range)ws.Cells[i, 4];
+                    if (datarange.Value2 == null || !double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                    }
+                    else
+                    {
+                        max = (double)datarange.Value2;
+                    }
+                    if (!error)
+                    {
+                        //string temp =""+ name + "\n" + unit + "\n" + min + "\n" + max;
+                        //MessageBox.Show(temp);
+                        material = new Models.Material();
+                        material.Name = name;
+                        material.Stock_max = Convert.ToInt32(max);
+                        material.Stock_min = Convert.ToInt32(min);
+                        material.Unit_id = unit_id;
+                        materialController.insertMaterial(material);
+                        if (result.data == null)
+                        {
+                            MessageBox.Show("Error en registro material");
+                        }
+                    }
+                    else
+                    {
+                        error_line += i+"\n";
+                        found_error = true;
+                    }
+                }
+                if (found_error)
+                {
+                    MessageBox.Show(error_line);
+                }
+            }
+            openDialog.Dispose();
+        }
+
+        private void btn_template_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            if (excel == null)
+            {
+                Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
+                return;
+            }
+            excel.Visible = true;
+
+            Workbook wb = excel.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
+            Worksheet ws = (Worksheet)wb.Worksheets[1];
+            ws.Name = "Materiales";
+            if (ws == null)
+            {
+                Console.WriteLine("Worksheet could not be created. Check that your office installation and project references are correct.");
+            }
+
+            ws.Range["A1"].Value2 = "Nombre";
+            ws.Range["B1"].Value2 = "Unidad";
+            ws.Range["C1"].Value2 = "Stock minimo";
+            ws.Range["D1"].Value2 = "Stock maximo";
+
+
         }
     }
 }
