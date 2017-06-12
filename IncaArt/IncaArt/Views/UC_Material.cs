@@ -468,10 +468,10 @@ namespace WindowsFormsApp1.Views
                 bool error; //error individual
                 List<string> error_list, string_list; //para hacer control de cada error de fila
                 Models.Material material;
-                int unit_id;
+                int unit_id, success_lines = 0, error_lines = 0;
                 List<MaterialError> material_error_list = new List<MaterialError>(); //Lista de materiales para el Excel con error
                 //En Interop Excel el indice comienza en 1
-                for (int i = 2; i <= row_count; i++) //Fila 2 comienza las filas de materiales
+                for (int i = 3; i <= row_count; i++) //Fila 3 comienza las filas de materiales
                 {
                     error = false;
                     MaterialError material_error = new MaterialError();
@@ -480,7 +480,7 @@ namespace WindowsFormsApp1.Views
                     unit_id = -1;
                     datarange = (Range)ws.Cells[i, 1];//Nombre
                     string_list.Add((string)datarange.Text);
-                    if (string.IsNullOrWhiteSpace((string)datarange.Value2))
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
                     {
                         error = true;
                         error_list.Add("name");
@@ -491,7 +491,7 @@ namespace WindowsFormsApp1.Views
                     }
                     datarange = (Range)ws.Cells[i, 2];//Unidad
                     string_list.Add((string)datarange.Text);
-                    if (string.IsNullOrWhiteSpace((string)datarange.Value2))
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
                     {
                         error = true;
                         error_list.Add("unit");
@@ -540,6 +540,7 @@ namespace WindowsFormsApp1.Views
                         material_error.error_list = error_list;
                         material_error.string_list = string_list;
                         material_error_list.Add(material_error);
+                        error_lines++;
                     }
                     else
                     {
@@ -552,9 +553,17 @@ namespace WindowsFormsApp1.Views
                         if (result.data == null)
                         {
                             MessageBox.Show("Error en registro material");
+                            error = true;
+                            error_list.Add("register");
+                            error_lines++;
+                        }
+                        else
+                        {
+                            success_lines++;
                         }
                     }
                 }
+                MessageBox.Show("Lineas correctas: " + success_lines + "\n" + "Lineas inccorrectas: " + error_lines, "Resultado de importación desde Excel", MessageBoxButtons.OK);
                 if (material_error_list.Count > 0) //Hubo por lo menos una fila con error
                 {
                     CreateExcelError(material_error_list);
@@ -581,11 +590,14 @@ namespace WindowsFormsApp1.Views
                 Console.WriteLine("Worksheet could not be created. Check that your office installation and project references are correct.");
             }
 
-            ws.Range["A1"].Value2 = "Nombre";
-            ws.Range["B1"].Value2 = "Unidad";
-            ws.Range["C1"].Value2 = "Stock minimo";
-            ws.Range["D1"].Value2 = "Stock maximo";
-            ws.Range["E1"].Value2 = "Observaciones";
+            ws.Range["A1"].Value2 = "Lista de Materiales con Error";
+            ws.Range["A1"].Font.Size = 15;
+            ws.Range["A1"].Font.Bold=true;
+            ws.Range["A2"].Value2 = "Nombre";
+            ws.Range["B2"].Value2 = "Unidad";
+            ws.Range["C2"].Value2 = "Stock minimo";
+            ws.Range["D2"].Value2 = "Stock maximo";
+            ws.Range["E2"].Value2 = "Observaciones";
             string observation;
             MaterialError material_error;
             for (int i = 0; i < list.Count(); i++)
@@ -594,17 +606,17 @@ namespace WindowsFormsApp1.Views
                 material_error = list[i];
                 for (int j = 0; j < list[i].string_list.Count(); j++)//Se pone los datos del material escrito
                 {
-                    ((Range)ws.Cells[i + 2, j + 1]).Value2 = material_error.string_list[j];
+                    ((Range)ws.Cells[i + 3, j + 1]).Value2 = material_error.string_list[j];
                 }
                 foreach (var item in material_error.error_list)
                 {
                     switch (item)
                     {
                         case "name":
-                            observation += "Nombre vacío. ";
+                            observation += "Nombre inválido. ";
                             break;
                         case "unit":
-                            observation += "Unidad vacía. ";
+                            observation += "Unidad inválida. ";
                             break;
                         case "unit_find":
                             observation += "Unidad inválida. ";
@@ -616,10 +628,12 @@ namespace WindowsFormsApp1.Views
                             observation += "Stock máximo inválido. ";
                             break;
                         default:
+                        case "register":
+                            observation += "Error en observacion";
                             break;
                     }
                 }
-                ((Range)ws.Cells[i + 2, 5]).Value2 = observation;
+                ((Range)ws.Cells[i + 3, 5]).Value2 = observation;
             }
             ws.Columns.AutoFit();
         }
@@ -641,11 +655,13 @@ namespace WindowsFormsApp1.Views
             {
                 Console.WriteLine("Worksheet could not be created. Check that your office installation and project references are correct.");
             }
-
-            ws.Range["A1"].Value2 = "Nombre";
-            ws.Range["B1"].Value2 = "Unidad";
-            ws.Range["C1"].Value2 = "Stock minimo";
-            ws.Range["D1"].Value2 = "Stock maximo";
+            ws.Range["A1"].Value2 = "Lista de Materiales";
+            ws.Range["A1"].Font.Size = 15;
+            ws.Range["A1"].Font.Bold = true;
+            ws.Range["A2"].Value2 = "Nombre";
+            ws.Range["B2"].Value2 = "Unidad";
+            ws.Range["C2"].Value2 = "Stock minimo";
+            ws.Range["D2"].Value2 = "Stock maximo";
             ws.Columns.AutoFit();
         }
     }
