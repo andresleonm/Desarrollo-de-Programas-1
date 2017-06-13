@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.Models
         int type_id;
         String state;
         String name;
-
+        public ProductWarehouse() { }
 
         public ProductWarehouse(int id, string name, int product_id, int current_physical_stock, int max_capacity, int type_id, string state, int current_logical_stock)
         {

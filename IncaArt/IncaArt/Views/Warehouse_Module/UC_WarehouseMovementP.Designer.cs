@@ -32,9 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.consulta = new MetroFramework.Controls.MetroTabPage();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
@@ -46,17 +45,6 @@
             this.buttonViewV = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.movements_grid = new MetroFramework.Controls.MetroGrid();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.movementName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Observacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoDocumentoOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NroDocumentoOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoDocumentoFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NroDocumentoFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registro = new MetroFramework.Controls.MetroTabPage();
             this.gb_OrderLine = new System.Windows.Forms.GroupBox();
             this.grid_movement_lines = new MetroFramework.Controls.MetroGrid();
@@ -83,10 +71,21 @@
             this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.documentQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDocumentLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.movementName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Observacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoDocumentoOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NroDocumentoOrigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoDocumentoFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NroDocumentoFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -103,8 +102,8 @@
             this.metroTabControl1.Location = new System.Drawing.Point(4, 5);
             this.metroTabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
-            this.metroTabControl1.Size = new System.Drawing.Size(1320, 692);
+            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.Size = new System.Drawing.Size(1681, 839);
             this.metroTabControl1.TabIndex = 2;
             this.metroTabControl1.UseSelectable = true;
             // 
@@ -124,7 +123,7 @@
             this.consulta.Location = new System.Drawing.Point(4, 38);
             this.consulta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.consulta.Name = "consulta";
-            this.consulta.Size = new System.Drawing.Size(1312, 650);
+            this.consulta.Size = new System.Drawing.Size(1673, 797);
             this.consulta.TabIndex = 0;
             this.consulta.Text = "Consulta";
             this.consulta.VerticalScrollbarBarColor = true;
@@ -135,7 +134,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(652, 40);
+            this.metroLabel2.Location = new System.Drawing.Point(805, 43);
             this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(21, 19);
@@ -145,7 +144,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(381, 40);
+            this.metroLabel1.Location = new System.Drawing.Point(534, 43);
             this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(43, 19);
@@ -156,7 +155,7 @@
             // 
             this.metroDateTime2.CustomFormat = "DD/MM/YYYY";
             this.metroDateTime2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTime2.Location = new System.Drawing.Point(693, 34);
+            this.metroDateTime2.Location = new System.Drawing.Point(846, 37);
             this.metroDateTime2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime2.Name = "metroDateTime2";
@@ -168,7 +167,7 @@
             // 
             this.metroDateTime1.CustomFormat = "DD/MM/YYYY";
             this.metroDateTime1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTime1.Location = new System.Drawing.Point(472, 34);
+            this.metroDateTime1.Location = new System.Drawing.Point(625, 37);
             this.metroDateTime1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
@@ -181,7 +180,7 @@
             this.buttonSearchV.BackColor = System.Drawing.Color.DarkCyan;
             this.buttonSearchV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSearchV.ForeColor = System.Drawing.Color.White;
-            this.buttonSearchV.Location = new System.Drawing.Point(519, 115);
+            this.buttonSearchV.Location = new System.Drawing.Point(672, 118);
             this.buttonSearchV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonSearchV.Name = "buttonSearchV";
             this.buttonSearchV.Size = new System.Drawing.Size(128, 45);
@@ -195,7 +194,7 @@
             this.buttonCleanV.BackColor = System.Drawing.Color.DarkCyan;
             this.buttonCleanV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCleanV.ForeColor = System.Drawing.Color.White;
-            this.buttonCleanV.Location = new System.Drawing.Point(693, 115);
+            this.buttonCleanV.Location = new System.Drawing.Point(846, 118);
             this.buttonCleanV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonCleanV.Name = "buttonCleanV";
             this.buttonCleanV.Size = new System.Drawing.Size(128, 45);
@@ -209,7 +208,7 @@
             this.buttonViewV.BackColor = System.Drawing.Color.DarkCyan;
             this.buttonViewV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonViewV.ForeColor = System.Drawing.Color.White;
-            this.buttonViewV.Location = new System.Drawing.Point(603, 503);
+            this.buttonViewV.Location = new System.Drawing.Point(771, 541);
             this.buttonViewV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonViewV.Name = "buttonViewV";
             this.buttonViewV.Size = new System.Drawing.Size(128, 45);
@@ -228,7 +227,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(1258, 325);
+            this.groupBox1.Size = new System.Drawing.Size(1581, 325);
             this.groupBox1.TabIndex = 66;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Movimientos";
@@ -287,79 +286,12 @@
             this.movements_grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.movements_grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.movements_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.movements_grid.Size = new System.Drawing.Size(1250, 296);
+            this.movements_grid.Size = new System.Drawing.Size(1573, 296);
             this.movements_grid.TabIndex = 50;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // movementName
-            // 
-            this.movementName.DataPropertyName = "movementName";
-            this.movementName.HeaderText = "Movimiento";
-            this.movementName.Name = "movementName";
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "Tipo";
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            // 
-            // Observacion
-            // 
-            this.Observacion.DataPropertyName = "Observacion";
-            this.Observacion.HeaderText = "Observacion";
-            this.Observacion.Name = "Observacion";
-            // 
-            // Fecha
-            // 
-            this.Fecha.DataPropertyName = "Fecha";
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            // 
-            // TipoDocumentoOrigen
-            // 
-            this.TipoDocumentoOrigen.DataPropertyName = "TipoDocumentoOrigen";
-            this.TipoDocumentoOrigen.HeaderText = "Documento Origen";
-            this.TipoDocumentoOrigen.Name = "TipoDocumentoOrigen";
-            // 
-            // NroDocumentoOrigen
-            // 
-            this.NroDocumentoOrigen.DataPropertyName = "NroDocumentoOrigen";
-            this.NroDocumentoOrigen.HeaderText = "Nro";
-            this.NroDocumentoOrigen.Name = "NroDocumentoOrigen";
-            // 
-            // TipoDocumentoFin
-            // 
-            this.TipoDocumentoFin.DataPropertyName = "TipoDocumentoFin";
-            this.TipoDocumentoFin.HeaderText = "Documento  Fin";
-            this.TipoDocumentoFin.Name = "TipoDocumentoFin";
-            // 
-            // NroDocumentoFin
-            // 
-            this.NroDocumentoFin.DataPropertyName = "NroDocumentoFin";
-            this.NroDocumentoFin.HeaderText = "Nro";
-            this.NroDocumentoFin.Name = "NroDocumentoFin";
-            // 
-            // estado
-            // 
-            this.estado.DataPropertyName = "State";
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            // 
-            // detail
-            // 
-            this.detail.DataPropertyName = "detail";
-            this.detail.HeaderText = "detail";
-            this.detail.Name = "detail";
-            this.detail.Visible = false;
             // 
             // registro
             // 
+            this.registro.Controls.Add(this.btn_delete);
             this.registro.Controls.Add(this.gb_OrderLine);
             this.registro.Controls.Add(this.date);
             this.registro.Controls.Add(this.btn_Clean);
@@ -379,7 +311,7 @@
             this.registro.Location = new System.Drawing.Point(4, 38);
             this.registro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.registro.Name = "registro";
-            this.registro.Size = new System.Drawing.Size(1312, 650);
+            this.registro.Size = new System.Drawing.Size(1673, 797);
             this.registro.TabIndex = 1;
             this.registro.Text = "Registro";
             this.registro.VerticalScrollbarBarColor = true;
@@ -430,18 +362,17 @@
             this.stock,
             this.documentQuantity,
             this.quantity,
-            this.action,
             this.state,
             this.idDocumentLine,
             this.unit_price});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid_movement_lines.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid_movement_lines.DefaultCellStyle = dataGridViewCellStyle5;
             this.grid_movement_lines.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_movement_lines.EnableHeadersVisualStyles = false;
             this.grid_movement_lines.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -450,14 +381,14 @@
             this.grid_movement_lines.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grid_movement_lines.Name = "grid_movement_lines";
             this.grid_movement_lines.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_movement_lines.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_movement_lines.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.grid_movement_lines.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.grid_movement_lines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_movement_lines.Size = new System.Drawing.Size(1178, 262);
@@ -582,10 +513,10 @@
             // 
             // 
             this.textbox_observation.CustomButton.Image = null;
-            this.textbox_observation.CustomButton.Location = new System.Drawing.Point(456, 2);
+            this.textbox_observation.CustomButton.Location = new System.Drawing.Point(304, 1);
             this.textbox_observation.CustomButton.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.textbox_observation.CustomButton.Name = "";
-            this.textbox_observation.CustomButton.Size = new System.Drawing.Size(182, 186);
+            this.textbox_observation.CustomButton.Size = new System.Drawing.Size(121, 121);
             this.textbox_observation.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textbox_observation.CustomButton.TabIndex = 1;
             this.textbox_observation.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -711,23 +642,6 @@
             this.quantity.HeaderText = "Cantidad";
             this.quantity.Name = "quantity";
             // 
-            // action
-            // 
-            this.action.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.action.DataPropertyName = "action";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.action.DefaultCellStyle = dataGridViewCellStyle5;
-            this.action.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.action.HeaderText = "Accion";
-            this.action.Name = "action";
-            this.action.Text = "X";
-            this.action.Width = 40;
-            // 
             // state
             // 
             this.state.DataPropertyName = "state";
@@ -749,6 +663,98 @@
             this.unit_price.Name = "unit_price";
             this.unit_price.Visible = false;
             // 
+            // btn_delete
+            // 
+            this.btn_delete.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_delete.ForeColor = System.Drawing.Color.White;
+            this.btn_delete.Location = new System.Drawing.Point(932, 198);
+            this.btn_delete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(123, 38);
+            this.btn_delete.TabIndex = 65;
+            this.btn_delete.Text = "Eliminar";
+            this.btn_delete.UseVisualStyleBackColor = false;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click_1);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // movementName
+            // 
+            this.movementName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.movementName.DataPropertyName = "movementName";
+            this.movementName.HeaderText = "Movimiento";
+            this.movementName.Name = "movementName";
+            this.movementName.Width = 102;
+            // 
+            // Tipo
+            // 
+            this.Tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Tipo.DataPropertyName = "Tipo";
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.Width = 63;
+            // 
+            // Observacion
+            // 
+            this.Observacion.DataPropertyName = "Observacion";
+            this.Observacion.HeaderText = "Observacion";
+            this.Observacion.Name = "Observacion";
+            // 
+            // Fecha
+            // 
+            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Fecha.DataPropertyName = "Fecha";
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.Width = 71;
+            // 
+            // TipoDocumentoOrigen
+            // 
+            this.TipoDocumentoOrigen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TipoDocumentoOrigen.DataPropertyName = "TipoDocumentoOrigen";
+            this.TipoDocumentoOrigen.HeaderText = "Documento Origen";
+            this.TipoDocumentoOrigen.Name = "TipoDocumentoOrigen";
+            this.TipoDocumentoOrigen.Width = 129;
+            // 
+            // NroDocumentoOrigen
+            // 
+            this.NroDocumentoOrigen.DataPropertyName = "NroDocumentoOrigen";
+            this.NroDocumentoOrigen.HeaderText = "Nro";
+            this.NroDocumentoOrigen.Name = "NroDocumentoOrigen";
+            // 
+            // TipoDocumentoFin
+            // 
+            this.TipoDocumentoFin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TipoDocumentoFin.DataPropertyName = "TipoDocumentoFin";
+            this.TipoDocumentoFin.HeaderText = "Documento  Fin";
+            this.TipoDocumentoFin.Name = "TipoDocumentoFin";
+            this.TipoDocumentoFin.Width = 114;
+            // 
+            // NroDocumentoFin
+            // 
+            this.NroDocumentoFin.DataPropertyName = "NroDocumentoFin";
+            this.NroDocumentoFin.HeaderText = "Nro";
+            this.NroDocumentoFin.Name = "NroDocumentoFin";
+            // 
+            // estado
+            // 
+            this.estado.DataPropertyName = "State";
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
+            // 
+            // detail
+            // 
+            this.detail.DataPropertyName = "detail";
+            this.detail.HeaderText = "detail";
+            this.detail.Name = "detail";
+            this.detail.Visible = false;
+            // 
             // UC_WarehouseMovementP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -757,7 +763,7 @@
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UC_WarehouseMovementP";
-            this.Size = new System.Drawing.Size(1689, 802);
+            this.Size = new System.Drawing.Size(1689, 849);
             this.metroTabControl1.ResumeLayout(false);
             this.consulta.ResumeLayout(false);
             this.consulta.PerformLayout();
@@ -799,17 +805,6 @@
         private MetroFramework.Controls.MetroDateTime metroDateTime1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn movementName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Observacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TipoDocumentoOrigen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NroDocumentoOrigen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TipoDocumentoFin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NroDocumentoFin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn detail;
         private System.Windows.Forms.DataGridViewTextBoxColumn movement_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn warehouse_id;
@@ -821,9 +816,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn documentQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewButtonColumn action;
         private System.Windows.Forms.DataGridViewTextBoxColumn state;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDocumentLine;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_price;
+        private System.Windows.Forms.Button btn_delete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn movementName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Observacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoDocumentoOrigen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NroDocumentoOrigen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoDocumentoFin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NroDocumentoFin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn detail;
     }
 }
