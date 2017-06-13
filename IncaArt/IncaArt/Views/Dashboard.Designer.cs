@@ -74,6 +74,7 @@ namespace WindowsFormsApp1.Views
             this.uc_recipe = new WindowsFormsApp1.Views.UC_Recipe();
             this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
             this.uc_workstation = new WindowsFormsApp1.Views.UC_Workstation();
+            this.uc_warehousemovement = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement(userName, password);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -435,6 +436,15 @@ namespace WindowsFormsApp1.Views
             this.uC_SalesMain1.Size = new System.Drawing.Size(819, 514);
             this.uC_SalesMain1.TabIndex = 31;
             // 
+            // uC_SalesMain1
+            // 
+            this.uc_warehousemovement.BackColor = System.Drawing.SystemColors.Control;
+            this.uc_warehousemovement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_warehousemovement.Location = new System.Drawing.Point(132, 72);
+            this.uc_warehousemovement.Name = "uc_warehousemovement";
+            this.uc_warehousemovement.Size = new System.Drawing.Size(819, 514);
+            this.uc_warehousemovement.TabIndex = 31;
+            // 
             // parameters1
             // 
             this.parameters1.Location = new System.Drawing.Point(132, 72);
@@ -584,6 +594,7 @@ namespace WindowsFormsApp1.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(951, 586);
+            this.Controls.Add(this.uc_warehousemovement);
             this.Controls.Add(this.uc_ProductionMenu);
             this.Controls.Add(this.uC_Simulation1);
             this.Controls.Add(this.uC_SalesMain1);
