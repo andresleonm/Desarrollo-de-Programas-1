@@ -20,7 +20,6 @@ namespace WindowsFormsApp1.Views
         private List<Models.ProductionOrderProductLine> product_summary_lines = new List<Models.ProductionOrderProductLine>();
         private List<Models.ProductionOrderMaterialLine> material_summary_lines = new List<Models.ProductionOrderMaterialLine>();
   
-
         string user = "dp1admin";
         string password= "dp1admin";
         ProductionOrderController production_controller;
@@ -33,6 +32,10 @@ namespace WindowsFormsApp1.Views
         UnitController unit_controller;
 
         public bool editing = false;
+        //validate
+        bool flag_description = false;
+        bool flag_begin = true;
+        bool flag_end = true;
 
         public UC_ProductionOrder()
         {
@@ -58,7 +61,10 @@ namespace WindowsFormsApp1.Views
                 metroButton_EditMaterial.Visible = false;
                 metroButton_EditProduct.Visible = false;
                 metroButton_EditWork.Visible = false;
-            }else
+                metroTextBox_OrderNumber.Visible = false;
+                metroLabel_numOrder.Visible = false;
+            }
+            else
             {
                 metroButton_DeleteMaterial.Visible = true;
                 metroButton_DeleteProduct.Visible = true;
@@ -66,6 +72,8 @@ namespace WindowsFormsApp1.Views
                 metroButton_EditMaterial.Visible = true;
                 metroButton_EditProduct.Visible = true;
                 metroButton_EditWork.Visible = true;
+                metroTextBox_OrderNumber.Visible = true;
+                metroLabel_numOrder.Visible = true;
             }
             
         }
@@ -73,7 +81,11 @@ namespace WindowsFormsApp1.Views
         private bool validate_data()
         {
             bool isCorrect = true;
-
+            if (!flag_description ||!flag_begin||!flag_end)
+            {
+                MessageBox.Show("Hay campos inválidos en los datos de la orden de producción.","Error en el registro",MessageBoxButtons.OK);
+                isCorrect = false;
+            }       
             return isCorrect;
         }
 
@@ -167,12 +179,13 @@ namespace WindowsFormsApp1.Views
                     }
                     MessageBox.Show("Order de producción actualizada.");
                 }
+                this.Visible = false;
+                clear_Form();
+                editing = false;
             }
 
             
-            this.Visible = false;
-            clear_Form();
-            editing = false;
+          
         }
         
         private void metroButton_AddProduct_Click(object sender, EventArgs e)
@@ -353,6 +366,11 @@ namespace WindowsFormsApp1.Views
         private void UC_ProductionOrder_VisibleChanged(object sender, EventArgs e)
         {
             hide_buttons();
+            if (!Visible)
+            {
+                UC_ProductionOrderSearch uc_productionOrderSearch = (UC_ProductionOrderSearch)(this.Parent.Controls.Find("production_search", false)[0]);
+                uc_productionOrderSearch.Visible = true;
+            }
         }
 
         private void datagrid_Products_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -618,6 +636,57 @@ namespace WindowsFormsApp1.Views
                 }
             }
         }
+        //Validaciones
+        private void metroTextBox_Description_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            string text = textbox.Text;
+            if (String.IsNullOrWhiteSpace(text))
+            {
+                flag_description = false;
+                errorProvider.SetError(textbox, "Campo requerido");
+            }
+            else
+            {
+                flag_description = true;
+                errorProvider.SetError(textbox, null);
+            }
+        }
 
+        private void metroDateTime_Begin_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroDateTime date_time = (MetroFramework.Controls.MetroDateTime)sender;
+            DateTime end = metroDateTime_End.Value;
+            if (date_time.Value > end)
+            {
+                flag_begin = false;
+                errorProvider.SetError(date_time, "La fecha de inicio debe ser menor o igual que la de fin.");
+            }else
+            {
+                flag_end = true;
+                errorProvider.SetError(date_time,null);
+            }
+        }
+
+        private void metroDateTime_End_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroDateTime date_time = (MetroFramework.Controls.MetroDateTime)sender;
+            DateTime begin = metroDateTime_Begin.Value;
+            if (date_time.Value < begin)
+            {
+                flag_end = false;
+                errorProvider.SetError(date_time, "La fecha de fin debe ser mayor o igual que la de inicio.");
+            }
+            else
+            {
+                flag_end = true;
+                errorProvider.SetError(date_time, null);
+            }
+        }
+
+        private void metroDateTime_End_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -28,7 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown_Minute = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_Hours = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.btn_SearchClient = new MetroFramework.Controls.MetroTile();
             this.metroTextBox_observations = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox_quantity_produced = new MetroFramework.Controls.MetroTextBox();
@@ -47,13 +52,11 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_Register = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown_Hours = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_Minute = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Hours)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Minute)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Hours)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -89,6 +92,40 @@
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Línea de Trabajador";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(718, 142);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 13);
+            this.label2.TabIndex = 69;
+            this.label2.Text = "min";
+            // 
+            // numericUpDown_Minute
+            // 
+            this.numericUpDown_Minute.Location = new System.Drawing.Point(653, 134);
+            this.numericUpDown_Minute.Name = "numericUpDown_Minute";
+            this.numericUpDown_Minute.Size = new System.Drawing.Size(59, 20);
+            this.numericUpDown_Minute.TabIndex = 68;
+            this.numericUpDown_Minute.Validating += new System.ComponentModel.CancelEventHandler(this.numericUpDown_Minute_Validating);
+            // 
+            // numericUpDown_Hours
+            // 
+            this.numericUpDown_Hours.Location = new System.Drawing.Point(550, 135);
+            this.numericUpDown_Hours.Name = "numericUpDown_Hours";
+            this.numericUpDown_Hours.Size = new System.Drawing.Size(59, 20);
+            this.numericUpDown_Hours.TabIndex = 67;
+            this.numericUpDown_Hours.Validating += new System.ComponentModel.CancelEventHandler(this.numericUpDown_Hours_Validating);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(609, 142);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 66;
+            this.label1.Text = "horas";
             // 
             // btn_SearchClient
             // 
@@ -173,6 +210,8 @@
             this.metroTextBox_quantity_produced.UseSelectable = true;
             this.metroTextBox_quantity_produced.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox_quantity_produced.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.metroTextBox_quantity_produced.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.metroTextBox_quantity_produced_KeyPress);
+            this.metroTextBox_quantity_produced.Validating += new System.ComponentModel.CancelEventHandler(this.metroTextBox_Validating);
             // 
             // metroTextBox_quantity_broken
             // 
@@ -207,6 +246,8 @@
             this.metroTextBox_quantity_broken.UseSelectable = true;
             this.metroTextBox_quantity_broken.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox_quantity_broken.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.metroTextBox_quantity_broken.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.metroTextBox_quantity_broken_KeyPress);
+            this.metroTextBox_quantity_broken.Validating += new System.ComponentModel.CancelEventHandler(this.metroTextBox_Validating);
             // 
             // metroTextBox_quantity_required
             // 
@@ -241,6 +282,8 @@
             this.metroTextBox_quantity_required.UseSelectable = true;
             this.metroTextBox_quantity_required.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox_quantity_required.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.metroTextBox_quantity_required.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.metroTextBox_quantity_required_KeyPress);
+            this.metroTextBox_quantity_required.Validating += new System.ComponentModel.CancelEventHandler(this.metroTextBox_Validating);
             // 
             // metroLabel9
             // 
@@ -319,6 +362,7 @@
             this.comboBox_Workstation.Name = "comboBox_Workstation";
             this.comboBox_Workstation.Size = new System.Drawing.Size(163, 21);
             this.comboBox_Workstation.TabIndex = 53;
+            this.comboBox_Workstation.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_Validating);
             // 
             // comboBox_Product
             // 
@@ -328,6 +372,7 @@
             this.comboBox_Product.Size = new System.Drawing.Size(163, 21);
             this.comboBox_Product.TabIndex = 52;
             this.comboBox_Product.SelectedIndexChanged += new System.EventHandler(this.comboBox_Product_SelectedIndexChanged);
+            this.comboBox_Product.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_Validating);
             // 
             // metroLabel4
             // 
@@ -350,6 +395,7 @@
             this.comboBox_Worker.Name = "comboBox_Worker";
             this.comboBox_Worker.Size = new System.Drawing.Size(163, 21);
             this.comboBox_Worker.TabIndex = 38;
+            this.comboBox_Worker.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_Validating);
             // 
             // metroLabel2
             // 
@@ -373,7 +419,7 @@
             this.metroLabel1.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel1.Location = new System.Drawing.Point(27, 29);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(69, 15);
+            this.metroLabel1.Size = new System.Drawing.Size(68, 15);
             this.metroLabel1.TabIndex = 30;
             this.metroLabel1.Text = "Trabajador:";
             this.metroLabel1.UseCustomBackColor = true;
@@ -406,37 +452,9 @@
             this.button_Register.UseVisualStyleBackColor = false;
             this.button_Register.Click += new System.EventHandler(this.button_Register_Click);
             // 
-            // label1
+            // errorProvider
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(609, 142);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 66;
-            this.label1.Text = "horas";
-            // 
-            // numericUpDown_Hours
-            // 
-            this.numericUpDown_Hours.Location = new System.Drawing.Point(550, 135);
-            this.numericUpDown_Hours.Name = "numericUpDown_Hours";
-            this.numericUpDown_Hours.Size = new System.Drawing.Size(59, 20);
-            this.numericUpDown_Hours.TabIndex = 67;
-            // 
-            // numericUpDown_Minute
-            // 
-            this.numericUpDown_Minute.Location = new System.Drawing.Point(653, 134);
-            this.numericUpDown_Minute.Name = "numericUpDown_Minute";
-            this.numericUpDown_Minute.Size = new System.Drawing.Size(59, 20);
-            this.numericUpDown_Minute.TabIndex = 68;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(718, 142);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 13);
-            this.label2.TabIndex = 69;
-            this.label2.Text = "min";
+            this.errorProvider.ContainerControl = this;
             // 
             // ProductionOrderWorkLine
             // 
@@ -450,8 +468,9 @@
             this.Load += new System.EventHandler(this.ProductionOrderWorkLine_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Hours)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Minute)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Hours)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -482,5 +501,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDown_Minute;
         private System.Windows.Forms.NumericUpDown numericUpDown_Hours;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
