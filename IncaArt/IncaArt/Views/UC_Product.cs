@@ -18,6 +18,7 @@ namespace WindowsFormsApp1.Views
         bool min_flag;
         bool price_flag;
         bool currency_flag;
+        bool type_flag;
         int cur_row;
         int operation_value;// 0 para Create, 1 para Update
         List<Models.Product> product_list;
@@ -42,8 +43,24 @@ namespace WindowsFormsApp1.Views
             currencyController = new Controller.CurrencyController(user, password);
             Load_Data();
 
-            //Cargar los combobox
+
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
+            combo_data.Add(0, "Seleccionar");
+            combo_data.Add(0, "Ceramico");
+            combo_data.Add(0, "Retablo");
+            combo_data.Add(0, "Piedra");
+
+            combobox_product_type.DataSource = new BindingSource(combo_data, null);
+            combobox_product_type.DisplayMember = "Value";
+            combobox_product_type.ValueMember = "Key";
+
+            combobox_product_type_s.DataSource = new BindingSource(combo_data, null);
+            combobox_product_type_s.DisplayMember = "Value";
+            combobox_product_type_s.ValueMember = "Key";
+
+
+            //Cargar los combobox
+            combo_data = new Dictionary<int, string>();
             //Unidad
             combo_data.Add(0, "Seleccionar");
             foreach (var item in unit_list)
@@ -165,6 +182,19 @@ namespace WindowsFormsApp1.Views
             int stock_max = int.Parse(textbox_stock_max.Text);
             int currency_id = ((KeyValuePair<int, string>)combobox_currency.SelectedItem).Key;
             double price = double.Parse(textbox_price.Text);
+            string product_type = ((KeyValuePair<int, string>)combobox_currency.SelectedItem).Value;
+            switch (product_type)
+            {
+                case "Ceramico":
+                    product_type = "CERAMICO";
+                    break;
+                case "Retablo":
+                    product_type = "RETABLO";
+                    break;
+                case "Piedra":
+                    product_type = "PIEDRA";
+                    break;
+            }
 
             Models.Product product = new Models.Product();
             product.Name = name;
@@ -173,6 +203,7 @@ namespace WindowsFormsApp1.Views
             product.Stock_max = stock_max;
             product.Currency_id = currency_id;
             product.Unit_price = price;
+            product.
             int id = 0;
             if (operation == 1)
             {
@@ -431,6 +462,7 @@ namespace WindowsFormsApp1.Views
             unit_flag = value;
             price_flag = value;
             currency_flag = value;
+            type_flag = value;
         }
 
         private void Set_Flag(string name, bool value)
@@ -454,6 +486,9 @@ namespace WindowsFormsApp1.Views
                     break;
                 case "combobox_currency":
                     currency_flag = value;
+                    break;
+                case "combobox_product_type":
+                    type_flag = value;
                     break;
             }
         }
