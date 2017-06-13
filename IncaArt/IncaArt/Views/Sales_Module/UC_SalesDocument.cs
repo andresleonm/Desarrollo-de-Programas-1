@@ -645,15 +645,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
                 #endregion
 
-
-
-
-
-
-
-
-
-
+                
             }
             catch (Exception ex)
             {
@@ -662,7 +654,64 @@ namespace WindowsFormsApp1.Views.Sales_Module
            
 
         }
-        
-        
+
+        private void btn_Excel_Click(object sender, EventArgs e)
+        {
+            // Creating an Excel object. 
+            Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+
+            try
+            {
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "Ventas";
+
+                int cellRowIndex = 1;
+                int cellColumnIndex = 1;
+
+                //Loop through each row and read value from each column. 
+                for (int i = -1; i < grid_Documents.Rows.Count; i++)
+                {
+                    int k = 0;
+                    for (int j = 0; j < grid_Documents.Columns.Count; j++)
+                    {
+                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check. 
+                        if (grid_Documents.Columns[j].Visible) { 
+                            if (cellRowIndex == 1)
+                                worksheet.Cells[cellRowIndex, k+1] = grid_Documents.Columns[j].HeaderText;
+                            else
+                                worksheet.Cells[cellRowIndex, k+1] = grid_Documents.Rows[i].Cells[j].Value.ToString();
+                            k++;
+                        }
+                        cellColumnIndex++;
+                    }
+                    cellColumnIndex = 1;
+                    cellRowIndex++;
+                }
+
+                //Getting the location and file name of the excel to save from user. 
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                saveDialog.FilterIndex = 2;
+                saveDialog.FileName = "Ventas";
+
+                if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    workbook.SaveAs(saveDialog.FileName);
+                    MessageBox.Show("Exportado correctamente", "Notificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                excel.Quit();
+                workbook = null;
+                excel = null;
+            }
+        }
     }
 }
