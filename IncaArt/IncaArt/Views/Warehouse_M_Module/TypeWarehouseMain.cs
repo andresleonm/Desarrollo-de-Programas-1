@@ -21,5 +21,15 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
         {
 
         }
+
+        private void select_products_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void select_materials_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

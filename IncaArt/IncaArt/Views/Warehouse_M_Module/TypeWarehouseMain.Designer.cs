@@ -70,6 +70,7 @@
             this.select_products.UseCustomBackColor = true;
             this.select_products.UseSelectable = true;
             this.select_products.UseTileImage = true;
+            this.select_products.Click += new System.EventHandler(this.select_products_Click);
             // 
             // select_materials
             // 
@@ -87,15 +88,16 @@
             this.select_materials.UseCustomBackColor = true;
             this.select_materials.UseSelectable = true;
             this.select_materials.UseTileImage = true;
+            this.select_materials.Click += new System.EventHandler(this.select_materials_Click);
             // 
             // metroPanel2
             // 
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(6, 82);
+            this.metroPanel2.Location = new System.Drawing.Point(6, 81);
             this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(763, 428);
+            this.metroPanel2.Size = new System.Drawing.Size(763, 429);
             this.metroPanel2.TabIndex = 44;
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
