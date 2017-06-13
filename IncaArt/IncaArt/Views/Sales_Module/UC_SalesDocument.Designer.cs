@@ -623,7 +623,6 @@
             // 
             this.newOrder.BackColor = System.Drawing.Color.White;
             this.newOrder.CausesValidation = false;
-            this.newOrder.Controls.Add(this.btn_Pdf);
             this.newOrder.Controls.Add(this.txt_total);
             this.newOrder.Controls.Add(this.label20);
             this.newOrder.Controls.Add(this.txt_igv);
@@ -651,12 +650,13 @@
             // 
             this.btn_Pdf.ActiveControl = null;
             this.btn_Pdf.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Pdf.Location = new System.Drawing.Point(757, 500);
+            this.btn_Pdf.Location = new System.Drawing.Point(485, 8);
             this.btn_Pdf.Name = "btn_Pdf";
-            this.btn_Pdf.Size = new System.Drawing.Size(48, 54);
+            this.btn_Pdf.Size = new System.Drawing.Size(145, 38);
             this.btn_Pdf.TabIndex = 73;
+            this.btn_Pdf.Text = "Exportar a Pdf";
             this.btn_Pdf.TileImage = global::WindowsFormsApp1.Properties.Resources.pdf;
-            this.btn_Pdf.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_Pdf.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Pdf.UseCustomBackColor = true;
             this.btn_Pdf.UseCustomForeColor = true;
             this.btn_Pdf.UseSelectable = true;
@@ -959,6 +959,7 @@
             // 
             // gbDocument
             // 
+            this.gbDocument.Controls.Add(this.btn_Pdf);
             this.gbDocument.Controls.Add(this.txt_Currency);
             this.gbDocument.Controls.Add(this.dt_IssueDate);
             this.gbDocument.Controls.Add(this.txt_Document_id);
@@ -991,9 +992,9 @@
             // 
             this.txt_Currency.CustomButton.BackColor = System.Drawing.SystemColors.Control;
             this.txt_Currency.CustomButton.Image = null;
-            this.txt_Currency.CustomButton.Location = new System.Drawing.Point(168, 1);
+            this.txt_Currency.CustomButton.Location = new System.Drawing.Point(174, 1);
             this.txt_Currency.CustomButton.Name = "";
-            this.txt_Currency.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_Currency.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txt_Currency.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_Currency.CustomButton.TabIndex = 1;
             this.txt_Currency.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -1002,7 +1003,7 @@
             this.txt_Currency.CustomButton.Visible = false;
             this.txt_Currency.Enabled = false;
             this.txt_Currency.Lines = new string[0];
-            this.txt_Currency.Location = new System.Drawing.Point(434, 71);
+            this.txt_Currency.Location = new System.Drawing.Point(432, 90);
             this.txt_Currency.MaxLength = 32767;
             this.txt_Currency.Name = "txt_Currency";
             this.txt_Currency.PasswordChar = '\0';
@@ -1012,7 +1013,7 @@
             this.txt_Currency.SelectionLength = 0;
             this.txt_Currency.SelectionStart = 0;
             this.txt_Currency.ShortcutsEnabled = true;
-            this.txt_Currency.Size = new System.Drawing.Size(196, 29);
+            this.txt_Currency.Size = new System.Drawing.Size(198, 25);
             this.txt_Currency.TabIndex = 65;
             this.txt_Currency.UseCustomBackColor = true;
             this.txt_Currency.UseSelectable = true;
@@ -1022,10 +1023,10 @@
             // dt_IssueDate
             // 
             this.dt_IssueDate.CalendarMonthBackground = System.Drawing.Color.White;
-            this.dt_IssueDate.Location = new System.Drawing.Point(434, 114);
+            this.dt_IssueDate.Location = new System.Drawing.Point(432, 121);
             this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_IssueDate.Name = "dt_IssueDate";
-            this.dt_IssueDate.Size = new System.Drawing.Size(196, 29);
+            this.dt_IssueDate.Size = new System.Drawing.Size(198, 29);
             this.dt_IssueDate.TabIndex = 64;
             this.dt_IssueDate.UseCustomBackColor = true;
             this.dt_IssueDate.UseCustomForeColor = true;
@@ -1038,9 +1039,9 @@
             // 
             this.txt_Document_id.CustomButton.BackColor = System.Drawing.SystemColors.Control;
             this.txt_Document_id.CustomButton.Image = null;
-            this.txt_Document_id.CustomButton.Location = new System.Drawing.Point(168, 1);
+            this.txt_Document_id.CustomButton.Location = new System.Drawing.Point(174, 1);
             this.txt_Document_id.CustomButton.Name = "";
-            this.txt_Document_id.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_Document_id.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txt_Document_id.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_Document_id.CustomButton.TabIndex = 1;
             this.txt_Document_id.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -1049,7 +1050,7 @@
             this.txt_Document_id.CustomButton.Visible = false;
             this.txt_Document_id.Enabled = false;
             this.txt_Document_id.Lines = new string[0];
-            this.txt_Document_id.Location = new System.Drawing.Point(434, 27);
+            this.txt_Document_id.Location = new System.Drawing.Point(432, 59);
             this.txt_Document_id.MaxLength = 32767;
             this.txt_Document_id.Name = "txt_Document_id";
             this.txt_Document_id.PasswordChar = '\0';
@@ -1059,7 +1060,7 @@
             this.txt_Document_id.SelectionLength = 0;
             this.txt_Document_id.SelectionStart = 0;
             this.txt_Document_id.ShortcutsEnabled = true;
-            this.txt_Document_id.Size = new System.Drawing.Size(196, 29);
+            this.txt_Document_id.Size = new System.Drawing.Size(198, 25);
             this.txt_Document_id.TabIndex = 63;
             this.txt_Document_id.UseCustomBackColor = true;
             this.txt_Document_id.UseSelectable = true;
@@ -1071,7 +1072,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label11.Location = new System.Drawing.Point(316, 124);
+            this.label11.Location = new System.Drawing.Point(316, 131);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(115, 13);
             this.label11.TabIndex = 62;
@@ -1082,7 +1083,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label8.Location = new System.Drawing.Point(316, 33);
+            this.label8.Location = new System.Drawing.Point(316, 66);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(97, 13);
             this.label8.TabIndex = 61;
@@ -1093,7 +1094,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label2.Location = new System.Drawing.Point(316, 77);
+            this.label2.Location = new System.Drawing.Point(316, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 60;
@@ -1104,7 +1105,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label4.Location = new System.Drawing.Point(7, 47);
+            this.label4.Location = new System.Drawing.Point(7, 67);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 13);
             this.label4.TabIndex = 59;
@@ -1117,9 +1118,9 @@
             // 
             // 
             this.txt_Movement_id.CustomButton.Image = null;
-            this.txt_Movement_id.CustomButton.Location = new System.Drawing.Point(128, 1);
+            this.txt_Movement_id.CustomButton.Location = new System.Drawing.Point(132, 1);
             this.txt_Movement_id.CustomButton.Name = "";
-            this.txt_Movement_id.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_Movement_id.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txt_Movement_id.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_Movement_id.CustomButton.TabIndex = 1;
             this.txt_Movement_id.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -1127,7 +1128,7 @@
             this.txt_Movement_id.CustomButton.Visible = false;
             this.txt_Movement_id.Enabled = false;
             this.txt_Movement_id.Lines = new string[0];
-            this.txt_Movement_id.Location = new System.Drawing.Point(87, 71);
+            this.txt_Movement_id.Location = new System.Drawing.Point(87, 90);
             this.txt_Movement_id.MaxLength = 32767;
             this.txt_Movement_id.Name = "txt_Movement_id";
             this.txt_Movement_id.PasswordChar = '\0';
@@ -1137,7 +1138,7 @@
             this.txt_Movement_id.SelectionLength = 0;
             this.txt_Movement_id.SelectionStart = 0;
             this.txt_Movement_id.ShortcutsEnabled = true;
-            this.txt_Movement_id.Size = new System.Drawing.Size(156, 29);
+            this.txt_Movement_id.Size = new System.Drawing.Size(156, 25);
             this.txt_Movement_id.TabIndex = 58;
             this.txt_Movement_id.UseCustomBackColor = true;
             this.txt_Movement_id.UseSelectable = true;
@@ -1150,16 +1151,16 @@
             // 
             // 
             this.txt_external.CustomButton.Image = null;
-            this.txt_external.CustomButton.Location = new System.Drawing.Point(128, 1);
+            this.txt_external.CustomButton.Location = new System.Drawing.Point(132, 1);
             this.txt_external.CustomButton.Name = "";
-            this.txt_external.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_external.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txt_external.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_external.CustomButton.TabIndex = 1;
             this.txt_external.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txt_external.CustomButton.UseSelectable = true;
             this.txt_external.CustomButton.Visible = false;
             this.txt_external.Lines = new string[0];
-            this.txt_external.Location = new System.Drawing.Point(87, 114);
+            this.txt_external.Location = new System.Drawing.Point(87, 124);
             this.txt_external.MaxLength = 32767;
             this.txt_external.Name = "txt_external";
             this.txt_external.PasswordChar = '\0';
@@ -1168,7 +1169,7 @@
             this.txt_external.SelectionLength = 0;
             this.txt_external.SelectionStart = 0;
             this.txt_external.ShortcutsEnabled = true;
-            this.txt_external.Size = new System.Drawing.Size(156, 29);
+            this.txt_external.Size = new System.Drawing.Size(156, 25);
             this.txt_external.TabIndex = 57;
             this.txt_external.UseSelectable = true;
             this.txt_external.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -1178,9 +1179,9 @@
             // 
             this.btn_Search_Movement.ActiveControl = null;
             this.btn_Search_Movement.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Search_Movement.Location = new System.Drawing.Point(249, 71);
+            this.btn_Search_Movement.Location = new System.Drawing.Point(249, 90);
             this.btn_Search_Movement.Name = "btn_Search_Movement";
-            this.btn_Search_Movement.Size = new System.Drawing.Size(41, 29);
+            this.btn_Search_Movement.Size = new System.Drawing.Size(41, 25);
             this.btn_Search_Movement.TabIndex = 43;
             this.btn_Search_Movement.TileImage = global::WindowsFormsApp1.Properties.Resources.Search_16;
             this.btn_Search_Movement.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1196,7 +1197,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label16.Location = new System.Drawing.Point(6, 29);
+            this.label16.Location = new System.Drawing.Point(6, 49);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(50, 13);
             this.label16.TabIndex = 50;
@@ -1210,7 +1211,7 @@
             "Factura",
             "Boleta",
             "Nota de Crédito"});
-            this.cbo_document_type.Location = new System.Drawing.Point(87, 30);
+            this.cbo_document_type.Location = new System.Drawing.Point(87, 50);
             this.cbo_document_type.Name = "cbo_document_type";
             this.cbo_document_type.Size = new System.Drawing.Size(156, 29);
             this.cbo_document_type.TabIndex = 49;
@@ -1222,7 +1223,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label17.Location = new System.Drawing.Point(7, 120);
+            this.label17.Location = new System.Drawing.Point(7, 130);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(76, 13);
             this.label17.TabIndex = 34;
@@ -1233,7 +1234,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label18.Location = new System.Drawing.Point(6, 79);
+            this.label18.Location = new System.Drawing.Point(6, 98);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(79, 13);
             this.label18.TabIndex = 32;
@@ -1565,13 +1566,12 @@
             // 
             // product
             // 
-            this.product.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.product.DataPropertyName = "product_name";
             this.product.FillWeight = 150F;
             this.product.HeaderText = "Producto";
             this.product.Name = "product";
             this.product.ReadOnly = true;
-            this.product.Width = 77;
+            this.product.Width = 150;
             // 
             // unit
             // 
@@ -1685,20 +1685,6 @@
         private MetroFramework.Controls.MetroTextBox txt_external;
         private System.Windows.Forms.Label label4;
         private MetroFramework.Controls.MetroTextBox txt_Movement_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn document_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn movement_id_line;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Refund_quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Product_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn state;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prod_warehouse_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn product;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unit_Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private MetroFramework.Controls.MetroTextBox txt_total;
         private System.Windows.Forms.Label label20;
         private MetroFramework.Controls.MetroTextBox txt_igv;
@@ -1739,5 +1725,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.Button btn_Delete;
         private MetroFramework.Controls.MetroTile btn_Pdf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn document_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn movement_id_line;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Refund_quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Product_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn state;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prod_warehouse_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn product;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit_Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
     }
 }

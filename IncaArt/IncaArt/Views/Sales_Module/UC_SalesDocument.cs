@@ -140,6 +140,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private void fill_Sales_Document_Form(SalesDocument sd)
         {
             Clean();
+            clean_gridView_DocumentLine();
             txt_name.Text = sd.Customer_name;
             txt_address.Text = sd.Customer_address;
             txt_Doi.Text = sd.Customer_doi;
@@ -154,14 +155,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_igv.Text = (sd.Amount * sd.Porc_igv).ToString();
             txt_total.Text = (sd.Amount * (1 + sd.Porc_igv)).ToString();
             txt_Status.Text = sd.Status;
-
-            if (sd.Type_document_id.ToString().Equals('F'))
-                cbo_document_type.Text = "Factura";
-            else if (sd.Type_document_id.ToString().Equals('B'))
-                cbo_document_type.Text = "Boleta";
-            else if (sd.Type_document_id.ToString().Equals('N'))
-                cbo_document_type.Text = "Nota de Crédito";
-            cbo_document_type.Refresh();
+            cbo_document_type.Text = sd.Type_name;
 
             grid_Document_Lines.DataSource = sd.Lines;
             AdjustColumnDocumentLine();
@@ -247,47 +241,47 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            //if (edit)
-            //{
-
-            //}
-            //else { }
-
-
             if ( prodMovement == null || String.IsNullOrWhiteSpace(cbo_document_type.Text) || String.IsNullOrWhiteSpace(txt_external.Text) || String.IsNullOrWhiteSpace(txt_Movement_id.Text))
             {
                 MessageBox.Show(this, "Debe completar los datos del documento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                SalesDocument sales_document = new SalesDocument();
-                fill_Sales_Document_Object(sales_document);
-
-                sales_document.Lines = (List<SalesDocumentLine>)grid_Document_Lines.DataSource;
-
-                int sales_document_id = Int32.Parse(sales_document_controller.insertSalesDocument(sales_document).data.ToString());
-
-                if (sales_document_id > 0)
+                if (edit)
                 {
-                    int i = 1;
-                    foreach (SalesDocumentLine sdl in sales_document.Lines)
-                    {
-                        sdl.Id = i;
-                        sdl.Document_id = sales_document_id;
-                        sdl.Status = "Registrado";
-                        i++;
-                        sales_document_line_controller.insertSalesDocumentLine(sdl);
-                    }
-                    txt_Document_id.Text = sales_document_id.ToString();
-                    txt_Status.Text = sales_document.Status;
-                    fill_Sales_Documents();
-                    btn_Clean.PerformClick();
-                    tab_Document.SelectedIndex = 0;
-                    MessageBox.Show(this, "Documento creado exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    fill_Sales_Document_Object(sd_edit);
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo crear el documento", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    SalesDocument sales_document = new SalesDocument();
+                    fill_Sales_Document_Object(sales_document);
+
+                    sales_document.Lines = (List<SalesDocumentLine>)grid_Document_Lines.DataSource;
+
+                    int sales_document_id = Int32.Parse(sales_document_controller.insertSalesDocument(sales_document).data.ToString());
+
+                    if (sales_document_id > 0)
+                    {
+                        int i = 1;
+                        foreach (SalesDocumentLine sdl in sales_document.Lines)
+                        {
+                            sdl.Id = i;
+                            sdl.Document_id = sales_document_id;
+                            sdl.Status = "Registrado";
+                            i++;
+                            sales_document_line_controller.insertSalesDocumentLine(sdl);
+                        }
+                        txt_Document_id.Text = sales_document_id.ToString();
+                        txt_Status.Text = sales_document.Status;
+                        fill_Sales_Documents();
+                        btn_Clean.PerformClick();
+                        tab_Document.SelectedIndex = 0;
+                        MessageBox.Show(this, "Documento creado exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo crear el documento", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
         }
@@ -356,6 +350,10 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 var id = sales_documents[index].Id;
                 sd_edit = (Models.SalesDocument)sales_document_controller.getSalesDocument(id).data;
                 grid_Document_Lines.DataSource = sd_edit.Lines;
+
+                for (int i = 0; i < grid_Document_Lines.RowCount; i++)                
+                    grid_Document_Lines.Rows[i].Cells["amount"].Value = (sd_edit.Lines[i].Quantity * sd_edit.Lines[i].Unit_price).ToString("0.00");
+                
                 tab_Document.SelectedIndex = 1;
                 fill_Sales_Document_Form(sd_edit);
             }
@@ -411,24 +409,35 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 doc.Open();                
                 string date = DateTime.Now.ToString();
 
-                Chunk chunk = new Chunk(sd.Type_name + " " + sd.Id.ToString(), FontFactory.GetFont("ARIAL", 20, iTextSharp.text.Font.BOLD));
+                Chunk chunk = new Chunk(sd.Type_name + "N° " + sd.Id.ToString(), FontFactory.GetFont("ARIAL", 20, iTextSharp.text.Font.BOLD));
                 doc.Add(new Paragraph(chunk));
                 doc.Add(new Paragraph("                       "));
                 doc.Add(new Paragraph("                       "));
-                doc.Add(new Paragraph("------------------------------------------------------------------------------------------"));
-                doc.Add(new Paragraph("Empresa: " + company_name));
-                doc.Add(new Paragraph("Dirección: " + company_address));
-                doc.Add(new Paragraph("Teléfono: " + company_phone));
-                doc.Add(new Paragraph("Correo: " + company_mail));
-                doc.Add(new Paragraph("Fecha: " + date));
-                doc.Add(new Paragraph("------------------------------------------------------------------------------------------"));
+                doc.Add(new Paragraph("                       " + company_name.ToUpper(), FontFactory.GetFont("ARIAL", 16, iTextSharp.text.Font.BOLD)));
+                doc.Add(new Paragraph("                                        Dirección: " + company_address));
+                doc.Add(new Paragraph("                                        Teléfono: " + company_phone));
+                doc.Add(new Paragraph("                                        Correo: " + company_mail));
                 doc.Add(new Paragraph("                       "));
+                doc.Add(new Paragraph("                       "));
+                doc.Add(new Paragraph("     Fecha: " + date));
+                doc.Add(new Paragraph("     Cliente: " + sd.Customer_name));
+                doc.Add(new Paragraph("     RUC: " + sd.Customer_doi));
+                doc.Add(new Paragraph("     Dirección: " + sd.Customer_address));
+                doc.Add(new Paragraph("     Teléfono: " + sd.Customer_phone));
+                doc.Add(new Paragraph("                       "));
+                doc.Add(new Paragraph("_________________________________________________________________________________________________________________________"));
                 doc.Add(new Paragraph("                       "));
                 doc.Add(new Paragraph("                       "));
                 GenerateDocument(doc, grid_Document_Lines);
+                doc.Add(new Paragraph("                       "));
+                doc.Add(new Paragraph("                       "));
                 doc.AddCreationDate();
-                doc.Add(new Paragraph("______________________________________________", FontFactory.GetFont("ARIAL", 20, iTextSharp.text.Font.BOLD)));
-                doc.Add(new Paragraph("Firma", FontFactory.GetFont("ARIAL", 20, iTextSharp.text.Font.BOLD)));
+                doc.Add(new Paragraph("_________________________________________________________________________________________________________________________"));
+                doc.Add(new Paragraph("                                                                                                                                                                                            SubTotal   " + sd.Amount.ToString("0.00"), FontFactory.GetFont("ARIAL", 12, iTextSharp.text.Font.BOLD)));
+                doc.Add(new Paragraph("                                                                                                                                                                                                 IGV   " + (sd.Porc_igv * sd.Amount).ToString("0.00"), FontFactory.GetFont("ARIAL", 12, iTextSharp.text.Font.BOLD)));
+                doc.Add(new Paragraph("                                                                                                                                                                                                          __________________"));
+                doc.Add(new Paragraph("                                                                                                                                                                                               Total   " + ((1 + sd.Porc_igv) * sd.Amount).ToString("0.00"), FontFactory.GetFont("ARIAL", 12, iTextSharp.text.Font.BOLD)));
+                doc.Add(new Paragraph("_________________________________________________________________________________________________________________________"));
                 doc.Close();
                 Process.Start(filename);//Esta parte se puede omitir, si solo se desea guardar el archivo, y que este no se ejecute al instante
             }
@@ -438,28 +447,30 @@ namespace WindowsFormsApp1.Views.Sales_Module
         public void GenerateDocument(Document document, DataGridView dgv)
         {
             int i, j;
-            PdfPTable datatable = new PdfPTable(dgv.ColumnCount);
+            int visibleColums = getColumsVisible(dgv);
+            PdfPTable datatable = new PdfPTable(visibleColums);
             datatable.DefaultCell.Padding = 3;
 
-            float[] headerwidths = GetSizeColumn(dgv);
+            float[] headerwidths = GetSizeColumn(dgv, visibleColums);
 
             datatable.SetWidths(headerwidths);
             datatable.WidthPercentage = 100;
-            datatable.DefaultCell.BorderWidth = 2;
+            datatable.DefaultCell.BorderWidth = 0;
             datatable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
 
             for (i = 0; i < dgv.ColumnCount; i++)
             {
-                datatable.AddCell(dgv.Columns[i].HeaderText);
+                if (dgv.Columns[i].Visible == true && !dgv.Columns[i].HeaderText.Equals("Almacen"))
+                    datatable.AddCell(new Phrase(dgv.Columns[i].HeaderText, FontFactory.GetFont("ARIAL", 12, iTextSharp.text.Font.BOLD)));
             }
 
             datatable.HeaderRows = 1;
-            datatable.DefaultCell.BorderWidth = 1;
+            datatable.DefaultCell.BorderWidth = 0;
             for (i = 0; i < dgv.Rows.Count; i++)
             {
                 for (j = 0; j < dgv.Columns.Count; j++)
                 {
-                    if (dgv[j, i].Value != null)
+                    if (dgv[j, i].Value != null && (dgv.Columns[j].Visible == true) && !dgv.Columns[j].HeaderText.Equals("Almacen"))
                     {
                         datatable.AddCell(new Phrase(dgv[j, i].Value.ToString()));//En esta parte, se esta agregando un renglon por cada registro en el datagrid
                     }
@@ -469,12 +480,24 @@ namespace WindowsFormsApp1.Views.Sales_Module
             document.Add(datatable);
         }
 
-        public float[] GetSizeColumn(DataGridView dg)
+        private int getColumsVisible(DataGridView dgv)
         {
-            float[] values = new float[dg.ColumnCount];
-            for (int i = 0; i < dg.ColumnCount; i++)
-                values[i] = (float)dg.Columns[i].Width;
-            
+            int quantity = 0;
+            for (int i = 0; i < dgv.ColumnCount; i++)
+                if (dgv.Columns[i].Visible == true && !dgv.Columns[i].HeaderText.Equals("Almacen")) quantity++;
+
+            return quantity;
+        }
+
+        private float[] GetSizeColumn(DataGridView dgv, int colums)
+        {
+            float[] values = new float[colums];
+            int j = 0;
+            for (int i = 0; i < dgv.ColumnCount; i++)
+                if (dgv.Columns[i].Visible == true && !dgv.Columns[i].HeaderText.Equals("Almacen")) { 
+                    values[j] = (float)dgv.Columns[i].Width;
+                    j++;
+                }
             return values;
         }
 

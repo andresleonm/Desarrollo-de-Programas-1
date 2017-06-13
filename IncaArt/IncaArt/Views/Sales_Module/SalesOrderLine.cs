@@ -17,14 +17,14 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private string user = "dp1admin";
         private string password = "dp1admin";
         private List<Models.SalesOrderLine> lines;
-        private ProductMovementDetailController dc;
+        private SalesOrderController soc;
         private ProductsController pc;
         private bool flg = true;
 
         public SalesOrderLine(ref List<Models.SalesOrderLine> lines, string user, string password)
         {
             InitializeComponent();
-            dc = new ProductMovementDetailController(user, password);
+            soc = new SalesOrderController(user, password);
             this.lines = lines;
             fillProducts();
         }
@@ -54,8 +54,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Search_Click(object sender, EventArgs e)
         {
-            var product = ((Product)this.cbo_Product.SelectedItem).Id;
-            List<ProductWarehouseS> warehouses = (List<ProductWarehouseS>)dc.getWarehousesS(product).data;
+            var product = ((Product)this.cbo_Product.SelectedItem).Id;            
+            List<ProductWarehouseS> warehouses = (List<ProductWarehouseS>)soc.getWarehousesS(product, '0').data;
             if (!flg)
                 grid_products.DataSource = new List<ProductWarehouseS>();
             else flg = false;
@@ -67,7 +67,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
         public void fillProducts()
         {
             pc = new ProductsController(user, password);
-            dc = new ProductMovementDetailController(user, password);
+            soc = new SalesOrderController(user, password);
             List<Models.Product> products = (List<Models.Product>)pc.getProducts().data;
             Models.Product p = new Product();
             p.Name = "Todos";
