@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.Controller;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.IO;
+using System.Diagnostics;
 
 namespace WindowsFormsApp1.Views.Sales_Module
 {
@@ -79,8 +83,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
                         acumulate += double.Parse(grid_Document_Lines.Rows[i].Cells["amount"].Value.ToString());
                     }
                     txt_amount.Text = acumulate.ToString();
-                    txt_igv.Text = (acumulate * igv).ToString();
-                    txt_total.Text = (acumulate * (1 + igv)).ToString();
+                    txt_igv.Text = Math.Round((acumulate * igv), 2).ToString();
+                    txt_total.Text = Math.Round((acumulate * (1 + igv)), 2).ToString();
                 }
             }
             else
@@ -369,5 +373,265 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 }
             }
         }
+
+        private void btn_Pdf_Click(object sender, EventArgs e)
+        {
+            To_pdf();
+        }
+
+        #region crearPDF
+        private void To_pdf()
+        {
+            Document doc = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = @"C:";
+            saveFileDialog1.Title = "Guardar Reporte";
+            saveFileDialog1.DefaultExt = "pdf";
+            saveFileDialog1.Filter = "pdf Files (*.pdf)|*.pdf| All Files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+            string filename = "";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filename = saveFileDialog1.FileName;
+            }
+
+            if (filename.Trim() != "")
+            {
+                FileStream file = new FileStream(filename,
+                FileMode.OpenOrCreate,
+                FileAccess.ReadWrite,
+                FileShare.ReadWrite);
+                PdfWriter.GetInstance(doc, file);
+                doc.Open();
+                string remito = "Autorizo: OSVALDO SANTIAGO ESTRADA";
+                string envio = "Fecha:" + DateTime.Now.ToString();
+
+                Chunk chunk = new Chunk("Reporte de General Usuarios", FontFactory.GetFont("ARIAL", 20, iTextSharp.text.Font.BOLD));
+                doc.Add(new Paragraph(chunk));
+                doc.Add(new Paragraph("                       "));
+                doc.Add(new Paragraph("                       "));
+                doc.Add(new Paragraph("------------------------------------------------------------------------------------------"));
+                doc.Add(new Paragraph("Lagos de moreno Jalisco"));
+                doc.Add(new Paragraph(remito));
+                doc.Add(new Paragraph(envio));
+                doc.Add(new Paragraph("------------------------------------------------------------------------------------------"));
+                doc.Add(new Paragraph("                       "));
+                doc.Add(new Paragraph("                       "));
+                doc.Add(new Paragraph("                       "));
+                GenerarDocumento(doc);
+                doc.AddCreationDate();
+                doc.Add(new Paragraph("______________________________________________", FontFactory.GetFont("ARIAL", 20, iTextSharp.text.Font.BOLD)));
+                doc.Add(new Paragraph("Firma", FontFactory.GetFont("ARIAL", 20, iTextSharp.text.Font.BOLD)));
+                doc.Close();
+                Process.Start(filename);//Esta parte se puede omitir, si solo se desea guardar el archivo, y que este no se ejecute al instante
+            }
+
+        }
+
+        public void GenerarDocumento(Document document)
+        {
+            int i, j;
+            PdfPTable datatable = new PdfPTable(grid_Documents.ColumnCount);
+            datatable.DefaultCell.Padding = 3;
+            float[] headerwidths = GetTamañoColumnas(grid_Documents);
+            datatable.SetWidths(headerwidths);
+            datatable.WidthPercentage = 100;
+            datatable.DefaultCell.BorderWidth = 2;
+            datatable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+            for (i = 0; i < grid_Documents.ColumnCount; i++)
+            {
+                datatable.AddCell(grid_Documents.Columns[i].HeaderText);
+            }
+            datatable.HeaderRows = 1;
+            datatable.DefaultCell.BorderWidth = 1;
+            for (i = 0; i < grid_Documents.Rows.Count; i++)
+            {
+                for (j = 0; j < grid_Documents.Columns.Count; j++)
+                {
+                    if (grid_Documents[j, i].Value != null)
+                    {
+                        datatable.AddCell(new Phrase(grid_Documents[j, i].Value.ToString()));//En esta parte, se esta agregando un renglon por cada registro en el datagrid
+                    }
+                }
+                datatable.CompleteRow();
+            }
+            document.Add(datatable);
+        }
+
+        public float[] GetTamañoColumnas(DataGridView dg)
+        {
+            float[] values = new float[dg.ColumnCount];
+            for (int i = 0; i < dg.ColumnCount; i++)
+            {
+                values[i] = (float)dg.Columns[i].Width;
+            }
+            return values;
+
+        }
+
+        #endregion
+
+        private void printDocument()
+        {
+            try
+            {
+                #region Common Part
+
+                PdfPTable pdfTableBlank = new PdfPTable(1);
+
+                // Footer Section
+                PdfPTable pdfTableFooter = new PdfPTable(1);
+                pdfTableFooter.DefaultCell.BorderWidth = 0;
+                pdfTableFooter.WidthPercentage = 100;
+                pdfTableFooter.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+
+                Chunk cnkFooter = new Chunk("Enterprise2", FontFactory.GetFont("Times New Roman"));
+                //cnkFooter.Font.SetStyle(1);
+                cnkFooter.Font.Size = 10;
+                pdfTableFooter.AddCell(new Phrase(cnkFooter));
+                // end of footer section
+
+                pdfTableBlank.AddCell(new Phrase(" "));
+                pdfTableBlank.DefaultCell.Border = 0;
+                #endregion
+
+                #region Page
+
+                #region Section-1 <Header FORM>
+                PdfPTable pdfTable1 = new PdfPTable(1); // Here 1 is used for count of column
+                PdfPTable pdfTable2 = new PdfPTable(1);
+                PdfPTable pdfTable3 = new PdfPTable(2);
+
+                // Font Style
+                System.Drawing.Font fontH1 = new System.Drawing.Font("Curier", 16);
+
+                //pdfTable1.DefaultCell.Padding = 5;
+                pdfTable1.WidthPercentage = 80;
+                pdfTable1.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                pdfTable1.DefaultCell.VerticalAlignment = Element.ALIGN_CENTER;
+                //pdfTable1.DefaultCell.BackgroundColor = new iTextSharp.text.BaseColor(64, 134, 170);
+                pdfTable1.DefaultCell.BorderWidth = 0;
+
+                //pdfTable1.DefaultCell.Padding = 5;
+                pdfTable2.WidthPercentage = 80;
+                pdfTable2.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                pdfTable2.DefaultCell.VerticalAlignment = Element.ALIGN_CENTER;
+                //pdfTable2.DefaultCell.BackgroundColor = new iTextSharp.text.BaseColor(64, 134, 170);
+                pdfTable2.DefaultCell.BorderWidth = 0;
+
+                pdfTable3.DefaultCell.Padding = 5;
+                pdfTable3.WidthPercentage = 80;
+                pdfTable3.DefaultCell.BorderWidth = 0.5f;
+
+                Chunk c1 = new Chunk("Enterprise1", FontFactory.GetFont("Times New Roman"));
+                c1.Font.Color = new iTextSharp.text.BaseColor(0, 0, 0);
+                c1.Font.SetStyle(0);
+                c1.Font.Size = 14;
+
+                Phrase p1 = new Phrase();
+                p1.Add(c1);
+                pdfTable1.AddCell(p1);
+
+                Chunk c2 = new Chunk("28/3, XXX Narayan XXXXX, Kolkata ", FontFactory.GetFont("Times New Roman"));
+                c2.Font.Color = new iTextSharp.text.BaseColor(0, 0, 0);
+                c2.Font.SetStyle(0);
+                c2.Font.Size = 11;
+
+                Phrase p2 = new Phrase();
+                p2.Add(c2);
+                pdfTable2.AddCell(p2);
+
+                Chunk c3 = new Chunk("28/3, XXX Narayan XXXXX, Kolkata ", FontFactory.GetFont("Times New Roman"));
+                c3.Font.Color = new iTextSharp.text.BaseColor(0, 0, 0);
+                c3.Font.SetStyle(0);
+                c3.Font.Size = 11;
+
+                Phrase p3 = new Phrase();
+                p3.Add(c3);
+                pdfTable3.AddCell(p3);
+
+                #endregion
+
+                #region Section-1 <Bill Upper>
+                PdfPTable pdfTable4 = new PdfPTable(4);
+                pdfTable4.DefaultCell.Padding = 5;
+                pdfTable4.WidthPercentage = 80;
+                pdfTable4.DefaultCell.BorderWidth = 0.0f;
+
+                pdfTable4.AddCell(new Phrase("Bill N° "));
+                pdfTable4.AddCell(new Phrase("B001"));
+                pdfTable4.AddCell(new Phrase("Date "));
+                pdfTable4.AddCell(new Phrase("01-01-2017"));
+                pdfTable4.AddCell(new Phrase("Vendor"));
+                pdfTable4.AddCell(new Phrase("Demo Vendor"));
+                pdfTable4.AddCell(new Phrase("Address"));
+                pdfTable4.AddCell(new Phrase("Kolkata"));
+                #endregion
+
+                #region Section-Image
+
+                string imageURL = @"";
+                iTextSharp.text.Image jpg = iTextSharp.text.Image.GetInstance(imageURL);
+
+                // Resize image
+                jpg.ScaleToFit(140f, 120f);
+                // Give space before image
+                jpg.SpacingBefore = 10f;
+                // Give some space after the image
+                jpg.SpacingAfter = 1f;
+
+                jpg.Alignment = Element.ALIGN_CENTER;
+
+                #endregion
+
+                #region section Table
+
+                pdfTable3.AddCell(new Phrase("Company name: "));
+                pdfTable3.AddCell(new Phrase(" "));
+                pdfTable3.AddCell(new Phrase("Job title: "));
+                pdfTable3.AddCell(new Phrase(" "));
+
+                pdfTable3.AddCell(new Phrase("Address"));
+                pdfTable3.AddCell(new Phrase(" "));
+                pdfTable3.AddCell(new Phrase("Contact N°: "));
+                pdfTable3.AddCell(new Phrase(" "));
+
+                #endregion
+
+                #endregion
+
+                #region Pdf Generation
+                string folderPath = "D:\\PDF\\";
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                // File Name
+                int fileCount = Directory.GetFiles(@"D:\\PDF").Length;
+                string strFileName = "JobDescriptionForm" + (fileCount + 1) + ".pdf";
+
+                #endregion
+
+
+
+
+
+
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+           
+
+        }
+        
+        
     }
 }
