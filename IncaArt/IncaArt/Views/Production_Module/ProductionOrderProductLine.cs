@@ -27,6 +27,14 @@ namespace WindowsFormsApp1.Views
         ProductMovementDetailController product_movement_controller;
         RecipesController recipe_controller;
         UnitController unit_controller;
+
+        //validaciones
+        bool flag_product = false;
+        bool flag_quantity = false;
+        bool flag_quantity_produced = false;
+        bool flag_recipe= true;
+        bool flag_warehouse = true;
+
         public ProductionOrderProductLine()
         {
             InitializeComponent();
@@ -79,7 +87,19 @@ namespace WindowsFormsApp1.Views
 
         private bool validate_data()
         {
-            return true;
+            bool isCorrect = true;
+            validate_comboBox(comboBox_Product);
+            validate_comboBox(comboBox_Recipe);
+            validate_comboBox(comboBox_Warehouse);
+            validate_textbox(metroTextBox_Quantity);
+            validate_textbox(metroTextBox_quantity_produced);
+
+            if (!flag_product || !flag_quantity || !flag_quantity_produced|| !flag_recipe || !flag_warehouse)
+            {
+                MessageBox.Show("Hay campos inválidos en los datos del detalle de producto.", "Error en el registro", MessageBoxButtons.OK);
+                isCorrect = false;
+            }
+            return isCorrect;
         }
         private void button_Register_Click(object sender, EventArgs e)
         {
@@ -125,24 +145,30 @@ namespace WindowsFormsApp1.Views
             MaximizeBox = false;
             Result result = product_controller.getProducts();
             this.products = (List<Product>)result.data;
+            comboBox_Product.DataSource = products;
+            comboBox_Product.DisplayMember = "name";
 
-            result = product_movement_controller.getWarehouses(products[0].Id);
+            /*result = product_movement_controller.getWarehouses(products[0].Id);
             this.product_warehouses = (List<Warehouse_Module.ProductWarehouseM>)result.data;
+            comboBox_Warehouse.DataSource = product_warehouses;
+            comboBox_Warehouse.DisplayMember = "name";
+            comboBox_Warehouse.SelectedIndex = -1;
 
             result = recipe_controller.getRecipes();
             this.recipes=(List<Recipe>)result.data;
-
-            comboBox_Product.DataSource = products;
-            comboBox_Product.DisplayMember = "name";
-            comboBox_Warehouse.DataSource = product_warehouses;
-            comboBox_Warehouse.DisplayMember = "name";
             comboBox_Recipe.DataSource =recipes;
             comboBox_Recipe.DisplayMember = "name";
+            comboBox_Recipe.SelectedIndex = -1;*/
 
             metroTextBox_quantity_produced.Text = "0";
 
             if (Editing)
             {
+                flag_product = true;
+                flag_quantity = true;
+                flag_quantity_produced= true;
+                flag_recipe = true;
+                flag_warehouse = true;
                 comboBox_Product.Text = line.Product_name;
                 metroTextBox_Quantity.Text = line.Quantity.ToString();
                 metroTextBox_quantity_produced.Text = line.Produced_quantity.ToString();                
@@ -154,23 +180,118 @@ namespace WindowsFormsApp1.Views
 
         private void comboBox_Product_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int product_id = ((Product)comboBox_Product.SelectedItem).Id;
+            if (comboBox_Product.SelectedIndex != -1)
+            {
+                int product_id = ((Product)comboBox_Product.SelectedItem).Id;
 
-            Result result = product_movement_controller.getWarehouses(product_id);
-            this.product_warehouses = (List<Warehouse_Module.ProductWarehouseM>)result.data;
+                Result result = product_movement_controller.getWarehouses(product_id);
+                this.product_warehouses = (List<Warehouse_Module.ProductWarehouseM>)result.data;
+                comboBox_Warehouse.DataSource = null;
+                comboBox_Warehouse.DataSource = product_warehouses;
+                comboBox_Warehouse.DisplayMember = "name";
+                validate_comboBox(comboBox_Warehouse);
 
-            Recipe recipe = new Recipe();
-            recipe.Product_id = product_id;
-            result = recipe_controller.getRecipes(recipe);
-            this.recipes = (List<Recipe>)result.data;
+                Recipe recipe = new Recipe();
+                recipe.Product_id = product_id;
+                result = recipe_controller.getRecipes(recipe);
+                this.recipes = (List<Recipe>)result.data;
+                comboBox_Recipe.DataSource=null;
+                comboBox_Recipe.DataSource = recipes;
+                comboBox_Recipe.DisplayMember = "name";
+                validate_comboBox(comboBox_Recipe);
+            }
+          
+        }
+        //Validaciones
 
-            comboBox_Warehouse.SelectedIndex = -1;
-            comboBox_Warehouse.DataSource = product_warehouses;
-            comboBox_Warehouse.DisplayMember = "name";
-            comboBox_Recipe.SelectedIndex = -1;
-            comboBox_Recipe.DataSource = recipes;
-            comboBox_Recipe.DisplayMember = "name";
+        private void setFlag(string name,bool value)
+        {
+            switch (name)
+            {
+                case "comboBox_Product":
+                    flag_product = value;
+                    break;
+                case "metroTextBox_Quantity":
+                    flag_quantity = value;
+                    break;
+                case "metroTextBox_quantity_produced":
+                    flag_quantity_produced = value;
+                    break;
+                case "comboBox_Recipe":
+                    flag_recipe = value;
+                    break;
+                case "comboBox_Warehouse":
+                    flag_warehouse = value;
+                    break;
+            }
+        }
 
+        private void validate_comboBox(System.Windows.Forms.ComboBox combobox)
+        {
+            int index = combobox.SelectedIndex;
+            if (index == -1)
+            {
+                setFlag(combobox.Name, false);
+                errorProvider.SetError(combobox, "Campo requerido");
+
+            }
+            else
+            {
+                setFlag(combobox.Name, true);
+                errorProvider.SetError(combobox, null);
+            }
+        }
+
+        private void validate_textbox(MetroFramework.Controls.MetroTextBox textbox)
+        {
+            string text = textbox.Text;
+            int num;
+            if (String.IsNullOrWhiteSpace(text))
+            {
+                setFlag(textbox.Name, false);
+                errorProvider.SetError(textbox, "Campo requerido");
+            }
+            else if (!Int32.TryParse(text, out num) || num <= 0)
+            {
+                if(num==0 && textbox.Name == "metroTextBox_quantity_produced")
+                {
+                    setFlag(textbox.Name, true);
+                    errorProvider.SetError(textbox, null);
+                }else{
+                    setFlag(textbox.Name, false);
+                    errorProvider.SetError(textbox, "La cantidad debe ser mayor que cero.");
+                }
+                
+            }
+            else
+            {
+                setFlag(textbox.Name, true);
+                errorProvider.SetError(textbox, null);
+            }
+        }
+
+        private void comboBox_Validating(object sender, CancelEventArgs e)
+        {
+            System.Windows.Forms.ComboBox combobox = (System.Windows.Forms.ComboBox)sender;
+            validate_comboBox(combobox);
+        }
+
+        private void metroTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            validate_textbox(textbox);
+        }
+
+        private void metroTextBox_Quantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar)) e.Handled = true;
+            if (e.KeyChar == (char)8) e.Handled = false;
+        }
+
+        private void metroTextBox_quantity_produced_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar)) e.Handled = true;
+            if (e.KeyChar == (char)8) e.Handled = false;
         }
     }
 }
