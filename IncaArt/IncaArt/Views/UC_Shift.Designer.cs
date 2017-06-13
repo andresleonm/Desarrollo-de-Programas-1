@@ -131,6 +131,7 @@
             this.time_end_s.Name = "time_end_s";
             this.time_end_s.Size = new System.Drawing.Size(119, 29);
             this.time_end_s.TabIndex = 83;
+            this.time_end_s.ShowUpDown = true;
             // 
             // label5
             // 
@@ -152,6 +153,7 @@
             this.time_begin_s.Name = "time_begin_s";
             this.time_begin_s.Size = new System.Drawing.Size(119, 29);
             this.time_begin_s.TabIndex = 81;
+            this.time_begin_s.ShowUpDown = true;
             // 
             // label3
             // 
@@ -381,6 +383,7 @@
             this.time_end.Name = "time_end";
             this.time_end.Size = new System.Drawing.Size(200, 29);
             this.time_end.TabIndex = 80;
+            this.time_end.ShowUpDown = true;
             // 
             // time_begin
             // 
@@ -390,6 +393,7 @@
             this.time_begin.Name = "time_begin";
             this.time_begin.Size = new System.Drawing.Size(200, 29);
             this.time_begin.TabIndex = 79;
+            this.time_begin.ShowUpDown = true;
             // 
             // label4
             // 
