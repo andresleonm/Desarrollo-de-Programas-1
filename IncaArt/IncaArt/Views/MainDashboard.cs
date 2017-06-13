@@ -31,6 +31,22 @@ namespace WindowsFormsApp1.Views
             {
                 metroTile4.Visible = false;
             }
+            if (!sessionUser.Profile.HasFunctionality("VIEW MATERIAL"))
+            {
+                metroTile7.Visible = false;
+            }
+            if (!sessionUser.Profile.HasFunctionality("VIEW PRODUCT"))
+            {
+                metroTile6.Visible = false;
+            }
+            if (!sessionUser.Profile.HasFunctionality("VIEW RECIPE"))
+            {
+                metroTile5.Visible = false;
+            }
+            if (!sessionUser.Profile.HasFunctionality("VIEW WORKSTATION"))
+            {
+                metroTile8.Visible = false;
+            }
         }
 
         private void metroTile16_Click(object sender, EventArgs e)
