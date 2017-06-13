@@ -501,7 +501,7 @@ namespace WindowsFormsApp1.Views
                         unit = (string)datarange.Value2;
                         foreach (var item in unit_list)
                         {
-                            if (item.Symbol.Equals(unit))
+                            if (item.Symbol.ToUpper().Equals(unit.ToUpper()))
                             {
                                 unit_id = item.Id;
                                 break;
@@ -592,7 +592,7 @@ namespace WindowsFormsApp1.Views
 
             ws.Range["A1"].Value2 = "Lista de Materiales con Error";
             ws.Range["A1"].Font.Size = 15;
-            ws.Range["A1"].Font.Bold=true;
+            ws.Range["A1"].Font.Bold = true;
             ws.Range["A2"].Value2 = "Nombre";
             ws.Range["B2"].Value2 = "Unidad";
             ws.Range["C2"].Value2 = "Stock minimo";
@@ -619,7 +619,7 @@ namespace WindowsFormsApp1.Views
                             observation += "Unidad inválida. ";
                             break;
                         case "unit_find":
-                            observation += "Unidad inválida. ";
+                            observation += "Unidad no encontrada. ";
                             break;
                         case "min":
                             observation += "Stock mínimo inválido. ";
@@ -629,7 +629,7 @@ namespace WindowsFormsApp1.Views
                             break;
                         default:
                         case "register":
-                            observation += "Error en observacion";
+                            observation += "Error en registro";
                             break;
                     }
                 }

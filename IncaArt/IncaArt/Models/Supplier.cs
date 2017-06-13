@@ -15,8 +15,6 @@ namespace WindowsFormsApp1.Models
         String doi;
         String phone;
         String email;
-        String type;
-        int priority;
         String state;
 
 
@@ -24,7 +22,7 @@ namespace WindowsFormsApp1.Models
         {
 
         }
-        public Supplier(int id, string name, string address, string doi, string phone, string email, string type, int priority, string state)
+        public Supplier(int id, string name, string address, string doi, string phone, string email, string state)
         {
             this.id = id;
             this.name = name;
@@ -32,8 +30,6 @@ namespace WindowsFormsApp1.Models
             this.doi = doi;
             this.phone = phone;
             this.email = email;
-            this.type = type;
-            this.priority = priority;
             this.state = state;
         }
 
@@ -115,31 +111,7 @@ namespace WindowsFormsApp1.Models
             }
         }
 
-        public string Type
-        {
-            get
-            {
-                return type;
-            }
-
-            set
-            {
-                type = value;
-            }
-        }
-
-        public int Priority
-        {
-            get
-            {
-                return priority;
-            }
-
-            set
-            {
-                priority = value;
-            }
-        }
+      
 
         public string State
         {

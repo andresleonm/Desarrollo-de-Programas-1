@@ -26,6 +26,7 @@ namespace WindowsFormsApp1.Views
             this.cellDateTimePicker = new DateTimePicker();
             this.cellDateTimePicker.Format = DateTimePickerFormat.Short;
             this.cellDateTimePicker.ValueChanged += new EventHandler(cellDateTimePickerValueChanged);
+            this.cellDateTimePicker.VisibleChanged += new EventHandler(cellDateTimePickerVisibleChanged);
             this.cellDateTimePicker.Visible = false;
             this.grid_order_lines.Controls.Add(cellDateTimePicker);            
         }
@@ -34,6 +35,14 @@ namespace WindowsFormsApp1.Views
         {
             grid_order_lines.CurrentRow.Cells[0].Value = cellDateTimePicker.Value.ToShortDateString();
             cellDateTimePicker.Visible = false;
+        }
+
+        void cellDateTimePickerVisibleChanged(object sender, EventArgs e)
+        {
+            if (cellDateTimePicker.Visible)
+            {
+                grid_order_lines.CurrentRow.Cells[0].Value = cellDateTimePicker.Value.ToShortDateString();                
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -146,6 +155,10 @@ namespace WindowsFormsApp1.Views
                     int unit_of_measure_id = units_of_measure.Find(uom => uom.Name == grid_order_lines.Rows[i].Cells[4].Value.ToString()).Id;
                     int material_id = materials.Find(m => m.Name == grid_order_lines.Rows[i].Cells[1].Value.ToString()).Id;
                     int warehouse_id = warehouses.Find(w => w.Name == grid_order_lines.Rows[i].Cells[5].Value.ToString()).Id;
+                    if(grid_order_lines.Rows[i].Cells[3].Value == null)
+                    {
+                        grid_order_lines.Rows[i].Cells[3].Value = 0;
+                    }
                     Models.PurchaseOrderLine pol = new Models.PurchaseOrderLine(po_id, unit_of_measure_id, Int32.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString())
                                                         , Double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()), DateTime.Parse(grid_order_lines.Rows[i].Cells[0].Value.ToString()),
                                                         Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()),material_id, warehouse_id);
@@ -198,7 +211,7 @@ namespace WindowsFormsApp1.Views
                         units_of_measure.Find(uom => uom.Id ==
                             materials.Find(m => m.Name == grid_order_lines.Rows[e.RowIndex].Cells[1].Value.ToString()).Unit_id).Name;
 
-                    grid_order_lines.Rows[e.RowIndex].Cells[6].Value = avg_cost;                                           
+                    grid_order_lines.Rows[e.RowIndex].Cells[6].Value = avg_cost;                 
 
                 }
                 else if(e.ColumnIndex == 2) // si cambió la cantidad
@@ -207,6 +220,7 @@ namespace WindowsFormsApp1.Views
                         Double.Parse(grid_order_lines.Rows[e.RowIndex].Cells[2].Value.ToString()) * avg_cost;                        
                     calculateCosts();
                 }
+               
             }
         }
 
@@ -306,5 +320,15 @@ namespace WindowsFormsApp1.Views
             grid_order_lines.Rows.Clear();
         }
 
+        private void grid_order_lines_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            double avg_cost;
+            if (grid_order_lines.Rows[e.RowIndex].Cells[2].Value != null && grid_order_lines.Rows[e.RowIndex].Cells[6].Value != null) {
+                avg_cost = materials.Find(m => m.Name == grid_order_lines.Rows[e.RowIndex].Cells[1].Value.ToString()).Average_cost;
+                grid_order_lines.Rows[e.RowIndex].Cells[7].Value =
+                    Double.Parse(grid_order_lines.Rows[e.RowIndex].Cells[2].Value.ToString()) * avg_cost;
+                calculateCosts();
+            }
+        }
     }
 }

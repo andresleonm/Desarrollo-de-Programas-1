@@ -18,7 +18,7 @@ namespace WindowsFormsApp1.Views
         public Warehouse()
         {
             InitializeComponent();
-            this.Style = mStyle.Style;
+          //  this.Style = mStyle.Style;
             uC_ProductWarehouse1.Visible = true;
             uC_MaterialWarehouse1.Visible = false;
 
@@ -52,7 +52,7 @@ namespace WindowsFormsApp1.Views
 
         private void Warehouse_Load(object sender, EventArgs e)
         {
-            mStyle.Style = MetroFramework.MetroColorStyle.Silver;
+            //mStyle.Style = MetroFramework.MetroColorStyle.Silver;
         }
 
         private void newA_Click(object sender, EventArgs e)
@@ -76,31 +76,18 @@ namespace WindowsFormsApp1.Views
             }*/
         }
 
-        private void metroButton2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroButton3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroTextBox5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void select_products_Click(object sender, EventArgs e)
         {
             uC_ProductWarehouse1.Visible = true;
             uC_MaterialWarehouse1.Visible = false;
-        }
+         }
 
         private void select_materials_Click(object sender, EventArgs e)
         {
             uC_MaterialWarehouse1.Visible = true;
             uC_ProductWarehouse1.Visible = false;
         }
+
+
     }
 }

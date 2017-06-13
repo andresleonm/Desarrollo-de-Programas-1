@@ -18,6 +18,7 @@ namespace WindowsFormsApp1.Models
         private int stock;
         private double average_cost;
         private double unit_price;
+        private string product_type;
         public List<string> production_line { get; set; }
 
         public int Id
@@ -105,6 +106,19 @@ namespace WindowsFormsApp1.Models
             set
             {
                 currency_id = value;
+            }
+        }
+
+        public string Product_type
+        {
+            get
+            {
+                return product_type;
+            }
+
+            set
+            {
+                product_type = value;
             }
         }
 

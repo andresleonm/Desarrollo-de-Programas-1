@@ -44,7 +44,10 @@
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stock_maximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.combobox_product_type_s = new MetroFramework.Controls.MetroComboBox();
             this.textbox_name_s = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
@@ -52,7 +55,10 @@
             this.btn_clean_s = new MetroFramework.Controls.MetroButton();
             this.btn_search = new MetroFramework.Controls.MetroButton();
             this.registro = new MetroFramework.Controls.MetroTabPage();
+            this.btn_save = new MetroFramework.Controls.MetroButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
+            this.combobox_product_type = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
@@ -67,7 +73,8 @@
             this.combobox_unit = new MetroFramework.Controls.MetroComboBox();
             this.btn_cancel = new MetroFramework.Controls.MetroButton();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btn_save = new MetroFramework.Controls.MetroButton();
+            this.btn_template = new MetroFramework.Controls.MetroButton();
+            this.btn_import = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -85,7 +92,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(15, 24);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(721, 450);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.metroTabControl1.TabIndex = 1;
@@ -94,6 +101,8 @@
             // 
             // consulta
             // 
+            this.consulta.Controls.Add(this.btn_template);
+            this.consulta.Controls.Add(this.btn_import);
             this.consulta.Controls.Add(this.btn_delete);
             this.consulta.Controls.Add(this.groupBox2);
             this.consulta.Controls.Add(this.groupBox1);
@@ -113,7 +122,7 @@
             // 
             this.btn_delete.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_delete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_delete.Location = new System.Drawing.Point(567, 372);
+            this.btn_delete.Location = new System.Drawing.Point(609, 372);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(75, 23);
             this.btn_delete.TabIndex = 13;
@@ -130,7 +139,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupBox2.Location = new System.Drawing.Point(35, 158);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(613, 208);
+            this.groupBox2.Size = new System.Drawing.Size(649, 208);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultados";
@@ -158,7 +167,8 @@
             this.unidad,
             this.price,
             this.stock_minimo,
-            this.stock_maximo});
+            this.stock_maximo,
+            this.Column1});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -183,7 +193,7 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(601, 178);
+            this.metroGrid1.Size = new System.Drawing.Size(633, 178);
             this.metroGrid1.TabIndex = 2;
             this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
             this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
@@ -227,9 +237,16 @@
             this.stock_maximo.Name = "stock_maximo";
             this.stock_maximo.Width = 110;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Tipo";
+            this.Column1.Name = "Column1";
+            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox1.Controls.Add(this.metroLabel4);
+            this.groupBox1.Controls.Add(this.combobox_product_type_s);
             this.groupBox1.Controls.Add(this.textbox_name_s);
             this.groupBox1.Controls.Add(this.metroLabel1);
             this.groupBox1.Controls.Add(this.metroLabel2);
@@ -239,10 +256,33 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupBox1.Location = new System.Drawing.Point(35, 29);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(613, 122);
+            this.groupBox1.Size = new System.Drawing.Size(649, 122);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros";
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel4.ForeColor = System.Drawing.Color.DarkCyan;
+            this.metroLabel4.Location = new System.Drawing.Point(242, 26);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(88, 15);
+            this.metroLabel4.TabIndex = 13;
+            this.metroLabel4.Text = "Tipo Producto:";
+            this.metroLabel4.UseCustomForeColor = true;
+            // 
+            // combobox_product_type_s
+            // 
+            this.combobox_product_type_s.FormattingEnabled = true;
+            this.combobox_product_type_s.ItemHeight = 23;
+            this.combobox_product_type_s.Location = new System.Drawing.Point(336, 19);
+            this.combobox_product_type_s.Name = "combobox_product_type_s";
+            this.combobox_product_type_s.Size = new System.Drawing.Size(121, 29);
+            this.combobox_product_type_s.TabIndex = 14;
+            this.combobox_product_type_s.UseSelectable = true;
             // 
             // textbox_name_s
             // 
@@ -280,7 +320,7 @@
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel1.Location = new System.Drawing.Point(9, 20);
+            this.metroLabel1.Location = new System.Drawing.Point(9, 23);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(56, 15);
             this.metroLabel1.TabIndex = 3;
@@ -314,7 +354,7 @@
             // 
             this.btn_clean_s.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_clean_s.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_clean_s.Location = new System.Drawing.Point(532, 93);
+            this.btn_clean_s.Location = new System.Drawing.Point(568, 93);
             this.btn_clean_s.Name = "btn_clean_s";
             this.btn_clean_s.Size = new System.Drawing.Size(75, 23);
             this.btn_clean_s.TabIndex = 12;
@@ -328,7 +368,7 @@
             // 
             this.btn_search.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_search.Location = new System.Drawing.Point(451, 93);
+            this.btn_search.Location = new System.Drawing.Point(487, 93);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(75, 23);
             this.btn_search.TabIndex = 11;
@@ -355,9 +395,25 @@
             this.registro.VerticalScrollbarHighlightOnWheel = false;
             this.registro.VerticalScrollbarSize = 10;
             // 
+            // btn_save
+            // 
+            this.btn_save.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            this.btn_save.Location = new System.Drawing.Point(227, 274);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(75, 23);
+            this.btn_save.TabIndex = 20;
+            this.btn_save.Text = "Guardar";
+            this.btn_save.UseCustomBackColor = true;
+            this.btn_save.UseCustomForeColor = true;
+            this.btn_save.UseSelectable = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox3.Controls.Add(this.metroLabel10);
+            this.groupBox3.Controls.Add(this.combobox_product_type);
             this.groupBox3.Controls.Add(this.metroLabel9);
             this.groupBox3.Controls.Add(this.metroLabel5);
             this.groupBox3.Controls.Add(this.metroLabel6);
@@ -373,10 +429,34 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupBox3.Location = new System.Drawing.Point(3, 18);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(335, 214);
+            this.groupBox3.Size = new System.Drawing.Size(380, 250);
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos de Producto";
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel10.ForeColor = System.Drawing.Color.DarkCyan;
+            this.metroLabel10.Location = new System.Drawing.Point(6, 203);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(118, 15);
+            this.metroLabel10.TabIndex = 20;
+            this.metroLabel10.Text = "Tipo de Producto (*)";
+            this.metroLabel10.UseCustomForeColor = true;
+            // 
+            // combobox_product_type
+            // 
+            this.combobox_product_type.FormattingEnabled = true;
+            this.combobox_product_type.ItemHeight = 23;
+            this.combobox_product_type.Location = new System.Drawing.Point(130, 197);
+            this.combobox_product_type.Name = "combobox_product_type";
+            this.combobox_product_type.Size = new System.Drawing.Size(196, 29);
+            this.combobox_product_type.TabIndex = 21;
+            this.combobox_product_type.UseSelectable = true;
+            this.combobox_product_type.Validating += new System.ComponentModel.CancelEventHandler(this.combobox_Validating);
             // 
             // metroLabel9
             // 
@@ -384,7 +464,7 @@
             this.metroLabel9.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel9.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel9.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel9.Location = new System.Drawing.Point(6, 196);
+            this.metroLabel9.Location = new System.Drawing.Point(6, 229);
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.Size = new System.Drawing.Size(134, 15);
             this.metroLabel9.TabIndex = 19;
@@ -397,7 +477,7 @@
             this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel5.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel5.Location = new System.Drawing.Point(6, 26);
+            this.metroLabel5.Location = new System.Drawing.Point(6, 30);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(69, 15);
             this.metroLabel5.TabIndex = 2;
@@ -410,7 +490,7 @@
             this.metroLabel6.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel6.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel6.Location = new System.Drawing.Point(6, 59);
+            this.metroLabel6.Location = new System.Drawing.Point(6, 66);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(62, 15);
             this.metroLabel6.TabIndex = 3;
@@ -423,7 +503,7 @@
             this.metroLabel7.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel7.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel7.Location = new System.Drawing.Point(6, 132);
+            this.metroLabel7.Location = new System.Drawing.Point(6, 135);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(97, 15);
             this.metroLabel7.TabIndex = 4;
@@ -434,7 +514,7 @@
             // 
             this.combobox_currency.FormattingEnabled = true;
             this.combobox_currency.ItemHeight = 23;
-            this.combobox_currency.Location = new System.Drawing.Point(253, 93);
+            this.combobox_currency.Location = new System.Drawing.Point(257, 97);
             this.combobox_currency.Name = "combobox_currency";
             this.combobox_currency.Size = new System.Drawing.Size(52, 29);
             this.combobox_currency.TabIndex = 15;
@@ -447,7 +527,7 @@
             this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel8.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel8.Location = new System.Drawing.Point(6, 168);
+            this.metroLabel8.Location = new System.Drawing.Point(6, 171);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(103, 15);
             this.metroLabel8.TabIndex = 5;
@@ -469,7 +549,7 @@
             this.textbox_price.CustomButton.UseSelectable = true;
             this.textbox_price.CustomButton.Visible = false;
             this.textbox_price.Lines = new string[0];
-            this.textbox_price.Location = new System.Drawing.Point(109, 93);
+            this.textbox_price.Location = new System.Drawing.Point(130, 99);
             this.textbox_price.MaxLength = 32767;
             this.textbox_price.Name = "textbox_price";
             this.textbox_price.PasswordChar = '\0';
@@ -500,7 +580,7 @@
             this.textbox_name.CustomButton.UseSelectable = true;
             this.textbox_name.CustomButton.Visible = false;
             this.textbox_name.Lines = new string[0];
-            this.textbox_name.Location = new System.Drawing.Point(109, 21);
+            this.textbox_name.Location = new System.Drawing.Point(130, 26);
             this.textbox_name.MaxLength = 32767;
             this.textbox_name.Name = "textbox_name";
             this.textbox_name.PasswordChar = '\0';
@@ -522,7 +602,7 @@
             this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel3.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel3.Location = new System.Drawing.Point(6, 93);
+            this.metroLabel3.Location = new System.Drawing.Point(6, 102);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(58, 15);
             this.metroLabel3.TabIndex = 13;
@@ -544,7 +624,7 @@
             this.textbox_stock_max.CustomButton.UseSelectable = true;
             this.textbox_stock_max.CustomButton.Visible = false;
             this.textbox_stock_max.Lines = new string[0];
-            this.textbox_stock_max.Location = new System.Drawing.Point(109, 164);
+            this.textbox_stock_max.Location = new System.Drawing.Point(130, 166);
             this.textbox_stock_max.MaxLength = 32767;
             this.textbox_stock_max.Name = "textbox_stock_max";
             this.textbox_stock_max.PasswordChar = '\0';
@@ -575,7 +655,7 @@
             this.textbox_stock_min.CustomButton.UseSelectable = true;
             this.textbox_stock_min.CustomButton.Visible = false;
             this.textbox_stock_min.Lines = new string[0];
-            this.textbox_stock_min.Location = new System.Drawing.Point(109, 132);
+            this.textbox_stock_min.Location = new System.Drawing.Point(130, 132);
             this.textbox_stock_min.MaxLength = 32767;
             this.textbox_stock_min.Name = "textbox_stock_min";
             this.textbox_stock_min.PasswordChar = '\0';
@@ -595,7 +675,7 @@
             // 
             this.combobox_unit.FormattingEnabled = true;
             this.combobox_unit.ItemHeight = 23;
-            this.combobox_unit.Location = new System.Drawing.Point(109, 55);
+            this.combobox_unit.Location = new System.Drawing.Point(130, 60);
             this.combobox_unit.Name = "combobox_unit";
             this.combobox_unit.Size = new System.Drawing.Size(196, 29);
             this.combobox_unit.TabIndex = 9;
@@ -606,7 +686,7 @@
             // 
             this.btn_cancel.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_cancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_cancel.Location = new System.Drawing.Point(263, 247);
+            this.btn_cancel.Location = new System.Drawing.Point(308, 274);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 12;
@@ -620,19 +700,33 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // btn_save
+            // btn_template
             // 
-            this.btn_save.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_save.Location = new System.Drawing.Point(182, 247);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(75, 23);
-            this.btn_save.TabIndex = 20;
-            this.btn_save.Text = "Guardar";
-            this.btn_save.UseCustomBackColor = true;
-            this.btn_save.UseCustomForeColor = true;
-            this.btn_save.UseSelectable = true;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            this.btn_template.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_template.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            this.btn_template.Location = new System.Drawing.Point(35, 372);
+            this.btn_template.Name = "btn_template";
+            this.btn_template.Size = new System.Drawing.Size(75, 23);
+            this.btn_template.TabIndex = 19;
+            this.btn_template.Text = "Plantilla";
+            this.btn_template.UseCustomBackColor = true;
+            this.btn_template.UseCustomForeColor = true;
+            this.btn_template.UseSelectable = true;
+            this.btn_template.Click += new System.EventHandler(this.btn_template_Click);
+            // 
+            // btn_import
+            // 
+            this.btn_import.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_import.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            this.btn_import.Location = new System.Drawing.Point(116, 372);
+            this.btn_import.Name = "btn_import";
+            this.btn_import.Size = new System.Drawing.Size(75, 23);
+            this.btn_import.TabIndex = 18;
+            this.btn_import.Text = "Importar";
+            this.btn_import.UseCustomBackColor = true;
+            this.btn_import.UseCustomForeColor = true;
+            this.btn_import.UseSelectable = true;
+            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
             // 
             // UC_Product
             // 
@@ -681,6 +775,16 @@
         private MetroFramework.Controls.MetroTextBox textbox_price;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroComboBox combobox_currency;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private MetroFramework.Controls.MetroLabel metroLabel9;
+        private MetroFramework.Controls.MetroButton btn_save;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroComboBox combobox_product_type_s;
+        private MetroFramework.Controls.MetroLabel metroLabel10;
+        private MetroFramework.Controls.MetroComboBox combobox_product_type;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn index;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
@@ -688,11 +792,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewTextBoxColumn stock_minimo;
         private System.Windows.Forms.DataGridViewTextBoxColumn stock_maximo;
-        private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private MetroFramework.Controls.MetroLabel metroLabel9;
-        private MetroFramework.Controls.MetroButton btn_save;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private MetroFramework.Controls.MetroButton btn_template;
+        private MetroFramework.Controls.MetroButton btn_import;
     }
 }
