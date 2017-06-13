@@ -232,8 +232,8 @@ namespace WindowsFormsApp1.Views
 
         private void btn_warehouse_Click_2(object sender, EventArgs e)
         {
-            hide_UserControls();            
-            uc_warehousemovement.Visible = true;
+            hide_UserControls();
+            uC_WarehouseMovement1.Visible = true;
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)

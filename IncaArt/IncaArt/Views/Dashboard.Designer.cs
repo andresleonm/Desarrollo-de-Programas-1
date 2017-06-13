@@ -73,9 +73,8 @@ namespace WindowsFormsApp1.Views
             this.uc_product = new WindowsFormsApp1.Views.UC_Product();
             this.uc_recipe = new WindowsFormsApp1.Views.UC_Recipe();
             this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
-            this.uc_ProductionMenu = new WindowsFormsApp1.Views.Production_Module.UC_ProductionMenu();
             this.uc_workstation = new WindowsFormsApp1.Views.UC_Workstation();
-            this.uc_warehousemovement = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement(userName, password);
+            this.uC_WarehouseMovement1 = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -436,22 +435,6 @@ namespace WindowsFormsApp1.Views
             this.uC_SalesMain1.Name = "uC_SalesMain1";
             this.uC_SalesMain1.Size = new System.Drawing.Size(819, 514);
             this.uC_SalesMain1.TabIndex = 31;
-
-            this.uc_warehousemovement.BackColor = System.Drawing.SystemColors.Control;
-            this.uc_warehousemovement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_warehousemovement.Location = new System.Drawing.Point(132, 72);
-            this.uc_warehousemovement.Name = "uc_warehousemovement";
-            this.uc_warehousemovement.Size = new System.Drawing.Size(1000, 600);
-            this.uc_warehousemovement.TabIndex = 31;
-            // 
-            // uC_SalesMain1
-            // 
-            this.uc_warehousemovement.BackColor = System.Drawing.SystemColors.Control;
-            this.uc_warehousemovement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_warehousemovement.Location = new System.Drawing.Point(132, 72);
-            this.uc_warehousemovement.Name = "uc_warehousemovement";
-            this.uc_warehousemovement.Size = new System.Drawing.Size(819, 514);
-            this.uc_warehousemovement.TabIndex = 31;
             // 
             // parameters1
             // 
@@ -459,6 +442,7 @@ namespace WindowsFormsApp1.Views
             this.parameters1.Name = "parameters1";
             this.parameters1.Size = new System.Drawing.Size(819, 514);
             this.parameters1.TabIndex = 22;
+            this.parameters1.UseSelectable = true;
             this.parameters1.Visible = false;
             // 
             // warehouse1
@@ -496,7 +480,7 @@ namespace WindowsFormsApp1.Views
             this.client1.AutoSize = true;
             this.client1.Location = new System.Drawing.Point(132, 72);
             this.client1.Name = "client1";
-            this.client1.Size = new System.Drawing.Size(971, 672);
+            this.client1.Size = new System.Drawing.Size(971, 716);
             this.client1.Style = MetroFramework.MetroColorStyle.Teal;
             this.client1.TabIndex = 18;
             this.client1.UseSelectable = true;
@@ -526,7 +510,7 @@ namespace WindowsFormsApp1.Views
             this.user.BackColor = System.Drawing.SystemColors.Window;
             this.user.Location = new System.Drawing.Point(132, 72);
             this.user.Name = "user";
-            this.user.Size = new System.Drawing.Size(1017, 497);
+            this.user.Size = new System.Drawing.Size(1017, 514);
             this.user.TabIndex = 24;
             this.user.UseCustomBackColor = true;
             this.user.UseSelectable = true;
@@ -593,16 +577,6 @@ namespace WindowsFormsApp1.Views
             this.uc_worker.UseSelectable = true;
             this.uc_worker.Visible = false;
             // 
-            // uc_ProductionMenu
-            // 
-            this.uc_ProductionMenu.BackColor = System.Drawing.SystemColors.Control;
-            this.uc_ProductionMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.uc_ProductionMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_ProductionMenu.Location = new System.Drawing.Point(132, 72);
-            this.uc_ProductionMenu.Name = "uc_ProductionMenu";
-            this.uc_ProductionMenu.Size = new System.Drawing.Size(819, 514);
-            this.uc_ProductionMenu.TabIndex = 34;
-            // 
             // uc_workstation
             // 
             this.uc_workstation.Location = new System.Drawing.Point(132, 72);
@@ -612,13 +586,21 @@ namespace WindowsFormsApp1.Views
             this.uc_workstation.UseSelectable = true;
             this.uc_workstation.Visible = false;
             // 
+            // uC_WarehouseMovement1
+            // 
+            this.uC_WarehouseMovement1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_WarehouseMovement1.Location = new System.Drawing.Point(132, 72);
+            this.uC_WarehouseMovement1.Name = "uC_WarehouseMovement1";
+            this.uC_WarehouseMovement1.Size = new System.Drawing.Size(819, 514);
+            this.uC_WarehouseMovement1.TabIndex = 47;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(951, 586);
-            this.Controls.Add(this.uc_warehousemovement);
+            this.Controls.Add(this.uC_WarehouseMovement1);
             this.Controls.Add(this.uc_ProductionMenu);
             this.Controls.Add(this.uC_Simulation1);
             this.Controls.Add(this.uC_SalesMain1);
@@ -690,7 +672,6 @@ namespace WindowsFormsApp1.Views
         private UC_Profile profile;
         private UC_Shift shift;
         private UC_SalesMain uC_SalesMain1;
-        private UC_WarehouseMovement uc_warehousemovement;
         private UC_Material2 material;
         private UC_Material uc_material;
         private UC_Product uc_product;
@@ -705,5 +686,6 @@ namespace WindowsFormsApp1.Views
         private UC_Simulation uC_Simulation1;
         private System.Windows.Forms.ImageList simulation_imagelist;
         private System.Windows.Forms.ImageList production_imagelist;
+        private UC_WarehouseMovement uC_WarehouseMovement1;
     }
 }

@@ -10,7 +10,7 @@ namespace WindowsFormsApp1.DataService
 {
     public class DatabaseService
     {
-        string conn_string = "Server=200.16.7.71;Port=1041;Database=dp1db;User Id=dp1admin;Password=dp1admin;";
+        private static string conn_string = "Server=200.16.7.71;Port=1041;Database=dp1db;User Id=dp1admin;Password=dp1admin;";
         public string user;
         public string password;
 
@@ -25,7 +25,7 @@ namespace WindowsFormsApp1.DataService
         {
             try
             {
-                NpgsqlConnection conn = new NpgsqlConnection(conn_string);
+                NpgsqlConnection conn = new NpgsqlConnection(DatabaseService.conn_string);
                 conn.Open();
                 NpgsqlTransaction tran = conn.BeginTransaction();
                 NpgsqlCommand cmd = new NpgsqlCommand(function, conn);
@@ -83,7 +83,7 @@ namespace WindowsFormsApp1.DataService
             try
             {
                 // Connect to a PostgreSQL database
-                NpgsqlConnection conn = new NpgsqlConnection(conn_string);
+                NpgsqlConnection conn = new NpgsqlConnection(DatabaseService.conn_string);
                 conn.Open();
                 NpgsqlCommand command = new NpgsqlCommand(function,conn);
                 command.CommandType = CommandType.StoredProcedure;
@@ -106,10 +106,9 @@ namespace WindowsFormsApp1.DataService
             }
         }
 
-
-
-
-
-
+        public static void updateConnection(string username, string password)
+        {
+            DatabaseService.conn_string = $"Server=200.16.7.71;Port=1041;Database=dp1db;User Id={username};Password={password};";
+        }
     }
 }

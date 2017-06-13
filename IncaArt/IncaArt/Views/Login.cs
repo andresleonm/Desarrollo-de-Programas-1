@@ -47,6 +47,7 @@ namespace WindowsFormsApp1
                     }
 
                     this.Cursor = Cursors.WaitCursor;
+                    DataService.DatabaseService.updateConnection(user.Nickname, user.Password);
                     Dashboard main_form = new Dashboard(user);
                     this.Cursor = Cursors.Arrow;
                     MessageBox.Show("Bienvenido " + user.Name);
