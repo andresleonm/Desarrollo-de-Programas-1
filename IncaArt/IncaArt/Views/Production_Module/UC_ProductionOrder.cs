@@ -55,23 +55,23 @@ namespace WindowsFormsApp1.Views
         {
             if (!editing)
             {
-                metroButton_DeleteMaterial.Visible = false;
+               /* metroButton_DeleteMaterial.Visible = false;
                 metroButton_DeleteProduct.Visible = false;
                 metroButton_DeleteWork.Visible = false;
                 metroButton_EditMaterial.Visible = false;
                 metroButton_EditProduct.Visible = false;
-                metroButton_EditWork.Visible = false;
+                metroButton_EditWork.Visible = false;*/
                 metroTextBox_OrderNumber.Visible = false;
                 metroLabel_numOrder.Visible = false;
             }
             else
             {
-                metroButton_DeleteMaterial.Visible = true;
+                /*metroButton_DeleteMaterial.Visible = true;
                 metroButton_DeleteProduct.Visible = true;
                 metroButton_DeleteWork.Visible = true;
                 metroButton_EditMaterial.Visible = true;
                 metroButton_EditProduct.Visible = true;
-                metroButton_EditWork.Visible = true;
+                metroButton_EditWork.Visible = true;*/
                 metroTextBox_OrderNumber.Visible = true;
                 metroLabel_numOrder.Visible = true;
             }
@@ -108,20 +108,29 @@ namespace WindowsFormsApp1.Views
                     //List of products
                     for (int i = 0; i < product_lines.Count; i++)
                     {
-                        product_lines[i].Order_Id = order_id;
-                        Result result = product_line_controller.insertProductLine(product_lines[i]);
+                        if (product_lines[i].State != "DELETED")
+                        {
+                            product_lines[i].Order_Id = order_id;
+                            Result result = product_line_controller.insertProductLine(product_lines[i]);
+                        }                       
                     }
                     //List of materials           
                     for (int i = 0; i < material_lines.Count; i++)
                     {
-                        material_lines[i].Order_Id = order_id;
-                        Result result = material_line_controller.insertMaterialLine(material_lines[i]);
+                        if (material_lines[i].State != "DELETED")
+                        {
+                            material_lines[i].Order_Id = order_id;
+                            Result result = material_line_controller.insertMaterialLine(material_lines[i]);
+                        }                        
                     }
                     //List of work               
                     for (int i = 0; i < work_lines.Count; i++)
                     {
-                        work_lines[i].Order_Id = order_id;
-                        Result result = work_line_controller.insertWorkLine(work_lines[i]);
+                        if (work_lines[i].State != "DELETED")
+                        {
+                            work_lines[i].Order_Id = order_id;
+                            Result result = work_line_controller.insertWorkLine(work_lines[i]);
+                        }              
                     }
 
                     MessageBox.Show("Order de producción registrada.");
@@ -356,6 +365,9 @@ namespace WindowsFormsApp1.Views
             update_SummaryMaterial();
             update_SummaryProduct();
             hide_buttons();
+            flag_begin = true;
+            flag_description = true;
+            flag_end = true;
         }
 
         private void UC_ProductionOrder_Load(object sender, EventArgs e)
@@ -464,7 +476,7 @@ namespace WindowsFormsApp1.Views
                         {
                             int selected_index = datagrid_Products.SelectedRows[0].Index;
                             Models.ProductionOrderProductLine product_line = product_lines[selected_index];
-                            product_line.State = "Eliminado";
+                            product_line.State = "DELETED";
                             Load_Product_DataGridView();
                         }
                     }
@@ -490,7 +502,7 @@ namespace WindowsFormsApp1.Views
                         {
                             int selected_index = metroGrid_Material.SelectedRows[0].Index;
                             Models.ProductionOrderMaterialLine material_line = material_lines[selected_index];
-                            material_line.State = "Eliminado";
+                            material_line.State = "DELETED";
                             Load_Material_DataGridView();
                         }
                     }
@@ -514,7 +526,7 @@ namespace WindowsFormsApp1.Views
                         {
                             int selected_index = metroGrid_Work.SelectedRows[0].Index;
                             Models.ProductionOrderWorkLine work_line = work_lines[selected_index];
-                            work_line.State = "Eliminado";
+                            work_line.State = "DELETED";
                             Load_Work_DataGridView();
                         }
                     }

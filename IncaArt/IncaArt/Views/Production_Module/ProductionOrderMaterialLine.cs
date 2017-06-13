@@ -26,6 +26,7 @@ namespace WindowsFormsApp1.Views.Production_Module
         MaterialsController material_controller;
         MaterialMovementDetailController material_warehouse_controller;
         UnitController unit_controller;
+        MaterialWarehouseController warehouse_controller;
 
         //validate
         bool flag_material=false;
@@ -77,6 +78,7 @@ namespace WindowsFormsApp1.Views.Production_Module
             material_controller = new MaterialsController(user, password);
             material_warehouse_controller = new MaterialMovementDetailController(user, password);
             unit_controller = new UnitController(user, password);
+            warehouse_controller = new MaterialWarehouseController(user, password);
         }
 
         private bool validate_data()
@@ -85,7 +87,7 @@ namespace WindowsFormsApp1.Views.Production_Module
             validate_comboBox(comboBox_Material);
             validate_comboBox(comboBox_Warehouse);
             validate_textbox(metroTextBox_Quantity);
-
+        
             if (!flag_material || !flag_quantity || !flag_warehouse)
             {
                 MessageBox.Show("Hay campos inválidos en los datos del detalle de material.", "Error en el registro", MessageBoxButtons.OK);
@@ -205,8 +207,23 @@ namespace WindowsFormsApp1.Views.Production_Module
             }
             else
             {
-                flag_quantity = true;
-                errorProvider.SetError(textbox, null);
+                //validate stock
+                int index = ((MaterialWarehouse)comboBox_Warehouse.SelectedItem).Id;
+                MaterialWarehouse warehouse = (MaterialWarehouse)warehouse_controller.getMaterialWarehouse(index).data;
+                int  stock = warehouse.Current_logical_stock;
+
+                if (num > stock)
+                {
+                    flag_quantity = false;
+                    errorProvider.SetError(textbox, "No hay suficiente stock en el almacén");
+                }
+                else
+                {
+                    flag_quantity = true;
+                    errorProvider.SetError(textbox, null);
+                }
+               
+          
             }
         }
 
