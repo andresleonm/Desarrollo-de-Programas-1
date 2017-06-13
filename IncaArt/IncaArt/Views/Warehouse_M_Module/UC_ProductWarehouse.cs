@@ -19,6 +19,8 @@ namespace WindowsFormsApp1.Views
         bool type_flag;
         bool capacity_flag;
 
+//        Models.User sessionUser;
+
         List<Models.ProductWarehouse> warehouse_list;
         List<Models.Product> products_list;
         List<Models.ProductTypeWarehouse> types_list;
@@ -321,7 +323,13 @@ namespace WindowsFormsApp1.Views
                 textbox_max_capacity.Text = metroGrid1.Rows[e.RowIndex].Cells[7].Value.ToString();
                 Set_Flag_All(true);
                 register.Text = "Editar";
+                //register.Visible = true;
                 metroTabControl1.SelectedIndex = 1;
+                /*
+                if (!sessionUser.Profile.HasFunctionality("EDIT WAREHOUSE"))
+                {
+                    register.Visible = false;
+                }*/
             }
         }
 
@@ -368,7 +376,13 @@ namespace WindowsFormsApp1.Views
         {
             Clean();
             register.Text = "Guardar";
+           // register.Visible = true;
             curWarehouse = null;
+            /*
+            if (!sessionUser.Profile.HasFunctionality("CREATE WAREHOUSE"))
+            {
+                register.Visible = false;
+            }*/
         }
 
         private void btn_clean_Click(object sender, EventArgs e)
@@ -775,5 +789,19 @@ namespace WindowsFormsApp1.Views
         }
 
 
+        //Permissions
+        /*
+        private void UC_Permissions_Load() {
+            if (!sessionUser.Profile.HasFunctionality("DELETE WAREHOUSE"))
+            {
+                delete.Visible = false;
+            }
+        }
+
+        private void metroTabControl1_ParentChanged(object sender, EventArgs e)
+        {
+            sessionUser = ((Dashboard)Parent).sessionUser;
+            UC_Permissions_Load();
+        }*/
     }
 }
