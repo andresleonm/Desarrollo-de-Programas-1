@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.Office.Interop.Excel;
 
 namespace WindowsFormsApp1.Views
 {
@@ -88,7 +89,7 @@ namespace WindowsFormsApp1.Views
             else shift_list = (List<Models.Shift>)result.data;
 
             result = workerController.getWokers();
-            if (result.data==null) MessageBox.Show(result.message, "Error al listar trabajadores", MessageBoxButtons.OK);
+            if (result.data == null) MessageBox.Show(result.message, "Error al listar trabajadores", MessageBoxButtons.OK);
             else worker_list = (List<Models.Worker>)result.data;
         }
 
@@ -132,21 +133,14 @@ namespace WindowsFormsApp1.Views
         {
             foreach (Control c in control.Controls)
             {
-                if (c is TextBox)
+                if (c is System.Windows.Forms.TextBox)
                 {
-                    ((TextBox)c).Clear();
+                    ((System.Windows.Forms.TextBox)c).Clear();
                 }
 
                 if (c.HasChildren)
                 {
                     ClearTextBoxes(c);
-                }
-
-
-                if (c is CheckBox)
-                {
-
-                    ((CheckBox)c).Checked = false;
                 }
 
                 if (c is RadioButton)
@@ -172,7 +166,8 @@ namespace WindowsFormsApp1.Views
             if (radiobutton_m.Checked)
             {
                 worker.Gender = 'M';
-            }else if (radiobutton_f.Checked)
+            }
+            else if (radiobutton_f.Checked)
             {
                 worker.Gender = 'F';
             }
@@ -213,7 +208,7 @@ namespace WindowsFormsApp1.Views
                 Clean();
                 metroTabControl1.SelectedIndex = 0;
             }
-            
+
         }
 
         private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -246,15 +241,15 @@ namespace WindowsFormsApp1.Views
                 {
                     if (shift_list[i].Description == metroGrid1.Rows[cur_row].Cells[6].Value.ToString())
                     {
-                        combobox_shift.SelectedIndex = i+1;
+                        combobox_shift.SelectedIndex = i + 1;
                         break;
                     }
                 }
                 for (int i = 0; i < currency_list.Count(); i++)
                 {
-                    if (currency_list[i].Id ==worker.Currency_id)
+                    if (currency_list[i].Id == worker.Currency_id)
                     {
-                        combobox_currency.SelectedIndex = i+1;
+                        combobox_currency.SelectedIndex = i + 1;
                         break;
                     }
                 }
@@ -267,7 +262,8 @@ namespace WindowsFormsApp1.Views
                 if (worker.Gender == 'M')
                 {
                     radiobutton_m.Checked = true;
-                }else if (worker.Gender == 'F')
+                }
+                else if (worker.Gender == 'F')
                 {
                     radiobutton_f.Checked = true;
                 }
@@ -302,7 +298,7 @@ namespace WindowsFormsApp1.Views
                 Clean();
                 metroTabControl1.SelectedIndex = 0;
             }
-            
+
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -341,7 +337,7 @@ namespace WindowsFormsApp1.Views
             worker.Paternal_name = textbox_paternal_s.Text;
             worker.Maternal_name = textbox_maternal_s.Text;
             worker.Doi = textbox_doi_s.Text;
-            worker.Shift_id= ((KeyValuePair<int, string>)combobox_shift_s.SelectedItem).Key;
+            worker.Shift_id = ((KeyValuePair<int, string>)combobox_shift_s.SelectedItem).Key;
             result = workerController.getWokers(worker);
             if (result.data == null)
             {
@@ -415,16 +411,16 @@ namespace WindowsFormsApp1.Views
             else
             {
                 errorProvider.SetError(textbox, null);
-                    double number;
-                    if (!Double.TryParse(text, out number))
-                    {
-                        Set_Flag(textbox.Name, false);
-                        errorProvider.SetError(textbox, "Campo debe ser número");
-                    }
-                    else
-                    {
-                        Set_Flag(textbox.Name, true);
-                    }
+                double number;
+                if (!Double.TryParse(text, out number))
+                {
+                    Set_Flag(textbox.Name, false);
+                    errorProvider.SetError(textbox, "Campo debe ser número");
+                }
+                else
+                {
+                    Set_Flag(textbox.Name, true);
+                }
             }
         }
 
@@ -448,7 +444,7 @@ namespace WindowsFormsApp1.Views
         private void datetimepicker_Validating(object sender, CancelEventArgs e)
         {
             MetroFramework.Controls.MetroDateTime datetimepicker = (MetroFramework.Controls.MetroDateTime)sender;
-            if (datetimepicker.Text==null)
+            if (datetimepicker.Text == null)
             {
                 Set_Flag(datetimepicker.Name, false);
                 errorProvider.SetError(datetimepicker, "Se debe seleccionar");
@@ -533,7 +529,8 @@ namespace WindowsFormsApp1.Views
                     {
                         MessageBox.Show("Trabajador registrado correctamente", "Registrar trabajador", MessageBoxButtons.OK);
                     }
-                }else
+                }
+                else
                 {
                     result = workerController.updateWorker(worker);
                     if (result.data == null)
@@ -552,6 +549,318 @@ namespace WindowsFormsApp1.Views
                 metroTabControl1.SelectedIndex = 0;
             }
             operation_value = 0;
+        }
+
+        private partial class WorkerError //Clase temporal para manejo de Excel con filas con errores
+        {
+            public List<string> error_list;
+            public List<string> string_list;
+        }
+
+        private void btn_import_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Filter = "Excel |*.xlsx;*.xls";
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                //MessageBox.Show(openDialog.FileName, "Ventana", MessageBoxButtons.OK);
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                if (excel == null)
+                {
+                    Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
+                    return;
+                }
+                Workbook wb = excel.Workbooks.Open(openDialog.FileName);
+                Worksheet ws = (Worksheet)wb.Worksheets[1];
+                Range range = ws.UsedRange;
+                int row_count = range.Rows.Count;
+                int column_count = range.Columns.Count;
+                Range datarange;
+                string name = "", paternal = "", maternal = "", dni = "", shift = "", currency = "";
+                double salary = -1, number;
+                bool error; //error individual
+                bool found;
+                List<string> error_list, string_list; //para hacer control de cada error de fila
+                Models.Worker worker;
+                int currency_id = 0, shift_id = 0, success_lines = 0, error_lines = 0;
+                List<WorkerError> worker_error_list = new List<WorkerError>(); //Lista de materiales para el Excel con error
+                //En Interop Excel el indice comienza en 1
+                for (int i = 3; i <= row_count; i++) //Fila 3 comienza las filas de materiales
+                {
+                    error = false;
+                    WorkerError worker_error = new WorkerError();
+                    error_list = new List<string>();
+                    string_list = new List<string>();
+                    //Nombre
+                    datarange = (Range)ws.Cells[i, 1];
+                    string_list.Add((string)datarange.Text);
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("name");
+                    }
+                    else
+                    {
+                        name = (string)datarange.Value2;
+                    }
+                    //A. Paterno
+                    datarange = (Range)ws.Cells[i, 2];
+                    string_list.Add((string)datarange.Text);
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("paternal");
+                    }
+                    else
+                    {
+                        paternal = (string)datarange.Value2;
+                    }
+                    //A. Materno
+                    datarange = (Range)ws.Cells[i, 3];
+                    string_list.Add((string)datarange.Text);
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("maternal");
+                    }
+                    else
+                    {
+                        maternal = (string)datarange.Value2;
+                    }
+                    //DNI
+                    datarange = (Range)ws.Cells[i, 4];
+                    string_list.Add((string)datarange.Text);
+                    if (datarange.Value2 == null || !double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("dni");
+                    }
+                    else
+                    {
+                        dni = ((double)datarange.Value2).ToString();
+                    }
+                    //Turno
+                    datarange = (Range)ws.Cells[i, 5];
+                    string_list.Add((string)datarange.Text);
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("shift");
+                    }
+                    else
+                    {
+                        shift = (string)datarange.Value2;
+                        found = false;
+                        foreach (var item in shift_list)
+                        {
+                            if (item.Description.ToUpper().Equals(shift.ToUpper()))
+                            {
+                                shift_id = item.Id;
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found)
+                        {
+                            error = true;
+                            error_list.Add("shift_find");
+                        }
+                    }
+                    //Salario
+                    datarange = (Range)ws.Cells[i, 6];
+                    string_list.Add((string)datarange.Text);
+                    if (datarange.Value2 == null || !double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("dni");
+                    }
+                    else
+                    {
+                        salary = ((double)datarange.Value2);
+                    }
+                    //Moneda
+                    datarange = (Range)ws.Cells[i, 7];
+                    found = false;
+                    string_list.Add((string)datarange.Text);
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("currency");
+                    }
+                    else
+                    {
+                        currency = (string)datarange.Value2;
+                        foreach (var item in currency_list)
+                        {
+                            if (item.Name.ToUpper().Equals(currency.ToUpper()))
+                            {
+                                currency_id = item.Id;
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found)
+                        {
+                            error = true;
+                            error_list.Add("currency_find");
+                        }
+                    }
+
+                    if (error)//Si hay error entonces, se agrega a la lista de material error
+                    {
+                        worker_error.error_list = error_list;
+                        worker_error.string_list = string_list;
+                        worker_error_list.Add(worker_error);
+                        error_lines++;
+                    }
+                    else
+                    {
+                        worker = new Models.Worker();
+                        worker.Name = name;
+                        worker.Paternal_name = paternal;
+                        worker.Maternal_name = maternal;
+                        worker.Doi = dni;
+                        worker.Salary = salary;
+                        worker.Shift_id = shift_id;
+                        worker.Currency_id = currency_id;
+                        worker.Phone = " ";
+                        worker.Email = " ";
+                        worker.Telephone = " ";
+                        worker.Address = " ";
+                        worker.Gender = ' ';
+                        workerController.insertWorker(worker);
+                        if (result.data == null)
+                        {
+                            MessageBox.Show("Error en registro material");
+                            error = true;
+                            error_list.Add("register");
+                            error_lines++;
+                        }
+                        else
+                        {
+                            success_lines++;
+                        }
+                    }
+                }
+                MessageBox.Show("Lineas correctas: " + success_lines + "\n" + "Lineas inccorrectas: " + error_lines, "Resultado de importación desde Excel", MessageBoxButtons.OK);
+                if (worker_error_list.Count > 0) //Hubo por lo menos una fila con error
+                {
+                    CreateExcelError(worker_error_list);
+                }
+            }
+            openDialog.Dispose();
+        }
+
+        private void CreateExcelError(List<WorkerError> list)
+        {
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            if (excel == null)
+            {
+                Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
+                return;
+            }
+            excel.Visible = true;
+
+            Workbook wb = excel.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
+            Worksheet ws = (Worksheet)wb.Worksheets[1];
+            ws.Name = "Trabajadores";
+            if (ws == null)
+            {
+                Console.WriteLine("Worksheet could not be created. Check that your office installation and project references are correct.");
+            }
+
+            ws.Range["A1"].Value2 = "Lista de Trabajadores con Error";
+            ws.Range["A1"].Font.Size = 15;
+            ws.Range["A1"].Font.Bold = true;
+            ws.Range["A2"].Value2 = "Nombre";
+            ws.Range["B2"].Value2 = "Apellido Paterno";
+            ws.Range["C2"].Value2 = "Apellido Materno";
+            ws.Range["D2"].Value2 = "DNI";
+            ws.Range["E2"].Value2 = "Turno";
+            ws.Range["F2"].Value2 = "Salario";
+            ws.Range["G2"].Value2 = "Moneda";
+            ws.Range["H2"].Value2 = "Observaciones";
+            string observation;
+            WorkerError worker_error;
+            for (int i = 0; i < list.Count(); i++)
+            {
+                observation = "";
+                worker_error = list[i];
+                for (int j = 0; j < list[i].string_list.Count(); j++)//Se pone los datos del material escrito
+                {
+                    ((Range)ws.Cells[i + 3, j + 1]).Value2 = worker_error.string_list[j];
+                }
+                foreach (var item in worker_error.error_list)
+                {
+                    switch (item)
+                    {
+                        case "name":
+                            observation += "Nombre inválido. ";
+                            break;
+                        case "paternal":
+                            observation += "Apellido Paterno inválido. ";
+                            break;
+                        case "maternal":
+                            observation += "Apellido Materno inválido. ";
+                            break;
+                        case "dni":
+                            observation += "DNI inválido. ";
+                            break;
+                        case "shift":
+                            observation += "Turno inválido. ";
+                            break;
+                        case "shift_find":
+                            observation += "Turno no encontrado. ";
+                            break;
+                        case "salary":
+                            observation += "Salario inválido. ";
+                            break;
+                        case "currency":
+                            observation += "Moneda inválida. ";
+                            break;
+                        case "currency_id":
+                            observation += "Moneda no encontrada. ";
+                            break;
+                        case "register":
+                            observation += "Error en registro";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                ((Range)ws.Cells[i + 3, 8]).Value2 = observation;
+            }
+            ws.Columns.AutoFit();
+        }
+
+        private void btn_template_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            if (excel == null)
+            {
+                Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
+                return;
+            }
+            excel.Visible = true;
+
+            Workbook wb = excel.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
+            Worksheet ws = (Worksheet)wb.Worksheets[1];
+            ws.Name = "Trabajadores";
+            if (ws == null)
+            {
+                Console.WriteLine("Worksheet could not be created. Check that your office installation and project references are correct.");
+            }
+            ws.Range["A1"].Value2 = "Lista de Trabajadores";
+            ws.Range["A1"].Font.Size = 15;
+            ws.Range["A1"].Font.Bold = true;
+            ws.Range["A2"].Value2 = "Nombre";
+            ws.Range["B2"].Value2 = "Apellido Paterno";
+            ws.Range["C2"].Value2 = "Apellido Materno";
+            ws.Range["D2"].Value2 = "DNI";
+            ws.Range["E2"].Value2 = "Turno";
+            ws.Range["F2"].Value2 = "Salario";
+            ws.Range["G2"].Value2 = "Moneda";
+            ws.Columns.AutoFit();
         }
     }
 }
