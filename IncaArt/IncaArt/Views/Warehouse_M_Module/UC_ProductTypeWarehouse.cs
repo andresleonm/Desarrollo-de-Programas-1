@@ -34,6 +34,19 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             string user = "dp1admin";
             string password = "dp1admin";
             typewarehouseController = new Controller.ProductTypeWarehouseController(user, password);
+
+            combo_class.Add(2, "Seleccionar"); //0: Ventas 1 :Observación
+            combo_class.Add(0, "Ventas");
+            combo_class.Add(1, "Observación");
+
+            combobox_class.DataSource = new BindingSource(combo_class, null);
+            combobox_class.DisplayMember = "Value";
+            combobox_class.ValueMember = "Key";
+
+            combobox_class_s.DataSource = new BindingSource(combo_class, null);
+            combobox_class_s.DisplayMember = "Value";
+            combobox_class_s.ValueMember = "Key";
+
             Set_Flag_All(false);
             Load_Data();
             Load_DataGridView();
@@ -46,13 +59,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             if (result.data == null) MessageBox.Show(result.message, "Error al listar tipos de almacén", MessageBoxButtons.OK);
             else typewarehouse_list = (List<Models.ProductTypeWarehouse>)result.data;
 
-            combo_class.Add(-1, "Seleccionar"); //0: Ventas 1 :Observación
-            combo_class.Add(0, "Ventas");
-            combo_class.Add(1, "Observación");
-            
-            combobox_class.DataSource = new BindingSource(combo_class, null);
-            combobox_class.DisplayMember = "Value";
-            combobox_class.ValueMember = "Key";
+
         }
 
         private void Load_DataGridView()
@@ -131,6 +138,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
         {
             Models.ProductTypeWarehouse typeWarehouse = new Models.ProductTypeWarehouse();
             typeWarehouse.Name = textbox_name_s.Text;
+            typeWarehouse.Wclass = ((KeyValuePair<int, string>)combobox_class_s.SelectedItem).Key.ToString();
             if (!String.IsNullOrWhiteSpace(typeWarehouse.Name))
             {
                 result = typewarehouseController.getProductTypeWarehouses(typeWarehouse);
@@ -205,7 +213,8 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
                 curTypeWarehouse = typewarehouse_list[index];
                 textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
                 //---------------------------
-                combobox_class.SelectedIndex = int.Parse(metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString());
+                string classname = metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                combobox_class.SelectedIndex = combo_class.FirstOrDefault(x => x.Value == classname).Key;
                 metroTabControl1.SelectedIndex = 1;
                 register.Text = "Editar";
                 Set_Flag_All(true);
@@ -297,7 +306,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             MetroFramework.Controls.MetroComboBox combobox = (MetroFramework.Controls.MetroComboBox)sender;
             int unit_id = ((KeyValuePair<int, string>)combobox.SelectedItem).Key;
 
-            if (unit_id == -1)
+            if (unit_id == 2)
             {
                 Set_Flag(combobox.Name, false);
                 errorProvider.SetError(combobox, "Seleccionar una opción válida");
