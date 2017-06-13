@@ -44,5 +44,11 @@ namespace WindowsFormsApp1.Views.Production_Module
             sessionUser = ((Dashboard)Parent).sessionUser;
             UC_ProductionMenu_Load();
         }
+
+        private void metroTile_WorkerPerformance_Click(object sender, EventArgs e)
+        {
+            production_register.Visible = false;
+            production_search.Visible = false;
+        }
     }
 }
