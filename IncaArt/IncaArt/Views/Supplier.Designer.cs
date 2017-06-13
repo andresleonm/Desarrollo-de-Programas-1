@@ -39,21 +39,13 @@
             this.textbox_name_s = new MetroFramework.Controls.MetroTextBox();
             this.btn_clean = new System.Windows.Forms.Button();
             this.search = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.combobox_priority_s = new MetroFramework.Controls.MetroComboBox();
             this.textbox_doi_s = new MetroFramework.Controls.MetroTextBox();
-            this.combobox_type_s = new MetroFramework.Controls.MetroComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
             this.delete = new System.Windows.Forms.Button();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
-            this.combobox_priority = new MetroFramework.Controls.MetroComboBox();
-            this.combobox_type = new MetroFramework.Controls.MetroComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -75,8 +67,6 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -127,12 +117,8 @@
             this.groupBox2.Controls.Add(this.textbox_name_s);
             this.groupBox2.Controls.Add(this.btn_clean);
             this.groupBox2.Controls.Add(this.search);
-            this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.combobox_priority_s);
             this.groupBox2.Controls.Add(this.textbox_doi_s);
-            this.groupBox2.Controls.Add(this.combobox_type_s);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
             this.groupBox2.Location = new System.Drawing.Point(0, 5);
@@ -147,7 +133,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label1.Location = new System.Drawing.Point(12, 35);
+            this.label1.Location = new System.Drawing.Point(23, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 55;
@@ -168,7 +154,7 @@
             this.textbox_name_s.CustomButton.UseSelectable = true;
             this.textbox_name_s.CustomButton.Visible = false;
             this.textbox_name_s.Lines = new string[0];
-            this.textbox_name_s.Location = new System.Drawing.Point(82, 26);
+            this.textbox_name_s.Location = new System.Drawing.Point(93, 45);
             this.textbox_name_s.MaxLength = 32767;
             this.textbox_name_s.Name = "textbox_name_s";
             this.textbox_name_s.PasswordChar = '\0';
@@ -209,48 +195,16 @@
             this.search.UseVisualStyleBackColor = false;
             this.search.Click += new System.EventHandler(this.search_Click);
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label13.Location = new System.Drawing.Point(421, 85);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(65, 13);
-            this.label13.TabIndex = 34;
-            this.label13.Text = "Prioridad :";
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label14.Location = new System.Drawing.Point(421, 35);
+            this.label14.Location = new System.Drawing.Point(432, 54);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(37, 13);
             this.label14.TabIndex = 32;
             this.label14.Text = "DOI :";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label15.Location = new System.Drawing.Point(21, 85);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(40, 13);
-            this.label15.TabIndex = 4;
-            this.label15.Text = "Tipo :";
-            // 
-            // combobox_priority_s
-            // 
-            this.combobox_priority_s.FormattingEnabled = true;
-            this.combobox_priority_s.ItemHeight = 23;
-            this.combobox_priority_s.Location = new System.Drawing.Point(503, 82);
-            this.combobox_priority_s.Name = "combobox_priority_s";
-            this.combobox_priority_s.Size = new System.Drawing.Size(176, 29);
-            this.combobox_priority_s.TabIndex = 22;
-            this.combobox_priority_s.UseSelectable = true;
             // 
             // textbox_doi_s
             // 
@@ -267,7 +221,7 @@
             this.textbox_doi_s.CustomButton.UseSelectable = true;
             this.textbox_doi_s.CustomButton.Visible = false;
             this.textbox_doi_s.Lines = new string[0];
-            this.textbox_doi_s.Location = new System.Drawing.Point(503, 26);
+            this.textbox_doi_s.Location = new System.Drawing.Point(514, 45);
             this.textbox_doi_s.MaxLength = 32767;
             this.textbox_doi_s.Name = "textbox_doi_s";
             this.textbox_doi_s.PasswordChar = '\0';
@@ -281,16 +235,6 @@
             this.textbox_doi_s.UseSelectable = true;
             this.textbox_doi_s.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_doi_s.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // combobox_type_s
-            // 
-            this.combobox_type_s.FormattingEnabled = true;
-            this.combobox_type_s.ItemHeight = 23;
-            this.combobox_type_s.Location = new System.Drawing.Point(82, 82);
-            this.combobox_type_s.Name = "combobox_type_s";
-            this.combobox_type_s.Size = new System.Drawing.Size(176, 29);
-            this.combobox_type_s.TabIndex = 27;
-            this.combobox_type_s.UseSelectable = true;
             // 
             // groupBox1
             // 
@@ -338,9 +282,7 @@
             this.Almacén,
             this.Column1,
             this.Column6,
-            this.Column11,
-            this.Tipo,
-            this.Column8});
+            this.Column11});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -390,10 +332,6 @@
             // metroTabPage3
             // 
             this.metroTabPage3.BackColor = System.Drawing.Color.Transparent;
-            this.metroTabPage3.Controls.Add(this.combobox_priority);
-            this.metroTabPage3.Controls.Add(this.combobox_type);
-            this.metroTabPage3.Controls.Add(this.label8);
-            this.metroTabPage3.Controls.Add(this.label9);
             this.metroTabPage3.Controls.Add(this.label10);
             this.metroTabPage3.Controls.Add(this.label11);
             this.metroTabPage3.Controls.Add(this.label12);
@@ -416,52 +354,6 @@
             this.metroTabPage3.VerticalScrollbarBarColor = true;
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
-            // 
-            // combobox_priority
-            // 
-            this.combobox_priority.FormattingEnabled = true;
-            this.combobox_priority.ItemHeight = 23;
-            this.combobox_priority.Location = new System.Drawing.Point(361, 308);
-            this.combobox_priority.Name = "combobox_priority";
-            this.combobox_priority.Size = new System.Drawing.Size(98, 29);
-            this.combobox_priority.TabIndex = 96;
-            this.combobox_priority.UseSelectable = true;
-            this.combobox_priority.Validating += new System.ComponentModel.CancelEventHandler(this.combobox_Validating);
-            // 
-            // combobox_type
-            // 
-            this.combobox_type.FormattingEnabled = true;
-            this.combobox_type.ItemHeight = 23;
-            this.combobox_type.Location = new System.Drawing.Point(361, 260);
-            this.combobox_type.Name = "combobox_type";
-            this.combobox_type.Size = new System.Drawing.Size(98, 29);
-            this.combobox_type.TabIndex = 95;
-            this.combobox_type.UseSelectable = true;
-            this.combobox_type.Validating += new System.ComponentModel.CancelEventHandler(this.combobox_Validating);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label8.Location = new System.Drawing.Point(239, 318);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(82, 13);
-            this.label8.TabIndex = 94;
-            this.label8.Text = "Prioridad (*) :";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label9.Location = new System.Drawing.Point(239, 276);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 13);
-            this.label9.TabIndex = 93;
-            this.label9.Text = "Tipo (*) :";
             // 
             // label10
             // 
@@ -589,7 +481,7 @@
             // 
             this.Cancel.BackColor = System.Drawing.Color.DarkCyan;
             this.Cancel.ForeColor = System.Drawing.Color.White;
-            this.Cancel.Location = new System.Drawing.Point(496, 448);
+            this.Cancel.Location = new System.Drawing.Point(493, 360);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(98, 27);
             this.Cancel.TabIndex = 70;
@@ -604,7 +496,7 @@
             // 
             this.register.BackColor = System.Drawing.Color.DarkCyan;
             this.register.ForeColor = System.Drawing.Color.White;
-            this.register.Location = new System.Drawing.Point(321, 448);
+            this.register.Location = new System.Drawing.Point(318, 360);
             this.register.Name = "register";
             this.register.Size = new System.Drawing.Size(98, 27);
             this.register.TabIndex = 66;
@@ -653,7 +545,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(217, 13);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(453, 359);
+            this.groupBox3.Size = new System.Drawing.Size(453, 284);
             this.groupBox3.TabIndex = 97;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos Proveedor";
@@ -772,20 +664,6 @@
             this.Column11.Name = "Column11";
             this.Column11.Width = 200;
             // 
-            // Tipo
-            // 
-            this.Tipo.FillWeight = 33.99052F;
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.Width = 52;
-            // 
-            // Column8
-            // 
-            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column8.FillWeight = 33.99052F;
-            this.Column8.HeaderText = "Prioridad";
-            this.Column8.Name = "Column8";
-            // 
             // Supplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -825,8 +703,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button delete;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
@@ -837,14 +713,8 @@
         private MetroFramework.Controls.MetroTextBox textbox_name_s;
         private System.Windows.Forms.Button btn_clean;
         private System.Windows.Forms.Button search;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private MetroFramework.Controls.MetroComboBox combobox_priority_s;
         private MetroFramework.Controls.MetroTextBox textbox_doi_s;
-        private MetroFramework.Controls.MetroComboBox combobox_type_s;
-        private MetroFramework.Controls.MetroComboBox combobox_priority;
-        private MetroFramework.Controls.MetroComboBox combobox_type;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -854,7 +724,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Office.Interop.Excel;
 
 namespace WindowsFormsApp1.Views
 {
@@ -194,9 +195,9 @@ namespace WindowsFormsApp1.Views
         {
             foreach (Control c in control.Controls)
             {
-                if (c is TextBox)
+                if (c is System.Windows.Forms.TextBox)
                 {
-                    ((TextBox)c).Clear();
+                    ((System.Windows.Forms.TextBox)c).Clear();
                 }
 
                 if (c.HasChildren)
@@ -205,17 +206,11 @@ namespace WindowsFormsApp1.Views
                 }
 
 
-                if (c is CheckBox)
-                {
-
-                    ((CheckBox)c).Checked = false;
-                }
 
                 if (c is RadioButton)
                 {
                     ((RadioButton)c).Checked = false;
                 }
-
             }
         }
 
@@ -524,6 +519,261 @@ namespace WindowsFormsApp1.Views
                     textbox_unit.Text = unit.Symbol;
                 }
             }
+        }
+
+
+        // Excel Prueba
+        private partial class ProductWarehouseError //Clase temporal para manejo de Excel con filas con errores
+        {
+            public List<string> error_list;
+            public List<string> string_list;
+        }
+
+        private void btn_import_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Filter = "Excel |*.xlsx;*.xls";
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                //MessageBox.Show(openDialog.FileName, "Ventana", MessageBoxButtons.OK);
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                if (excel == null)
+                {
+                    Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
+                    return;
+                }
+                Workbook wb = excel.Workbooks.Open(openDialog.FileName);
+                Worksheet ws = (Worksheet)wb.Worksheets[1];
+                Range range = ws.UsedRange;
+                int row_count = range.Rows.Count;
+                int column_count = range.Columns.Count;
+                Range datarange;
+                string name = "", product = "",typewarehouse="";
+                int capacity = -1;
+                double  number;
+                bool error; //error individual
+                List<string> error_list, string_list; //para hacer control de cada error de fila
+
+                Models.ProductWarehouse warehouse;
+                int product_id,type_id, success_lines = 0, error_lines = 0;
+                List<ProductWarehouseError> productwarehouse_error_list = new List<ProductWarehouseError>(); //Lista de almacenes para el Excel con error
+                //En Interop Excel el indice comienza en 1
+
+                for (int i = 3; i <= row_count; i++) //Fila 3 comienza las filas de Almacenes
+                {
+                    error = false;
+                    ProductWarehouseError productwarehouse_error = new ProductWarehouseError();
+                    error_list = new List<string>();
+                    string_list = new List<string>();
+                    product_id = -1;
+                    type_id = -1;
+                    datarange = (Range)ws.Cells[i, 1];//Nombre Almacén
+                    string_list.Add((string)datarange.Text);
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("name");
+                    }
+                    else
+                    {
+                        name = (string)datarange.Value2;
+                    }
+                    datarange = (Range)ws.Cells[i, 2];//Producto
+                    string_list.Add((string)datarange.Text);
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("product");
+                    }
+                    else
+                    {
+                        product = (string)datarange.Value2;
+                        foreach (var item in products_list)
+                        {
+                            if (item.Name.Equals(product))
+                            {
+                                product_id = item.Id;
+                                break;
+                            }
+                        }
+                        if (product_id == -1)
+                        {
+                            error = true;
+                            error_list.Add("product_find");
+                        }
+                    }
+
+                    datarange = (Range)ws.Cells[i, 3];//Tipo Almacén
+                    string_list.Add((string)datarange.Text);
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("typewarehouse");
+                    }
+                    else
+                    {
+                        typewarehouse = (string)datarange.Value2;
+                        foreach (var item in types_list)
+                        {
+                            if (item.Name.Equals(typewarehouse))
+                            {
+                                type_id = item.Id;
+                                break;
+                            }
+                        }
+                        if (type_id == -1)
+                        {
+                            error = true;
+                            error_list.Add("typewarehouse_find");
+                        }
+                    }
+
+
+                    datarange = (Range)ws.Cells[i, 4];//Capacidad Máxima
+                    string_list.Add((string)datarange.Text);
+                    if (datarange.Value2 == null || !double.TryParse((string)datarange.Text, out number)|| (int)datarange.Value2<0)
+                    {
+                        error = true;
+                        error_list.Add("capacity");
+                    }
+                    else
+                    {
+                        capacity = (int)datarange.Value2;
+                    }
+
+                    if (error)//Si hay error entonces, se agrega a la lista de productwarehouse error
+                    {
+                        productwarehouse_error.error_list = error_list;
+                        productwarehouse_error.string_list = string_list;
+                        productwarehouse_error_list.Add(productwarehouse_error);
+                        error_lines++;
+                    }
+                    else
+                    {
+                        warehouse = new Models.ProductWarehouse();
+                        warehouse.Name = name;
+                        warehouse.Product_id= Convert.ToInt32(product_id);
+                        warehouse.Type_id = Convert.ToInt32(type_id);
+                        warehouse.State = "ACTIVE";
+                        warehouse.Max_capacity= Convert.ToInt32(capacity);
+
+                        productWarehouseController.insertProductWarehouse(warehouse);
+                        if (result.data == null)
+                        {
+                            MessageBox.Show("Error en registro de almacén");
+                            error = true;
+                            error_list.Add("register");
+                            error_lines++;
+                        }
+                        else
+                        {
+                            success_lines++;
+                        }
+                    }
+                }
+                MessageBox.Show("Lineas correctas: " + success_lines + "\n" + "Lineas inccorrectas: " + error_lines, "Resultado de importación desde Excel", MessageBoxButtons.OK);
+                if (productwarehouse_error_list.Count > 0) //Hubo por lo menos una fila con error
+                {
+                    CreateExcelError(productwarehouse_error_list);
+                }
+            }
+            openDialog.Dispose();
+        }
+
+        private void CreateExcelError(List<ProductWarehouseError> list)
+        {
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            if (excel == null)
+            {
+                Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
+                return;
+            }
+            excel.Visible = true;
+
+            Workbook wb = excel.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
+            Worksheet ws = (Worksheet)wb.Worksheets[1];
+            ws.Name = "Almacenes";
+            if (ws == null)
+            {
+                Console.WriteLine("Worksheet could not be created. Check that your office installation and project references are correct.");
+            }
+
+            ws.Range["A1"].Value2 = "Lista de Almacenes con Error";
+            ws.Range["A1"].Font.Size = 15;
+            ws.Range["A1"].Font.Bold = true;
+            ws.Range["A2"].Value2 = "Nombre";
+            ws.Range["B2"].Value2 = "Producto";
+            ws.Range["C2"].Value2 = "Tipo de Almacén";
+            ws.Range["D2"].Value2 = "Capacidad";
+            ws.Range["E2"].Value2 = "Observaciones";
+            string observation;
+            ProductWarehouseError productwarehouse_error;
+            for (int i = 0; i < list.Count(); i++)
+            {
+                observation = "";
+                productwarehouse_error = list[i];
+                for (int j = 0; j < list[i].string_list.Count(); j++)//Se pone los datos del almacen escrito
+                {
+                    ((Range)ws.Cells[i + 3, j + 1]).Value2 = productwarehouse_error.string_list[j];
+                }
+                foreach (var item in productwarehouse_error.error_list)
+                {
+                    switch (item)
+                    {
+                        case "name":
+                            observation += "Nombre inválido. ";
+                            break;
+                        case "product":
+                            observation += "Producto inválido. ";
+                            break;
+                        case "product_find":
+                            observation += "Producto no encontrado. ";
+                            break;
+                        case "typewarehouse":
+                            observation += "Tipo Almacén inválido. ";
+                            break;
+                        case "typewarehouse_find":
+                            observation += "Tipo Almacén no encontrado. ";
+                            break;
+                        case "capacity":
+                            observation += "Capacidad inválida. ";
+                            break;
+                        default:
+                        case "register":
+                            observation += "Error en registro";
+                            break;
+                    }
+                }
+                ((Range)ws.Cells[i + 3, 5]).Value2 = observation;
+            }
+            ws.Columns.AutoFit();
+        }
+
+        private void btn_template_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            if (excel == null)
+            {
+                Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
+                return;
+            }
+            excel.Visible = true;
+
+            Workbook wb = excel.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
+            Worksheet ws = (Worksheet)wb.Worksheets[1];
+            ws.Name = "Almacenes";
+            if (ws == null)
+            {
+                Console.WriteLine("Worksheet could not be created. Check that your office installation and project references are correct.");
+            }
+            ws.Range["A1"].Value2 = "Lista de Almacenes";
+            ws.Range["A1"].Font.Size = 15;
+            ws.Range["A1"].Font.Bold = true;
+            ws.Range["A2"].Value2 = "Nombre";
+            ws.Range["B2"].Value2 = "Producto";
+            ws.Range["C2"].Value2 = "Tipo Almacén";
+            ws.Range["D2"].Value2 = "Capacidad";
+            ws.Columns.AutoFit();
         }
 
 
