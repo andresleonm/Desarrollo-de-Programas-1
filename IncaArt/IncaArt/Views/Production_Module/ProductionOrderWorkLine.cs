@@ -122,7 +122,14 @@ namespace WindowsFormsApp1.Views.Production_Module
 
         private void comboBox_Product_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Controller.WorkstationsController worstation_controller = new Controller.WorkstationsController(user,password);
+            int product_id = ((Product)comboBox_Product.SelectedItem).Id;
+            Workstation workstation = new Workstation();
+            workstation.Product_id = product_id;
+            workstations = (List<Workstation>)workstation_controller.getWorkstations(workstation).data;
+
+            comboBox_Workstation.DataSource = workstations;
+            comboBox_Workstation.DisplayMember = "name";
+            comboBox_Workstation.SelectedIndex = -1;
         
         }
 
