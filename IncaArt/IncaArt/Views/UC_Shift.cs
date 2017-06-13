@@ -37,12 +37,23 @@ namespace WindowsFormsApp1.Views
 
         private void button_New_Click(object sender, EventArgs e)
         {
-            string name = textBox_Description.Text;
+
+            /*string name = textBox_Description.Text;
             DateTimePicker begin = dateTimePicker_Begin;
             DateTimePicker end = dateTimePicker_End;
             if (validate_data(name, begin, end)) {
 
-            }
+            }*/
+
+        }
+
+        private void UC_Shift_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void register_Click(object sender, EventArgs e)
+        {
 
         }
     }

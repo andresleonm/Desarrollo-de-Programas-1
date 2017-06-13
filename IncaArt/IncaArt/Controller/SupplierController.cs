@@ -55,7 +55,7 @@ namespace WindowsFormsApp1.Controller
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("name", supplier.Name));
             parameters.Add(new Parameter("address", supplier.Address));
-            parameters.Add(new Parameter("doi", supplier.Email));
+            parameters.Add(new Parameter("doi", supplier.Doi));
             parameters.Add(new Parameter("phone", supplier.Phone));
             parameters.Add(new Parameter("email", supplier.Email));
             parameters.Add(new Parameter("type", supplier.Type));
@@ -76,7 +76,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("id", supplier.Id.ToString()));
             parameters.Add(new Parameter("name", supplier.Name));
             parameters.Add(new Parameter("address", supplier.Address));
-            parameters.Add(new Parameter("doi", supplier.Email));
+            parameters.Add(new Parameter("doi", supplier.Doi));
             parameters.Add(new Parameter("phone", supplier.Phone));
             parameters.Add(new Parameter("email", supplier.Email));
             parameters.Add(new Parameter("type", supplier.Type));
@@ -98,6 +98,29 @@ namespace WindowsFormsApp1.Controller
             if (result.success)
             {
                 return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result getSuppliers(Models.Supplier supplier)
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            if (supplier.Name != "") parameters.Add(new Parameter("name", supplier.Name));
+            if (supplier.Doi != "") parameters.Add(new Parameter("doi", supplier.Doi));
+            if (supplier.Type != "") parameters.Add(new Parameter("type", supplier.Type));
+            if (supplier.Priority != 0) parameters.Add(new Parameter("priority", supplier.Priority.ToString()));
+
+            GenericResult result = execute_function("get_suppliers2", parameters);
+            List<Models.Supplier> suppliers = new List<Models.Supplier>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    suppliers.Add(new Models.Supplier(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2), r.getColumn(3), r.getColumn(4), r.getColumn(5), r.getColumn(6),
+                                                    Int32.Parse(r.getColumn(7)), r.getColumn(8)));
+                }
+                return new Result(suppliers, true, "");
             }
             return new Result(null, result.success, result.message);
         }
