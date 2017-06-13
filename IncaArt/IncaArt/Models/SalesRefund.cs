@@ -110,6 +110,12 @@ namespace WindowsFormsApp1.Models
             set { refund_reason_id = value; }
         }
 
+        public string Refund_reason_name
+        {
+            get { return refund_reason_name; }
+            set { refund_reason_name = value; }
+        }
+
         public int Document_id
         {
             get { return document_id; }

@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.Models
         public int workstation_id { get; set; }
         public int ratio_type { get; set; }
         public int worker_id { get; set; }
-
+        public int product_id { get; set; }
         public Ratio()
         {
 

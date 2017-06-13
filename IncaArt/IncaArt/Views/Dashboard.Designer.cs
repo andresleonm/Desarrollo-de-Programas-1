@@ -75,6 +75,7 @@ namespace WindowsFormsApp1.Views
             this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
             this.uc_workstation = new WindowsFormsApp1.Views.UC_Workstation();
             this.uC_WarehouseMovement1 = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement();
+            this.uc_ratio = new WindowsFormsApp1.Views.UC_Ratio();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -413,11 +414,12 @@ namespace WindowsFormsApp1.Views
             // uc_ProductionMenu
             // 
             this.uc_ProductionMenu.BackColor = System.Drawing.SystemColors.Control;
+            this.uc_ProductionMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.uc_ProductionMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uc_ProductionMenu.Location = new System.Drawing.Point(132, 72);
             this.uc_ProductionMenu.Name = "uc_ProductionMenu";
             this.uc_ProductionMenu.Size = new System.Drawing.Size(819, 514);
-            this.uc_ProductionMenu.TabIndex = 31;
+            this.uc_ProductionMenu.TabIndex = 34;
             // 
             // uC_Simulation1
             // 
@@ -585,7 +587,7 @@ namespace WindowsFormsApp1.Views
             this.uc_workstation.TabIndex = 43;
             this.uc_workstation.UseSelectable = true;
             this.uc_workstation.Visible = false;
-            // 
+            //
             // uC_WarehouseMovement1
             // 
             this.uC_WarehouseMovement1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -593,6 +595,15 @@ namespace WindowsFormsApp1.Views
             this.uC_WarehouseMovement1.Name = "uC_WarehouseMovement1";
             this.uC_WarehouseMovement1.Size = new System.Drawing.Size(819, 514);
             this.uC_WarehouseMovement1.TabIndex = 47;
+            //
+            // uc_ratio
+            // 
+            this.uc_ratio.Location = new System.Drawing.Point(139, 79);
+            this.uc_ratio.Name = "uc_ratio";
+            this.uc_ratio.Size = new System.Drawing.Size(826, 598);
+            this.uc_ratio.TabIndex = 47;
+            this.uc_ratio.UseSelectable = true;
+            this.uc_ratio.Visible = false;
             // 
             // Dashboard
             // 
@@ -601,6 +612,7 @@ namespace WindowsFormsApp1.Views
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(951, 586);
             this.Controls.Add(this.uC_WarehouseMovement1);
+            this.Controls.Add(this.uc_ratio);
             this.Controls.Add(this.uc_ProductionMenu);
             this.Controls.Add(this.uC_Simulation1);
             this.Controls.Add(this.uC_SalesMain1);
@@ -687,5 +699,6 @@ namespace WindowsFormsApp1.Views
         private System.Windows.Forms.ImageList simulation_imagelist;
         private System.Windows.Forms.ImageList production_imagelist;
         private UC_WarehouseMovement uC_WarehouseMovement1;
+        private UC_Ratio uc_ratio;
     }
 }

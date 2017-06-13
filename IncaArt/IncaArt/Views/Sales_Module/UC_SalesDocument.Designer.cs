@@ -43,25 +43,6 @@
             this.gbDocuments = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.grid_Documents = new MetroFramework.Controls.MetroGrid();
-            this.currency_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.order_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.porc_igv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.movement_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currency_symbol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.document_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type_document_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.external_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currency_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_Search_Documents = new System.Windows.Forms.Button();
             this.dt_iniDate = new MetroFramework.Controls.MetroDateTime();
@@ -88,6 +69,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.gbDocument = new System.Windows.Forms.GroupBox();
+            this.btn_Pdf = new MetroFramework.Controls.MetroTile();
             this.txt_Currency = new MetroFramework.Controls.MetroTextBox();
             this.dt_IssueDate = new MetroFramework.Controls.MetroDateTime();
             this.txt_Document_id = new MetroFramework.Controls.MetroTextBox();
@@ -128,6 +110,26 @@
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_Excel = new MetroFramework.Controls.MetroTile();
+            this.currency_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.order_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.porc_igv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.movement_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currency_symbol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.document_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type_document_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.external_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currency_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.tab_Document.SuspendLayout();
             this.order.SuspendLayout();
@@ -269,10 +271,10 @@
             this.tipoid,
             this.external_number,
             this.customer_name,
+            this.observation,
             this.issue_date,
             this.currency_name,
             this.amount2,
-            this.observation,
             this.status});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -303,153 +305,9 @@
             this.grid_Documents.Size = new System.Drawing.Size(975, 255);
             this.grid_Documents.TabIndex = 52;
             // 
-            // currency_id
-            // 
-            this.currency_id.DataPropertyName = "currency_id";
-            this.currency_id.HeaderText = "currency_id";
-            this.currency_id.Name = "currency_id";
-            this.currency_id.ReadOnly = true;
-            this.currency_id.Visible = false;
-            // 
-            // order_id
-            // 
-            this.order_id.DataPropertyName = "order_id";
-            this.order_id.HeaderText = "order_id";
-            this.order_id.Name = "order_id";
-            this.order_id.ReadOnly = true;
-            this.order_id.Visible = false;
-            // 
-            // porc_igv
-            // 
-            this.porc_igv.DataPropertyName = "porc_igv";
-            this.porc_igv.HeaderText = "porc_igv";
-            this.porc_igv.Name = "porc_igv";
-            this.porc_igv.ReadOnly = true;
-            this.porc_igv.Visible = false;
-            // 
-            // movement_id
-            // 
-            this.movement_id.DataPropertyName = "movement_id";
-            this.movement_id.HeaderText = "movement_id";
-            this.movement_id.Name = "movement_id";
-            this.movement_id.ReadOnly = true;
-            this.movement_id.Visible = false;
-            // 
-            // currency_symbol
-            // 
-            this.currency_symbol.DataPropertyName = "currency_symbol";
-            this.currency_symbol.HeaderText = "currency_symbol";
-            this.currency_symbol.Name = "currency_symbol";
-            this.currency_symbol.ReadOnly = true;
-            this.currency_symbol.Visible = false;
-            // 
-            // customer_id
-            // 
-            this.customer_id.DataPropertyName = "customer_id";
-            this.customer_id.HeaderText = "customer_id";
-            this.customer_id.Name = "customer_id";
-            this.customer_id.ReadOnly = true;
-            this.customer_id.Visible = false;
-            // 
-            // customer_address
-            // 
-            this.customer_address.DataPropertyName = "customer_address";
-            this.customer_address.HeaderText = "customer_address";
-            this.customer_address.Name = "customer_address";
-            this.customer_address.ReadOnly = true;
-            this.customer_address.Visible = false;
-            // 
-            // customer_phone
-            // 
-            this.customer_phone.DataPropertyName = "customer_phone";
-            this.customer_phone.HeaderText = "customer_phone";
-            this.customer_phone.Name = "customer_phone";
-            this.customer_phone.ReadOnly = true;
-            this.customer_phone.Visible = false;
-            // 
-            // customer_doi
-            // 
-            this.customer_doi.DataPropertyName = "customer_doi";
-            this.customer_doi.HeaderText = "customer_doi";
-            this.customer_doi.Name = "customer_doi";
-            this.customer_doi.ReadOnly = true;
-            this.customer_doi.Visible = false;
-            // 
-            // document_id2
-            // 
-            this.document_id2.DataPropertyName = "id";
-            this.document_id2.HeaderText = "Documento";
-            this.document_id2.Name = "document_id2";
-            this.document_id2.ReadOnly = true;
-            // 
-            // type_document_id
-            // 
-            this.type_document_id.DataPropertyName = "type_name";
-            this.type_document_id.HeaderText = "Tipo Documento";
-            this.type_document_id.Name = "type_document_id";
-            this.type_document_id.ReadOnly = true;
-            // 
-            // tipoid
-            // 
-            this.tipoid.DataPropertyName = "type_document_id";
-            this.tipoid.HeaderText = "tipoid";
-            this.tipoid.Name = "tipoid";
-            this.tipoid.ReadOnly = true;
-            this.tipoid.Visible = false;
-            // 
-            // external_number
-            // 
-            this.external_number.DataPropertyName = "external_number";
-            this.external_number.HeaderText = "Numero externo";
-            this.external_number.Name = "external_number";
-            this.external_number.ReadOnly = true;
-            // 
-            // customer_name
-            // 
-            this.customer_name.DataPropertyName = "customer_name";
-            this.customer_name.HeaderText = "Cliente";
-            this.customer_name.Name = "customer_name";
-            this.customer_name.ReadOnly = true;
-            // 
-            // issue_date
-            // 
-            this.issue_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.issue_date.DataPropertyName = "issue_date";
-            this.issue_date.HeaderText = "Fecha de Emisión";
-            this.issue_date.Name = "issue_date";
-            this.issue_date.ReadOnly = true;
-            // 
-            // currency_name
-            // 
-            this.currency_name.DataPropertyName = "currency_name";
-            this.currency_name.HeaderText = "Moneda";
-            this.currency_name.Name = "currency_name";
-            this.currency_name.ReadOnly = true;
-            // 
-            // amount2
-            // 
-            this.amount2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.amount2.DataPropertyName = "amount";
-            this.amount2.HeaderText = "Total";
-            this.amount2.Name = "amount2";
-            this.amount2.ReadOnly = true;
-            // 
-            // observation
-            // 
-            this.observation.DataPropertyName = "observation";
-            this.observation.HeaderText = "Observación";
-            this.observation.Name = "observation";
-            this.observation.ReadOnly = true;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.HeaderText = "Estado";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
-            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btn_Excel);
             this.groupBox2.Controls.Add(this.btn_Search_Documents);
             this.groupBox2.Controls.Add(this.dt_iniDate);
             this.groupBox2.Controls.Add(this.dt_endDate);
@@ -485,7 +343,7 @@
             // dt_iniDate
             // 
             this.dt_iniDate.Location = new System.Drawing.Point(664, 22);
-            this.dt_iniDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_iniDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_iniDate.Name = "dt_iniDate";
             this.dt_iniDate.Size = new System.Drawing.Size(222, 29);
             this.dt_iniDate.TabIndex = 59;
@@ -493,7 +351,7 @@
             // dt_endDate
             // 
             this.dt_endDate.Location = new System.Drawing.Point(664, 74);
-            this.dt_endDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_endDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_endDate.Name = "dt_endDate";
             this.dt_endDate.Size = new System.Drawing.Size(222, 29);
             this.dt_endDate.TabIndex = 58;
@@ -940,6 +798,7 @@
             // 
             // gbDocument
             // 
+            this.gbDocument.Controls.Add(this.btn_Pdf);
             this.gbDocument.Controls.Add(this.txt_Currency);
             this.gbDocument.Controls.Add(this.dt_IssueDate);
             this.gbDocument.Controls.Add(this.txt_Document_id);
@@ -964,6 +823,24 @@
             this.gbDocument.TabStop = false;
             this.gbDocument.Text = "Datos del Documento :";
             // 
+            // btn_Pdf
+            // 
+            this.btn_Pdf.ActiveControl = null;
+            this.btn_Pdf.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Pdf.Location = new System.Drawing.Point(485, 8);
+            this.btn_Pdf.Name = "btn_Pdf";
+            this.btn_Pdf.Size = new System.Drawing.Size(145, 38);
+            this.btn_Pdf.TabIndex = 73;
+            this.btn_Pdf.Text = "Exportar a Pdf";
+            this.btn_Pdf.TileImage = global::WindowsFormsApp1.Properties.Resources.pdf;
+            this.btn_Pdf.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_Pdf.UseCustomBackColor = true;
+            this.btn_Pdf.UseCustomForeColor = true;
+            this.btn_Pdf.UseSelectable = true;
+            this.btn_Pdf.UseStyleColors = true;
+            this.btn_Pdf.UseTileImage = true;
+            this.btn_Pdf.Click += new System.EventHandler(this.btn_Pdf_Click);
+            // 
             // txt_Currency
             // 
             this.txt_Currency.BackColor = System.Drawing.SystemColors.ScrollBar;
@@ -972,9 +849,9 @@
             // 
             this.txt_Currency.CustomButton.BackColor = System.Drawing.SystemColors.Control;
             this.txt_Currency.CustomButton.Image = null;
-            this.txt_Currency.CustomButton.Location = new System.Drawing.Point(168, 1);
+            this.txt_Currency.CustomButton.Location = new System.Drawing.Point(174, 1);
             this.txt_Currency.CustomButton.Name = "";
-            this.txt_Currency.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_Currency.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txt_Currency.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_Currency.CustomButton.TabIndex = 1;
             this.txt_Currency.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -983,7 +860,7 @@
             this.txt_Currency.CustomButton.Visible = false;
             this.txt_Currency.Enabled = false;
             this.txt_Currency.Lines = new string[0];
-            this.txt_Currency.Location = new System.Drawing.Point(434, 71);
+            this.txt_Currency.Location = new System.Drawing.Point(432, 90);
             this.txt_Currency.MaxLength = 32767;
             this.txt_Currency.Name = "txt_Currency";
             this.txt_Currency.PasswordChar = '\0';
@@ -993,7 +870,7 @@
             this.txt_Currency.SelectionLength = 0;
             this.txt_Currency.SelectionStart = 0;
             this.txt_Currency.ShortcutsEnabled = true;
-            this.txt_Currency.Size = new System.Drawing.Size(196, 29);
+            this.txt_Currency.Size = new System.Drawing.Size(198, 25);
             this.txt_Currency.TabIndex = 65;
             this.txt_Currency.UseCustomBackColor = true;
             this.txt_Currency.UseSelectable = true;
@@ -1003,10 +880,10 @@
             // dt_IssueDate
             // 
             this.dt_IssueDate.CalendarMonthBackground = System.Drawing.Color.White;
-            this.dt_IssueDate.Location = new System.Drawing.Point(434, 114);
-            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_IssueDate.Location = new System.Drawing.Point(432, 121);
+            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_IssueDate.Name = "dt_IssueDate";
-            this.dt_IssueDate.Size = new System.Drawing.Size(196, 29);
+            this.dt_IssueDate.Size = new System.Drawing.Size(198, 29);
             this.dt_IssueDate.TabIndex = 64;
             this.dt_IssueDate.UseCustomBackColor = true;
             this.dt_IssueDate.UseCustomForeColor = true;
@@ -1019,9 +896,9 @@
             // 
             this.txt_Document_id.CustomButton.BackColor = System.Drawing.SystemColors.Control;
             this.txt_Document_id.CustomButton.Image = null;
-            this.txt_Document_id.CustomButton.Location = new System.Drawing.Point(168, 1);
+            this.txt_Document_id.CustomButton.Location = new System.Drawing.Point(174, 1);
             this.txt_Document_id.CustomButton.Name = "";
-            this.txt_Document_id.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_Document_id.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txt_Document_id.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_Document_id.CustomButton.TabIndex = 1;
             this.txt_Document_id.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -1030,7 +907,7 @@
             this.txt_Document_id.CustomButton.Visible = false;
             this.txt_Document_id.Enabled = false;
             this.txt_Document_id.Lines = new string[0];
-            this.txt_Document_id.Location = new System.Drawing.Point(434, 27);
+            this.txt_Document_id.Location = new System.Drawing.Point(432, 59);
             this.txt_Document_id.MaxLength = 32767;
             this.txt_Document_id.Name = "txt_Document_id";
             this.txt_Document_id.PasswordChar = '\0';
@@ -1040,7 +917,7 @@
             this.txt_Document_id.SelectionLength = 0;
             this.txt_Document_id.SelectionStart = 0;
             this.txt_Document_id.ShortcutsEnabled = true;
-            this.txt_Document_id.Size = new System.Drawing.Size(196, 29);
+            this.txt_Document_id.Size = new System.Drawing.Size(198, 25);
             this.txt_Document_id.TabIndex = 63;
             this.txt_Document_id.UseCustomBackColor = true;
             this.txt_Document_id.UseSelectable = true;
@@ -1052,7 +929,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label11.Location = new System.Drawing.Point(316, 124);
+            this.label11.Location = new System.Drawing.Point(316, 131);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(115, 13);
             this.label11.TabIndex = 62;
@@ -1063,7 +940,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label8.Location = new System.Drawing.Point(316, 33);
+            this.label8.Location = new System.Drawing.Point(316, 66);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(97, 13);
             this.label8.TabIndex = 61;
@@ -1074,7 +951,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label2.Location = new System.Drawing.Point(316, 77);
+            this.label2.Location = new System.Drawing.Point(316, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 60;
@@ -1085,7 +962,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label4.Location = new System.Drawing.Point(7, 47);
+            this.label4.Location = new System.Drawing.Point(7, 67);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 13);
             this.label4.TabIndex = 59;
@@ -1098,9 +975,9 @@
             // 
             // 
             this.txt_Movement_id.CustomButton.Image = null;
-            this.txt_Movement_id.CustomButton.Location = new System.Drawing.Point(128, 1);
+            this.txt_Movement_id.CustomButton.Location = new System.Drawing.Point(132, 1);
             this.txt_Movement_id.CustomButton.Name = "";
-            this.txt_Movement_id.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_Movement_id.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txt_Movement_id.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_Movement_id.CustomButton.TabIndex = 1;
             this.txt_Movement_id.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -1108,7 +985,7 @@
             this.txt_Movement_id.CustomButton.Visible = false;
             this.txt_Movement_id.Enabled = false;
             this.txt_Movement_id.Lines = new string[0];
-            this.txt_Movement_id.Location = new System.Drawing.Point(87, 71);
+            this.txt_Movement_id.Location = new System.Drawing.Point(87, 90);
             this.txt_Movement_id.MaxLength = 32767;
             this.txt_Movement_id.Name = "txt_Movement_id";
             this.txt_Movement_id.PasswordChar = '\0';
@@ -1118,7 +995,7 @@
             this.txt_Movement_id.SelectionLength = 0;
             this.txt_Movement_id.SelectionStart = 0;
             this.txt_Movement_id.ShortcutsEnabled = true;
-            this.txt_Movement_id.Size = new System.Drawing.Size(156, 29);
+            this.txt_Movement_id.Size = new System.Drawing.Size(156, 25);
             this.txt_Movement_id.TabIndex = 58;
             this.txt_Movement_id.UseCustomBackColor = true;
             this.txt_Movement_id.UseSelectable = true;
@@ -1131,16 +1008,16 @@
             // 
             // 
             this.txt_external.CustomButton.Image = null;
-            this.txt_external.CustomButton.Location = new System.Drawing.Point(128, 1);
+            this.txt_external.CustomButton.Location = new System.Drawing.Point(132, 1);
             this.txt_external.CustomButton.Name = "";
-            this.txt_external.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_external.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txt_external.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_external.CustomButton.TabIndex = 1;
             this.txt_external.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txt_external.CustomButton.UseSelectable = true;
             this.txt_external.CustomButton.Visible = false;
             this.txt_external.Lines = new string[0];
-            this.txt_external.Location = new System.Drawing.Point(87, 114);
+            this.txt_external.Location = new System.Drawing.Point(87, 124);
             this.txt_external.MaxLength = 32767;
             this.txt_external.Name = "txt_external";
             this.txt_external.PasswordChar = '\0';
@@ -1149,7 +1026,7 @@
             this.txt_external.SelectionLength = 0;
             this.txt_external.SelectionStart = 0;
             this.txt_external.ShortcutsEnabled = true;
-            this.txt_external.Size = new System.Drawing.Size(156, 29);
+            this.txt_external.Size = new System.Drawing.Size(156, 25);
             this.txt_external.TabIndex = 57;
             this.txt_external.UseSelectable = true;
             this.txt_external.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -1159,9 +1036,9 @@
             // 
             this.btn_Search_Movement.ActiveControl = null;
             this.btn_Search_Movement.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Search_Movement.Location = new System.Drawing.Point(249, 71);
+            this.btn_Search_Movement.Location = new System.Drawing.Point(249, 90);
             this.btn_Search_Movement.Name = "btn_Search_Movement";
-            this.btn_Search_Movement.Size = new System.Drawing.Size(41, 29);
+            this.btn_Search_Movement.Size = new System.Drawing.Size(41, 25);
             this.btn_Search_Movement.TabIndex = 43;
             this.btn_Search_Movement.TileImage = global::WindowsFormsApp1.Properties.Resources.Search_16;
             this.btn_Search_Movement.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1177,7 +1054,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label16.Location = new System.Drawing.Point(6, 29);
+            this.label16.Location = new System.Drawing.Point(6, 49);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(50, 13);
             this.label16.TabIndex = 50;
@@ -1191,7 +1068,7 @@
             "Factura",
             "Boleta",
             "Nota de Crédito"});
-            this.cbo_document_type.Location = new System.Drawing.Point(87, 30);
+            this.cbo_document_type.Location = new System.Drawing.Point(87, 50);
             this.cbo_document_type.Name = "cbo_document_type";
             this.cbo_document_type.Size = new System.Drawing.Size(156, 29);
             this.cbo_document_type.TabIndex = 49;
@@ -1203,7 +1080,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label17.Location = new System.Drawing.Point(7, 120);
+            this.label17.Location = new System.Drawing.Point(7, 130);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(76, 13);
             this.label17.TabIndex = 34;
@@ -1214,7 +1091,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label18.Location = new System.Drawing.Point(6, 79);
+            this.label18.Location = new System.Drawing.Point(6, 98);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(79, 13);
             this.label18.TabIndex = 32;
@@ -1546,13 +1423,12 @@
             // 
             // product
             // 
-            this.product.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.product.DataPropertyName = "product_name";
             this.product.FillWeight = 150F;
             this.product.HeaderText = "Producto";
             this.product.Name = "product";
             this.product.ReadOnly = true;
-            this.product.Width = 77;
+            this.product.Width = 150;
             // 
             // unit
             // 
@@ -1593,6 +1469,171 @@
             this.amount.HeaderText = "SubTotal";
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
+            // 
+            // btn_Excel
+            // 
+            this.btn_Excel.ActiveControl = null;
+            this.btn_Excel.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Excel.Location = new System.Drawing.Point(664, 117);
+            this.btn_Excel.Name = "btn_Excel";
+            this.btn_Excel.Size = new System.Drawing.Size(145, 38);
+            this.btn_Excel.TabIndex = 74;
+            this.btn_Excel.Text = "Exportar a Excel";
+            this.btn_Excel.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
+            this.btn_Excel.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_Excel.UseCustomBackColor = true;
+            this.btn_Excel.UseCustomForeColor = true;
+            this.btn_Excel.UseSelectable = true;
+            this.btn_Excel.UseStyleColors = true;
+            this.btn_Excel.UseTileImage = true;
+            this.btn_Excel.Click += new System.EventHandler(this.btn_Excel_Click);
+            // 
+            // currency_id
+            // 
+            this.currency_id.DataPropertyName = "currency_id";
+            this.currency_id.HeaderText = "currency_id";
+            this.currency_id.Name = "currency_id";
+            this.currency_id.ReadOnly = true;
+            this.currency_id.Visible = false;
+            // 
+            // order_id
+            // 
+            this.order_id.DataPropertyName = "order_id";
+            this.order_id.HeaderText = "order_id";
+            this.order_id.Name = "order_id";
+            this.order_id.ReadOnly = true;
+            this.order_id.Visible = false;
+            // 
+            // porc_igv
+            // 
+            this.porc_igv.DataPropertyName = "porc_igv";
+            this.porc_igv.HeaderText = "porc_igv";
+            this.porc_igv.Name = "porc_igv";
+            this.porc_igv.ReadOnly = true;
+            this.porc_igv.Visible = false;
+            // 
+            // movement_id
+            // 
+            this.movement_id.DataPropertyName = "movement_id";
+            this.movement_id.HeaderText = "movement_id";
+            this.movement_id.Name = "movement_id";
+            this.movement_id.ReadOnly = true;
+            this.movement_id.Visible = false;
+            // 
+            // currency_symbol
+            // 
+            this.currency_symbol.DataPropertyName = "currency_symbol";
+            this.currency_symbol.HeaderText = "currency_symbol";
+            this.currency_symbol.Name = "currency_symbol";
+            this.currency_symbol.ReadOnly = true;
+            this.currency_symbol.Visible = false;
+            // 
+            // customer_id
+            // 
+            this.customer_id.DataPropertyName = "customer_id";
+            this.customer_id.HeaderText = "customer_id";
+            this.customer_id.Name = "customer_id";
+            this.customer_id.ReadOnly = true;
+            this.customer_id.Visible = false;
+            // 
+            // customer_address
+            // 
+            this.customer_address.DataPropertyName = "customer_address";
+            this.customer_address.HeaderText = "customer_address";
+            this.customer_address.Name = "customer_address";
+            this.customer_address.ReadOnly = true;
+            this.customer_address.Visible = false;
+            // 
+            // customer_phone
+            // 
+            this.customer_phone.DataPropertyName = "customer_phone";
+            this.customer_phone.HeaderText = "customer_phone";
+            this.customer_phone.Name = "customer_phone";
+            this.customer_phone.ReadOnly = true;
+            this.customer_phone.Visible = false;
+            // 
+            // customer_doi
+            // 
+            this.customer_doi.DataPropertyName = "customer_doi";
+            this.customer_doi.HeaderText = "customer_doi";
+            this.customer_doi.Name = "customer_doi";
+            this.customer_doi.ReadOnly = true;
+            this.customer_doi.Visible = false;
+            // 
+            // document_id2
+            // 
+            this.document_id2.DataPropertyName = "id";
+            this.document_id2.HeaderText = "Documento";
+            this.document_id2.Name = "document_id2";
+            this.document_id2.ReadOnly = true;
+            // 
+            // type_document_id
+            // 
+            this.type_document_id.DataPropertyName = "type_name";
+            this.type_document_id.HeaderText = "Tipo Documento";
+            this.type_document_id.Name = "type_document_id";
+            this.type_document_id.ReadOnly = true;
+            // 
+            // tipoid
+            // 
+            this.tipoid.DataPropertyName = "type_document_id";
+            this.tipoid.HeaderText = "tipoid";
+            this.tipoid.Name = "tipoid";
+            this.tipoid.ReadOnly = true;
+            this.tipoid.Visible = false;
+            // 
+            // external_number
+            // 
+            this.external_number.DataPropertyName = "external_number";
+            this.external_number.HeaderText = "Numero externo";
+            this.external_number.Name = "external_number";
+            this.external_number.ReadOnly = true;
+            // 
+            // customer_name
+            // 
+            this.customer_name.DataPropertyName = "customer_name";
+            this.customer_name.HeaderText = "Cliente";
+            this.customer_name.Name = "customer_name";
+            this.customer_name.ReadOnly = true;
+            // 
+            // observation
+            // 
+            this.observation.DataPropertyName = "observation";
+            this.observation.HeaderText = "Observación";
+            this.observation.Name = "observation";
+            this.observation.ReadOnly = true;
+            this.observation.Width = 150;
+            // 
+            // issue_date
+            // 
+            this.issue_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.issue_date.DataPropertyName = "issue_date";
+            this.issue_date.HeaderText = "Fecha de Emisión";
+            this.issue_date.Name = "issue_date";
+            this.issue_date.ReadOnly = true;
+            // 
+            // currency_name
+            // 
+            this.currency_name.DataPropertyName = "currency_name";
+            this.currency_name.HeaderText = "Moneda";
+            this.currency_name.Name = "currency_name";
+            this.currency_name.ReadOnly = true;
+            this.currency_name.Width = 70;
+            // 
+            // amount2
+            // 
+            this.amount2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.amount2.DataPropertyName = "amount";
+            this.amount2.HeaderText = "Total";
+            this.amount2.Name = "amount2";
+            this.amount2.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.HeaderText = "Estado";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
             // 
             // UC_SalesDocument
             // 
@@ -1666,20 +1707,6 @@
         private MetroFramework.Controls.MetroTextBox txt_external;
         private System.Windows.Forms.Label label4;
         private MetroFramework.Controls.MetroTextBox txt_Movement_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn document_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn movement_id_line;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Refund_quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Product_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn state;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prod_warehouse_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn product;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unit_Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private MetroFramework.Controls.MetroTextBox txt_total;
         private System.Windows.Forms.Label label20;
         private MetroFramework.Controls.MetroTextBox txt_igv;
@@ -1699,6 +1726,23 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;
         private MetroFramework.Controls.MetroTextBox txt_Currency;
+        private System.Windows.Forms.Button btn_Delete;
+        private MetroFramework.Controls.MetroTile btn_Pdf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn document_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn movement_id_line;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Refund_quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Product_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn state;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prod_warehouse_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn product;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit_Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
+        private MetroFramework.Controls.MetroTile btn_Excel;
         private System.Windows.Forms.DataGridViewTextBoxColumn currency_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn order_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn porc_igv;
@@ -1713,11 +1757,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoid;
         private System.Windows.Forms.DataGridViewTextBoxColumn external_number;
         private System.Windows.Forms.DataGridViewTextBoxColumn customer_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn observation;
         private System.Windows.Forms.DataGridViewTextBoxColumn issue_date;
         private System.Windows.Forms.DataGridViewTextBoxColumn currency_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn observation;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
-        private System.Windows.Forms.Button btn_Delete;
     }
 }

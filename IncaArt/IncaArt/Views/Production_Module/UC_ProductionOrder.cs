@@ -20,7 +20,6 @@ namespace WindowsFormsApp1.Views
         private List<Models.ProductionOrderProductLine> product_summary_lines = new List<Models.ProductionOrderProductLine>();
         private List<Models.ProductionOrderMaterialLine> material_summary_lines = new List<Models.ProductionOrderMaterialLine>();
   
-
         string user = "dp1admin";
         string password= "dp1admin";
         ProductionOrderController production_controller;
@@ -33,6 +32,10 @@ namespace WindowsFormsApp1.Views
         UnitController unit_controller;
 
         public bool editing = false;
+        //validate
+        bool flag_description = false;
+        bool flag_begin = true;
+        bool flag_end = true;
 
         public UC_ProductionOrder()
         {
@@ -52,20 +55,25 @@ namespace WindowsFormsApp1.Views
         {
             if (!editing)
             {
-                metroButton_DeleteMaterial.Visible = false;
+               /* metroButton_DeleteMaterial.Visible = false;
                 metroButton_DeleteProduct.Visible = false;
                 metroButton_DeleteWork.Visible = false;
                 metroButton_EditMaterial.Visible = false;
                 metroButton_EditProduct.Visible = false;
-                metroButton_EditWork.Visible = false;
-            }else
+                metroButton_EditWork.Visible = false;*/
+                metroTextBox_OrderNumber.Visible = false;
+                metroLabel_numOrder.Visible = false;
+            }
+            else
             {
-                metroButton_DeleteMaterial.Visible = true;
+                /*metroButton_DeleteMaterial.Visible = true;
                 metroButton_DeleteProduct.Visible = true;
                 metroButton_DeleteWork.Visible = true;
                 metroButton_EditMaterial.Visible = true;
                 metroButton_EditProduct.Visible = true;
-                metroButton_EditWork.Visible = true;
+                metroButton_EditWork.Visible = true;*/
+                metroTextBox_OrderNumber.Visible = true;
+                metroLabel_numOrder.Visible = true;
             }
             
         }
@@ -73,7 +81,11 @@ namespace WindowsFormsApp1.Views
         private bool validate_data()
         {
             bool isCorrect = true;
-
+            if (!flag_description ||!flag_begin||!flag_end)
+            {
+                MessageBox.Show("Hay campos inválidos en los datos de la orden de producción.","Error en el registro",MessageBoxButtons.OK);
+                isCorrect = false;
+            }       
             return isCorrect;
         }
 
@@ -96,20 +108,29 @@ namespace WindowsFormsApp1.Views
                     //List of products
                     for (int i = 0; i < product_lines.Count; i++)
                     {
-                        product_lines[i].Order_Id = order_id;
-                        Result result = product_line_controller.insertProductLine(product_lines[i]);
+                        if (product_lines[i].State != "DELETED")
+                        {
+                            product_lines[i].Order_Id = order_id;
+                            Result result = product_line_controller.insertProductLine(product_lines[i]);
+                        }                       
                     }
                     //List of materials           
                     for (int i = 0; i < material_lines.Count; i++)
                     {
-                        material_lines[i].Order_Id = order_id;
-                        Result result = material_line_controller.insertMaterialLine(material_lines[i]);
+                        if (material_lines[i].State != "DELETED")
+                        {
+                            material_lines[i].Order_Id = order_id;
+                            Result result = material_line_controller.insertMaterialLine(material_lines[i]);
+                        }                        
                     }
                     //List of work               
                     for (int i = 0; i < work_lines.Count; i++)
                     {
-                        work_lines[i].Order_Id = order_id;
-                        Result result = work_line_controller.insertWorkLine(work_lines[i]);
+                        if (work_lines[i].State != "DELETED")
+                        {
+                            work_lines[i].Order_Id = order_id;
+                            Result result = work_line_controller.insertWorkLine(work_lines[i]);
+                        }              
                     }
 
                     MessageBox.Show("Order de producción registrada.");
@@ -167,12 +188,13 @@ namespace WindowsFormsApp1.Views
                     }
                     MessageBox.Show("Order de producción actualizada.");
                 }
+                this.Visible = false;
+                clear_Form();
+                editing = false;
             }
 
             
-            this.Visible = false;
-            clear_Form();
-            editing = false;
+          
         }
         
         private void metroButton_AddProduct_Click(object sender, EventArgs e)
@@ -343,6 +365,9 @@ namespace WindowsFormsApp1.Views
             update_SummaryMaterial();
             update_SummaryProduct();
             hide_buttons();
+            flag_begin = true;
+            flag_description = true;
+            flag_end = true;
         }
 
         private void UC_ProductionOrder_Load(object sender, EventArgs e)
@@ -353,6 +378,11 @@ namespace WindowsFormsApp1.Views
         private void UC_ProductionOrder_VisibleChanged(object sender, EventArgs e)
         {
             hide_buttons();
+            if (!Visible)
+            {
+                UC_ProductionOrderSearch uc_productionOrderSearch = (UC_ProductionOrderSearch)(this.Parent.Controls.Find("production_search", false)[0]);
+                uc_productionOrderSearch.Visible = true;
+            }
         }
 
         private void datagrid_Products_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -446,7 +476,7 @@ namespace WindowsFormsApp1.Views
                         {
                             int selected_index = datagrid_Products.SelectedRows[0].Index;
                             Models.ProductionOrderProductLine product_line = product_lines[selected_index];
-                            product_line.State = "Eliminado";
+                            product_line.State = "DELETED";
                             Load_Product_DataGridView();
                         }
                     }
@@ -472,7 +502,7 @@ namespace WindowsFormsApp1.Views
                         {
                             int selected_index = metroGrid_Material.SelectedRows[0].Index;
                             Models.ProductionOrderMaterialLine material_line = material_lines[selected_index];
-                            material_line.State = "Eliminado";
+                            material_line.State = "DELETED";
                             Load_Material_DataGridView();
                         }
                     }
@@ -496,7 +526,7 @@ namespace WindowsFormsApp1.Views
                         {
                             int selected_index = metroGrid_Work.SelectedRows[0].Index;
                             Models.ProductionOrderWorkLine work_line = work_lines[selected_index];
-                            work_line.State = "Eliminado";
+                            work_line.State = "DELETED";
                             Load_Work_DataGridView();
                         }
                     }
@@ -618,6 +648,57 @@ namespace WindowsFormsApp1.Views
                 }
             }
         }
+        //Validaciones
+        private void metroTextBox_Description_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            string text = textbox.Text;
+            if (String.IsNullOrWhiteSpace(text))
+            {
+                flag_description = false;
+                errorProvider.SetError(textbox, "Campo requerido");
+            }
+            else
+            {
+                flag_description = true;
+                errorProvider.SetError(textbox, null);
+            }
+        }
 
+        private void metroDateTime_Begin_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroDateTime date_time = (MetroFramework.Controls.MetroDateTime)sender;
+            DateTime end = metroDateTime_End.Value;
+            if (date_time.Value > end)
+            {
+                flag_begin = false;
+                errorProvider.SetError(date_time, "La fecha de inicio debe ser menor o igual que la de fin.");
+            }else
+            {
+                flag_end = true;
+                errorProvider.SetError(date_time,null);
+            }
+        }
+
+        private void metroDateTime_End_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroDateTime date_time = (MetroFramework.Controls.MetroDateTime)sender;
+            DateTime begin = metroDateTime_Begin.Value;
+            if (date_time.Value < begin)
+            {
+                flag_end = false;
+                errorProvider.SetError(date_time, "La fecha de fin debe ser mayor o igual que la de inicio.");
+            }
+            else
+            {
+                flag_end = true;
+                errorProvider.SetError(date_time, null);
+            }
+        }
+
+        private void metroDateTime_End_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

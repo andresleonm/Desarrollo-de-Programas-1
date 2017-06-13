@@ -27,8 +27,7 @@ namespace WindowsFormsApp1.Views
 
         public void datagrid_Products_Fill() 
         {
-                  
-            Controller.Result result = order_controller.getProductionOrders();
+         Controller.Result result = order_controller.getProductionOrders();
             orders = (List<Models.ProductionOrder>)result.data;
             if (orders == null) orders = new List<Models.ProductionOrder>();
             Load_ProductionOrder_DataGridView();
