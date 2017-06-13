@@ -95,6 +95,7 @@
             // 
             // production_search
             // 
+            this.production_search.BackColor = System.Drawing.SystemColors.Control;
             this.production_search.Dock = System.Windows.Forms.DockStyle.Fill;
             this.production_search.Location = new System.Drawing.Point(0, 0);
             this.production_search.Name = "production_search";
@@ -103,6 +104,7 @@
             // 
             // production_register
             // 
+            this.production_register.BackColor = System.Drawing.SystemColors.Control;
             this.production_register.Dock = System.Windows.Forms.DockStyle.Fill;
             this.production_register.Location = new System.Drawing.Point(0, 0);
             this.production_register.Name = "production_register";
@@ -117,6 +119,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "UC_ProductionMenu";
             this.Size = new System.Drawing.Size(861, 574);
+            this.ParentChanged += new System.EventHandler(this.UC_ProductionMenu_ParentChanged);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
