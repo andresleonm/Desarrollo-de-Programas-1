@@ -114,13 +114,14 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
                     row[0] = types_list[i].Id.ToString();
                     row[1] = types_list[i].Name;
                     String clase;
+                /*
                 if (types_list[i].Wclass.CompareTo('0') == 0) clase = "Producción".ToString();
                 else clase = "Observación";
 
                     row[2] = clase;
                     row[3] = types_list[i].State;
 
-                    this.metroGrid1.Rows.Add(row);
+                    this.metroGrid1.Rows.Add(row);*/
 
             }
         }
@@ -150,11 +151,6 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             metroTabControl1.SelectedIndex = 0;
         }
 
-        private void cancel_Click(object sender, EventArgs e)
-        {
-            Clean();
-            metroTabControl1.SelectedIndex = 0;
-        }
 
         private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -172,6 +168,13 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
                 textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 metroTabControl1.SelectedIndex = 1;
             }
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+
+            Clean();
+            metroTabControl1.SelectedIndex = 0;
         }
     }
 }
