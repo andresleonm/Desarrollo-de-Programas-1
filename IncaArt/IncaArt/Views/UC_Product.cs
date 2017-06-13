@@ -18,6 +18,7 @@ namespace WindowsFormsApp1.Views
         bool min_flag;
         bool price_flag;
         bool currency_flag;
+        bool type_flag;
         int cur_row;
         int operation_value;// 0 para Create, 1 para Update
         List<Models.Product> product_list;
@@ -42,8 +43,24 @@ namespace WindowsFormsApp1.Views
             currencyController = new Controller.CurrencyController(user, password);
             Load_Data();
 
-            //Cargar los combobox
+
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
+            combo_data.Add(0, "Seleccionar");
+            combo_data.Add(1, "Ceramico");
+            combo_data.Add(2, "Retablo");
+            combo_data.Add(3, "Piedra");
+
+            combobox_product_type.DataSource = new BindingSource(combo_data, null);
+            combobox_product_type.DisplayMember = "Value";
+            combobox_product_type.ValueMember = "Key";
+
+            combobox_product_type_s.DataSource = new BindingSource(combo_data, null);
+            combobox_product_type_s.DisplayMember = "Value";
+            combobox_product_type_s.ValueMember = "Key";
+
+
+            //Cargar los combobox
+            combo_data = new Dictionary<int, string>();
             //Unidad
             combo_data.Add(0, "Seleccionar");
             foreach (var item in unit_list)
@@ -102,7 +119,7 @@ namespace WindowsFormsApp1.Views
                 else
                 {
                     unit = (Models.UnitOfMeasure)result.data;
-                    String[] row = new String[7];
+                    String[] row = new String[8];
                     row[0] = product_list[i].Id.ToString();
                     row[1] = i.ToString();
                     row[2] = product_list[i].Name;
@@ -110,6 +127,7 @@ namespace WindowsFormsApp1.Views
                     row[4] = product_list[i].Unit_price.ToString();
                     row[5] = product_list[i].Stock_min.ToString();
                     row[6] = product_list[i].Stock_max.ToString();
+                    row[7] = product_list[i].Product_type;
                     this.metroGrid1.Rows.Add(row);
                 }
 
@@ -122,6 +140,8 @@ namespace WindowsFormsApp1.Views
             combobox_unit.SelectedIndex = 0;
             combobox_unit_s.SelectedIndex = 0;
             combobox_currency.SelectedIndex = 0;
+            combobox_product_type.SelectedIndex = 0;
+            combobox_product_type_s.SelectedIndex = 0;
         }
 
         private void ClearTextBoxes(Control control)
@@ -165,6 +185,19 @@ namespace WindowsFormsApp1.Views
             int stock_max = int.Parse(textbox_stock_max.Text);
             int currency_id = ((KeyValuePair<int, string>)combobox_currency.SelectedItem).Key;
             double price = double.Parse(textbox_price.Text);
+            string product_type = ((KeyValuePair<int, string>)combobox_product_type.SelectedItem).Value;
+            switch (product_type)
+            {
+                case "Ceramico":
+                    product_type = "CERAMICO";
+                    break;
+                case "Retablo":
+                    product_type = "RETABLO";
+                    break;
+                case "Piedra":
+                    product_type = "PIEDRA";
+                    break;
+            }
 
             Models.Product product = new Models.Product();
             product.Name = name;
@@ -173,6 +206,7 @@ namespace WindowsFormsApp1.Views
             product.Stock_max = stock_max;
             product.Currency_id = currency_id;
             product.Unit_price = price;
+            product.Product_type = product_type;
             int id = 0;
             if (operation == 1)
             {
@@ -209,6 +243,7 @@ namespace WindowsFormsApp1.Views
         {
             Clean();
             metroTabControl1.SelectedIndex = 0;
+            operation_value = 0;
         }
 
         private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -246,10 +281,25 @@ namespace WindowsFormsApp1.Views
                             combobox_currency.SelectedIndex = i + 1;
                         }
                     }
+                    switch (product.Product_type)
+                    {
+                        case "CERAMICO":
+                            combobox_product_type.SelectedIndex = 1;
+                            break;
+                        case "RETABLO":
+                            combobox_product_type.SelectedIndex = 2;
+                            break;
+                        case "PIEDRA":
+                            combobox_product_type.SelectedIndex = 3;
+                            break;
+                    }
                     Set_Flag_All(true);
-                    textbox_stock_max.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
-                    textbox_stock_min.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    textbox_price.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    //textbox_stock_max.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    //textbox_stock_min.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    //textbox_price.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    textbox_stock_max.Text = product.Stock_max.ToString();
+                    textbox_stock_min.Text = product.Stock_min.ToString();
+                    textbox_price.Text = product.Unit_price.ToString();
                     metroTabControl1.SelectedIndex = 1;
                     operation_value = 1;
                 }
@@ -306,6 +356,7 @@ namespace WindowsFormsApp1.Views
             Models.Product product = new Models.Product();
             product.Name = textbox_name_s.Text;
             product.Unit_id = ((KeyValuePair<int, string>)combobox_unit_s.SelectedItem).Key;
+            product.Product_type= ((KeyValuePair<int, string>)combobox_product_type_s.SelectedItem).Value;
             result = productController.getProducts(product);
             if (result.data == null)
             {
@@ -431,6 +482,7 @@ namespace WindowsFormsApp1.Views
             unit_flag = value;
             price_flag = value;
             currency_flag = value;
+            type_flag = value;
         }
 
         private void Set_Flag(string name, bool value)
@@ -454,6 +506,9 @@ namespace WindowsFormsApp1.Views
                     break;
                 case "combobox_currency":
                     currency_flag = value;
+                    break;
+                case "combobox_product_type":
+                    type_flag = value;
                     break;
             }
         }

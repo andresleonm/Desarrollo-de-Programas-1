@@ -292,8 +292,8 @@ namespace WindowsFormsApp1.Views
         {
             if (!data_loaded && Visible)
             {
-                this.profile_controller = new ProfileController(sessionUser.Nickname, sessionUser.Password);
-                this.user_controller = new UsersController(sessionUser.Nickname, sessionUser.Password);
+                this.profile_controller = new ProfileController("", "");
+                this.user_controller = new UsersController("", "");
 
                 Load_Data();
                 Load_DataGridView();
