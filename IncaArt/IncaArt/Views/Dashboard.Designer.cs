@@ -38,9 +38,11 @@ namespace WindowsFormsApp1.Views
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_simulation = new System.Windows.Forms.Button();
-            this.purchase_imagelist = new System.Windows.Forms.ImageList(this.components);
+            this.simulation_imagelist = new System.Windows.Forms.ImageList(this.components);
             this.btn_production = new System.Windows.Forms.Button();
+            this.production_imagelist = new System.Windows.Forms.ImageList(this.components);
             this.btn_purchase = new System.Windows.Forms.Button();
+            this.purchase_imagelist = new System.Windows.Forms.ImageList(this.components);
             this.btn_sales = new System.Windows.Forms.Button();
             this.sales_imagelist = new System.Windows.Forms.ImageList(this.components);
             this.btn_warehouse = new System.Windows.Forms.Button();
@@ -53,6 +55,8 @@ namespace WindowsFormsApp1.Views
             this.label_user_role = new MetroFramework.Controls.MetroLabel();
             this.label_user_name = new MetroFramework.Controls.MetroLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.uc_ProductionMenu = new WindowsFormsApp1.Views.Production_Module.UC_ProductionMenu();
+            this.uC_Simulation1 = new WindowsFormsApp1.Views.UC_Simulation();
             this.uC_SalesMain1 = new WindowsFormsApp1.Views.UC_SalesMain();
             this.parameters1 = new WindowsFormsApp1.Views.Parameters();
             this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
@@ -71,8 +75,6 @@ namespace WindowsFormsApp1.Views
             this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
             this.uc_workstation = new WindowsFormsApp1.Views.UC_Workstation();
             this.uc_warehousemovement = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement(userName,password);
-            this.uc_ProductionMenu = new Production_Module.UC_ProductionMenu();
-            this.uC_Simulation1 = new WindowsFormsApp1.Views.UC_Simulation();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -170,7 +172,7 @@ namespace WindowsFormsApp1.Views
             this.btn_simulation.ForeColor = System.Drawing.Color.White;
             this.btn_simulation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_simulation.ImageIndex = 1;
-            this.btn_simulation.ImageList = this.purchase_imagelist;
+            this.btn_simulation.ImageList = this.simulation_imagelist;
             this.btn_simulation.Location = new System.Drawing.Point(0, 255);
             this.btn_simulation.Name = "btn_simulation";
             this.btn_simulation.Size = new System.Drawing.Size(132, 42);
@@ -181,12 +183,12 @@ namespace WindowsFormsApp1.Views
             this.btn_simulation.Click += new System.EventHandler(this.btn_simulation_Click);
             this.btn_simulation.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
             // 
-            // purchase_imagelist
+            // simulation_imagelist
             // 
-            this.purchase_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("purchase_imagelist.ImageStream")));
-            this.purchase_imagelist.TransparentColor = System.Drawing.Color.Transparent;
-            this.purchase_imagelist.Images.SetKeyName(0, "Shopping Cart_20px.png");
-            this.purchase_imagelist.Images.SetKeyName(1, "Shopping Cart_52px.png");
+            this.simulation_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("simulation_imagelist.ImageStream")));
+            this.simulation_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.simulation_imagelist.Images.SetKeyName(0, "green_VirtualBox_20px.png");
+            this.simulation_imagelist.Images.SetKeyName(1, "VirtualBox_20px.png");
             // 
             // btn_production
             // 
@@ -197,7 +199,8 @@ namespace WindowsFormsApp1.Views
             this.btn_production.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_production.ForeColor = System.Drawing.Color.White;
             this.btn_production.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_production.ImageList = this.purchase_imagelist;
+            this.btn_production.ImageIndex = 1;
+            this.btn_production.ImageList = this.production_imagelist;
             this.btn_production.Location = new System.Drawing.Point(0, 213);
             this.btn_production.Name = "btn_production";
             this.btn_production.Size = new System.Drawing.Size(132, 42);
@@ -206,6 +209,14 @@ namespace WindowsFormsApp1.Views
             this.btn_production.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_production.UseVisualStyleBackColor = false;
             this.btn_production.Click += new System.EventHandler(this.btn_production_Click);
+            this.btn_production.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            // 
+            // production_imagelist
+            // 
+            this.production_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("production_imagelist.ImageStream")));
+            this.production_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.production_imagelist.Images.SetKeyName(0, "green_Hammer_20px.png");
+            this.production_imagelist.Images.SetKeyName(1, "Hammer_20px.png");
             // 
             // btn_purchase
             // 
@@ -227,6 +238,13 @@ namespace WindowsFormsApp1.Views
             this.btn_purchase.UseVisualStyleBackColor = false;
             this.btn_purchase.Click += new System.EventHandler(this.btn_purchase_Click);
             this.btn_purchase.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            // 
+            // purchase_imagelist
+            // 
+            this.purchase_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("purchase_imagelist.ImageStream")));
+            this.purchase_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.purchase_imagelist.Images.SetKeyName(0, "Shopping Cart_20px.png");
+            this.purchase_imagelist.Images.SetKeyName(1, "Shopping Cart_52px.png");
             // 
             // btn_sales
             // 
@@ -392,6 +410,23 @@ namespace WindowsFormsApp1.Views
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             // 
+            // uc_ProductionMenu
+            // 
+            this.uc_ProductionMenu.BackColor = System.Drawing.SystemColors.Control;
+            this.uc_ProductionMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_ProductionMenu.Location = new System.Drawing.Point(132, 72);
+            this.uc_ProductionMenu.Name = "uc_ProductionMenu";
+            this.uc_ProductionMenu.Size = new System.Drawing.Size(819, 514);
+            this.uc_ProductionMenu.TabIndex = 31;
+            // 
+            // uC_Simulation1
+            // 
+            this.uC_Simulation1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_Simulation1.Location = new System.Drawing.Point(132, 72);
+            this.uC_Simulation1.Name = "uC_Simulation1";
+            this.uC_Simulation1.Size = new System.Drawing.Size(819, 514);
+            this.uC_Simulation1.TabIndex = 45;
+            // 
             // uC_SalesMain1
             // 
             this.uC_SalesMain1.BackColor = System.Drawing.SystemColors.Control;
@@ -405,17 +440,8 @@ namespace WindowsFormsApp1.Views
             this.uc_warehousemovement.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uc_warehousemovement.Location = new System.Drawing.Point(132, 72);
             this.uc_warehousemovement.Name = "uc_warehousemovement";
-            this.uc_warehousemovement.Size = new System.Drawing.Size(819, 514);
+            this.uc_warehousemovement.Size = new System.Drawing.Size(1000, 600);
             this.uc_warehousemovement.TabIndex = 31;
-
-            this.uc_ProductionMenu.BackColor = System.Drawing.SystemColors.Control;
-            this.uc_ProductionMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_ProductionMenu.Location = new System.Drawing.Point(132, 72);
-            this.uc_ProductionMenu.Name = "uc_ProductionMenu";
-            this.uc_ProductionMenu.Size = new System.Drawing.Size(819, 514);
-            this.uc_ProductionMenu.TabIndex = 31;
-
-
             // 
             // parameters1
             // 
@@ -560,23 +586,14 @@ namespace WindowsFormsApp1.Views
             this.uc_workstation.UseSelectable = true;
             this.uc_workstation.Visible = false;
             // 
-            // uC_Simulation1
-            // 
-            this.uC_Simulation1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_Simulation1.Location = new System.Drawing.Point(132, 72);
-            this.uC_Simulation1.Name = "uC_Simulation1";
-            this.uC_Simulation1.Size = new System.Drawing.Size(819, 514);
-            this.uC_Simulation1.TabIndex = 45;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(951, 586);
-            this.Controls.Add(this.uc_ProductionMenu);
             this.Controls.Add(this.uc_warehousemovement);
-            this.Controls.Add(this.uC_ProductWarehouse1);
+            this.Controls.Add(this.uc_ProductionMenu);
             this.Controls.Add(this.uC_Simulation1);
             this.Controls.Add(this.uC_SalesMain1);
             this.Controls.Add(this.parameters1);
@@ -661,5 +678,7 @@ namespace WindowsFormsApp1.Views
         private UC_Workstation uc_workstation;
         private System.Windows.Forms.Button btn_simulation;
         private UC_Simulation uC_Simulation1;
+        private System.Windows.Forms.ImageList simulation_imagelist;
+        private System.Windows.Forms.ImageList production_imagelist;
     }
 }

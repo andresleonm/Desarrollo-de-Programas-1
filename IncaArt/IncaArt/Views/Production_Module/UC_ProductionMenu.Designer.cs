@@ -29,17 +29,20 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.metroTile_WorkerPerformance = new MetroFramework.Controls.MetroTile();
             this.metroTile_RegisterOrder = new MetroFramework.Controls.MetroTile();
             this.metroTitle_SearchOrder = new MetroFramework.Controls.MetroTile();
             this.panel2 = new System.Windows.Forms.Panel();
             this.production_search = new WindowsFormsApp1.Views.UC_ProductionOrderSearch();
             this.production_register = new WindowsFormsApp1.Views.UC_ProductionOrder();
+            this.worker_performance = new WindowsFormsApp1.Views.WorkersPerformance_Report();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.metroTile_WorkerPerformance);
             this.panel1.Controls.Add(this.metroTile_RegisterOrder);
             this.panel1.Controls.Add(this.metroTitle_SearchOrder);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -47,6 +50,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(861, 70);
             this.panel1.TabIndex = 1;
+            // 
+            // metroTile_WorkerPerformance
+            // 
+            this.metroTile_WorkerPerformance.ActiveControl = null;
+            this.metroTile_WorkerPerformance.BackColor = System.Drawing.Color.DarkCyan;
+            this.metroTile_WorkerPerformance.Location = new System.Drawing.Point(453, 4);
+            this.metroTile_WorkerPerformance.Name = "metroTile_WorkerPerformance";
+            this.metroTile_WorkerPerformance.Size = new System.Drawing.Size(177, 62);
+            this.metroTile_WorkerPerformance.TabIndex = 42;
+            this.metroTile_WorkerPerformance.Text = "Eficiencia de trabajadores";
+            this.metroTile_WorkerPerformance.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile_WorkerPerformance.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTile_WorkerPerformance.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.metroTile_WorkerPerformance.UseCustomBackColor = true;
+            this.metroTile_WorkerPerformance.UseSelectable = true;
+            this.metroTile_WorkerPerformance.UseTileImage = true;
+            this.metroTile_WorkerPerformance.Click += new System.EventHandler(this.metroTile_WorkerPerformance_Click);
             // 
             // metroTile_RegisterOrder
             // 
@@ -87,6 +107,7 @@
             // 
             this.panel2.Controls.Add(this.production_search);
             this.panel2.Controls.Add(this.production_register);
+            this.panel2.Controls.Add(this.worker_performance);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 70);
             this.panel2.Name = "panel2";
@@ -95,6 +116,7 @@
             // 
             // production_search
             // 
+            this.production_search.BackColor = System.Drawing.SystemColors.Control;
             this.production_search.Dock = System.Windows.Forms.DockStyle.Fill;
             this.production_search.Location = new System.Drawing.Point(0, 0);
             this.production_search.Name = "production_search";
@@ -103,6 +125,7 @@
             // 
             // production_register
             // 
+            this.production_register.BackColor = System.Drawing.SystemColors.Control;
             this.production_register.Dock = System.Windows.Forms.DockStyle.Fill;
             this.production_register.Location = new System.Drawing.Point(0, 0);
             this.production_register.Name = "production_register";
@@ -117,6 +140,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "UC_ProductionMenu";
             this.Size = new System.Drawing.Size(861, 574);
+            this.ParentChanged += new System.EventHandler(this.UC_ProductionMenu_ParentChanged);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -131,5 +155,8 @@
         private System.Windows.Forms.Panel panel2;
         private UC_ProductionOrderSearch production_search;
         private UC_ProductionOrder production_register;
+        //
+        private Views.WorkersPerformance_Report worker_performance;
+        private MetroFramework.Controls.MetroTile metroTile_WorkerPerformance;
     }
 }

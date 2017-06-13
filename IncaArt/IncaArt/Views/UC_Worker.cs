@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ComponentModel.DataAnnotations;
 
 namespace WindowsFormsApp1.Views
 {
@@ -20,7 +21,9 @@ namespace WindowsFormsApp1.Views
         bool shift_flag;
         bool salary_flag;
         bool currency_flag;
+        bool email_flag;
         int cur_row;
+        int operation_value;// 0 para Create, 1 para Update
         List<Models.Shift> shift_list;
         List<Models.Worker> worker_list;
         List<Models.Currency> currency_list;
@@ -36,6 +39,7 @@ namespace WindowsFormsApp1.Views
         private void UC_Worker_Load(object sender, EventArgs e)
         {
             Set_Flag_All(false);
+            operation_value = 0;
             string user = "dp1admin";
             string password = "dp1admin";
             workerController = new Controller.WorkerController(user, password);
@@ -273,6 +277,7 @@ namespace WindowsFormsApp1.Views
                 textbox_address.Text = worker.Address;
                 textbox_salary.Text = worker.Salary.ToString();
                 Set_Flag_All(true);
+                operation_value = 1;
             }
         }
 
@@ -321,6 +326,7 @@ namespace WindowsFormsApp1.Views
         {
             Clean();
             metroTabControl1.SelectedIndex = 0;
+            operation_value = 0;
         }
 
         private void btn_clean_s_Click(object sender, EventArgs e)
@@ -365,6 +371,34 @@ namespace WindowsFormsApp1.Views
                 //e.Cancel = false;
                 Set_Flag(textbox.Name, true);
                 errorProvider.SetError(textbox, null);
+            }
+        }
+
+        private void textbox_email_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            string text = textbox.Text;
+
+            if (String.IsNullOrWhiteSpace(text))
+            {
+                Set_Flag(textbox.Name, false);
+                errorProvider.SetError(textbox, "Campo requerido");
+
+            }
+            else
+            {
+                errorProvider.SetError(textbox, null);
+                var validation = new EmailAddressAttribute();
+                if (validation.IsValid(text))
+                {
+                    Set_Flag(textbox.Name, true);
+                    errorProvider.SetError(textbox, null);
+                }
+                else
+                {
+                    Set_Flag(textbox.Name, false);
+                    errorProvider.SetError(textbox, "Correo inválido");
+                }
             }
         }
 
@@ -429,7 +463,7 @@ namespace WindowsFormsApp1.Views
 
         private bool Validate_Data()
         {
-            if (name_flag && paternal_flag && maternal_flag && doi_flag && birthday_flag && shift_flag && salary_flag && currency_flag)
+            if (name_flag && paternal_flag && maternal_flag && doi_flag && birthday_flag && shift_flag && salary_flag && currency_flag && email_flag)
             {
                 return true;
             }
@@ -446,6 +480,7 @@ namespace WindowsFormsApp1.Views
             shift_flag = value;
             salary_flag = value;
             currency_flag = value;
+            email_flag = value;
         }
 
         private void Set_Flag(string name, bool value)
@@ -476,7 +511,47 @@ namespace WindowsFormsApp1.Views
                 case "combobox_currency":
                     currency_flag = value;
                     break;
+                case "textbox_email":
+                    email_flag = value;
+                    break;
             }
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            Models.Worker worker = CreateWorker(operation_value);
+            if (worker != null)
+            {
+                if (worker.Id == 0)
+                {
+                    result = workerController.insertWorker(worker);
+                    if (result.data == null)
+                    {
+                        MessageBox.Show(result.message, "Error al registrar trabajador", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Trabajador registrado correctamente", "Registrar trabajador", MessageBoxButtons.OK);
+                    }
+                }else
+                {
+                    result = workerController.updateWorker(worker);
+                    if (result.data == null)
+                    {
+                        MessageBox.Show(result.message, "Error al editar trabajador", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Trabajador editado correctamente", "Editar trabajador", MessageBoxButtons.OK);
+                    }
+                }
+                Load_Data();
+                Set_Flag_All(false);
+                Load_DataGridView();
+                Clean();
+                metroTabControl1.SelectedIndex = 0;
+            }
+            operation_value = 0;
         }
     }
 }
