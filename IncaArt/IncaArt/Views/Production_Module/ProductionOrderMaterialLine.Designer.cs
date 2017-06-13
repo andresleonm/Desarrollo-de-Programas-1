@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox_Warehouse = new System.Windows.Forms.ComboBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -37,7 +38,9 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_Register = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -67,7 +70,7 @@
             this.comboBox_Warehouse.Name = "comboBox_Warehouse";
             this.comboBox_Warehouse.Size = new System.Drawing.Size(163, 21);
             this.comboBox_Warehouse.TabIndex = 51;
-            this.comboBox_Warehouse.SelectedIndexChanged += new System.EventHandler(this.comboBox_Warehouse_SelectedIndexChanged);
+            this.comboBox_Warehouse.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_Warehouse_Validating);
             // 
             // metroLabel3
             // 
@@ -116,6 +119,8 @@
             this.metroTextBox_Quantity.UseSelectable = true;
             this.metroTextBox_Quantity.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox_Quantity.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.metroTextBox_Quantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.metroTextBox_Quantity_KeyPress);
+            this.metroTextBox_Quantity.Validating += new System.ComponentModel.CancelEventHandler(this.metroTextBox_Quantity_Validating);
             // 
             // comboBox_Material
             // 
@@ -125,6 +130,7 @@
             this.comboBox_Material.Size = new System.Drawing.Size(163, 21);
             this.comboBox_Material.TabIndex = 38;
             this.comboBox_Material.SelectedIndexChanged += new System.EventHandler(this.comboBox_Material_SelectedIndexChanged);
+            this.comboBox_Material.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox_Material_Validating);
             // 
             // metroLabel2
             // 
@@ -181,6 +187,10 @@
             this.button_Register.UseVisualStyleBackColor = false;
             this.button_Register.Click += new System.EventHandler(this.button_Register_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // ProductionOrderMaterialLine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,6 +203,7 @@
             this.Load += new System.EventHandler(this.ProductionOrderMaterialLine_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,5 +220,6 @@
         private System.Windows.Forms.Button button_Register;
         private System.Windows.Forms.ComboBox comboBox_Warehouse;
         private MetroFramework.Controls.MetroLabel metroLabel3;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

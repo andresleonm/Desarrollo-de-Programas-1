@@ -16,6 +16,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
     {
         private string user = "dp1admin";
         private string password = "dp1admin";
+        private double igv = 0.18;
         private SalesDocument document;
         private List<SalesRefund> sales_refunds;
         private SalesRefundController sales_refund_controller;
@@ -49,6 +50,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
                 grid_Refund_Lines.DataSource = ref_lines;
                 AdjustColumnRefundLine();
+
+                update_Amount_Refund();
             }            
         }
 
@@ -233,30 +236,37 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private void AdjustColumnRefundLine()
         {
             grid_Refund_Lines.Columns["product"].DisplayIndex = 0;
-            grid_Refund_Lines.Columns["unit"].DisplayIndex = 1;
-            grid_Refund_Lines.Columns["warehouse"].DisplayIndex = 2;
+            grid_Refund_Lines.Columns["unit_measure"].DisplayIndex = 1;
+            grid_Refund_Lines.Columns["prodwarehouse"].DisplayIndex = 2;
             grid_Refund_Lines.Columns["quantity_available"].DisplayIndex = 3;
-            grid_Refund_Lines.Columns["quantity"].DisplayIndex = 4;
-            grid_Refund_Lines.Columns["Refund_quantity"].DisplayIndex = 5;
+            grid_Refund_Lines.Columns["refund_quantity"].DisplayIndex = 4;
+            grid_Refund_Lines.Columns["quantity"].DisplayIndex = 5;
             grid_Refund_Lines.Columns["unit_price"].DisplayIndex = 6;
             grid_Refund_Lines.Columns["amount"].DisplayIndex = 7;
+        }
+
+        private void update_Amount_Refund()
+        {
+            double acumulate = 0;
+            for (int i = 0; i < grid_Refund_Lines.RowCount; i++)
+            {
+                acumulate += double.Parse(grid_Refund_Lines.Rows[i].Cells["amount"].Value.ToString());
+            }
+            txt_amount.Text = acumulate.ToString();
+            txt_igv.Text = Math.Round((acumulate * igv), 2).ToString();
+            txt_total.Text = Math.Round((acumulate * (1 + igv)), 2).ToString();
         }
 
         private void grid_Refund_Lines_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
-                if (e.ColumnIndex == 7 || e.ColumnIndex == 8)
+                if (e.ColumnIndex == 12)
                 {
-                    //double update_amount = double.Parse(grid_order_lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString()) * double.Parse(grid_order_lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
-                    //grid_order_lines.Rows[e.RowIndex].Cells["amount"].Value = update_amount;
+                    double update_amount = double.Parse(grid_Refund_Lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString()) * double.Parse(grid_Refund_Lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
+                    grid_Refund_Lines.Rows[e.RowIndex].Cells["amount"].Value = update_amount;
 
-                    //double acumulate = 0;
-                    //for (int i = 0; i < grid_order_lines.RowCount; i++)
-                    //{
-                    //    acumulate += double.Parse(grid_order_lines.Rows[i].Cells["amount"].Value.ToString());
-                    //}
-                    //txt_amount.Text = acumulate.ToString();
+                    update_Amount_Refund();
                 }
             }
         }
