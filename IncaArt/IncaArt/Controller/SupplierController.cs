@@ -23,8 +23,7 @@ namespace WindowsFormsApp1.Controller
             {
                 foreach (Row r in result.data)
                 {
-                    suppliers.Add(new Models.Supplier(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2), r.getColumn(3), r.getColumn(4), r.getColumn(5), r.getColumn(6),
-                                                    Int32.Parse(r.getColumn(7)), r.getColumn(8)));
+                    suppliers.Add(new Models.Supplier(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2), r.getColumn(3), r.getColumn(4), r.getColumn(5), r.getColumn(6)));
                 }
 
                 return new Result(suppliers, true, "");
@@ -41,8 +40,7 @@ namespace WindowsFormsApp1.Controller
             if (result.success)
             {
                 var r = result.data[0];
-                Models.Supplier supplier = new Models.Supplier(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2), r.getColumn(3), r.getColumn(4), r.getColumn(5), r.getColumn(6),
-                                                    Int32.Parse(r.getColumn(7)), r.getColumn(8));
+                Models.Supplier supplier = new Models.Supplier(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2), r.getColumn(3), r.getColumn(4), r.getColumn(5), r.getColumn(6));
                 return new Result(supplier, true, "");
             }
             return new Result(null, result.success, result.message);
@@ -58,8 +56,6 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("doi", supplier.Doi));
             parameters.Add(new Parameter("phone", supplier.Phone));
             parameters.Add(new Parameter("email", supplier.Email));
-            parameters.Add(new Parameter("type", supplier.Type));
-            parameters.Add(new Parameter("priority", supplier.Priority.ToString()));
             parameters.Add(new Parameter("state", supplier.State));
             GenericResult result = execute_transaction("insert_supplier", parameters);
             if (result.success)
@@ -79,8 +75,6 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("doi", supplier.Doi));
             parameters.Add(new Parameter("phone", supplier.Phone));
             parameters.Add(new Parameter("email", supplier.Email));
-            parameters.Add(new Parameter("type", supplier.Type));
-            parameters.Add(new Parameter("priority", supplier.Priority.ToString()));
             parameters.Add(new Parameter("state", supplier.State));
             GenericResult result = execute_transaction("update_supplier", parameters);
             if (result.success)
@@ -108,8 +102,6 @@ namespace WindowsFormsApp1.Controller
             List<Parameter> parameters = new List<Parameter>();
             if (supplier.Name != "") parameters.Add(new Parameter("name", supplier.Name));
             if (supplier.Doi != "") parameters.Add(new Parameter("doi", supplier.Doi));
-            if (supplier.Type != "") parameters.Add(new Parameter("type", supplier.Type));
-            if (supplier.Priority != 0) parameters.Add(new Parameter("priority", supplier.Priority.ToString()));
 
             GenericResult result = execute_function("get_suppliers2", parameters);
             List<Models.Supplier> suppliers = new List<Models.Supplier>();
@@ -117,8 +109,7 @@ namespace WindowsFormsApp1.Controller
             {
                 foreach (Row r in result.data)
                 {
-                    suppliers.Add(new Models.Supplier(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2), r.getColumn(3), r.getColumn(4), r.getColumn(5), r.getColumn(6),
-                                                    Int32.Parse(r.getColumn(7)), r.getColumn(8)));
+                    suppliers.Add(new Models.Supplier(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2), r.getColumn(3), r.getColumn(4), r.getColumn(5), r.getColumn(6)));
                 }
                 return new Result(suppliers, true, "");
             }

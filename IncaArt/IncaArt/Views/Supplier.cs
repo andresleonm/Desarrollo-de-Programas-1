@@ -19,16 +19,13 @@ namespace WindowsFormsApp1.Views
         bool phone_flag;
         bool address_flag;
         bool email_flag;
-        bool type_flag;
-        bool priority_flag;
+
 
         List<Models.Supplier> supplier_list;
         Controller.SupplierController supplierController;
         Controller.Result result;
         int priority_list = 10;
         int type_list = 4;
-        Dictionary<int, string> combo_priority;
-        Dictionary<int, string> combo_type;
 
         Models.Supplier curSupplier;
         public Supplier()
@@ -42,37 +39,6 @@ namespace WindowsFormsApp1.Views
             string password = "dp1admin";
             supplierController = new Controller.SupplierController(user, password);
             supplier_list = new List<Models.Supplier>();
-            combo_priority = new Dictionary<int, string>();
-            combo_type = new Dictionary<int, string>();
-
-            combo_priority.Add(0, "Seleccionar");
-            for (int i = 1; i <= priority_list; i++)
-                combo_priority.Add(i, i.ToString());
-
-            combo_type.Add(0, "Seleccionar");
-            combo_type.Add(1, "A");
-            combo_type.Add(2, "B");
-            combo_type.Add(3, "C");
-            combo_type.Add(4, "D");
-
-            combobox_type.DataSource = new BindingSource(combo_type, null);
-            combobox_type.DisplayMember = "Value";
-            combobox_type.ValueMember = "Key";
-
-            combobox_type_s.DataSource = new BindingSource(combo_type, null);
-            combobox_type_s.DisplayMember = "Value";
-            combobox_type_s.ValueMember = "Key";
-
-            combobox_priority.DataSource = new BindingSource(combo_priority, null);
-            combobox_priority.DisplayMember = "Value";
-            combobox_priority.ValueMember = "Key";
-
-            combobox_priority_s.DataSource = new BindingSource(combo_priority, null);
-            combobox_priority_s.DisplayMember = "Value";
-            combobox_priority_s.ValueMember = "Key";
-
-            //Unidades
-
 
             //Unidades
             Load_Data();
@@ -93,7 +59,7 @@ namespace WindowsFormsApp1.Views
             metroGrid1.Rows.Clear();
             for (int i = 0; i < supplier_list.Count(); i++)
             {
-                String[] row = new String[9];
+                String[] row = new String[7];
                 row[0] = supplier_list[i].Id.ToString();
                 row[1] = i.ToString();
                 row[2] = supplier_list[i].Doi.ToString();
@@ -101,21 +67,14 @@ namespace WindowsFormsApp1.Views
                 row[4] = supplier_list[i].Address.ToString();
                 row[5] = supplier_list[i].Phone.ToString();
                 row[6] = supplier_list[i].Email.ToString();
-                row[7] = supplier_list[i].Type.ToString();
-                row[8] = supplier_list[i].Priority.ToString();
+
                 this.metroGrid1.Rows.Add(row);
             }
         }
 
         private void Clean()
         {
-            
-            combobox_priority.SelectedIndex = 0;
-            combobox_priority_s.SelectedIndex = 0;
-            combobox_type.SelectedIndex = 0;
-            combobox_type_s.SelectedIndex = 0;
             ClearTextBoxes(this);
-
         }
 
         private void ClearTextBoxes(Control control)
@@ -155,15 +114,13 @@ namespace WindowsFormsApp1.Views
                 return null;
             }
             String name, doi, address, phone, email, type, state;
-            int id = 0, priority;
+            int id = 0;
             name = textbox_name.Text;
             doi = textbox_doi.Text;
             phone = textbox_phone.Text;
             address = textbox_address.Text;
             email = textbox_email.Text;
             state = "ACTIVE";
-            type = ((KeyValuePair<int, string>)combobox_type.SelectedItem).Value;
-            priority = Int32.Parse(((KeyValuePair<int, string>)combobox_priority.SelectedItem).Value);
 
             Models.Supplier supplier = new Models.Supplier();
 
@@ -171,7 +128,7 @@ namespace WindowsFormsApp1.Views
             {
                 id = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
             }
-            supplier = new Models.Supplier(id, name, address, doi, phone, email, type, priority, state);
+            supplier = new Models.Supplier(id, name, address, doi, phone, email, state);
 
             return supplier;
         }
@@ -241,26 +198,6 @@ namespace WindowsFormsApp1.Views
                 textbox_phone.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
                 textbox_email.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
 
-                //Tipo 
-                for (int i = 0; i < combo_type.Count(); i++)
-                {
-                    if (combo_type[i] == metroGrid1.Rows[e.RowIndex].Cells[7].Value.ToString())
-                    {
-                        combobox_type.SelectedIndex = i;
-                        break;
-                    }
-                }
-
-                //Tipo 
-                for (int i = 0; i < combo_priority.Count(); i++)
-                {
-                    if (combo_priority[i] == metroGrid1.Rows[e.RowIndex].Cells[8].Value.ToString())
-                    {
-                        combobox_priority.SelectedIndex = i;
-                        break;
-                    }
-                }
-
                 metroTabControl1.SelectedIndex = 1;
                 register.Text = "Editar";
                 Set_Flag_All(true);
@@ -273,13 +210,6 @@ namespace WindowsFormsApp1.Views
             Models.Supplier supplier = new Models.Supplier();
             supplier.Name = textbox_name_s.Text;
             supplier.Doi = textbox_doi_s.Text;
-            supplier.Type = ((KeyValuePair<int, string>)combobox_type_s.SelectedItem).Value;
-            supplier.Priority = ((KeyValuePair<int, string>)combobox_priority_s.SelectedItem).Key;
-            if (supplier.Type == "Seleccionar")
-            {
-                supplier.Type = "";
-            }
-
             result = supplierController.getSuppliers(supplier);
             if (result.data == null)
             {
@@ -324,7 +254,7 @@ namespace WindowsFormsApp1.Views
 
         private bool Validate_Data()
         {
-            if (name_flag && doi_flag && phone_flag && email_flag && priority_flag)
+            if (name_flag && doi_flag && phone_flag && email_flag)
             {
                 return true;
             }
@@ -338,8 +268,6 @@ namespace WindowsFormsApp1.Views
             phone_flag = value;
             address_flag = value;
             email_flag = value;
-            type_flag = value;
-            priority_flag = value;
         }
 
         private void Set_Flag(string name, bool value)
@@ -360,12 +288,6 @@ namespace WindowsFormsApp1.Views
                     break;
                 case "textbox_email":
                     email_flag = value;
-                    break;
-                case "combobox_type":
-                    type_flag = value;
-                    break;
-                case "combobox_priority":
-                    priority_flag = value;
                     break;
             }
         }
