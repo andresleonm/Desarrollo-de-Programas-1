@@ -21,6 +21,10 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private string user = "dp1admin";
         private string password = "dp1admin";
         private double igv = 0.18;
+        private string company_name= "IncaArt";
+        private string company_phone = "(01)565-1541 / (01)566-1023";
+        private string company_mail = "inca_art@gmail.com";
+        private string company_address = "Jr. Cajamarca 658 - Lima";
         private bool edit = false;
         private SalesOrder so;
         private SalesRefund rf;
@@ -376,11 +380,14 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Pdf_Click(object sender, EventArgs e)
         {
-            To_pdf();
+            if (sd_edit!=null)
+                To_pdf(sd_edit);
+            else
+                MessageBox.Show(this, "Debe haber seleccionado un documento, primero", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #region crearPDF
-        private void To_pdf()
+        private void To_pdf(SalesDocument sd)
         {
             Document doc = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -390,6 +397,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             saveFileDialog1.Filter = "pdf Files (*.pdf)|*.pdf| All Files (*.*)|*.*";
             saveFileDialog1.FilterIndex = 2;
             saveFileDialog1.RestoreDirectory = true;
+            saveFileDialog1.FileName = sd_edit.Type_name + " " + sd_edit.Id.ToString();
             string filename = "";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -398,28 +406,26 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
             if (filename.Trim() != "")
             {
-                FileStream file = new FileStream(filename,
-                FileMode.OpenOrCreate,
-                FileAccess.ReadWrite,
-                FileShare.ReadWrite);
+                FileStream file = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
                 PdfWriter.GetInstance(doc, file);
-                doc.Open();
-                string remito = "Autorizo: OSVALDO SANTIAGO ESTRADA";
-                string envio = "Fecha:" + DateTime.Now.ToString();
+                doc.Open();                
+                string date = DateTime.Now.ToString();
 
-                Chunk chunk = new Chunk("Reporte de General Usuarios", FontFactory.GetFont("ARIAL", 20, iTextSharp.text.Font.BOLD));
+                Chunk chunk = new Chunk(sd.Type_name + " " + sd.Id.ToString(), FontFactory.GetFont("ARIAL", 20, iTextSharp.text.Font.BOLD));
                 doc.Add(new Paragraph(chunk));
                 doc.Add(new Paragraph("                       "));
                 doc.Add(new Paragraph("                       "));
                 doc.Add(new Paragraph("------------------------------------------------------------------------------------------"));
-                doc.Add(new Paragraph("Lagos de moreno Jalisco"));
-                doc.Add(new Paragraph(remito));
-                doc.Add(new Paragraph(envio));
+                doc.Add(new Paragraph("Empresa: " + company_name));
+                doc.Add(new Paragraph("Dirección: " + company_address));
+                doc.Add(new Paragraph("Teléfono: " + company_phone));
+                doc.Add(new Paragraph("Correo: " + company_mail));
+                doc.Add(new Paragraph("Fecha: " + date));
                 doc.Add(new Paragraph("------------------------------------------------------------------------------------------"));
                 doc.Add(new Paragraph("                       "));
                 doc.Add(new Paragraph("                       "));
                 doc.Add(new Paragraph("                       "));
-                GenerarDocumento(doc);
+                GenerateDocument(doc, grid_Document_Lines);
                 doc.AddCreationDate();
                 doc.Add(new Paragraph("______________________________________________", FontFactory.GetFont("ARIAL", 20, iTextSharp.text.Font.BOLD)));
                 doc.Add(new Paragraph("Firma", FontFactory.GetFont("ARIAL", 20, iTextSharp.text.Font.BOLD)));
@@ -429,29 +435,33 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         }
 
-        public void GenerarDocumento(Document document)
+        public void GenerateDocument(Document document, DataGridView dgv)
         {
             int i, j;
-            PdfPTable datatable = new PdfPTable(grid_Documents.ColumnCount);
+            PdfPTable datatable = new PdfPTable(dgv.ColumnCount);
             datatable.DefaultCell.Padding = 3;
-            float[] headerwidths = GetTamañoColumnas(grid_Documents);
+
+            float[] headerwidths = GetSizeColumn(dgv);
+
             datatable.SetWidths(headerwidths);
             datatable.WidthPercentage = 100;
             datatable.DefaultCell.BorderWidth = 2;
             datatable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
-            for (i = 0; i < grid_Documents.ColumnCount; i++)
+
+            for (i = 0; i < dgv.ColumnCount; i++)
             {
-                datatable.AddCell(grid_Documents.Columns[i].HeaderText);
+                datatable.AddCell(dgv.Columns[i].HeaderText);
             }
+
             datatable.HeaderRows = 1;
             datatable.DefaultCell.BorderWidth = 1;
-            for (i = 0; i < grid_Documents.Rows.Count; i++)
+            for (i = 0; i < dgv.Rows.Count; i++)
             {
-                for (j = 0; j < grid_Documents.Columns.Count; j++)
+                for (j = 0; j < dgv.Columns.Count; j++)
                 {
-                    if (grid_Documents[j, i].Value != null)
+                    if (dgv[j, i].Value != null)
                     {
-                        datatable.AddCell(new Phrase(grid_Documents[j, i].Value.ToString()));//En esta parte, se esta agregando un renglon por cada registro en el datagrid
+                        datatable.AddCell(new Phrase(dgv[j, i].Value.ToString()));//En esta parte, se esta agregando un renglon por cada registro en el datagrid
                     }
                 }
                 datatable.CompleteRow();
@@ -459,15 +469,13 @@ namespace WindowsFormsApp1.Views.Sales_Module
             document.Add(datatable);
         }
 
-        public float[] GetTamañoColumnas(DataGridView dg)
+        public float[] GetSizeColumn(DataGridView dg)
         {
             float[] values = new float[dg.ColumnCount];
             for (int i = 0; i < dg.ColumnCount; i++)
-            {
                 values[i] = (float)dg.Columns[i].Width;
-            }
+            
             return values;
-
         }
 
         #endregion
