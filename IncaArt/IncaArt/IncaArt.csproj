@@ -320,6 +320,12 @@
     <Compile Include="Views\UC_Product.Designer.cs">
       <DependentUpon>UC_Product.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_Ratio.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_Ratio.designer.cs">
+      <DependentUpon>UC_Ratio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Warehouse_Module\MaterialMovementLine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -627,6 +633,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderWorkLine.resx">
       <DependentUpon>UC_ProductionOrderWorkLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Ratio.resx">
+      <DependentUpon>UC_Ratio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_Module\MaterialMovementLine.resx">
       <DependentUpon>MaterialMovementLine.cs</DependentUpon>

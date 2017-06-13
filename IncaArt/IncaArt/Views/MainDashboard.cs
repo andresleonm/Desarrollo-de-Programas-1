@@ -32,5 +32,11 @@ namespace WindowsFormsApp1.Views
                 metroTile4.Visible = false;
             }
         }
+
+        private void metroTile16_Click(object sender, EventArgs e)
+        {
+            UC_Ratio uc_ratio = new UC_Ratio();
+            uc_ratio.Visible = true;
+        }
     }
 }
