@@ -53,8 +53,37 @@ namespace WindowsFormsApp1.Views
             productController = new Controller.ProductsController(user, password);
             typeController = new Controller.ProductTypeWarehouseController(user, password);
             unitController = new Controller.UnitController(user, password);
-
             Load_Data();
+            Load_DataGridView();
+            metroTabControl1.SelectedIndex = 0;
+        }
+
+        /*
+
+        WAREHOUSE_ID
+        WAREHOUSE_NAME
+        PRODUCT_ID
+        WAREHOUSE_CURRENT_PHYSICAL_STOCK
+        WAREHOUSE_MAX_CAPACITY
+        WAREHOUSE_TYPE_ID
+        STATE
+        WAREHOUSE_CURRENT_LOGICAL_STOCK
+*/
+        private void Load_Data()
+        {
+            result = unitController.getUnits();
+            unit_list = (List<Models.UnitOfMeasure>)result.data;
+
+            resultT = typeController.getProductTypeWarehouses();
+            types_list = (List<Models.ProductTypeWarehouse>)resultT.data;
+
+            resultP= productController.getProducts();
+            products_list = (List<Models.Product>)resultP.data;
+
+            warehouse_list = new List<Models.ProductWarehouse>();
+            result = productWarehouseController.getProductWarehouses();
+            if (!result.success) MessageBox.Show(result.message, "Error al listar almacén", MessageBoxButtons.OK);
+            else warehouse_list = (List<Models.ProductWarehouse>)result.data;
 
             //Cargar los combobox - Products
             combo_data_products = new Dictionary<int, string>();
@@ -88,37 +117,6 @@ namespace WindowsFormsApp1.Views
             combobox_type_s.DisplayMember = "Value";
             combobox_type_s.ValueMember = "Key";
 
-
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
-        }
-
-        /*
-
-        WAREHOUSE_ID
-        WAREHOUSE_NAME
-        PRODUCT_ID
-        WAREHOUSE_CURRENT_PHYSICAL_STOCK
-        WAREHOUSE_MAX_CAPACITY
-        WAREHOUSE_TYPE_ID
-        STATE
-        WAREHOUSE_CURRENT_LOGICAL_STOCK
-*/
-        private void Load_Data()
-        {
-            result = unitController.getUnits();
-            unit_list = (List<Models.UnitOfMeasure>)result.data;
-
-            resultT = typeController.getProductTypeWarehouses();
-            types_list = (List<Models.ProductTypeWarehouse>)resultT.data;
-
-            resultP= productController.getProducts();
-            products_list = (List<Models.Product>)resultP.data;
-
-            warehouse_list = new List<Models.ProductWarehouse>();
-            result = productWarehouseController.getProductWarehouses();
-            if (!result.success) MessageBox.Show(result.message, "Error al listar almacén", MessageBoxButtons.OK);
-            else warehouse_list = (List<Models.ProductWarehouse>)result.data;
         }
 
 

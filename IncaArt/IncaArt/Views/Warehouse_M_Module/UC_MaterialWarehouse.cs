@@ -51,8 +51,26 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             materialController = new Controller.MaterialsController(user, password);
             typeController = new Controller.MaterialTypeWarehouseController(user, password);
             unitController = new Controller.UnitController(user, password);
-
             Load_Data();
+            Load_DataGridView();
+            metroTabControl1.SelectedIndex = 0;
+        }
+
+        private void Load_Data()
+        {
+            result = unitController.getUnits();
+            unit_list = (List<Models.UnitOfMeasure>)result.data;
+
+            resultT = typeController.getMaterialTypeWarehouses();
+            types_list = (List<Models.MaterialTypeWarehouse>)resultT.data;
+
+            resultP = materialController.getMaterials();
+            materials_list = (List<Models.Material>)resultP.data;
+
+            warehouse_list = new List<Models.MaterialWarehouse>();
+            result = materialWarehouseController.getMaterialWarehouses();
+            if (!result.success) MessageBox.Show(result.message, "Error al listar almacén", MessageBoxButtons.OK);
+            else warehouse_list = (List<Models.MaterialWarehouse>)result.data;
 
             //Cargar los combobox - Products
             Dictionary<int, string> combo_data_materials = new Dictionary<int, string>();
@@ -86,26 +104,6 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             combobox_type_s.DisplayMember = "Value";
             combobox_type_s.ValueMember = "Key";
 
-
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
-        }
-
-        private void Load_Data()
-        {
-            result = unitController.getUnits();
-            unit_list = (List<Models.UnitOfMeasure>)result.data;
-
-            resultT = typeController.getMaterialTypeWarehouses();
-            types_list = (List<Models.MaterialTypeWarehouse>)resultT.data;
-
-            resultP = materialController.getMaterials();
-            materials_list = (List<Models.Material>)resultP.data;
-
-            warehouse_list = new List<Models.MaterialWarehouse>();
-            result = materialWarehouseController.getMaterialWarehouses();
-            if (!result.success) MessageBox.Show(result.message, "Error al listar almacén", MessageBoxButtons.OK);
-            else warehouse_list = (List<Models.MaterialWarehouse>)result.data;
         }
 
 
