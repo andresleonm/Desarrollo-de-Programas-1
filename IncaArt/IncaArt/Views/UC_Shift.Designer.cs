@@ -35,10 +35,6 @@
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.time_end_s = new MetroFramework.Controls.MetroDateTime();
-            this.label5 = new System.Windows.Forms.Label();
-            this.time_begin_s = new MetroFramework.Controls.MetroDateTime();
-            this.label3 = new System.Windows.Forms.Label();
             this.textbox_name_s = new MetroFramework.Controls.MetroTextBox();
             this.btn_clean = new System.Windows.Forms.Button();
             this.search = new System.Windows.Forms.Button();
@@ -46,16 +42,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_delete = new System.Windows.Forms.Button();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.time_end = new MetroFramework.Controls.MetroDateTime();
-            this.time_begin = new MetroFramework.Controls.MetroDateTime();
             this.label4 = new System.Windows.Forms.Label();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,6 +51,14 @@
             this.register = new MetroFramework.Controls.MetroButton();
             this.textbox_name = new MetroFramework.Controls.MetroTextBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.time_begin = new System.Windows.Forms.DateTimePicker();
+            this.time_end = new System.Windows.Forms.DateTimePicker();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -106,10 +102,6 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
-            this.groupBox2.Controls.Add(this.time_end_s);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.time_begin_s);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.textbox_name_s);
             this.groupBox2.Controls.Add(this.btn_clean);
             this.groupBox2.Controls.Add(this.search);
@@ -122,50 +114,6 @@
             this.groupBox2.TabIndex = 43;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtros";
-            // 
-            // time_end_s
-            // 
-            this.time_end_s.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.time_end_s.Location = new System.Drawing.Point(367, 70);
-            this.time_end_s.MinimumSize = new System.Drawing.Size(0, 29);
-            this.time_end_s.Name = "time_end_s";
-            this.time_end_s.Size = new System.Drawing.Size(119, 29);
-            this.time_end_s.TabIndex = 83;
-            this.time_end_s.ShowUpDown = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label5.Location = new System.Drawing.Point(276, 80);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 13);
-            this.label5.TabIndex = 82;
-            this.label5.Text = "Hora Fin :";
-            // 
-            // time_begin_s
-            // 
-            this.time_begin_s.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.time_begin_s.Location = new System.Drawing.Point(367, 25);
-            this.time_begin_s.MinimumSize = new System.Drawing.Size(0, 29);
-            this.time_begin_s.Name = "time_begin_s";
-            this.time_begin_s.Size = new System.Drawing.Size(119, 29);
-            this.time_begin_s.TabIndex = 81;
-            this.time_begin_s.ShowUpDown = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label3.Location = new System.Drawing.Point(276, 35);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
-            this.label3.TabIndex = 80;
-            this.label3.Text = "Hora Inicio :";
             // 
             // textbox_name_s
             // 
@@ -287,10 +235,11 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.metroGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroGrid1.EnableHeadersVisualStyles = false;
             this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid1.Location = new System.Drawing.Point(3, 0);
+            this.metroGrid1.Location = new System.Drawing.Point(0, 0);
             this.metroGrid1.Name = "metroGrid1";
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -303,42 +252,10 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(485, 190);
+            this.metroGrid1.Size = new System.Drawing.Size(504, 246);
             this.metroGrid1.TabIndex = 2;
             this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
             this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // index
-            // 
-            this.index.HeaderText = "index";
-            this.index.Name = "index";
-            this.index.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Descripción";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Hora Inicio";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Hora Fin";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Estado";
-            this.Column5.Name = "Column5";
             // 
             // btn_delete
             // 
@@ -375,33 +292,13 @@
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
-            // time_end
-            // 
-            this.time_end.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.time_end.Location = new System.Drawing.Point(180, 140);
-            this.time_end.MinimumSize = new System.Drawing.Size(0, 29);
-            this.time_end.Name = "time_end";
-            this.time_end.Size = new System.Drawing.Size(200, 29);
-            this.time_end.TabIndex = 80;
-            this.time_end.ShowUpDown = true;
-            // 
-            // time_begin
-            // 
-            this.time_begin.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.time_begin.Location = new System.Drawing.Point(180, 85);
-            this.time_begin.MinimumSize = new System.Drawing.Size(0, 29);
-            this.time_begin.Name = "time_begin";
-            this.time_begin.Size = new System.Drawing.Size(200, 29);
-            this.time_begin.TabIndex = 79;
-            this.time_begin.ShowUpDown = true;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label4.Location = new System.Drawing.Point(79, 150);
+            this.label4.Location = new System.Drawing.Point(79, 133);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 78;
@@ -497,6 +394,62 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // time_begin
+            // 
+            this.time_begin.CalendarForeColor = System.Drawing.SystemColors.Control;
+            this.time_begin.CustomFormat = "HH:mm";
+            this.time_begin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.time_begin.Location = new System.Drawing.Point(180, 86);
+            this.time_begin.Name = "time_begin";
+            this.time_begin.ShowUpDown = true;
+            this.time_begin.Size = new System.Drawing.Size(200, 20);
+            this.time_begin.TabIndex = 81;
+            // 
+            // time_end
+            // 
+            this.time_end.CustomFormat = "HH:mm";
+            this.time_end.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.time_end.Location = new System.Drawing.Point(180, 126);
+            this.time_end.Name = "time_end";
+            this.time_end.ShowUpDown = true;
+            this.time_end.Size = new System.Drawing.Size(200, 20);
+            this.time_end.TabIndex = 82;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // index
+            // 
+            this.index.HeaderText = "index";
+            this.index.Name = "index";
+            this.index.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Descripción";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Hora Inicio";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 150;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Hora Fin";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 150;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Estado";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 60;
+            // 
             // UC_Shift
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -538,19 +491,15 @@
         private System.Windows.Forms.Label label1;
         private MetroFramework.Controls.MetroButton register;
         private System.Windows.Forms.Label label4;
-        private MetroFramework.Controls.MetroDateTime time_end;
-        private MetroFramework.Controls.MetroDateTime time_begin;
         private MetroFramework.Controls.MetroTextBox textbox_name;
-        private MetroFramework.Controls.MetroDateTime time_end_s;
-        private System.Windows.Forms.Label label5;
-        private MetroFramework.Controls.MetroDateTime time_begin_s;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.DateTimePicker time_begin;
+        private System.Windows.Forms.DateTimePicker time_end;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn index;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

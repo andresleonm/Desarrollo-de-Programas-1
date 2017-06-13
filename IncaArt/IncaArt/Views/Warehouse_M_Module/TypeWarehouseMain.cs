@@ -15,6 +15,10 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
         public TypeWarehouseMain()
         {
             InitializeComponent();
+            uC_ProductTypeWarehouse1.Visible = true;
+            uC_MaterialTypeWarehouse1.Visible = false;
+           
+           
         }
 
         private void TypeWarehouseMain_Load(object sender, EventArgs e)
@@ -24,7 +28,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
 
         private void select_products_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void select_materials_Click(object sender, EventArgs e)

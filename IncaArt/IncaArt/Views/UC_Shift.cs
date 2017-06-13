@@ -137,9 +137,13 @@ namespace WindowsFormsApp1.Views
                 MessageBox.Show("Hay campos inválidos", "Error", MessageBoxButtons.OK);
                 return null;
             }
+
+            //"MM/dd/yyyy HH:mm:ss", 
+            //CultureInfo.InvariantCulture, 
+              //     DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal
             name = textbox_name.Text;
-            begin = time_begin.Value.Date;
-            end = time_end.Value.Date;
+            begin = DateTime.Parse(time_begin.Text);
+            end = DateTime.Parse(time_end.Text);
             state = "ACTIVE";
             Models.Shift shift = new Models.Shift();
 
@@ -157,8 +161,8 @@ namespace WindowsFormsApp1.Views
 
             Models.Shift shift = new Models.Shift();
             shift.Description = textbox_name_s.Text;
-            shift.Begin_date = time_begin_s.Value.Date;
-            shift.End_date = time_end_s.Value.Date;
+           // shift.Begin_date = time_begin_s.Value.Date;
+           // shift.End_date = time_end_s.Value.Date;
 
             result = shiftsController.getShifts(shift);
             if (!result.success)
@@ -282,7 +286,8 @@ namespace WindowsFormsApp1.Views
 
         private bool Validate_Data()
         {
-            if (description_flag && begin_flag && end_flag)
+            //&& begin_flag && end_flag
+            if (description_flag )
             {
                 return true;
             }

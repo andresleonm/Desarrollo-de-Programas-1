@@ -22,7 +22,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
         Controller.Result result;
 
         Models.ProductTypeWarehouse curTypeWarehouse;
-        Dictionary<int, string> combo_class;
+        Dictionary<int, string> combo_class = new Dictionary<int, string>();
 
         public UC_ProductTypeWarehouse()
         {

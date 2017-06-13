@@ -32,7 +32,10 @@
             this.select_products = new MetroFramework.Controls.MetroTile();
             this.select_materials = new MetroFramework.Controls.MetroTile();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.uC_MaterialTypeWarehouse1 = new WindowsFormsApp1.Views.Warehouse_M_Module.UC_MaterialTypeWarehouse();
+            this.uC_ProductTypeWarehouse1 = new WindowsFormsApp1.Views.Warehouse_M_Module.UC_ProductTypeWarehouse();
             this.metroPanel1.SuspendLayout();
+            this.metroPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroPanel1
@@ -92,16 +95,36 @@
             // 
             // metroPanel2
             // 
+            this.metroPanel2.Controls.Add(this.uC_ProductTypeWarehouse1);
+            this.metroPanel2.Controls.Add(this.uC_MaterialTypeWarehouse1);
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel2.HorizontalScrollbarSize = 10;
             this.metroPanel2.Location = new System.Drawing.Point(6, 81);
             this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(763, 429);
+            this.metroPanel2.Size = new System.Drawing.Size(763, 542);
             this.metroPanel2.TabIndex = 44;
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // uC_MaterialTypeWarehouse1
+            // 
+            this.uC_MaterialTypeWarehouse1.AutoSize = true;
+            this.uC_MaterialTypeWarehouse1.Location = new System.Drawing.Point(3, 3);
+            this.uC_MaterialTypeWarehouse1.Name = "uC_MaterialTypeWarehouse1";
+            this.uC_MaterialTypeWarehouse1.Size = new System.Drawing.Size(757, 1155);
+            this.uC_MaterialTypeWarehouse1.TabIndex = 45;
+            this.uC_MaterialTypeWarehouse1.UseSelectable = true;
+            // 
+            // uC_ProductTypeWarehouse1
+            // 
+            this.uC_ProductTypeWarehouse1.BackColor = System.Drawing.Color.White;
+            this.uC_ProductTypeWarehouse1.Location = new System.Drawing.Point(0, 0);
+            this.uC_ProductTypeWarehouse1.Name = "uC_ProductTypeWarehouse1";
+            this.uC_ProductTypeWarehouse1.Size = new System.Drawing.Size(552, 862);
+            this.uC_ProductTypeWarehouse1.TabIndex = 46;
+            this.uC_ProductTypeWarehouse1.UseSelectable = true;
             // 
             // TypeWarehouseMain
             // 
@@ -110,9 +133,11 @@
             this.Controls.Add(this.metroPanel2);
             this.Controls.Add(this.metroPanel1);
             this.Name = "TypeWarehouseMain";
-            this.Size = new System.Drawing.Size(777, 513);
+            this.Size = new System.Drawing.Size(769, 722);
             this.Load += new System.EventHandler(this.TypeWarehouseMain_Load);
             this.metroPanel1.ResumeLayout(false);
+            this.metroPanel2.ResumeLayout(false);
+            this.metroPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -123,5 +148,7 @@
         private MetroFramework.Controls.MetroTile select_products;
         private MetroFramework.Controls.MetroTile select_materials;
         private MetroFramework.Controls.MetroPanel metroPanel2;
+        private UC_MaterialTypeWarehouse uC_MaterialTypeWarehouse1;
+        private UC_ProductTypeWarehouse uC_ProductTypeWarehouse1;
     }
 }

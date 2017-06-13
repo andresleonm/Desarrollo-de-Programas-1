@@ -53,8 +53,9 @@ namespace WindowsFormsApp1.Controller
             //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("name", shift.Description.ToString()));
-            parameters.Add(new Parameter("time_begin", shift.Begin_date.ToString()));
-            parameters.Add(new Parameter("time_end", shift.End_date.ToString()));
+            parameters.Add(new Parameter("time_begin", shift.Begin_date.ToString("MM/dd/yyyy H:mm")));
+            parameters.Add(new Parameter("time_end", shift.End_date.ToString("MM/dd/yyyy H:mm")));
+            parameters.Add(new Parameter("state", shift.State.ToString()));
 
             GenericResult result = execute_transaction("insert_shift", parameters);
             if (result.success)
@@ -70,8 +71,8 @@ namespace WindowsFormsApp1.Controller
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("id", shift.Id.ToString()));
             parameters.Add(new Parameter("name", shift.Description.ToString()));
-            parameters.Add(new Parameter("time_begin", shift.Begin_date.ToString()));
-            parameters.Add(new Parameter("time_end", shift.End_date.ToString()));
+            parameters.Add(new Parameter("time_begin", shift.Begin_date.ToString("MM/dd/yyyy HH:mm")));
+            parameters.Add(new Parameter("time_end", shift.End_date.ToString("MM/dd/yyyy HH:mm")));
 
             GenericResult result = execute_transaction("update_shift", parameters);
 
@@ -102,8 +103,8 @@ namespace WindowsFormsApp1.Controller
             List<Parameter> parameters = new List<Parameter>();
             //if (warehouse.Max_capacity != "") parameters.Add(new Parameter("max_capacity", warehouse.Max_capacity));
             if (shift.Description != "") parameters.Add(new Parameter("name", shift.Description.ToString()));
-            if (shift.Begin_date != Convert.ToDateTime(-1)) parameters.Add(new Parameter("time_begin", shift.Begin_date.ToString()));
-            if (shift.End_date != Convert.ToDateTime(-1)) parameters.Add(new Parameter("time_end", shift.End_date.ToString()));
+            //if (shift.Begin_date != Convert.ToDateTime("0:00:00")) parameters.Add(new Parameter("time_begin", shift.Begin_date.ToString("MM/dd/yyyy H:mm")));
+            //if (shift.End_date != Convert.ToDateTime("0:00:00")) parameters.Add(new Parameter("time_end", shift.End_date.ToString("MM/dd/yyyy H:mm")));
             
             GenericResult result = execute_function("get_shifts2", parameters);
             List<Models.Shift> shifts = new List<Models.Shift>();

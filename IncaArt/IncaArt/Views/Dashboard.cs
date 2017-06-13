@@ -38,6 +38,7 @@ namespace WindowsFormsApp1.Views
             mainDashboard1.Controls.Find("metroTile4", false)[0].Click += btn_profile_Click;
             mainDashboard1.Controls.Find("metroTile6", false)[0].Click += btn_product_Click;
             mainDashboard1.Controls.Find("metroTile12", false)[0].Click += btn_shift_Click;
+            mainDashboard1.Controls.Find("metroTile13", false)[0].Click += btn_typewarehouses_Click;
             this.sessionUser = sessionUser;
             label_user_role.Text = "(" + sessionUser.Profile.Description + ")";
             label_user_name.Text = sessionUser.Name + " " + sessionUser.Middlename;
@@ -258,6 +259,12 @@ namespace WindowsFormsApp1.Views
         {
             hide_UserControls();
             uC_Simulation1.Visible = true;
+        }
+
+        private void btn_typewarehouses_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            typeWarehouseMain1.Visible = true;
         }
     }
 }
