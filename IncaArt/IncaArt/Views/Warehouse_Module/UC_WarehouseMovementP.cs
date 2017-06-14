@@ -448,7 +448,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
                 worksheet = workbook.ActiveSheet;
 
-                worksheet.Name = "Kardex del " + this.metroDateTime1.Value.ToString("yyyy-MM-dd") + this.metroDateTime2.Value.ToString("yyyy-MM-dd");
+                worksheet.Name = "Kardex del " + this.metroDateTime1.Value.ToString("yyyy-MM-dd") +" al "+this.metroDateTime2.Value.ToString("yyyy-MM-dd");
 
                 int cellRowIndex = 3;
                 int cellColumnIndex = 3;
@@ -472,8 +472,9 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                     {
                         if (productAnt != 0)
                         {
-                            worksheet.Cells[cellRowIndex, cellColumnIndex + 4] = "Saldo Final";
-                            worksheet.Cells[cellRowIndex, cellColumnIndex + 5] = saldo_fin;
+                            cellRowIndex += 1;
+                            worksheet.Cells[cellRowIndex, cellColumnIndex + 3] = "Saldo Final";
+                            worksheet.Cells[cellRowIndex, cellColumnIndex + 4] = saldo_fin;
                             cellRowIndex += 2;
                         }
                         saldo_fin = lines[i].sal_ini;
@@ -486,7 +487,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
                     for (int j = 0; j < headers.Count; j++)
                     {
-                        worksheet.Cells[cellRowIndex, cellColumnIndex] = lines[i].Cells(j);
+                        worksheet.Cells[cellRowIndex, cellColumnIndex+1] = lines[i].Cells(j);
                         cellColumnIndex++;
                     }
                     productAnt = Int32.Parse(lines[i].codeProduct);
@@ -495,6 +496,13 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                     cellRowIndex++;
                 }
 
+                if (productAnt != 0)
+                {
+                    cellRowIndex += 1;
+                    worksheet.Cells[cellRowIndex, cellColumnIndex + 3] = "Saldo Final";
+                    worksheet.Cells[cellRowIndex, cellColumnIndex + 4] = saldo_fin;
+                    cellRowIndex += 2;
+                }
                 //Getting the location and file name of the excel to save from user. 
                 SaveFileDialog saveDialog = new SaveFileDialog();
                 saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
