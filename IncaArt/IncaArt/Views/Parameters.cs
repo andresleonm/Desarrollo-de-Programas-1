@@ -203,6 +203,7 @@ namespace WindowsFormsApp1.Views
 
         private void edit_Click(object sender, EventArgs e)
         {
+            /*
             Models.Parameters param = CreateParameter(1);
             if (param != null)
             {
@@ -220,7 +221,7 @@ namespace WindowsFormsApp1.Views
                 Load_DataGridView();
                 Clean();
                 metroTabControl1.SelectedIndex = 0;
-            }
+            }*/
         }
 
         private void btn_delete_Click(object sender, EventArgs e)

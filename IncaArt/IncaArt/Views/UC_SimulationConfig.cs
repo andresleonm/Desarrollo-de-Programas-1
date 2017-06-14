@@ -24,32 +24,6 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
         }
 
-        private void UC_SimulationConfig_Load(object sender, EventArgs e)
-        {
-            Controller.WorkerController worker_controller = new Controller.WorkerController("dp1admin", "dp1admin");
-            Controller.WorkstationsController workstation_controller = new Controller.WorkstationsController("dp1admin", "dp1admin");
-            Controller.ProductsController product_controller = new Controller.ProductsController("dp1admin", "dp1admin");            
-
-            workers = (List<Worker>)worker_controller.getWokers().data;
-            workstations = (List<Workstation>)workstation_controller.getWorkstations().data;
-            products = (List<Product>)product_controller.getProducts().data;            
-
-            workers_grid.DataSource = workers;
-
-
-            
-            workstations_grid.DataSource = workstations;
-
-            string[] rows = new string[2];
-            foreach (Product p in products)
-            {
-                ((DataGridViewComboBoxColumn)products_grid.Columns[0]).Items.Add(p.Name);
-                rows[1] = "0";
-                products_grid.Rows.Add(rows);
-            }
-          
-        }
-
         private void execute_algorithm(object sender, EventArgs e)
         {
             List<Algorithm.Worker> tabu_workers = new List<Algorithm.Worker>();
@@ -61,7 +35,8 @@ namespace WindowsFormsApp1.Views
 
             foreach (DataGridViewRow row in workstations_grid.Rows)
             {
-                if (int.Parse(row.Cells[1].Value.ToString()) >= 1)
+                if (row.Cells[1].Value == null) row.Cells[1].Value = 1;
+                if (row.Cells[1].Value!=null && int.Parse(row.Cells[1].Value.ToString()) >= 1)
                 {
                     Models.Product aux_prod = products.Where(p => p.Id == ((Workstation)row.DataBoundItem).Product_id).ElementAt(0);
                     string prod_name = "";
@@ -79,7 +54,7 @@ namespace WindowsFormsApp1.Views
                     }
                     
                     Algorithm.Workstation wkst = new Algorithm.Workstation(
-                        new Algorithm.Product(prod_name, 0, aux_prod.Unit_price),
+                        new Algorithm.Product(prod_name, 0, aux_prod.Unit_price,aux_prod.Name),
                         row.Cells[0].Value.ToString(), int.Parse(row.Cells[1].Value.ToString()),
                         ((Workstation)row.DataBoundItem).Break_cost);
                     wkst.id = ((Workstation)row.DataBoundItem).Id;
@@ -143,11 +118,15 @@ namespace WindowsFormsApp1.Views
                     {
                         prod_name = "retablo";
                     }
-                    line.product = new Algorithm.Product(prod_name, 0, aux_prod.Unit_price);
+                    line.product = new Algorithm.Product(prod_name, 0, aux_prod.Unit_price,aux_prod.Name);
                     line.quantity = int.Parse(row.Cells[1].Value.ToString());
                     detail.lines.Add(line);
                 }                
             }
+            //foreach(Algorithm.OrderDetailLine l in detail.lines)
+            //{
+            //    if(l.product.type)
+            //}
             order.order_detail = detail;
             Algorithm.TabuSearch tabu = new Algorithm.TabuSearch(order, tabu_workers, tabu_wkstations);
             solution = tabu.generateSolution();
@@ -176,5 +155,35 @@ namespace WindowsFormsApp1.Views
         {
             this.metroTabControl1.SelectTab(this.metroTabControl1.SelectedIndex -1);
         }
+
+        private void UC_SimulationConfig_VisibleChanged(object sender, EventArgs e)
+        {
+            if(this.Visible == true)
+            {
+                Controller.WorkerController worker_controller = new Controller.WorkerController("dp1admin", "dp1admin");
+                Controller.WorkstationsController workstation_controller = new Controller.WorkstationsController("dp1admin", "dp1admin");
+                Controller.ProductsController product_controller = new Controller.ProductsController("dp1admin", "dp1admin");
+
+                workers = (List<Worker>)worker_controller.getWokers().data;
+                workstations = (List<Workstation>)workstation_controller.getWorkstations().data;
+                products = (List<Product>)product_controller.getProducts().data;
+
+                workers_grid.DataSource = workers;
+
+
+
+                workstations_grid.DataSource = workstations;
+
+                string[] rows = new string[2];
+                products_grid.Rows.Clear();
+                foreach (Product p in products)
+                {                    
+                    ((DataGridViewComboBoxColumn)products_grid.Columns[0]).Items.Add(p.Name);
+                    rows[1] = "0";
+                    products_grid.Rows.Add(rows);
+                }
+            }
+        }
+
     }
 }
