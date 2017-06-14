@@ -21,8 +21,8 @@ namespace WindowsFormsApp1.Models
         private string status;
         private DateTime issue_date;
         private string observation;
-        //private int refund_reason_id;
-        //private string refund_reason_name;
+        private int refund_reason_id;
+        private string refund_reason_name;
         private int document_id;
         private List<SalesRefundLine> lines;
 
@@ -104,17 +104,17 @@ namespace WindowsFormsApp1.Models
             set { observation = value; }
         }
 
-        //public int Refund_reason_id
-        //{
-        //    get { return refund_reason_id; }
-        //    set { refund_reason_id = value; }
-        //}
+        public int Refund_reason_id
+        {
+            get { return refund_reason_id; }
+            set { refund_reason_id = value; }
+        }
 
-        //public string Refund_reason_name
-        //{
-        //    get { return refund_reason_name; }
-        //    set { refund_reason_name = value; }
-        //}
+        public string Refund_reason_name
+        {
+            get { return refund_reason_name; }
+            set { refund_reason_name = value; }
+        }
 
         public int Document_id
         {
