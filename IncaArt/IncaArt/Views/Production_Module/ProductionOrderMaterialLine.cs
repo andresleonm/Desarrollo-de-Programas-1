@@ -207,23 +207,10 @@ namespace WindowsFormsApp1.Views.Production_Module
             }
             else
             {
-                //validate stock
-                int index = ((MaterialWarehouse)comboBox_Warehouse.SelectedItem).Id;
-                MaterialWarehouse warehouse = (MaterialWarehouse)warehouse_controller.getMaterialWarehouse(index).data;
-                int  stock = warehouse.Current_logical_stock;
-
-                if (num > stock)
-                {
-                    flag_quantity = false;
-                    errorProvider.SetError(textbox, "No hay suficiente stock en el almacén");
-                }
-                else
-                {
+                
                     flag_quantity = true;
                     errorProvider.SetError(textbox, null);
-                }
-               
-          
+
             }
         }
 
