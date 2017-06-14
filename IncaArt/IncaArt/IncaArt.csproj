@@ -325,12 +325,6 @@
     <Compile Include="Views\UC_Product.Designer.cs">
       <DependentUpon>UC_Product.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Warehouse_Module\Kardex.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Warehouse_Module\Kardex.Designer.cs">
-      <DependentUpon>Kardex.cs</DependentUpon>
-     </Compile>
     <Compile Include="Views\UC_Ratio.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -650,9 +644,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderWorkLine.resx">
       <DependentUpon>UC_ProductionOrderWorkLine.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Warehouse_Module\Kardex.resx">
-      <DependentUpon>Kardex.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Ratio.resx">
       <DependentUpon>UC_Ratio.cs</DependentUpon>
