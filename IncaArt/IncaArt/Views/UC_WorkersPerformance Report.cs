@@ -42,9 +42,9 @@ namespace WindowsFormsApp1.Views
                     grid_row[0] = w.Name + " " + w.Paternal_name + " " + w.Maternal_name;
                     Models.Workstation workstation=(Models.Workstation)( workstation_controller.getWorkstation(w.ratios[0].workstation_id).data);
                     grid_row[1] =workstation.Name;
-                    grid_row[2] = w.ratios[0].value.ToString();
-                    grid_row[3] = (1 - w.ratios[0].value).ToString();
-                    grid_row[4] = w.ratios[1].value.ToString();
+                    grid_row[2] = w.ratios[0].value.ToString("F4");
+                    grid_row[3] = (1 - w.ratios[0].value).ToString("F4");
+                    grid_row[4] = w.ratios[1].value.ToString("F4");
                     this.datagrid_WorkersPerformance.Rows.Add(grid_row);
                 }
             }
@@ -60,6 +60,66 @@ namespace WindowsFormsApp1.Views
         }
 
         private void btn_export_Click(object sender, EventArgs e)
+        {
+            // Creating a Excel object. 
+            Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+
+            try
+            {
+
+                worksheet = workbook.ActiveSheet;
+
+                worksheet.Name = "Rendimiento de trabajadores";
+
+                int cellRowIndex = 1;
+                int cellColumnIndex = 1;
+
+                //Loop through each row and read value from each column. 
+                for (int i = -1; i < datagrid_WorkersPerformance.Rows.Count; i++)
+                {
+                    for (int j = 0; j < datagrid_WorkersPerformance.Columns.Count; j++)
+                    {
+                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check. 
+                        if (cellRowIndex == 1)
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = datagrid_WorkersPerformance.Columns[j].HeaderText;
+                        }
+                        else
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = datagrid_WorkersPerformance.Rows[i].Cells[j].Value.ToString();
+                        }
+                        cellColumnIndex++;
+                    }
+                    cellColumnIndex = 1;
+                    cellRowIndex++;
+                }
+
+                //Getting the location and file name of the excel to save from user. 
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                saveDialog.FilterIndex = 2;
+
+                if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    workbook.SaveAs(saveDialog.FileName);
+                    MessageBox.Show("Exportado correctamente", "Notificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                excel.Quit();
+                workbook = null;
+                excel = null;
+            }
+        }
+
+        private void btn_Excel_Click(object sender, EventArgs e)
         {
             // Creating a Excel object. 
             Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();

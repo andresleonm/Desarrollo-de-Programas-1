@@ -91,6 +91,7 @@
     <Compile Include="Algorithm\Worker.cs" />
     <Compile Include="Algorithm\Workstation.cs" />
     <Compile Include="Controller\FunctionalityController.cs" />
+    <Compile Include="Controller\KardexController.cs" />
     <Compile Include="Controller\ParametersController.cs" />
     <Compile Include="Controller\MaterialMovementController.cs" />
     <Compile Include="Controller\MaterialMovementDetailController.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Controller\SalesRefundController.cs" />
     <Compile Include="Controller\SalesRefundLineController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
+    <Compile Include="Models\KardexLine.cs" />
     <Compile Include="Models\MaterialMovement.cs" />
     <Compile Include="Models\MaterialMovementLine.cs" />
     <Compile Include="Controller\RatioController.cs" />
@@ -359,6 +361,12 @@
     </Compile>
     <Compile Include="Views\UC_SimulationExecution.Designer.cs">
       <DependentUpon>UC_SimulationExecution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Warehouse_M_Module\TypeWarehouseMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_M_Module\TypeWarehouseMain.Designer.cs">
+      <DependentUpon>TypeWarehouseMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Warehouse_M_Module\UC_MaterialTypeWarehouse.cs">
       <SubType>UserControl</SubType>
@@ -665,6 +673,9 @@
     <EmbeddedResource Include="Views\UC_SimulationExecution.resx">
       <DependentUpon>UC_SimulationExecution.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_M_Module\TypeWarehouseMain.resx">
+      <DependentUpon>TypeWarehouseMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_M_Module\UC_MaterialTypeWarehouse.resx">
       <DependentUpon>UC_MaterialTypeWarehouse.cs</DependentUpon>
     </EmbeddedResource>
@@ -773,32 +784,13 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Algorithm.ProductLineAssignment.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Algorithm.Workstation.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApp1.Models.SalesRefund.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.SalesRefundLine.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.Worker.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.Workstation.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="Microsoft.Office.Core">
-      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>5</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="VBIDE">
-      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>5</VersionMajor>
-      <VersionMinor>3</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Minimize Window_52px.png" />

@@ -71,7 +71,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("customer_doi", sales_refund.Customer_doi));
             parameters.Add(new Parameter("date", sales_refund.Issue_date.ToString("MM/dd/yyyy")));
             parameters.Add(new Parameter("observation", sales_refund.Observation));
-            parameters.Add(new Parameter("document_id", sales_refund.Refund_reason_id.ToString()));
+            parameters.Add(new Parameter("document_id", sales_refund.Document_id.ToString()));
             GenericResult result = execute_transaction("insert_sales_refund", parameters);
             if (result.success)
             {
@@ -94,7 +94,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("customer_doi", sales_refund.Customer_doi));
             parameters.Add(new Parameter("date", sales_refund.Issue_date.ToString("MM/dd/yyyy")));
             parameters.Add(new Parameter("observation", sales_refund.Observation));
-            parameters.Add(new Parameter("document_id", sales_refund.Refund_reason_id.ToString()));
+            parameters.Add(new Parameter("document_id", sales_refund.Document_id.ToString()));
             GenericResult result = execute_transaction("update_sales_refund", parameters);
             if (result.success)
             {

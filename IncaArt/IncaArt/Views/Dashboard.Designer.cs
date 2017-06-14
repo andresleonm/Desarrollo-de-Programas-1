@@ -74,6 +74,7 @@ namespace WindowsFormsApp1.Views
             this.uc_recipe = new WindowsFormsApp1.Views.UC_Recipe();
             this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
             this.uc_workstation = new WindowsFormsApp1.Views.UC_Workstation();
+            this.typeWarehouseMain1 = new WindowsFormsApp1.Views.Warehouse_M_Module.TypeWarehouseMain();
             this.uC_WarehouseMovement1 = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement();
             this.uc_ratio = new WindowsFormsApp1.Views.UC_Ratio();
             this.metroContextMenu1 = new MetroFramework.Controls.MetroContextMenu(this.components);
@@ -614,7 +615,7 @@ namespace WindowsFormsApp1.Views
             this.uc_ratio.UseCustomBackColor = true;
             this.uc_ratio.UseSelectable = true;
             this.uc_ratio.Visible = false;
-            // 
+            //
             // metroContextMenu1
             // 
             this.metroContextMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -628,6 +629,14 @@ namespace WindowsFormsApp1.Views
             this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem1.Text = "Cerrar Sesión";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            //
+            // typeWarehouseMain1
+            // 
+            this.typeWarehouseMain1.Location = new System.Drawing.Point(132, 72);
+            this.typeWarehouseMain1.Name = "typeWarehouseMain1";
+            this.typeWarehouseMain1.Size = new System.Drawing.Size(769, 722);
+            this.typeWarehouseMain1.TabIndex = 47;
+            this.typeWarehouseMain1.UseSelectable = true;
             // 
             // Dashboard
             // 
@@ -635,6 +644,7 @@ namespace WindowsFormsApp1.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(951, 586);
+            this.Controls.Add(this.typeWarehouseMain1);
             this.Controls.Add(this.uC_WarehouseMovement1);
             this.Controls.Add(this.uc_ratio);
             this.Controls.Add(this.uc_ProductionMenu);
@@ -723,6 +733,7 @@ namespace WindowsFormsApp1.Views
         private UC_Simulation uC_Simulation1;
         private System.Windows.Forms.ImageList simulation_imagelist;
         private System.Windows.Forms.ImageList production_imagelist;
+        private Warehouse_M_Module.TypeWarehouseMain typeWarehouseMain1;
         private UC_WarehouseMovement uC_WarehouseMovement1;
         private UC_Ratio uc_ratio;
         private MetroFramework.Controls.MetroContextMenu metroContextMenu1;

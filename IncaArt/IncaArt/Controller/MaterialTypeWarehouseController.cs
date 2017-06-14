@@ -72,7 +72,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("name", warehouse.Name.ToString()));
             parameters.Add(new Parameter("class", warehouse.Wclass.ToString()));
             parameters.Add(new Parameter("state", warehouse.State.ToString()));
-            GenericResult result = execute_transaction("update_materialwarehouse", parameters);
+            GenericResult result = execute_transaction("update_materialtype_warehouse", parameters);
 
             if (result.success)
             {
@@ -89,6 +89,27 @@ namespace WindowsFormsApp1.Controller
             if (result.success)
             {
                 return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+
+        public Result getMaterialTypeWarehouses(Models.MaterialTypeWarehouse typewarehouse)
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            if (typewarehouse.Name != "") parameters.Add(new Parameter("name", typewarehouse.Name));
+            if (typewarehouse.Wclass != "2") parameters.Add(new Parameter("class", typewarehouse.Wclass));
+            // if (product.Unit_id != 0) parameters.Add(new Parameter("unit_id", product.Unit_id.ToString()));
+            GenericResult result = execute_function("get_materialtype_warehouses2", parameters);
+            List<Models.MaterialTypeWarehouse> ps = new List<Models.MaterialTypeWarehouse>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    ps.Add(new Models.MaterialTypeWarehouse(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2), (r.getColumn(3))));
+                }
+                return new Result(ps, true, "");
             }
             return new Result(null, result.success, result.message);
         }

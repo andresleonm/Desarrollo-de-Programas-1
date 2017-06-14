@@ -39,6 +39,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_Pdf = new MetroFramework.Controls.MetroTile();
             this.combo_currency = new MetroFramework.Controls.MetroComboBox();
             this.lbl_igv = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
@@ -50,6 +51,7 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.txt_state = new MetroFramework.Controls.MetroTextBox();
@@ -63,6 +65,14 @@
             this.txt_no_taxes = new MetroFramework.Controls.MetroTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grid_order_lines = new MetroFramework.Controls.MetroGrid();
+            this.dueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.material = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.quant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deliver_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit_measure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.warehouse = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sub_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.combo_supplier = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
@@ -75,14 +85,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.txt_observation = new System.Windows.Forms.RichTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.dueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.material = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.quant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deliver_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit_measure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.warehouse = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sub_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -94,6 +96,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btn_Pdf);
             this.panel2.Controls.Add(this.combo_currency);
             this.panel2.Controls.Add(this.lbl_igv);
             this.panel2.Controls.Add(this.metroLabel6);
@@ -111,11 +114,29 @@
             this.panel2.Size = new System.Drawing.Size(924, 578);
             this.panel2.TabIndex = 22;
             // 
+            // btn_Pdf
+            // 
+            this.btn_Pdf.ActiveControl = null;
+            this.btn_Pdf.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Pdf.Location = new System.Drawing.Point(753, 17);
+            this.btn_Pdf.Name = "btn_Pdf";
+            this.btn_Pdf.Size = new System.Drawing.Size(145, 38);
+            this.btn_Pdf.TabIndex = 74;
+            this.btn_Pdf.Text = "Exportar a Pdf";
+            this.btn_Pdf.TileImage = global::WindowsFormsApp1.Properties.Resources.pdf;
+            this.btn_Pdf.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_Pdf.UseCustomBackColor = true;
+            this.btn_Pdf.UseCustomForeColor = true;
+            this.btn_Pdf.UseSelectable = true;
+            this.btn_Pdf.UseStyleColors = true;
+            this.btn_Pdf.UseTileImage = true;
+            this.btn_Pdf.Click += new System.EventHandler(this.btn_Pdf_Click);
+            // 
             // combo_currency
             // 
             this.combo_currency.FormattingEnabled = true;
             this.combo_currency.ItemHeight = 23;
-            this.combo_currency.Location = new System.Drawing.Point(559, 64);
+            this.combo_currency.Location = new System.Drawing.Point(511, 65);
             this.combo_currency.Name = "combo_currency";
             this.combo_currency.Size = new System.Drawing.Size(207, 29);
             this.combo_currency.TabIndex = 60;
@@ -157,7 +178,7 @@
             this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel2.Location = new System.Drawing.Point(495, 69);
+            this.metroLabel2.Location = new System.Drawing.Point(447, 70);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(58, 15);
             this.metroLabel2.TabIndex = 50;
@@ -167,23 +188,26 @@
             // 
             // txt_external_number
             // 
+            this.txt_external_number.BackColor = System.Drawing.SystemColors.ScrollBar;
             // 
             // 
             // 
             this.txt_external_number.CustomButton.Image = null;
-            this.txt_external_number.CustomButton.Location = new System.Drawing.Point(119, 1);
+            this.txt_external_number.CustomButton.Location = new System.Drawing.Point(179, 1);
             this.txt_external_number.CustomButton.Name = "";
-            this.txt_external_number.CustomButton.Size = new System.Drawing.Size(18, 18);
+            this.txt_external_number.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.txt_external_number.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_external_number.CustomButton.TabIndex = 1;
             this.txt_external_number.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txt_external_number.CustomButton.UseSelectable = true;
             this.txt_external_number.CustomButton.Visible = false;
+            this.txt_external_number.Enabled = false;
             this.txt_external_number.Lines = new string[0];
-            this.txt_external_number.Location = new System.Drawing.Point(183, 64);
+            this.txt_external_number.Location = new System.Drawing.Point(135, 65);
             this.txt_external_number.MaxLength = 32767;
             this.txt_external_number.Name = "txt_external_number";
             this.txt_external_number.PasswordChar = '\0';
+            this.txt_external_number.ReadOnly = true;
             this.txt_external_number.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txt_external_number.SelectedText = "";
             this.txt_external_number.SelectionLength = 0;
@@ -191,6 +215,7 @@
             this.txt_external_number.ShortcutsEnabled = true;
             this.txt_external_number.Size = new System.Drawing.Size(207, 29);
             this.txt_external_number.TabIndex = 49;
+            this.txt_external_number.UseCustomBackColor = true;
             this.txt_external_number.UseSelectable = true;
             this.txt_external_number.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txt_external_number.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -202,7 +227,7 @@
             this.label_external_number.FontSize = MetroFramework.MetroLabelSize.Small;
             this.label_external_number.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.label_external_number.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label_external_number.Location = new System.Drawing.Point(71, 64);
+            this.label_external_number.Location = new System.Drawing.Point(23, 65);
             this.label_external_number.Name = "label_external_number";
             this.label_external_number.Size = new System.Drawing.Size(106, 15);
             this.label_external_number.TabIndex = 48;
@@ -213,7 +238,7 @@
             // date_order_date
             // 
             this.date_order_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date_order_date.Location = new System.Drawing.Point(559, 16);
+            this.date_order_date.Location = new System.Drawing.Point(511, 17);
             this.date_order_date.MinimumSize = new System.Drawing.Size(0, 29);
             this.date_order_date.Name = "date_order_date";
             this.date_order_date.Size = new System.Drawing.Size(207, 29);
@@ -227,9 +252,9 @@
             // 
             this.txt_id.CustomButton.BackColor = System.Drawing.SystemColors.Control;
             this.txt_id.CustomButton.Image = null;
-            this.txt_id.CustomButton.Location = new System.Drawing.Point(119, 1);
+            this.txt_id.CustomButton.Location = new System.Drawing.Point(179, 1);
             this.txt_id.CustomButton.Name = "";
-            this.txt_id.CustomButton.Size = new System.Drawing.Size(18, 18);
+            this.txt_id.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.txt_id.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_id.CustomButton.TabIndex = 1;
             this.txt_id.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -238,7 +263,7 @@
             this.txt_id.CustomButton.Visible = false;
             this.txt_id.Enabled = false;
             this.txt_id.Lines = new string[0];
-            this.txt_id.Location = new System.Drawing.Point(183, 16);
+            this.txt_id.Location = new System.Drawing.Point(135, 17);
             this.txt_id.MaxLength = 32767;
             this.txt_id.Name = "txt_id";
             this.txt_id.PasswordChar = '\0';
@@ -261,7 +286,7 @@
             this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel5.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel5.Location = new System.Drawing.Point(455, 21);
+            this.metroLabel5.Location = new System.Drawing.Point(407, 22);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(98, 15);
             this.metroLabel5.TabIndex = 33;
@@ -289,6 +314,7 @@
             // metroTabPage1
             // 
             this.metroTabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.metroTabPage1.Controls.Add(this.button1);
             this.metroTabPage1.Controls.Add(this.btn_cancel);
             this.metroTabPage1.Controls.Add(this.btn_save);
             this.metroTabPage1.Controls.Add(this.txt_state);
@@ -320,6 +346,19 @@
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkCyan;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(748, 366);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(82, 25);
+            this.button1.TabIndex = 62;
+            this.button1.Text = "Calcular";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_cancel
             // 
@@ -354,9 +393,9 @@
             // 
             this.txt_state.CustomButton.BackColor = System.Drawing.SystemColors.Control;
             this.txt_state.CustomButton.Image = null;
-            this.txt_state.CustomButton.Location = new System.Drawing.Point(55, 1);
+            this.txt_state.CustomButton.Location = new System.Drawing.Point(82, 1);
             this.txt_state.CustomButton.Name = "";
-            this.txt_state.CustomButton.Size = new System.Drawing.Size(18, 18);
+            this.txt_state.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.txt_state.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_state.CustomButton.TabIndex = 1;
             this.txt_state.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -389,9 +428,9 @@
             // 
             // 
             this.txt_supplier_phone.CustomButton.Image = null;
-            this.txt_supplier_phone.CustomButton.Location = new System.Drawing.Point(119, 1);
+            this.txt_supplier_phone.CustomButton.Location = new System.Drawing.Point(179, 1);
             this.txt_supplier_phone.CustomButton.Name = "";
-            this.txt_supplier_phone.CustomButton.Size = new System.Drawing.Size(18, 18);
+            this.txt_supplier_phone.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.txt_supplier_phone.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_supplier_phone.CustomButton.TabIndex = 1;
             this.txt_supplier_phone.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -438,9 +477,9 @@
             // 
             // 
             this.txt_address.CustomButton.Image = null;
-            this.txt_address.CustomButton.Location = new System.Drawing.Point(119, 1);
+            this.txt_address.CustomButton.Location = new System.Drawing.Point(179, 1);
             this.txt_address.CustomButton.Name = "";
-            this.txt_address.CustomButton.Size = new System.Drawing.Size(18, 18);
+            this.txt_address.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.txt_address.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_address.CustomButton.TabIndex = 1;
             this.txt_address.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -472,9 +511,9 @@
             // 
             // 
             this.txt_supplier_doi.CustomButton.Image = null;
-            this.txt_supplier_doi.CustomButton.Location = new System.Drawing.Point(119, 1);
+            this.txt_supplier_doi.CustomButton.Location = new System.Drawing.Point(179, 1);
             this.txt_supplier_doi.CustomButton.Name = "";
-            this.txt_supplier_doi.CustomButton.Size = new System.Drawing.Size(18, 18);
+            this.txt_supplier_doi.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.txt_supplier_doi.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_supplier_doi.CustomButton.TabIndex = 1;
             this.txt_supplier_doi.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -522,9 +561,9 @@
             // 
             this.txt_total.CustomButton.BackColor = System.Drawing.SystemColors.Control;
             this.txt_total.CustomButton.Image = null;
-            this.txt_total.CustomButton.Location = new System.Drawing.Point(55, 1);
+            this.txt_total.CustomButton.Location = new System.Drawing.Point(82, 1);
             this.txt_total.CustomButton.Name = "";
-            this.txt_total.CustomButton.Size = new System.Drawing.Size(18, 18);
+            this.txt_total.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.txt_total.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_total.CustomButton.TabIndex = 1;
             this.txt_total.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -558,9 +597,9 @@
             // 
             this.txt_taxes.CustomButton.BackColor = System.Drawing.SystemColors.Control;
             this.txt_taxes.CustomButton.Image = null;
-            this.txt_taxes.CustomButton.Location = new System.Drawing.Point(55, 1);
+            this.txt_taxes.CustomButton.Location = new System.Drawing.Point(82, 1);
             this.txt_taxes.CustomButton.Name = "";
-            this.txt_taxes.CustomButton.Size = new System.Drawing.Size(18, 18);
+            this.txt_taxes.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.txt_taxes.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_taxes.CustomButton.TabIndex = 1;
             this.txt_taxes.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -594,9 +633,9 @@
             // 
             this.txt_no_taxes.CustomButton.BackColor = System.Drawing.SystemColors.Control;
             this.txt_no_taxes.CustomButton.Image = null;
-            this.txt_no_taxes.CustomButton.Location = new System.Drawing.Point(55, 1);
+            this.txt_no_taxes.CustomButton.Location = new System.Drawing.Point(82, 1);
             this.txt_no_taxes.CustomButton.Name = "";
-            this.txt_no_taxes.CustomButton.Size = new System.Drawing.Size(18, 18);
+            this.txt_no_taxes.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.txt_no_taxes.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txt_no_taxes.CustomButton.TabIndex = 1;
             this.txt_no_taxes.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -705,6 +744,79 @@
             this.grid_order_lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_order_lines_CellValueChanged);
             this.grid_order_lines.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_order_lines_RowLeave);
             // 
+            // dueDate
+            // 
+            this.dueDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.dueDate.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dueDate.HeaderText = "Fecha Programada";
+            this.dueDate.Name = "dueDate";
+            // 
+            // material
+            // 
+            this.material.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.material.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.material.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.material.HeaderText = "Material";
+            this.material.Name = "material";
+            this.material.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.material.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // quant
+            // 
+            this.quant.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.quant.DefaultCellStyle = dataGridViewCellStyle4;
+            this.quant.HeaderText = "Cantidad";
+            this.quant.Name = "quant";
+            // 
+            // deliver_quantity
+            // 
+            this.deliver_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle5.NullValue = "0";
+            this.deliver_quantity.DefaultCellStyle = dataGridViewCellStyle5;
+            this.deliver_quantity.HeaderText = "Cantidad Recibida";
+            this.deliver_quantity.Name = "deliver_quantity";
+            this.deliver_quantity.ReadOnly = true;
+            // 
+            // unit_measure
+            // 
+            this.unit_measure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.unit_measure.HeaderText = "Unidad de Medida";
+            this.unit_measure.Name = "unit_measure";
+            this.unit_measure.ReadOnly = true;
+            // 
+            // warehouse
+            // 
+            this.warehouse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.warehouse.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.warehouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.warehouse.HeaderText = "Almacén";
+            this.warehouse.Name = "warehouse";
+            // 
+            // unitPrice
+            // 
+            this.unitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "C2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle6;
+            this.unitPrice.HeaderText = "Precio Unitario";
+            this.unitPrice.Name = "unitPrice";
+            // 
+            // sub_total
+            // 
+            this.sub_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle7.Format = "C2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.sub_total.DefaultCellStyle = dataGridViewCellStyle7;
+            this.sub_total.HeaderText = "Subtotal";
+            this.sub_total.Name = "sub_total";
+            this.sub_total.ReadOnly = true;
+            // 
             // combo_supplier
             // 
             this.combo_supplier.FormattingEnabled = true;
@@ -753,11 +865,11 @@
             this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel8.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel8.Location = new System.Drawing.Point(487, 325);
+            this.metroLabel8.Location = new System.Drawing.Point(524, 325);
             this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(76, 15);
+            this.metroLabel8.Size = new System.Drawing.Size(39, 15);
             this.metroLabel8.TabIndex = 37;
-            this.metroLabel8.Text = "*Impuestos :";
+            this.metroLabel8.Text = "*IGV :";
             this.metroLabel8.UseCustomBackColor = true;
             this.metroLabel8.UseCustomForeColor = true;
             // 
@@ -768,11 +880,11 @@
             this.metroLabel7.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel7.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel7.Location = new System.Drawing.Point(209, 325);
+            this.metroLabel7.Location = new System.Drawing.Point(245, 325);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(139, 15);
+            this.metroLabel7.Size = new System.Drawing.Size(103, 15);
             this.metroLabel7.TabIndex = 36;
-            this.metroLabel7.Text = "Cantidad sin impuestos :";
+            this.metroLabel7.Text = "Cantidad sin IGV :";
             this.metroLabel7.UseCustomBackColor = true;
             this.metroLabel7.UseCustomForeColor = true;
             // 
@@ -854,86 +966,13 @@
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel1.Location = new System.Drawing.Point(129, 21);
+            this.metroLabel1.Location = new System.Drawing.Point(81, 22);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(48, 15);
             this.metroLabel1.TabIndex = 29;
             this.metroLabel1.Text = "Orden :";
             this.metroLabel1.UseCustomBackColor = true;
             this.metroLabel1.UseCustomForeColor = true;
-            // 
-            // dueDate
-            // 
-            this.dueDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.dueDate.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dueDate.HeaderText = "Fecha Programada";
-            this.dueDate.Name = "dueDate";
-            // 
-            // material
-            // 
-            this.material.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.material.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.material.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.material.HeaderText = "Material";
-            this.material.Name = "material";
-            this.material.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.material.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // quant
-            // 
-            this.quant.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.quant.DefaultCellStyle = dataGridViewCellStyle4;
-            this.quant.HeaderText = "Cantidad";
-            this.quant.Name = "quant";
-            // 
-            // deliver_quantity
-            // 
-            this.deliver_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.NullValue = "0";
-            this.deliver_quantity.DefaultCellStyle = dataGridViewCellStyle5;
-            this.deliver_quantity.HeaderText = "Cantidad Recibida";
-            this.deliver_quantity.Name = "deliver_quantity";
-            this.deliver_quantity.ReadOnly = true;
-            // 
-            // unit_measure
-            // 
-            this.unit_measure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unit_measure.HeaderText = "Unidad de Medida";
-            this.unit_measure.Name = "unit_measure";
-            this.unit_measure.ReadOnly = true;
-            // 
-            // warehouse
-            // 
-            this.warehouse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.warehouse.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.warehouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.warehouse.HeaderText = "Almacén";
-            this.warehouse.Name = "warehouse";
-            // 
-            // unitPrice
-            // 
-            this.unitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Format = "C2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle6;
-            this.unitPrice.HeaderText = "Precio Unitario";
-            this.unitPrice.Name = "unitPrice";
-            // 
-            // sub_total
-            // 
-            this.sub_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.Format = "C2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.sub_total.DefaultCellStyle = dataGridViewCellStyle7;
-            this.sub_total.HeaderText = "Subtotal";
-            this.sub_total.Name = "sub_total";
-            this.sub_total.ReadOnly = true;
             // 
             // UC_PurchaseOrder
             // 
@@ -1004,5 +1043,7 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn warehouse;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn sub_total;
+        private MetroFramework.Controls.MetroTile btn_Pdf;
+        private System.Windows.Forms.Button button1;
     }
 }
