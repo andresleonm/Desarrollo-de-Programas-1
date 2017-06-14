@@ -47,6 +47,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_Excel = new MetroFramework.Controls.MetroTile();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -76,7 +77,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(16, 19);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(773, 94);
+            this.groupBox1.Size = new System.Drawing.Size(773, 79);
             this.groupBox1.TabIndex = 59;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros de búsqueda";
@@ -86,7 +87,7 @@
             this.btn_search.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_search.ForeColor = System.Drawing.Color.White;
             this.btn_search.Highlight = true;
-            this.btn_search.Location = new System.Drawing.Point(660, 63);
+            this.btn_search.Location = new System.Drawing.Point(660, 54);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(75, 23);
             this.btn_search.Style = MetroFramework.MetroColorStyle.White;
@@ -160,12 +161,13 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox2.Controls.Add(this.btn_Excel);
             this.groupBox2.Controls.Add(this.btn_export);
             this.groupBox2.Controls.Add(this.datagrid_WorkersPerformance);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(16, 119);
+            this.groupBox2.Location = new System.Drawing.Point(16, 104);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(773, 348);
+            this.groupBox2.Size = new System.Drawing.Size(773, 363);
             this.groupBox2.TabIndex = 58;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultados de búsqueda";
@@ -185,6 +187,7 @@
             this.btn_export.UseCustomForeColor = true;
             this.btn_export.UseSelectable = true;
             this.btn_export.UseStyleColors = true;
+            this.btn_export.Visible = false;
             this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
             // 
             // datagrid_WorkersPerformance
@@ -223,7 +226,7 @@
             this.datagrid_WorkersPerformance.EnableHeadersVisualStyles = false;
             this.datagrid_WorkersPerformance.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.datagrid_WorkersPerformance.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.datagrid_WorkersPerformance.Location = new System.Drawing.Point(17, 44);
+            this.datagrid_WorkersPerformance.Location = new System.Drawing.Point(17, 52);
             this.datagrid_WorkersPerformance.MultiSelect = false;
             this.datagrid_WorkersPerformance.Name = "datagrid_WorkersPerformance";
             this.datagrid_WorkersPerformance.ReadOnly = true;
@@ -272,6 +275,24 @@
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
+            // btn_Excel
+            // 
+            this.btn_Excel.ActiveControl = null;
+            this.btn_Excel.BackColor = System.Drawing.Color.White;
+            this.btn_Excel.Location = new System.Drawing.Point(611, 12);
+            this.btn_Excel.Name = "btn_Excel";
+            this.btn_Excel.Size = new System.Drawing.Size(152, 38);
+            this.btn_Excel.TabIndex = 75;
+            this.btn_Excel.Text = "Exportar a Excel";
+            this.btn_Excel.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
+            this.btn_Excel.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_Excel.UseCustomBackColor = true;
+            this.btn_Excel.UseCustomForeColor = true;
+            this.btn_Excel.UseSelectable = true;
+            this.btn_Excel.UseStyleColors = true;
+            this.btn_Excel.UseTileImage = true;
+            this.btn_Excel.Click += new System.EventHandler(this.btn_Excel_Click);
+            // 
             // WorkersPerformance_Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,5 +328,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private MetroFramework.Controls.MetroTile btn_Excel;
     }
 }
