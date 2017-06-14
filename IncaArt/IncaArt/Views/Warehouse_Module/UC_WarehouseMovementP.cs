@@ -35,6 +35,11 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             fillTypeMovements();
             clearGrid();
             AdjustColumnOrder();
+            hour.ShowUpDown = true;
+            hour.Format = DateTimePickerFormat.Custom;
+            hour.CustomFormat = "HH:mm tt";
+            hour.Value = DateTime.Now.Date;
+            
         }
         public void fillTypeMovements()
         {
@@ -58,8 +63,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             grid_movement_lines.Columns["unit"].DisplayIndex = 1;
             grid_movement_lines.Columns["warehouse"].DisplayIndex = 2;
             grid_movement_lines.Columns["stock"].DisplayIndex = 3;
-            grid_movement_lines.Columns["quantity"].DisplayIndex = 4;
-            grid_movement_lines.Columns["documentQuantity"].DisplayIndex = 5;
+            grid_movement_lines.Columns["documentQuantity"].DisplayIndex = 4;
+            grid_movement_lines.Columns["quantity"].DisplayIndex = 5;
         }
 
         private void populate_document_combo_box(int clase)
@@ -120,8 +125,11 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             int i = 1;
             foreach(SalesOrderLine line in lines)
             {
-                movs_lines.Add(new Models.ProductMovementLine(line, i,user,password));
-                i++;
+                if (line.Delivery_quantity - line.Quantity != 0)
+                {
+                    movs_lines.Add(new Models.ProductMovementLine(line, i,user,password));
+                    i++;
+                 }
             }
             this.grid_movement_lines.DataSource = movs_lines;
             AdjustColumnOrder();
@@ -138,8 +146,11 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             int i = 1;
             foreach (Models.ProductionOrderProductLine line in lines)
             {
-                movs_lines.Add(new Models.ProductMovementLine(line, i, user, password));
-                i++;
+                if (line.Quantity_warehouse - line.Produced_quantity != 0)
+                {
+                    movs_lines.Add(new Models.ProductMovementLine(line, i, user, password));
+                    i++;
+                }
             }
             this.grid_movement_lines.DataSource = movs_lines;
             AdjustColumnOrder();
@@ -155,8 +166,11 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             int i = 1;
             foreach (Models.SalesRefundLine line in lines)
             {
-                movs_lines.Add(new Models.ProductMovementLine(line, i, user, password));
-                i++;
+                if (line.Refund_quantity - line.Quantity != 0)
+                {
+                    movs_lines.Add(new Models.ProductMovementLine(line, i, user, password));
+                    i++;
+                }
             }
             this.grid_movement_lines.DataSource = movs_lines;
             AdjustColumnOrder();
@@ -166,9 +180,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         {
             Cursor.Current = Cursors.WaitCursor;
             
-            if (!flgBegin)
-            {
-                
+             
                 var doc = (Document)this.documents_list.SelectedItem;
                 var clase = ((ProductMovementType)this.types_movements.SelectedItem).clase;
                 List<int> checkValues = new List<int> { 3,4 };
@@ -190,7 +202,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 }
                 claseAnt = clase;
                 idAnt = doc.id;
-            }
+         
 
             flgBegin = false;
             Cursor.Current = Cursors.Default;
@@ -284,7 +296,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             var doc = (Document)this.documents_list.SelectedItem;
             var tipo = ((ProductMovementType)this.types_movements.SelectedItem);
             movement.Tipo = tipo;
-            movement.Fecha = date.Value.ToString("MM/dd/yyyy");
+            DateTime complete_date = date.Value.Date + hour.Value.TimeOfDay;
+            movement.Fecha = complete_date.ToString("MM/dd/yyyy hh:mm:ss");
             movement.Observacion = textbox_observation.Text.ToString();
             movement.TipoDocumentoOrigen = getTipo(tipo.clase);
             if (doc != null)
@@ -294,7 +307,11 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             if (r.success)
             {
                 MessageBox.Show("Se creo el movimiento Nro - " + r.data.ToString());
-            }else
+                btn_Clean.PerformClick();
+                metroTabControl1.SelectedIndex = 0;
+                buttonSearchV.PerformClick();
+            }
+            else
             {
                 MessageBox.Show(r.message);
             }
@@ -379,6 +396,39 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 grid_movement_lines.DataSource = new List<Models.ProductMovementLine>();
                 return;
             }            
+        }
+
+        private void btn_Clean_Click(object sender, EventArgs e)
+        {
+            Clean();
+        }
+
+        private void Clean()
+        {
+            textbox_observation.Text = "";
+            date.Text = "";
+            hour.Text = "";
+            AdjustColumnOrder();
+            fillTypeMovements();
+            clearGrid();
+            AdjustColumnOrder();
+        }
+
+        private void date_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            metroTabControl1.SelectedIndex = 0;
+            buttonSearchV.PerformClick();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Kardex kardex = new Kardex();
+            kardex.ShowDialog();
         }
     }
 }

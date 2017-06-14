@@ -37,6 +37,10 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             fillTypeMovements();
             clearGrid();
             AdjustColumnOrder();
+            hour.ShowUpDown = true;
+            hour.Format = DateTimePickerFormat.Custom;
+            hour.CustomFormat = "HH:mm tt";
+            hour.Value = DateTime.Now.Date;
         }
         public void fillTypeMovements()
         {
@@ -60,8 +64,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             grid_movement_lines.Columns["unit"].DisplayIndex = 1;
             grid_movement_lines.Columns["warehouse"].DisplayIndex = 2;
             grid_movement_lines.Columns["stock"].DisplayIndex = 3;
-            grid_movement_lines.Columns["quantity"].DisplayIndex = 4;
-            grid_movement_lines.Columns["documentQuantity"].DisplayIndex = 5;
+            grid_movement_lines.Columns["documentQuantity"].DisplayIndex = 4;
+            grid_movement_lines.Columns["quantity"].DisplayIndex = 5;
         }
 
         private void populate_document_combo_box(int clase)
@@ -121,8 +125,11 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             int i = 1;
             foreach (PurchaseOrderLine line in lines)
             {
-                movs_lines.Add(new Models.MaterialMovementLine(line, i, user, password));
-                i++;
+                if (line.Deliver_quantity - line.Quantity != 0)
+                {
+                    movs_lines.Add(new Models.MaterialMovementLine(line, i, user, password));
+                    i++;
+                 }
             }
             this.grid_movement_lines.DataSource = movs_lines;
             AdjustColumnOrder();
@@ -136,8 +143,10 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             int i = 1;
             foreach (ProductionOrderMaterialLine line in lines)
             {
-                movs_lines.Add(new Models.MaterialMovementLine(line, i, user, password));
-                i++;
+                if (line.Quantity_required - line.Quantity_taken_real != 0){
+                    movs_lines.Add(new Models.MaterialMovementLine(line, i, user, password));
+                    i++;
+                }                    
             }
             this.grid_movement_lines.DataSource = movs_lines;
             AdjustColumnOrder();
@@ -147,8 +156,6 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         {
             Cursor.Current = Cursors.WaitCursor;
 
-            if (!flgBegin)
-            {
 
                 var doc = (Document)this.documents_list.SelectedItem;
                 var clase = ((MaterialMovementType)this.types_movements.SelectedItem).clase;
@@ -168,7 +175,6 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 }
                 claseAnt = clase;
                 idAnt = doc.id;
-            }
 
             flgBegin = false;
             Cursor.Current = Cursors.Default;
@@ -259,7 +265,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             var doc = (Document)this.documents_list.SelectedItem;
             var tipo = ((MaterialMovementType)this.types_movements.SelectedItem);
             movement.Tipo = tipo;
-            movement.Fecha = date.Value.ToString("MM/dd/yyyy");
+            DateTime complete_date = date.Value.Date + hour.Value.TimeOfDay;
+            movement.Fecha = complete_date.ToString("MM/dd/yyyy hh:mm:ss");
             movement.Observacion = textbox_observation.Text.ToString();
             movement.TipoDocumentoOrigen = getTipo(tipo.clase);
             if (doc != null)
@@ -269,6 +276,9 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             if (r.success)
             {
                 MessageBox.Show("Se creo el movimiento Nro - " + r.data.ToString());
+                btn_Clean.PerformClick();
+                tab_movement.SelectedIndex = 0;
+                buttonSearchV.PerformClick();
             }
             else
             {
@@ -355,6 +365,28 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 grid_movement_lines.DataSource = new List<Models.MaterialMovementLine>();
                 return;
             }              
+        }
+
+        private void btn_Clean_Click(object sender, EventArgs e)
+        {
+            Clean();
+        }
+
+        private void Clean()
+        {
+            textbox_observation.Text = "";
+            date.Text = "";
+            hour.Text="";
+            AdjustColumnOrder();
+            fillTypeMovements();
+            clearGrid();
+            AdjustColumnOrder();
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            tab_movement.SelectedIndex = 0;
+            buttonSearchV.PerformClick();
         }
     }
 }

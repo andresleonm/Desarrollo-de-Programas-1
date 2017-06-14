@@ -36,6 +36,7 @@ namespace WindowsFormsApp1.Models
             this.TipoDocumentoOrigen = TipoDocumentoOrigen;
             this.NroDocumentoOrigen = NroDocumentoOrigen;
             this.TipoDocumentoFin = TipoDocumentoFin;
+            this.NroDocumentoFin = NroDocumentoFin;
             this.State = State;
             this.detail = detail;
             this.Tipo = pm;

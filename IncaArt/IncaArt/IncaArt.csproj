@@ -88,6 +88,7 @@
     <Compile Include="Algorithm\Worker.cs" />
     <Compile Include="Algorithm\Workstation.cs" />
     <Compile Include="Controller\FunctionalityController.cs" />
+    <Compile Include="Controller\KardexController.cs" />
     <Compile Include="Controller\ParametersController.cs" />
     <Compile Include="Controller\MaterialMovementController.cs" />
     <Compile Include="Controller\MaterialMovementDetailController.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Controller\SalesRefundController.cs" />
     <Compile Include="Controller\SalesRefundLineController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
+    <Compile Include="Models\KardexLine.cs" />
     <Compile Include="Models\MaterialMovement.cs" />
     <Compile Include="Models\MaterialMovementLine.cs" />
     <Compile Include="Controller\RatioController.cs" />
@@ -319,6 +321,12 @@
     </Compile>
     <Compile Include="Views\UC_Product.Designer.cs">
       <DependentUpon>UC_Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\Kardex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_Module\Kardex.Designer.cs">
+      <DependentUpon>Kardex.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Warehouse_Module\MaterialMovementLine.cs">
       <SubType>Form</SubType>
@@ -628,6 +636,9 @@
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderWorkLine.resx">
       <DependentUpon>UC_ProductionOrderWorkLine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_Module\Kardex.resx">
+      <DependentUpon>Kardex.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_Module\MaterialMovementLine.resx">
       <DependentUpon>MaterialMovementLine.cs</DependentUpon>
     </EmbeddedResource>
@@ -750,26 +761,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="Microsoft.Office.Core">
-      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>5</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="VBIDE">
-      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>5</VersionMajor>
-      <VersionMinor>3</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Minimize Window_52px.png" />
