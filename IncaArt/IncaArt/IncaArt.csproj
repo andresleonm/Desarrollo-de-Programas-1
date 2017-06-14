@@ -308,6 +308,12 @@
     <Compile Include="Views\Sales_Module\UC_SalesRefund.Designer.cs">
       <DependentUpon>UC_SalesRefund.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_Currency.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_Currency.Designer.cs">
+      <DependentUpon>UC_Currency.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UC_Material.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -636,6 +642,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesRefund.resx">
       <DependentUpon>UC_SalesRefund.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Currency.resx">
+      <DependentUpon>UC_Currency.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Material.resx">
       <DependentUpon>UC_Material.cs</DependentUpon>
