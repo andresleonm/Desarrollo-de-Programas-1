@@ -43,6 +43,7 @@ namespace WindowsFormsApp1.Views
             this.sessionUser = sessionUser;
             label_user_role.Text = "(" + sessionUser.Profile.Description + ")";
             label_user_name.Text = sessionUser.Name + " " + sessionUser.Middlename;
+            Helpers.CheckPermissionsHelper.Check(this, sessionUser);
         }
 
         private void menuButton_Click(object sender, MouseEventArgs e)
@@ -271,6 +272,11 @@ namespace WindowsFormsApp1.Views
         {
             hide_UserControls();
             uc_ratio.Visible = true;
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
