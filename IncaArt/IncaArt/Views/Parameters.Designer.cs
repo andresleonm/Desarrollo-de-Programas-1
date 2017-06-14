@@ -108,7 +108,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
             this.groupBox2.Location = new System.Drawing.Point(0, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(494, 172);
+            this.groupBox2.Size = new System.Drawing.Size(502, 172);
             this.groupBox2.TabIndex = 43;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtros";
@@ -148,7 +148,7 @@
             this.btn_clean.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_clean.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_clean.ForeColor = System.Drawing.Color.White;
-            this.btn_clean.Location = new System.Drawing.Point(367, 126);
+            this.btn_clean.Location = new System.Drawing.Point(258, 103);
             this.btn_clean.Name = "btn_clean";
             this.btn_clean.Size = new System.Drawing.Size(85, 29);
             this.btn_clean.TabIndex = 53;
@@ -161,7 +161,7 @@
             this.btn_search.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_search.ForeColor = System.Drawing.Color.White;
-            this.btn_search.Location = new System.Drawing.Point(249, 126);
+            this.btn_search.Location = new System.Drawing.Point(140, 103);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(85, 29);
             this.btn_search.TabIndex = 50;
@@ -184,22 +184,23 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.panel4);
-            this.groupBox1.Controls.Add(this.btn_delete);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(0, 192);
+            this.groupBox1.Location = new System.Drawing.Point(0, 183);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(494, 389);
+            this.groupBox1.Size = new System.Drawing.Size(502, 256);
             this.groupBox1.TabIndex = 49;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Parámetros";
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.btn_delete);
             this.panel4.Controls.Add(this.metroGrid1);
-            this.panel4.Location = new System.Drawing.Point(6, 28);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(3, 16);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(488, 246);
+            this.panel4.Size = new System.Drawing.Size(496, 237);
             this.panel4.TabIndex = 0;
             // 
             // metroGrid1
@@ -233,7 +234,6 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.metroGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroGrid1.EnableHeadersVisualStyles = false;
             this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -250,7 +250,7 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(488, 246);
+            this.metroGrid1.Size = new System.Drawing.Size(488, 162);
             this.metroGrid1.TabIndex = 2;
             this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
             this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
@@ -287,7 +287,7 @@
             this.btn_delete.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_delete.ForeColor = System.Drawing.Color.White;
-            this.btn_delete.Location = new System.Drawing.Point(189, 280);
+            this.btn_delete.Location = new System.Drawing.Point(255, 185);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(85, 29);
             this.btn_delete.TabIndex = 51;
@@ -453,7 +453,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.metroTabControl1);
             this.Name = "Parameters";
-            this.Size = new System.Drawing.Size(527, 868);
+            this.Size = new System.Drawing.Size(527, 641);
             this.Load += new System.EventHandler(this.Parameters_Load);
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);

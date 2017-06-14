@@ -19,6 +19,8 @@ namespace WindowsFormsApp1.Views
         bool type_flag;
         bool capacity_flag;
 
+//        Models.User sessionUser;
+
         List<Models.ProductWarehouse> warehouse_list;
         List<Models.Product> products_list;
         List<Models.ProductTypeWarehouse> types_list;
@@ -53,8 +55,37 @@ namespace WindowsFormsApp1.Views
             productController = new Controller.ProductsController(user, password);
             typeController = new Controller.ProductTypeWarehouseController(user, password);
             unitController = new Controller.UnitController(user, password);
-
             Load_Data();
+            Load_DataGridView();
+            metroTabControl1.SelectedIndex = 0;
+        }
+
+        /*
+
+        WAREHOUSE_ID
+        WAREHOUSE_NAME
+        PRODUCT_ID
+        WAREHOUSE_CURRENT_PHYSICAL_STOCK
+        WAREHOUSE_MAX_CAPACITY
+        WAREHOUSE_TYPE_ID
+        STATE
+        WAREHOUSE_CURRENT_LOGICAL_STOCK
+*/
+        private void Load_Data()
+        {
+            result = unitController.getUnits();
+            unit_list = (List<Models.UnitOfMeasure>)result.data;
+
+            resultT = typeController.getProductTypeWarehouses();
+            types_list = (List<Models.ProductTypeWarehouse>)resultT.data;
+
+            resultP= productController.getProducts();
+            products_list = (List<Models.Product>)resultP.data;
+
+            warehouse_list = new List<Models.ProductWarehouse>();
+            result = productWarehouseController.getProductWarehouses();
+            if (!result.success) MessageBox.Show(result.message, "Error al listar almacén", MessageBoxButtons.OK);
+            else warehouse_list = (List<Models.ProductWarehouse>)result.data;
 
             //Cargar los combobox - Products
             combo_data_products = new Dictionary<int, string>();
@@ -88,37 +119,6 @@ namespace WindowsFormsApp1.Views
             combobox_type_s.DisplayMember = "Value";
             combobox_type_s.ValueMember = "Key";
 
-
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
-        }
-
-        /*
-
-        WAREHOUSE_ID
-        WAREHOUSE_NAME
-        PRODUCT_ID
-        WAREHOUSE_CURRENT_PHYSICAL_STOCK
-        WAREHOUSE_MAX_CAPACITY
-        WAREHOUSE_TYPE_ID
-        STATE
-        WAREHOUSE_CURRENT_LOGICAL_STOCK
-*/
-        private void Load_Data()
-        {
-            result = unitController.getUnits();
-            unit_list = (List<Models.UnitOfMeasure>)result.data;
-
-            resultT = typeController.getProductTypeWarehouses();
-            types_list = (List<Models.ProductTypeWarehouse>)resultT.data;
-
-            resultP= productController.getProducts();
-            products_list = (List<Models.Product>)resultP.data;
-
-            warehouse_list = new List<Models.ProductWarehouse>();
-            result = productWarehouseController.getProductWarehouses();
-            if (!result.success) MessageBox.Show(result.message, "Error al listar almacén", MessageBoxButtons.OK);
-            else warehouse_list = (List<Models.ProductWarehouse>)result.data;
         }
 
 
@@ -323,7 +323,13 @@ namespace WindowsFormsApp1.Views
                 textbox_max_capacity.Text = metroGrid1.Rows[e.RowIndex].Cells[7].Value.ToString();
                 Set_Flag_All(true);
                 register.Text = "Editar";
+                //register.Visible = true;
                 metroTabControl1.SelectedIndex = 1;
+                /*
+                if (!sessionUser.Profile.HasFunctionality("EDIT WAREHOUSE"))
+                {
+                    register.Visible = false;
+                }*/
             }
         }
 
@@ -370,7 +376,13 @@ namespace WindowsFormsApp1.Views
         {
             Clean();
             register.Text = "Guardar";
+           // register.Visible = true;
             curWarehouse = null;
+            /*
+            if (!sessionUser.Profile.HasFunctionality("CREATE WAREHOUSE"))
+            {
+                register.Visible = false;
+            }*/
         }
 
         private void btn_clean_Click(object sender, EventArgs e)
@@ -777,5 +789,19 @@ namespace WindowsFormsApp1.Views
         }
 
 
+        //Permissions
+        /*
+        private void UC_Permissions_Load() {
+            if (!sessionUser.Profile.HasFunctionality("DELETE WAREHOUSE"))
+            {
+                delete.Visible = false;
+            }
+        }
+
+        private void metroTabControl1_ParentChanged(object sender, EventArgs e)
+        {
+            sessionUser = ((Dashboard)Parent).sessionUser;
+            UC_Permissions_Load();
+        }*/
     }
 }
