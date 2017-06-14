@@ -43,7 +43,7 @@ namespace WindowsFormsApp1.Views
 
         void cellDateTimePickerVisibleChanged(object sender, EventArgs e)
         {
-            if (cellDateTimePicker.Visible)
+            if (cellDateTimePicker.Visible && grid_order_lines.CurrentRow != null)
             {
                 grid_order_lines.CurrentRow.Cells[0].Value = cellDateTimePicker.Value.ToShortDateString();                
             }
