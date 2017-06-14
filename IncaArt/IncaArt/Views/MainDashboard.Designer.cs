@@ -324,6 +324,7 @@
             this.metroTile16.UseCustomBackColor = true;
             this.metroTile16.UseSelectable = true;
             this.metroTile16.UseTileImage = true;
+            this.metroTile16.Click += new System.EventHandler(this.metroTile16_Click);
             // 
             // MainDashboard
             // 

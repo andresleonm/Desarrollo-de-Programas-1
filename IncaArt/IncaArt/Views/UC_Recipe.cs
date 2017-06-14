@@ -365,6 +365,7 @@ namespace WindowsFormsApp1.Views
         {
             Clean();
             metroGrid2.Rows.Clear();
+            detail_list = new List<Models.RecipeDetail>();
             metroTabControl1.SelectedIndex = 0;
             operation_value = 0;
         }
@@ -380,8 +381,12 @@ namespace WindowsFormsApp1.Views
             int recipe_id = 0;
             if (operation_value!=0)recipe_id= int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
             char antOp = 'N', op = 'C';
-            int index = Int32.Parse(metroGrid1.Rows[cur_row_detail].Cells[1].Value.ToString());
-            if (operation != 0) antOp = detail_list[index].Operation;
+            
+            if (operation != 0)
+            {
+                int index = Int32.Parse(metroGrid1.Rows[cur_row_detail].Cells[1].Value.ToString());
+                antOp = detail_list[index].Operation;
+            }
             if (operation == 1)//UPDATE
             {
                 if (antOp != 'C')

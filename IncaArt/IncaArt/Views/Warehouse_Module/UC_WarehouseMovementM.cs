@@ -13,8 +13,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 {
     public partial class UC_WarehouseMovementM : UserControl
     {
-        string user;
-        string password;
+        string user = "dp1admin";
+        string password = "dp1admin";
         MaterialMovementController pc;
         PurchaseOrderController poc;
         PurchaseOrderLineController pocl;
@@ -24,15 +24,13 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         string idAnt;
         List<int> lineIds= new List<int>();
         
-        public UC_WarehouseMovementM(string user, string password)
+        public UC_WarehouseMovementM()
         {
             InitializeComponent();
-            this.user = user;
-            this.password = password;
-            pc = new MaterialMovementController(user, password);
-            poc = new PurchaseOrderController(user, password);
-            pocl = new PurchaseOrderLineController(user, password);
-            pomlc = new ProductionOrderMaterialLineController(user, password);
+            pc = new MaterialMovementController("", "");
+            poc = new PurchaseOrderController("", "");
+            pocl = new PurchaseOrderLineController("", "");
+            pomlc = new ProductionOrderMaterialLineController("", "");
             AdjustColumnOrder();
             fillTypeMovements();
             clearGrid();

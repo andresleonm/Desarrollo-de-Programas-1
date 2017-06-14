@@ -14,11 +14,9 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
     {
         string user;
         string password;
-        public UC_WarehouseMovement(string user,string password)
+        public UC_WarehouseMovement()
         {
             InitializeComponent();
-            this.user = user;
-            this.password = password;
         }
 
         private void hide_UserControls()

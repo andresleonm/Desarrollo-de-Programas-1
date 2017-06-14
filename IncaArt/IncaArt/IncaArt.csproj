@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
       <Private>True</Private>
@@ -327,6 +330,12 @@
     </Compile>
     <Compile Include="Views\Warehouse_Module\Kardex.Designer.cs">
       <DependentUpon>Kardex.cs</DependentUpon>
+     </Compile>
+    <Compile Include="Views\UC_Ratio.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_Ratio.designer.cs">
+      <DependentUpon>UC_Ratio.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Warehouse_Module\MaterialMovementLine.cs">
       <SubType>Form</SubType>
@@ -561,6 +570,12 @@
     <Compile Include="Views\Purchase_Module\PurchaseOrderLine.Designer.cs">
       <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_WorkersPerformance Report.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_WorkersPerformance Report.Designer.cs">
+      <DependentUpon>UC_WorkersPerformance Report.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -638,6 +653,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_Module\Kardex.resx">
       <DependentUpon>Kardex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Ratio.resx">
+      <DependentUpon>UC_Ratio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_Module\MaterialMovementLine.resx">
       <DependentUpon>MaterialMovementLine.cs</DependentUpon>
@@ -753,9 +771,13 @@
     <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrderLine.resx">
       <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_WorkersPerformance Report.resx">
+      <DependentUpon>UC_WorkersPerformance Report.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Algorithm.ProductLineAssignment.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Algorithm.Workstation.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApp1.Models.SalesRefundLine.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.Worker.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.Workstation.datasource" />
   </ItemGroup>
@@ -767,6 +789,7 @@
     <None Include="Resources\Close Window_52px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\pdf.png" />
     <None Include="Resources\Microsoft Excel_40px.png" />
     <None Include="Resources\Maximize Window_64px.png" />
     <None Include="Resources\Search_16.png" />
