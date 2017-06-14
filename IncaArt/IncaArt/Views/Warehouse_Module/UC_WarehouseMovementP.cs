@@ -424,11 +424,18 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         }
 
 
+        private int make_move(int sal_ini, string sign, int quantity)
+        {
+            if (sign == "+")
+                return sal_ini + quantity;
+            return sal_ini - quantity;
+        }
         private void btn_Kardex_Click(object sender, EventArgs e)
         {
             KardexController kc = new KardexController("dp1admin", "dp1admin");
             var lines = (List<KardexLine>)kc.getMovements(this.metroDateTime1.Value.ToString("yyyy-MM-dd"),
                                 this.metroDateTime2.Value.ToString("yyyy-MM-dd")).data;
+
 
 
             // Creating a Excel object. 
@@ -443,38 +450,48 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
                 worksheet.Name = "Kardex del " + this.metroDateTime1.Value.ToString("yyyy-MM-dd") + this.metroDateTime2.Value.ToString("yyyy-MM-dd");
 
-                int cellRowIndex = 1;
-                int cellColumnIndex = 1;
+                int cellRowIndex = 3;
+                int cellColumnIndex = 3;
+                int productAnt = 0;
 
                 List<string> headers = new List<string>();
 
-                headers.Add("Codigo");
-                headers.Add("Producto");
+
+
                 headers.Add("Almacen");
                 headers.Add("Movimiento");
-                headers.Add("Signo");
                 headers.Add("Cantidad");
                 headers.Add("Fecha");
-                headers.Add("Saldo Inicial");
 
 
+                int saldo_fin = 0;
                 //Loop through each row and read value from each column. 
-                for (int i = -1; i < lines.Count; i++)
+                for (int i = 0; i < lines.Count; i++)
                 {
+                    if (Int32.Parse(lines[i].codeProduct) != productAnt)
+                    {
+                        if (productAnt != 0)
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex + 4] = "Saldo Final";
+                            worksheet.Cells[cellRowIndex, cellColumnIndex + 5] = saldo_fin;
+                            cellRowIndex += 2;
+                        }
+                        saldo_fin = lines[i].sal_ini;
+                        worksheet.Cells[cellRowIndex, cellColumnIndex] = "Producto";
+                        worksheet.Cells[cellRowIndex, cellColumnIndex + 1] = lines[i].product;
+                        worksheet.Cells[cellRowIndex, cellColumnIndex + 3] = "Saldo Inicial";
+                        worksheet.Cells[cellRowIndex, cellColumnIndex + 4] = lines[i].sal_ini;
+                        cellRowIndex += 1;
+                    }
+
                     for (int j = 0; j < headers.Count; j++)
                     {
-                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check. 
-                        if (cellRowIndex == 1)
-                        {
-                            worksheet.Cells[cellRowIndex, cellColumnIndex] = headers[j];
-                        }
-                        else
-                        {
-                            worksheet.Cells[cellRowIndex, cellColumnIndex] = lines[i].Cells(j);
-                        }
+                        worksheet.Cells[cellRowIndex, cellColumnIndex] = lines[i].Cells(j);
                         cellColumnIndex++;
                     }
-                    cellColumnIndex = 1;
+                    productAnt = Int32.Parse(lines[i].codeProduct);
+                    saldo_fin = make_move(saldo_fin, lines[i].sign, lines[i].quantity);
+                    cellColumnIndex = 3;
                     cellRowIndex++;
                 }
 
@@ -486,6 +503,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     workbook.SaveAs(saveDialog.FileName);
+                    workbook.Close();
                     MessageBox.Show("Exportado correctamente", "Notificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -499,6 +517,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 workbook = null;
                 excel = null;
             }
+
         }
     }
 }
