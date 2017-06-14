@@ -266,5 +266,10 @@ namespace WindowsFormsApp1.Views
             hide_UserControls();
             uc_ratio.Visible = true;
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
