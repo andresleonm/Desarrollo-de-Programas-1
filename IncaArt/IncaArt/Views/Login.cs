@@ -49,7 +49,7 @@ namespace WindowsFormsApp1
                     this.Cursor = Cursors.WaitCursor;
                     DataService.DatabaseService.updateConnection(user.Nickname, user.Password);
                     Dashboard main_form = new Dashboard(user);
-                    main_form.FormClosing += this.DashboarClosingHandler;
+                    main_form.FormClosing += this.DashboardClosingHandler;
                     this.Cursor = Cursors.Arrow;
                     MessageBox.Show("Bienvenido " + user.Name);
                     main_form.Show();
@@ -74,7 +74,7 @@ namespace WindowsFormsApp1
             forgot.ShowDialog();
         }
 
-        private void DashboarClosingHandler(object o, EventArgs e)
+        private void DashboardClosingHandler(object o, EventArgs e)
         {
             this.Visible = true;
         }

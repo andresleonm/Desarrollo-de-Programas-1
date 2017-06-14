@@ -42,6 +42,7 @@ namespace WindowsFormsApp1.Views
             this.sessionUser = sessionUser;
             label_user_role.Text = "(" + sessionUser.Profile.Description + ")";
             label_user_name.Text = sessionUser.Name + " " + sessionUser.Middlename;
+            Helpers.CheckPermissionsHelper.Check(this, sessionUser);
         }
 
         private void menuButton_Click(object sender, MouseEventArgs e)

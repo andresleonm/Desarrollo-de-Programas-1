@@ -11,7 +11,7 @@ using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class MainDashboard : UserControl
+    public partial class MainDashboard : ICheckPermissions
     {
         public MainDashboard()
         {
@@ -53,6 +53,11 @@ namespace WindowsFormsApp1.Views
         {
             UC_Ratio uc_ratio = new UC_Ratio();
             uc_ratio.Visible = true;
+        }
+
+        public override void CheckPermissions(User u)
+        {
+            Helpers.CheckPermissionsHelper.Check(this, u);
         }
     }
 }

@@ -214,6 +214,13 @@
     <Compile Include="Views\ForgotPassword.Designer.cs">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Helpers\CheckPermissionsHelper.cs" />
+    <Compile Include="Views\ICheckPermissions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ICheckPermissions.Designer.cs">
+      <DependentUpon>ICheckPermissions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
