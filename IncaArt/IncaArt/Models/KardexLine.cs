@@ -34,14 +34,11 @@ namespace WindowsFormsApp1.Models
 
         public string  Cells(int j)
         {
-            if (j == 0) return codeProduct;
-            if (j == 1) return product;
-            if (j == 2) return warehouse;
-            if (j == 3) return movement_type;
-            if (j == 4) return sign;
-            if (j == 5) return quantity.ToString();
-            if (j == 6) return fecha;
-            if (j == 7) return sal_ini.ToString();
+            
+            if (j == 0) return warehouse;
+            if (j == 1) return movement_type;
+            if (j == 2) return quantity.ToString();
+            if (j == 3) return fecha.ToString();
             return "";
         }
     }
