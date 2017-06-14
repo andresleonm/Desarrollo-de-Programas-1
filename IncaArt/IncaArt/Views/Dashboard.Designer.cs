@@ -445,6 +445,8 @@ namespace WindowsFormsApp1.Views
             // 
             // parameters1
             // 
+            this.parameters1.BackColor = System.Drawing.Color.White;
+            this.parameters1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.parameters1.Location = new System.Drawing.Point(132, 72);
             this.parameters1.Name = "parameters1";
             this.parameters1.Size = new System.Drawing.Size(819, 514);
@@ -454,6 +456,8 @@ namespace WindowsFormsApp1.Views
             // 
             // warehouse1
             // 
+            this.warehouse1.BackColor = System.Drawing.Color.White;
+            this.warehouse1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.warehouse1.AutoScroll = true;
             this.warehouse1.AutoSize = true;
             this.warehouse1.BackColor = System.Drawing.Color.White;
@@ -469,6 +473,8 @@ namespace WindowsFormsApp1.Views
             // 
             // supplier1
             // 
+            this.supplier1.BackColor = System.Drawing.Color.White;
+            this.supplier1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.supplier1.Location = new System.Drawing.Point(132, 72);
             this.supplier1.Name = "supplier1";
             this.supplier1.Size = new System.Drawing.Size(1064, 652);
@@ -484,6 +490,8 @@ namespace WindowsFormsApp1.Views
             // 
             // client1
             // 
+            this.client1.BackColor = System.Drawing.Color.White;
+            this.client1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.client1.AutoSize = true;
             this.client1.Location = new System.Drawing.Point(132, 72);
             this.client1.Name = "client1";
