@@ -58,8 +58,6 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             result = typewarehouseController.getProductTypeWarehouses();
             if (result.data == null) MessageBox.Show(result.message, "Error al listar tipos de almacén", MessageBoxButtons.OK);
             else typewarehouse_list = (List<Models.ProductTypeWarehouse>)result.data;
-
-
         }
 
         private void Load_DataGridView()
@@ -79,6 +77,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
         private void Clean()
         {
             ClearTextBoxes(this);
+            combobox_class.SelectedIndex = 2;
         }
 
         private void ClearTextBoxes(Control control)
@@ -139,18 +138,15 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             Models.ProductTypeWarehouse typeWarehouse = new Models.ProductTypeWarehouse();
             typeWarehouse.Name = textbox_name_s.Text;
             typeWarehouse.Wclass = ((KeyValuePair<int, string>)combobox_class_s.SelectedItem).Key.ToString();
-            if (!String.IsNullOrWhiteSpace(typeWarehouse.Name))
+            result = typewarehouseController.getProductTypeWarehouses(typeWarehouse);
+            if (!result.success)
             {
-                result = typewarehouseController.getProductTypeWarehouses(typeWarehouse);
-                if (result.data == null)
-                {
-                    MessageBox.Show(result.message, "Error al buscar parámetro con filtros", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    typewarehouse_list = (List<Models.ProductTypeWarehouse>)result.data;
-                    Load_DataGridView();
-                }
+                MessageBox.Show(result.message, "Error al buscar almacén con filtros", MessageBoxButtons.OK);
+            }
+            else
+            {
+                typewarehouse_list = (List<Models.ProductTypeWarehouse>)result.data;
+                Load_DataGridView();
             }
         }
 
@@ -170,14 +166,19 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             if (curTypeWarehouse != null)
             {
                 type = CreateTypeWarehouse(1);
+                if (type != null) { 
                 result = typewarehouseController.updateTypeWarehouse(type);
                 message = "Tipo Almacén editado correctamente";
+                }
             }
             else
             {
                 type = CreateTypeWarehouse(0);
-                result = typewarehouseController.insertTypeWarehouse(type);
-                message = "Tipo Almacén agregado correctamente";
+                if (type != null)
+                {
+                    result = typewarehouseController.insertTypeWarehouse(type);
+                    message = "Tipo Almacén agregado correctamente";
+                }
             }
 
             if (result.success)
@@ -197,28 +198,36 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
 
         private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex != -1) { 
             if (metroGrid1.Rows[e.RowIndex].Cells[0].Value != null)
             {
                 cur_row = e.RowIndex;
                 btn_delete.Enabled = true;
             }
         }
+        }
 
         private void metroGrid1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            cur_row = e.RowIndex;
-            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
-            {
-                int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
-                curTypeWarehouse = typewarehouse_list[index];
-                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                //---------------------------
-                string classname = metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                combobox_class.SelectedIndex = combo_class.FirstOrDefault(x => x.Value == classname).Key;
-                metroTabControl1.SelectedIndex = 1;
-                register.Text = "Editar";
-                Set_Flag_All(true);
-            }
+
+            if (e.RowIndex != -1) {
+                
+                    cur_row = e.RowIndex;
+
+
+                    if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
+                    {
+                        int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+                        curTypeWarehouse = typewarehouse_list[index];
+                        textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        //---------------------------
+                        string classname = metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        combobox_class.SelectedIndex = combo_class.FirstOrDefault(x => x.Value == classname).Key + 1;
+                        metroTabControl1.SelectedIndex = 1;
+                        register.Text = "Editar";
+                        Set_Flag_All(true);
+                    }
+           }
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -256,7 +265,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
 
         private bool Validate_Data()
         {
-            if (name_flag && name_flag && class_flag)
+            if (name_flag && class_flag)
             {
                 return true;
             }
@@ -276,7 +285,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
                 case "textbox_name":
                     name_flag = value;
                     break;
-                case "textbox_class":
+                case "combobox_class":
                     class_flag = value;
                     break;
             }

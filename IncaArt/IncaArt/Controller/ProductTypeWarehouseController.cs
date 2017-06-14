@@ -54,7 +54,7 @@ namespace WindowsFormsApp1.Controller
             //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
             if (typewarehouse.Name != "") parameters.Add(new Parameter("name", typewarehouse.Name));
-            if (typewarehouse.Wclass != "") parameters.Add(new Parameter("class", typewarehouse.Wclass));
+            if (typewarehouse.Wclass != "2") parameters.Add(new Parameter("class", typewarehouse.Wclass));
             // if (product.Unit_id != 0) parameters.Add(new Parameter("unit_id", product.Unit_id.ToString()));
             GenericResult result = execute_function("get_producttype_warehouses2", parameters);
             List<Models.ProductTypeWarehouse> ps = new List<Models.ProductTypeWarehouse>();

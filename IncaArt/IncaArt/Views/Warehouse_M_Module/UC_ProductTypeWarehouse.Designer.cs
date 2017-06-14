@@ -45,11 +45,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,6 +53,11 @@
             this.combobox_class = new MetroFramework.Controls.MetroComboBox();
             this.textbox_name = new MetroFramework.Controls.MetroTextBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -75,7 +75,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(503, 713);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 1;
@@ -97,6 +97,7 @@
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
+            this.metroTabPage1.Enter += new System.EventHandler(this.tabIndex_Enter);
             // 
             // btn_delete
             // 
@@ -227,7 +228,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(0, 192);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(494, 370);
+            this.groupBox1.Size = new System.Drawing.Size(499, 370);
             this.groupBox1.TabIndex = 49;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Almacenes";
@@ -237,7 +238,7 @@
             this.panel4.Controls.Add(this.metroGrid1);
             this.panel4.Location = new System.Drawing.Point(6, 28);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(488, 246);
+            this.panel4.Size = new System.Drawing.Size(472, 246);
             this.panel4.TabIndex = 0;
             // 
             // metroGrid1
@@ -287,37 +288,10 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(488, 246);
+            this.metroGrid1.Size = new System.Drawing.Size(472, 246);
             this.metroGrid1.TabIndex = 2;
             this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
             this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "index";
-            this.Column5.Name = "Column5";
-            this.Column5.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Nombre";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Clase";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Estado";
-            this.Column4.Name = "Column4";
             // 
             // metroTabPage2
             // 
@@ -386,7 +360,7 @@
             this.register.Name = "register";
             this.register.Size = new System.Drawing.Size(98, 27);
             this.register.TabIndex = 71;
-            this.register.Text = "Registro";
+            this.register.Text = "Editar";
             this.register.UseCustomBackColor = true;
             this.register.UseCustomForeColor = true;
             this.register.UseSelectable = true;
@@ -402,7 +376,7 @@
             "Observación"});
             this.combobox_class.Location = new System.Drawing.Point(191, 77);
             this.combobox_class.Name = "combobox_class";
-            this.combobox_class.Size = new System.Drawing.Size(230, 29);
+            this.combobox_class.Size = new System.Drawing.Size(261, 29);
             this.combobox_class.TabIndex = 24;
             this.combobox_class.UseSelectable = true;
             this.combobox_class.Validating += new System.ComponentModel.CancelEventHandler(this.combobox_Validating);
@@ -413,7 +387,7 @@
             // 
             // 
             this.textbox_name.CustomButton.Image = null;
-            this.textbox_name.CustomButton.Location = new System.Drawing.Point(204, 1);
+            this.textbox_name.CustomButton.Location = new System.Drawing.Point(235, 1);
             this.textbox_name.CustomButton.Name = "";
             this.textbox_name.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.textbox_name.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -431,7 +405,7 @@
             this.textbox_name.SelectionLength = 0;
             this.textbox_name.SelectionStart = 0;
             this.textbox_name.ShortcutsEnabled = true;
-            this.textbox_name.Size = new System.Drawing.Size(230, 27);
+            this.textbox_name.Size = new System.Drawing.Size(261, 27);
             this.textbox_name.TabIndex = 28;
             this.textbox_name.UseSelectable = true;
             this.textbox_name.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -441,6 +415,34 @@
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "index";
+            this.Column5.Name = "Column5";
+            this.Column5.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Nombre";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 230;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Clase";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Estado";
+            this.Column4.Name = "Column4";
             // 
             // UC_ProductTypeWarehouse
             // 
@@ -485,13 +487,13 @@
         private MetroFramework.Controls.MetroTextBox textbox_name;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton register;
+        private System.Windows.Forms.Label label3;
+        private MetroFramework.Controls.MetroTextBox textbox_name_s;
+        private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.Label label3;
-        private MetroFramework.Controls.MetroTextBox textbox_name_s;
-        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
