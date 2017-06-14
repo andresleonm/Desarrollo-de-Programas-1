@@ -273,7 +273,7 @@
             this.panel8.Controls.Add(this.button1);
             this.panel8.Controls.Add(this.btn_execution_wkstation);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(0, 370);
+            this.panel8.Location = new System.Drawing.Point(0, 351);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(623, 27);
             this.panel8.TabIndex = 7;
@@ -384,7 +384,8 @@
             // workstation_quantity
             // 
             this.workstation_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle8.NullValue = "0";
+            dataGridViewCellStyle8.Format = "N0";
+            dataGridViewCellStyle8.NullValue = "1";
             this.workstation_quantity.DefaultCellStyle = dataGridViewCellStyle8;
             this.workstation_quantity.HeaderText = "Cantidad";
             this.workstation_quantity.Name = "workstation_quantity";
@@ -455,9 +456,9 @@
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.metroLabel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 397);
+            this.panel2.Location = new System.Drawing.Point(0, 378);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(623, 23);
+            this.panel2.Size = new System.Drawing.Size(623, 42);
             this.panel2.TabIndex = 3;
             // 
             // metroLabel1
@@ -469,10 +470,10 @@
             this.metroLabel1.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel1.Location = new System.Drawing.Point(3, 3);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(483, 15);
+            this.metroLabel1.Size = new System.Drawing.Size(486, 30);
             this.metroLabel1.TabIndex = 40;
             this.metroLabel1.Text = "* Indique la cantidad de cada puesto de trabajo que será considerada para la simu" +
-    "lación";
+    "lación.\n Debe haber por lo menos un puesto de trabajo de cada uno.";
             this.metroLabel1.UseCustomBackColor = true;
             this.metroLabel1.UseCustomForeColor = true;
             // 
@@ -647,7 +648,7 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 2;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(631, 462);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 53;
@@ -660,7 +661,7 @@
             this.Controls.Add(this.metroTabControl1);
             this.Name = "UC_SimulationConfig";
             this.Size = new System.Drawing.Size(631, 462);
-            this.Load += new System.EventHandler(this.UC_SimulationConfig_Load);
+            this.VisibleChanged += new System.EventHandler(this.UC_SimulationConfig_VisibleChanged);
             this.tabPage2.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -717,6 +718,8 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn product;
         private System.Windows.Forms.DataGridViewTextBoxColumn product_quantity;
         private System.Windows.Forms.BindingSource workstationBindingSource;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn workstation;
         private System.Windows.Forms.DataGridViewTextBoxColumn workstation_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
@@ -727,7 +730,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn breakcostDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn currencyidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
     }
 }
