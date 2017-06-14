@@ -72,10 +72,6 @@ namespace WindowsFormsApp1.Views
             combobox_priority_s.DisplayMember = "Value";
             combobox_priority_s.ValueMember = "Key";
 
-            //Unidades
-
-
-            //Unidades
             Load_Data();    
             Load_DataGridView();
             metroTabControl1.SelectedIndex = 0;

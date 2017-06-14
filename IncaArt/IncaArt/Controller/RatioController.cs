@@ -67,7 +67,7 @@ namespace WindowsFormsApp1.Controller
                 return new Result(ratios, true, "");
             }
             return new Result(null, result.success, result.message);
-        }
+        }             
 
     }
 }
