@@ -42,9 +42,9 @@ namespace WindowsFormsApp1.Views
                     grid_row[0] = w.Name + " " + w.Paternal_name + " " + w.Maternal_name;
                     Models.Workstation workstation=(Models.Workstation)( workstation_controller.getWorkstation(w.ratios[0].workstation_id).data);
                     grid_row[1] =workstation.Name;
-                    grid_row[2] = w.ratios[0].value.ToString();
-                    grid_row[3] = (1 - w.ratios[0].value).ToString();
-                    grid_row[4] = w.ratios[1].value.ToString();
+                    grid_row[2] = w.ratios[0].value.ToString("F4");
+                    grid_row[3] = (1 - w.ratios[0].value).ToString("F4");
+                    grid_row[4] = w.ratios[1].value.ToString("F4");
                     this.datagrid_WorkersPerformance.Rows.Add(grid_row);
                 }
             }
