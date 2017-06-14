@@ -75,6 +75,8 @@ namespace WindowsFormsApp1.Views
             this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
             this.uc_workstation = new WindowsFormsApp1.Views.UC_Workstation();
             this.typeWarehouseMain1 = new WindowsFormsApp1.Views.Warehouse_M_Module.TypeWarehouseMain();
+            this.uC_WarehouseMovement1 = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement();
+            this.uc_ratio = new WindowsFormsApp1.Views.UC_Ratio();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -586,6 +588,23 @@ namespace WindowsFormsApp1.Views
             this.uc_workstation.TabIndex = 43;
             this.uc_workstation.UseSelectable = true;
             this.uc_workstation.Visible = false;
+            //
+            // uC_WarehouseMovement1
+            // 
+            this.uC_WarehouseMovement1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_WarehouseMovement1.Location = new System.Drawing.Point(132, 72);
+            this.uC_WarehouseMovement1.Name = "uC_WarehouseMovement1";
+            this.uC_WarehouseMovement1.Size = new System.Drawing.Size(819, 514);
+            this.uC_WarehouseMovement1.TabIndex = 47;
+            //
+            // uc_ratio
+            // 
+            this.uc_ratio.Location = new System.Drawing.Point(139, 79);
+            this.uc_ratio.Name = "uc_ratio";
+            this.uc_ratio.Size = new System.Drawing.Size(826, 598);
+            this.uc_ratio.TabIndex = 47;
+            this.uc_ratio.UseSelectable = true;
+            this.uc_ratio.Visible = false;
             // 
             // typeWarehouseMain1
             // 
@@ -602,6 +621,8 @@ namespace WindowsFormsApp1.Views
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(951, 586);
             this.Controls.Add(this.typeWarehouseMain1);
+            this.Controls.Add(this.uC_WarehouseMovement1);
+            this.Controls.Add(this.uc_ratio);
             this.Controls.Add(this.uc_ProductionMenu);
             this.Controls.Add(this.uC_Simulation1);
             this.Controls.Add(this.uC_SalesMain1);
@@ -673,7 +694,6 @@ namespace WindowsFormsApp1.Views
         private UC_Profile profile;
         private UC_Shift shift;
         private UC_SalesMain uC_SalesMain1;
-        private UC_WarehouseMovement uc_warehousemovement;
         private UC_Material2 material;
         private UC_Material uc_material;
         private UC_Product uc_product;
@@ -689,5 +709,7 @@ namespace WindowsFormsApp1.Views
         private System.Windows.Forms.ImageList simulation_imagelist;
         private System.Windows.Forms.ImageList production_imagelist;
         private Warehouse_M_Module.TypeWarehouseMain typeWarehouseMain1;
+        private UC_WarehouseMovement uC_WarehouseMovement1;
+        private UC_Ratio uc_ratio;
     }
 }

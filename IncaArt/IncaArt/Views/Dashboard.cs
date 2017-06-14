@@ -39,6 +39,7 @@ namespace WindowsFormsApp1.Views
             mainDashboard1.Controls.Find("metroTile6", false)[0].Click += btn_product_Click;
             mainDashboard1.Controls.Find("metroTile12", false)[0].Click += btn_shift_Click;
             mainDashboard1.Controls.Find("metroTile13", false)[0].Click += btn_typewarehouses_Click;
+            mainDashboard1.Controls.Find("metroTile16", false)[0].Click += btn_ratio_Click;
             this.sessionUser = sessionUser;
             label_user_role.Text = "(" + sessionUser.Profile.Description + ")";
             label_user_name.Text = sessionUser.Name + " " + sessionUser.Middlename;
@@ -233,8 +234,8 @@ namespace WindowsFormsApp1.Views
 
         private void btn_warehouse_Click_2(object sender, EventArgs e)
         {
-            hide_UserControls();            
-            uc_warehousemovement.Visible = true;
+            hide_UserControls();
+            uC_WarehouseMovement1.Visible = true;
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
@@ -265,6 +266,11 @@ namespace WindowsFormsApp1.Views
         {
             hide_UserControls();
             typeWarehouseMain1.Visible = true;
+        }
+        private void btn_ratio_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            uc_ratio.Visible = true;
         }
     }
 }

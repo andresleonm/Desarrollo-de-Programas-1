@@ -25,6 +25,7 @@ namespace WindowsFormsApp1.Views
         Controller.MaterialsController materialController;
         Controller.UnitController unitController;
         Controller.Result result;
+        Models.User sessionUser;
         public UC_Material()
         {
             InitializeComponent();
@@ -663,6 +664,29 @@ namespace WindowsFormsApp1.Views
             ws.Range["C2"].Value2 = "Stock minimo";
             ws.Range["D2"].Value2 = "Stock maximo";
             ws.Columns.AutoFit();
+        }
+
+        private void UC_Material_ParentChanged(object sender, EventArgs e)
+        {
+            sessionUser = ((Dashboard)Parent).sessionUser;
+
+        }
+
+        private void Permissions()
+        {
+            if (!sessionUser.Profile.HasFunctionality("CREATE MATERIAL"))
+            {
+
+            }
+            if (!sessionUser.Profile.HasFunctionality("EDIT MATERIAL"))
+            {
+
+            }
+            if (!sessionUser.Profile.HasFunctionality("DELETE MATERIAL"))
+            {
+                btn_delete.Visible = false;
+            }
+
         }
     }
 }

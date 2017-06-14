@@ -365,6 +365,7 @@ namespace WindowsFormsApp1.Views
         {
             Clean();
             metroGrid2.Rows.Clear();
+            detail_list = new List<Models.RecipeDetail>();
             metroTabControl1.SelectedIndex = 0;
             operation_value = 0;
         }

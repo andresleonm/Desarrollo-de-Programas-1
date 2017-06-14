@@ -34,6 +34,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.consulta = new MetroFramework.Controls.MetroTabPage();
+            this.btn_template = new MetroFramework.Controls.MetroButton();
+            this.btn_import = new MetroFramework.Controls.MetroButton();
             this.btn_delete = new MetroFramework.Controls.MetroButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
@@ -91,8 +93,7 @@
             this.textbox_name = new MetroFramework.Controls.MetroTextBox();
             this.btn_cancel = new MetroFramework.Controls.MetroButton();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btn_template = new MetroFramework.Controls.MetroButton();
-            this.btn_import = new MetroFramework.Controls.MetroButton();
+            this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -109,12 +110,13 @@
             this.metroTabControl1.Controls.Add(this.consulta);
             this.metroTabControl1.Controls.Add(this.registro);
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
-            this.metroTabControl1.Location = new System.Drawing.Point(15, 15);
+            this.metroTabControl1.Location = new System.Drawing.Point(15, 21);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(721, 502);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.metroTabControl1.TabIndex = 0;
+            this.metroTabControl1.UseCustomBackColor = true;
             this.metroTabControl1.UseCustomForeColor = true;
             this.metroTabControl1.UseSelectable = true;
             // 
@@ -136,6 +138,34 @@
             this.consulta.VerticalScrollbarBarColor = true;
             this.consulta.VerticalScrollbarHighlightOnWheel = false;
             this.consulta.VerticalScrollbarSize = 10;
+            // 
+            // btn_template
+            // 
+            this.btn_template.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_template.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            this.btn_template.Location = new System.Drawing.Point(-4, 434);
+            this.btn_template.Name = "btn_template";
+            this.btn_template.Size = new System.Drawing.Size(75, 23);
+            this.btn_template.TabIndex = 25;
+            this.btn_template.Text = "Plantilla";
+            this.btn_template.UseCustomBackColor = true;
+            this.btn_template.UseCustomForeColor = true;
+            this.btn_template.UseSelectable = true;
+            this.btn_template.Click += new System.EventHandler(this.btn_template_Click);
+            // 
+            // btn_import
+            // 
+            this.btn_import.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_import.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            this.btn_import.Location = new System.Drawing.Point(77, 434);
+            this.btn_import.Name = "btn_import";
+            this.btn_import.Size = new System.Drawing.Size(75, 23);
+            this.btn_import.TabIndex = 24;
+            this.btn_import.Text = "Importar";
+            this.btn_import.UseCustomBackColor = true;
+            this.btn_import.UseCustomForeColor = true;
+            this.btn_import.UseSelectable = true;
+            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
             // 
             // btn_delete
             // 
@@ -979,7 +1009,7 @@
             // 
             this.datetime_birthday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datetime_birthday.Location = new System.Drawing.Point(148, 146);
-            this.datetime_birthday.MinimumSize = new System.Drawing.Size(0, 29);
+            this.datetime_birthday.MinimumSize = new System.Drawing.Size(4, 29);
             this.datetime_birthday.Name = "datetime_birthday";
             this.datetime_birthday.Size = new System.Drawing.Size(119, 29);
             this.datetime_birthday.TabIndex = 15;
@@ -1122,41 +1152,27 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // btn_template
+            // metroLabel20
             // 
-            this.btn_template.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_template.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_template.Location = new System.Drawing.Point(-4, 434);
-            this.btn_template.Name = "btn_template";
-            this.btn_template.Size = new System.Drawing.Size(75, 23);
-            this.btn_template.TabIndex = 25;
-            this.btn_template.Text = "Plantilla";
-            this.btn_template.UseCustomBackColor = true;
-            this.btn_template.UseCustomForeColor = true;
-            this.btn_template.UseSelectable = true;
-            this.btn_template.Click += new System.EventHandler(this.btn_template_Click);
-            // 
-            // btn_import
-            // 
-            this.btn_import.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_import.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_import.Location = new System.Drawing.Point(77, 434);
-            this.btn_import.Name = "btn_import";
-            this.btn_import.Size = new System.Drawing.Size(75, 23);
-            this.btn_import.TabIndex = 24;
-            this.btn_import.Text = "Importar";
-            this.btn_import.UseCustomBackColor = true;
-            this.btn_import.UseCustomForeColor = true;
-            this.btn_import.UseSelectable = true;
-            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
+            this.metroLabel20.AutoSize = true;
+            this.metroLabel20.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel20.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel20.Location = new System.Drawing.Point(19, 0);
+            this.metroLabel20.Name = "metroLabel20";
+            this.metroLabel20.Size = new System.Drawing.Size(105, 25);
+            this.metroLabel20.TabIndex = 30;
+            this.metroLabel20.Text = "Trabajador";
+            this.metroLabel20.UseCustomBackColor = true;
             // 
             // UC_Worker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.metroLabel20);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "UC_Worker";
             this.Size = new System.Drawing.Size(794, 527);
+            this.UseCustomBackColor = true;
             this.Load += new System.EventHandler(this.UC_Worker_Load);
             this.metroTabControl1.ResumeLayout(false);
             this.consulta.ResumeLayout(false);
@@ -1171,6 +1187,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1237,5 +1254,6 @@
         private MetroFramework.Controls.MetroButton btn_save;
         private MetroFramework.Controls.MetroButton btn_template;
         private MetroFramework.Controls.MetroButton btn_import;
+        private MetroFramework.Controls.MetroLabel metroLabel20;
     }
 }
