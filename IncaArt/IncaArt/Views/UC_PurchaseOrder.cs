@@ -139,7 +139,7 @@ namespace WindowsFormsApp1.Views
                     int warehouse_id = warehouses.Find(w => w.Name == grid_order_lines.Rows[i].Cells[5].Value.ToString()).Id;
                     Models.PurchaseOrderLine pol = new Models.PurchaseOrderLine(editing_order.Lines[i].Id, po.Id, unit_of_measure_id, Int32.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString())
                                                         , Double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString()), DateTime.Parse(grid_order_lines.Rows[i].Cells[0].Value.ToString()),editing_order.Lines[i].State,
-                                                        Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()), material_id, warehouse_id);
+                                                        Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()), material_id, warehouse_id, double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString()));
                     Controller.Result result =  pol_controller.updatePurchaseOrderLine(pol);
                     if (result.success)
                     {
@@ -216,15 +216,7 @@ namespace WindowsFormsApp1.Views
                             materials.Find(m => m.Name == grid_order_lines.Rows[e.RowIndex].Cells[1].Value.ToString()).Unit_id).Name;
 
                     grid_order_lines.Rows[e.RowIndex].Cells[6].Value = avg_cost;                 
-
-                }
-                else if(e.ColumnIndex == 2) // si cambió la cantidad
-                {
-                    grid_order_lines.Rows[e.RowIndex].Cells[7].Value =
-                        Double.Parse(grid_order_lines.Rows[e.RowIndex].Cells[2].Value.ToString()) * avg_cost;                        
-                    calculateCosts();
-                }
-               
+                }                              
             }
         }
 

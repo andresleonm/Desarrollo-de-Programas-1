@@ -26,7 +26,7 @@ namespace WindowsFormsApp1.Controller
                 {
                     lines.Add(new PurchaseOrderLine(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2)), int.Parse(r.getColumn(3)),
                               double.Parse(r.getColumn(4)), DateTime.Parse(r.getColumn(5)),r.getColumn(6),Int32.Parse(r.getColumn(7)), Int32.Parse(r.getColumn(8)),
-                              Int32.Parse(r.getColumn(9))));
+                              Int32.Parse(r.getColumn(10)),double.Parse(r.getColumn(9))));
                 }
 
                 return new Result(lines, true, "");
@@ -67,6 +67,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("deliver_quantity", line.Deliver_quantity.ToString()));
             parameters.Add(new Parameter("material_id", line.Material.ToString()));
             parameters.Add(new Parameter("warehouse_id", line.Warehouse.ToString()));
+            parameters.Add(new Parameter("unit_price", line.Warehouse.ToString()));
             GenericResult result = execute_transaction("update_purchase_order_line", parameters);
             if (result.success)
             {
