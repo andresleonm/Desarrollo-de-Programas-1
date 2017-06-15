@@ -214,7 +214,7 @@ namespace WindowsFormsApp1.Models
 
         public ProductionOrderProductLine(int id, int order_Id, int product_id, string product_name, int unit_of_measure,
             string unit_of_measure_name, int quantity, int produced_quantity, int warehouse_id, string warehouse_name, string state,
-            int recipe_id, string recipe_name)
+            int recipe_id, string recipe_name,int quantity_warehouse)
         {
             this.id = id;
             this.order_Id = order_Id;
@@ -229,6 +229,7 @@ namespace WindowsFormsApp1.Models
             this.state = state;
             this.Recipe_id = recipe_id;
             this.Recipe_name = recipe_name;
-        }
+            this.quantity_warehouse = quantity_warehouse;
+    }
     }
 }

@@ -195,7 +195,7 @@ namespace WindowsFormsApp1.Views
                         fill_Sales_Order();
                         btn_Clean.PerformClick();
                         tab_Order.SelectedIndex = 0;
-                        MessageBox.Show(this, "Orden creada exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        MessageBox.Show(this, "Se ha creado la orden N° : " + sales_order_id.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                     }
                     else
                     {

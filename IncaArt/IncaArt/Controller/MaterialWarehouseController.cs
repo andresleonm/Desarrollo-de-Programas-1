@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.Controller
         public Result getMaterialWarehouses()
         {
             //consultar permisos
-            List<Parameter> parameters = new List<Parameter>();
+            List<DataService.Parameter> parameters = new List<DataService.Parameter>();
             GenericResult result = execute_function("get_materialwarehouses", parameters);
             List<MaterialWarehouse> materialWarehouses = new List<MaterialWarehouse>();
             if (result.success)
@@ -36,8 +36,8 @@ namespace WindowsFormsApp1.Controller
         public Result getMaterialWarehouse(int id)
         {
             //consultar permisos
-            List<Parameter> parameters = new List<Parameter>();
-            parameters.Add(new Parameter("id", id.ToString()));
+            List<DataService.Parameter> parameters = new List<DataService.Parameter>();
+            parameters.Add(new DataService.Parameter("id", id.ToString()));
             GenericResult result = execute_function("get_materialwarehouse", parameters);
             if (result.success)
             {
@@ -53,15 +53,15 @@ namespace WindowsFormsApp1.Controller
         public Result insertMaterialWarehouse(MaterialWarehouse materialWarehouse)
         {
             //consultar permisos
-            List<Parameter> parameters = new List<Parameter>();
+            List<DataService.Parameter> parameters = new List<DataService.Parameter>();
 
-            parameters.Add(new Parameter("name", materialWarehouse.Name.ToString()));
-            parameters.Add(new Parameter("product_id", materialWarehouse.Material_id.ToString()));
-            parameters.Add(new Parameter("physical_stock", materialWarehouse.Current_physical_stock.ToString()));
-            parameters.Add(new Parameter("max_capacity", materialWarehouse.Max_capacity.ToString()));
-            parameters.Add(new Parameter("type_warehouse", materialWarehouse.Type_id.ToString()));
-            parameters.Add(new Parameter("state", materialWarehouse.State.ToString()));
-            parameters.Add(new Parameter("logical_stock", materialWarehouse.Current_logical_stock.ToString()));
+            parameters.Add(new DataService.Parameter("name", materialWarehouse.Name.ToString()));
+            parameters.Add(new DataService.Parameter("material_id", materialWarehouse.Material_id.ToString()));
+            parameters.Add(new DataService.Parameter("physical_stock", materialWarehouse.Current_physical_stock.ToString()));
+            parameters.Add(new DataService.Parameter("max_capacity", materialWarehouse.Max_capacity.ToString()));
+            parameters.Add(new DataService.Parameter("type_warehouse", materialWarehouse.Type_id.ToString()));
+            parameters.Add(new DataService.Parameter("state", materialWarehouse.State.ToString()));
+            parameters.Add(new DataService.Parameter("logical_stock", materialWarehouse.Current_logical_stock.ToString()));
             GenericResult result = execute_transaction("insert_materialwarehouse", parameters);
             if (result.success)
             {
@@ -84,15 +84,15 @@ namespace WindowsFormsApp1.Controller
         public Result updateMaterialWarehouse(Models.MaterialWarehouse warehouse)
         {
             //consultar permisos
-            List<Parameter> parameters = new List<Parameter>();
-            parameters.Add(new Parameter("id", warehouse.Id.ToString()));
-            parameters.Add(new Parameter("name", warehouse.Name.ToString()));
-            parameters.Add(new Parameter("product_id", warehouse.Material_id.ToString()));
-            parameters.Add(new Parameter("physical_stock", warehouse.Current_physical_stock.ToString()));
-            parameters.Add(new Parameter("max_capacity", warehouse.Max_capacity.ToString()));
-            parameters.Add(new Parameter("type_warehouse", warehouse.Type_id.ToString()));
-            parameters.Add(new Parameter("logical_stock", warehouse.Current_logical_stock.ToString()));
-            parameters.Add(new Parameter("state", warehouse.State.ToString()));
+            List<DataService.Parameter> parameters = new List<DataService.Parameter>();
+            parameters.Add(new DataService.Parameter("id", warehouse.Id.ToString()));
+            parameters.Add(new DataService.Parameter("name", warehouse.Name.ToString()));
+            parameters.Add(new DataService.Parameter("material_id", warehouse.Material_id.ToString()));
+            parameters.Add(new DataService.Parameter("physical_stock", warehouse.Current_physical_stock.ToString()));
+            parameters.Add(new DataService.Parameter("max_capacity", warehouse.Max_capacity.ToString()));
+            parameters.Add(new DataService.Parameter("type_warehouse", warehouse.Type_id.ToString()));
+            parameters.Add(new DataService.Parameter("logical_stock", warehouse.Current_logical_stock.ToString()));
+            parameters.Add(new DataService.Parameter("state", warehouse.State.ToString()));
             GenericResult result = execute_transaction("update_materialwarehouse", parameters);
 
             if (result.success)
@@ -105,12 +105,34 @@ namespace WindowsFormsApp1.Controller
 
         public Result deleteMaterialWarehouse(Models.MaterialWarehouse warehouse)
         {
-            List<Parameter> parameters = new List<Parameter>();
-            parameters.Add(new Parameter("id", warehouse.Id.ToString()));
+            List<DataService.Parameter> parameters = new List<DataService.Parameter>();
+            parameters.Add(new DataService.Parameter("id", warehouse.Id.ToString()));
             GenericResult result = execute_transaction("delete_materialwarehouse", parameters);
             if (result.success)
             {
                 return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result getMaterialWarehouses(Models.MaterialWarehouse warehouse)
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            //if (warehouse.Max_capacity != "") parameters.Add(new Parameter("max_capacity", warehouse.Max_capacity));
+            if (warehouse.Material_id != 0) parameters.Add(new Parameter("material_id", warehouse.Material_id.ToString()));
+            if (warehouse.Type_id != 0) parameters.Add(new Parameter("type_id", warehouse.Type_id.ToString()));
+            if (warehouse.Name !="" ) parameters.Add(new Parameter("name", warehouse.Name.ToString()));
+            GenericResult result = execute_function("get_materialwarehouses2", parameters);
+            List<Models.MaterialWarehouse> warehouses = new List<Models.MaterialWarehouse>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    warehouses.Add(new Models.MaterialWarehouse(Int32.Parse(r.getColumn(0)), r.getColumn(1), Int32.Parse(r.getColumn(2)), int.Parse(r.getColumn(3)), int.Parse(r.getColumn(4)),
+                        Int32.Parse(r.getColumn(5)), r.getColumn(6), int.Parse(r.getColumn(7))));
+                }
+                return new Result(warehouses, true, "");
             }
             return new Result(null, result.success, result.message);
         }

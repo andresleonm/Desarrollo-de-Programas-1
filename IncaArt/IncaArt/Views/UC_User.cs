@@ -13,7 +13,7 @@ using WindowsFormsApp1.Controller;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class UC_User : MetroFramework.Controls.MetroUserControl
+    public partial class UC_User : ICheckPermissions
     {
         List<User> user_list;
         List<Profile> profile_list;
@@ -21,13 +21,11 @@ namespace WindowsFormsApp1.Views
         UsersController user_controller;
         User selectedUser;
         User sessionUser;
-        bool data_loaded;
 
         public UC_User()
         {
             InitializeComponent();
             this.metroTabControl1.SelectedIndex = 0;
-            data_loaded = false;
         }
 
         private bool validate_data(String name, String paternal_last_name, String maternal_last_name,char gender, String phone, String email, String address, String username,String password,String profile)
@@ -231,11 +229,6 @@ namespace WindowsFormsApp1.Views
 
         }
 
-        private void UC_User_Leave(object sender, EventArgs e)
-        {
-            ((Dashboard)Parent).user_list = user_list;
-        }
-
         private void metroGrid1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = this.metroGrid1.Rows[e.RowIndex];
@@ -290,14 +283,13 @@ namespace WindowsFormsApp1.Views
 
         private void UC_User_VisibleChanged(object sender, EventArgs e)
         {
-            if (!data_loaded && Visible)
+            if (Visible)
             {
-                this.profile_controller = new ProfileController(sessionUser.Nickname, sessionUser.Password);
-                this.user_controller = new UsersController(sessionUser.Nickname, sessionUser.Password);
+                this.profile_controller = new ProfileController("", "");
+                this.user_controller = new UsersController("", "");
 
                 Load_Data();
                 Load_DataGridView();
-                data_loaded = true;
             }
             else if (!Visible)
             {
@@ -312,9 +304,8 @@ namespace WindowsFormsApp1.Views
             if (dialogResult == DialogResult.Yes)
             {
                 User user_to_delete = user_list.Find(u => u.Id == Int32.Parse(metroGrid1.CurrentRow.Cells[0].Value.ToString()));
-                User session_user = ((Dashboard)Parent).sessionUser;
 
-                if (session_user.Id == user_to_delete.Id)
+                if (sessionUser.Id == user_to_delete.Id)
                 {
                     MessageBox.Show("¡No puedes eliminar la sesión actual!");
                 }
@@ -343,11 +334,16 @@ namespace WindowsFormsApp1.Views
             {
                 metroButtonEliminar.Visible = false;
             }
+
+            if (!sessionUser.Profile.HasFunctionality("CREATE USERS") && !sessionUser.Profile.HasFunctionality("EDIT USERS"))
+            {
+                this.metroTabControl1.TabPages.Remove(tabRegister);
+            }
         }
 
-        private void UC_User_ParentChanged(object sender, EventArgs e)
+        public override void CheckPermissions(User user)
         {
-            sessionUser = ((Dashboard)Parent).sessionUser;
+            sessionUser = user;
             UC_User_Load();
         }
     }

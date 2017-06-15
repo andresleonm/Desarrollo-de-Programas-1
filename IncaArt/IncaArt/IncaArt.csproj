@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
       <Private>True</Private>
@@ -88,6 +91,8 @@
     <Compile Include="Algorithm\Worker.cs" />
     <Compile Include="Algorithm\Workstation.cs" />
     <Compile Include="Controller\FunctionalityController.cs" />
+    <Compile Include="Controller\KardexController.cs" />
+    <Compile Include="Controller\ParametersController.cs" />
     <Compile Include="Controller\MaterialMovementController.cs" />
     <Compile Include="Controller\MaterialMovementDetailController.cs" />
     <Compile Include="Controller\ProductionOrderMaterialLineController.cs" />
@@ -109,6 +114,7 @@
     <Compile Include="Controller\SalesRefundController.cs" />
     <Compile Include="Controller\SalesRefundLineController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
+    <Compile Include="Models\KardexLine.cs" />
     <Compile Include="Models\MaterialMovement.cs" />
     <Compile Include="Models\MaterialMovementLine.cs" />
     <Compile Include="Controller\RatioController.cs" />
@@ -209,6 +215,13 @@
     </Compile>
     <Compile Include="Views\ForgotPassword.Designer.cs">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Helpers\CheckPermissionsHelper.cs" />
+    <Compile Include="Views\ICheckPermissions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ICheckPermissions.Designer.cs">
+      <DependentUpon>ICheckPermissions.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainDashboard.cs">
       <SubType>UserControl</SubType>
@@ -319,6 +332,12 @@
     <Compile Include="Views\UC_Product.Designer.cs">
       <DependentUpon>UC_Product.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_Ratio.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_Ratio.designer.cs">
+      <DependentUpon>UC_Ratio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Warehouse_Module\MaterialMovementLine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -343,6 +362,12 @@
     <Compile Include="Views\UC_SimulationExecution.Designer.cs">
       <DependentUpon>UC_SimulationExecution.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Warehouse_M_Module\TypeWarehouseMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_M_Module\TypeWarehouseMain.Designer.cs">
+      <DependentUpon>TypeWarehouseMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Warehouse_M_Module\UC_MaterialTypeWarehouse.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -354,6 +379,12 @@
     </Compile>
     <Compile Include="Views\Warehouse_M_Module\UC_MaterialWarehouse.Designer.cs">
       <DependentUpon>UC_MaterialWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Warehouse_M_Module\UC_ProductTypeWarehouse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Warehouse_M_Module\UC_ProductTypeWarehouse.Designer.cs">
+      <DependentUpon>UC_ProductTypeWarehouse.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Warehouse_M_Module\UC_ProductWarehouse.cs">
       <SubType>UserControl</SubType>
@@ -546,6 +577,12 @@
     <Compile Include="Views\Purchase_Module\PurchaseOrderLine.Designer.cs">
       <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_WorkersPerformance Report.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_WorkersPerformance Report.Designer.cs">
+      <DependentUpon>UC_WorkersPerformance Report.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -621,6 +658,9 @@
     <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderWorkLine.resx">
       <DependentUpon>UC_ProductionOrderWorkLine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Ratio.resx">
+      <DependentUpon>UC_Ratio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_Module\MaterialMovementLine.resx">
       <DependentUpon>MaterialMovementLine.cs</DependentUpon>
     </EmbeddedResource>
@@ -633,11 +673,17 @@
     <EmbeddedResource Include="Views\UC_SimulationExecution.resx">
       <DependentUpon>UC_SimulationExecution.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_M_Module\TypeWarehouseMain.resx">
+      <DependentUpon>TypeWarehouseMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_M_Module\UC_MaterialTypeWarehouse.resx">
       <DependentUpon>UC_MaterialTypeWarehouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_M_Module\UC_MaterialWarehouse.resx">
       <DependentUpon>UC_MaterialWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Warehouse_M_Module\UC_ProductTypeWarehouse.resx">
+      <DependentUpon>UC_ProductTypeWarehouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_M_Module\UC_ProductWarehouse.resx">
       <DependentUpon>UC_ProductWarehouse.cs</DependentUpon>
@@ -732,21 +778,26 @@
     <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrderLine.resx">
       <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_WorkersPerformance Report.resx">
+      <DependentUpon>UC_WorkersPerformance Report.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Algorithm.ProductLineAssignment.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Algorithm.Workstation.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApp1.Models.SalesRefund.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApp1.Models.SalesRefundLine.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.Worker.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.Workstation.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\Minimize Window_52px.png" />
     <None Include="Resources\Close Window_52px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\pdf.png" />
     <None Include="Resources\Microsoft Excel_40px.png" />
     <None Include="Resources\Maximize Window_64px.png" />
     <None Include="Resources\Search_16.png" />

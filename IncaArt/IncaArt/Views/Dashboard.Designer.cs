@@ -74,6 +74,11 @@ namespace WindowsFormsApp1.Views
             this.uc_recipe = new WindowsFormsApp1.Views.UC_Recipe();
             this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
             this.uc_workstation = new WindowsFormsApp1.Views.UC_Workstation();
+            this.typeWarehouseMain1 = new WindowsFormsApp1.Views.Warehouse_M_Module.TypeWarehouseMain();
+            this.uC_WarehouseMovement1 = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement();
+            this.uc_ratio = new WindowsFormsApp1.Views.UC_Ratio();
+            this.metroContextMenu1 = new MetroFramework.Controls.MetroContextMenu(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -82,6 +87,7 @@ namespace WindowsFormsApp1.Views
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.metroContextMenu1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -400,6 +406,7 @@ namespace WindowsFormsApp1.Views
             // 
             // pictureBox3
             // 
+            this.pictureBox3.ContextMenuStrip = this.metroContextMenu1;
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox3.Image = global::WindowsFormsApp1.Properties.Resources.Circled_User_Male_40px;
             this.pictureBox3.Location = new System.Drawing.Point(788, 0);
@@ -412,11 +419,12 @@ namespace WindowsFormsApp1.Views
             // uc_ProductionMenu
             // 
             this.uc_ProductionMenu.BackColor = System.Drawing.SystemColors.Control;
+            this.uc_ProductionMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.uc_ProductionMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uc_ProductionMenu.Location = new System.Drawing.Point(132, 72);
             this.uc_ProductionMenu.Name = "uc_ProductionMenu";
             this.uc_ProductionMenu.Size = new System.Drawing.Size(819, 514);
-            this.uc_ProductionMenu.TabIndex = 31;
+            this.uc_ProductionMenu.TabIndex = 34;
             // 
             // uC_Simulation1
             // 
@@ -428,7 +436,7 @@ namespace WindowsFormsApp1.Views
             // 
             // uC_SalesMain1
             // 
-            this.uC_SalesMain1.BackColor = System.Drawing.SystemColors.Control;
+            this.uC_SalesMain1.BackColor = System.Drawing.Color.White;
             this.uC_SalesMain1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_SalesMain1.Location = new System.Drawing.Point(132, 72);
             this.uC_SalesMain1.Name = "uC_SalesMain1";
@@ -441,16 +449,23 @@ namespace WindowsFormsApp1.Views
             this.parameters1.Name = "parameters1";
             this.parameters1.Size = new System.Drawing.Size(819, 514);
             this.parameters1.TabIndex = 22;
+            this.parameters1.UseSelectable = true;
             this.parameters1.Visible = false;
             // 
             // warehouse1
             // 
+            this.warehouse1.AutoScroll = true;
+            this.warehouse1.AutoSize = true;
+            this.warehouse1.BackColor = System.Drawing.Color.White;
             this.warehouse1.Location = new System.Drawing.Point(132, 72);
             this.warehouse1.Name = "warehouse1";
-            this.warehouse1.Size = new System.Drawing.Size(1023, 531);
+            this.warehouse1.Size = new System.Drawing.Size(1023, 665);
             this.warehouse1.Style = MetroFramework.MetroColorStyle.Blue;
             this.warehouse1.TabIndex = 20;
+            this.warehouse1.UseCustomBackColor = true;
+            this.warehouse1.UseCustomForeColor = true;
             this.warehouse1.UseSelectable = true;
+            this.warehouse1.UseStyleColors = true;
             // 
             // supplier1
             // 
@@ -472,10 +487,10 @@ namespace WindowsFormsApp1.Views
             this.client1.AutoSize = true;
             this.client1.Location = new System.Drawing.Point(132, 72);
             this.client1.Name = "client1";
-            this.client1.Size = new System.Drawing.Size(971, 672);
+            this.client1.Size = new System.Drawing.Size(971, 716);
             this.client1.Style = MetroFramework.MetroColorStyle.Teal;
             this.client1.TabIndex = 18;
-            this.client1.UseSelectable = true;
+            this.client1.UseSelectable = true;            
             // 
             // uC_PurchasesMenu1
             // 
@@ -502,7 +517,7 @@ namespace WindowsFormsApp1.Views
             this.user.BackColor = System.Drawing.SystemColors.Window;
             this.user.Location = new System.Drawing.Point(132, 72);
             this.user.Name = "user";
-            this.user.Size = new System.Drawing.Size(1017, 497);
+            this.user.Size = new System.Drawing.Size(1017, 514);
             this.user.TabIndex = 24;
             this.user.UseCustomBackColor = true;
             this.user.UseSelectable = true;
@@ -539,6 +554,7 @@ namespace WindowsFormsApp1.Views
             this.uc_material.Name = "uc_material";
             this.uc_material.Size = new System.Drawing.Size(711, 493);
             this.uc_material.TabIndex = 35;
+            this.uc_material.UseCustomBackColor = true;
             this.uc_material.UseSelectable = true;
             this.uc_material.Visible = false;
             // 
@@ -548,6 +564,7 @@ namespace WindowsFormsApp1.Views
             this.uc_product.Name = "uc_product";
             this.uc_product.Size = new System.Drawing.Size(795, 513);
             this.uc_product.TabIndex = 37;
+            this.uc_product.UseCustomBackColor = true;
             this.uc_product.UseSelectable = true;
             this.uc_product.Visible = false;
             // 
@@ -557,6 +574,7 @@ namespace WindowsFormsApp1.Views
             this.uc_recipe.Name = "uc_recipe";
             this.uc_recipe.Size = new System.Drawing.Size(840, 545);
             this.uc_recipe.TabIndex = 39;
+            this.uc_recipe.UseCustomBackColor = true;
             this.uc_recipe.UseSelectable = true;
             this.uc_recipe.Visible = false;
             // 
@@ -566,6 +584,7 @@ namespace WindowsFormsApp1.Views
             this.uc_worker.Name = "uc_worker";
             this.uc_worker.Size = new System.Drawing.Size(794, 527);
             this.uc_worker.TabIndex = 41;
+            this.uc_worker.UseCustomBackColor = true;
             this.uc_worker.UseSelectable = true;
             this.uc_worker.Visible = false;
             // 
@@ -575,15 +594,59 @@ namespace WindowsFormsApp1.Views
             this.uc_workstation.Name = "uc_workstation";
             this.uc_workstation.Size = new System.Drawing.Size(872, 658);
             this.uc_workstation.TabIndex = 43;
+            this.uc_workstation.UseCustomBackColor = true;
             this.uc_workstation.UseSelectable = true;
             this.uc_workstation.Visible = false;
+            // 
+            // uC_WarehouseMovement1
+            // 
+            this.uC_WarehouseMovement1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_WarehouseMovement1.Location = new System.Drawing.Point(132, 72);
+            this.uC_WarehouseMovement1.Name = "uC_WarehouseMovement1";
+            this.uC_WarehouseMovement1.Size = new System.Drawing.Size(819, 514);
+            this.uC_WarehouseMovement1.TabIndex = 47;
+            // 
+            // uc_ratio
+            // 
+            this.uc_ratio.Location = new System.Drawing.Point(139, 79);
+            this.uc_ratio.Name = "uc_ratio";
+            this.uc_ratio.Size = new System.Drawing.Size(826, 598);
+            this.uc_ratio.TabIndex = 47;
+            this.uc_ratio.UseCustomBackColor = true;
+            this.uc_ratio.UseSelectable = true;
+            this.uc_ratio.Visible = false;
+            //
+            // metroContextMenu1
+            // 
+            this.metroContextMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.metroContextMenu1.Name = "metroContextMenu1";
+            this.metroContextMenu1.Size = new System.Drawing.Size(153, 48);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Text = "Cerrar Sesión";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            //
+            // typeWarehouseMain1
+            // 
+            this.typeWarehouseMain1.Location = new System.Drawing.Point(132, 72);
+            this.typeWarehouseMain1.Name = "typeWarehouseMain1";
+            this.typeWarehouseMain1.Size = new System.Drawing.Size(769, 722);
+            this.typeWarehouseMain1.TabIndex = 47;
+            this.typeWarehouseMain1.UseSelectable = true;                        
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.White;                                  
             this.ClientSize = new System.Drawing.Size(951, 586);
+            this.Controls.Add(this.typeWarehouseMain1);
+            this.Controls.Add(this.uC_WarehouseMovement1);
+            this.Controls.Add(this.uc_ratio);
             this.Controls.Add(this.uc_ProductionMenu);
             this.Controls.Add(this.uC_Simulation1);
             this.Controls.Add(this.uC_SalesMain1);
@@ -621,6 +684,7 @@ namespace WindowsFormsApp1.Views
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.metroContextMenu1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -655,7 +719,6 @@ namespace WindowsFormsApp1.Views
         private UC_Profile profile;
         private UC_Shift shift;
         private UC_SalesMain uC_SalesMain1;
-        private UC_WarehouseMovement uc_warehousemovement;
         private UC_Material2 material;
         private UC_Material uc_material;
         private UC_Product uc_product;
@@ -663,7 +726,6 @@ namespace WindowsFormsApp1.Views
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private UC_Worker uc_worker;
-        private UC_ProductWarehouse uC_ProductWarehouse1;
         private System.Windows.Forms.Button btn_production;
         private Production_Module.UC_ProductionMenu uc_ProductionMenu;
         private UC_Workstation uc_workstation;
@@ -671,5 +733,10 @@ namespace WindowsFormsApp1.Views
         private UC_Simulation uC_Simulation1;
         private System.Windows.Forms.ImageList simulation_imagelist;
         private System.Windows.Forms.ImageList production_imagelist;
+        private Warehouse_M_Module.TypeWarehouseMain typeWarehouseMain1;
+        private UC_WarehouseMovement uC_WarehouseMovement1;
+        private UC_Ratio uc_ratio;
+        private MetroFramework.Controls.MetroContextMenu metroContextMenu1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

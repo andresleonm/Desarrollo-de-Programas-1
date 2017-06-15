@@ -13,8 +13,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 {
     public partial class UC_WarehouseMovementM : UserControl
     {
-        string user;
-        string password;
+        string user = "dp1admin";
+        string password = "dp1admin";
         MaterialMovementController pc;
         PurchaseOrderController poc;
         PurchaseOrderLineController pocl;
@@ -22,19 +22,23 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         bool flgBegin = true;
         int claseAnt = -1;
         string idAnt;
-        public UC_WarehouseMovementM(string user, string password)
+        List<int> lineIds= new List<int>();
+        
+        public UC_WarehouseMovementM()
         {
             InitializeComponent();
-            this.user = user;
-            this.password = password;
-            pc = new MaterialMovementController(user, password);
-            poc = new PurchaseOrderController(user, password);
-            pocl = new PurchaseOrderLineController(user, password);
-            pomlc = new ProductionOrderMaterialLineController(user, password);
+            pc = new MaterialMovementController("", "");
+            poc = new PurchaseOrderController("", "");
+            pocl = new PurchaseOrderLineController("", "");
+            pomlc = new ProductionOrderMaterialLineController("", "");
             AdjustColumnOrder();
             fillTypeMovements();
             clearGrid();
             AdjustColumnOrder();
+            hour.ShowUpDown = true;
+            hour.Format = DateTimePickerFormat.Custom;
+            hour.CustomFormat = "HH:mm tt";
+            hour.Value = DateTime.Now.Date;
         }
         public void fillTypeMovements()
         {
@@ -48,7 +52,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         }
         public void cleanAll()
         {
-
+            lineIds.Clear();
         }
 
         private void AdjustColumnOrder()
@@ -58,9 +62,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             grid_movement_lines.Columns["unit"].DisplayIndex = 1;
             grid_movement_lines.Columns["warehouse"].DisplayIndex = 2;
             grid_movement_lines.Columns["stock"].DisplayIndex = 3;
-            grid_movement_lines.Columns["quantity"].DisplayIndex = 4;
-            grid_movement_lines.Columns["documentQuantity"].DisplayIndex = 5;
-            grid_movement_lines.Columns["action"].DisplayIndex = 6;
+            grid_movement_lines.Columns["documentQuantity"].DisplayIndex = 4;
+            grid_movement_lines.Columns["quantity"].DisplayIndex = 5;
         }
 
         private void populate_document_combo_box(int clase)
@@ -85,6 +88,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         }
         private void combobox_unit_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lineIds.Clear();
             var mov = (MaterialMovementType)this.types_movements.SelectedItem;
             List<int> checkValues = new List<int> { 0, 1 };
             clearDocuments();
@@ -92,19 +96,19 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             if (checkValues.Contains(mov.clase))
             {
                 this.buttonAddRow.Visible = false;
+                this.but_delete.Visible = false;
                 this.documents_list.Visible = true;
                 this.document_input.Visible = true;
-                this.action.Visible = false;
                 grid_movement_lines.Columns["documentQuantity"].Visible = true;
                 populate_document_combo_box(mov.clase);
                 flgBegin = true;
             } else
             {
                 this.buttonAddRow.Visible = true;
+                this.but_delete.Visible = true;
                 grid_movement_lines.Columns["documentQuantity"].Visible = false;
                 this.documents_list.Visible = false;
                 this.document_input.Visible = false;
-                this.action.Visible = true;
             }
 
             claseAnt = mov.clase;
@@ -119,8 +123,11 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             int i = 1;
             foreach (PurchaseOrderLine line in lines)
             {
-                movs_lines.Add(new Models.MaterialMovementLine(line, i, user, password));
-                i++;
+                if (line.Deliver_quantity - line.Quantity != 0)
+                {
+                    movs_lines.Add(new Models.MaterialMovementLine(line, i, user, password));
+                    i++;
+                 }
             }
             this.grid_movement_lines.DataSource = movs_lines;
             AdjustColumnOrder();
@@ -134,8 +141,10 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             int i = 1;
             foreach (ProductionOrderMaterialLine line in lines)
             {
-                movs_lines.Add(new Models.MaterialMovementLine(line, i, user, password));
-                i++;
+                if (line.Quantity_required - line.Quantity_taken_real != 0){
+                    movs_lines.Add(new Models.MaterialMovementLine(line, i, user, password));
+                    i++;
+                }                    
             }
             this.grid_movement_lines.DataSource = movs_lines;
             AdjustColumnOrder();
@@ -145,8 +154,6 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         {
             Cursor.Current = Cursors.WaitCursor;
 
-            if (flgBegin)
-            {
 
                 var doc = (Document)this.documents_list.SelectedItem;
                 var clase = ((MaterialMovementType)this.types_movements.SelectedItem).clase;
@@ -166,7 +173,6 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 }
                 claseAnt = clase;
                 idAnt = doc.id;
-            }
 
             flgBegin = false;
             Cursor.Current = Cursors.Default;
@@ -257,7 +263,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             var doc = (Document)this.documents_list.SelectedItem;
             var tipo = ((MaterialMovementType)this.types_movements.SelectedItem);
             movement.Tipo = tipo;
-            movement.Fecha = date.Value.ToString("MM/dd/yyyy");
+            DateTime complete_date = date.Value.Date + hour.Value.TimeOfDay;
+            movement.Fecha = complete_date.ToString("MM/dd/yyyy hh:mm:ss");
             movement.Observacion = textbox_observation.Text.ToString();
             movement.TipoDocumentoOrigen = getTipo(tipo.clase);
             if (doc != null)
@@ -267,6 +274,9 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             if (r.success)
             {
                 MessageBox.Show("Se creo el movimiento Nro - " + r.data.ToString());
+                btn_Clean.PerformClick();
+                tab_movement.SelectedIndex = 0;
+                buttonSearchV.PerformClick();
             }
             else
             {
@@ -299,13 +309,20 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
         private void buttonViewV_Click(object sender, EventArgs e)
         {
-            MaterialMovement currentObject = (MaterialMovement)movements_grid.CurrentRow.DataBoundItem;
-            if (currentObject == null)
-                MessageBox.Show("Seleccione el movimiento que desea visualizar");
-            currentObject = (MaterialMovement)pc.getMovement(currentObject.id).data;
+            try
+            {
+                MaterialMovement currentObject = (MaterialMovement)movements_grid.CurrentRow.DataBoundItem;
+                if (currentObject == null)
+                    MessageBox.Show("Seleccione el movimiento que desea visualizar");
+                currentObject = (MaterialMovement)pc.getMovement(currentObject.id).data;
 
-            ViewWarehouseMovementM order_line = new ViewWarehouseMovementM(user, password, currentObject);
-            order_line.ShowDialog();
+                ViewWarehouseMovementM order_line = new ViewWarehouseMovementM(user, password, currentObject);
+                order_line.ShowDialog();
+            }catch(Exception exc)
+            {
+
+            }
+          
         }
 
         private void buttonSearchV_Click(object sender, EventArgs e)
@@ -319,6 +336,55 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             var movements =new List<MaterialMovement>();
             movements_grid.DataSource = movements;
 
+        }
+
+        private void but_delete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Models.MaterialMovementLine> data = (List<Models.MaterialMovementLine>)grid_movement_lines.DataSource;
+                try
+                {
+                    Models.MaterialMovementLine currentObject = (Models.MaterialMovementLine)grid_movement_lines.CurrentRow.DataBoundItem;
+                    if (currentObject == null)
+                        MessageBox.Show("Seleccione el movimiento que desea visualizar");
+                    data.Remove(currentObject);
+                    data = data.Concat(new List<Models.MaterialMovementLine>().ToList()).ToList();
+                    grid_movement_lines.DataSource = data;
+                }
+                catch (Exception excp)
+                {
+                    grid_movement_lines.DataSource = new List<Models.MaterialMovementLine>();
+                    return;
+                }
+            }
+            catch(Exception excp)
+            {
+                grid_movement_lines.DataSource = new List<Models.MaterialMovementLine>();
+                return;
+            }              
+        }
+
+        private void btn_Clean_Click(object sender, EventArgs e)
+        {
+            Clean();
+        }
+
+        private void Clean()
+        {
+            textbox_observation.Text = "";
+            date.Text = "";
+            hour.Text="";
+            AdjustColumnOrder();
+            fillTypeMovements();
+            clearGrid();
+            AdjustColumnOrder();
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            tab_movement.SelectedIndex = 0;
+            buttonSearchV.PerformClick();
         }
     }
 }

@@ -18,6 +18,7 @@ namespace WindowsFormsApp1.Views
         bool break_flag;
         bool currency_flag;
         int cur_row;
+        int operation_value;// 0 para Create, 1 para Update
         List<Models.Product> product_list;
         List<Models.Workstation> workstation_list;
         List<Models.Currency> currency_list;
@@ -32,6 +33,7 @@ namespace WindowsFormsApp1.Views
 
         private void UC_Workstation_Load(object sender, EventArgs e)
         {
+            operation_value = 0;
             Set_Flag_All(false);
             string user = "dp1admin";
             string password = "dp1admin";
@@ -325,6 +327,7 @@ namespace WindowsFormsApp1.Views
                     textbox_name.Text = workstation.Name;
                     textbox_quantity.Text = workstation.Quantity.ToString();
                     metroTabControl1.SelectedIndex = 1;
+                    operation_value = 1;
                 }
             }
         }
@@ -375,6 +378,7 @@ namespace WindowsFormsApp1.Views
         {
             Clean();
             metroTabControl1.SelectedIndex = 0;
+            operation_value = 0;
         }
 
         private void btn_clean_s_Click(object sender, EventArgs e)
@@ -517,6 +521,43 @@ namespace WindowsFormsApp1.Views
                     currency_flag = value;
                     break;
             }
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            Models.Workstation workstation = CreateWorkstation(operation_value);
+            if (workstation != null)
+            {
+                if (workstation.Id == 0)
+                {
+                    result = workstationController.insertWorkstation(workstation);
+                    if (result.data == null)
+                    {
+                        MessageBox.Show(result.message, "Error al registrar Puesto de Trabajo", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Puesto de Trabajo registrado correctamente", "Registrar Puesto de Trabajo", MessageBoxButtons.OK);
+                    }
+                }else
+                {
+                    result = workstationController.updateWorkstation(workstation);
+                    if (result.data == null)
+                    {
+                        MessageBox.Show(result.message, "Error al editar Puesto de Trabajo", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Puesto de Trabajo editado correctamente", "Editar Puesto de Trabajo", MessageBoxButtons.OK);
+                    }
+                }
+                Load_Data();
+                Set_Flag_All(false);
+                Load_DataGridView();
+                Clean();
+                metroTabControl1.SelectedIndex = 0;
+            }
+            operation_value = 0;
         }
     }
 }

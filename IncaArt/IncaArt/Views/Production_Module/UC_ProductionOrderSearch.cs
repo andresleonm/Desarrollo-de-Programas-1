@@ -27,8 +27,7 @@ namespace WindowsFormsApp1.Views
 
         public void datagrid_Products_Fill() 
         {
-                  
-            Controller.Result result = order_controller.getProductionOrders();
+         Controller.Result result = order_controller.getProductionOrders();
             orders = (List<Models.ProductionOrder>)result.data;
             if (orders == null) orders = new List<Models.ProductionOrder>();
             Load_ProductionOrder_DataGridView();
@@ -37,6 +36,7 @@ namespace WindowsFormsApp1.Views
         private void Load_ProductionOrder_DataGridView()
         {
             datagrid_ProductionOrders.Rows.Clear();
+
             string[] grid_row = new string[5];
             foreach (Models.ProductionOrder po in orders)
             {
@@ -94,18 +94,15 @@ namespace WindowsFormsApp1.Views
                     if (result == DialogResult.Yes)
                     {
                         int selected_index = Int32.Parse(this.datagrid_ProductionOrders.SelectedRows[0].Cells[0].Value.ToString());
-                        Models.ProductionOrder order=orders.Find(o => o.Id == selected_index);
-                        order.State = "Eliminado";
-                        order_controller.updateProductionOrder(order);
-                        Load_ProductionOrder_DataGridView();
+                        order_controller.deleteProductionOrder(selected_index);
+                        datagrid_Products_Fill();
                     }
                 }
             }
         }
 
         private void btn_search_Click(object sender, EventArgs e)
-        {
-            /*
+        {         
             int order_Id;
             if (!Int32.TryParse(metroTextBox_numOrder.Text, out order_Id))
             {
@@ -119,7 +116,7 @@ namespace WindowsFormsApp1.Views
             orders = (List < Models.ProductionOrder>)(order_controller.getProductionOrders(order_Id, description, begin, end).data);
             if (orders == null) orders = new List<Models.ProductionOrder>();
             Load_ProductionOrder_DataGridView();
-            */
+            
         }
     }
 }

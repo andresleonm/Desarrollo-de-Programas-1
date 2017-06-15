@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text;
+using System.IO;
+using iTextSharp.text.pdf;
+using System.Diagnostics;
 
 namespace WindowsFormsApp1.Views
 {
@@ -26,6 +30,7 @@ namespace WindowsFormsApp1.Views
             this.cellDateTimePicker = new DateTimePicker();
             this.cellDateTimePicker.Format = DateTimePickerFormat.Short;
             this.cellDateTimePicker.ValueChanged += new EventHandler(cellDateTimePickerValueChanged);
+            this.cellDateTimePicker.VisibleChanged += new EventHandler(cellDateTimePickerVisibleChanged);
             this.cellDateTimePicker.Visible = false;
             this.grid_order_lines.Controls.Add(cellDateTimePicker);            
         }
@@ -34,6 +39,14 @@ namespace WindowsFormsApp1.Views
         {
             grid_order_lines.CurrentRow.Cells[0].Value = cellDateTimePicker.Value.ToShortDateString();
             cellDateTimePicker.Visible = false;
+        }
+
+        void cellDateTimePickerVisibleChanged(object sender, EventArgs e)
+        {
+            if (cellDateTimePicker.Visible && grid_order_lines.CurrentRow != null)
+            {
+                grid_order_lines.CurrentRow.Cells[0].Value = cellDateTimePicker.Value.ToShortDateString();                
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -126,7 +139,7 @@ namespace WindowsFormsApp1.Views
                     int warehouse_id = warehouses.Find(w => w.Name == grid_order_lines.Rows[i].Cells[5].Value.ToString()).Id;
                     Models.PurchaseOrderLine pol = new Models.PurchaseOrderLine(editing_order.Lines[i].Id, po.Id, unit_of_measure_id, Int32.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString())
                                                         , Double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString()), DateTime.Parse(grid_order_lines.Rows[i].Cells[0].Value.ToString()),editing_order.Lines[i].State,
-                                                        Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()), material_id, warehouse_id);
+                                                        Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()), material_id, warehouse_id, double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString()));
                     Controller.Result result =  pol_controller.updatePurchaseOrderLine(pol);
                     if (result.success)
                     {
@@ -146,6 +159,10 @@ namespace WindowsFormsApp1.Views
                     int unit_of_measure_id = units_of_measure.Find(uom => uom.Name == grid_order_lines.Rows[i].Cells[4].Value.ToString()).Id;
                     int material_id = materials.Find(m => m.Name == grid_order_lines.Rows[i].Cells[1].Value.ToString()).Id;
                     int warehouse_id = warehouses.Find(w => w.Name == grid_order_lines.Rows[i].Cells[5].Value.ToString()).Id;
+                    if(grid_order_lines.Rows[i].Cells[3].Value == null)
+                    {
+                        grid_order_lines.Rows[i].Cells[3].Value = 0;
+                    }
                     Models.PurchaseOrderLine pol = new Models.PurchaseOrderLine(po_id, unit_of_measure_id, Int32.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString())
                                                         , Double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()), DateTime.Parse(grid_order_lines.Rows[i].Cells[0].Value.ToString()),
                                                         Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()),material_id, warehouse_id);
@@ -178,7 +195,7 @@ namespace WindowsFormsApp1.Views
             if (e.ColumnIndex == 0)
 
             {
-                Rectangle tempRect = grid_order_lines.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
+                System.Drawing.Rectangle tempRect = grid_order_lines.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
                 cellDateTimePicker.Location = tempRect.Location;
                 cellDateTimePicker.Width = tempRect.Width;
                 cellDateTimePicker.Visible = true;
@@ -198,15 +215,8 @@ namespace WindowsFormsApp1.Views
                         units_of_measure.Find(uom => uom.Id ==
                             materials.Find(m => m.Name == grid_order_lines.Rows[e.RowIndex].Cells[1].Value.ToString()).Unit_id).Name;
 
-                    grid_order_lines.Rows[e.RowIndex].Cells[6].Value = avg_cost;                                           
-
-                }
-                else if(e.ColumnIndex == 2) // si cambió la cantidad
-                {
-                    grid_order_lines.Rows[e.RowIndex].Cells[7].Value =
-                        Double.Parse(grid_order_lines.Rows[e.RowIndex].Cells[2].Value.ToString()) * avg_cost;                        
-                    calculateCosts();
-                }
+                    grid_order_lines.Rows[e.RowIndex].Cells[6].Value = avg_cost;                 
+                }                              
             }
         }
 
@@ -280,8 +290,9 @@ namespace WindowsFormsApp1.Views
 
             for(int i=0; i<grid_order_lines.RowCount-1;i++)
             {
-                taxes = taxes + Double.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString()) *
-                        Double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()) * Double.Parse(lbl_igv.Text);
+                grid_order_lines.Rows[i].Cells[7].Value = double.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString()) * double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString());
+                grid_order_lines.Rows[i].Cells[7].Value = double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()) - double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()) * (Double.Parse(lbl_igv.Text) / 100);
+                taxes = taxes + double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()) * (Double.Parse(lbl_igv.Text)/100);
                 no_taxes = no_taxes + Double.Parse(grid_order_lines.Rows[i].Cells[grid_order_lines.Rows[i].Cells.Count - 1].Value.ToString());
                 total = total + no_taxes + taxes;
             }
@@ -306,5 +317,140 @@ namespace WindowsFormsApp1.Views
             grid_order_lines.Rows.Clear();
         }
 
+        private void grid_order_lines_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            //double avg_cost;
+            //if (grid_order_lines.Rows[e.RowIndex].Cells[2].Value != null && grid_order_lines.Rows[e.RowIndex].Cells[6].Value != null) {
+            //    avg_cost = materials.Find(m => m.Name == grid_order_lines.Rows[e.RowIndex].Cells[1].Value.ToString()).Average_cost;
+            //    grid_order_lines.Rows[e.RowIndex].Cells[7].Value =
+            //        Double.Parse(grid_order_lines.Rows[e.RowIndex].Cells[2].Value.ToString()) * avg_cost;
+            //    calculateCosts();
+            //}
+        }
+
+        private void btn_Pdf_Click(object sender, EventArgs e)
+        {
+            if (editing)
+                To_pdf(editing_order);
+            else
+                MessageBox.Show(this, "Debe haber seleccionado un documento, primero", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        
+        private void To_pdf(Models.PurchaseOrder sd)
+        {
+            Document doc = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = @"C:";
+            saveFileDialog1.Title = "Guardar Reporte";
+            saveFileDialog1.DefaultExt = "pdf";
+            saveFileDialog1.Filter = "pdf Files (*.pdf)|*.pdf| All Files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;            
+            string filename = "";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filename = saveFileDialog1.FileName;
+            }
+
+            if (filename.Trim() != "")
+            {
+                FileStream file = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
+                PdfWriter.GetInstance(doc, file);
+                doc.Open();
+                string date = DateTime.Now.ToString();
+
+                Chunk chunk = new Chunk("Orden de Compra " + "N° " + sd.Id.ToString(), FontFactory.GetFont("ARIAL", 20, iTextSharp.text.Font.BOLD));
+                doc.Add(new Paragraph(chunk));
+                doc.Add(new Paragraph("                       "));
+                doc.Add(new Paragraph("                       "));
+                doc.Add(new Paragraph("Proveedor              " + sd.Supplier_name.ToUpper(), FontFactory.GetFont("ARIAL", 16, iTextSharp.text.Font.BOLD)));
+                doc.Add(new Paragraph("                                        Dirección: " + sd.Supplier_address));
+                doc.Add(new Paragraph("                                        Teléfono: " + sd.Supplier_phone));                
+                doc.Add(new Paragraph("                       "));
+                doc.Add(new Paragraph("                       "));
+                doc.Add(new Paragraph("     Fecha: " + date));
+                doc.Add(new Paragraph("     Fecha de Emisión: " + sd.Creation_date));                                
+                doc.Add(new Paragraph("                       "));
+                doc.Add(new Paragraph("_________________________________________________________________________________________________________________________"));
+                doc.Add(new Paragraph("                       "));
+                doc.Add(new Paragraph("                       "));
+                GenerateDocument(doc, grid_order_lines);
+                doc.Add(new Paragraph("                       "));
+                doc.Add(new Paragraph("                       "));
+                doc.AddCreationDate();
+                doc.Add(new Paragraph("_________________________________________________________________________________________________________________________"));
+                doc.Add(new Paragraph("                                                                                                                                                                                            SubTotal   " + (sd.Igv_amount/0.18 - sd.Igv_amount), FontFactory.GetFont("ARIAL", 12, iTextSharp.text.Font.BOLD)));
+                doc.Add(new Paragraph("                                                                                                                                                                                                 IGV   " + (sd.Igv_amount * sd.Amount).ToString("0.00"), FontFactory.GetFont("ARIAL", 12, iTextSharp.text.Font.BOLD)));
+                doc.Add(new Paragraph("                                                                                                                                                                                                          __________________"));
+                doc.Add(new Paragraph("                                                                                                                                                                                               Total   " + ((1 + sd.Amount) * sd.Amount).ToString("0.00"), FontFactory.GetFont("ARIAL", 12, iTextSharp.text.Font.BOLD)));
+                doc.Add(new Paragraph("_________________________________________________________________________________________________________________________"));
+                doc.Close();
+                Process.Start(filename);//Esta parte se puede omitir, si solo se desea guardar el archivo, y que este no se ejecute al instante
+            }
+
+        }
+
+        public void GenerateDocument(Document document, DataGridView dgv)
+        {
+            int i, j;
+            int visibleColums = getColumsVisible(dgv);
+            PdfPTable datatable = new PdfPTable(visibleColums);
+            datatable.DefaultCell.Padding = 3;
+
+            float[] headerwidths = GetSizeColumn(dgv, visibleColums);
+
+            datatable.SetWidths(headerwidths);
+            datatable.WidthPercentage = 100;
+            datatable.DefaultCell.BorderWidth = 0;
+            datatable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+
+            for (i = 0; i < dgv.ColumnCount; i++)
+            {
+                if (dgv.Columns[i].Visible == true && !dgv.Columns[i].HeaderText.Equals("Almacen"))
+                    datatable.AddCell(new Phrase(dgv.Columns[i].HeaderText, FontFactory.GetFont("ARIAL", 12, iTextSharp.text.Font.BOLD)));
+            }
+
+            datatable.HeaderRows = 1;
+            datatable.DefaultCell.BorderWidth = 0;
+            for (i = 0; i < dgv.Rows.Count; i++)
+            {
+                for (j = 0; j < dgv.Columns.Count; j++)
+                {
+                    if (dgv[j, i].Value != null && (dgv.Columns[j].Visible == true) && !dgv.Columns[j].HeaderText.Equals("Almacen"))
+                    {
+                        datatable.AddCell(new Phrase(dgv[j, i].Value.ToString()));//En esta parte, se esta agregando un renglon por cada registro en el datagrid
+                    }
+                }
+                datatable.CompleteRow();
+            }
+            document.Add(datatable);
+        }
+
+        private int getColumsVisible(DataGridView dgv)
+        {
+            int quantity = 0;
+            for (int i = 0; i < dgv.ColumnCount; i++)
+                if (dgv.Columns[i].Visible == true && !dgv.Columns[i].HeaderText.Equals("Almacen")) quantity++;
+
+            return quantity;
+        }
+
+        private float[] GetSizeColumn(DataGridView dgv, int colums)
+        {
+            float[] values = new float[colums];
+            int j = 0;
+            for (int i = 0; i < dgv.ColumnCount; i++)
+                if (dgv.Columns[i].Visible == true && !dgv.Columns[i].HeaderText.Equals("Almacen"))
+                {
+                    values[j] = (float)dgv.Columns[i].Width;
+                    j++;
+                }
+            return values;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            calculateCosts();            
+        }
     }
 }

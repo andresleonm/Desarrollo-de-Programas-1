@@ -19,6 +19,7 @@ namespace WindowsFormsApp1.Views
         bool quantity_flag;
         int cur_row;
         int cur_row_detail;
+        int operation_value;// 0 para Create, 1 para Update
         List<Models.Recipe> recipe_list;
         List<Models.RecipeDetail> detail_list;
         List<Models.Material> material_list;
@@ -37,6 +38,7 @@ namespace WindowsFormsApp1.Views
         {
             string user = "dp1admin";
             string password = "dp1admin";
+            operation_value = 0;
             materialController = new Controller.MaterialsController(user, password);
             productController = new Controller.ProductsController(user, password);
             recipeController = new Controller.RecipesController(user, password);
@@ -252,11 +254,12 @@ namespace WindowsFormsApp1.Views
                     int id = recipe_list[recipe_list.Count - 1].Id;
                     foreach (var item in detail_list)
                     {
-                        item.Recipe_id = id;
+                        
                     }
                     Detail_Operation();
                     MessageBox.Show("Receta registrada correctamente", "Registrar receta", MessageBoxButtons.OK);
                     Set_Flag_All(false);
+                    metroGrid2.Rows.Clear();
                 }
 
                 Load_DataGridView();
@@ -304,6 +307,7 @@ namespace WindowsFormsApp1.Views
                     Load_DataGridViewDetail();
                     metroTabControl1.SelectedIndex = 1;
                     Set_Flag_All(true);
+                    operation_value = 1;
                 }
 
             }
@@ -326,6 +330,7 @@ namespace WindowsFormsApp1.Views
                     recipe_list[index] = recipe;
                     Load_Data();
                     Detail_Operation();
+                    metroGrid2.Rows.Clear();
                 }
                 Load_DataGridView();
                 Clean();
@@ -360,7 +365,9 @@ namespace WindowsFormsApp1.Views
         {
             Clean();
             metroGrid2.Rows.Clear();
+            detail_list = new List<Models.RecipeDetail>();
             metroTabControl1.SelectedIndex = 0;
+            operation_value = 0;
         }
 
         private Models.RecipeDetail CreateRecipeDetail(int operation)
@@ -371,10 +378,15 @@ namespace WindowsFormsApp1.Views
             }
             int material_id = ((KeyValuePair<int, string>)combobox_material.SelectedItem).Key;
             int quantity = Int32.Parse(textbox_quantity.Text);
-            int recipe_id = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
+            int recipe_id = 0;
+            if (operation_value!=0)recipe_id= int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
             char antOp = 'N', op = 'C';
-            int index = Int32.Parse(metroGrid1.Rows[cur_row_detail].Cells[1].Value.ToString());
-            if (operation != 0) antOp = detail_list[index].Operation;
+            
+            if (operation != 0)
+            {
+                int index = Int32.Parse(metroGrid1.Rows[cur_row_detail].Cells[1].Value.ToString());
+                antOp = detail_list[index].Operation;
+            }
             if (operation == 1)//UPDATE
             {
                 if (antOp != 'C')
@@ -399,6 +411,14 @@ namespace WindowsFormsApp1.Views
             Models.RecipeDetail detail = CreateRecipeDetail(0);
             if (detail != null)
             {
+                foreach (var item in detail_list)
+                {
+                    if (item.Material_id == detail.Material_id)
+                    {
+                        MessageBox.Show("Material existente en la receta", "Error", MessageBoxButtons.OK);
+                        return;
+                    }
+                }
                 detail_list.Add(detail);
                 Clean_Material();
                 Load_DataGridViewDetail();
@@ -414,7 +434,14 @@ namespace WindowsFormsApp1.Views
             if (detail != null)
             {
                 int index = int.Parse(metroGrid1.Rows[cur_row_detail].Cells[1].Value.ToString());
-                detail_list[index] = detail;
+                if (detail.Operation == 'C')
+                {
+                    detail_list[index].Quantity = detail.Quantity;
+                }else
+                {
+                    detail_list[index] = detail;
+                }
+                
                 Clean_Material();
                 Load_DataGridViewDetail();
                 quantity_flag = false;
@@ -633,6 +660,56 @@ namespace WindowsFormsApp1.Views
                 case "textbox_quantity":
                     quantity_flag = value;
                     break;
+            }
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            Models.Recipe recipe = CreateRecipe(operation_value);
+            if (recipe != null)
+            {
+                if (recipe.Id == 0)
+                {
+                    result = recipeController.insertRecipe(recipe);
+                    if (result.data == null)
+                    {
+                        MessageBox.Show(result.message, "Error al registrar receta", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Receta registrada correctamente", "Registrar receta", MessageBoxButtons.OK);
+                    }
+                }else
+                {
+                    result = recipeController.updateRecipe(recipe);
+                    if (result.data == null)
+                    {
+                        MessageBox.Show(result.message, "Error al modificar receta", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Receta editado correctamente", "Editar receta", MessageBoxButtons.OK);
+
+                    }
+                    
+                }
+                Load_Data();
+                if (recipe.Id == 0)
+                {
+                    int id = recipe_list[recipe_list.Count - 1].Id;
+                    foreach (var item in detail_list)
+                    {
+                        item.Recipe_id = id;
+                    }
+                }
+                Detail_Operation();
+                metroGrid2.Rows.Clear();
+                Load_DataGridView();
+                Clean();
+                detail_list = new List<Models.RecipeDetail>();
+                metroTabControl1.SelectedIndex = 0;
+                Set_Flag_All(false);
+                operation_value = 0;
             }
         }
     }

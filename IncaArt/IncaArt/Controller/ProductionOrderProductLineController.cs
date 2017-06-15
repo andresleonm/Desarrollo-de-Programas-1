@@ -48,7 +48,7 @@ namespace WindowsFormsApp1.Controller
                     //"O"."WAREHOUSE_ID", "W"."WAREHOUSE_NAME", "O"."STATE","O".RECIPE_ID,"R"."RECIPE_NAME"
                     product_lines.Add(new ProductionOrderProductLine(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2)), r.getColumn(3), 
                         Int32.Parse(r.getColumn(4)), r.getColumn(5), Int32.Parse(r.getColumn(6)), Int32.Parse(r.getColumn(7)), 
-                        Int32.Parse(r.getColumn(8)), r.getColumn(9), r.getColumn(10), Int32.Parse(r.getColumn(11)), r.getColumn(12)));
+                        Int32.Parse(r.getColumn(8)), r.getColumn(9), r.getColumn(10), Int32.Parse(r.getColumn(11)), r.getColumn(12), Int32.Parse(r.getColumn(13))));
                 }
                 return new Result(product_lines, true, "");
             }
