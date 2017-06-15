@@ -117,7 +117,7 @@ namespace WindowsFormsApp1.Views
                         //List of products
                         for (int i = 0; i < product_lines.Count; i++)
                         {
-                            if (product_lines[i].State != "DELETED")
+                            if (product_lines[i].State != "Anulado")
                             {
                                 product_lines[i].Order_Id = order_id;
                                 result = product_line_controller.insertProductLine(product_lines[i]);
@@ -127,7 +127,7 @@ namespace WindowsFormsApp1.Views
                         //List of materials           
                         for (int i = 0; i < material_lines.Count; i++)
                         {
-                            if (material_lines[i].State != "DELETED")
+                            if (material_lines[i].State != "Anulado")
                             {
                                 material_lines[i].Order_Id = order_id;
                                 result = material_line_controller.insertMaterialLine(material_lines[i]);
@@ -137,7 +137,7 @@ namespace WindowsFormsApp1.Views
                         //List of work               
                         for (int i = 0; i < work_lines.Count; i++)
                         {
-                            if (work_lines[i].State != "DELETED")
+                            if (work_lines[i].State != "Anulado")
                             {
                                 work_lines[i].Order_Id = order_id;
                                 result = work_line_controller.insertWorkLine(work_lines[i]);
@@ -501,7 +501,7 @@ namespace WindowsFormsApp1.Views
                         {
                             int selected_index = datagrid_Products.SelectedRows[0].Index;
                             Models.ProductionOrderProductLine product_line = product_lines[selected_index];
-                            product_line.State = "DELETED";
+                            product_line.State = "Anulado";
                             Load_Product_DataGridView();
                         }
                     }
@@ -527,7 +527,7 @@ namespace WindowsFormsApp1.Views
                         {
                             int selected_index = metroGrid_Material.SelectedRows[0].Index;
                             Models.ProductionOrderMaterialLine material_line = material_lines[selected_index];
-                            material_line.State = "DELETED";
+                            material_line.State = "Anulado";
                             Load_Material_DataGridView();
                         }
                     }
@@ -551,7 +551,7 @@ namespace WindowsFormsApp1.Views
                         {
                             int selected_index = metroGrid_Work.SelectedRows[0].Index;
                             Models.ProductionOrderWorkLine work_line = work_lines[selected_index];
-                            work_line.State = "DELETED";
+                            work_line.State = "Anulado";
                             Load_Work_DataGridView();
                         }
                     }
