@@ -40,6 +40,7 @@ namespace WindowsFormsApp1.Views
             mainDashboard1.Controls.Find("metroTile12", false)[0].Click += btn_shift_Click;
             mainDashboard1.Controls.Find("metroTile13", false)[0].Click += btn_typewarehouses_Click;
             mainDashboard1.Controls.Find("metroTile16", false)[0].Click += btn_ratio_Click;
+            mainDashboard1.Controls.Find("metroTile15", false)[0].Click += btn_currency_Click;
             this.sessionUser = sessionUser;
             label_user_role.Text = "(" + sessionUser.Profile.Description + ")";
             label_user_name.Text = sessionUser.Name + " " + sessionUser.Middlename;
@@ -272,6 +273,12 @@ namespace WindowsFormsApp1.Views
         {
             hide_UserControls();
             uc_ratio.Visible = true;
+        }
+
+        private void btn_currency_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            uc_currency.Visible = true;
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
