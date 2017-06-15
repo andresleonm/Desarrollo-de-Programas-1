@@ -104,94 +104,115 @@ namespace WindowsFormsApp1.Views
                 string observations = metroTextBox_Observation.Text;
                 string status="Registrado";
                 int order_id;
+                string message="";
+
                 Models.ProductionOrder production_order = new Models.ProductionOrder(description,observations,begin,end,status);
                 if (!editing)
                 {
                     //INSERT
-                    order_id = Int32.Parse(production_controller.insertProductionOrder(production_order).data.ToString());
-                    //List of products
-                    for (int i = 0; i < product_lines.Count; i++)
+                    Result result = production_controller.insertProductionOrder(production_order);
+                    if (result.success)
                     {
-                        if (product_lines[i].State != "DELETED")
+                        order_id = Int32.Parse(result.data.ToString());
+                        //List of products
+                        for (int i = 0; i < product_lines.Count; i++)
                         {
-                            product_lines[i].Order_Id = order_id;
-                            Result result = product_line_controller.insertProductLine(product_lines[i]);
-                        }                       
-                    }
-                    //List of materials           
-                    for (int i = 0; i < material_lines.Count; i++)
-                    {
-                        if (material_lines[i].State != "DELETED")
+                            if (product_lines[i].State != "DELETED")
+                            {
+                                product_lines[i].Order_Id = order_id;
+                                result = product_line_controller.insertProductLine(product_lines[i]);
+                                if (!result.success) message += "-" + result.message + "\n";
+                            }
+                        }
+                        //List of materials           
+                        for (int i = 0; i < material_lines.Count; i++)
                         {
-                            material_lines[i].Order_Id = order_id;
-                            Result result = material_line_controller.insertMaterialLine(material_lines[i]);
-                        }                        
-                    }
-                    //List of work               
-                    for (int i = 0; i < work_lines.Count; i++)
-                    {
-                        if (work_lines[i].State != "DELETED")
+                            if (material_lines[i].State != "DELETED")
+                            {
+                                material_lines[i].Order_Id = order_id;
+                                result = material_line_controller.insertMaterialLine(material_lines[i]);
+                                if (!result.success) message += "-" + result.message + "\n";
+                            }
+                        }
+                        //List of work               
+                        for (int i = 0; i < work_lines.Count; i++)
                         {
-                            work_lines[i].Order_Id = order_id;
-                            Result result = work_line_controller.insertWorkLine(work_lines[i]);
-                        }              
-                    }
+                            if (work_lines[i].State != "DELETED")
+                            {
+                                work_lines[i].Order_Id = order_id;
+                                result = work_line_controller.insertWorkLine(work_lines[i]);
+                                if (!result.success) message += "-" + result.message + "\n";
+                            }
+                        }
 
-                    MessageBox.Show("Order de producción registrada.");
+                        MessageBox.Show("Order de producción registrada.");
+                    }
+                    else { message += "-" + result.message + "\n"; }
                 }
                 else
                 {
                     production_order.Id = Int32.Parse(this.metroTextBox_OrderNumber.Text);
                     //UPDATE HEADER
                     Result result=production_controller.updateProductionOrder(production_order);
-                    //List of products
-                    for (int i = 0; i < product_lines.Count; i++)
-                    {
-                        if (product_lines[i].Id == 0)
+                    if (!result.success) message += "-" + result.message + "\n";
+                    else { 
+                        //List of products
+                        for (int i = 0; i < product_lines.Count; i++)
                         {
-                            //INSERT
-                            product_lines[i].Order_Id = production_order.Id;
-                            result = product_line_controller.insertProductLine(product_lines[i]);
+                            if (product_lines[i].Id == 0)
+                            {
+                                //INSERT
+                                product_lines[i].Order_Id = production_order.Id;
+                                result = product_line_controller.insertProductLine(product_lines[i]);
+                                if (!result.success) message += "-" + result.message + "\n";
+                            }
+                            else
+                            {
+                                //UPDATE
+                                result = product_line_controller.updateProductLine(product_lines[i]);
+                                if (!result.success) message += "-" + result.message + "\n";
+                            }                     
                         }
-                        else
+                        //List of materials           
+                        for (int i = 0; i < material_lines.Count; i++)
                         {
-                            //UPDATE
-                            result = product_line_controller.updateProductLine(product_lines[i]);
-                        }                     
-                    }
-                    //List of materials           
-                    for (int i = 0; i < material_lines.Count; i++)
-                    {
-                        if (material_lines[i].Id == 0)
-                        {
-                            //INSERT
-                            material_lines[i].Order_Id = production_order.Id;
-                            result = material_line_controller.insertMaterialLine(material_lines[i]);
-                        }
-                        else
-                        {
-                            //UPDATE
-                            result = material_line_controller.updateMaterialLine(material_lines[i]);
-                        }
+                            if (material_lines[i].Id == 0)
+                            {
+                                //INSERT
+                                material_lines[i].Order_Id = production_order.Id;
+                                result = material_line_controller.insertMaterialLine(material_lines[i]);
+                                if (!result.success) message += "-" + result.message + "\n";
+                            }
+                            else
+                            {
+                                //UPDATE
+                                result = material_line_controller.updateMaterialLine(material_lines[i]);
+                                if (!result.success) message += "-" + result.message + "\n";
+                            }
                                           
-                    }
-                    //List of work               
-                    for (int i = 0; i < work_lines.Count; i++)
-                    {
-                        if (work_lines[i].Id == 0)
-                        {
-                            //INSERT
-                            work_lines[i].Order_Id = production_order.Id;
-                            result = work_line_controller.insertWorkLine(work_lines[i]);
                         }
-                        else
+                        //List of work               
+                        for (int i = 0; i < work_lines.Count; i++)
                         {
-                            //UPDATE
-                            result = work_line_controller.updateWorkLine(work_lines[i]);
+                            if (work_lines[i].Id == 0)
+                            {
+                                //INSERT
+                                work_lines[i].Order_Id = production_order.Id;
+                                result = work_line_controller.insertWorkLine(work_lines[i]);
+                                if (!result.success) message += "-" + result.message + "\n";
+                            }
+                            else
+                            {
+                                //UPDATE
+                                result = work_line_controller.updateWorkLine(work_lines[i]);
+                                if (!result.success) message += "-" + result.message + "\n";
+                            }
                         }
+                        MessageBox.Show("Order de producción actualizada.");
                     }
-                    MessageBox.Show("Order de producción actualizada.");
                 }
+                if(message!="")
+                    MessageBox.Show(message,"Errores en el registro",MessageBoxButtons.OK);
                 this.Visible = false;
                 clear_Form();
                 editing = false;
