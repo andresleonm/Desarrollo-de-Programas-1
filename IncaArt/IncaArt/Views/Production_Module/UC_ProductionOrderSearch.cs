@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class UC_ProductionOrderSearch : UserControl
+    public partial class UC_ProductionOrderSearch : ICheckPermissions
     {
         string user = "dp1admin";
         string password = "dp1admin";
@@ -117,6 +118,19 @@ namespace WindowsFormsApp1.Views
             if (orders == null) orders = new List<Models.ProductionOrder>();
             Load_ProductionOrder_DataGridView();
             
+        }
+
+        public override void CheckPermissions(User u)
+        {
+            base.CheckPermissions(u);
+            if(!u.Profile.HasFunctionality("EDIT PRODUCTION ORDER"))
+            {
+                btn_edit.Visible = false;
+            }
+            if (!u.Profile.HasFunctionality("DELETE PRODUCTION ORDER"))
+            {
+                btn_delete.Visible = false;
+            }
         }
     }
 }
