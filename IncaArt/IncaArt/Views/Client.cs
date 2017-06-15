@@ -51,10 +51,9 @@ namespace WindowsFormsApp1.Views
             combo_priority.Add(i,i.ToString());
 
             combo_type.Add(0, "Seleccionar");
-            combo_type.Add(1, "A");
-            combo_type.Add(2, "B");
-            combo_type.Add(3, "C");
-            combo_type.Add(4, "D");
+            combo_type.Add(1, "Nacional");
+            combo_type.Add(2, "Extranjero");
+
 
             combobox_type.DataSource = new BindingSource(combo_type, null);
             combobox_type.DisplayMember = "Value";
@@ -113,6 +112,7 @@ namespace WindowsFormsApp1.Views
             combobox_priority_s.SelectedIndex = 0;
             combobox_type.SelectedIndex = 0;
             combobox_type_s.SelectedIndex = 0;
+            errorProvider.Clear();
 
         }
 
@@ -171,25 +171,34 @@ namespace WindowsFormsApp1.Views
                 id = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
             }
             customer = new Models.Customer(id,name,address,doi,phone,email,type,priority,state);
-
             return customer;
         }
 
         private void tabIndex_Enter(object sender, EventArgs e)
         {
-            Clean();
-            register.Text = "Guardar";
+            Clean();               
             curCustomer = null;
+            register.Text = "Guardar";
+        }
+        private void focus()
+        {
+            textbox_name.Focus();
+            textbox_doi.Focus();
+            textbox_phone.Focus();
+            textbox_address.Focus();
+            combobox_priority.Focus();
+            combobox_type.Focus();
+            //register.Focus();
         }
         private void register_Click(object sender, EventArgs e)
         {
-            
-            
+   
             Models.Customer customer;
             string message = " ";
-
+            Focus();
             if (curCustomer != null)
             {
+
                 customer = CreateCustomer(1);
                 if (customer != null)
                 {
@@ -206,113 +215,121 @@ namespace WindowsFormsApp1.Views
                 }
             }
 
-            if (result.success && result.data != null)
+            if (customer != null)
             {
-                MessageBox.Show(message,"Registro", MessageBoxButtons.OK);
-                Set_Flag_All(false);
-                Clean();
-                Load_Data();
-                Load_DataGridView();
-                metroTabControl1.SelectedIndex = 0;
-            }
-            else
-            {
-                MessageBox.Show(result.message,"Error en la transacción", MessageBoxButtons.OK);
+                if (result.success && result.data != null)
+                {
+                    MessageBox.Show(message, "Registro", MessageBoxButtons.OK);
+                    Set_Flag_All(false);
+                    Clean();
+                    Load_Data();
+                    Load_DataGridView();
+                    metroTabControl1.SelectedIndex = 0;
+                }
+                else
+                {
+                    MessageBox.Show(result.message, "Error en la transacción", MessageBoxButtons.OK);
+                }
             }
         }
-        
- /*
-            Models.Customer customer = CreateCustomer(0);
-            if (customer != null)
-            {
-                result = customerController.insertCustomer(customer);
-                if (result.data == null)
-                {
-                    MessageBox.Show(result.message, "Error al registrar cliente", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    MessageBox.Show("Cliente agregado correctamente", "Registrar Cliente", MessageBoxButtons.OK);
-                    Load_Data();
-                }
-                Set_Flag_All(false);
-                Load_DataGridView();
-                Clean();
-                metroTabControl1.SelectedIndex = 0;
-            }
+
+        /*
+                   Models.Customer customer = CreateCustomer(0);
+                   if (customer != null)
+                   {
+                       result = customerController.insertCustomer(customer);
+                       if (result.data == null)
+                       {
+                           MessageBox.Show(result.message, "Error al registrar cliente", MessageBoxButtons.OK);
+                       }
+                       else
+                       {
+                           MessageBox.Show("Cliente agregado correctamente", "Registrar Cliente", MessageBoxButtons.OK);
+                           Load_Data();
+                       }
+                       Set_Flag_All(false);
+                       Load_DataGridView();
+                       Clean();
+                       metroTabControl1.SelectedIndex = 0;
+                   }
 
 
-            Models.Customer customer = CreateCustomer(1);
-            if (customer != null)
-            {
-                result = customerController.updateCustomer(customer);
-                if (result.data == null)
-                {
-                    MessageBox.Show(result.message, "Error al modificar cliente", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    MessageBox.Show("Cliente editado correctamente", "Editar Cliente", MessageBoxButtons.OK);
-                    Load_Data();
-                }
-                Set_Flag_All(false);
-                Load_DataGridView();
-                Clean();
-                metroTabControl1.SelectedIndex = 0;
-            }*/
-        
+                   Models.Customer customer = CreateCustomer(1);
+                   if (customer != null)
+                   {
+                       result = customerController.updateCustomer(customer);
+                       if (result.data == null)
+                       {
+                           MessageBox.Show(result.message, "Error al modificar cliente", MessageBoxButtons.OK);
+                       }
+                       else
+                       {
+                           MessageBox.Show("Cliente editado correctamente", "Editar Cliente", MessageBoxButtons.OK);
+                           Load_Data();
+                       }
+                       Set_Flag_All(false);
+                       Load_DataGridView();
+                       Clean();
+                       metroTabControl1.SelectedIndex = 0;
+                   }*/
+
 
 
         private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-                if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
-                {
-                    cur_row = e.RowIndex;
-                    delete.Enabled = true;
-                }
-            
+            if (e.RowIndex != -1) { 
+            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
+            {
+                cur_row = e.RowIndex;
+                delete.Enabled = true;
+            }
+        }
         }
 
 
         private void metroGrid1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            cur_row = e.RowIndex;
-            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
+            if (e.RowIndex != -1)
             {
-                int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
-                curCustomer = customer_list[index];
-
-                textbox_doi.Text  = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                textbox_address.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                textbox_phone.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
-                textbox_email.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
-
-                //Tipo 
-                for (int i = 0; i < combo_type.Count() ; i++)
+                cur_row = e.RowIndex;
+                if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
                 {
-                    if (combo_type[i]== metroGrid1.Rows[e.RowIndex].Cells[7].Value.ToString())
-                    {
-                        combobox_type.SelectedIndex = i;
-                        break;
-                    }
-                }
+                    int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
+                    curCustomer = customer_list[index];
 
-                //Tipo 
-                for (int i = 0; i < combo_priority.Count(); i++)
-                {
-                    if (combo_priority[i] == metroGrid1.Rows[e.RowIndex].Cells[8].Value.ToString())
-                    {
-                        combobox_priority.SelectedIndex = i ;
-                        break;
-                    }
-                }
+                    textbox_doi.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    textbox_address.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    textbox_phone.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    textbox_email.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
 
-                register.Text = "Editar";
-                metroTabControl1.SelectedIndex = 1;
-                Set_Flag_All(true);
+                    //Tipo 
+                    for (int i = 0; i < combo_type.Count(); i++)
+                    {
+                        if (combo_type[i] == metroGrid1.Rows[e.RowIndex].Cells[7].Value.ToString())
+                        {
+                            combobox_type.SelectedIndex = i;
+                            break;
+                        }
+                    }
+
+                    //Tipo 
+                    for (int i = 0; i < combo_priority.Count(); i++)
+                    {
+                        if (combo_priority[i] == metroGrid1.Rows[e.RowIndex].Cells[8].Value.ToString())
+                        {
+                            combobox_priority.SelectedIndex = i;
+                            break;
+                        }
+                    }
+
+                    register.Text = "Editar";
+                    metroTabControl1.SelectedIndex = 1;
+                    // Focus();
+                    Set_Flag_All(true);
+                    errorProvider.Clear();
+
+                }
             }
         }
 
@@ -541,7 +558,7 @@ namespace WindowsFormsApp1.Views
             if (unit_id == 0)
             {
                 Set_Flag(combobox.Name, false);
-                errorProvider.SetError(combobox, combobox.Name);
+                errorProvider.SetError(combobox, "Debe seleccionar una opción válida");
 
             }
             else
