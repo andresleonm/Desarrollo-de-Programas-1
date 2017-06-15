@@ -79,7 +79,7 @@ namespace WindowsFormsApp1.Views
             this.typeWarehouseMain1 = new WindowsFormsApp1.Views.Warehouse_M_Module.TypeWarehouseMain();
             this.uC_WarehouseMovement1 = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement();
             this.uc_ratio = new WindowsFormsApp1.Views.UC_Ratio();
-            this.uc_currency = new WindowsFormsApp1.Views.UC_Currency2();
+            this.uC_CurrencyMain1 = new WindowsFormsApp1.Views.Currency_Module.UC_CurrencyMain();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -440,6 +440,7 @@ namespace WindowsFormsApp1.Views
             this.uc_ProductionMenu.Name = "uc_ProductionMenu";
             this.uc_ProductionMenu.Size = new System.Drawing.Size(819, 514);
             this.uc_ProductionMenu.TabIndex = 34;
+            this.uc_ProductionMenu.UseSelectable = true;
             // 
             // uC_Simulation1
             // 
@@ -460,26 +461,25 @@ namespace WindowsFormsApp1.Views
             // 
             // parameters1
             // 
+            this.parameters1.AutoSize = true;
             this.parameters1.BackColor = System.Drawing.Color.White;
             this.parameters1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parameters1.AutoSize = true;
             this.parameters1.Location = new System.Drawing.Point(132, 72);
             this.parameters1.Name = "parameters1";
-            this.parameters1.Size = new System.Drawing.Size(819, 643);
+            this.parameters1.Size = new System.Drawing.Size(819, 514);
             this.parameters1.TabIndex = 22;
             this.parameters1.UseSelectable = true;
             this.parameters1.Visible = false;
             // 
             // warehouse1
             // 
-            this.warehouse1.BackColor = System.Drawing.Color.White;
-            this.warehouse1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.warehouse1.AutoScroll = true;
             this.warehouse1.AutoSize = true;
             this.warehouse1.BackColor = System.Drawing.Color.White;
+            this.warehouse1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.warehouse1.Location = new System.Drawing.Point(132, 72);
             this.warehouse1.Name = "warehouse1";
-            this.warehouse1.Size = new System.Drawing.Size(1023, 665);
+            this.warehouse1.Size = new System.Drawing.Size(819, 514);
             this.warehouse1.Style = MetroFramework.MetroColorStyle.Blue;
             this.warehouse1.TabIndex = 20;
             this.warehouse1.UseCustomBackColor = true;
@@ -493,7 +493,7 @@ namespace WindowsFormsApp1.Views
             this.supplier1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.supplier1.Location = new System.Drawing.Point(132, 72);
             this.supplier1.Name = "supplier1";
-            this.supplier1.Size = new System.Drawing.Size(1064, 652);
+            this.supplier1.Size = new System.Drawing.Size(819, 514);
             this.supplier1.TabIndex = 18;
             this.supplier1.UseSelectable = true;
             // 
@@ -506,18 +506,20 @@ namespace WindowsFormsApp1.Views
             // 
             // client1
             // 
+            this.client1.AutoSize = true;
             this.client1.BackColor = System.Drawing.Color.White;
             this.client1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.client1.AutoSize = true;
             this.client1.Location = new System.Drawing.Point(132, 72);
             this.client1.Name = "client1";
-            this.client1.Size = new System.Drawing.Size(971, 716);
+            this.client1.Size = new System.Drawing.Size(819, 514);
             this.client1.Style = MetroFramework.MetroColorStyle.Teal;
             this.client1.TabIndex = 18;
             this.client1.UseSelectable = true;
             // 
             // uC_PurchasesMenu1
             // 
+            this.uC_PurchasesMenu1.AutoScrollMargin = new System.Drawing.Size(5, 5);
+            this.uC_PurchasesMenu1.AutoSize = true;
             this.uC_PurchasesMenu1.BackColor = System.Drawing.SystemColors.Control;
             this.uC_PurchasesMenu1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.uC_PurchasesMenu1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -649,22 +651,21 @@ namespace WindowsFormsApp1.Views
             this.uc_ratio.UseSelectable = true;
             this.uc_ratio.Visible = false;
             // 
-            // uc_currency
+            // uC_CurrencyMain1
             // 
-            this.uc_currency.Location = new System.Drawing.Point(132, 72);
-            this.uc_currency.Name = "uc_currency";
-            this.uc_currency.Size = new System.Drawing.Size(874, 565);
-            this.uc_currency.TabIndex = 49;
-            this.uc_currency.UseSelectable = true;
-            this.uc_currency.Visible = false;
+            this.uC_CurrencyMain1.Location = new System.Drawing.Point(132, 72);
+            this.uC_CurrencyMain1.Name = "uC_CurrencyMain1";
+            this.uC_CurrencyMain1.Size = new System.Drawing.Size(675, 549);
+            this.uC_CurrencyMain1.TabIndex = 51;
+            this.uC_CurrencyMain1.UseSelectable = true;
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(951, 586);
-            this.Controls.Add(this.uc_currency);
+            this.Controls.Add(this.uC_CurrencyMain1);
             this.Controls.Add(this.typeWarehouseMain1);
             this.Controls.Add(this.uC_WarehouseMovement1);
             this.Controls.Add(this.uc_ratio);
@@ -759,6 +760,6 @@ namespace WindowsFormsApp1.Views
         private UC_Ratio uc_ratio;
         private MetroFramework.Controls.MetroContextMenu metroContextMenu1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private UC_Currency2 uc_currency;
+        private Currency_Module.UC_CurrencyMain uC_CurrencyMain1;
     }
 }

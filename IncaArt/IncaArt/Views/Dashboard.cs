@@ -278,7 +278,7 @@ namespace WindowsFormsApp1.Views
         private void btn_currency_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            uc_currency.Visible = true;
+            uC_CurrencyMain1.Visible = true;
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)

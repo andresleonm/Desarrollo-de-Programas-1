@@ -11,7 +11,7 @@ using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views.Production_Module
 {
-    public partial class UC_ProductionMenu : UserControl
+    public partial class UC_ProductionMenu : ICheckPermissions
     {
         User sessionUser;
         public UC_ProductionMenu()
@@ -39,9 +39,9 @@ namespace WindowsFormsApp1.Views.Production_Module
             }
         }
 
-        private void UC_ProductionMenu_ParentChanged(object sender, EventArgs e)
+        public override void CheckPermissions(User u)
         {
-            sessionUser = ((Dashboard)Parent).sessionUser;
+            sessionUser = u;
             UC_ProductionMenu_Load();
         }
 
