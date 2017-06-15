@@ -55,6 +55,8 @@ namespace WindowsFormsApp1.Views
             this.label_user_role = new MetroFramework.Controls.MetroLabel();
             this.label_user_name = new MetroFramework.Controls.MetroLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.metroContextMenu1 = new MetroFramework.Controls.MetroContextMenu(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.uc_ProductionMenu = new WindowsFormsApp1.Views.Production_Module.UC_ProductionMenu();
             this.uC_Simulation1 = new WindowsFormsApp1.Views.UC_Simulation();
             this.uC_SalesMain1 = new WindowsFormsApp1.Views.UC_SalesMain();
@@ -77,8 +79,6 @@ namespace WindowsFormsApp1.Views
             this.typeWarehouseMain1 = new WindowsFormsApp1.Views.Warehouse_M_Module.TypeWarehouseMain();
             this.uC_WarehouseMovement1 = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement();
             this.uc_ratio = new WindowsFormsApp1.Views.UC_Ratio();
-            this.metroContextMenu1 = new MetroFramework.Controls.MetroContextMenu(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -416,6 +416,20 @@ namespace WindowsFormsApp1.Views
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             // 
+            // metroContextMenu1
+            // 
+            this.metroContextMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.metroContextMenu1.Name = "metroContextMenu1";
+            this.metroContextMenu1.Size = new System.Drawing.Size(144, 26);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.toolStripMenuItem1.Text = "Cerrar Sesión";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
             // uc_ProductionMenu
             // 
             this.uc_ProductionMenu.BackColor = System.Drawing.SystemColors.Control;
@@ -425,6 +439,7 @@ namespace WindowsFormsApp1.Views
             this.uc_ProductionMenu.Name = "uc_ProductionMenu";
             this.uc_ProductionMenu.Size = new System.Drawing.Size(819, 514);
             this.uc_ProductionMenu.TabIndex = 34;
+            this.uc_ProductionMenu.UseSelectable = true;
             // 
             // uC_Simulation1
             // 
@@ -445,9 +460,10 @@ namespace WindowsFormsApp1.Views
             // 
             // parameters1
             // 
+            this.parameters1.AutoSize = true;
             this.parameters1.Location = new System.Drawing.Point(132, 72);
             this.parameters1.Name = "parameters1";
-            this.parameters1.Size = new System.Drawing.Size(819, 514);
+            this.parameters1.Size = new System.Drawing.Size(819, 643);
             this.parameters1.TabIndex = 22;
             this.parameters1.UseSelectable = true;
             this.parameters1.Visible = false;
@@ -510,6 +526,7 @@ namespace WindowsFormsApp1.Views
             this.mainDashboard1.Name = "mainDashboard1";
             this.mainDashboard1.Size = new System.Drawing.Size(819, 514);
             this.mainDashboard1.TabIndex = 13;
+            this.mainDashboard1.UseSelectable = true;
             // 
             // user
             // 
@@ -598,6 +615,14 @@ namespace WindowsFormsApp1.Views
             this.uc_workstation.UseSelectable = true;
             this.uc_workstation.Visible = false;
             // 
+            // typeWarehouseMain1
+            // 
+            this.typeWarehouseMain1.Location = new System.Drawing.Point(132, 72);
+            this.typeWarehouseMain1.Name = "typeWarehouseMain1";
+            this.typeWarehouseMain1.Size = new System.Drawing.Size(769, 722);
+            this.typeWarehouseMain1.TabIndex = 47;
+            this.typeWarehouseMain1.UseSelectable = true;
+            // 
             // uC_WarehouseMovement1
             // 
             this.uC_WarehouseMovement1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -615,28 +640,6 @@ namespace WindowsFormsApp1.Views
             this.uc_ratio.UseCustomBackColor = true;
             this.uc_ratio.UseSelectable = true;
             this.uc_ratio.Visible = false;
-            //
-            // metroContextMenu1
-            // 
-            this.metroContextMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
-            this.metroContextMenu1.Name = "metroContextMenu1";
-            this.metroContextMenu1.Size = new System.Drawing.Size(153, 48);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem1.Text = "Cerrar Sesión";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            //
-            // typeWarehouseMain1
-            // 
-            this.typeWarehouseMain1.Location = new System.Drawing.Point(132, 72);
-            this.typeWarehouseMain1.Name = "typeWarehouseMain1";
-            this.typeWarehouseMain1.Size = new System.Drawing.Size(769, 722);
-            this.typeWarehouseMain1.TabIndex = 47;
-            this.typeWarehouseMain1.UseSelectable = true;
             // 
             // Dashboard
             // 
