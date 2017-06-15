@@ -81,6 +81,10 @@ namespace WindowsFormsApp1.Views
         private bool validate_data()
         {
             bool isCorrect = true;
+
+            validate_textbox(metroTextBox_Description);
+            validate_begin_datetime(metroDateTime_Begin);
+            validate_end_datetime(metroDateTime_End);
             if (!flag_description ||!flag_begin||!flag_end)
             {
                 MessageBox.Show("Hay campos inválidos en los datos de la orden de producción.","Error en el registro",MessageBoxButtons.OK);
@@ -536,7 +540,7 @@ namespace WindowsFormsApp1.Views
         }
 
 
-        //Tablas de resumen
+        //Summary
         private void update_SummaryProduct()
         {
             calculate_products_summary();
@@ -582,7 +586,7 @@ namespace WindowsFormsApp1.Views
             foreach (Models.ProductionOrderProductLine product_line in product_lines)
             {
                 int index = product_summary_lines.FindIndex(p => p.Product_id == product_line.Product_id);
-                if (index==-1) //No se encuentra
+                if (index==-1) //not found
                 {
                     Models.ProductionOrderProductLine new_line = new Models.ProductionOrderProductLine();
                     new_line.Product_id = product_line.Product_id;
@@ -615,12 +619,12 @@ namespace WindowsFormsApp1.Views
             }
         }
 
-        public void calculate_materials_summary() //De la receta de productos
+        public void calculate_materials_summary() 
         {
             material_summary_lines.Clear();
             List<Models.Material> materials = (List<Models.Material>)material_controller.getMaterials().data;
             List<Models.UnitOfMeasure> units = (List<Models.UnitOfMeasure>)unit_controller.getUnits().data;
-            //Por cada producto
+            //For product
             foreach (Models.ProductionOrderProductLine product_line in product_lines)
             {
                 //Detalle de receta de cada producto
@@ -648,10 +652,11 @@ namespace WindowsFormsApp1.Views
                 }
             }
         }
+
         //Validaciones
-        private void metroTextBox_Description_Validating(object sender, CancelEventArgs e)
+
+       private void validate_textbox(MetroFramework.Controls.MetroTextBox textbox)
         {
-            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
             string text = textbox.Text;
             if (String.IsNullOrWhiteSpace(text))
             {
@@ -665,26 +670,27 @@ namespace WindowsFormsApp1.Views
             }
         }
 
-        private void metroDateTime_Begin_Validating(object sender, CancelEventArgs e)
-        {
-            MetroFramework.Controls.MetroDateTime date_time = (MetroFramework.Controls.MetroDateTime)sender;
-            DateTime end = metroDateTime_End.Value;
-            if (date_time.Value > end)
+        private void validate_begin_datetime(MetroFramework.Controls.MetroDateTime date_time) {
+            DateTime end = metroDateTime_End.Value.Date;
+            if (date_time.Value.Date > end)
             {
                 flag_begin = false;
                 errorProvider.SetError(date_time, "La fecha de inicio debe ser menor o igual que la de fin.");
-            }else
+            }
+            else if (date_time.Value.Date < DateTime.Now.Date)
             {
-                flag_end = true;
-                errorProvider.SetError(date_time,null);
+                flag_begin = false;
+                errorProvider.SetError(date_time, "La fecha de inicio debe ser mayor a la fecha actual");
+            }
+            else {
+                flag_begin = true;
+                errorProvider.SetError(date_time, null);
             }
         }
 
-        private void metroDateTime_End_Validating(object sender, CancelEventArgs e)
-        {
-            MetroFramework.Controls.MetroDateTime date_time = (MetroFramework.Controls.MetroDateTime)sender;
-            DateTime begin = metroDateTime_Begin.Value;
-            if (date_time.Value < begin)
+        private void validate_end_datetime(MetroFramework.Controls.MetroDateTime date_time) {
+            DateTime begin = metroDateTime_Begin.Value.Date;
+            if (date_time.Value.Date < begin)
             {
                 flag_end = false;
                 errorProvider.SetError(date_time, "La fecha de fin debe ser mayor o igual que la de inicio.");
@@ -694,6 +700,24 @@ namespace WindowsFormsApp1.Views
                 flag_end = true;
                 errorProvider.SetError(date_time, null);
             }
+        }
+        
+        private void metroTextBox_Description_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            validate_textbox(textbox);
+        }
+
+        private void metroDateTime_Begin_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroDateTime date_time = (MetroFramework.Controls.MetroDateTime)sender;
+            validate_begin_datetime(date_time);
+        }
+
+        private void metroDateTime_End_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroDateTime date_time = (MetroFramework.Controls.MetroDateTime)sender;
+            validate_end_datetime(date_time);
         }
 
         private void metroDateTime_End_ValueChanged(object sender, EventArgs e)
