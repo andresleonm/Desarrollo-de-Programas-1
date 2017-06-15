@@ -490,7 +490,7 @@ namespace WindowsFormsApp1.Views
             this.client1.Size = new System.Drawing.Size(971, 716);
             this.client1.Style = MetroFramework.MetroColorStyle.Teal;
             this.client1.TabIndex = 18;
-            this.client1.UseSelectable = true;
+            this.client1.UseSelectable = true;            
             // 
             // uC_PurchasesMenu1
             // 
@@ -636,13 +636,13 @@ namespace WindowsFormsApp1.Views
             this.typeWarehouseMain1.Name = "typeWarehouseMain1";
             this.typeWarehouseMain1.Size = new System.Drawing.Size(769, 722);
             this.typeWarehouseMain1.TabIndex = 47;
-            this.typeWarehouseMain1.UseSelectable = true;
+            this.typeWarehouseMain1.UseSelectable = true;                        
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.White;                                  
             this.ClientSize = new System.Drawing.Size(951, 586);
             this.Controls.Add(this.typeWarehouseMain1);
             this.Controls.Add(this.uC_WarehouseMovement1);

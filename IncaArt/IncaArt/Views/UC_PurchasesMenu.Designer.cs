@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_new_purchase_order = new MetroFramework.Controls.MetroTile();
+            this.btn_purchase_orders = new MetroFramework.Controls.MetroTile();
             this.panel2 = new System.Windows.Forms.Panel();
             this.uC_PurchaseOrderGrid1 = new WindowsFormsApp1.Views.UC_PurchaseOrderGrid();
             this.uC_PurchaseOrder1 = new WindowsFormsApp1.Views.UC_PurchaseOrder();
-            this.btn_new_purchase_order = new MetroFramework.Controls.MetroTile();
-            this.btn_purchase_orders = new MetroFramework.Controls.MetroTile();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -48,36 +48,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(774, 70);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.uC_PurchaseOrderGrid1);
-            this.panel2.Controls.Add(this.uC_PurchaseOrder1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 70);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(774, 452);
-            this.panel2.TabIndex = 1;
-            // 
-            // uC_PurchaseOrderGrid1
-            // 
-            this.uC_PurchaseOrderGrid1.BackColor = System.Drawing.Color.White;
-            this.uC_PurchaseOrderGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_PurchaseOrderGrid1.Location = new System.Drawing.Point(0, 0);
-            this.uC_PurchaseOrderGrid1.Name = "uC_PurchaseOrderGrid1";
-            this.uC_PurchaseOrderGrid1.Size = new System.Drawing.Size(774, 452);
-            this.uC_PurchaseOrderGrid1.TabIndex = 0;
-            this.uC_PurchaseOrderGrid1.Visible = false;
-            // 
-            // uC_PurchaseOrder1
-            // 
-            this.uC_PurchaseOrder1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.uC_PurchaseOrder1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_PurchaseOrder1.Location = new System.Drawing.Point(0, 0);
-            this.uC_PurchaseOrder1.Name = "uC_PurchaseOrder1";
-            this.uC_PurchaseOrder1.Size = new System.Drawing.Size(774, 452);
-            this.uC_PurchaseOrder1.TabIndex = 1;
-            this.uC_PurchaseOrder1.Visible = false;
             // 
             // btn_new_purchase_order
             // 
@@ -111,10 +81,45 @@
             this.btn_purchase_orders.UseTileImage = true;
             this.btn_purchase_orders.Click += new System.EventHandler(this.btn_purchases_orders_Click);
             // 
+            // panel2
+            // 
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.uC_PurchaseOrderGrid1);
+            this.panel2.Controls.Add(this.uC_PurchaseOrder1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 70);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(774, 452);
+            this.panel2.TabIndex = 1;
+            // 
+            // uC_PurchaseOrderGrid1
+            // 
+            this.uC_PurchaseOrderGrid1.BackColor = System.Drawing.Color.White;
+            this.uC_PurchaseOrderGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_PurchaseOrderGrid1.Location = new System.Drawing.Point(0, 0);
+            this.uC_PurchaseOrderGrid1.Name = "uC_PurchaseOrderGrid1";
+            this.uC_PurchaseOrderGrid1.Size = new System.Drawing.Size(774, 452);
+            this.uC_PurchaseOrderGrid1.TabIndex = 0;
+            this.uC_PurchaseOrderGrid1.Visible = false;
+            // 
+            // uC_PurchaseOrder1
+            // 
+            this.uC_PurchaseOrder1.AutoScroll = true;
+            this.uC_PurchaseOrder1.AutoScrollMargin = new System.Drawing.Size(5, 5);
+            this.uC_PurchaseOrder1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.uC_PurchaseOrder1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_PurchaseOrder1.Location = new System.Drawing.Point(0, 0);
+            this.uC_PurchaseOrder1.Name = "uC_PurchaseOrder1";
+            this.uC_PurchaseOrder1.Size = new System.Drawing.Size(774, 452);
+            this.uC_PurchaseOrder1.TabIndex = 1;
+            this.uC_PurchaseOrder1.Visible = false;
+            // 
             // UC_PurchasesMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScrollMargin = new System.Drawing.Size(5, 5);
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.panel2);
