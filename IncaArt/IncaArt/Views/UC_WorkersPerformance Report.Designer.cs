@@ -40,6 +40,7 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_Excel = new MetroFramework.Controls.MetroTile();
             this.btn_export = new MetroFramework.Controls.MetroButton();
             this.datagrid_WorkersPerformance = new MetroFramework.Controls.MetroGrid();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +48,6 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_Excel = new MetroFramework.Controls.MetroTile();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -172,6 +172,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultados de búsqueda";
             // 
+            // btn_Excel
+            // 
+            this.btn_Excel.ActiveControl = null;
+            this.btn_Excel.BackColor = System.Drawing.Color.White;
+            this.btn_Excel.Location = new System.Drawing.Point(611, 12);
+            this.btn_Excel.Name = "btn_Excel";
+            this.btn_Excel.Size = new System.Drawing.Size(152, 38);
+            this.btn_Excel.TabIndex = 75;
+            this.btn_Excel.Text = "Exportar a Excel";
+            this.btn_Excel.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
+            this.btn_Excel.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_Excel.UseCustomBackColor = true;
+            this.btn_Excel.UseCustomForeColor = true;
+            this.btn_Excel.UseSelectable = true;
+            this.btn_Excel.UseStyleColors = true;
+            this.btn_Excel.UseTileImage = true;
+            this.btn_Excel.Click += new System.EventHandler(this.btn_Excel_Click);
+            // 
             // btn_export
             // 
             this.btn_export.BackColor = System.Drawing.Color.DarkCyan;
@@ -259,39 +277,21 @@
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "Ratio eficiencia";
+            this.Column2.HeaderText = "Ratio efectividad";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
-            this.Column3.HeaderText = "Ratio rotura";
+            this.Column3.HeaderText = "Ratio de merma";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
-            this.Column4.HeaderText = "Ratio Tiempo";
+            this.Column4.HeaderText = "Tiempo promedio";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
-            // 
-            // btn_Excel
-            // 
-            this.btn_Excel.ActiveControl = null;
-            this.btn_Excel.BackColor = System.Drawing.Color.White;
-            this.btn_Excel.Location = new System.Drawing.Point(611, 12);
-            this.btn_Excel.Name = "btn_Excel";
-            this.btn_Excel.Size = new System.Drawing.Size(152, 38);
-            this.btn_Excel.TabIndex = 75;
-            this.btn_Excel.Text = "Exportar a Excel";
-            this.btn_Excel.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
-            this.btn_Excel.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_Excel.UseCustomBackColor = true;
-            this.btn_Excel.UseCustomForeColor = true;
-            this.btn_Excel.UseSelectable = true;
-            this.btn_Excel.UseStyleColors = true;
-            this.btn_Excel.UseTileImage = true;
-            this.btn_Excel.Click += new System.EventHandler(this.btn_Excel_Click);
             // 
             // WorkersPerformance_Report
             // 
@@ -323,11 +323,11 @@
         private MetroFramework.Controls.MetroDateTime metroDateTime_End;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroTile btn_Excel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private MetroFramework.Controls.MetroTile btn_Excel;
     }
 }

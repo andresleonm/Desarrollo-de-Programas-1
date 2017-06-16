@@ -71,6 +71,26 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        //Only get the materials which have minimum one warehouse
+        public Result getMaterials_withWarehouses()
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            GenericResult result = execute_function("get_materials3", parameters);
+            List<Models.Material> materials = new List<Models.Material>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    materials.Add(new Models.Material(
+                        Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), r.getColumn(2), Int32.Parse(r.getColumn(3)), Int32.Parse(r.getColumn(4))
+                        ));
+                }
+                return new Result(materials, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
         public Result insertMaterial(Models.Material material)
         {
             //consultar permisos
