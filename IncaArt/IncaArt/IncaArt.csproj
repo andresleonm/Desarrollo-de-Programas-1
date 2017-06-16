@@ -320,6 +320,12 @@
     <Compile Include="Views\Sales_Module\UC_SalesDocument.Designer.cs">
       <DependentUpon>UC_SalesDocument.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Sales_Module\UC_SalesEstimate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Sales_Module\UC_SalesEstimate.Designer.cs">
+      <DependentUpon>UC_SalesEstimate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Sales_Module\UC_SalesRefund.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -666,6 +672,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesDocument.resx">
       <DependentUpon>UC_SalesDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales_Module\UC_SalesEstimate.resx">
+      <DependentUpon>UC_SalesEstimate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesRefund.resx">
       <DependentUpon>UC_SalesRefund.cs</DependentUpon>

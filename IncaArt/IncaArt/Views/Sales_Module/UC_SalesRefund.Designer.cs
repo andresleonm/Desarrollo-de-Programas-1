@@ -40,7 +40,7 @@
             this.refund = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_Detail = new System.Windows.Forms.Button();
-            this.gbDocuments = new System.Windows.Forms.GroupBox();
+            this.gb_Refunds = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.grid_Refunds = new MetroFramework.Controls.MetroGrid();
             this.currencyidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,7 +58,7 @@
             this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salesRefundBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gb_Filter = new System.Windows.Forms.GroupBox();
             this.btn_Search_Refunds = new System.Windows.Forms.Button();
             this.dt_iniDate = new MetroFramework.Controls.MetroDateTime();
             this.dt_endDate = new MetroFramework.Controls.MetroDateTime();
@@ -74,7 +74,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.txt_igv = new MetroFramework.Controls.MetroTextBox();
             this.label = new System.Windows.Forms.Label();
-            this.gbClient = new System.Windows.Forms.GroupBox();
+            this.gb_Client = new System.Windows.Forms.GroupBox();
             this.txt_Doi = new MetroFramework.Controls.MetroTextBox();
             this.txt_address = new MetroFramework.Controls.MetroTextBox();
             this.txt_phone = new MetroFramework.Controls.MetroTextBox();
@@ -83,7 +83,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.gbRefund = new System.Windows.Forms.GroupBox();
+            this.gb_Refund = new System.Windows.Forms.GroupBox();
             this.dt_IssueHour = new MetroFramework.Controls.MetroDateTime();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_Currency = new MetroFramework.Controls.MetroTextBox();
@@ -104,7 +104,7 @@
             this.btn_Save = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.gb_OrderLine = new System.Windows.Forms.GroupBox();
+            this.gb_RefundLine = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_Refund_Lines = new MetroFramework.Controls.MetroGrid();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -127,15 +127,15 @@
             this.tab_Refund.SuspendLayout();
             this.refund.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.gbDocuments.SuspendLayout();
+            this.gb_Refunds.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_Refunds)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesRefundBindingSource)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.gb_Filter.SuspendLayout();
             this.newRefund.SuspendLayout();
-            this.gbClient.SuspendLayout();
-            this.gbRefund.SuspendLayout();
-            this.gb_OrderLine.SuspendLayout();
+            this.gb_Client.SuspendLayout();
+            this.gb_Refund.SuspendLayout();
+            this.gb_RefundLine.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_Refund_Lines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesRefundLineBindingSource)).BeginInit();
@@ -178,8 +178,8 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.btn_Detail);
-            this.panel3.Controls.Add(this.gbDocuments);
-            this.panel3.Controls.Add(this.groupBox2);
+            this.panel3.Controls.Add(this.gb_Refunds);
+            this.panel3.Controls.Add(this.gb_Filter);
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1028, 557);
@@ -197,18 +197,18 @@
             this.btn_Detail.Text = "Detalle";
             this.btn_Detail.UseVisualStyleBackColor = false;
             // 
-            // gbDocuments
+            // gb_Refunds
             // 
-            this.gbDocuments.BackColor = System.Drawing.Color.White;
-            this.gbDocuments.Controls.Add(this.panel4);
-            this.gbDocuments.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbDocuments.ForeColor = System.Drawing.Color.Black;
-            this.gbDocuments.Location = new System.Drawing.Point(14, 184);
-            this.gbDocuments.Name = "gbDocuments";
-            this.gbDocuments.Size = new System.Drawing.Size(1000, 289);
-            this.gbDocuments.TabIndex = 46;
-            this.gbDocuments.TabStop = false;
-            this.gbDocuments.Text = "Devoluciones";
+            this.gb_Refunds.BackColor = System.Drawing.Color.White;
+            this.gb_Refunds.Controls.Add(this.panel4);
+            this.gb_Refunds.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb_Refunds.ForeColor = System.Drawing.Color.Black;
+            this.gb_Refunds.Location = new System.Drawing.Point(14, 184);
+            this.gb_Refunds.Name = "gb_Refunds";
+            this.gb_Refunds.Size = new System.Drawing.Size(1000, 289);
+            this.gb_Refunds.TabIndex = 46;
+            this.gb_Refunds.TabStop = false;
+            this.gb_Refunds.Text = "Devoluciones";
             // 
             // panel4
             // 
@@ -394,26 +394,26 @@
             // 
             this.salesRefundBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesRefund);
             // 
-            // groupBox2
+            // gb_Filter
             // 
-            this.groupBox2.Controls.Add(this.btn_Search_Refunds);
-            this.groupBox2.Controls.Add(this.dt_iniDate);
-            this.groupBox2.Controls.Add(this.dt_endDate);
-            this.groupBox2.Controls.Add(this.btn_Search_Client);
-            this.groupBox2.Controls.Add(this.ctxt_refund_id);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.ctxt_customer);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(14, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1000, 161);
-            this.groupBox2.TabIndex = 40;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filtros";
+            this.gb_Filter.Controls.Add(this.btn_Search_Refunds);
+            this.gb_Filter.Controls.Add(this.dt_iniDate);
+            this.gb_Filter.Controls.Add(this.dt_endDate);
+            this.gb_Filter.Controls.Add(this.btn_Search_Client);
+            this.gb_Filter.Controls.Add(this.ctxt_refund_id);
+            this.gb_Filter.Controls.Add(this.label10);
+            this.gb_Filter.Controls.Add(this.ctxt_customer);
+            this.gb_Filter.Controls.Add(this.label13);
+            this.gb_Filter.Controls.Add(this.label14);
+            this.gb_Filter.Controls.Add(this.label15);
+            this.gb_Filter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb_Filter.ForeColor = System.Drawing.Color.Black;
+            this.gb_Filter.Location = new System.Drawing.Point(14, 3);
+            this.gb_Filter.Name = "gb_Filter";
+            this.gb_Filter.Size = new System.Drawing.Size(1000, 161);
+            this.gb_Filter.TabIndex = 40;
+            this.gb_Filter.TabStop = false;
+            this.gb_Filter.Text = "Filtros";
             // 
             // btn_Search_Refunds
             // 
@@ -431,7 +431,7 @@
             // dt_iniDate
             // 
             this.dt_iniDate.Location = new System.Drawing.Point(664, 22);
-            this.dt_iniDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_iniDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_iniDate.Name = "dt_iniDate";
             this.dt_iniDate.Size = new System.Drawing.Size(222, 29);
             this.dt_iniDate.TabIndex = 59;
@@ -439,7 +439,7 @@
             // dt_endDate
             // 
             this.dt_endDate.Location = new System.Drawing.Point(664, 74);
-            this.dt_endDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_endDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_endDate.Name = "dt_endDate";
             this.dt_endDate.Size = new System.Drawing.Size(222, 29);
             this.dt_endDate.TabIndex = 58;
@@ -572,8 +572,8 @@
             this.newRefund.Controls.Add(this.label20);
             this.newRefund.Controls.Add(this.txt_igv);
             this.newRefund.Controls.Add(this.label);
-            this.newRefund.Controls.Add(this.gbClient);
-            this.newRefund.Controls.Add(this.gbRefund);
+            this.newRefund.Controls.Add(this.gb_Client);
+            this.newRefund.Controls.Add(this.gb_Refund);
             this.newRefund.Controls.Add(this.txt_Status);
             this.newRefund.Controls.Add(this.txt_observation);
             this.newRefund.Controls.Add(this.label3);
@@ -583,7 +583,7 @@
             this.newRefund.Controls.Add(this.btn_Save);
             this.newRefund.Controls.Add(this.label6);
             this.newRefund.Controls.Add(this.label5);
-            this.newRefund.Controls.Add(this.gb_OrderLine);
+            this.newRefund.Controls.Add(this.gb_RefundLine);
             this.newRefund.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newRefund.Location = new System.Drawing.Point(4, 38);
             this.newRefund.Name = "newRefund";
@@ -685,24 +685,24 @@
             this.label.TabIndex = 69;
             this.label.Text = "IGV :";
             // 
-            // gbClient
+            // gb_Client
             // 
-            this.gbClient.Controls.Add(this.txt_Doi);
-            this.gbClient.Controls.Add(this.txt_address);
-            this.gbClient.Controls.Add(this.txt_phone);
-            this.gbClient.Controls.Add(this.label1);
-            this.gbClient.Controls.Add(this.txt_name);
-            this.gbClient.Controls.Add(this.label7);
-            this.gbClient.Controls.Add(this.label9);
-            this.gbClient.Controls.Add(this.label12);
-            this.gbClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbClient.ForeColor = System.Drawing.Color.Black;
-            this.gbClient.Location = new System.Drawing.Point(662, 7);
-            this.gbClient.Name = "gbClient";
-            this.gbClient.Size = new System.Drawing.Size(357, 160);
-            this.gbClient.TabIndex = 68;
-            this.gbClient.TabStop = false;
-            this.gbClient.Text = "Datos del Cliente";
+            this.gb_Client.Controls.Add(this.txt_Doi);
+            this.gb_Client.Controls.Add(this.txt_address);
+            this.gb_Client.Controls.Add(this.txt_phone);
+            this.gb_Client.Controls.Add(this.label1);
+            this.gb_Client.Controls.Add(this.txt_name);
+            this.gb_Client.Controls.Add(this.label7);
+            this.gb_Client.Controls.Add(this.label9);
+            this.gb_Client.Controls.Add(this.label12);
+            this.gb_Client.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb_Client.ForeColor = System.Drawing.Color.Black;
+            this.gb_Client.Location = new System.Drawing.Point(662, 7);
+            this.gb_Client.Name = "gb_Client";
+            this.gb_Client.Size = new System.Drawing.Size(357, 160);
+            this.gb_Client.TabIndex = 68;
+            this.gb_Client.TabStop = false;
+            this.gb_Client.Text = "Datos del Cliente";
             // 
             // txt_Doi
             // 
@@ -884,28 +884,28 @@
             this.label12.TabIndex = 4;
             this.label12.Text = "Dirección :";
             // 
-            // gbRefund
+            // gb_Refund
             // 
-            this.gbRefund.Controls.Add(this.dt_IssueHour);
-            this.gbRefund.Controls.Add(this.label4);
-            this.gbRefund.Controls.Add(this.txt_Currency);
-            this.gbRefund.Controls.Add(this.dt_IssueDate);
-            this.gbRefund.Controls.Add(this.txt_Refund_id);
-            this.gbRefund.Controls.Add(this.label11);
-            this.gbRefund.Controls.Add(this.label8);
-            this.gbRefund.Controls.Add(this.label2);
-            this.gbRefund.Controls.Add(this.txt_Document_id);
-            this.gbRefund.Controls.Add(this.btn_Search_Document);
-            this.gbRefund.Controls.Add(this.label18);
-            this.gbRefund.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbRefund.ForeColor = System.Drawing.Color.Black;
-            this.gbRefund.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.gbRefund.Location = new System.Drawing.Point(10, 7);
-            this.gbRefund.Name = "gbRefund";
-            this.gbRefund.Size = new System.Drawing.Size(636, 160);
-            this.gbRefund.TabIndex = 67;
-            this.gbRefund.TabStop = false;
-            this.gbRefund.Text = "Datos de la Devolución :";
+            this.gb_Refund.Controls.Add(this.dt_IssueHour);
+            this.gb_Refund.Controls.Add(this.label4);
+            this.gb_Refund.Controls.Add(this.txt_Currency);
+            this.gb_Refund.Controls.Add(this.dt_IssueDate);
+            this.gb_Refund.Controls.Add(this.txt_Refund_id);
+            this.gb_Refund.Controls.Add(this.label11);
+            this.gb_Refund.Controls.Add(this.label8);
+            this.gb_Refund.Controls.Add(this.label2);
+            this.gb_Refund.Controls.Add(this.txt_Document_id);
+            this.gb_Refund.Controls.Add(this.btn_Search_Document);
+            this.gb_Refund.Controls.Add(this.label18);
+            this.gb_Refund.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb_Refund.ForeColor = System.Drawing.Color.Black;
+            this.gb_Refund.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.gb_Refund.Location = new System.Drawing.Point(10, 7);
+            this.gb_Refund.Name = "gb_Refund";
+            this.gb_Refund.Size = new System.Drawing.Size(636, 160);
+            this.gb_Refund.TabIndex = 67;
+            this.gb_Refund.TabStop = false;
+            this.gb_Refund.Text = "Datos de la Devolución :";
             // 
             // dt_IssueHour
             // 
@@ -1283,18 +1283,18 @@
             this.label5.TabIndex = 51;
             this.label5.Text = "Sub Total :";
             // 
-            // gb_OrderLine
+            // gb_RefundLine
             // 
-            this.gb_OrderLine.BackColor = System.Drawing.Color.White;
-            this.gb_OrderLine.Controls.Add(this.panel2);
-            this.gb_OrderLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gb_OrderLine.ForeColor = System.Drawing.Color.Black;
-            this.gb_OrderLine.Location = new System.Drawing.Point(9, 173);
-            this.gb_OrderLine.Name = "gb_OrderLine";
-            this.gb_OrderLine.Size = new System.Drawing.Size(1011, 229);
-            this.gb_OrderLine.TabIndex = 45;
-            this.gb_OrderLine.TabStop = false;
-            this.gb_OrderLine.Text = "Líneas de la Devolución";
+            this.gb_RefundLine.BackColor = System.Drawing.Color.White;
+            this.gb_RefundLine.Controls.Add(this.panel2);
+            this.gb_RefundLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb_RefundLine.ForeColor = System.Drawing.Color.Black;
+            this.gb_RefundLine.Location = new System.Drawing.Point(9, 173);
+            this.gb_RefundLine.Name = "gb_RefundLine";
+            this.gb_RefundLine.Size = new System.Drawing.Size(1011, 229);
+            this.gb_RefundLine.TabIndex = 45;
+            this.gb_RefundLine.TabStop = false;
+            this.gb_RefundLine.Text = "Detalle de la Devolución";
             // 
             // panel2
             // 
@@ -1485,19 +1485,19 @@
             this.tab_Refund.ResumeLayout(false);
             this.refund.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.gbDocuments.ResumeLayout(false);
+            this.gb_Refunds.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_Refunds)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesRefundBindingSource)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.gb_Filter.ResumeLayout(false);
+            this.gb_Filter.PerformLayout();
             this.newRefund.ResumeLayout(false);
             this.newRefund.PerformLayout();
-            this.gbClient.ResumeLayout(false);
-            this.gbClient.PerformLayout();
-            this.gbRefund.ResumeLayout(false);
-            this.gbRefund.PerformLayout();
-            this.gb_OrderLine.ResumeLayout(false);
+            this.gb_Client.ResumeLayout(false);
+            this.gb_Client.PerformLayout();
+            this.gb_Refund.ResumeLayout(false);
+            this.gb_Refund.PerformLayout();
+            this.gb_RefundLine.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_Refund_Lines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesRefundLineBindingSource)).EndInit();
@@ -1512,10 +1512,10 @@
         private System.Windows.Forms.TabPage refund;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btn_Detail;
-        private System.Windows.Forms.GroupBox gbDocuments;
+        private System.Windows.Forms.GroupBox gb_Refunds;
         private System.Windows.Forms.Panel panel4;
         private MetroFramework.Controls.MetroGrid grid_Refunds;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gb_Filter;
         private System.Windows.Forms.Button btn_Search_Refunds;
         private MetroFramework.Controls.MetroDateTime dt_iniDate;
         private MetroFramework.Controls.MetroDateTime dt_endDate;
@@ -1531,7 +1531,7 @@
         private System.Windows.Forms.Label label20;
         private MetroFramework.Controls.MetroTextBox txt_igv;
         private System.Windows.Forms.Label label;
-        private System.Windows.Forms.GroupBox gbClient;
+        private System.Windows.Forms.GroupBox gb_Client;
         private MetroFramework.Controls.MetroTextBox txt_Doi;
         private MetroFramework.Controls.MetroTextBox txt_address;
         private MetroFramework.Controls.MetroTextBox txt_phone;
@@ -1540,7 +1540,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.GroupBox gbRefund;
+        private System.Windows.Forms.GroupBox gb_Refund;
         private MetroFramework.Controls.MetroTextBox txt_Currency;
         private MetroFramework.Controls.MetroDateTime dt_IssueDate;
         private MetroFramework.Controls.MetroTextBox txt_Refund_id;
@@ -1559,7 +1559,7 @@
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox gb_OrderLine;
+        private System.Windows.Forms.GroupBox gb_RefundLine;
         private System.Windows.Forms.Panel panel2;
         private MetroFramework.Controls.MetroGrid grid_Refund_Lines;
         private System.Windows.Forms.Label label4;
