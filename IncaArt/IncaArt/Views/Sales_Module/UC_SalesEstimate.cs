@@ -396,7 +396,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void clean_gridView_EstimateLine()
         {
-            List<SalesEstimateLine> empty_list = new List<SalesEstimateLine>();
+            List<Models.SalesEstimateLine> empty_list = new List<Models.SalesEstimateLine>();
             grid_estimate_lines.DataSource = empty_list;
         }
 
