@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class SalesEstimateLine
+    public class SalesEstimateLine
     {
         public int Id { get; set; }
         public int Estimate_id { get; set; }

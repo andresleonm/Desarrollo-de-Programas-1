@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class SalesEstimate
+    public class SalesEstimate
     {
         public int Id { get; set; }
         public int Currency_id { get; set; }

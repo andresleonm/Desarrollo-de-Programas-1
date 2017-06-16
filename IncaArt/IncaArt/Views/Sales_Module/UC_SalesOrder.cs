@@ -194,7 +194,6 @@ namespace WindowsFormsApp1.Views
             for (int i = 0; i < grid_order_lines.RowCount; i++)
                 acumulate += double.Parse(grid_order_lines.Rows[i].Cells["amount"].Value.ToString());
             txt_amount.Text = acumulate.ToString("0.00");
-
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
