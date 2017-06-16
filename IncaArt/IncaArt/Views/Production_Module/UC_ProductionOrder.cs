@@ -698,7 +698,7 @@ namespace WindowsFormsApp1.Views
                 flag_begin = false;
                 errorProvider.SetError(date_time, "La fecha de inicio debe ser menor o igual que la de fin.");
             }
-            else if (date_time.Value.Date < DateTime.Now.Date)
+            else if (!editing && date_time.Value.Date < DateTime.Now.Date)
             {
                 flag_begin = false;
                 errorProvider.SetError(date_time, "La fecha de inicio debe ser mayor a la fecha actual");
