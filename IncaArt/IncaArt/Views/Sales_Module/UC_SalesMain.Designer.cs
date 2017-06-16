@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.documents = new MetroFramework.Controls.MetroTile();
-            this.orders = new MetroFramework.Controls.MetroTile();
-            this.refunds = new MetroFramework.Controls.MetroTile();
+            this.btn_Estimates = new MetroFramework.Controls.MetroTile();
+            this.btn_Documents = new MetroFramework.Controls.MetroTile();
+            this.btn_Orders = new MetroFramework.Controls.MetroTile();
+            this.btn_Refunds = new MetroFramework.Controls.MetroTile();
             this.panel2 = new System.Windows.Forms.Panel();
             this.uC_SalesRefund1 = new WindowsFormsApp1.Views.Sales_Module.UC_SalesRefund();
             this.uC_SalesDocument2 = new WindowsFormsApp1.Views.Sales_Module.UC_SalesDocument();
@@ -42,65 +43,82 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.documents);
-            this.panel1.Controls.Add(this.orders);
-            this.panel1.Controls.Add(this.refunds);
+            this.panel1.Controls.Add(this.btn_Estimates);
+            this.panel1.Controls.Add(this.btn_Documents);
+            this.panel1.Controls.Add(this.btn_Orders);
+            this.panel1.Controls.Add(this.btn_Refunds);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(894, 73);
             this.panel1.TabIndex = 41;
             // 
-            // documents
+            // btn_Estimates
             // 
-            this.documents.ActiveControl = null;
-            this.documents.BackColor = System.Drawing.Color.DarkCyan;
-            this.documents.Location = new System.Drawing.Point(244, 5);
-            this.documents.Name = "documents";
-            this.documents.Size = new System.Drawing.Size(177, 62);
-            this.documents.TabIndex = 40;
-            this.documents.Text = "Documentos";
-            this.documents.TileImage = global::WindowsFormsApp1.Properties.Resources.Documents_40px;
-            this.documents.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.documents.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.documents.UseCustomBackColor = true;
-            this.documents.UseSelectable = true;
-            this.documents.UseTileImage = true;
-            this.documents.Click += new System.EventHandler(this.documents_Click);
+            this.btn_Estimates.ActiveControl = null;
+            this.btn_Estimates.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Estimates.Location = new System.Drawing.Point(18, 5);
+            this.btn_Estimates.Name = "btn_Estimates";
+            this.btn_Estimates.Size = new System.Drawing.Size(177, 62);
+            this.btn_Estimates.TabIndex = 41;
+            this.btn_Estimates.Text = "Cotizaciones";
+            this.btn_Estimates.TileImage = global::WindowsFormsApp1.Properties.Resources.Coins_48px;
+            this.btn_Estimates.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_Estimates.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.btn_Estimates.UseCustomBackColor = true;
+            this.btn_Estimates.UseSelectable = true;
+            this.btn_Estimates.UseTileImage = true;
             // 
-            // orders
+            // btn_Documents
             // 
-            this.orders.ActiveControl = null;
-            this.orders.BackColor = System.Drawing.Color.DarkCyan;
-            this.orders.Location = new System.Drawing.Point(19, 5);
-            this.orders.Name = "orders";
-            this.orders.Size = new System.Drawing.Size(177, 62);
-            this.orders.TabIndex = 39;
-            this.orders.Text = "Pedidos";
-            this.orders.TileImage = global::WindowsFormsApp1.Properties.Resources.Shopping_Cart_40px;
-            this.orders.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.orders.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.orders.UseCustomBackColor = true;
-            this.orders.UseSelectable = true;
-            this.orders.UseTileImage = true;
-            this.orders.Click += new System.EventHandler(this.orders_Click);
+            this.btn_Documents.ActiveControl = null;
+            this.btn_Documents.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Documents.Location = new System.Drawing.Point(469, 5);
+            this.btn_Documents.Name = "btn_Documents";
+            this.btn_Documents.Size = new System.Drawing.Size(177, 62);
+            this.btn_Documents.TabIndex = 40;
+            this.btn_Documents.Text = "Documentos";
+            this.btn_Documents.TileImage = global::WindowsFormsApp1.Properties.Resources.Documents_40px;
+            this.btn_Documents.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_Documents.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.btn_Documents.UseCustomBackColor = true;
+            this.btn_Documents.UseSelectable = true;
+            this.btn_Documents.UseTileImage = true;
+            this.btn_Documents.Click += new System.EventHandler(this.btn_Documents_Click);
             // 
-            // refunds
+            // btn_Orders
             // 
-            this.refunds.ActiveControl = null;
-            this.refunds.BackColor = System.Drawing.Color.DarkCyan;
-            this.refunds.Location = new System.Drawing.Point(471, 5);
-            this.refunds.Name = "refunds";
-            this.refunds.PaintTileCount = false;
-            this.refunds.Size = new System.Drawing.Size(177, 62);
-            this.refunds.TabIndex = 37;
-            this.refunds.Text = "Devoluciones";
-            this.refunds.TileImage = global::WindowsFormsApp1.Properties.Resources.Undo_40px;
-            this.refunds.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.refunds.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.refunds.UseCustomBackColor = true;
-            this.refunds.UseSelectable = true;
-            this.refunds.UseTileImage = true;
-            this.refunds.Click += new System.EventHandler(this.refunds_Click);
+            this.btn_Orders.ActiveControl = null;
+            this.btn_Orders.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Orders.Location = new System.Drawing.Point(244, 5);
+            this.btn_Orders.Name = "btn_Orders";
+            this.btn_Orders.Size = new System.Drawing.Size(177, 62);
+            this.btn_Orders.TabIndex = 39;
+            this.btn_Orders.Text = "Pedidos";
+            this.btn_Orders.TileImage = global::WindowsFormsApp1.Properties.Resources.Shopping_Cart_40px;
+            this.btn_Orders.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_Orders.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.btn_Orders.UseCustomBackColor = true;
+            this.btn_Orders.UseSelectable = true;
+            this.btn_Orders.UseTileImage = true;
+            this.btn_Orders.Click += new System.EventHandler(this.btn_Orders_Click);
+            // 
+            // btn_Refunds
+            // 
+            this.btn_Refunds.ActiveControl = null;
+            this.btn_Refunds.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Refunds.Location = new System.Drawing.Point(696, 5);
+            this.btn_Refunds.Name = "btn_Refunds";
+            this.btn_Refunds.PaintTileCount = false;
+            this.btn_Refunds.Size = new System.Drawing.Size(177, 62);
+            this.btn_Refunds.TabIndex = 37;
+            this.btn_Refunds.Text = "Devoluciones";
+            this.btn_Refunds.TileImage = global::WindowsFormsApp1.Properties.Resources.Undo_40px;
+            this.btn_Refunds.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btn_Refunds.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.btn_Refunds.UseCustomBackColor = true;
+            this.btn_Refunds.UseSelectable = true;
+            this.btn_Refunds.UseTileImage = true;
+            this.btn_Refunds.Click += new System.EventHandler(this.btn_Refunds_Click);
             // 
             // panel2
             // 
@@ -123,6 +141,7 @@
             // 
             // uC_SalesDocument2
             // 
+            this.uC_SalesDocument2.BackColor = System.Drawing.Color.White;
             this.uC_SalesDocument2.Location = new System.Drawing.Point(3, 3);
             this.uC_SalesDocument2.Name = "uC_SalesDocument2";
             this.uC_SalesDocument2.Size = new System.Drawing.Size(1062, 626);
@@ -136,6 +155,8 @@
             this.uC_SalesOrder2.Size = new System.Drawing.Size(872, 614);
             this.uC_SalesOrder2.Style = MetroFramework.MetroColorStyle.Blue;
             this.uC_SalesOrder2.TabIndex = 0;
+            this.uC_SalesOrder2.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.uC_SalesOrder2.UseCustomBackColor = true;
             this.uC_SalesOrder2.UseSelectable = true;
             // 
             // UC_SalesMain
@@ -157,13 +178,14 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroTile documents;
-        private MetroFramework.Controls.MetroTile orders;
-        private MetroFramework.Controls.MetroTile refunds;
+        private MetroFramework.Controls.MetroTile btn_Documents;
+        private MetroFramework.Controls.MetroTile btn_Orders;
+        private MetroFramework.Controls.MetroTile btn_Refunds;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private Sales_Module.UC_SalesDocument uC_SalesDocument2;
         private UC_SalesOrder uC_SalesOrder2;
         private Sales_Module.UC_SalesRefund uC_SalesRefund1;
+        private MetroFramework.Controls.MetroTile btn_Estimates;
     }
 }

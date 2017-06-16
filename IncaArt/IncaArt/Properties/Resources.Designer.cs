@@ -143,6 +143,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Coins_48px {
+            get {
+                object obj = ResourceManager.GetObject("Coins_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Construction_Worker_40px {
             get {
                 object obj = ResourceManager.GetObject("Construction Worker_40px", resourceCulture);

@@ -833,6 +833,7 @@
     <None Include="Resources\Close Window_52px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Coins_48px.png" />
     <None Include="Resources\Inca Art.PNG" />
     <None Include="Resources\pdf.png" />
     <None Include="Resources\Microsoft Excel_40px.png" />
