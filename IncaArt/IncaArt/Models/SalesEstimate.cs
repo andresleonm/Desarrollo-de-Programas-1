@@ -22,11 +22,11 @@ namespace WindowsFormsApp1.Models
         public string Status { get; set; }
         public DateTime Issue_date { get; set; }
         public string Observation { get; set; }
-        public List<SalesOrderLine> Lines { get; set; }
+        public List<SalesEstimateLine> Lines { get; set; }
 
 
         // Construct for controller
-        public SalesEstimate(int estimate_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string cli_type, string status, DateTime issue_date, double amount, string observation, List<SalesOrderLine> lines)
+        public SalesEstimate(int estimate_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string cli_type, string status, DateTime issue_date, double amount, string observation, List<SalesEstimateLine> lines)
         {
             this.Id = estimate_id;
             this.Currency_id = currency_id;
@@ -61,7 +61,7 @@ namespace WindowsFormsApp1.Models
         public int getMaxId()
         {
             int max = 0;
-            foreach (SalesOrderLine line in Lines)
+            foreach (SalesEstimateLine line in Lines)
             {
                 if (line.Id > max)
                     max = line.Id;

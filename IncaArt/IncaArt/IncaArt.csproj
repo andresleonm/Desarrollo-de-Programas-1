@@ -111,6 +111,8 @@
     <Compile Include="Controller\ProductMovementDetailController.cs" />
     <Compile Include="Controller\SalesDocumentController.cs" />
     <Compile Include="Controller\SalesDocumentLineController.cs" />
+    <Compile Include="Controller\SalesEstimateController.cs" />
+    <Compile Include="Controller\SalesEstimateLineController.cs" />
     <Compile Include="Controller\SalesRefundController.cs" />
     <Compile Include="Controller\SalesRefundLineController.cs" />
     <Compile Include="Controller\SupplierController.cs" />

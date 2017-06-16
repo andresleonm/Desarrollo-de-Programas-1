@@ -23,7 +23,7 @@ namespace WindowsFormsApp1.Models
 
 
         // Construct for controller
-        public SalesEstimateLine(int id, int estimate_id, int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int del_quantity, int prod_warehouse_id, string prod_warehouse_name, string status)
+        public SalesEstimateLine(int id, int estimate_id, int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int prod_warehouse_id, string prod_warehouse_name, string status)
         {
             this.Id = id;
             this.Estimate_id = estimate_id;
