@@ -182,7 +182,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             sr.Customer_doi = txt_Doi.Text;
             sr.Customer_phone = txt_phone.Text;
 
-            sr.Issue_date = DateTime.Parse(dt_IssueDate.Text);
+            sr.Issue_date = dt_IssueDate.Value.Date + dt_IssueHour.Value.TimeOfDay;
             sr.Observation = txt_observation.Text;
             sr.Amount = double.Parse(txt_amount.Text);
             sr.Status = "Registrado";
@@ -198,7 +198,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
             txt_Document_id.Text = sd.Id.ToString();
             txt_Currency.Text = sd.Currency_symbol + "  -  " + sd.Currency_name;
-            dt_IssueDate.Text = sd.Issue_date.ToString();
+            dt_IssueDate.Text = sd.Issue_date.ToShortDateString();
+            dt_IssueHour.Text = sd.Issue_date.ToLongTimeString();
 
             txt_observation.Text = sd.Observation;
             txt_amount.Text = sd.Amount.ToString();

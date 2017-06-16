@@ -67,9 +67,9 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("customer_address", sales_refund.Customer_address));
             parameters.Add(new Parameter("customer_phone", sales_refund.Customer_phone));
             parameters.Add(new Parameter("amount", sales_refund.Amount.ToString()));
-            parameters.Add(new Parameter("state", sales_refund.Status));
+            parameters.Add(new Parameter("state", "Registrado"));
             parameters.Add(new Parameter("customer_doi", sales_refund.Customer_doi));
-            parameters.Add(new Parameter("date", sales_refund.Issue_date.ToString("MM/dd/yyyy")));
+            parameters.Add(new Parameter("date", sales_refund.Issue_date.ToString("MM/dd/yyyy hh:mm:ss")));
             parameters.Add(new Parameter("observation", sales_refund.Observation));
             parameters.Add(new Parameter("document_id", sales_refund.Document_id.ToString()));
             GenericResult result = execute_transaction("insert_sales_refund", parameters);
@@ -90,9 +90,9 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("customer_address", sales_refund.Customer_address));
             parameters.Add(new Parameter("customer_phone", sales_refund.Customer_phone));
             parameters.Add(new Parameter("amount", sales_refund.Amount.ToString()));
-            parameters.Add(new Parameter("state", sales_refund.Status));
+            parameters.Add(new Parameter("state", "Registrado"));
             parameters.Add(new Parameter("customer_doi", sales_refund.Customer_doi));
-            parameters.Add(new Parameter("date", sales_refund.Issue_date.ToString("MM/dd/yyyy")));
+            parameters.Add(new Parameter("date", sales_refund.Issue_date.ToString("MM/dd/yyyy hh:mm:ss")));
             parameters.Add(new Parameter("observation", sales_refund.Observation));
             parameters.Add(new Parameter("document_id", sales_refund.Document_id.ToString()));
             GenericResult result = execute_transaction("update_sales_refund", parameters);

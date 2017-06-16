@@ -101,10 +101,11 @@
             // 
             this.metroTabControl1.Controls.Add(this.consulta);
             this.metroTabControl1.Controls.Add(this.registro);
-            this.metroTabControl1.Location = new System.Drawing.Point(3, 3);
+            this.metroTabControl1.Location = new System.Drawing.Point(4, 5);
+            this.metroTabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(1121, 545);
+            this.metroTabControl1.Size = new System.Drawing.Size(1682, 838);
             this.metroTabControl1.TabIndex = 2;
             this.metroTabControl1.UseSelectable = true;
             // 
@@ -121,24 +122,26 @@
             this.consulta.Controls.Add(this.groupBox1);
             this.consulta.HorizontalScrollbarBarColor = true;
             this.consulta.HorizontalScrollbarHighlightOnWheel = false;
-            this.consulta.HorizontalScrollbarSize = 10;
+            this.consulta.HorizontalScrollbarSize = 15;
             this.consulta.Location = new System.Drawing.Point(4, 38);
+            this.consulta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.consulta.Name = "consulta";
-            this.consulta.Size = new System.Drawing.Size(1113, 503);
+            this.consulta.Size = new System.Drawing.Size(1674, 796);
             this.consulta.TabIndex = 0;
             this.consulta.Text = "Consulta";
             this.consulta.VerticalScrollbarBarColor = true;
             this.consulta.VerticalScrollbarHighlightOnWheel = false;
-            this.consulta.VerticalScrollbarSize = 10;
+            this.consulta.VerticalScrollbarSize = 15;
             this.consulta.Click += new System.EventHandler(this.consulta_Click);
             // 
             // btn_Kardex
             // 
             this.btn_Kardex.ActiveControl = null;
             this.btn_Kardex.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Kardex.Location = new System.Drawing.Point(798, 15);
+            this.btn_Kardex.Location = new System.Drawing.Point(1197, 23);
+            this.btn_Kardex.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Kardex.Name = "btn_Kardex";
-            this.btn_Kardex.Size = new System.Drawing.Size(145, 38);
+            this.btn_Kardex.Size = new System.Drawing.Size(218, 58);
             this.btn_Kardex.TabIndex = 75;
             this.btn_Kardex.Text = "Generar Kardex";
             this.btn_Kardex.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
@@ -153,7 +156,8 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(537, 28);
+            this.metroLabel2.Location = new System.Drawing.Point(806, 43);
+            this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(21, 19);
             this.metroLabel2.TabIndex = 73;
@@ -162,7 +166,8 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(356, 28);
+            this.metroLabel1.Location = new System.Drawing.Point(534, 43);
+            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(43, 19);
             this.metroLabel1.TabIndex = 72;
@@ -172,10 +177,11 @@
             // 
             this.metroDateTime2.CustomFormat = "DD/MM/YYYY";
             this.metroDateTime2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTime2.Location = new System.Drawing.Point(564, 24);
+            this.metroDateTime2.Location = new System.Drawing.Point(846, 37);
+            this.metroDateTime2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime2.Name = "metroDateTime2";
-            this.metroDateTime2.Size = new System.Drawing.Size(116, 29);
+            this.metroDateTime2.Size = new System.Drawing.Size(172, 29);
             this.metroDateTime2.TabIndex = 71;
             this.metroDateTime2.Value = new System.DateTime(2017, 5, 29, 6, 10, 20, 0);
             // 
@@ -183,10 +189,11 @@
             // 
             this.metroDateTime1.CustomFormat = "DD/MM/YYYY";
             this.metroDateTime1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTime1.Location = new System.Drawing.Point(417, 24);
+            this.metroDateTime1.Location = new System.Drawing.Point(626, 37);
+            this.metroDateTime1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(116, 29);
+            this.metroDateTime1.Size = new System.Drawing.Size(172, 29);
             this.metroDateTime1.TabIndex = 70;
             this.metroDateTime1.Value = new System.DateTime(2017, 5, 29, 6, 10, 20, 0);
             // 
@@ -195,9 +202,10 @@
             this.buttonSearchV.BackColor = System.Drawing.Color.DarkCyan;
             this.buttonSearchV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSearchV.ForeColor = System.Drawing.Color.White;
-            this.buttonSearchV.Location = new System.Drawing.Point(448, 77);
+            this.buttonSearchV.Location = new System.Drawing.Point(672, 118);
+            this.buttonSearchV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonSearchV.Name = "buttonSearchV";
-            this.buttonSearchV.Size = new System.Drawing.Size(85, 29);
+            this.buttonSearchV.Size = new System.Drawing.Size(128, 45);
             this.buttonSearchV.TabIndex = 69;
             this.buttonSearchV.Text = "Buscar";
             this.buttonSearchV.UseVisualStyleBackColor = false;
@@ -208,9 +216,10 @@
             this.buttonCleanV.BackColor = System.Drawing.Color.DarkCyan;
             this.buttonCleanV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCleanV.ForeColor = System.Drawing.Color.White;
-            this.buttonCleanV.Location = new System.Drawing.Point(564, 77);
+            this.buttonCleanV.Location = new System.Drawing.Point(846, 118);
+            this.buttonCleanV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonCleanV.Name = "buttonCleanV";
-            this.buttonCleanV.Size = new System.Drawing.Size(85, 29);
+            this.buttonCleanV.Size = new System.Drawing.Size(128, 45);
             this.buttonCleanV.TabIndex = 68;
             this.buttonCleanV.Text = "Limpiar";
             this.buttonCleanV.UseVisualStyleBackColor = false;
@@ -221,9 +230,10 @@
             this.buttonViewV.BackColor = System.Drawing.Color.DarkCyan;
             this.buttonViewV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonViewV.ForeColor = System.Drawing.Color.White;
-            this.buttonViewV.Location = new System.Drawing.Point(514, 349);
+            this.buttonViewV.Location = new System.Drawing.Point(771, 537);
+            this.buttonViewV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonViewV.Name = "buttonViewV";
-            this.buttonViewV.Size = new System.Drawing.Size(85, 29);
+            this.buttonViewV.Size = new System.Drawing.Size(128, 45);
             this.buttonViewV.TabIndex = 67;
             this.buttonViewV.Text = "Ver";
             this.buttonViewV.UseVisualStyleBackColor = false;
@@ -235,9 +245,11 @@
             this.groupBox1.Controls.Add(this.movements_grid);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(18, 110);
+            this.groupBox1.Location = new System.Drawing.Point(27, 169);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1054, 211);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Size = new System.Drawing.Size(1581, 325);
             this.groupBox1.TabIndex = 66;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Movimientos";
@@ -282,7 +294,8 @@
             this.movements_grid.EnableHeadersVisualStyles = false;
             this.movements_grid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.movements_grid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.movements_grid.Location = new System.Drawing.Point(3, 16);
+            this.movements_grid.Location = new System.Drawing.Point(4, 24);
+            this.movements_grid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.movements_grid.Name = "movements_grid";
             this.movements_grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -295,7 +308,7 @@
             this.movements_grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.movements_grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.movements_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.movements_grid.Size = new System.Drawing.Size(1048, 192);
+            this.movements_grid.Size = new System.Drawing.Size(1573, 296);
             this.movements_grid.TabIndex = 50;
             // 
             // id
@@ -311,7 +324,7 @@
             this.movementName.DataPropertyName = "movementName";
             this.movementName.HeaderText = "Movimiento";
             this.movementName.Name = "movementName";
-            this.movementName.Width = 91;
+            this.movementName.Width = 102;
             // 
             // Tipo
             // 
@@ -319,7 +332,7 @@
             this.Tipo.DataPropertyName = "Tipo";
             this.Tipo.HeaderText = "Tipo";
             this.Tipo.Name = "Tipo";
-            this.Tipo.Width = 52;
+            this.Tipo.Width = 63;
             // 
             // Observacion
             // 
@@ -333,7 +346,7 @@
             this.Fecha.DataPropertyName = "Fecha";
             this.Fecha.HeaderText = "Fecha";
             this.Fecha.Name = "Fecha";
-            this.Fecha.Width = 60;
+            this.Fecha.Width = 71;
             // 
             // TipoDocumentoOrigen
             // 
@@ -341,7 +354,7 @@
             this.TipoDocumentoOrigen.DataPropertyName = "TipoDocumentoOrigen";
             this.TipoDocumentoOrigen.HeaderText = "Documento Origen";
             this.TipoDocumentoOrigen.Name = "TipoDocumentoOrigen";
-            this.TipoDocumentoOrigen.Width = 118;
+            this.TipoDocumentoOrigen.Width = 129;
             // 
             // NroDocumentoOrigen
             // 
@@ -355,7 +368,7 @@
             this.TipoDocumentoFin.DataPropertyName = "TipoDocumentoFin";
             this.TipoDocumentoFin.HeaderText = "Documento  Fin";
             this.TipoDocumentoFin.Name = "TipoDocumentoFin";
-            this.TipoDocumentoFin.Width = 103;
+            this.TipoDocumentoFin.Width = 114;
             // 
             // NroDocumentoFin
             // 
@@ -395,23 +408,23 @@
             this.registro.Controls.Add(this.metroLabel5);
             this.registro.HorizontalScrollbarBarColor = true;
             this.registro.HorizontalScrollbarHighlightOnWheel = false;
-            this.registro.HorizontalScrollbarSize = 10;
+            this.registro.HorizontalScrollbarSize = 15;
             this.registro.Location = new System.Drawing.Point(4, 38);
+            this.registro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.registro.Name = "registro";
-            this.registro.Size = new System.Drawing.Size(1113, 503);
+            this.registro.Size = new System.Drawing.Size(1674, 796);
             this.registro.TabIndex = 1;
             this.registro.Text = "Registro";
             this.registro.VerticalScrollbarBarColor = true;
             this.registro.VerticalScrollbarHighlightOnWheel = false;
-            this.registro.VerticalScrollbarSize = 10;
+            this.registro.VerticalScrollbarSize = 15;
             // 
             // hour
             // 
-            this.hour.Location = new System.Drawing.Point(717, 64);
-            this.hour.Margin = new System.Windows.Forms.Padding(2);
+            this.hour.Location = new System.Drawing.Point(1076, 98);
             this.hour.MinimumSize = new System.Drawing.Size(4, 29);
             this.hour.Name = "hour";
-            this.hour.Size = new System.Drawing.Size(107, 29);
+            this.hour.Size = new System.Drawing.Size(158, 29);
             this.hour.TabIndex = 68;
             // 
             // btn_delete
@@ -419,9 +432,10 @@
             this.btn_delete.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_delete.ForeColor = System.Drawing.Color.White;
-            this.btn_delete.Location = new System.Drawing.Point(621, 129);
+            this.btn_delete.Location = new System.Drawing.Point(932, 198);
+            this.btn_delete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(82, 25);
+            this.btn_delete.Size = new System.Drawing.Size(123, 38);
             this.btn_delete.TabIndex = 65;
             this.btn_delete.Text = "Eliminar";
             this.btn_delete.UseVisualStyleBackColor = false;
@@ -433,9 +447,11 @@
             this.gb_OrderLine.Controls.Add(this.grid_movement_lines);
             this.gb_OrderLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gb_OrderLine.ForeColor = System.Drawing.Color.Black;
-            this.gb_OrderLine.Location = new System.Drawing.Point(19, 160);
+            this.gb_OrderLine.Location = new System.Drawing.Point(28, 246);
+            this.gb_OrderLine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gb_OrderLine.Name = "gb_OrderLine";
-            this.gb_OrderLine.Size = new System.Drawing.Size(791, 189);
+            this.gb_OrderLine.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gb_OrderLine.Size = new System.Drawing.Size(1186, 291);
             this.gb_OrderLine.TabIndex = 64;
             this.gb_OrderLine.TabStop = false;
             this.gb_OrderLine.Text = "Detalle del Movimiento";
@@ -484,7 +500,8 @@
             this.grid_movement_lines.EnableHeadersVisualStyles = false;
             this.grid_movement_lines.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.grid_movement_lines.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.grid_movement_lines.Location = new System.Drawing.Point(3, 16);
+            this.grid_movement_lines.Location = new System.Drawing.Point(4, 24);
+            this.grid_movement_lines.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grid_movement_lines.Name = "grid_movement_lines";
             this.grid_movement_lines.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -497,7 +514,7 @@
             this.grid_movement_lines.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.grid_movement_lines.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.grid_movement_lines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_movement_lines.Size = new System.Drawing.Size(785, 170);
+            this.grid_movement_lines.Size = new System.Drawing.Size(1178, 262);
             this.grid_movement_lines.TabIndex = 50;
             this.grid_movement_lines.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_order_lines_CellContentClick);
             // 
@@ -608,10 +625,11 @@
             // 
             this.date.CustomFormat = "MM/dd/yyyy";
             this.date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date.Location = new System.Drawing.Point(598, 64);
+            this.date.Location = new System.Drawing.Point(897, 98);
+            this.date.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.date.MinimumSize = new System.Drawing.Size(4, 29);
             this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(107, 29);
+            this.date.Size = new System.Drawing.Size(158, 29);
             this.date.TabIndex = 63;
             this.date.Value = new System.DateTime(2017, 5, 29, 6, 10, 20, 0);
             this.date.ValueChanged += new System.EventHandler(this.date_ValueChanged);
@@ -621,9 +639,10 @@
             this.btn_Clean.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_Clean.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Clean.ForeColor = System.Drawing.Color.White;
-            this.btn_Clean.Location = new System.Drawing.Point(276, 366);
+            this.btn_Clean.Location = new System.Drawing.Point(414, 563);
+            this.btn_Clean.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Clean.Name = "btn_Clean";
-            this.btn_Clean.Size = new System.Drawing.Size(82, 29);
+            this.btn_Clean.Size = new System.Drawing.Size(123, 45);
             this.btn_Clean.TabIndex = 62;
             this.btn_Clean.Text = "Limpiar";
             this.btn_Clean.UseVisualStyleBackColor = false;
@@ -634,9 +653,10 @@
             this.btn_Cancel.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_Cancel.Location = new System.Drawing.Point(514, 366);
+            this.btn_Cancel.Location = new System.Drawing.Point(771, 563);
+            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(82, 29);
+            this.btn_Cancel.Size = new System.Drawing.Size(123, 45);
             this.btn_Cancel.TabIndex = 61;
             this.btn_Cancel.Text = "Cancelar";
             this.btn_Cancel.UseVisualStyleBackColor = false;
@@ -647,9 +667,10 @@
             this.btn_Save.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Save.ForeColor = System.Drawing.Color.White;
-            this.btn_Save.Location = new System.Drawing.Point(395, 366);
+            this.btn_Save.Location = new System.Drawing.Point(592, 563);
+            this.btn_Save.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(82, 29);
+            this.btn_Save.Size = new System.Drawing.Size(123, 45);
             this.btn_Save.TabIndex = 60;
             this.btn_Save.Text = "Guardar";
             this.btn_Save.UseVisualStyleBackColor = false;
@@ -660,9 +681,10 @@
             this.buttonAddRow.BackColor = System.Drawing.Color.DarkCyan;
             this.buttonAddRow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddRow.ForeColor = System.Drawing.Color.White;
-            this.buttonAddRow.Location = new System.Drawing.Point(724, 129);
+            this.buttonAddRow.Location = new System.Drawing.Point(1086, 198);
+            this.buttonAddRow.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonAddRow.Name = "buttonAddRow";
-            this.buttonAddRow.Size = new System.Drawing.Size(82, 25);
+            this.buttonAddRow.Size = new System.Drawing.Size(123, 38);
             this.buttonAddRow.TabIndex = 47;
             this.buttonAddRow.Text = "Nueva";
             this.buttonAddRow.UseVisualStyleBackColor = false;
@@ -672,9 +694,10 @@
             // 
             this.documents_list.FormattingEnabled = true;
             this.documents_list.ItemHeight = 23;
-            this.documents_list.Location = new System.Drawing.Point(598, 24);
+            this.documents_list.Location = new System.Drawing.Point(897, 37);
+            this.documents_list.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.documents_list.Name = "documents_list";
-            this.documents_list.Size = new System.Drawing.Size(233, 29);
+            this.documents_list.Size = new System.Drawing.Size(348, 29);
             this.documents_list.TabIndex = 17;
             this.documents_list.UseSelectable = true;
             this.documents_list.Visible = false;
@@ -683,7 +706,8 @@
             // document_input
             // 
             this.document_input.AutoSize = true;
-            this.document_input.Location = new System.Drawing.Point(495, 25);
+            this.document_input.Location = new System.Drawing.Point(742, 38);
+            this.document_input.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.document_input.Name = "document_input";
             this.document_input.Size = new System.Drawing.Size(77, 19);
             this.document_input.TabIndex = 15;
@@ -693,7 +717,8 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(495, 64);
+            this.metroLabel3.Location = new System.Drawing.Point(742, 98);
+            this.metroLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(43, 19);
             this.metroLabel3.TabIndex = 13;
@@ -703,9 +728,10 @@
             // 
             this.types_movements.FormattingEnabled = true;
             this.types_movements.ItemHeight = 23;
-            this.types_movements.Location = new System.Drawing.Point(160, 25);
+            this.types_movements.Location = new System.Drawing.Point(240, 38);
+            this.types_movements.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.types_movements.Name = "types_movements";
-            this.types_movements.Size = new System.Drawing.Size(230, 29);
+            this.types_movements.Size = new System.Drawing.Size(343, 29);
             this.types_movements.TabIndex = 9;
             this.types_movements.UseSelectable = true;
             this.types_movements.SelectedIndexChanged += new System.EventHandler(this.combobox_unit_SelectedIndexChanged);
@@ -716,16 +742,18 @@
             // 
             // 
             this.textbox_observation.CustomButton.Image = null;
-            this.textbox_observation.CustomButton.Location = new System.Drawing.Point(206, 2);
+            this.textbox_observation.CustomButton.Location = new System.Drawing.Point(456, 2);
+            this.textbox_observation.CustomButton.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.textbox_observation.CustomButton.Name = "";
-            this.textbox_observation.CustomButton.Size = new System.Drawing.Size(75, 75);
+            this.textbox_observation.CustomButton.Size = new System.Drawing.Size(182, 186);
             this.textbox_observation.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textbox_observation.CustomButton.TabIndex = 1;
             this.textbox_observation.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textbox_observation.CustomButton.UseSelectable = true;
             this.textbox_observation.CustomButton.Visible = false;
             this.textbox_observation.Lines = new string[0];
-            this.textbox_observation.Location = new System.Drawing.Point(160, 60);
+            this.textbox_observation.Location = new System.Drawing.Point(240, 92);
+            this.textbox_observation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textbox_observation.MaxLength = 32767;
             this.textbox_observation.Name = "textbox_observation";
             this.textbox_observation.PasswordChar = '\0';
@@ -734,7 +762,7 @@
             this.textbox_observation.SelectionLength = 0;
             this.textbox_observation.SelectionStart = 0;
             this.textbox_observation.ShortcutsEnabled = true;
-            this.textbox_observation.Size = new System.Drawing.Size(284, 80);
+            this.textbox_observation.Size = new System.Drawing.Size(426, 123);
             this.textbox_observation.TabIndex = 8;
             this.textbox_observation.UseSelectable = true;
             this.textbox_observation.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -744,7 +772,8 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(19, 58);
+            this.metroLabel6.Location = new System.Drawing.Point(28, 89);
+            this.metroLabel6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(83, 19);
             this.metroLabel6.TabIndex = 3;
@@ -753,7 +782,8 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(19, 25);
+            this.metroLabel5.Location = new System.Drawing.Point(28, 38);
+            this.metroLabel5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(128, 19);
             this.metroLabel5.TabIndex = 2;
@@ -761,12 +791,13 @@
             // 
             // UC_WarehouseMovementP
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.metroTabControl1);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UC_WarehouseMovementP";
-            this.Size = new System.Drawing.Size(1126, 552);
+            this.Size = new System.Drawing.Size(1689, 849);
             this.metroTabControl1.ResumeLayout(false);
             this.consulta.ResumeLayout(false);
             this.consulta.PerformLayout();
@@ -834,7 +865,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn detail;
         private MetroFramework.Controls.MetroDateTime date;
-        private MetroFramework.Controls.MetroDateTime hour;
         private MetroFramework.Controls.MetroTile btn_Kardex;
+        private MetroFramework.Controls.MetroDateTime hour;
     }
 }

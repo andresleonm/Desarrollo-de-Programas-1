@@ -17,14 +17,24 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private List<Customer> customers;
         public List<Customer> clientList;
         private CustomerController customer_controller;
+        private string customer_type;
 
-        public SalesOrderSearchClient( ref List<Customer> client, string user, string password)
+        public SalesOrderSearchClient( ref List<Customer> client, string user, string password, char type)
         {
             InitializeComponent();
             clientList = client;
 
             customer_controller = new CustomerController(user, password);
-            Result result = customer_controller.getCustomers();
+            Result result;
+            if (type == 'E')
+            { 
+                result = customer_controller.getCustomers_foreign();
+                customer_type = "Extranjero";
+            }
+            else { 
+                result = customer_controller.getCustomers();
+                customer_type = "";
+            }
             customers = (List<Customer>)result.data;
             fill_GridView(customers);           
             
@@ -45,7 +55,11 @@ namespace WindowsFormsApp1.Views.Sales_Module
             else
             {
                 string text = "%" + (txt_name.Text).ToLower() + "%";
-                Result result = customer_controller.getCustomer_by_text(text);
+                Result result;
+                if (customer_type.Equals("Extranjero"))
+                    result = customer_controller.getCustomer_by_text_foreign(text, customer_type);
+                else
+                    result = customer_controller.getCustomer_by_text(text);
                 List<Customer> customers_found = new List<Customer>();
                 customers_found = (List<Customer>)result.data;
                 fill_GridView(customers_found);               

@@ -370,9 +370,9 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox3.Location = new System.Drawing.Point(14, 17);
+            this.groupBox3.Location = new System.Drawing.Point(14, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(805, 488);
+            this.groupBox3.Size = new System.Drawing.Size(805, 502);
             this.groupBox3.TabIndex = 58;
             this.groupBox3.TabStop = false;
             // 

@@ -82,7 +82,39 @@ namespace WindowsFormsApp1.Controller
             }
             return new Result(null, result.success, result.message);
         }
-
+        //Only get the products which have minimum one warehouse
+        public Result getProducts_withWarehouses()
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            GenericResult result = execute_function("get_products3", parameters);
+            List<Models.Product> products = new List<Models.Product>();
+            if (result.success)
+            {
+                Models.Product product;
+                foreach (Row r in result.data)
+                {
+                    //"PRODUCT_ID",         0
+                    //"UNIT_OF_MEASURE_ID", 1
+                    //"PRODUCT_NAME",       2
+                    //"STOCK_MIN",          3
+                    //"STOCK_MAX"           4
+                    //"AVERAGE_PRICE",      5
+                    //products.Add(new Models.Product(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), r.getColumn(2), Int32.Parse(r.getColumn(3)), Int32.Parse(r.getColumn(4)),double.Parse(r.getColumn(5))));
+                    product = new Models.Product();
+                    product.Id = Int32.Parse(r.getColumn(0));
+                    product.Unit_id = Int32.Parse(r.getColumn(1));
+                    product.Name = r.getColumn(2);
+                    product.Stock_min = Int32.Parse(r.getColumn(3));
+                    product.Stock_max = Int32.Parse(r.getColumn(4));
+                    product.Average_cost = double.Parse(r.getColumn(5));
+                    product.Product_type = r.getColumn(6);
+                    products.Add(product);
+                }
+                return new Result(products, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
         public Result getProduct(int id)
         {
             //consultar permisos
