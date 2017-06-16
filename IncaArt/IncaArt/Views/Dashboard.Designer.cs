@@ -589,18 +589,6 @@ namespace WindowsFormsApp1.Views
             this.mainDashboard1.Size = new System.Drawing.Size(1228, 791);
             this.mainDashboard1.TabIndex = 13;
             this.mainDashboard1.UseSelectable = true;
-
-            // 
-            // uc_reports
-            // 
-            this.uc_reports.BackColor = System.Drawing.Color.White;
-            this.uc_reports.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_reports.Location = new System.Drawing.Point(198, 111);
-            this.uc_reports.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.uc_reports.Name = "uc_reports";
-            this.uc_reports.Size = new System.Drawing.Size(1228, 791);
-            this.uc_reports.TabIndex = 58;
-            this.uc_reports.UseSelectable = true;
             // 
             // user
             // 
@@ -715,6 +703,17 @@ namespace WindowsFormsApp1.Views
             this.uC_WarehouseMovement1.Name = "uC_WarehouseMovement1";
             this.uC_WarehouseMovement1.Size = new System.Drawing.Size(1228, 791);
             this.uC_WarehouseMovement1.TabIndex = 47;
+            // 
+            // uc_reports
+            // 
+            this.uc_reports.BackColor = System.Drawing.Color.White;
+            this.uc_reports.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_reports.Location = new System.Drawing.Point(198, 111);
+            this.uc_reports.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.uc_reports.Name = "uc_reports";
+            this.uc_reports.Size = new System.Drawing.Size(1228, 791);
+            this.uc_reports.TabIndex = 58;
+            this.uc_reports.UseSelectable = true;
             // 
             // uc_ratio
             // 
