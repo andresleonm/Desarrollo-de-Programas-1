@@ -39,7 +39,7 @@
             this.order = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_Delete = new System.Windows.Forms.Button();
-            this.btn_Edit = new System.Windows.Forms.Button();
+            this.btn_View = new System.Windows.Forms.Button();
             this.gbDocuments = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.grid_Documents = new MetroFramework.Controls.MetroGrid();
@@ -89,6 +89,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.gbDocument = new System.Windows.Forms.GroupBox();
+            this.dt_IssueHour = new MetroFramework.Controls.MetroDateTime();
             this.btn_Pdf = new MetroFramework.Controls.MetroTile();
             this.txt_Currency = new MetroFramework.Controls.MetroTextBox();
             this.dt_IssueDate = new MetroFramework.Controls.MetroDateTime();
@@ -130,7 +131,6 @@
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dt_IssueHour = new MetroFramework.Controls.MetroDateTime();
             this.panel1.SuspendLayout();
             this.tab_Document.SuspendLayout();
             this.order.SuspendLayout();
@@ -185,7 +185,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.btn_Delete);
-            this.panel3.Controls.Add(this.btn_Edit);
+            this.panel3.Controls.Add(this.btn_View);
             this.panel3.Controls.Add(this.gbDocuments);
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Location = new System.Drawing.Point(3, 3);
@@ -205,18 +205,18 @@
             this.btn_Delete.Text = "Anular";
             this.btn_Delete.UseVisualStyleBackColor = false;
             // 
-            // btn_Edit
+            // btn_View
             // 
-            this.btn_Edit.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Edit.ForeColor = System.Drawing.Color.White;
-            this.btn_Edit.Location = new System.Drawing.Point(382, 494);
-            this.btn_Edit.Name = "btn_Edit";
-            this.btn_Edit.Size = new System.Drawing.Size(99, 29);
-            this.btn_Edit.TabIndex = 48;
-            this.btn_Edit.Text = "Editar";
-            this.btn_Edit.UseVisualStyleBackColor = false;
-            this.btn_Edit.Click += new System.EventHandler(this.btn_Edit_Click);
+            this.btn_View.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_View.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_View.ForeColor = System.Drawing.Color.White;
+            this.btn_View.Location = new System.Drawing.Point(382, 494);
+            this.btn_View.Name = "btn_View";
+            this.btn_View.Size = new System.Drawing.Size(99, 29);
+            this.btn_View.TabIndex = 48;
+            this.btn_View.Text = "Ver Detalle";
+            this.btn_View.UseVisualStyleBackColor = false;
+            this.btn_View.Click += new System.EventHandler(this.btn_View_Click);
             // 
             // gbDocuments
             // 
@@ -509,7 +509,7 @@
             // dt_iniDate
             // 
             this.dt_iniDate.Location = new System.Drawing.Point(664, 22);
-            this.dt_iniDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_iniDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_iniDate.Name = "dt_iniDate";
             this.dt_iniDate.Size = new System.Drawing.Size(222, 29);
             this.dt_iniDate.TabIndex = 59;
@@ -517,7 +517,7 @@
             // dt_endDate
             // 
             this.dt_endDate.Location = new System.Drawing.Point(664, 74);
-            this.dt_endDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_endDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_endDate.Name = "dt_endDate";
             this.dt_endDate.Size = new System.Drawing.Size(222, 29);
             this.dt_endDate.TabIndex = 58;
@@ -537,6 +537,7 @@
             this.btn_Search_Client.UseSelectable = true;
             this.btn_Search_Client.UseStyleColors = true;
             this.btn_Search_Client.UseTileImage = true;
+            this.btn_Search_Client.Click += new System.EventHandler(this.btn_Search_Client_Click);
             // 
             // ctxt_document_id
             // 
@@ -544,7 +545,7 @@
             // 
             // 
             this.ctxt_document_id.CustomButton.Image = null;
-            this.ctxt_document_id.CustomButton.Location = new System.Drawing.Point(201, 1);
+            this.ctxt_document_id.CustomButton.Location = new System.Drawing.Point(186, 1);
             this.ctxt_document_id.CustomButton.Name = "";
             this.ctxt_document_id.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.ctxt_document_id.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -553,7 +554,7 @@
             this.ctxt_document_id.CustomButton.UseSelectable = true;
             this.ctxt_document_id.CustomButton.Visible = false;
             this.ctxt_document_id.Lines = new string[0];
-            this.ctxt_document_id.Location = new System.Drawing.Point(110, 22);
+            this.ctxt_document_id.Location = new System.Drawing.Point(125, 22);
             this.ctxt_document_id.MaxLength = 32767;
             this.ctxt_document_id.Name = "ctxt_document_id";
             this.ctxt_document_id.PasswordChar = '\0';
@@ -562,7 +563,7 @@
             this.ctxt_document_id.SelectionLength = 0;
             this.ctxt_document_id.SelectionStart = 0;
             this.ctxt_document_id.ShortcutsEnabled = true;
-            this.ctxt_document_id.Size = new System.Drawing.Size(229, 29);
+            this.ctxt_document_id.Size = new System.Drawing.Size(214, 29);
             this.ctxt_document_id.TabIndex = 56;
             this.ctxt_document_id.UseSelectable = true;
             this.ctxt_document_id.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -585,7 +586,7 @@
             // 
             // 
             this.ctxt_customer.CustomButton.Image = null;
-            this.ctxt_customer.CustomButton.Location = new System.Drawing.Point(201, 1);
+            this.ctxt_customer.CustomButton.Location = new System.Drawing.Point(186, 1);
             this.ctxt_customer.CustomButton.Name = "";
             this.ctxt_customer.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.ctxt_customer.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -594,7 +595,7 @@
             this.ctxt_customer.CustomButton.UseSelectable = true;
             this.ctxt_customer.CustomButton.Visible = false;
             this.ctxt_customer.Lines = new string[0];
-            this.ctxt_customer.Location = new System.Drawing.Point(110, 74);
+            this.ctxt_customer.Location = new System.Drawing.Point(125, 74);
             this.ctxt_customer.MaxLength = 32767;
             this.ctxt_customer.Name = "ctxt_customer";
             this.ctxt_customer.PasswordChar = '\0';
@@ -603,7 +604,7 @@
             this.ctxt_customer.SelectionLength = 0;
             this.ctxt_customer.SelectionStart = 0;
             this.ctxt_customer.ShortcutsEnabled = true;
-            this.ctxt_customer.Size = new System.Drawing.Size(229, 29);
+            this.ctxt_customer.Size = new System.Drawing.Size(214, 29);
             this.ctxt_customer.TabIndex = 54;
             this.ctxt_customer.UseSelectable = true;
             this.ctxt_customer.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -990,6 +991,16 @@
             this.gbDocument.TabStop = false;
             this.gbDocument.Text = "Datos del Documento :";
             // 
+            // dt_IssueHour
+            // 
+            this.dt_IssueHour.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dt_IssueHour.Location = new System.Drawing.Point(543, 121);
+            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_IssueHour.Name = "dt_IssueHour";
+            this.dt_IssueHour.Size = new System.Drawing.Size(87, 29);
+            this.dt_IssueHour.TabIndex = 74;
+            this.dt_IssueHour.UseCustomBackColor = true;
+            // 
             // btn_Pdf
             // 
             this.btn_Pdf.ActiveControl = null;
@@ -1196,6 +1207,7 @@
             this.txt_external.ShortcutsEnabled = true;
             this.txt_external.Size = new System.Drawing.Size(156, 25);
             this.txt_external.TabIndex = 57;
+            this.txt_external.UseCustomBackColor = true;
             this.txt_external.UseSelectable = true;
             this.txt_external.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txt_external.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -1240,8 +1252,8 @@
             this.cbo_document_type.Name = "cbo_document_type";
             this.cbo_document_type.Size = new System.Drawing.Size(156, 29);
             this.cbo_document_type.TabIndex = 49;
+            this.cbo_document_type.UseCustomBackColor = true;
             this.cbo_document_type.UseSelectable = true;
-            this.cbo_document_type.SelectedIndexChanged += new System.EventHandler(this.cbo_document_type_SelectedIndexChanged);
             // 
             // label17
             // 
@@ -1638,15 +1650,6 @@
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
             // 
-            // dt_IssueHour
-            // 
-            this.dt_IssueHour.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dt_IssueHour.Location = new System.Drawing.Point(543, 121);
-            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(0, 29);
-            this.dt_IssueHour.Name = "dt_IssueHour";
-            this.dt_IssueHour.Size = new System.Drawing.Size(87, 29);
-            this.dt_IssueHour.TabIndex = 74;
-            // 
             // UC_SalesDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1683,7 +1686,7 @@
         private MetroFramework.Controls.MetroTabControl tab_Document;
         private System.Windows.Forms.TabPage order;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btn_Edit;
+        private System.Windows.Forms.Button btn_View;
         private System.Windows.Forms.GroupBox gbDocuments;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.GroupBox groupBox2;

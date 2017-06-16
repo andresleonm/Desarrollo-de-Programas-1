@@ -132,12 +132,6 @@ namespace WindowsFormsApp1.Views
             fill_gridView_Order(sales_orders);
         }
 
-        private void clean_gridView_Order()
-        {
-            List<SalesOrder> empty_list = new List<SalesOrder>();
-            grid_orders.DataSource = empty_list;
-        }
-
         private void fill_gridView_Order(List<SalesOrder> list)
         {
             clean_gridView_Order();
@@ -147,6 +141,12 @@ namespace WindowsFormsApp1.Views
             current = current.Concat(list).ToList();
             this.grid_orders.DataSource = current;
             AdjustColumnOrder();
+        }
+
+        private void clean_gridView_Order()
+        {
+            List<SalesOrder> empty_list = new List<SalesOrder>();
+            grid_orders.DataSource = empty_list;
         }
 
         private void AdjustColumnOrder()
@@ -160,10 +160,7 @@ namespace WindowsFormsApp1.Views
             grid_orders.Columns["status"].DisplayIndex = 6;
         }
 
-        // -----------------------------------------------------
-        //                  END CONSULTANT ORDER
-        // -----------------------------------------------------
-        #endregion
+         #endregion
 
         #region REGISTER ORDER
         // -----------------------------------------------------
@@ -292,6 +289,7 @@ namespace WindowsFormsApp1.Views
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
+            btn_Clean.PerformClick();
             this.Visible = false;
         }
 
@@ -444,10 +442,8 @@ namespace WindowsFormsApp1.Views
             grid_order_lines.Columns["action"].DisplayIndex = 6;
         }
 
-        // -----------------------------------------------------
-        //                   END REGISTER ORDER
-        // -----------------------------------------------------
-#endregion
+        
+        #endregion
 
 
 
