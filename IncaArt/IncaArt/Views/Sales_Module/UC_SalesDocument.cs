@@ -72,7 +72,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private void btn_Search_Client_Click(object sender, EventArgs e)
         {
             var customerL = new List<Customer>();
-            Sales_Module.SalesOrderSearchClient search_view = new Sales_Module.SalesOrderSearchClient(ref customerL, user, password);
+            Sales_Module.SalesOrderSearchClient search_view = new Sales_Module.SalesOrderSearchClient(ref customerL, user, password, 'A');
             search_view.ShowDialog();
 
             if (customerL.Count != 0)

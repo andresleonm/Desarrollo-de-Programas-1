@@ -26,7 +26,7 @@ namespace WindowsFormsApp1.Controller
                 {
                     sales_estimate_lines.Add(new SalesEstimateLine(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), Int32.Parse(r.getColumn(2)),
                                                     r.getColumn(3), Int32.Parse(r.getColumn(4)), r.getColumn(5), int.Parse(r.getColumn(6)),
-                                                    double.Parse(r.getColumn(7)), int.Parse(r.getColumn(8)), Int32.Parse(r.getColumn(9)), r.getColumn(10), r.getColumn(11)));
+                                                    double.Parse(r.getColumn(7)), Int32.Parse(r.getColumn(8)), r.getColumn(9), r.getColumn(10)));
                 }
                 return new Result(sales_estimate_lines, true, "");
             }
@@ -54,7 +54,7 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result updateSalesestimateLine(SalesEstimateLine line)
+        public Result updateSalesEstimateLine(SalesEstimateLine line)
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("estimate_id", line.Estimate_id.ToString()));

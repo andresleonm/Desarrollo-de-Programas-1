@@ -144,5 +144,45 @@ namespace WindowsFormsApp1.Controller
             }
             return new Result(null, result.success, result.message);
         }
+
+        public Result getCustomers_foreign()
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            GenericResult result = execute_function("get_customers_foreign", parameters);
+            List<Models.Customer> customers = new List<Models.Customer>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    customers.Add(new Models.Customer(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2), r.getColumn(3), r.getColumn(4), r.getColumn(5), r.getColumn(6),
+                                                    Int32.Parse(r.getColumn(7)), r.getColumn(8)));
+                }
+
+                return new Result(customers, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result getCustomer_by_text_foreign(string text, string type)
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("name", text));
+            parameters.Add(new Parameter("customer_type", text));
+            GenericResult result = execute_function("get_customer_by_name_foreign", parameters);
+            List<Models.Customer> customers = new List<Models.Customer>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    customers.Add(new Models.Customer(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2), r.getColumn(3), r.getColumn(4), r.getColumn(5), r.getColumn(6),
+                                                    Int32.Parse(r.getColumn(7)), r.getColumn(8)));
+                }
+
+                return new Result(customers, true, "");
+            }
+            return new Result(null, result.success, result.message);
+
+        }
     }
 }
