@@ -57,6 +57,51 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result getSalesEstimatesByClient(int id)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("client_id", id.ToString()));
+            GenericResult result = execute_function("get_sales_estimates_by_client", parameters);
+            if (result.success)
+            {
+                var r = result.data[0];
+                //SalesEstimateLineController selc = new SalesEstimateLineController(user, password);
+                //var detail = (List<SalesEstimateLine>)selc.getSalesEstimateLines(Int32.Parse(r.getColumn(0))).data;
+
+                SalesEstimate sales_estimate = new SalesEstimate(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
+                                                          r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
+                                                          r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
+                                                          r.getColumn(9), r.getColumn(10), DateTime.Parse(r.getColumn(11)),
+                                                          Double.Parse(r.getColumn(12)), r.getColumn(13), null);
+                return new Result(sales_estimate, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result getEstimate_by_text_by_client(string text, int id)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("name", text));
+            parameters.Add(new Parameter("client_id", id.ToString()));
+            GenericResult result = execute_function("get_estimate_by_text_by_client", parameters);
+            List<Models.SalesEstimate> estimates = new List<Models.SalesEstimate>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    estimates.Add(new Models.SalesEstimate(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
+                                                          r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
+                                                          r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
+                                                          r.getColumn(9), r.getColumn(10), DateTime.Parse(r.getColumn(11)),
+                                                          Double.Parse(r.getColumn(12)), r.getColumn(13), null));
+                }
+
+                return new Result(estimates, true, "");
+            }
+            return new Result(null, result.success, result.message);
+
+        }
+
         public Result getWarehousesS(int id, char class_warehouse)
         {
             List<Parameter> parameters = new List<Parameter>();

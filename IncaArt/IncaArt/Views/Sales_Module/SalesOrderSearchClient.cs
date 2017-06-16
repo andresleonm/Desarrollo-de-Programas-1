@@ -36,8 +36,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 customer_type = "";
             }
             customers = (List<Customer>)result.data;
-            fill_GridView(customers);           
-            
+            fill_GridView(customers);                      
         }
 
         private void SalesOrderSearchClient_Load(object sender, EventArgs e)

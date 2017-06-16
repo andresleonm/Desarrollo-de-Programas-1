@@ -149,7 +149,7 @@
             this.tab_Estimate.Controls.Add(this.newOrder);
             this.tab_Estimate.Location = new System.Drawing.Point(10, 5);
             this.tab_Estimate.Name = "tab_Estimate";
-            this.tab_Estimate.SelectedIndex = 1;
+            this.tab_Estimate.SelectedIndex = 0;
             this.tab_Estimate.Size = new System.Drawing.Size(849, 608);
             this.tab_Estimate.Style = MetroFramework.MetroColorStyle.Teal;
             this.tab_Estimate.TabIndex = 42;
