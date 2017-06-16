@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
 using System.Reflection;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class UC_Material : MetroFramework.Controls.MetroUserControl
+    public partial class UC_Material : ICheckPermissions
     {
         bool name_flag;
         bool unit_flag;
@@ -666,10 +667,10 @@ namespace WindowsFormsApp1.Views
             ws.Columns.AutoFit();
         }
 
-        private void UC_Material_ParentChanged(object sender, EventArgs e)
+        public override void CheckPermissions(User u)
         {
-            sessionUser = ((Dashboard)Parent).sessionUser;
-
+            sessionUser = u;
+            Permissions();
         }
 
         private void Permissions()

@@ -105,6 +105,11 @@
             // numericUpDown_Minute
             // 
             this.numericUpDown_Minute.Location = new System.Drawing.Point(653, 134);
+            this.numericUpDown_Minute.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
             this.numericUpDown_Minute.Name = "numericUpDown_Minute";
             this.numericUpDown_Minute.Size = new System.Drawing.Size(59, 20);
             this.numericUpDown_Minute.TabIndex = 68;
@@ -162,7 +167,7 @@
             this.metroTextBox_observations.CustomButton.Visible = false;
             this.metroTextBox_observations.Lines = new string[0];
             this.metroTextBox_observations.Location = new System.Drawing.Point(152, 174);
-            this.metroTextBox_observations.MaxLength = 32767;
+            this.metroTextBox_observations.MaxLength = 200;
             this.metroTextBox_observations.Name = "metroTextBox_observations";
             this.metroTextBox_observations.PasswordChar = '\0';
             this.metroTextBox_observations.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -196,7 +201,7 @@
             this.metroTextBox_quantity_produced.CustomButton.Visible = false;
             this.metroTextBox_quantity_produced.Lines = new string[0];
             this.metroTextBox_quantity_produced.Location = new System.Drawing.Point(550, 99);
-            this.metroTextBox_quantity_produced.MaxLength = 32767;
+            this.metroTextBox_quantity_produced.MaxLength = 8;
             this.metroTextBox_quantity_produced.Name = "metroTextBox_quantity_produced";
             this.metroTextBox_quantity_produced.PasswordChar = '\0';
             this.metroTextBox_quantity_produced.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -232,7 +237,7 @@
             this.metroTextBox_quantity_broken.CustomButton.Visible = false;
             this.metroTextBox_quantity_broken.Lines = new string[0];
             this.metroTextBox_quantity_broken.Location = new System.Drawing.Point(152, 134);
-            this.metroTextBox_quantity_broken.MaxLength = 32767;
+            this.metroTextBox_quantity_broken.MaxLength = 8;
             this.metroTextBox_quantity_broken.Name = "metroTextBox_quantity_broken";
             this.metroTextBox_quantity_broken.PasswordChar = '\0';
             this.metroTextBox_quantity_broken.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -268,7 +273,7 @@
             this.metroTextBox_quantity_required.CustomButton.Visible = false;
             this.metroTextBox_quantity_required.Lines = new string[0];
             this.metroTextBox_quantity_required.Location = new System.Drawing.Point(152, 99);
-            this.metroTextBox_quantity_required.MaxLength = 32767;
+            this.metroTextBox_quantity_required.MaxLength = 8;
             this.metroTextBox_quantity_required.Name = "metroTextBox_quantity_required";
             this.metroTextBox_quantity_required.PasswordChar = '\0';
             this.metroTextBox_quantity_required.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -419,7 +424,7 @@
             this.metroLabel1.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel1.Location = new System.Drawing.Point(27, 29);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(68, 15);
+            this.metroLabel1.Size = new System.Drawing.Size(69, 15);
             this.metroLabel1.TabIndex = 30;
             this.metroLabel1.Text = "Trabajador:";
             this.metroLabel1.UseCustomBackColor = true;

@@ -81,6 +81,10 @@ namespace WindowsFormsApp1.Views
         private bool validate_data()
         {
             bool isCorrect = true;
+
+            validate_textbox(metroTextBox_Description);
+            validate_begin_datetime(metroDateTime_Begin);
+            validate_end_datetime(metroDateTime_End);
             if (!flag_description ||!flag_begin||!flag_end)
             {
                 MessageBox.Show("Hay campos inválidos en los datos de la orden de producción.","Error en el registro",MessageBoxButtons.OK);
@@ -100,94 +104,115 @@ namespace WindowsFormsApp1.Views
                 string observations = metroTextBox_Observation.Text;
                 string status="Registrado";
                 int order_id;
+                string message="";
+
                 Models.ProductionOrder production_order = new Models.ProductionOrder(description,observations,begin,end,status);
                 if (!editing)
                 {
                     //INSERT
-                    order_id = Int32.Parse(production_controller.insertProductionOrder(production_order).data.ToString());
-                    //List of products
-                    for (int i = 0; i < product_lines.Count; i++)
+                    Result result = production_controller.insertProductionOrder(production_order);
+                    if (result.success)
                     {
-                        if (product_lines[i].State != "DELETED")
+                        order_id = Int32.Parse(result.data.ToString());
+                        //List of products
+                        for (int i = 0; i < product_lines.Count; i++)
                         {
-                            product_lines[i].Order_Id = order_id;
-                            Result result = product_line_controller.insertProductLine(product_lines[i]);
-                        }                       
-                    }
-                    //List of materials           
-                    for (int i = 0; i < material_lines.Count; i++)
-                    {
-                        if (material_lines[i].State != "DELETED")
+                            if (product_lines[i].State != "Anulado")
+                            {
+                                product_lines[i].Order_Id = order_id;
+                                result = product_line_controller.insertProductLine(product_lines[i]);
+                                if (!result.success) message += "-" + product_lines[i].Warehouse_name +":" + result.message + "\n";
+                            }
+                        }
+                        //List of materials           
+                        for (int i = 0; i < material_lines.Count; i++)
                         {
-                            material_lines[i].Order_Id = order_id;
-                            Result result = material_line_controller.insertMaterialLine(material_lines[i]);
-                        }                        
-                    }
-                    //List of work               
-                    for (int i = 0; i < work_lines.Count; i++)
-                    {
-                        if (work_lines[i].State != "DELETED")
+                            if (material_lines[i].State != "Anulado")
+                            {
+                                material_lines[i].Order_Id = order_id;
+                                result = material_line_controller.insertMaterialLine(material_lines[i]);
+                                if (!result.success) message += "-" + material_lines[i].Warehouse_name+":"+ result.message + "\n";
+                            }
+                        }
+                        //List of work               
+                        for (int i = 0; i < work_lines.Count; i++)
                         {
-                            work_lines[i].Order_Id = order_id;
-                            Result result = work_line_controller.insertWorkLine(work_lines[i]);
-                        }              
-                    }
+                            if (work_lines[i].State != "Anulado")
+                            {
+                                work_lines[i].Order_Id = order_id;
+                                result = work_line_controller.insertWorkLine(work_lines[i]);
+                                if (!result.success) message += "-" + result.message + "\n";
+                            }
+                        }
 
-                    MessageBox.Show("Order de producción registrada.");
+                        MessageBox.Show("Order de producción registrada.");
+                    }
+                    else { message += "-" + result.message + "\n"; }
                 }
                 else
                 {
                     production_order.Id = Int32.Parse(this.metroTextBox_OrderNumber.Text);
                     //UPDATE HEADER
                     Result result=production_controller.updateProductionOrder(production_order);
-                    //List of products
-                    for (int i = 0; i < product_lines.Count; i++)
-                    {
-                        if (product_lines[i].Id == 0)
+                    if (!result.success) message += "-" + result.message + "\n";
+                    else { 
+                        //List of products
+                        for (int i = 0; i < product_lines.Count; i++)
                         {
-                            //INSERT
-                            product_lines[i].Order_Id = production_order.Id;
-                            result = product_line_controller.insertProductLine(product_lines[i]);
+                            if (product_lines[i].Id == 0)
+                            {
+                                //INSERT
+                                product_lines[i].Order_Id = production_order.Id;
+                                result = product_line_controller.insertProductLine(product_lines[i]);
+                                if (!result.success) message += "-" + product_lines[i].Warehouse_name + ":" + result.message + "\n";
+                            }
+                            else
+                            {
+                                //UPDATE
+                                result = product_line_controller.updateProductLine(product_lines[i]);
+                                if (!result.success) message += "-" + product_lines[i].Warehouse_name + ":" + result.message + "\n";
+                            }                     
                         }
-                        else
+                        //List of materials           
+                        for (int i = 0; i < material_lines.Count; i++)
                         {
-                            //UPDATE
-                            result = product_line_controller.updateProductLine(product_lines[i]);
-                        }                     
-                    }
-                    //List of materials           
-                    for (int i = 0; i < material_lines.Count; i++)
-                    {
-                        if (material_lines[i].Id == 0)
-                        {
-                            //INSERT
-                            material_lines[i].Order_Id = production_order.Id;
-                            result = material_line_controller.insertMaterialLine(material_lines[i]);
-                        }
-                        else
-                        {
-                            //UPDATE
-                            result = material_line_controller.updateMaterialLine(material_lines[i]);
-                        }
+                            if (material_lines[i].Id == 0)
+                            {
+                                //INSERT
+                                material_lines[i].Order_Id = production_order.Id;
+                                result = material_line_controller.insertMaterialLine(material_lines[i]);
+                                if (!result.success) message += "-" + material_lines[i].Warehouse_name + ":" + result.message + "\n";
+                            }
+                            else
+                            {
+                                //UPDATE
+                                result = material_line_controller.updateMaterialLine(material_lines[i]);
+                                if (!result.success) message += "-" + material_lines[i].Warehouse_name + ":" + result.message + "\n";
+                            }
                                           
-                    }
-                    //List of work               
-                    for (int i = 0; i < work_lines.Count; i++)
-                    {
-                        if (work_lines[i].Id == 0)
-                        {
-                            //INSERT
-                            work_lines[i].Order_Id = production_order.Id;
-                            result = work_line_controller.insertWorkLine(work_lines[i]);
                         }
-                        else
+                        //List of work               
+                        for (int i = 0; i < work_lines.Count; i++)
                         {
-                            //UPDATE
-                            result = work_line_controller.updateWorkLine(work_lines[i]);
+                            if (work_lines[i].Id == 0)
+                            {
+                                //INSERT
+                                work_lines[i].Order_Id = production_order.Id;
+                                result = work_line_controller.insertWorkLine(work_lines[i]);
+                                if (!result.success) message += "-" + result.message + "\n";
+                            }
+                            else
+                            {
+                                //UPDATE
+                                result = work_line_controller.updateWorkLine(work_lines[i]);
+                                if (!result.success) message += "-" + result.message + "\n";
+                            }
                         }
+                        MessageBox.Show("Order de producción actualizada.");
                     }
-                    MessageBox.Show("Order de producción actualizada.");
                 }
+                if(message!="")
+                    MessageBox.Show(message,"Errores en el registro",MessageBoxButtons.OK);
                 this.Visible = false;
                 clear_Form();
                 editing = false;
@@ -476,7 +501,7 @@ namespace WindowsFormsApp1.Views
                         {
                             int selected_index = datagrid_Products.SelectedRows[0].Index;
                             Models.ProductionOrderProductLine product_line = product_lines[selected_index];
-                            product_line.State = "DELETED";
+                            product_line.State = "Anulado";
                             Load_Product_DataGridView();
                         }
                     }
@@ -502,7 +527,7 @@ namespace WindowsFormsApp1.Views
                         {
                             int selected_index = metroGrid_Material.SelectedRows[0].Index;
                             Models.ProductionOrderMaterialLine material_line = material_lines[selected_index];
-                            material_line.State = "DELETED";
+                            material_line.State = "Anulado";
                             Load_Material_DataGridView();
                         }
                     }
@@ -526,7 +551,7 @@ namespace WindowsFormsApp1.Views
                         {
                             int selected_index = metroGrid_Work.SelectedRows[0].Index;
                             Models.ProductionOrderWorkLine work_line = work_lines[selected_index];
-                            work_line.State = "DELETED";
+                            work_line.State = "Anulado";
                             Load_Work_DataGridView();
                         }
                     }
@@ -536,7 +561,7 @@ namespace WindowsFormsApp1.Views
         }
 
 
-        //Tablas de resumen
+        //Summary
         private void update_SummaryProduct()
         {
             calculate_products_summary();
@@ -582,7 +607,7 @@ namespace WindowsFormsApp1.Views
             foreach (Models.ProductionOrderProductLine product_line in product_lines)
             {
                 int index = product_summary_lines.FindIndex(p => p.Product_id == product_line.Product_id);
-                if (index==-1) //No se encuentra
+                if (index==-1) //not found
                 {
                     Models.ProductionOrderProductLine new_line = new Models.ProductionOrderProductLine();
                     new_line.Product_id = product_line.Product_id;
@@ -615,12 +640,12 @@ namespace WindowsFormsApp1.Views
             }
         }
 
-        public void calculate_materials_summary() //De la receta de productos
+        public void calculate_materials_summary() 
         {
             material_summary_lines.Clear();
             List<Models.Material> materials = (List<Models.Material>)material_controller.getMaterials().data;
             List<Models.UnitOfMeasure> units = (List<Models.UnitOfMeasure>)unit_controller.getUnits().data;
-            //Por cada producto
+            //For product
             foreach (Models.ProductionOrderProductLine product_line in product_lines)
             {
                 //Detalle de receta de cada producto
@@ -648,10 +673,11 @@ namespace WindowsFormsApp1.Views
                 }
             }
         }
+
         //Validaciones
-        private void metroTextBox_Description_Validating(object sender, CancelEventArgs e)
+
+       private void validate_textbox(MetroFramework.Controls.MetroTextBox textbox)
         {
-            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
             string text = textbox.Text;
             if (String.IsNullOrWhiteSpace(text))
             {
@@ -665,26 +691,27 @@ namespace WindowsFormsApp1.Views
             }
         }
 
-        private void metroDateTime_Begin_Validating(object sender, CancelEventArgs e)
-        {
-            MetroFramework.Controls.MetroDateTime date_time = (MetroFramework.Controls.MetroDateTime)sender;
-            DateTime end = metroDateTime_End.Value;
-            if (date_time.Value > end)
+        private void validate_begin_datetime(MetroFramework.Controls.MetroDateTime date_time) {
+            DateTime end = metroDateTime_End.Value.Date;
+            if (date_time.Value.Date > end)
             {
                 flag_begin = false;
                 errorProvider.SetError(date_time, "La fecha de inicio debe ser menor o igual que la de fin.");
-            }else
+            }
+            else if (!editing && date_time.Value.Date < DateTime.Now.Date)
             {
-                flag_end = true;
-                errorProvider.SetError(date_time,null);
+                flag_begin = false;
+                errorProvider.SetError(date_time, "La fecha de inicio debe ser mayor a la fecha actual");
+            }
+            else {
+                flag_begin = true;
+                errorProvider.SetError(date_time, null);
             }
         }
 
-        private void metroDateTime_End_Validating(object sender, CancelEventArgs e)
-        {
-            MetroFramework.Controls.MetroDateTime date_time = (MetroFramework.Controls.MetroDateTime)sender;
-            DateTime begin = metroDateTime_Begin.Value;
-            if (date_time.Value < begin)
+        private void validate_end_datetime(MetroFramework.Controls.MetroDateTime date_time) {
+            DateTime begin = metroDateTime_Begin.Value.Date;
+            if (date_time.Value.Date < begin)
             {
                 flag_end = false;
                 errorProvider.SetError(date_time, "La fecha de fin debe ser mayor o igual que la de inicio.");
@@ -694,6 +721,24 @@ namespace WindowsFormsApp1.Views
                 flag_end = true;
                 errorProvider.SetError(date_time, null);
             }
+        }
+        
+        private void metroTextBox_Description_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            validate_textbox(textbox);
+        }
+
+        private void metroDateTime_Begin_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroDateTime date_time = (MetroFramework.Controls.MetroDateTime)sender;
+            validate_begin_datetime(date_time);
+        }
+
+        private void metroDateTime_End_Validating(object sender, CancelEventArgs e)
+        {
+            MetroFramework.Controls.MetroDateTime date_time = (MetroFramework.Controls.MetroDateTime)sender;
+            validate_end_datetime(date_time);
         }
 
         private void metroDateTime_End_ValueChanged(object sender, EventArgs e)
