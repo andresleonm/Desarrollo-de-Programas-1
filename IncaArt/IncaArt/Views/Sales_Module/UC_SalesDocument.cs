@@ -760,7 +760,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
             catch (Exception ex)
             {
-
+               MessageBox.Show(ex.Message);
             }
            
 

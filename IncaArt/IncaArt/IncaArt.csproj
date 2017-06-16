@@ -159,6 +159,8 @@
     <Compile Include="Models\RatioType.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipeDetail.cs" />
+    <Compile Include="Models\SalesEstimate.cs" />
+    <Compile Include="Models\SalesEstimateLine.cs" />
     <Compile Include="Models\SalesRefund.cs" />
     <Compile Include="Models\SalesRefundLine.cs" />
     <Compile Include="Models\SalesDocument.cs" />
