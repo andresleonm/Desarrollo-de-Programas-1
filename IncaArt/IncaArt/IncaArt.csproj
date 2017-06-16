@@ -797,6 +797,7 @@
     <None Include="Resources\Close Window_52px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Inca Art.PNG" />
     <None Include="Resources\pdf.png" />
     <None Include="Resources\Microsoft Excel_40px.png" />
     <None Include="Resources\Maximize Window_64px.png" />
