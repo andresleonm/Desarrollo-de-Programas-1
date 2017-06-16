@@ -11,17 +11,15 @@ using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class MainDashboard : UserControl
+    public partial class MainDashboard : ICheckPermissions
     {
         public MainDashboard()
         {
             InitializeComponent();            
         }
 
-        private void MainDashboard_Load(object sender, EventArgs e)
+        private void MainDashboard_Load(User sessionUser)
         {
-            User sessionUser = ((Dashboard)Parent).sessionUser;
-
             if (!sessionUser.Profile.HasFunctionality("VIEW USERS"))
             {
                 metroTile1.Visible = false;
@@ -53,6 +51,12 @@ namespace WindowsFormsApp1.Views
         {
             UC_Ratio uc_ratio = new UC_Ratio();
             uc_ratio.Visible = true;
+        }
+
+        public override void CheckPermissions(User u)
+        {
+            MainDashboard_Load(u);
+            Helpers.CheckPermissionsHelper.Check(this, u);
         }
     }
 }

@@ -140,7 +140,6 @@
             this.Controls.Add(this.panel1);
             this.Name = "UC_ProductionMenu";
             this.Size = new System.Drawing.Size(861, 574);
-            this.ParentChanged += new System.EventHandler(this.UC_ProductionMenu_ParentChanged);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -43,7 +43,7 @@ namespace WindowsFormsApp1.Views
 
         void cellDateTimePickerVisibleChanged(object sender, EventArgs e)
         {
-            if (cellDateTimePicker.Visible)
+            if (cellDateTimePicker.Visible && grid_order_lines.CurrentRow != null)
             {
                 grid_order_lines.CurrentRow.Cells[0].Value = cellDateTimePicker.Value.ToShortDateString();                
             }
@@ -139,7 +139,7 @@ namespace WindowsFormsApp1.Views
                     int warehouse_id = warehouses.Find(w => w.Name == grid_order_lines.Rows[i].Cells[5].Value.ToString()).Id;
                     Models.PurchaseOrderLine pol = new Models.PurchaseOrderLine(editing_order.Lines[i].Id, po.Id, unit_of_measure_id, Int32.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString())
                                                         , Double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString()), DateTime.Parse(grid_order_lines.Rows[i].Cells[0].Value.ToString()),editing_order.Lines[i].State,
-                                                        Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()), material_id, warehouse_id);
+                                                        Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()), material_id, warehouse_id, double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString()));
                     Controller.Result result =  pol_controller.updatePurchaseOrderLine(pol);
                     if (result.success)
                     {
@@ -216,15 +216,7 @@ namespace WindowsFormsApp1.Views
                             materials.Find(m => m.Name == grid_order_lines.Rows[e.RowIndex].Cells[1].Value.ToString()).Unit_id).Name;
 
                     grid_order_lines.Rows[e.RowIndex].Cells[6].Value = avg_cost;                 
-
-                }
-                else if(e.ColumnIndex == 2) // si cambió la cantidad
-                {
-                    grid_order_lines.Rows[e.RowIndex].Cells[7].Value =
-                        Double.Parse(grid_order_lines.Rows[e.RowIndex].Cells[2].Value.ToString()) * avg_cost;                        
-                    calculateCosts();
-                }
-               
+                }                              
             }
         }
 
@@ -298,7 +290,8 @@ namespace WindowsFormsApp1.Views
 
             for(int i=0; i<grid_order_lines.RowCount-1;i++)
             {
-                grid_order_lines.Rows[i].Cells[7].Value = double.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString()) * double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString()) - double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()) * (Double.Parse(lbl_igv.Text) / 100);
+                grid_order_lines.Rows[i].Cells[7].Value = double.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString()) * double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString());
+                grid_order_lines.Rows[i].Cells[7].Value = double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()) - double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()) * (Double.Parse(lbl_igv.Text) / 100);
                 taxes = taxes + double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()) * (Double.Parse(lbl_igv.Text)/100);
                 no_taxes = no_taxes + Double.Parse(grid_order_lines.Rows[i].Cells[grid_order_lines.Rows[i].Cells.Count - 1].Value.ToString());
                 total = total + no_taxes + taxes;
@@ -326,13 +319,13 @@ namespace WindowsFormsApp1.Views
 
         private void grid_order_lines_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            double avg_cost;
-            if (grid_order_lines.Rows[e.RowIndex].Cells[2].Value != null && grid_order_lines.Rows[e.RowIndex].Cells[6].Value != null) {
-                avg_cost = materials.Find(m => m.Name == grid_order_lines.Rows[e.RowIndex].Cells[1].Value.ToString()).Average_cost;
-                grid_order_lines.Rows[e.RowIndex].Cells[7].Value =
-                    Double.Parse(grid_order_lines.Rows[e.RowIndex].Cells[2].Value.ToString()) * avg_cost;
-                calculateCosts();
-            }
+            //double avg_cost;
+            //if (grid_order_lines.Rows[e.RowIndex].Cells[2].Value != null && grid_order_lines.Rows[e.RowIndex].Cells[6].Value != null) {
+            //    avg_cost = materials.Find(m => m.Name == grid_order_lines.Rows[e.RowIndex].Cells[1].Value.ToString()).Average_cost;
+            //    grid_order_lines.Rows[e.RowIndex].Cells[7].Value =
+            //        Double.Parse(grid_order_lines.Rows[e.RowIndex].Cells[2].Value.ToString()) * avg_cost;
+            //    calculateCosts();
+            //}
         }
 
         private void btn_Pdf_Click(object sender, EventArgs e)
@@ -457,7 +450,7 @@ namespace WindowsFormsApp1.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            calculateCosts();
+            calculateCosts();            
         }
     }
 }

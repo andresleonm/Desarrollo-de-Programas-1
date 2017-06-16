@@ -86,7 +86,7 @@ namespace WindowsFormsApp1.Views
                     ((UC_SimulationConfig)(Parent.Controls.Find("UC_SimulationConfig2", true))[0]).solution;
                 if (solution != null && solution.Count >= 1)
                 {
-                    string[] row = new string[4];
+                    string[] row = new string[5];
                     int count = 1;
                     foreach (Algorithm.ProductLineAssignment pla in solution)
                     {
@@ -95,7 +95,8 @@ namespace WindowsFormsApp1.Views
                             row[0] = assig.assigned_worker.name + " " + assig.assigned_worker.lastname;
                             row[1] = assig.assigned_workstation.name;
                             row[2] = assig.assigned_workstation.product.name;
-                            row[3] = count.ToString();
+                            row[3] = (assig.assigned_worker.ratios.Where(r => r.workstation.name == assig.assigned_workstation.name).ElementAt(0).value*100).ToString("0.00");
+                            row[4] = count.ToString();
                             this.metroGrid1.Rows.Add(row);
                         }
                         count++;
