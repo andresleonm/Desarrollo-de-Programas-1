@@ -242,6 +242,7 @@ namespace WindowsFormsApp1.Views
                     tab_Order.SelectedIndex = 0;
                     MessageBox.Show(this, "Orden actualizada exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                     edit = false;
+                    so_edit = new SalesOrder();
                 }
                 else
                 {
@@ -296,6 +297,7 @@ namespace WindowsFormsApp1.Views
         private void btn_Clean_Click(object sender, EventArgs e)
         {
             edit = false;
+            so_edit = new SalesOrder();
             Clean();
         }
 

@@ -204,6 +204,24 @@
     <Compile Include="Views\Client.Designer.cs">
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Currency_Module\UC_Currency.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Currency_Module\UC_Currency.Designer.cs">
+      <DependentUpon>UC_Currency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Currency_Module\UC_CurrencyMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Currency_Module\UC_CurrencyMain.Designer.cs">
+      <DependentUpon>UC_CurrencyMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Currency_Module\UC_Exchange.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Currency_Module\UC_Exchange.Designer.cs">
+      <DependentUpon>UC_Exchange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +325,12 @@
     </Compile>
     <Compile Include="Views\Sales_Module\UC_SalesRefund.Designer.cs">
       <DependentUpon>UC_SalesRefund.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_Currency2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_Currency2.Designer.cs">
+      <DependentUpon>UC_Currency2.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_Material.cs">
       <SubType>UserControl</SubType>
@@ -597,6 +621,15 @@
     <EmbeddedResource Include="Views\Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Currency_Module\UC_Currency.resx">
+      <DependentUpon>UC_Currency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Currency_Module\UC_CurrencyMain.resx">
+      <DependentUpon>UC_CurrencyMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Currency_Module\UC_Exchange.resx">
+      <DependentUpon>UC_Exchange.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -636,6 +669,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesRefund.resx">
       <DependentUpon>UC_SalesRefund.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_Currency2.resx">
+      <DependentUpon>UC_Currency2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Material.resx">
       <DependentUpon>UC_Material.cs</DependentUpon>
@@ -806,6 +842,7 @@
     <None Include="Resources\Undo_40px.png" />
     <None Include="Resources\Shopping Cart_40px.png" />
     <None Include="Resources\Add File_40px.png" />
+    <None Include="Resources\1497510418_dollar-currency-_money-recycle.png" />
     <Content Include="Resources\American Indians Seminole_white_20px.png" />
     <None Include="Resources\American Indians Seminole_white_40px.png" />
     <None Include="Resources\American Indians Seminole_white_50px.png" />

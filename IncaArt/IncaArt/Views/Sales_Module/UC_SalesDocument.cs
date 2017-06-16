@@ -50,6 +50,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
         {
             if (tab_Document.SelectedIndex == 0) // Documents
             {
+                edit = false;
+                sd_edit = new SalesDocument();
                 ctxt_document_id.Text = "";
                 ctxt_customer.Text = "";
                 manipulate_options(true);
@@ -326,6 +328,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private void btn_Clean_Click(object sender, EventArgs e)
         {
             edit = false;
+            sd_edit = new SalesDocument();
             manipulate_options(true);
             Clean();
         }
@@ -465,7 +468,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void manipulate_options(bool booleano)
         {
-            Color color = booleano ? Color.White : Color.Gray;
+            Color color = booleano ? Color.White : Color.LightGray;
             
             cbo_document_type.Enabled = booleano;
             cbo_document_type.BackColor = color;

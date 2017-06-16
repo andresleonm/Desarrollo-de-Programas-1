@@ -54,7 +54,7 @@ namespace WindowsFormsApp1.Controller
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("name", supplier.Name));
             parameters.Add(new Parameter("address", supplier.Address));
-            parameters.Add(new Parameter("doi", supplier.Email));
+            parameters.Add(new Parameter("doi", supplier.Doi));
             parameters.Add(new Parameter("phone", supplier.Phone));
             parameters.Add(new Parameter("email", supplier.Email));
             parameters.Add(new Parameter("type", supplier.Type));
@@ -75,7 +75,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("id", supplier.Id.ToString()));
             parameters.Add(new Parameter("name", supplier.Name));
             parameters.Add(new Parameter("address", supplier.Address));
-            parameters.Add(new Parameter("doi", supplier.Email));
+            parameters.Add(new Parameter("doi", supplier.Doi));
             parameters.Add(new Parameter("phone", supplier.Phone));
             parameters.Add(new Parameter("email", supplier.Email));
             parameters.Add(new Parameter("type", supplier.Type));

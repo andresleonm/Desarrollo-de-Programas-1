@@ -63,6 +63,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap _1497510418_dollar_currency__money_recycle {
+            get {
+                object obj = ResourceManager.GetObject("1497510418_dollar-currency-_money-recycle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Add_File_40px {
             get {
                 object obj = ResourceManager.GetObject("Add File_40px", resourceCulture);
