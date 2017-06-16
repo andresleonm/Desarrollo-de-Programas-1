@@ -37,7 +37,9 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             hour.Format = DateTimePickerFormat.Custom;
             hour.CustomFormat = "HH:mm tt";
             hour.Value = DateTime.Now.Date;
-            
+            Clean();
+            Clean();
+
         }
         public void fillTypeMovements()
         {
@@ -448,7 +450,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
                 worksheet = workbook.ActiveSheet;
 
-                worksheet.Name = "Kardex del " + this.metroDateTime1.Value.ToString("yyyy-MM-dd") +" al "+this.metroDateTime2.Value.ToString("yyyy-MM-dd");
+                worksheet.Name = "Kardex";
 
                 int cellRowIndex = 3;
                 int cellColumnIndex = 3;

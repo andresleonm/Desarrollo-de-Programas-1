@@ -245,6 +245,12 @@
     <Compile Include="Views\ICheckPermissions.Designer.cs">
       <DependentUpon>ICheckPermissions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Reports_Module\ReportDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Reports_Module\ReportDashboard.Designer.cs">
+      <DependentUpon>ReportDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -652,6 +658,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Reports_Module\ReportDashboard.resx">
+      <DependentUpon>ReportDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>

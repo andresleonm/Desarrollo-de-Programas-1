@@ -285,5 +285,11 @@ namespace WindowsFormsApp1.Views
         {
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            uc_reports.Visible = true;
+        }
     }
 }

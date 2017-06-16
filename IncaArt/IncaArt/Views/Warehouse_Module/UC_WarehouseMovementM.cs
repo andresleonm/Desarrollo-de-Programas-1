@@ -39,6 +39,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             hour.Format = DateTimePickerFormat.Custom;
             hour.CustomFormat = "HH:mm tt";
             hour.Value = DateTime.Now.Date;
+            btn_Clean.PerformClick();
         }
         public void fillTypeMovements()
         {
