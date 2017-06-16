@@ -132,6 +132,13 @@
             this.production_register.Size = new System.Drawing.Size(861, 504);
             this.production_register.TabIndex = 1;
             // 
+            // worker_performance
+            // 
+            this.worker_performance.Location = new System.Drawing.Point(0, 0);
+            this.worker_performance.Name = "worker_performance";
+            this.worker_performance.Size = new System.Drawing.Size(838, 508);
+            this.worker_performance.TabIndex = 2;
+            // 
             // UC_ProductionMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

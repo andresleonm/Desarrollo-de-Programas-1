@@ -111,6 +111,8 @@
     <Compile Include="Controller\ProductMovementDetailController.cs" />
     <Compile Include="Controller\SalesDocumentController.cs" />
     <Compile Include="Controller\SalesDocumentLineController.cs" />
+    <Compile Include="Controller\SalesEstimateController.cs" />
+    <Compile Include="Controller\SalesEstimateLineController.cs" />
     <Compile Include="Controller\SalesRefundController.cs" />
     <Compile Include="Controller\SalesRefundLineController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
@@ -159,6 +161,8 @@
     <Compile Include="Models\RatioType.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipeDetail.cs" />
+    <Compile Include="Models\SalesEstimate.cs" />
+    <Compile Include="Models\SalesEstimateLine.cs" />
     <Compile Include="Models\SalesRefund.cs" />
     <Compile Include="Models\SalesRefundLine.cs" />
     <Compile Include="Models\SalesDocument.cs" />
@@ -241,6 +245,12 @@
     <Compile Include="Views\ICheckPermissions.Designer.cs">
       <DependentUpon>ICheckPermissions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Reports_Module\ReportDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Reports_Module\ReportDashboard.Designer.cs">
+      <DependentUpon>ReportDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -302,6 +312,12 @@
     <Compile Include="Views\Sales_Module\SalesDocumentSearchMovement.Designer.cs">
       <DependentUpon>SalesDocumentSearchMovement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Sales_Module\SalesEstimateLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales_Module\SalesEstimateLine.Designer.cs">
+      <DependentUpon>SalesEstimateLine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Sales_Module\SalesOrderSearchClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,6 +335,12 @@
     </Compile>
     <Compile Include="Views\Sales_Module\UC_SalesDocument.Designer.cs">
       <DependentUpon>UC_SalesDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales_Module\UC_SalesEstimate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Sales_Module\UC_SalesEstimate.Designer.cs">
+      <DependentUpon>UC_SalesEstimate.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Sales_Module\UC_SalesRefund.cs">
       <SubType>UserControl</SubType>
@@ -637,6 +659,9 @@
     <EmbeddedResource Include="Views\ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Reports_Module\ReportDashboard.resx">
+      <DependentUpon>ReportDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -658,6 +683,9 @@
     <EmbeddedResource Include="Views\Sales_Module\SalesDocumentSearchMovement.resx">
       <DependentUpon>SalesDocumentSearchMovement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales_Module\SalesEstimateLine.resx">
+      <DependentUpon>SalesEstimateLine.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\SalesOrderSearchClient.resx">
       <DependentUpon>SalesOrderSearchClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -666,6 +694,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesDocument.resx">
       <DependentUpon>UC_SalesDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales_Module\UC_SalesEstimate.resx">
+      <DependentUpon>UC_SalesEstimate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesRefund.resx">
       <DependentUpon>UC_SalesRefund.cs</DependentUpon>
@@ -820,6 +851,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Algorithm.ProductLineAssignment.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Algorithm.Workstation.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApp1.Models.SalesEstimate.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.SalesRefund.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.SalesRefundLine.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.Worker.datasource" />
@@ -833,6 +865,8 @@
     <None Include="Resources\Close Window_52px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Coins_48px.png" />
+    <None Include="Resources\Inca Art.PNG" />
     <None Include="Resources\pdf.png" />
     <None Include="Resources\Microsoft Excel_40px.png" />
     <None Include="Resources\Maximize Window_64px.png" />

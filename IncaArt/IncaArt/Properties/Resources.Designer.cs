@@ -143,6 +143,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Coins_48px {
+            get {
+                object obj = ResourceManager.GetObject("Coins_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Construction_Worker_40px {
             get {
                 object obj = ResourceManager.GetObject("Construction Worker_40px", resourceCulture);
@@ -186,6 +196,16 @@ namespace WindowsFormsApp1.Properties {
         public static System.Drawing.Bitmap Hangar_64px {
             get {
                 object obj = ResourceManager.GetObject("Hangar_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Inca_Art {
+            get {
+                object obj = ResourceManager.GetObject("Inca Art", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
