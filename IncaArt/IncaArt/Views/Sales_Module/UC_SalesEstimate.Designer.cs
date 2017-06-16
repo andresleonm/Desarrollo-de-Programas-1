@@ -44,10 +44,26 @@
             this.gb_Estimates = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.grid_estimates = new MetroFramework.Controls.MetroGrid();
+            this.currencyidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currencysymbolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customeridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerdoiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customeraddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerphoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customertypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estimate_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currency_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salesEstimateBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gb_Filter = new System.Windows.Forms.GroupBox();
             this.btn_Search_Estimates = new System.Windows.Forms.Button();
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
             this.metroDateTime2 = new MetroFramework.Controls.MetroDateTime();
+            this.btn_SearchClient = new MetroFramework.Controls.MetroTile();
             this.ctxt_estimate_id = new MetroFramework.Controls.MetroTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.ctxt_customer = new MetroFramework.Controls.MetroTextBox();
@@ -64,6 +80,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.gb_Client = new System.Windows.Forms.GroupBox();
+            this.btn_Search_Client = new MetroFramework.Controls.MetroTile();
             this.txt_Doi = new MetroFramework.Controls.MetroTextBox();
             this.txt_address = new MetroFramework.Controls.MetroTextBox();
             this.txt_phone = new MetroFramework.Controls.MetroTextBox();
@@ -85,6 +102,7 @@
             this.btn_New = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_estimate_lines = new MetroFramework.Controls.MetroGrid();
+            this.Estimate_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Product_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,23 +117,6 @@
             this.unit_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.action = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.currencyidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currencysymbolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customeridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerdoiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customeraddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerphoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customertypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estimate_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currency_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salesEstimateBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btn_SearchClient = new MetroFramework.Controls.MetroTile();
-            this.btn_Search_Client = new MetroFramework.Controls.MetroTile();
             this.panel1.SuspendLayout();
             this.tab_Estimate.SuspendLayout();
             this.order.SuspendLayout();
@@ -123,6 +124,7 @@
             this.gb_Estimates.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_estimates)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salesEstimateBindingSource)).BeginInit();
             this.gb_Filter.SuspendLayout();
             this.newOrder.SuspendLayout();
             this.gb_Estimate.SuspendLayout();
@@ -130,7 +132,6 @@
             this.gb_EstimateLine.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_estimate_lines)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.salesEstimateBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -148,7 +149,7 @@
             this.tab_Estimate.Controls.Add(this.newOrder);
             this.tab_Estimate.Location = new System.Drawing.Point(10, 5);
             this.tab_Estimate.Name = "tab_Estimate";
-            this.tab_Estimate.SelectedIndex = 1;
+            this.tab_Estimate.SelectedIndex = 0;
             this.tab_Estimate.Size = new System.Drawing.Size(849, 608);
             this.tab_Estimate.Style = MetroFramework.MetroColorStyle.Teal;
             this.tab_Estimate.TabIndex = 42;
@@ -201,7 +202,7 @@
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(82, 29);
             this.btn_Delete.TabIndex = 49;
-            this.btn_Delete.Text = "Eliminar";
+            this.btn_Delete.Text = "Anular";
             this.btn_Delete.UseVisualStyleBackColor = false;
             // 
             // gb_Estimates
@@ -289,6 +290,118 @@
             this.grid_estimates.Size = new System.Drawing.Size(792, 255);
             this.grid_estimates.TabIndex = 51;
             // 
+            // currencyidDataGridViewTextBoxColumn
+            // 
+            this.currencyidDataGridViewTextBoxColumn.DataPropertyName = "Currency_id";
+            this.currencyidDataGridViewTextBoxColumn.HeaderText = "Currency_id";
+            this.currencyidDataGridViewTextBoxColumn.Name = "currencyidDataGridViewTextBoxColumn";
+            this.currencyidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.currencyidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // currencysymbolDataGridViewTextBoxColumn
+            // 
+            this.currencysymbolDataGridViewTextBoxColumn.DataPropertyName = "Currency_symbol";
+            this.currencysymbolDataGridViewTextBoxColumn.HeaderText = "Currency_symbol";
+            this.currencysymbolDataGridViewTextBoxColumn.Name = "currencysymbolDataGridViewTextBoxColumn";
+            this.currencysymbolDataGridViewTextBoxColumn.ReadOnly = true;
+            this.currencysymbolDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // customeridDataGridViewTextBoxColumn
+            // 
+            this.customeridDataGridViewTextBoxColumn.DataPropertyName = "Customer_id";
+            this.customeridDataGridViewTextBoxColumn.HeaderText = "Customer_id";
+            this.customeridDataGridViewTextBoxColumn.Name = "customeridDataGridViewTextBoxColumn";
+            this.customeridDataGridViewTextBoxColumn.ReadOnly = true;
+            this.customeridDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // customerdoiDataGridViewTextBoxColumn
+            // 
+            this.customerdoiDataGridViewTextBoxColumn.DataPropertyName = "Customer_doi";
+            this.customerdoiDataGridViewTextBoxColumn.HeaderText = "Customer_doi";
+            this.customerdoiDataGridViewTextBoxColumn.Name = "customerdoiDataGridViewTextBoxColumn";
+            this.customerdoiDataGridViewTextBoxColumn.ReadOnly = true;
+            this.customerdoiDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // customeraddressDataGridViewTextBoxColumn
+            // 
+            this.customeraddressDataGridViewTextBoxColumn.DataPropertyName = "Customer_address";
+            this.customeraddressDataGridViewTextBoxColumn.HeaderText = "Customer_address";
+            this.customeraddressDataGridViewTextBoxColumn.Name = "customeraddressDataGridViewTextBoxColumn";
+            this.customeraddressDataGridViewTextBoxColumn.ReadOnly = true;
+            this.customeraddressDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // customerphoneDataGridViewTextBoxColumn
+            // 
+            this.customerphoneDataGridViewTextBoxColumn.DataPropertyName = "Customer_phone";
+            this.customerphoneDataGridViewTextBoxColumn.HeaderText = "Customer_phone";
+            this.customerphoneDataGridViewTextBoxColumn.Name = "customerphoneDataGridViewTextBoxColumn";
+            this.customerphoneDataGridViewTextBoxColumn.ReadOnly = true;
+            this.customerphoneDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // customertypeDataGridViewTextBoxColumn
+            // 
+            this.customertypeDataGridViewTextBoxColumn.DataPropertyName = "Customer_type";
+            this.customertypeDataGridViewTextBoxColumn.HeaderText = "Customer_type";
+            this.customertypeDataGridViewTextBoxColumn.Name = "customertypeDataGridViewTextBoxColumn";
+            this.customertypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.customertypeDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // estimate_id
+            // 
+            this.estimate_id.DataPropertyName = "Id";
+            this.estimate_id.HeaderText = "Cotización";
+            this.estimate_id.Name = "estimate_id";
+            this.estimate_id.ReadOnly = true;
+            // 
+            // customer_name
+            // 
+            this.customer_name.DataPropertyName = "Customer_name";
+            this.customer_name.HeaderText = "Cliente";
+            this.customer_name.Name = "customer_name";
+            this.customer_name.ReadOnly = true;
+            this.customer_name.Width = 150;
+            // 
+            // currency_name
+            // 
+            this.currency_name.DataPropertyName = "Currency_name";
+            this.currency_name.HeaderText = "Moneda";
+            this.currency_name.Name = "currency_name";
+            this.currency_name.ReadOnly = true;
+            // 
+            // issue_date
+            // 
+            this.issue_date.DataPropertyName = "Issue_date";
+            this.issue_date.HeaderText = "Fecha de emisión";
+            this.issue_date.Name = "issue_date";
+            this.issue_date.ReadOnly = true;
+            // 
+            // amount2
+            // 
+            this.amount2.DataPropertyName = "Amount";
+            this.amount2.HeaderText = "Total";
+            this.amount2.Name = "amount2";
+            this.amount2.ReadOnly = true;
+            // 
+            // observation
+            // 
+            this.observation.DataPropertyName = "Observation";
+            this.observation.HeaderText = "Observación";
+            this.observation.Name = "observation";
+            this.observation.ReadOnly = true;
+            this.observation.Width = 150;
+            // 
+            // status
+            // 
+            this.status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.status.DataPropertyName = "Status";
+            this.status.HeaderText = "Estado";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            // 
+            // salesEstimateBindingSource
+            // 
+            this.salesEstimateBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesEstimate);
+            // 
             // gb_Filter
             // 
             this.gb_Filter.Controls.Add(this.btn_Search_Estimates);
@@ -326,7 +439,7 @@
             // metroDateTime1
             // 
             this.metroDateTime1.Location = new System.Drawing.Point(562, 24);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(4, 29);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
             this.metroDateTime1.Size = new System.Drawing.Size(209, 29);
             this.metroDateTime1.TabIndex = 49;
@@ -334,10 +447,27 @@
             // metroDateTime2
             // 
             this.metroDateTime2.Location = new System.Drawing.Point(562, 66);
-            this.metroDateTime2.MinimumSize = new System.Drawing.Size(4, 29);
+            this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime2.Name = "metroDateTime2";
             this.metroDateTime2.Size = new System.Drawing.Size(209, 29);
             this.metroDateTime2.TabIndex = 48;
+            // 
+            // btn_SearchClient
+            // 
+            this.btn_SearchClient.ActiveControl = null;
+            this.btn_SearchClient.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_SearchClient.Location = new System.Drawing.Point(327, 73);
+            this.btn_SearchClient.Name = "btn_SearchClient";
+            this.btn_SearchClient.Size = new System.Drawing.Size(41, 29);
+            this.btn_SearchClient.TabIndex = 43;
+            this.btn_SearchClient.TileImage = global::WindowsFormsApp1.Properties.Resources.Search_16;
+            this.btn_SearchClient.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_SearchClient.UseCustomBackColor = true;
+            this.btn_SearchClient.UseCustomForeColor = true;
+            this.btn_SearchClient.UseSelectable = true;
+            this.btn_SearchClient.UseStyleColors = true;
+            this.btn_SearchClient.UseTileImage = true;
+            this.btn_SearchClient.Click += new System.EventHandler(this.btn_SearchClient_Click);
             // 
             // ctxt_estimate_id
             // 
@@ -601,6 +731,23 @@
             this.gb_Client.TabIndex = 64;
             this.gb_Client.TabStop = false;
             this.gb_Client.Text = "Datos del Cliente";
+            // 
+            // btn_Search_Client
+            // 
+            this.btn_Search_Client.ActiveControl = null;
+            this.btn_Search_Client.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Search_Client.Location = new System.Drawing.Point(377, 22);
+            this.btn_Search_Client.Name = "btn_Search_Client";
+            this.btn_Search_Client.Size = new System.Drawing.Size(41, 29);
+            this.btn_Search_Client.TabIndex = 43;
+            this.btn_Search_Client.TileImage = global::WindowsFormsApp1.Properties.Resources.Search_16;
+            this.btn_Search_Client.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_Search_Client.UseCustomBackColor = true;
+            this.btn_Search_Client.UseCustomForeColor = true;
+            this.btn_Search_Client.UseSelectable = true;
+            this.btn_Search_Client.UseStyleColors = true;
+            this.btn_Search_Client.UseTileImage = true;
+            this.btn_Search_Client.Click += new System.EventHandler(this.btn_Search_Client_Click);
             // 
             // txt_Doi
             // 
@@ -997,6 +1144,7 @@
             this.grid_estimate_lines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.grid_estimate_lines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid_estimate_lines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Estimate_id2,
             this.Id,
             this.Type_id,
             this.Product_id,
@@ -1039,6 +1187,13 @@
             this.grid_estimate_lines.Size = new System.Drawing.Size(794, 168);
             this.grid_estimate_lines.TabIndex = 52;
             this.grid_estimate_lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_estimate_lines_CellValueChanged);
+            // 
+            // Estimate_id2
+            // 
+            this.Estimate_id2.DataPropertyName = "estimate_id";
+            this.Estimate_id2.HeaderText = "Estimate_id";
+            this.Estimate_id2.Name = "Estimate_id2";
+            this.Estimate_id2.Visible = false;
             // 
             // Id
             // 
@@ -1142,152 +1297,6 @@
             this.action.HeaderText = "Accion";
             this.action.Name = "action";
             // 
-            // currencyidDataGridViewTextBoxColumn
-            // 
-            this.currencyidDataGridViewTextBoxColumn.DataPropertyName = "Currency_id";
-            this.currencyidDataGridViewTextBoxColumn.HeaderText = "Currency_id";
-            this.currencyidDataGridViewTextBoxColumn.Name = "currencyidDataGridViewTextBoxColumn";
-            this.currencyidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.currencyidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // currencysymbolDataGridViewTextBoxColumn
-            // 
-            this.currencysymbolDataGridViewTextBoxColumn.DataPropertyName = "Currency_symbol";
-            this.currencysymbolDataGridViewTextBoxColumn.HeaderText = "Currency_symbol";
-            this.currencysymbolDataGridViewTextBoxColumn.Name = "currencysymbolDataGridViewTextBoxColumn";
-            this.currencysymbolDataGridViewTextBoxColumn.ReadOnly = true;
-            this.currencysymbolDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // customeridDataGridViewTextBoxColumn
-            // 
-            this.customeridDataGridViewTextBoxColumn.DataPropertyName = "Customer_id";
-            this.customeridDataGridViewTextBoxColumn.HeaderText = "Customer_id";
-            this.customeridDataGridViewTextBoxColumn.Name = "customeridDataGridViewTextBoxColumn";
-            this.customeridDataGridViewTextBoxColumn.ReadOnly = true;
-            this.customeridDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // customerdoiDataGridViewTextBoxColumn
-            // 
-            this.customerdoiDataGridViewTextBoxColumn.DataPropertyName = "Customer_doi";
-            this.customerdoiDataGridViewTextBoxColumn.HeaderText = "Customer_doi";
-            this.customerdoiDataGridViewTextBoxColumn.Name = "customerdoiDataGridViewTextBoxColumn";
-            this.customerdoiDataGridViewTextBoxColumn.ReadOnly = true;
-            this.customerdoiDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // customeraddressDataGridViewTextBoxColumn
-            // 
-            this.customeraddressDataGridViewTextBoxColumn.DataPropertyName = "Customer_address";
-            this.customeraddressDataGridViewTextBoxColumn.HeaderText = "Customer_address";
-            this.customeraddressDataGridViewTextBoxColumn.Name = "customeraddressDataGridViewTextBoxColumn";
-            this.customeraddressDataGridViewTextBoxColumn.ReadOnly = true;
-            this.customeraddressDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // customerphoneDataGridViewTextBoxColumn
-            // 
-            this.customerphoneDataGridViewTextBoxColumn.DataPropertyName = "Customer_phone";
-            this.customerphoneDataGridViewTextBoxColumn.HeaderText = "Customer_phone";
-            this.customerphoneDataGridViewTextBoxColumn.Name = "customerphoneDataGridViewTextBoxColumn";
-            this.customerphoneDataGridViewTextBoxColumn.ReadOnly = true;
-            this.customerphoneDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // customertypeDataGridViewTextBoxColumn
-            // 
-            this.customertypeDataGridViewTextBoxColumn.DataPropertyName = "Customer_type";
-            this.customertypeDataGridViewTextBoxColumn.HeaderText = "Customer_type";
-            this.customertypeDataGridViewTextBoxColumn.Name = "customertypeDataGridViewTextBoxColumn";
-            this.customertypeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.customertypeDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // estimate_id
-            // 
-            this.estimate_id.DataPropertyName = "Id";
-            this.estimate_id.HeaderText = "Cotización";
-            this.estimate_id.Name = "estimate_id";
-            this.estimate_id.ReadOnly = true;
-            // 
-            // customer_name
-            // 
-            this.customer_name.DataPropertyName = "Customer_name";
-            this.customer_name.HeaderText = "Cliente";
-            this.customer_name.Name = "customer_name";
-            this.customer_name.ReadOnly = true;
-            this.customer_name.Width = 150;
-            // 
-            // currency_name
-            // 
-            this.currency_name.DataPropertyName = "Currency_name";
-            this.currency_name.HeaderText = "Moneda";
-            this.currency_name.Name = "currency_name";
-            this.currency_name.ReadOnly = true;
-            // 
-            // issue_date
-            // 
-            this.issue_date.DataPropertyName = "Issue_date";
-            this.issue_date.HeaderText = "Fecha de emisión";
-            this.issue_date.Name = "issue_date";
-            this.issue_date.ReadOnly = true;
-            // 
-            // amount2
-            // 
-            this.amount2.DataPropertyName = "Amount";
-            this.amount2.HeaderText = "Total";
-            this.amount2.Name = "amount2";
-            this.amount2.ReadOnly = true;
-            // 
-            // observation
-            // 
-            this.observation.DataPropertyName = "Observation";
-            this.observation.HeaderText = "Observación";
-            this.observation.Name = "observation";
-            this.observation.ReadOnly = true;
-            this.observation.Width = 150;
-            // 
-            // status
-            // 
-            this.status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.status.DataPropertyName = "Status";
-            this.status.HeaderText = "Estado";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
-            // 
-            // salesEstimateBindingSource
-            // 
-            this.salesEstimateBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesEstimate);
-            // 
-            // btn_SearchClient
-            // 
-            this.btn_SearchClient.ActiveControl = null;
-            this.btn_SearchClient.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_SearchClient.Location = new System.Drawing.Point(327, 73);
-            this.btn_SearchClient.Name = "btn_SearchClient";
-            this.btn_SearchClient.Size = new System.Drawing.Size(41, 29);
-            this.btn_SearchClient.TabIndex = 43;
-            this.btn_SearchClient.TileImage = global::WindowsFormsApp1.Properties.Resources.Search_16;
-            this.btn_SearchClient.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_SearchClient.UseCustomBackColor = true;
-            this.btn_SearchClient.UseCustomForeColor = true;
-            this.btn_SearchClient.UseSelectable = true;
-            this.btn_SearchClient.UseStyleColors = true;
-            this.btn_SearchClient.UseTileImage = true;
-            this.btn_SearchClient.Click += new System.EventHandler(this.btn_SearchClient_Click);
-            // 
-            // btn_Search_Client
-            // 
-            this.btn_Search_Client.ActiveControl = null;
-            this.btn_Search_Client.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Search_Client.Location = new System.Drawing.Point(377, 22);
-            this.btn_Search_Client.Name = "btn_Search_Client";
-            this.btn_Search_Client.Size = new System.Drawing.Size(41, 29);
-            this.btn_Search_Client.TabIndex = 43;
-            this.btn_Search_Client.TileImage = global::WindowsFormsApp1.Properties.Resources.Search_16;
-            this.btn_Search_Client.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_Search_Client.UseCustomBackColor = true;
-            this.btn_Search_Client.UseCustomForeColor = true;
-            this.btn_Search_Client.UseSelectable = true;
-            this.btn_Search_Client.UseStyleColors = true;
-            this.btn_Search_Client.UseTileImage = true;
-            this.btn_Search_Client.Click += new System.EventHandler(this.btn_Search_Client_Click);
-            // 
             // UC_SalesEstimate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1303,6 +1312,7 @@
             this.gb_Estimates.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_estimates)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salesEstimateBindingSource)).EndInit();
             this.gb_Filter.ResumeLayout(false);
             this.gb_Filter.PerformLayout();
             this.newOrder.ResumeLayout(false);
@@ -1314,7 +1324,6 @@
             this.gb_EstimateLine.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_estimate_lines)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.salesEstimateBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1373,20 +1382,6 @@
         private System.Windows.Forms.Button btn_New;
         private System.Windows.Forms.Panel panel2;
         private MetroFramework.Controls.MetroGrid grid_estimate_lines;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Type_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Product_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn state;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn delivery_quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prod_warehouse_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn product;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unit_Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
-        private System.Windows.Forms.DataGridViewButtonColumn action;
         private System.Windows.Forms.BindingSource salesEstimateBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn currencyidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn currencysymbolDataGridViewTextBoxColumn;
@@ -1402,5 +1397,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amount2;
         private System.Windows.Forms.DataGridViewTextBoxColumn observation;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estimate_id2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Product_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn state;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn delivery_quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prod_warehouse_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn product;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit_Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
+        private System.Windows.Forms.DataGridViewButtonColumn action;
     }
 }

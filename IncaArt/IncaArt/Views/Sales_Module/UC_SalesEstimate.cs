@@ -50,14 +50,14 @@ namespace WindowsFormsApp1.Views.Sales_Module
             {
                 ctxt_estimate_id.Text = "";
                 ctxt_customer.Text = "";
-                customer = new Customer();
+                customer = null;
                 fill_Sales_Estimate();
             }
             else if (tab_Estimate.SelectedIndex == 1) // New_Estimate
             {
                 if (!edit)
                 {
-                    customer = new Customer();
+                    customer = null;
                     btn_Clean.PerformClick();
                 }
             }
@@ -176,6 +176,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 txt_address.Text = customer.Address;
                 txt_Doi.Text = customer.Doi;
                 txt_phone.Text = customer.Phone;
+                if (edit)
+                    se_edit.Customer_id = customer.Id;
             }
         }
 
@@ -195,15 +197,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            if (customer == null)
-                customer = new Customer(txt_name.Text, txt_address.Text, txt_phone.Text, txt_Doi.Text);
             if (edit)
             {
                 fill_Sales_Estimate_Object(se_edit);
-
-                if (customer != null)
-                    se_edit.Customer_id = customer.Id;
-
                 var lines = (List<Models.SalesEstimateLine>)grid_estimate_lines.DataSource;
                 if (lines.Count > 0)
                     se_edit.Lines = lines;
@@ -235,50 +231,53 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     }
                     btn_Clean.PerformClick();
                     tab_Estimate.SelectedIndex = 0;
-                    MessageBox.Show(this, "Orden actualizada exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    MessageBox.Show(this, "Cotización actualizada exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                     edit = false;
                     se_edit = new SalesEstimate();
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo actualizar la orden", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No se pudo actualizar la cotización", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
             {
-                if (customer.Name == "" || customer.Phone == ""
-                    || customer.Doi == "" || grid_estimate_lines.DataSource == null || String.IsNullOrWhiteSpace(cbo_Currency.Text) || String.IsNullOrWhiteSpace(txt_name.Text) || String.IsNullOrWhiteSpace(txt_address.Text) || String.IsNullOrWhiteSpace(txt_Doi.Text) || String.IsNullOrWhiteSpace(txt_phone.Text))
+                if (customer != null)
                 {
-                    MessageBox.Show(this, "Debe completar los campos de cliente y/o moneda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    SalesEstimate sales_estimate = new SalesEstimate();
-                    fill_Sales_Estimate_Object(sales_estimate);
-                    sales_estimate.Customer_id = customer.Id;
-                    sales_estimate.Lines = (List<Models.SalesEstimateLine>)grid_estimate_lines.DataSource;
-
-                    int sales_estimate_id = Int32.Parse(sales_estimate_controller.insertSalesEstimate(sales_estimate).data.ToString());
-
-                    if (sales_estimate_id > 0)
+                    if (customer.Name == "" || customer.Phone == ""
+                   || customer.Doi == "" || grid_estimate_lines.DataSource == null || String.IsNullOrWhiteSpace(cbo_Currency.Text) || String.IsNullOrWhiteSpace(txt_name.Text) || String.IsNullOrWhiteSpace(txt_address.Text) || String.IsNullOrWhiteSpace(txt_Doi.Text) || String.IsNullOrWhiteSpace(txt_phone.Text))
                     {
-                        int i = 1;
-                        foreach (Models.SalesEstimateLine sel in sales_estimate.Lines)
-                        {
-                            sel.Id = i;
-                            sel.Estimate_id = sales_estimate_id;
-                            i++;
-                            sales_estimate_line_controller.insertSalesestimateLine(sel);
-                        }
-                        btn_Clean.PerformClick();
-                        tab_Estimate.SelectedIndex = 0;
-                        MessageBox.Show(this, "Se ha creado la orden N° : " + sales_estimate_id.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        MessageBox.Show(this, "Debe completar los campos de cliente y/o moneda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        MessageBox.Show("No se pudo crear la orden", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        SalesEstimate sales_estimate = new SalesEstimate();
+                        fill_Sales_Estimate_Object(sales_estimate);
+                        sales_estimate.Customer_id = customer.Id;
+                        sales_estimate.Lines = (List<Models.SalesEstimateLine>)grid_estimate_lines.DataSource;
+
+                        int sales_estimate_id = Int32.Parse(sales_estimate_controller.insertSalesEstimate(sales_estimate).data.ToString());
+
+                        if (sales_estimate_id > 0)
+                        {
+                            int i = 1;
+                            foreach (Models.SalesEstimateLine sel in sales_estimate.Lines)
+                            {
+                                sel.Id = i;
+                                sel.Estimate_id = sales_estimate_id;
+                                i++;
+                                sales_estimate_line_controller.insertSalesestimateLine(sel);
+                            }
+                            btn_Clean.PerformClick();
+                            tab_Estimate.SelectedIndex = 0;
+                            MessageBox.Show(this, "Se ha creado la cotización N° : " + sales_estimate_id.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo crear la cotización", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
-                }
+                }               
             }
         }
 
