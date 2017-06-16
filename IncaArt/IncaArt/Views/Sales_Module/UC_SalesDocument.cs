@@ -50,18 +50,15 @@ namespace WindowsFormsApp1.Views.Sales_Module
         {
             if (tab_Document.SelectedIndex == 0) // Documents
             {
-                edit = false;
-                sd_edit = new SalesDocument();
+                btn_Clean.PerformClick();
                 ctxt_document_id.Text = "";
                 ctxt_customer.Text = "";
-                manipulate_options(true);
                 fill_Sales_Documents();
             }
             else if (tab_Document.SelectedIndex == 1) // New_Document
             {
                 if (!edit)
                 {
-                    manipulate_options(true);
                     btn_Clean.PerformClick();
                 }
             }
@@ -270,9 +267,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     {
                         acumulate += double.Parse(grid_Document_Lines.Rows[i].Cells["amount"].Value.ToString());
                     }
-                    txt_amount.Text = acumulate.ToString();
-                    txt_igv.Text = Math.Round((acumulate * igv), 2).ToString();
-                    txt_total.Text = Math.Round((acumulate * (1 + igv)), 2).ToString();
+                    txt_amount.Text = acumulate.ToString("0.00");
+                    txt_igv.Text = Math.Round((acumulate * igv), 2).ToString("0.00");
+                    txt_total.Text = Math.Round((acumulate * (1 + igv)), 2).ToString("0.00");
                 }
             }
             else
@@ -321,10 +318,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             btn_Clean.PerformClick();
-            manipulate_options(true);
             this.Visible = false;
         }
-
+    
         private void btn_Clean_Click(object sender, EventArgs e)
         {
             edit = false;
@@ -417,9 +413,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_Movement_id.Text = sd.Movement_id.ToString();
             txt_external.Text = sd.External_number;
             txt_observation.Text = sd.Observation;
-            txt_amount.Text = sd.Amount.ToString();
-            txt_igv.Text = (sd.Amount * sd.Porc_igv).ToString();
-            txt_total.Text = (sd.Amount * (1 + sd.Porc_igv)).ToString();
+            txt_amount.Text = sd.Amount.ToString("0.00");
+            txt_igv.Text = (sd.Amount * sd.Porc_igv).ToString("0.00");
+            txt_total.Text = (sd.Amount * (1 + sd.Porc_igv)).ToString("0.00");
             txt_Status.Text = sd.Status;
             cbo_document_type.Text = sd.Type_name;
 
@@ -484,6 +480,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
             btn_Search_Movement.Visible = booleano;
             btn_Save.Visible = booleano;
+            btn_Pdf.Visible = !booleano;
         }
 
         private void btn_Pdf_Click(object sender, EventArgs e)
