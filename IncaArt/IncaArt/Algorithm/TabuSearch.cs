@@ -13,10 +13,10 @@ namespace WindowsFormsApp1.Algorithm
 
         public Random rnd = new Random();
 
-        public int MAX_ITER = 8000;
-        public int TABU_SIZE = 10;
-        public int NEIGHBORHOOD_SIZE = 50;
-        public int COMBINATION_QUANTITY = 100;
+        public int MAX_ITER;
+        public int TABU_SIZE;
+        public int NEIGHBORHOOD_SIZE;
+        public int COMBINATION_QUANTITY;
 
         public int needed_piedra = 0;
         public int needed_ceramico = 0;
@@ -26,12 +26,15 @@ namespace WindowsFormsApp1.Algorithm
         List<Workstation> workstations;        
         Order order;
 
-        public TabuSearch(Order order,List<Worker> workers, List<Workstation> workstations)
+        public TabuSearch(Order order,List<Worker> workers, List<Workstation> workstations,int iterations,int tabu_list_size,int neighborhood_size, int combinations)
         {
             this.order = order;
             this.workers = workers;
-            this.workstations = workstations;            
-            
+            this.workstations = workstations;
+            this.MAX_ITER = iterations;
+            this.TABU_SIZE = tabu_list_size;
+            this.NEIGHBORHOOD_SIZE = neighborhood_size;
+            this.COMBINATION_QUANTITY = combinations;
         }
            
         public List<ProductLineAssignment> generateSolution()
