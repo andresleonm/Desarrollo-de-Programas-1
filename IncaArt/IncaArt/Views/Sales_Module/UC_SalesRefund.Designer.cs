@@ -43,6 +43,21 @@
             this.gbDocuments = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.grid_Refunds = new MetroFramework.Controls.MetroGrid();
+            this.currencyidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customeraddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currencysymbolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customeridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerphoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerdoiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.documentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.refund_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currency_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salesRefundBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_Search_Refunds = new System.Windows.Forms.Button();
             this.dt_iniDate = new MetroFramework.Controls.MetroDateTime();
@@ -69,6 +84,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.gbRefund = new System.Windows.Forms.GroupBox();
+            this.dt_IssueHour = new MetroFramework.Controls.MetroDateTime();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_Currency = new MetroFramework.Controls.MetroTextBox();
             this.dt_IssueDate = new MetroFramework.Controls.MetroDateTime();
@@ -91,7 +107,6 @@
             this.gb_OrderLine = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_Refund_Lines = new MetroFramework.Controls.MetroGrid();
-            this.salesRefundLineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.refund_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.documenti_d_line = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,21 +122,7 @@
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salesRefundBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.currencyidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customeraddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currencysymbolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customeridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerphoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerdoiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.documentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.refund_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currency_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salesRefundLineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.tab_Refund.SuspendLayout();
             this.refund.SuspendLayout();
@@ -129,6 +130,7 @@
             this.gbDocuments.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_Refunds)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salesRefundBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.newRefund.SuspendLayout();
             this.gbClient.SuspendLayout();
@@ -137,7 +139,6 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_Refund_Lines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesRefundLineBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.salesRefundBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -153,13 +154,13 @@
             this.tab_Refund.CausesValidation = false;
             this.tab_Refund.Controls.Add(this.refund);
             this.tab_Refund.Controls.Add(this.newRefund);
-            this.tab_Refund.Location = new System.Drawing.Point(10, 9);
+            this.tab_Refund.Location = new System.Drawing.Point(10, 5);
             this.tab_Refund.Name = "tab_Refund";
-            this.tab_Refund.SelectedIndex = 0;
+            this.tab_Refund.SelectedIndex = 1;
             this.tab_Refund.Size = new System.Drawing.Size(1042, 605);
             this.tab_Refund.Style = MetroFramework.MetroColorStyle.Teal;
             this.tab_Refund.TabIndex = 44;
-            this.tab_Refund.UseCustomBackColor = true;
+            this.tab_Refund.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tab_Refund.UseCustomForeColor = true;
             this.tab_Refund.UseSelectable = true;
             this.tab_Refund.UseStyleColors = true;
@@ -281,6 +282,118 @@
             this.grid_Refunds.Size = new System.Drawing.Size(975, 255);
             this.grid_Refunds.TabIndex = 52;
             // 
+            // currencyidDataGridViewTextBoxColumn
+            // 
+            this.currencyidDataGridViewTextBoxColumn.DataPropertyName = "Currency_id";
+            this.currencyidDataGridViewTextBoxColumn.HeaderText = "Currency_id";
+            this.currencyidDataGridViewTextBoxColumn.Name = "currencyidDataGridViewTextBoxColumn";
+            this.currencyidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.currencyidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // customeraddressDataGridViewTextBoxColumn
+            // 
+            this.customeraddressDataGridViewTextBoxColumn.DataPropertyName = "Customer_address";
+            this.customeraddressDataGridViewTextBoxColumn.HeaderText = "Customer_address";
+            this.customeraddressDataGridViewTextBoxColumn.Name = "customeraddressDataGridViewTextBoxColumn";
+            this.customeraddressDataGridViewTextBoxColumn.ReadOnly = true;
+            this.customeraddressDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // currencysymbolDataGridViewTextBoxColumn
+            // 
+            this.currencysymbolDataGridViewTextBoxColumn.DataPropertyName = "Currency_symbol";
+            this.currencysymbolDataGridViewTextBoxColumn.HeaderText = "Currency_symbol";
+            this.currencysymbolDataGridViewTextBoxColumn.Name = "currencysymbolDataGridViewTextBoxColumn";
+            this.currencysymbolDataGridViewTextBoxColumn.ReadOnly = true;
+            this.currencysymbolDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // customeridDataGridViewTextBoxColumn
+            // 
+            this.customeridDataGridViewTextBoxColumn.DataPropertyName = "Customer_id";
+            this.customeridDataGridViewTextBoxColumn.HeaderText = "Customer_id";
+            this.customeridDataGridViewTextBoxColumn.Name = "customeridDataGridViewTextBoxColumn";
+            this.customeridDataGridViewTextBoxColumn.ReadOnly = true;
+            this.customeridDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // customerphoneDataGridViewTextBoxColumn
+            // 
+            this.customerphoneDataGridViewTextBoxColumn.DataPropertyName = "Customer_phone";
+            this.customerphoneDataGridViewTextBoxColumn.HeaderText = "Customer_phone";
+            this.customerphoneDataGridViewTextBoxColumn.Name = "customerphoneDataGridViewTextBoxColumn";
+            this.customerphoneDataGridViewTextBoxColumn.ReadOnly = true;
+            this.customerphoneDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // customerdoiDataGridViewTextBoxColumn
+            // 
+            this.customerdoiDataGridViewTextBoxColumn.DataPropertyName = "Customer_doi";
+            this.customerdoiDataGridViewTextBoxColumn.HeaderText = "Customer_doi";
+            this.customerdoiDataGridViewTextBoxColumn.Name = "customerdoiDataGridViewTextBoxColumn";
+            this.customerdoiDataGridViewTextBoxColumn.ReadOnly = true;
+            this.customerdoiDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // documentidDataGridViewTextBoxColumn
+            // 
+            this.documentidDataGridViewTextBoxColumn.DataPropertyName = "Document_id";
+            this.documentidDataGridViewTextBoxColumn.HeaderText = "Document_id";
+            this.documentidDataGridViewTextBoxColumn.Name = "documentidDataGridViewTextBoxColumn";
+            this.documentidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.documentidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // refund_id
+            // 
+            this.refund_id.DataPropertyName = "Id";
+            this.refund_id.HeaderText = "N° Devolución";
+            this.refund_id.Name = "refund_id";
+            this.refund_id.ReadOnly = true;
+            // 
+            // customer_name
+            // 
+            this.customer_name.DataPropertyName = "Customer_name";
+            this.customer_name.HeaderText = "Cliente";
+            this.customer_name.Name = "customer_name";
+            this.customer_name.ReadOnly = true;
+            this.customer_name.Width = 200;
+            // 
+            // issue_date
+            // 
+            this.issue_date.DataPropertyName = "Issue_date";
+            this.issue_date.HeaderText = "Fecha de emisión";
+            this.issue_date.Name = "issue_date";
+            this.issue_date.ReadOnly = true;
+            // 
+            // currency_name
+            // 
+            this.currency_name.DataPropertyName = "Currency_name";
+            this.currency_name.HeaderText = "Moneda";
+            this.currency_name.Name = "currency_name";
+            this.currency_name.ReadOnly = true;
+            // 
+            // amount2
+            // 
+            this.amount2.DataPropertyName = "Amount";
+            this.amount2.HeaderText = "Total";
+            this.amount2.Name = "amount2";
+            this.amount2.ReadOnly = true;
+            // 
+            // observation
+            // 
+            this.observation.DataPropertyName = "Observation";
+            this.observation.HeaderText = "Observacion";
+            this.observation.Name = "observation";
+            this.observation.ReadOnly = true;
+            this.observation.Width = 200;
+            // 
+            // status
+            // 
+            this.status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.status.DataPropertyName = "Status";
+            this.status.HeaderText = "Estado";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            // 
+            // salesRefundBindingSource
+            // 
+            this.salesRefundBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesRefund);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btn_Search_Refunds);
@@ -318,7 +431,7 @@
             // dt_iniDate
             // 
             this.dt_iniDate.Location = new System.Drawing.Point(664, 22);
-            this.dt_iniDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_iniDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_iniDate.Name = "dt_iniDate";
             this.dt_iniDate.Size = new System.Drawing.Size(222, 29);
             this.dt_iniDate.TabIndex = 59;
@@ -326,7 +439,7 @@
             // dt_endDate
             // 
             this.dt_endDate.Location = new System.Drawing.Point(664, 74);
-            this.dt_endDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_endDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_endDate.Name = "dt_endDate";
             this.dt_endDate.Size = new System.Drawing.Size(222, 29);
             this.dt_endDate.TabIndex = 58;
@@ -773,6 +886,7 @@
             // 
             // gbRefund
             // 
+            this.gbRefund.Controls.Add(this.dt_IssueHour);
             this.gbRefund.Controls.Add(this.label4);
             this.gbRefund.Controls.Add(this.txt_Currency);
             this.gbRefund.Controls.Add(this.dt_IssueDate);
@@ -792,6 +906,15 @@
             this.gbRefund.TabIndex = 67;
             this.gbRefund.TabStop = false;
             this.gbRefund.Text = "Datos de la Devolución :";
+            // 
+            // dt_IssueHour
+            // 
+            this.dt_IssueHour.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dt_IssueHour.Location = new System.Drawing.Point(213, 92);
+            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_IssueHour.Name = "dt_IssueHour";
+            this.dt_IssueHour.Size = new System.Drawing.Size(92, 29);
+            this.dt_IssueHour.TabIndex = 67;
             // 
             // label4
             // 
@@ -843,10 +966,11 @@
             // dt_IssueDate
             // 
             this.dt_IssueDate.CalendarMonthBackground = System.Drawing.Color.White;
+            this.dt_IssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dt_IssueDate.Location = new System.Drawing.Point(93, 92);
             this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_IssueDate.Name = "dt_IssueDate";
-            this.dt_IssueDate.Size = new System.Drawing.Size(212, 29);
+            this.dt_IssueDate.Size = new System.Drawing.Size(114, 29);
             this.dt_IssueDate.TabIndex = 64;
             this.dt_IssueDate.UseCustomBackColor = true;
             this.dt_IssueDate.UseCustomForeColor = true;
@@ -1244,10 +1368,6 @@
             this.grid_Refund_Lines.TabIndex = 52;
             this.grid_Refund_Lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Refund_Lines_CellValueChanged);
             // 
-            // salesRefundLineBindingSource
-            // 
-            this.salesRefundLineBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesRefundLine);
-            // 
             // id
             // 
             this.id.DataPropertyName = "Id";
@@ -1349,123 +1469,15 @@
             this.amount.HeaderText = "SubTotal";
             this.amount.Name = "amount";
             // 
-            // salesRefundBindingSource
+            // salesRefundLineBindingSource
             // 
-            this.salesRefundBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesRefund);
-            // 
-            // currencyidDataGridViewTextBoxColumn
-            // 
-            this.currencyidDataGridViewTextBoxColumn.DataPropertyName = "Currency_id";
-            this.currencyidDataGridViewTextBoxColumn.HeaderText = "Currency_id";
-            this.currencyidDataGridViewTextBoxColumn.Name = "currencyidDataGridViewTextBoxColumn";
-            this.currencyidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.currencyidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // customeraddressDataGridViewTextBoxColumn
-            // 
-            this.customeraddressDataGridViewTextBoxColumn.DataPropertyName = "Customer_address";
-            this.customeraddressDataGridViewTextBoxColumn.HeaderText = "Customer_address";
-            this.customeraddressDataGridViewTextBoxColumn.Name = "customeraddressDataGridViewTextBoxColumn";
-            this.customeraddressDataGridViewTextBoxColumn.ReadOnly = true;
-            this.customeraddressDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // currencysymbolDataGridViewTextBoxColumn
-            // 
-            this.currencysymbolDataGridViewTextBoxColumn.DataPropertyName = "Currency_symbol";
-            this.currencysymbolDataGridViewTextBoxColumn.HeaderText = "Currency_symbol";
-            this.currencysymbolDataGridViewTextBoxColumn.Name = "currencysymbolDataGridViewTextBoxColumn";
-            this.currencysymbolDataGridViewTextBoxColumn.ReadOnly = true;
-            this.currencysymbolDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // customeridDataGridViewTextBoxColumn
-            // 
-            this.customeridDataGridViewTextBoxColumn.DataPropertyName = "Customer_id";
-            this.customeridDataGridViewTextBoxColumn.HeaderText = "Customer_id";
-            this.customeridDataGridViewTextBoxColumn.Name = "customeridDataGridViewTextBoxColumn";
-            this.customeridDataGridViewTextBoxColumn.ReadOnly = true;
-            this.customeridDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // customerphoneDataGridViewTextBoxColumn
-            // 
-            this.customerphoneDataGridViewTextBoxColumn.DataPropertyName = "Customer_phone";
-            this.customerphoneDataGridViewTextBoxColumn.HeaderText = "Customer_phone";
-            this.customerphoneDataGridViewTextBoxColumn.Name = "customerphoneDataGridViewTextBoxColumn";
-            this.customerphoneDataGridViewTextBoxColumn.ReadOnly = true;
-            this.customerphoneDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // customerdoiDataGridViewTextBoxColumn
-            // 
-            this.customerdoiDataGridViewTextBoxColumn.DataPropertyName = "Customer_doi";
-            this.customerdoiDataGridViewTextBoxColumn.HeaderText = "Customer_doi";
-            this.customerdoiDataGridViewTextBoxColumn.Name = "customerdoiDataGridViewTextBoxColumn";
-            this.customerdoiDataGridViewTextBoxColumn.ReadOnly = true;
-            this.customerdoiDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // documentidDataGridViewTextBoxColumn
-            // 
-            this.documentidDataGridViewTextBoxColumn.DataPropertyName = "Document_id";
-            this.documentidDataGridViewTextBoxColumn.HeaderText = "Document_id";
-            this.documentidDataGridViewTextBoxColumn.Name = "documentidDataGridViewTextBoxColumn";
-            this.documentidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.documentidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // refund_id
-            // 
-            this.refund_id.DataPropertyName = "Id";
-            this.refund_id.HeaderText = "N° Devolución";
-            this.refund_id.Name = "refund_id";
-            this.refund_id.ReadOnly = true;
-            // 
-            // customer_name
-            // 
-            this.customer_name.DataPropertyName = "Customer_name";
-            this.customer_name.HeaderText = "Cliente";
-            this.customer_name.Name = "customer_name";
-            this.customer_name.ReadOnly = true;
-            this.customer_name.Width = 200;
-            // 
-            // issue_date
-            // 
-            this.issue_date.DataPropertyName = "Issue_date";
-            this.issue_date.HeaderText = "Fecha de emisión";
-            this.issue_date.Name = "issue_date";
-            this.issue_date.ReadOnly = true;
-            // 
-            // currency_name
-            // 
-            this.currency_name.DataPropertyName = "Currency_name";
-            this.currency_name.HeaderText = "Moneda";
-            this.currency_name.Name = "currency_name";
-            this.currency_name.ReadOnly = true;
-            // 
-            // amount2
-            // 
-            this.amount2.DataPropertyName = "Amount";
-            this.amount2.HeaderText = "Total";
-            this.amount2.Name = "amount2";
-            this.amount2.ReadOnly = true;
-            // 
-            // observation
-            // 
-            this.observation.DataPropertyName = "Observation";
-            this.observation.HeaderText = "Observacion";
-            this.observation.Name = "observation";
-            this.observation.ReadOnly = true;
-            this.observation.Width = 200;
-            // 
-            // status
-            // 
-            this.status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.status.DataPropertyName = "Status";
-            this.status.HeaderText = "Estado";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
+            this.salesRefundLineBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesRefundLine);
             // 
             // UC_SalesRefund
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel1);
             this.Name = "UC_SalesRefund";
             this.Size = new System.Drawing.Size(1065, 625);
@@ -1476,6 +1488,7 @@
             this.gbDocuments.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_Refunds)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salesRefundBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.newRefund.ResumeLayout(false);
@@ -1488,7 +1501,6 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_Refund_Lines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesRefundLineBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.salesRefundBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1582,5 +1594,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amount2;
         private System.Windows.Forms.DataGridViewTextBoxColumn observation;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private MetroFramework.Controls.MetroDateTime dt_IssueHour;
     }
 }

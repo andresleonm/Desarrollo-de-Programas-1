@@ -97,9 +97,9 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("customer_phone", sales_document.Customer_phone));
             parameters.Add(new Parameter("amount", sales_document.Amount.ToString()));
             parameters.Add(new Parameter("porc_igv", sales_document.Porc_igv.ToString()));
-            parameters.Add(new Parameter("state", sales_document.Status));
+            parameters.Add(new Parameter("state", "Registrado"));
             parameters.Add(new Parameter("customer_doi", sales_document.Customer_doi));
-            parameters.Add(new Parameter("date", sales_document.Issue_date.ToString("MM/dd/yyyy")));
+            parameters.Add(new Parameter("date", sales_document.Issue_date.ToString("MM/dd/yyyy hh:mm:ss")));
             parameters.Add(new Parameter("observation", sales_document.Observation));
             parameters.Add(new Parameter("movement_id", sales_document.Movement_id.ToString()));
             parameters.Add(new Parameter("external_number", sales_document.External_number.ToString()));

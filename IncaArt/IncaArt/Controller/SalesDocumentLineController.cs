@@ -42,7 +42,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("unit_of_measure_id", line.Unit_measure_id.ToString()));
             parameters.Add(new Parameter("quantity", line.Quantity.ToString()));
             parameters.Add(new Parameter("price", line.Unit_price.ToString()));
-            parameters.Add(new Parameter("state", line.Status));
+            parameters.Add(new Parameter("state", "Registrado"));
             parameters.Add(new Parameter("refund_quantity", line.Refund_quantity.ToString()));
             parameters.Add(new Parameter("product_id", line.Product_id.ToString()));
             parameters.Add(new Parameter("warehouse_id", line.Prod_warehouse_id.ToString()));

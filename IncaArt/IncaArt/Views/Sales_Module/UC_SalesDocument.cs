@@ -128,7 +128,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 txt_amount.Text = rf.Amount.ToString();
                 txt_Status.Text = rf.Status;
                 txt_Currency.Text = rf.Currency_symbol + "  -  " + rf.Currency_name;
-                dt_IssueDate.Text = rf.Issue_date.ToString();
+                dt_IssueDate.Text = rf.Issue_date.ToShortDateString();
+                dt_IssueHour.Text = rf.Issue_date.ToLongTimeString();
             }
             else
             {
@@ -142,7 +143,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 txt_amount.Text = so.Amount.ToString();
                 txt_Status.Text = so.Status;
                 txt_Currency.Text = so.Currency_symbol + "  -  " + so.Currency_name;
-                dt_IssueDate.Text = so.Issue_date.ToString();
+                dt_IssueDate.Text = so.Issue_date.ToShortDateString();
+                dt_IssueHour.Text = so.Issue_date.ToLongTimeString();
             }           
         }
 
@@ -156,7 +158,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_phone.Text = sd.Customer_phone;
             txt_Document_id.Text = sd.Id.ToString();
             txt_Currency.Text = sd.Currency_symbol + "  -  " + sd.Currency_name;
-            dt_IssueDate.Text = sd.Issue_date.ToString();
+            dt_IssueDate.Text = sd.Issue_date.ToShortDateString();
+            dt_IssueHour.Text = sd.Issue_date.ToLongTimeString();
             txt_Movement_id.Text = sd.Movement_id.ToString();
             txt_external.Text = sd.External_number;
             txt_observation.Text = sd.Observation;
@@ -318,8 +321,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
             sd.Customer_address = txt_address.Text;
             sd.Customer_doi = txt_Doi.Text;
             sd.Customer_phone = txt_phone.Text;
-            
-            sd.Issue_date = DateTime.Parse(dt_IssueDate.Text);
+
+            sd.Issue_date = dt_IssueDate.Value.Date + dt_IssueHour.Value.TimeOfDay;
             sd.Observation = txt_observation.Text;
             sd.Amount = double.Parse(txt_amount.Text);
             sd.Porc_igv = igv;
