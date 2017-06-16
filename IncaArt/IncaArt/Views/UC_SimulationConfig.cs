@@ -18,9 +18,13 @@ namespace WindowsFormsApp1.Views
         List<Product> products;
         public List<Algorithm.ProductLineAssignment> solution;
         bool workers_checked = true;
-
+        public int iterations, tabu_size, neighborhood_size, combinations;
         public UC_SimulationConfig()
         {
+            this.iterations = 8000;
+            this.tabu_size = 10;
+            this.neighborhood_size = 50;
+            this.combinations = 100;
             InitializeComponent();
         }
 
@@ -35,7 +39,11 @@ namespace WindowsFormsApp1.Views
 
             foreach (DataGridViewRow row in workstations_grid.Rows)
             {
-                if (row.Cells[1].Value == null) row.Cells[1].Value = 1;
+                if (row.Cells[1].Value == null || int.Parse(row.Cells[1].Value.ToString()) == 0)
+                {
+                    MessageBox.Show("Debe haber por lo menos un puesto de trabajo de cada tipo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    row.Cells[1].Value = 1;
+                }
                 if (row.Cells[1].Value!=null && int.Parse(row.Cells[1].Value.ToString()) >= 1)
                 {
                     Models.Product aux_prod = products.Where(p => p.Id == ((Workstation)row.DataBoundItem).Product_id).ElementAt(0);
@@ -122,14 +130,12 @@ namespace WindowsFormsApp1.Views
                     line.quantity = int.Parse(row.Cells[1].Value.ToString());
                     detail.lines.Add(line);
                 }                
-            }
-            //foreach(Algorithm.OrderDetailLine l in detail.lines)
-            //{
-            //    if(l.product.type)
-            //}
+            }           
             order.order_detail = detail;
-            Algorithm.TabuSearch tabu = new Algorithm.TabuSearch(order, tabu_workers, tabu_wkstations);
+            Cursor = Cursors.WaitCursor;
+            Algorithm.TabuSearch tabu = new Algorithm.TabuSearch(order, tabu_workers, tabu_wkstations,iterations,tabu_size,neighborhood_size,combinations);
             solution = tabu.generateSolution();
+            Cursor = Cursors.Arrow;
             this.Visible = false;
             this.Parent.Parent.Controls.Find("UC_SimulationExecution1", true)[0].Visible = true;
         }
@@ -185,5 +191,25 @@ namespace WindowsFormsApp1.Views
             }
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {            
+            Frm_AdvancedSimulationConfig advncd = new Frm_AdvancedSimulationConfig();
+            DialogResult result = advncd.ShowDialog(this);
+
+            if (result == DialogResult.Cancel)
+            {
+                this.iterations = 8000;
+                this.tabu_size = 10;
+                this.neighborhood_size = 50;
+                this.combinations = 100;
+            }
+            else if (result == DialogResult.OK) {
+                this.iterations = advncd.iterations;
+                this.tabu_size = advncd.tabu_size;
+                this.neighborhood_size = advncd.neighborhood_size;
+                this.combinations = advncd.combinations;
+            } 
+                                    
+        }
     }
 }
