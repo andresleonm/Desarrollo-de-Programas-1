@@ -13,6 +13,10 @@ namespace WindowsFormsApp1.Models
         String name;
         String state;
 
+        public Currency()
+        {
+        }
+
         public Currency(int id, string symbol, string name, string state)
         {
             this.id = id;
