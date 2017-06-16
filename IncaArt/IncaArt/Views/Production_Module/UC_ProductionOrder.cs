@@ -121,7 +121,7 @@ namespace WindowsFormsApp1.Views
                             {
                                 product_lines[i].Order_Id = order_id;
                                 result = product_line_controller.insertProductLine(product_lines[i]);
-                                if (!result.success) message += "-" + result.message + "\n";
+                                if (!result.success) message += "-" + product_lines[i].Warehouse_name +":" + result.message + "\n";
                             }
                         }
                         //List of materials           
@@ -131,7 +131,7 @@ namespace WindowsFormsApp1.Views
                             {
                                 material_lines[i].Order_Id = order_id;
                                 result = material_line_controller.insertMaterialLine(material_lines[i]);
-                                if (!result.success) message += "-" + result.message + "\n";
+                                if (!result.success) message += "-" + material_lines[i].Warehouse_name+":"+ result.message + "\n";
                             }
                         }
                         //List of work               
@@ -164,13 +164,13 @@ namespace WindowsFormsApp1.Views
                                 //INSERT
                                 product_lines[i].Order_Id = production_order.Id;
                                 result = product_line_controller.insertProductLine(product_lines[i]);
-                                if (!result.success) message += "-" + result.message + "\n";
+                                if (!result.success) message += "-" + product_lines[i].Warehouse_name + ":" + result.message + "\n";
                             }
                             else
                             {
                                 //UPDATE
                                 result = product_line_controller.updateProductLine(product_lines[i]);
-                                if (!result.success) message += "-" + result.message + "\n";
+                                if (!result.success) message += "-" + product_lines[i].Warehouse_name + ":" + result.message + "\n";
                             }                     
                         }
                         //List of materials           
@@ -181,13 +181,13 @@ namespace WindowsFormsApp1.Views
                                 //INSERT
                                 material_lines[i].Order_Id = production_order.Id;
                                 result = material_line_controller.insertMaterialLine(material_lines[i]);
-                                if (!result.success) message += "-" + result.message + "\n";
+                                if (!result.success) message += "-" + material_lines[i].Warehouse_name + ":" + result.message + "\n";
                             }
                             else
                             {
                                 //UPDATE
                                 result = material_line_controller.updateMaterialLine(material_lines[i]);
-                                if (!result.success) message += "-" + result.message + "\n";
+                                if (!result.success) message += "-" + material_lines[i].Warehouse_name + ":" + result.message + "\n";
                             }
                                           
                         }
