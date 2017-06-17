@@ -104,6 +104,22 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result cancelMovement(int id)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", id.ToString()));
+
+            GenericResult result = execute_transaction("delete_materialmovement", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+       
+
         public Result insertMovement(Models.MaterialMovement movement)
         {
             List<Parameter> parameters = new List<Parameter>();
@@ -174,6 +190,29 @@ namespace WindowsFormsApp1.Controller
                     var movementType = getMovementType(Int32.Parse(r.getColumn(1)),mov_types);
                     var detail =new List<Models.MaterialMovementLine>();
                     movements.Add(new MaterialMovement(Int32.Parse(r.getColumn(0)),movementType, r.getColumn(2), r.getColumn(3),
+                         r.getColumn(4), r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8), detail));
+                }
+                return new Result(movements, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result getMovements(string fec_ini, string fec_fin)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("fec_ini", fec_ini));
+            parameters.Add(new Parameter("fec_fin", fec_fin));
+            GenericResult result = execute_function("get_movementsm", parameters);
+           
+            List<Models.MaterialMovement> movements = new List<MaterialMovement>();
+            if (result.success)
+            {
+                List<MaterialMovementType> mov_types = (List<MaterialMovementType>)getMovementTypes().data;
+                foreach (Row r in result.data)
+                {
+                    var movementType = getMovementType(Int32.Parse(r.getColumn(1)), mov_types);
+                    var detail = new List<Models.MaterialMovementLine>();
+                    movements.Add(new MaterialMovement(Int32.Parse(r.getColumn(0)), movementType, r.getColumn(2), r.getColumn(3),
                          r.getColumn(4), r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8), detail));
                 }
                 return new Result(movements, true, "");

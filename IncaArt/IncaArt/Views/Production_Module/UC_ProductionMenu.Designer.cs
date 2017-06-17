@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.metroTile_WorkerPerformance = new MetroFramework.Controls.MetroTile();
             this.metroTile_RegisterOrder = new MetroFramework.Controls.MetroTile();
             this.metroTitle_SearchOrder = new MetroFramework.Controls.MetroTile();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -42,7 +41,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.metroTile_WorkerPerformance);
             this.panel1.Controls.Add(this.metroTile_RegisterOrder);
             this.panel1.Controls.Add(this.metroTitle_SearchOrder);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -50,23 +48,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(861, 70);
             this.panel1.TabIndex = 1;
-            // 
-            // metroTile_WorkerPerformance
-            // 
-            this.metroTile_WorkerPerformance.ActiveControl = null;
-            this.metroTile_WorkerPerformance.BackColor = System.Drawing.Color.DarkCyan;
-            this.metroTile_WorkerPerformance.Location = new System.Drawing.Point(453, 4);
-            this.metroTile_WorkerPerformance.Name = "metroTile_WorkerPerformance";
-            this.metroTile_WorkerPerformance.Size = new System.Drawing.Size(177, 62);
-            this.metroTile_WorkerPerformance.TabIndex = 42;
-            this.metroTile_WorkerPerformance.Text = "Eficiencia de trabajadores";
-            this.metroTile_WorkerPerformance.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile_WorkerPerformance.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.metroTile_WorkerPerformance.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.metroTile_WorkerPerformance.UseCustomBackColor = true;
-            this.metroTile_WorkerPerformance.UseSelectable = true;
-            this.metroTile_WorkerPerformance.UseTileImage = true;
-            this.metroTile_WorkerPerformance.Click += new System.EventHandler(this.metroTile_WorkerPerformance_Click);
             // 
             // metroTile_RegisterOrder
             // 
@@ -122,6 +103,7 @@
             this.production_search.Name = "production_search";
             this.production_search.Size = new System.Drawing.Size(861, 504);
             this.production_search.TabIndex = 0;
+            this.production_search.UseSelectable = true;
             // 
             // production_register
             // 
@@ -163,6 +145,5 @@
         private UC_ProductionOrder production_register;
         //
         private Views.WorkersPerformance_Report worker_performance;
-        private MetroFramework.Controls.MetroTile metroTile_WorkerPerformance;
     }
 }

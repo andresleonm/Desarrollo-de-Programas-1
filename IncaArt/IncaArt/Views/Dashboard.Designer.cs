@@ -82,6 +82,7 @@ namespace WindowsFormsApp1.Views
             this.uc_reports = new WindowsFormsApp1.Views.Reports_Module.ReportDashboard();
             this.uc_ratio = new WindowsFormsApp1.Views.UC_Ratio();
             this.uC_CurrencyMain1 = new WindowsFormsApp1.Views.Currency_Module.UC_CurrencyMain();
+            this.workersPerformance_Report1 = new WindowsFormsApp1.Views.WorkersPerformance_Report();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -101,9 +102,8 @@ namespace WindowsFormsApp1.Views
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1426, 42);
+            this.panel2.Size = new System.Drawing.Size(951, 27);
             this.panel2.TabIndex = 10;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             // 
@@ -112,10 +112,9 @@ namespace WindowsFormsApp1.Views
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.Minimize_Window_52px;
-            this.pictureBox2.Location = new System.Drawing.Point(1330, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox2.Location = new System.Drawing.Point(888, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(32, 42);
+            this.pictureBox2.Size = new System.Drawing.Size(21, 27);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
@@ -129,10 +128,9 @@ namespace WindowsFormsApp1.Views
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
             this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox4.Image = global::WindowsFormsApp1.Properties.Resources.Maximize_Window_64px;
-            this.pictureBox4.Location = new System.Drawing.Point(1362, 0);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox4.Location = new System.Drawing.Point(909, 0);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(32, 42);
+            this.pictureBox4.Size = new System.Drawing.Size(21, 27);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 9;
             this.pictureBox4.TabStop = false;
@@ -146,10 +144,9 @@ namespace WindowsFormsApp1.Views
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Close_Window_52px;
-            this.pictureBox1.Location = new System.Drawing.Point(1394, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(930, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 42);
+            this.pictureBox1.Size = new System.Drawing.Size(21, 27);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -170,10 +167,9 @@ namespace WindowsFormsApp1.Views
             this.panel1.Controls.Add(this.btn_config);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 42);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(198, 860);
+            this.panel1.Size = new System.Drawing.Size(132, 559);
             this.panel1.TabIndex = 11;
             // 
             // button1
@@ -187,10 +183,9 @@ namespace WindowsFormsApp1.Views
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.ImageIndex = 1;
             this.button1.ImageList = this.simulation_imagelist;
-            this.button1.Location = new System.Drawing.Point(0, 459);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Location = new System.Drawing.Point(0, 297);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(198, 65);
+            this.button1.Size = new System.Drawing.Size(132, 42);
             this.button1.TabIndex = 8;
             this.button1.Text = "Reportes";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -215,10 +210,9 @@ namespace WindowsFormsApp1.Views
             this.btn_simulation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_simulation.ImageIndex = 1;
             this.btn_simulation.ImageList = this.simulation_imagelist;
-            this.btn_simulation.Location = new System.Drawing.Point(0, 394);
-            this.btn_simulation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_simulation.Location = new System.Drawing.Point(0, 255);
             this.btn_simulation.Name = "btn_simulation";
-            this.btn_simulation.Size = new System.Drawing.Size(198, 65);
+            this.btn_simulation.Size = new System.Drawing.Size(132, 42);
             this.btn_simulation.TabIndex = 7;
             this.btn_simulation.Text = "Simulación";
             this.btn_simulation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -237,10 +231,9 @@ namespace WindowsFormsApp1.Views
             this.btn_production.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_production.ImageIndex = 1;
             this.btn_production.ImageList = this.production_imagelist;
-            this.btn_production.Location = new System.Drawing.Point(0, 329);
-            this.btn_production.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_production.Location = new System.Drawing.Point(0, 213);
             this.btn_production.Name = "btn_production";
-            this.btn_production.Size = new System.Drawing.Size(198, 65);
+            this.btn_production.Size = new System.Drawing.Size(132, 42);
             this.btn_production.TabIndex = 6;
             this.btn_production.Text = "Producción";
             this.btn_production.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -266,10 +259,9 @@ namespace WindowsFormsApp1.Views
             this.btn_purchase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_purchase.ImageIndex = 1;
             this.btn_purchase.ImageList = this.purchase_imagelist;
-            this.btn_purchase.Location = new System.Drawing.Point(0, 264);
-            this.btn_purchase.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_purchase.Location = new System.Drawing.Point(0, 171);
             this.btn_purchase.Name = "btn_purchase";
-            this.btn_purchase.Size = new System.Drawing.Size(198, 65);
+            this.btn_purchase.Size = new System.Drawing.Size(132, 42);
             this.btn_purchase.TabIndex = 5;
             this.btn_purchase.Text = "Compras";
             this.btn_purchase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -295,10 +287,9 @@ namespace WindowsFormsApp1.Views
             this.btn_sales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_sales.ImageIndex = 1;
             this.btn_sales.ImageList = this.sales_imagelist;
-            this.btn_sales.Location = new System.Drawing.Point(0, 199);
-            this.btn_sales.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_sales.Location = new System.Drawing.Point(0, 129);
             this.btn_sales.Name = "btn_sales";
-            this.btn_sales.Size = new System.Drawing.Size(198, 65);
+            this.btn_sales.Size = new System.Drawing.Size(132, 42);
             this.btn_sales.TabIndex = 4;
             this.btn_sales.Text = "Ventas";
             this.btn_sales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -324,10 +315,9 @@ namespace WindowsFormsApp1.Views
             this.btn_warehouse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_warehouse.ImageIndex = 1;
             this.btn_warehouse.ImageList = this.warehouse_imagelist;
-            this.btn_warehouse.Location = new System.Drawing.Point(0, 134);
-            this.btn_warehouse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_warehouse.Location = new System.Drawing.Point(0, 87);
             this.btn_warehouse.Name = "btn_warehouse";
-            this.btn_warehouse.Size = new System.Drawing.Size(198, 65);
+            this.btn_warehouse.Size = new System.Drawing.Size(132, 42);
             this.btn_warehouse.TabIndex = 3;
             this.btn_warehouse.Text = "Almacén";
             this.btn_warehouse.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -353,10 +343,9 @@ namespace WindowsFormsApp1.Views
             this.btn_config.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_config.ImageIndex = 1;
             this.btn_config.ImageList = this.config_imagelist;
-            this.btn_config.Location = new System.Drawing.Point(0, 69);
-            this.btn_config.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_config.Location = new System.Drawing.Point(0, 45);
             this.btn_config.Name = "btn_config";
-            this.btn_config.Size = new System.Drawing.Size(198, 65);
+            this.btn_config.Size = new System.Drawing.Size(132, 42);
             this.btn_config.TabIndex = 2;
             this.btn_config.Text = "Mantenimiento";
             this.btn_config.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -377,9 +366,8 @@ namespace WindowsFormsApp1.Views
             this.panel3.Controls.Add(this.btn_logo);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(198, 69);
+            this.panel3.Size = new System.Drawing.Size(132, 45);
             this.panel3.TabIndex = 0;
             // 
             // btn_logo
@@ -393,9 +381,8 @@ namespace WindowsFormsApp1.Views
             this.btn_logo.ForeColor = System.Drawing.Color.White;
             this.btn_logo.Image = global::WindowsFormsApp1.Properties.Resources.American_Indians_Seminole_white_40px;
             this.btn_logo.Location = new System.Drawing.Point(0, 0);
-            this.btn_logo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_logo.Name = "btn_logo";
-            this.btn_logo.Size = new System.Drawing.Size(198, 69);
+            this.btn_logo.Size = new System.Drawing.Size(132, 45);
             this.btn_logo.TabIndex = 6;
             this.btn_logo.Text = "INCA ART";
             this.btn_logo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -410,10 +397,9 @@ namespace WindowsFormsApp1.Views
             this.panel4.Controls.Add(this.label_user_name);
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(198, 42);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel4.Location = new System.Drawing.Point(132, 27);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1228, 69);
+            this.panel4.Size = new System.Drawing.Size(819, 45);
             this.panel4.TabIndex = 12;
             // 
             // label_user_role
@@ -421,8 +407,7 @@ namespace WindowsFormsApp1.Views
             this.label_user_role.AutoSize = true;
             this.label_user_role.Dock = System.Windows.Forms.DockStyle.Right;
             this.label_user_role.ForeColor = System.Drawing.Color.White;
-            this.label_user_role.Location = new System.Drawing.Point(1003, 0);
-            this.label_user_role.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_user_role.Location = new System.Drawing.Point(609, 0);
             this.label_user_role.Name = "label_user_role";
             this.label_user_role.Size = new System.Drawing.Size(101, 19);
             this.label_user_role.TabIndex = 2;
@@ -435,8 +420,7 @@ namespace WindowsFormsApp1.Views
             this.label_user_name.AutoSize = true;
             this.label_user_name.Dock = System.Windows.Forms.DockStyle.Right;
             this.label_user_name.ForeColor = System.Drawing.Color.White;
-            this.label_user_name.Location = new System.Drawing.Point(1104, 0);
-            this.label_user_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_user_name.Location = new System.Drawing.Point(710, 0);
             this.label_user_name.Name = "label_user_name";
             this.label_user_name.Size = new System.Drawing.Size(78, 19);
             this.label_user_name.Style = MetroFramework.MetroColorStyle.White;
@@ -450,10 +434,9 @@ namespace WindowsFormsApp1.Views
             this.pictureBox3.ContextMenuStrip = this.metroContextMenu1;
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox3.Image = global::WindowsFormsApp1.Properties.Resources.Circled_User_Male_40px;
-            this.pictureBox3.Location = new System.Drawing.Point(1182, 0);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox3.Location = new System.Drawing.Point(788, 0);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(46, 69);
+            this.pictureBox3.Size = new System.Drawing.Size(31, 45);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
@@ -464,12 +447,12 @@ namespace WindowsFormsApp1.Views
             this.metroContextMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
             this.metroContextMenu1.Name = "metroContextMenu1";
-            this.metroContextMenu1.Size = new System.Drawing.Size(189, 34);
+            this.metroContextMenu1.Size = new System.Drawing.Size(144, 26);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 30);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
             this.toolStripMenuItem1.Text = "Cerrar Sesión";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
@@ -478,30 +461,30 @@ namespace WindowsFormsApp1.Views
             this.uc_ProductionMenu.BackColor = System.Drawing.SystemColors.Control;
             this.uc_ProductionMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.uc_ProductionMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_ProductionMenu.Location = new System.Drawing.Point(198, 111);
-            this.uc_ProductionMenu.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.uc_ProductionMenu.Location = new System.Drawing.Point(132, 72);
+            this.uc_ProductionMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_ProductionMenu.Name = "uc_ProductionMenu";
-            this.uc_ProductionMenu.Size = new System.Drawing.Size(1228, 791);
+            this.uc_ProductionMenu.Size = new System.Drawing.Size(819, 514);
             this.uc_ProductionMenu.TabIndex = 34;
             this.uc_ProductionMenu.UseSelectable = true;
             // 
             // uC_Simulation1
             // 
             this.uC_Simulation1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_Simulation1.Location = new System.Drawing.Point(198, 111);
-            this.uC_Simulation1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.uC_Simulation1.Location = new System.Drawing.Point(132, 72);
+            this.uC_Simulation1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uC_Simulation1.Name = "uC_Simulation1";
-            this.uC_Simulation1.Size = new System.Drawing.Size(1228, 791);
+            this.uC_Simulation1.Size = new System.Drawing.Size(819, 514);
             this.uC_Simulation1.TabIndex = 45;
             // 
             // uC_SalesMain1
             // 
             this.uC_SalesMain1.BackColor = System.Drawing.Color.White;
             this.uC_SalesMain1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_SalesMain1.Location = new System.Drawing.Point(198, 111);
-            this.uC_SalesMain1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.uC_SalesMain1.Location = new System.Drawing.Point(132, 72);
+            this.uC_SalesMain1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uC_SalesMain1.Name = "uC_SalesMain1";
-            this.uC_SalesMain1.Size = new System.Drawing.Size(1228, 791);
+            this.uC_SalesMain1.Size = new System.Drawing.Size(819, 514);
             this.uC_SalesMain1.TabIndex = 31;
             // 
             // parameters1
@@ -509,10 +492,10 @@ namespace WindowsFormsApp1.Views
             this.parameters1.AutoSize = true;
             this.parameters1.BackColor = System.Drawing.Color.White;
             this.parameters1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parameters1.Location = new System.Drawing.Point(198, 111);
-            this.parameters1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.parameters1.Location = new System.Drawing.Point(132, 72);
+            this.parameters1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.parameters1.Name = "parameters1";
-            this.parameters1.Size = new System.Drawing.Size(1228, 791);
+            this.parameters1.Size = new System.Drawing.Size(819, 514);
             this.parameters1.TabIndex = 22;
             this.parameters1.UseSelectable = true;
             this.parameters1.Visible = false;
@@ -523,10 +506,10 @@ namespace WindowsFormsApp1.Views
             this.warehouse1.AutoSize = true;
             this.warehouse1.BackColor = System.Drawing.Color.White;
             this.warehouse1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.warehouse1.Location = new System.Drawing.Point(198, 111);
-            this.warehouse1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.warehouse1.Location = new System.Drawing.Point(132, 72);
+            this.warehouse1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.warehouse1.Name = "warehouse1";
-            this.warehouse1.Size = new System.Drawing.Size(1228, 791);
+            this.warehouse1.Size = new System.Drawing.Size(819, 514);
             this.warehouse1.Style = MetroFramework.MetroColorStyle.Blue;
             this.warehouse1.TabIndex = 20;
             this.warehouse1.UseCustomBackColor = true;
@@ -538,19 +521,19 @@ namespace WindowsFormsApp1.Views
             // 
             this.supplier1.BackColor = System.Drawing.Color.White;
             this.supplier1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.supplier1.Location = new System.Drawing.Point(198, 111);
-            this.supplier1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.supplier1.Location = new System.Drawing.Point(132, 72);
+            this.supplier1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.supplier1.Name = "supplier1";
-            this.supplier1.Size = new System.Drawing.Size(1228, 791);
+            this.supplier1.Size = new System.Drawing.Size(819, 514);
             this.supplier1.TabIndex = 18;
             this.supplier1.UseSelectable = true;
             // 
             // bom1
             // 
-            this.bom1.Location = new System.Drawing.Point(198, 111);
-            this.bom1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.bom1.Location = new System.Drawing.Point(132, 72);
+            this.bom1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bom1.Name = "bom1";
-            this.bom1.Size = new System.Drawing.Size(1323, 752);
+            this.bom1.Size = new System.Drawing.Size(882, 489);
             this.bom1.TabIndex = 19;
             // 
             // client1
@@ -558,10 +541,10 @@ namespace WindowsFormsApp1.Views
             this.client1.AutoSize = true;
             this.client1.BackColor = System.Drawing.Color.White;
             this.client1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.client1.Location = new System.Drawing.Point(198, 111);
-            this.client1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.client1.Location = new System.Drawing.Point(132, 72);
+            this.client1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.client1.Name = "client1";
-            this.client1.Size = new System.Drawing.Size(1228, 791);
+            this.client1.Size = new System.Drawing.Size(819, 514);
             this.client1.Style = MetroFramework.MetroColorStyle.Teal;
             this.client1.TabIndex = 18;
             this.client1.UseSelectable = true;
@@ -573,20 +556,20 @@ namespace WindowsFormsApp1.Views
             this.uC_PurchasesMenu1.BackColor = System.Drawing.SystemColors.Control;
             this.uC_PurchasesMenu1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.uC_PurchasesMenu1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_PurchasesMenu1.Location = new System.Drawing.Point(198, 111);
-            this.uC_PurchasesMenu1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.uC_PurchasesMenu1.Location = new System.Drawing.Point(132, 72);
+            this.uC_PurchasesMenu1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uC_PurchasesMenu1.Name = "uC_PurchasesMenu1";
-            this.uC_PurchasesMenu1.Size = new System.Drawing.Size(1228, 791);
+            this.uC_PurchasesMenu1.Size = new System.Drawing.Size(819, 514);
             this.uC_PurchasesMenu1.TabIndex = 16;
             // 
             // mainDashboard1
             // 
             this.mainDashboard1.BackColor = System.Drawing.Color.White;
             this.mainDashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainDashboard1.Location = new System.Drawing.Point(198, 111);
-            this.mainDashboard1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.mainDashboard1.Location = new System.Drawing.Point(132, 72);
+            this.mainDashboard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.mainDashboard1.Name = "mainDashboard1";
-            this.mainDashboard1.Size = new System.Drawing.Size(1228, 791);
+            this.mainDashboard1.Size = new System.Drawing.Size(819, 514);
             this.mainDashboard1.TabIndex = 13;
             this.mainDashboard1.UseSelectable = true;
             // 
@@ -594,10 +577,10 @@ namespace WindowsFormsApp1.Views
             // 
             this.user.AutoSize = true;
             this.user.BackColor = System.Drawing.SystemColors.Window;
-            this.user.Location = new System.Drawing.Point(198, 111);
-            this.user.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.user.Location = new System.Drawing.Point(132, 72);
+            this.user.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.user.Name = "user";
-            this.user.Size = new System.Drawing.Size(1526, 791);
+            this.user.Size = new System.Drawing.Size(1017, 514);
             this.user.TabIndex = 24;
             this.user.UseCustomBackColor = true;
             this.user.UseSelectable = true;
@@ -606,37 +589,37 @@ namespace WindowsFormsApp1.Views
             // profile
             // 
             this.profile.BackColor = System.Drawing.SystemColors.Window;
-            this.profile.Location = new System.Drawing.Point(198, 111);
-            this.profile.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.profile.Location = new System.Drawing.Point(132, 72);
+            this.profile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.profile.Name = "profile";
-            this.profile.Size = new System.Drawing.Size(1310, 680);
+            this.profile.Size = new System.Drawing.Size(873, 442);
             this.profile.TabIndex = 27;
             this.profile.UseCustomBackColor = true;
             this.profile.UseSelectable = true;
             // 
             // shift
             // 
-            this.shift.Location = new System.Drawing.Point(198, 111);
-            this.shift.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.shift.Location = new System.Drawing.Point(132, 72);
+            this.shift.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.shift.Name = "shift";
-            this.shift.Size = new System.Drawing.Size(1228, 688);
+            this.shift.Size = new System.Drawing.Size(819, 447);
             this.shift.TabIndex = 28;
             // 
             // material
             // 
-            this.material.Location = new System.Drawing.Point(198, 111);
-            this.material.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.material.Location = new System.Drawing.Point(132, 72);
+            this.material.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.material.Name = "material";
-            this.material.Size = new System.Drawing.Size(1334, 615);
+            this.material.Size = new System.Drawing.Size(889, 400);
             this.material.TabIndex = 33;
             // 
             // uc_material
             // 
             this.uc_material.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.uc_material.Location = new System.Drawing.Point(198, 111);
-            this.uc_material.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.uc_material.Location = new System.Drawing.Point(132, 72);
+            this.uc_material.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_material.Name = "uc_material";
-            this.uc_material.Size = new System.Drawing.Size(1066, 758);
+            this.uc_material.Size = new System.Drawing.Size(711, 493);
             this.uc_material.TabIndex = 35;
             this.uc_material.UseCustomBackColor = true;
             this.uc_material.UseSelectable = true;
@@ -644,10 +627,10 @@ namespace WindowsFormsApp1.Views
             // 
             // uc_product
             // 
-            this.uc_product.Location = new System.Drawing.Point(198, 111);
-            this.uc_product.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.uc_product.Location = new System.Drawing.Point(132, 72);
+            this.uc_product.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_product.Name = "uc_product";
-            this.uc_product.Size = new System.Drawing.Size(1192, 789);
+            this.uc_product.Size = new System.Drawing.Size(795, 513);
             this.uc_product.TabIndex = 37;
             this.uc_product.UseCustomBackColor = true;
             this.uc_product.UseSelectable = true;
@@ -655,10 +638,10 @@ namespace WindowsFormsApp1.Views
             // 
             // uc_recipe
             // 
-            this.uc_recipe.Location = new System.Drawing.Point(198, 111);
-            this.uc_recipe.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.uc_recipe.Location = new System.Drawing.Point(132, 72);
+            this.uc_recipe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_recipe.Name = "uc_recipe";
-            this.uc_recipe.Size = new System.Drawing.Size(1260, 838);
+            this.uc_recipe.Size = new System.Drawing.Size(840, 545);
             this.uc_recipe.TabIndex = 39;
             this.uc_recipe.UseCustomBackColor = true;
             this.uc_recipe.UseSelectable = true;
@@ -666,10 +649,10 @@ namespace WindowsFormsApp1.Views
             // 
             // uc_worker
             // 
-            this.uc_worker.Location = new System.Drawing.Point(198, 111);
-            this.uc_worker.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.uc_worker.Location = new System.Drawing.Point(132, 72);
+            this.uc_worker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_worker.Name = "uc_worker";
-            this.uc_worker.Size = new System.Drawing.Size(1191, 811);
+            this.uc_worker.Size = new System.Drawing.Size(794, 527);
             this.uc_worker.TabIndex = 41;
             this.uc_worker.UseCustomBackColor = true;
             this.uc_worker.UseSelectable = true;
@@ -677,10 +660,10 @@ namespace WindowsFormsApp1.Views
             // 
             // uc_workstation
             // 
-            this.uc_workstation.Location = new System.Drawing.Point(198, 111);
-            this.uc_workstation.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.uc_workstation.Location = new System.Drawing.Point(132, 72);
+            this.uc_workstation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_workstation.Name = "uc_workstation";
-            this.uc_workstation.Size = new System.Drawing.Size(1308, 1012);
+            this.uc_workstation.Size = new System.Drawing.Size(872, 658);
             this.uc_workstation.TabIndex = 43;
             this.uc_workstation.UseCustomBackColor = true;
             this.uc_workstation.UseSelectable = true;
@@ -688,39 +671,39 @@ namespace WindowsFormsApp1.Views
             // 
             // typeWarehouseMain1
             // 
-            this.typeWarehouseMain1.Location = new System.Drawing.Point(198, 111);
-            this.typeWarehouseMain1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.typeWarehouseMain1.Location = new System.Drawing.Point(132, 72);
+            this.typeWarehouseMain1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.typeWarehouseMain1.Name = "typeWarehouseMain1";
-            this.typeWarehouseMain1.Size = new System.Drawing.Size(1154, 1111);
+            this.typeWarehouseMain1.Size = new System.Drawing.Size(769, 722);
             this.typeWarehouseMain1.TabIndex = 47;
             this.typeWarehouseMain1.UseSelectable = true;
             // 
             // uC_WarehouseMovement1
             // 
             this.uC_WarehouseMovement1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_WarehouseMovement1.Location = new System.Drawing.Point(198, 111);
-            this.uC_WarehouseMovement1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.uC_WarehouseMovement1.Location = new System.Drawing.Point(132, 72);
+            this.uC_WarehouseMovement1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uC_WarehouseMovement1.Name = "uC_WarehouseMovement1";
-            this.uC_WarehouseMovement1.Size = new System.Drawing.Size(1228, 791);
+            this.uC_WarehouseMovement1.Size = new System.Drawing.Size(819, 514);
             this.uC_WarehouseMovement1.TabIndex = 47;
             // 
             // uc_reports
             // 
             this.uc_reports.BackColor = System.Drawing.Color.White;
             this.uc_reports.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_reports.Location = new System.Drawing.Point(198, 111);
-            this.uc_reports.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.uc_reports.Location = new System.Drawing.Point(132, 72);
+            this.uc_reports.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_reports.Name = "uc_reports";
-            this.uc_reports.Size = new System.Drawing.Size(1228, 791);
+            this.uc_reports.Size = new System.Drawing.Size(819, 514);
             this.uc_reports.TabIndex = 58;
             this.uc_reports.UseSelectable = true;
             // 
             // uc_ratio
             // 
-            this.uc_ratio.Location = new System.Drawing.Point(208, 122);
-            this.uc_ratio.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.uc_ratio.Location = new System.Drawing.Point(139, 79);
+            this.uc_ratio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_ratio.Name = "uc_ratio";
-            this.uc_ratio.Size = new System.Drawing.Size(1239, 920);
+            this.uc_ratio.Size = new System.Drawing.Size(826, 598);
             this.uc_ratio.TabIndex = 47;
             this.uc_ratio.UseCustomBackColor = true;
             this.uc_ratio.UseSelectable = true;
@@ -728,19 +711,27 @@ namespace WindowsFormsApp1.Views
             // 
             // uC_CurrencyMain1
             // 
-            this.uC_CurrencyMain1.Location = new System.Drawing.Point(198, 111);
-            this.uC_CurrencyMain1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.uC_CurrencyMain1.Location = new System.Drawing.Point(132, 72);
+            this.uC_CurrencyMain1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uC_CurrencyMain1.Name = "uC_CurrencyMain1";
-            this.uC_CurrencyMain1.Size = new System.Drawing.Size(1012, 845);
+            this.uC_CurrencyMain1.Size = new System.Drawing.Size(675, 549);
             this.uC_CurrencyMain1.TabIndex = 51;
             this.uC_CurrencyMain1.UseSelectable = true;
             // 
+            // workersPerformance_Report1
+            // 
+            this.workersPerformance_Report1.Location = new System.Drawing.Point(132, 72);
+            this.workersPerformance_Report1.Name = "workersPerformance_Report1";
+            this.workersPerformance_Report1.Size = new System.Drawing.Size(819, 514);
+            this.workersPerformance_Report1.TabIndex = 60;
+            // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1426, 902);
+            this.ClientSize = new System.Drawing.Size(951, 586);
+            this.Controls.Add(this.workersPerformance_Report1);
             this.Controls.Add(this.uC_CurrencyMain1);
             this.Controls.Add(this.typeWarehouseMain1);
             this.Controls.Add(this.uC_WarehouseMovement1);
@@ -771,7 +762,6 @@ namespace WindowsFormsApp1.Views
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -841,5 +831,6 @@ namespace WindowsFormsApp1.Views
         private Currency_Module.UC_CurrencyMain uC_CurrencyMain1;
         private System.Windows.Forms.Button button1;
         private WindowsFormsApp1.Views.Reports_Module.ReportDashboard uc_reports;
+        private WorkersPerformance_Report workersPerformance_Report1;
     }
 }
