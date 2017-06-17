@@ -350,7 +350,9 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 currentObject = (ProductMovement)pc.getMovement(currentObject.id).data;
                 ViewWarehouseMovementP order_line = new ViewWarehouseMovementP(user, password, currentObject);
                 order_line.ShowDialog();
-            }catch(Exception exc)
+                buttonSearchV.PerformClick();
+            }
+            catch(Exception exc)
             {
 
             }
@@ -359,7 +361,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
         private void buttonSearchV_Click(object sender, EventArgs e)
         {
-            var movements = (List<ProductMovement>)pc.getMovements().data;
+            var movements = (List<ProductMovement>)pc.getMovements(this.metroDateTime1.Value.ToString("yyyy-MM-dd"),
+                                this.metroDateTime2.Value.ToString("yyyy-MM-dd")).data;
             if (movements ==null)
                 movements=new List<ProductMovement>();
             movements_grid.DataSource = movements;
@@ -408,6 +411,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             textbox_observation.Text = "";
             date.Text = "";
             hour.Text = "";
+            metroDateTime1.Text = "";
+            metroDateTime2.Text = "";
             AdjustColumnOrder();
             fillTypeMovements();
             clearGrid();

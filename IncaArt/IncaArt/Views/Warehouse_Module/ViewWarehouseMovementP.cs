@@ -36,7 +36,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             types_movements.SelectedIndex = types_movements.FindString(pm.Tipo.name);
             document.Text = pm.TipoDocumentoOrigen + " - "+pm.NroDocumentoOrigen.ToString();
             var mov = movement.Tipo;
-            List<int> checkValues = new List<int> { 0, 1, 2 };            
+            List<int> checkValues = new List<int> { 0, 1, 2 };
+            movementid.Text = movement.id.ToString();
             
             if (checkValues.Contains(mov.clase))
             {
@@ -142,6 +143,21 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
         }
 
+        private void btn_Save_Click_1(object sender, EventArgs e)
+        {
+            var result=pc.cancelMovement(Int32.Parse(movementid.Text));
+            if (result.success)
+            {
+                MessageBox.Show("El documento fue anulado satisfactoriamente");
+                this.Close();
+            }                
+            else
+                MessageBox.Show(result.message);
+        }
 
+        private void movementid_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
