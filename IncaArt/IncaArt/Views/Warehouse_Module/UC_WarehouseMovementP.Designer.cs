@@ -866,6 +866,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn detail;
         private MetroFramework.Controls.MetroDateTime date;
         private MetroFramework.Controls.MetroTile btn_Kardex;
-        private MetroFramework.Controls.MetroDateTime hour;
+        private System.Windows.Forms.DateTimePicker hour;
     }
 }

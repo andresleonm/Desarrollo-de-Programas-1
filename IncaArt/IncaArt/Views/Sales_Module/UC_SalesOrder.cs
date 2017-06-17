@@ -175,10 +175,18 @@ namespace WindowsFormsApp1.Views
             if (customerL.Count != 0)
             {
                 customer = customerL[0];
-                txt_name.Text = customer.Name;
-                txt_address.Text = customer.Address;
-                txt_Doi.Text = customer.Doi;
-                txt_phone.Text = customer.Phone;
+
+                if (customer.Type.Equals("Extranjero"))
+                {
+
+                }
+                else
+                {
+                    txt_name.Text = customer.Name;
+                    txt_address.Text = customer.Address;
+                    txt_Doi.Text = customer.Doi;
+                    txt_phone.Text = customer.Phone;
+                }
             }
         }
 

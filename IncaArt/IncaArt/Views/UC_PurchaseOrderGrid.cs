@@ -96,5 +96,30 @@ namespace WindowsFormsApp1.Views
             po_controller.updatePurchaseOrder(purchase_order);
 
         }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(txt_order.Text))
+            {
+                metroGrid1.Rows.Clear();
+                Models.PurchaseOrder po = new Models.PurchaseOrder();
+                Controller.PurchaseOrderController controller = new Controller.PurchaseOrderController("dp1admin", "dp1admin");
+                Controller.Result result = controller.getPurchaseOrder(int.Parse(txt_order.Text));
+                po = (Models.PurchaseOrder)result.data;
+                if (po != null)
+                {
+                    string[] grid_row = new string[5];
+                    
+                    grid_row[0] = po.Id.ToString();
+                    grid_row[1] = po.Creation_date.ToShortDateString();
+                    grid_row[2] = po.Supplier_name;
+                    grid_row[3] = po.Amount.ToString();
+                    grid_row[4] = po.State;
+                    this.metroGrid1.Rows.Add(grid_row);
+                    
+                }
+
+            }
+        }
     }
 }
