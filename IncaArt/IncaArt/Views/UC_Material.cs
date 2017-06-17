@@ -21,6 +21,7 @@ namespace WindowsFormsApp1.Views
         bool min_flag;
         bool currency_flag;
         bool cost_flag;
+        bool data_loaded;
         int cur_row;
         int operation_value;// 0 para Create, 1 para Update
         List<Models.Material> material_list;
@@ -38,35 +39,27 @@ namespace WindowsFormsApp1.Views
 
         private void UC_Material_Load(object sender, EventArgs e)
         {
-            Set_Flag_All(false);
-            operation_value = 0;
-            string user = "dp1admin";
-            string password = "dp1admin";
-            materialController = new Controller.MaterialsController(user, password);
-            unitController = new Controller.UnitController(user, password);
-            currencyController = new Controller.CurrencyController(user, password);
-            material_list = new List<Models.Material>();
-            currency_list = new List<Currency>();
+            data_loaded = false;
+        }
+
+        private void UC_Material_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!data_loaded)
+            {
+                data_loaded = true;
+                string user = "dp1admin";
+                string password = "dp1admin";
+                materialController = new Controller.MaterialsController(user, password);
+                unitController = new Controller.UnitController(user, password);
+                currencyController = new Controller.CurrencyController(user, password);
+                material_list = new List<Models.Material>();
+                currency_list = new List<Currency>();
+                data_loaded = false;
+                Set_Flag_All(false);
+                operation_value = 0;
+            }
             Load_Data();
             Load_DataGridView();
-            //Cargar los combobox
-            Dictionary<int, string> combo_data = new Dictionary<int, string>();
-            //Unidades
-            combo_data.Add(0, "Seleccionar");
-            foreach (var item in unit_list)
-            {
-                combo_data.Add(item.Id, item.Symbol);
-
-            }
-            combobox_unit.DataSource = new BindingSource(combo_data, null);
-            combobox_unit.DisplayMember = "Value";
-            combobox_unit.ValueMember = "Key";
-
-            combobox_unit_s.DataSource = new BindingSource(combo_data, null);
-            combobox_unit_s.DisplayMember = "Value";
-            combobox_unit_s.ValueMember = "Key";
-
-            metroTabControl1.SelectedIndex = 0;
         }
 
         private void Load_Data()
@@ -110,6 +103,25 @@ namespace WindowsFormsApp1.Views
             combobox_currency.DataSource = new BindingSource(combo_data, null);
             combobox_currency.DisplayMember = "Value";
             combobox_currency.ValueMember = "Key";
+
+            //Cargar los combobox
+            combo_data = new Dictionary<int, string>();
+            //Unidades
+            combo_data.Add(0, "Seleccionar");
+            foreach (var item in unit_list)
+            {
+                combo_data.Add(item.Id, item.Symbol);
+
+            }
+            combobox_unit.DataSource = new BindingSource(combo_data, null);
+            combobox_unit.DisplayMember = "Value";
+            combobox_unit.ValueMember = "Key";
+
+            combobox_unit_s.DataSource = new BindingSource(combo_data, null);
+            combobox_unit_s.DisplayMember = "Value";
+            combobox_unit_s.ValueMember = "Key";
+
+            metroTabControl1.SelectedIndex = 0;
 
         }
 
@@ -787,5 +799,7 @@ namespace WindowsFormsApp1.Views
             }
 
         }
+
+        
     }
 }

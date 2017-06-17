@@ -716,6 +716,7 @@
             this.Size = new System.Drawing.Size(752, 512);
             this.UseCustomBackColor = true;
             this.Load += new System.EventHandler(this.UC_Material_Load);
+            this.VisibleChanged += new System.EventHandler(this.UC_Material_VisibleChanged);
             this.metroTabControl1.ResumeLayout(false);
             this.consulta.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

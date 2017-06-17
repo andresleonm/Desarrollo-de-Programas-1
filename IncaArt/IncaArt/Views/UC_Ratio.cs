@@ -21,7 +21,7 @@ namespace WindowsFormsApp1.Views
         Controller.WorkstationsController workstationController;
         Controller.WorkerController workerController;
         Controller.Result result;
-        bool data_loaded = false;
+        bool data_loaded;
         public UC_Ratio()
         {
             InitializeComponent();
@@ -37,6 +37,7 @@ namespace WindowsFormsApp1.Views
             //workerController = new Controller.WorkerController(user, password);
             //Load_Data();
             //Load_DataGridView();
+            data_loaded = false;
         }
 
         private void UC_Ratio_VisibleChanged(object sender, EventArgs e)
