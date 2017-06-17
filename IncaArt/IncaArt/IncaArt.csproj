@@ -92,6 +92,7 @@
     <Compile Include="Algorithm\Workstation.cs" />
     <Compile Include="Controller\FunctionalityController.cs" />
     <Compile Include="Controller\KardexController.cs" />
+    <Compile Include="Controller\MaterialMovementTypeController.cs" />
     <Compile Include="Controller\ParametersController.cs" />
     <Compile Include="Controller\MaterialMovementController.cs" />
     <Compile Include="Controller\MaterialMovementDetailController.cs" />

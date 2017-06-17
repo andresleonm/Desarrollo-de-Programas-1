@@ -12,6 +12,11 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
 {
     public partial class UC_ProductMovementsType : ICheckPermissions
     {
+        bool cost_flag;
+        bool data_loaded;
+        int cur_row;
+        int operation_value;// 0 para Create, 1 para Update
+        //Controller.MaterialMovementController
         public UC_ProductMovementsType()
         {
             InitializeComponent();

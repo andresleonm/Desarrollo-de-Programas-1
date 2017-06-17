@@ -161,5 +161,18 @@ namespace WindowsFormsApp1.Models
                 max_average_time = value;
             }
         }
+
+        public int Assigned_worker
+        {
+            get
+            {
+                return assigned_worker;
+            }
+
+            set
+            {
+                assigned_worker = value;
+            }
+        }
     }
 }
