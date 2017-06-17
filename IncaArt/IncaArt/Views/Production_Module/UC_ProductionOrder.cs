@@ -54,24 +54,12 @@ namespace WindowsFormsApp1.Views
         private void hide_buttons()
         {
             if (!editing)
-            {
-               /* metroButton_DeleteMaterial.Visible = false;
-                metroButton_DeleteProduct.Visible = false;
-                metroButton_DeleteWork.Visible = false;
-                metroButton_EditMaterial.Visible = false;
-                metroButton_EditProduct.Visible = false;
-                metroButton_EditWork.Visible = false;*/
+            {            
                 metroTextBox_OrderNumber.Visible = false;
                 metroLabel_numOrder.Visible = false;
             }
             else
-            {
-                /*metroButton_DeleteMaterial.Visible = true;
-                metroButton_DeleteProduct.Visible = true;
-                metroButton_DeleteWork.Visible = true;
-                metroButton_EditMaterial.Visible = true;
-                metroButton_EditProduct.Visible = true;
-                metroButton_EditWork.Visible = true;*/
+            {             
                 metroTextBox_OrderNumber.Visible = true;
                 metroLabel_numOrder.Visible = true;
             }
@@ -114,6 +102,7 @@ namespace WindowsFormsApp1.Views
                     if (result.success)
                     {
                         order_id = Int32.Parse(result.data.ToString());
+                        /*
                         //List of products
                         for (int i = 0; i < product_lines.Count; i++)
                         {
@@ -123,7 +112,7 @@ namespace WindowsFormsApp1.Views
                                 result = product_line_controller.insertProductLine(product_lines[i]);
                                 if (!result.success) message += "-" + product_lines[i].Warehouse_name +":" + result.message + "\n";
                             }
-                        }
+                        }*/
                         //List of materials           
                         for (int i = 0; i < material_lines.Count; i++)
                         {
@@ -156,6 +145,7 @@ namespace WindowsFormsApp1.Views
                     Result result=production_controller.updateProductionOrder(production_order);
                     if (!result.success) message += "-" + result.message + "\n";
                     else { 
+                        /*
                         //List of products
                         for (int i = 0; i < product_lines.Count; i++)
                         {
@@ -173,6 +163,7 @@ namespace WindowsFormsApp1.Views
                                 if (!result.success) message += "-" + product_lines[i].Warehouse_name + ":" + result.message + "\n";
                             }                     
                         }
+                        */
                         //List of materials           
                         for (int i = 0; i < material_lines.Count; i++)
                         {
@@ -221,7 +212,7 @@ namespace WindowsFormsApp1.Views
             
           
         }
-        
+        /*
         private void metroButton_AddProduct_Click(object sender, EventArgs e)
         {
             ProductionOrderProductLine product_line = new ProductionOrderProductLine();
@@ -236,7 +227,7 @@ namespace WindowsFormsApp1.Views
             update_SummaryProduct();
             
         }
-
+        */
         private void metroButton_AddMaterial_Click(object sender, EventArgs e)
         {
             Models.ProductionOrderMaterialLine line = new Models.ProductionOrderMaterialLine();
@@ -263,7 +254,7 @@ namespace WindowsFormsApp1.Views
         }
         private void clear_Form()
         {
-            datagrid_Products.Rows.Clear();
+            //datagrid_Products.Rows.Clear();
             metroGrid_Material.Rows.Clear();
             metroGrid_Work.Rows.Clear();
             product_lines.Clear();
@@ -281,7 +272,7 @@ namespace WindowsFormsApp1.Views
             metroDateTime_Begin.Text = "";
             metroDateTime_End.Text = "";
         }
-        
+        /*
         private void Load_Product_DataGridView()
         {
             datagrid_Products.Rows.Clear();
@@ -309,7 +300,7 @@ namespace WindowsFormsApp1.Views
              }
 
           }
-
+          */
         private void Load_Material_DataGridView()
         {
             metroGrid_Material.Rows.Clear();
@@ -384,7 +375,7 @@ namespace WindowsFormsApp1.Views
             metroTextBox_Description.Text = order.Description;
             metroTextBox_Observation.Text = order.Observation;
             //List
-            Load_Product_DataGridView();
+            //Load_Product_DataGridView();
             Load_Material_DataGridView();
             Load_Work_DataGridView();
             update_SummaryMaterial();
@@ -421,7 +412,7 @@ namespace WindowsFormsApp1.Views
             clear_Form();
             this.Visible = false;
         }
-
+        /*
         private void metroButton_EditProduct_Click(object sender, EventArgs e)
         {
             if (datagrid_Products.Rows.Count > 0)
@@ -440,7 +431,7 @@ namespace WindowsFormsApp1.Views
             update_SummaryProduct();
             update_SummaryMaterial();
         }
-
+        */
         private void metroButton_EditMaterial_Click(object sender, EventArgs e)
         {
             if (metroGrid_Material.Rows.Count > 0)
@@ -484,7 +475,7 @@ namespace WindowsFormsApp1.Views
             update_SummaryProduct();
 
         }
-
+        /*
         private void metroButton_DeleteProduct_Click(object sender, EventArgs e)
         {
             if (datagrid_Products.Rows.Count > 0)
@@ -510,7 +501,7 @@ namespace WindowsFormsApp1.Views
                 }
             }
         }
-
+        */
         private void metroButton_DeleteMaterial_Click(object sender, EventArgs e)
         {
             if (metroGrid_Material.Rows.Count > 0)
@@ -741,9 +732,5 @@ namespace WindowsFormsApp1.Views
             validate_end_datetime(date_time);
         }
 
-        private void metroDateTime_End_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
