@@ -298,17 +298,18 @@ namespace WindowsFormsApp1.Algorithm
             if (solution == null) return -1;
 
             double total_break = 0;
-            double total_time = 0;
+            double total_earning = 0;
 
             foreach (ProductLineAssignment set in solution)
             {
                 double partial_break = 0;
-                double partial_time = 0;
+                double partial_earning = 0;                
                 double product_quantity = 0;
                 foreach (Assignment assignment in set.assignments)
                 {
+                    int count = 0; // Cuenta si ya analizó los dos ratios
                     foreach (Ratio r in assignment.assigned_worker.ratios)
-                    {
+                    {                        
                         if (r.workstation.Equals(assignment.assigned_workstation) && (r.type == "Efficiency"))
                         {
                             foreach (Tuple<int, Product> tuple in product_quantities)
@@ -319,16 +320,31 @@ namespace WindowsFormsApp1.Algorithm
                                     if (tuple.Item2.name == "Retablo") product_quantity = tuple.Item1 / needed_retablo;
                                     else if (tuple.Item2.name == "Ceramico") product_quantity = tuple.Item1 / needed_ceramico;
                                     else if (tuple.Item2.name == "Piedra") product_quantity = tuple.Item1 / needed_piedra;
+                                    count++;
+                                    break;
+                                }                                
+                            }
+                            if(count == 2) break;
+                        }
+                        else if(r.workstation.Equals(assignment.assigned_workstation) && (r.type == "Time"))
+                        {
+                            foreach (Tuple<int, Product> tuple in product_quantities)
+                            {
+                                if (tuple.Item2.Equals(assignment.assigned_workstation.product))
+                                {
+                                    partial_earning = partial_earning + r.value * assignment.assigned_worker.ratios.Where(ra => ra.type == "Efficiency" && ra.workstation.Equals(assignment.assigned_workstation)).ElementAt(0).value*tuple.Item2.unit_price;                                    
+                                    count++;    
                                     break;
                                 }
                             }
-                            break;
+                            if (count == 2) break;
                         }
                     }
                 }
+                total_earning = total_earning + (partial_earning / set.assignments.Count()) * product_quantity;
                 total_break = total_break + (partial_break / set.assignments.Count()) * product_quantity;                
             }
-            return 1 / total_break;
+            return 1 / (total_earning-total_break);
         }
 
         private void copyElements(ref List<ProductLineAssignment> pla1, List<ProductLineAssignment> pla2)
