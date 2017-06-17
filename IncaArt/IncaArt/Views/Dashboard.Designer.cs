@@ -83,6 +83,7 @@ namespace WindowsFormsApp1.Views
             this.uc_ratio = new WindowsFormsApp1.Views.UC_Ratio();
             this.uC_CurrencyMain1 = new WindowsFormsApp1.Views.Currency_Module.UC_CurrencyMain();
             this.workersPerformance_Report1 = new WindowsFormsApp1.Views.WorkersPerformance_Report();
+            this.uC_MovementsType1 = new WindowsFormsApp1.Views.MovementsType_Module.UC_MovementsType();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -725,12 +726,21 @@ namespace WindowsFormsApp1.Views
             this.workersPerformance_Report1.Size = new System.Drawing.Size(819, 514);
             this.workersPerformance_Report1.TabIndex = 60;
             // 
+            // uC_MovementsType1
+            // 
+            this.uC_MovementsType1.Location = new System.Drawing.Point(132, 72);
+            this.uC_MovementsType1.Name = "uC_MovementsType1";
+            this.uC_MovementsType1.Size = new System.Drawing.Size(597, 735);
+            this.uC_MovementsType1.TabIndex = 62;
+            this.uC_MovementsType1.UseSelectable = true;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(951, 586);
+            this.Controls.Add(this.uC_MovementsType1);
             this.Controls.Add(this.workersPerformance_Report1);
             this.Controls.Add(this.uC_CurrencyMain1);
             this.Controls.Add(this.typeWarehouseMain1);
@@ -832,5 +842,6 @@ namespace WindowsFormsApp1.Views
         private System.Windows.Forms.Button button1;
         private WindowsFormsApp1.Views.Reports_Module.ReportDashboard uc_reports;
         private WorkersPerformance_Report workersPerformance_Report1;
+        private MovementsType_Module.UC_MovementsType uC_MovementsType1;
     }
 }

@@ -71,18 +71,25 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
-            List<ProductWarehouseM> warehouses = (List<ProductWarehouseM>)grid_products.DataSource;
-            int i = 0;
-            foreach (ProductWarehouseM warehouse in warehouses)
-            {                
-                if (warehouse.selected)
+            try
+            {
+                List<ProductWarehouseM> warehouses = (List<ProductWarehouseM>)grid_products.DataSource;
+                int i = 0;
+                foreach (ProductWarehouseM warehouse in warehouses)
                 {
-                    lines.Add(new Models.ProductMovementLine(user,password,warehouse, i + 1));
+                    if (warehouse.selected)
+                    {
+                        lines.Add(new Models.ProductMovementLine(user, password, warehouse, i + 1));
+                    }
+                    i++;
                 }
-                i++;
-            }
-            this.Close();
 
+                this.Close();
+            }
+            catch
+            {
+                this.Close();
+            }
         }
     }
 }
