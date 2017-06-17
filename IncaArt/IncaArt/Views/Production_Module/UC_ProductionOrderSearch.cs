@@ -122,7 +122,7 @@ namespace WindowsFormsApp1.Views
 
         public override void CheckPermissions(User u)
         {
-            base.CheckPermissions(u);
+            //base.CheckPermissions(u);
             if(!u.Profile.HasFunctionality("EDIT PRODUCTION ORDER"))
             {
                 btn_edit.Visible = false;

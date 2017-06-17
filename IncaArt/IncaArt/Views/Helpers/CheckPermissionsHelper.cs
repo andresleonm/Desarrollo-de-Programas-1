@@ -19,7 +19,7 @@ namespace WindowsFormsApp1.Views.Helpers
                     ICheckPermissions checker = (ICheckPermissions)o;
                     checker.CheckPermissions(user);
                 }
-                else if (o is MetroFramework.Controls.MetroPanel)
+                else if (o is MetroFramework.Controls.MetroPanel || o is Panel)
                 {
                     Check(o, user);
                 }
