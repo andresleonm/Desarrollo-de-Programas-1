@@ -178,7 +178,9 @@ namespace WindowsFormsApp1.Views
 
                 if (customer.Type.Equals("Extranjero"))
                 {
-
+                    var estimateL = new List<SalesEstimate>();
+                    Sales_Module.SalesOrderEstimate search_view2 = new Sales_Module.SalesOrderEstimate(ref estimateL, user, password, customer.Id);
+                    search_view2.ShowDialog();
                 }
                 else
                 {
