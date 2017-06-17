@@ -87,9 +87,9 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("customer_address", sales_order.Customer_address));
             parameters.Add(new Parameter("customer_phone", sales_order.Customer_phone));
             parameters.Add(new Parameter("amount", sales_order.Amount.ToString()));
-            parameters.Add(new Parameter("state", sales_order.Status));
+            parameters.Add(new Parameter("state", "Registrado"));
             parameters.Add(new Parameter("customer_doi", sales_order.Customer_doi));
-            parameters.Add(new Parameter("issue_date", sales_order.Issue_date.ToString("MM/dd/yyyy")));
+            parameters.Add(new Parameter("issue_date", sales_order.Issue_date.ToString("MM/dd/yyyy hh:mm:ss")));
             parameters.Add(new Parameter("observation", sales_order.Observation));
             GenericResult result = execute_transaction("insert_sales_order", parameters);
             if (result.success)
@@ -109,9 +109,9 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("customer_address", sales_order.Customer_address));
             parameters.Add(new Parameter("customer_phone", sales_order.Customer_phone));
             parameters.Add(new Parameter("amount", sales_order.Amount.ToString()));
-            parameters.Add(new Parameter("state", sales_order.Status));
+            parameters.Add(new Parameter("state", "Registrado"));
             parameters.Add(new Parameter("customer_doi", sales_order.Customer_doi));
-            parameters.Add(new Parameter("issue_date", sales_order.Issue_date.ToString("MM/dd/yyyy")));
+            parameters.Add(new Parameter("issue_date", sales_order.Issue_date.ToString("MM/dd/yyyy hh:mm:ss")));
             parameters.Add(new Parameter("observation", sales_order.Observation));
             GenericResult result = execute_transaction("update_sales_order", parameters);
             if (result.success)

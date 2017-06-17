@@ -39,6 +39,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             hour.Format = DateTimePickerFormat.Custom;
             hour.CustomFormat = "HH:mm tt";
             hour.Value = DateTime.Now.Date;
+            Clean();
+            Clean();
         }
         public void fillTypeMovements()
         {
@@ -318,7 +320,9 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
                 ViewWarehouseMovementM order_line = new ViewWarehouseMovementM(user, password, currentObject);
                 order_line.ShowDialog();
-            }catch(Exception exc)
+                buttonSearchV.PerformClick();
+            }
+            catch(Exception exc)
             {
 
             }
@@ -327,7 +331,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
         private void buttonSearchV_Click(object sender, EventArgs e)
         {
-            var movements = (List<MaterialMovement>)pc.getMovements().data;
+            var movements = (List<MaterialMovement>)pc.getMovements(this.fec_ini.Value.ToString("yyyy-MM-dd"),
+                                this.fec_fin.Value.ToString("yyyy-MM-dd")).data;
             movements_grid.DataSource = movements;
         }
 
@@ -375,6 +380,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             textbox_observation.Text = "";
             date.Text = "";
             hour.Text="";
+            fec_fin.Text = "";
+            fec_ini.Text = "";
             AdjustColumnOrder();
             fillTypeMovements();
             clearGrid();
@@ -386,5 +393,111 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             tab_movement.SelectedIndex = 0;
             buttonSearchV.PerformClick();
         }
+
+        private int make_move(int sal_ini, string sign, int quantity)
+        {
+            if (sign == "+")
+                return sal_ini + quantity;
+            return sal_ini - quantity;
+        }
+
+        private void btn_Kardex_Click(object sender, EventArgs e)
+        {
+            KardexController kc = new KardexController("dp1admin", "dp1admin");
+            var lines = (List<KardexLine>)kc.getMovementsm(this.fec_ini.Value.ToString("yyyy-MM-dd"),
+                                this.fec_fin.Value.ToString("yyyy-MM-dd")).data;
+
+
+
+            // Creating a Excel object. 
+            Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+
+            try
+            {
+
+                worksheet = workbook.ActiveSheet;
+
+                worksheet.Name = "Kardex";
+
+                int cellRowIndex = 3;
+                int cellColumnIndex = 3;
+                int productAnt = 0;
+
+                List<string> headers = new List<string>();
+
+
+
+                headers.Add("Almacen");
+                headers.Add("Movimiento");
+                headers.Add("Cantidad");
+                headers.Add("Fecha");
+
+
+                int saldo_fin = 0;
+                //Loop through each row and read value from each column. 
+                for (int i = 0; i < lines.Count; i++)
+                {
+                    if (Int32.Parse(lines[i].codeProduct) != productAnt)
+                    {
+                        if (productAnt != 0)
+                        {
+                            cellRowIndex += 1;
+                            worksheet.Cells[cellRowIndex, cellColumnIndex + 3] = "Saldo Final";
+                            worksheet.Cells[cellRowIndex, cellColumnIndex + 4] = saldo_fin;
+                            cellRowIndex += 2;
+                        }
+                        saldo_fin = lines[i].sal_ini;
+                        worksheet.Cells[cellRowIndex, cellColumnIndex] = "Material";
+                        worksheet.Cells[cellRowIndex, cellColumnIndex + 1] = lines[i].product;
+                        worksheet.Cells[cellRowIndex, cellColumnIndex + 3] = "Saldo Inicial";
+                        worksheet.Cells[cellRowIndex, cellColumnIndex + 4] = lines[i].sal_ini;
+                        cellRowIndex += 1;
+                    }
+
+                    for (int j = 0; j < headers.Count; j++)
+                    {
+                        worksheet.Cells[cellRowIndex, cellColumnIndex + 1] = lines[i].Cells(j);
+                        cellColumnIndex++;
+                    }
+                    productAnt = Int32.Parse(lines[i].codeProduct);
+                    saldo_fin = make_move(saldo_fin, lines[i].sign, lines[i].quantity);
+                    cellColumnIndex = 3;
+                    cellRowIndex++;
+                }
+
+                if (productAnt != 0)
+                {
+                    cellRowIndex += 1;
+                    worksheet.Cells[cellRowIndex, cellColumnIndex + 3] = "Saldo Final";
+                    worksheet.Cells[cellRowIndex, cellColumnIndex + 4] = saldo_fin;
+                    cellRowIndex += 2;
+                }
+                //Getting the location and file name of the excel to save from user. 
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                saveDialog.FilterIndex = 2;
+
+                if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    workbook.SaveAs(saveDialog.FileName);
+                    workbook.Close();
+                    MessageBox.Show("Exportado correctamente", "Notificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                excel.Quit();
+                workbook = null;
+                excel = null;
+            }
+
+        }
+    
     }
 }

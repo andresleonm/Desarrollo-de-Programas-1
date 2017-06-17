@@ -19,30 +19,43 @@ namespace WindowsFormsApp1.Views
 
         private void UC_SalesMain_Load(object sender, EventArgs e)
         {
+            uC_SalesEstimate1.Visible = false;
             uC_SalesOrder2.Visible = false;
             uC_SalesDocument2.Visible = false;
             uC_SalesRefund1.Visible = false;
         }
 
-        private void orders_Click(object sender, EventArgs e)
+        private void btn_Estimates_Click(object sender, EventArgs e)
+        {
+            uC_SalesEstimate1.Visible = true;
+            uC_SalesOrder2.Visible = false;
+            uC_SalesDocument2.Visible = false;
+            uC_SalesRefund1.Visible = false;
+        }
+
+        private void btn_Orders_Click(object sender, EventArgs e)
         {
             uC_SalesOrder2.Visible = true;
             uC_SalesDocument2.Visible = false;
             uC_SalesRefund1.Visible = false;
+            uC_SalesEstimate1.Visible = false;
         }
 
-        private void documents_Click(object sender, EventArgs e)
+        private void btn_Documents_Click(object sender, EventArgs e)
         {
             uC_SalesDocument2.Visible = true;
+            uC_SalesEstimate1.Visible = false;
             uC_SalesOrder2.Visible = false;
             uC_SalesRefund1.Visible = false;
         }
 
-        private void refunds_Click(object sender, EventArgs e)
+        private void btn_Refunds_Click(object sender, EventArgs e)
         {
+            
             uC_SalesRefund1.Visible = true;
-            uC_SalesDocument2.Visible = false;
+            uC_SalesEstimate1.Visible = false;
             uC_SalesOrder2.Visible = false;
+            uC_SalesDocument2.Visible = false;
         }
     }
 }

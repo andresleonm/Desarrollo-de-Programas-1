@@ -143,7 +143,7 @@ namespace WindowsFormsApp1.Views
         private void ProductionOrderProductLine_Load(object sender, EventArgs e)
         {
             MaximizeBox = false;
-            Result result = product_controller.getProducts();
+            Result result = product_controller.getProducts_withWarehouses();
             this.products = (List<Product>)result.data;
             comboBox_Product.DataSource = products;
             comboBox_Product.DisplayMember = "name";

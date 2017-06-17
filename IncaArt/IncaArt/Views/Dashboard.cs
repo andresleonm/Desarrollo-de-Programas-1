@@ -41,6 +41,7 @@ namespace WindowsFormsApp1.Views
             mainDashboard1.Controls.Find("metroTile13", false)[0].Click += btn_typewarehouses_Click;
             mainDashboard1.Controls.Find("metroTile16", false)[0].Click += btn_ratio_Click;
             mainDashboard1.Controls.Find("metroTile15", false)[0].Click += btn_currency_Click;
+            uc_reports.Controls.Find("metroTile8", false)[0].Click += btn_wperformance_Click;
             this.sessionUser = sessionUser;
             label_user_role.Text = "(" + sessionUser.Profile.Description + ")";
             label_user_name.Text = sessionUser.Name + " " + sessionUser.Middlename;
@@ -284,6 +285,18 @@ namespace WindowsFormsApp1.Views
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            uc_reports.Visible = true;
+        }
+        
+        private void btn_wperformance_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            workersPerformance_Report1.Visible = true;
         }
     }
 }

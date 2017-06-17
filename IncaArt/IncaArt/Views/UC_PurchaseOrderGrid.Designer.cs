@@ -51,9 +51,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_search = new System.Windows.Forms.Button();
             this.combo_state = new MetroFramework.Controls.MetroComboBox();
-            this.metroDateTime2 = new MetroFramework.Controls.MetroDateTime();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
-            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
+            this.date_order = new MetroFramework.Controls.MetroDateTime();
+            this.txt_order = new MetroFramework.Controls.MetroTextBox();
+            this.date_due = new MetroFramework.Controls.MetroDateTime();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
@@ -67,7 +67,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.btn_delete);
             this.panel1.Controls.Add(this.btn_edit);
             this.panel1.Controls.Add(this.metroLabel1);
@@ -108,7 +108,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.BackColor = System.Drawing.SystemColors.Control;
+            this.metroLabel1.BackColor = System.Drawing.Color.White;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel1.ForeColor = System.Drawing.Color.Black;
@@ -245,12 +245,12 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.btn_search);
             this.groupBox1.Controls.Add(this.combo_state);
-            this.groupBox1.Controls.Add(this.metroDateTime2);
-            this.groupBox1.Controls.Add(this.metroTextBox1);
-            this.groupBox1.Controls.Add(this.metroDateTime1);
+            this.groupBox1.Controls.Add(this.date_order);
+            this.groupBox1.Controls.Add(this.txt_order);
+            this.groupBox1.Controls.Add(this.date_due);
             this.groupBox1.Controls.Add(this.metroLabel14);
             this.groupBox1.Controls.Add(this.metroLabel13);
             this.groupBox1.Controls.Add(this.metroLabel12);
@@ -275,6 +275,7 @@
             this.btn_search.TabIndex = 62;
             this.btn_search.Text = "Buscar";
             this.btn_search.UseVisualStyleBackColor = false;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // combo_state
             // 
@@ -289,58 +290,58 @@
             this.combo_state.TabIndex = 49;
             this.combo_state.UseSelectable = true;
             // 
-            // metroDateTime2
+            // date_order
             // 
-            this.metroDateTime2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTime2.Location = new System.Drawing.Point(128, 60);
-            this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
-            this.metroDateTime2.Name = "metroDateTime2";
-            this.metroDateTime2.Size = new System.Drawing.Size(200, 29);
-            this.metroDateTime2.TabIndex = 48;
+            this.date_order.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.date_order.Location = new System.Drawing.Point(128, 60);
+            this.date_order.MinimumSize = new System.Drawing.Size(0, 29);
+            this.date_order.Name = "date_order";
+            this.date_order.Size = new System.Drawing.Size(200, 29);
+            this.date_order.TabIndex = 48;
             // 
-            // metroTextBox1
-            // 
-            // 
+            // txt_order
             // 
             // 
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(172, 1);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(128, 17);
-            this.metroTextBox1.MaxLength = 32767;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(200, 29);
-            this.metroTextBox1.TabIndex = 47;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroDateTime1
             // 
-            this.metroDateTime1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTime1.Location = new System.Drawing.Point(467, 63);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
-            this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(200, 29);
-            this.metroDateTime1.TabIndex = 46;
+            this.txt_order.CustomButton.Image = null;
+            this.txt_order.CustomButton.Location = new System.Drawing.Point(172, 1);
+            this.txt_order.CustomButton.Name = "";
+            this.txt_order.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_order.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txt_order.CustomButton.TabIndex = 1;
+            this.txt_order.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txt_order.CustomButton.UseSelectable = true;
+            this.txt_order.CustomButton.Visible = false;
+            this.txt_order.Lines = new string[0];
+            this.txt_order.Location = new System.Drawing.Point(128, 17);
+            this.txt_order.MaxLength = 32767;
+            this.txt_order.Name = "txt_order";
+            this.txt_order.PasswordChar = '\0';
+            this.txt_order.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_order.SelectedText = "";
+            this.txt_order.SelectionLength = 0;
+            this.txt_order.SelectionStart = 0;
+            this.txt_order.ShortcutsEnabled = true;
+            this.txt_order.Size = new System.Drawing.Size(200, 29);
+            this.txt_order.TabIndex = 47;
+            this.txt_order.UseSelectable = true;
+            this.txt_order.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txt_order.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // date_due
+            // 
+            this.date_due.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.date_due.Location = new System.Drawing.Point(467, 63);
+            this.date_due.MinimumSize = new System.Drawing.Size(0, 29);
+            this.date_due.Name = "date_due";
+            this.date_due.Size = new System.Drawing.Size(200, 29);
+            this.date_due.TabIndex = 46;
             // 
             // metroLabel14
             // 
             this.metroLabel14.AutoSize = true;
-            this.metroLabel14.BackColor = System.Drawing.SystemColors.Control;
+            this.metroLabel14.BackColor = System.Drawing.Color.White;
             this.metroLabel14.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel14.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel14.ForeColor = System.Drawing.Color.DarkCyan;
@@ -355,7 +356,7 @@
             // metroLabel13
             // 
             this.metroLabel13.AutoSize = true;
-            this.metroLabel13.BackColor = System.Drawing.SystemColors.Control;
+            this.metroLabel13.BackColor = System.Drawing.Color.White;
             this.metroLabel13.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel13.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel13.ForeColor = System.Drawing.Color.DarkCyan;
@@ -370,7 +371,7 @@
             // metroLabel12
             // 
             this.metroLabel12.AutoSize = true;
-            this.metroLabel12.BackColor = System.Drawing.SystemColors.Control;
+            this.metroLabel12.BackColor = System.Drawing.Color.White;
             this.metroLabel12.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel12.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel12.ForeColor = System.Drawing.Color.DarkCyan;
@@ -385,7 +386,7 @@
             // metroLabel11
             // 
             this.metroLabel11.AutoSize = true;
-            this.metroLabel11.BackColor = System.Drawing.SystemColors.Control;
+            this.metroLabel11.BackColor = System.Drawing.Color.White;
             this.metroLabel11.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel11.ForeColor = System.Drawing.Color.DarkCyan;
@@ -429,9 +430,9 @@
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroLabel metroLabel12;
         private MetroFramework.Controls.MetroLabel metroLabel11;
-        private MetroFramework.Controls.MetroDateTime metroDateTime1;
-        private MetroFramework.Controls.MetroDateTime metroDateTime2;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
+        private MetroFramework.Controls.MetroDateTime date_due;
+        private MetroFramework.Controls.MetroDateTime date_order;
+        private MetroFramework.Controls.MetroTextBox txt_order;
         private MetroFramework.Controls.MetroGrid metroGrid1;
         private System.Windows.Forms.DataGridViewTextBoxColumn purchase_order;
         private System.Windows.Forms.DataGridViewTextBoxColumn purchase_order_date;

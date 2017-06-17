@@ -27,7 +27,6 @@ namespace WindowsFormsApp1.Views
         Controller.CustomerController customerController;
         Controller.Result result;
         int priority_list = 10;
-        int type_list = 4;
         Dictionary<int, string> combo_priority;
         Dictionary<int, string> combo_type;
 

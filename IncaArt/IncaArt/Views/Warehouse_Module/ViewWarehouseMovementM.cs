@@ -33,6 +33,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             this.grid_movement_lines.DataSource=pm.detail;
             this.textbox_observation.Text = pm.Observacion;
             this.fecha.Text = pm.Fecha;
+            this.movementid.Text = movement.id.ToString();
             types_movements.SelectedIndex = types_movements.FindString(pm.Tipo.name);
             document.Text = pm.TipoDocumentoOrigen + " - "+pm.NroDocumentoOrigen.ToString();
             var mov = movement.Tipo;
@@ -139,6 +140,16 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
         }
 
-
+        private void btn_Save_Click_1(object sender, EventArgs e)
+        {
+            var result = pc.cancelMovement(Int32.Parse(movementid.Text));
+            if (result.success)
+            {
+                MessageBox.Show("El documento fue anulado satisfactoriamente");
+                this.Close();
+            }
+            else
+                MessageBox.Show(result.message);
+        }
     }
 }
