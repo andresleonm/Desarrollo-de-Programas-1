@@ -411,6 +411,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             textbox_observation.Text = "";
             date.Text = "";
             hour.Text = "";
+            metroDateTime1.Text = "";
+            metroDateTime2.Text = "";
             AdjustColumnOrder();
             fillTypeMovements();
             clearGrid();

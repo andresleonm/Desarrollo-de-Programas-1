@@ -56,5 +56,10 @@ namespace WindowsFormsApp1.Views.Reports_Module
         {
 
         }
+
+        private void metroTile8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

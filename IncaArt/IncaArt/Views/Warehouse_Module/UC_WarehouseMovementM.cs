@@ -39,7 +39,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             hour.Format = DateTimePickerFormat.Custom;
             hour.CustomFormat = "HH:mm tt";
             hour.Value = DateTime.Now.Date;
-            btn_Clean.PerformClick();
+            Clean();
+            Clean();
         }
         public void fillTypeMovements()
         {
@@ -379,6 +380,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             textbox_observation.Text = "";
             date.Text = "";
             hour.Text="";
+            fec_fin.Text = "";
+            fec_ini.Text = "";
             AdjustColumnOrder();
             fillTypeMovements();
             clearGrid();

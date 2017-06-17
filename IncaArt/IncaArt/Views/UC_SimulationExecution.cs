@@ -81,6 +81,7 @@ namespace WindowsFormsApp1.Views
         {
             if (this.Visible == true)
             {
+                Cursor = Cursors.Arrow;
                 this.metroGrid1.Rows.Clear();
                 List<Algorithm.ProductLineAssignment> solution =
                     ((UC_SimulationConfig)(Parent.Controls.Find("UC_SimulationConfig2", true))[0]).solution;
