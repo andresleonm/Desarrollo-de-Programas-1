@@ -94,7 +94,7 @@ namespace WindowsFormsApp1.Views
                 int order_id;
                 string message="";
 
-                Models.ProductionOrder production_order = new Models.ProductionOrder(description,observations,begin,end,status);
+                Models.ProductionOrder production_order=new Models.ProductionOrder();// = new Models.ProductionOrder(description,observations,begin,end,status);
                 if (!editing)
                 {
                     //INSERT
