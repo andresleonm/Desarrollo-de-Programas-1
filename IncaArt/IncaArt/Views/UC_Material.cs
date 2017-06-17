@@ -420,17 +420,28 @@ namespace WindowsFormsApp1.Views
                     e.Handled = true;
                 }
             }
-
-            if ((textbox.Name == "textbox_cost") && (e.KeyChar == '.'))
+            if (textbox.Name == "textbox_cost")
             {
-                e.Handled = false;
-            }
+                if (e.KeyChar == '.')
+                {
+                    e.Handled = false;
+                }
+                if ((e.KeyChar == '.') && (textbox.Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
 
-            // only allow one decimal point
-            if ((textbox.Name == "textbox_cost") && (e.KeyChar == '.') && (textbox.Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
             }
+            //if ((textbox.Name == "textbox_cost") && (e.KeyChar == '.'))
+            //{
+            //    e.Handled = false;
+            //}
+
+            //// only allow one decimal point
+            //if ((textbox.Name == "textbox_cost") && (e.KeyChar == '.') && (textbox.Text.IndexOf('.') > -1))
+            //{
+            //    e.Handled = true;
+            //}
         }
 
 
