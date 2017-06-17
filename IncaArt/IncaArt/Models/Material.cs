@@ -19,6 +19,8 @@ namespace WindowsFormsApp1.Models
         int current_logical_stock;
         int current_physical_stock;
         string description;
+        int currency_id;
+
 
         public Material()
         {
@@ -175,6 +177,19 @@ namespace WindowsFormsApp1.Models
             set
             {
                 stock_min = value;
+            }
+        }
+
+        public int Currency_id
+        {
+            get
+            {
+                return currency_id;
+            }
+
+            set
+            {
+                currency_id = value;
             }
         }
     }

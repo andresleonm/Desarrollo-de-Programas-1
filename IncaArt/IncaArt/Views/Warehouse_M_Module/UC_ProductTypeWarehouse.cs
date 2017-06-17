@@ -35,9 +35,9 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             string password = "dp1admin";
             typewarehouseController = new Controller.ProductTypeWarehouseController(user, password);
 
-            combo_class.Add(2, "Seleccionar"); //0: Ventas 1 :Observación
+            combo_class.Add(2, "Seleccionar"); //0: Ventas 1 :No Ventas
             combo_class.Add(0, "Ventas");
-            combo_class.Add(1, "Observación");
+            combo_class.Add(1, "No Ventas");
 
             combobox_class.DataSource = new BindingSource(combo_class, null);
             combobox_class.DisplayMember = "Value";

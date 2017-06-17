@@ -306,7 +306,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
                         if (!result.success)
                             MessageBox.Show(this, result.message);
 
-
                     }
                     btn_Clean.PerformClick();
                     tab_Document.SelectedIndex = 0;

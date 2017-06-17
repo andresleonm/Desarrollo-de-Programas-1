@@ -21,13 +21,20 @@ namespace WindowsFormsApp1.Controller
             List<Parameter> parameters = new List<Parameter>();
             GenericResult result = execute_function("get_materials", parameters);
             List<Models.Material> materials = new List<Models.Material>();
+            Models.Material item;
             if (result.success)
             {
                 foreach (Row r in result.data)
                 {
-                    materials.Add(new Models.Material(
-                        Int32.Parse(r.getColumn(0)),Int32.Parse(r.getColumn(1)),r.getColumn(2),Int32.Parse(r.getColumn(3)),Int32.Parse(r.getColumn(4))
-                        ));
+                    item = new Models.Material();
+                    item.Id = Int32.Parse(r.getColumn(0));
+                    item.Unit_id = Int32.Parse(r.getColumn(1));
+                    item.Name = r.getColumn(2);
+                    item.Stock_min = Int32.Parse(r.getColumn(3));
+                    item.Stock_max = Int32.Parse(r.getColumn(4));
+                    item.Average_cost = double.Parse(r.getColumn(5));
+                    item.Currency_id = Int32.Parse(r.getColumn(6));
+                    materials.Add(item);
                 }
                 return new Result(materials, true, "");
             }
@@ -38,18 +45,27 @@ namespace WindowsFormsApp1.Controller
         {
             //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
-            if (material.Name != "") parameters.Add(new Parameter("name", material.Name));
-            if (material.Unit_id != 0) parameters.Add(new Parameter("unit_id", material.Unit_id.ToString()));
-            
+            if (material != null)
+            {
+                if (material.Name != "") parameters.Add(new Parameter("name", material.Name));
+                if (material.Unit_id != 0) parameters.Add(new Parameter("unit_id", material.Unit_id.ToString()));
+            }
             GenericResult result = execute_function("get_materials2", parameters);
             List<Models.Material> materials = new List<Models.Material>();
+            Models.Material item;
             if (result.success)
             {
                 foreach (Row r in result.data)
                 {
-                    materials.Add(new Models.Material(
-                        Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), r.getColumn(2), Int32.Parse(r.getColumn(3)), Int32.Parse(r.getColumn(4))
-                        ));
+                    item = new Models.Material();
+                    item.Id = Int32.Parse(r.getColumn(0));
+                    item.Unit_id = Int32.Parse(r.getColumn(1));
+                    item.Name = r.getColumn(2);
+                    item.Stock_min = Int32.Parse(r.getColumn(3));
+                    item.Stock_max = Int32.Parse(r.getColumn(4));
+                    item.Average_cost = double.Parse(r.getColumn(5));
+                    item.Currency_id = Int32.Parse(r.getColumn(6));
+                    materials.Add(item);
                 }
                 return new Result(materials, true, "");
             }
@@ -66,6 +82,8 @@ namespace WindowsFormsApp1.Controller
             {
                 var r = result.data[0];
                 Models.Material material = new Models.Material(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)), r.getColumn(2), Int32.Parse(r.getColumn(3)), Int32.Parse(r.getColumn(4)));
+                material.Average_cost = double.Parse(r.getColumn(5));
+                material.Currency_id = Int32.Parse(r.getColumn(6));
                 return new Result(material, true, "");
             }
             return new Result(null, result.success, result.message);
@@ -99,6 +117,8 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("unit_id", material.Unit_id.ToString()));
             parameters.Add(new Parameter("stock_min", material.Stock_min.ToString()));
             parameters.Add(new Parameter("stock_max", material.Stock_max.ToString()));
+            parameters.Add(new Parameter("average_cost", material.Average_cost.ToString()));
+            parameters.Add(new Parameter("currency_id", material.Currency_id.ToString()));
             GenericResult result = execute_transaction("insert_material", parameters);
             if (result.success)
             {
@@ -115,6 +135,8 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("unit_id", material.Unit_id.ToString()));
             parameters.Add(new Parameter("stock_min", material.Stock_min.ToString()));
             parameters.Add(new Parameter("stock_max", material.Stock_max.ToString()));
+            parameters.Add(new Parameter("average_cost", material.Average_cost.ToString()));
+            parameters.Add(new Parameter("currency_id", material.Currency_id.ToString()));
             GenericResult result = execute_transaction("update_material", parameters);
             if (result.success)
             {

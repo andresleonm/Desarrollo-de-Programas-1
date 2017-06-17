@@ -263,6 +263,24 @@
     <Compile Include="Views\MainDashboard.Designer.cs">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\MovementsType_Module\UC_MaterialMovementsType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\MovementsType_Module\UC_MaterialMovementsType.Designer.cs">
+      <DependentUpon>UC_MaterialMovementsType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MovementsType_Module\UC_MovementsType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\MovementsType_Module\UC_MovementsType.Designer.cs">
+      <DependentUpon>UC_MovementsType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MovementsType_Module\UC_ProductMovementsType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\MovementsType_Module\UC_ProductMovementsType.Designer.cs">
+      <DependentUpon>UC_ProductMovementsType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Production_Module\ProductionOrderMaterialLine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -679,6 +697,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MovementsType_Module\UC_MaterialMovementsType.resx">
+      <DependentUpon>UC_MaterialMovementsType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MovementsType_Module\UC_MovementsType.resx">
+      <DependentUpon>UC_MovementsType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MovementsType_Module\UC_ProductMovementsType.resx">
+      <DependentUpon>UC_ProductMovementsType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Production_Module\ProductionOrderMaterialLine.resx">
       <DependentUpon>ProductionOrderMaterialLine.cs</DependentUpon>

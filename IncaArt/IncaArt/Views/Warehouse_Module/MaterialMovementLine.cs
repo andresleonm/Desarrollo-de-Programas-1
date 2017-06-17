@@ -75,18 +75,25 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
-            List<MaterialWarehouseM> warehouses = (List<MaterialWarehouseM>)grid_materials.DataSource;
-            int i = 0;
-            foreach (MaterialWarehouseM warehouse in warehouses)
-            {                
-                if (warehouse.selected)
+            try
+            {
+                List<MaterialWarehouseM> warehouses = (List<MaterialWarehouseM>)grid_materials.DataSource;
+                int i = 0;
+                foreach (MaterialWarehouseM warehouse in warehouses)
                 {
-                    lines.Add(new Models.MaterialMovementLine(user,password,warehouse, i + 1));
+                    if (warehouse.selected)
+                    {
+                        lines.Add(new Models.MaterialMovementLine(user, password, warehouse, i + 1));
+                    }
+                    i++;
                 }
-                i++;
-            }
-            this.Close();
 
+                this.Close();
+            }
+            catch
+            {
+                this.Close();
+            }
         }
     }
 }
