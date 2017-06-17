@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class Warehouse : MetroFramework.Controls.MetroUserControl
+    public partial class Warehouse : ICheckPermissions
     {
         List<UC_Product> products = new List<UC_Product>();
         List<UC_Material2> materials = new List<UC_Material2>();
@@ -88,6 +89,11 @@ namespace WindowsFormsApp1.Views
             uC_ProductWarehouse1.Visible = false;
         }
 
+
+        public override void CheckPermissions(User user)
+        {
+            Helpers.CheckPermissionsHelper.Check(this, user);
+        }
 
     }
 }
