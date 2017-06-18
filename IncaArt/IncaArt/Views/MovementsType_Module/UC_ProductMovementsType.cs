@@ -26,5 +26,10 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
         {
 
         }
+
+        private void radiobutton_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -98,6 +98,7 @@
     <Compile Include="Controller\MaterialMovementDetailController.cs" />
     <Compile Include="Controller\ProductionOrderMaterialLineController.cs" />
     <Compile Include="Controller\ProductionOrderWorkLineController.cs" />
+    <Compile Include="Controller\ProductMovementTypeController.cs" />
     <Compile Include="Controller\ProfileController.cs" />
     <Compile Include="Controller\CurrencyController.cs" />
     <Compile Include="Controller\CustomerController.cs" />

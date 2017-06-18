@@ -38,25 +38,30 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textbox_name_s = new MetroFramework.Controls.MetroTextBox();
             this.btn_clean = new System.Windows.Forms.Button();
-            this.search = new System.Windows.Forms.Button();
+            this.btn_search = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.combobox_class_s = new MetroFramework.Controls.MetroComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.btn_cancel = new MetroFramework.Controls.MetroButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_register = new MetroFramework.Controls.MetroButton();
+            this.textbox_name = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.radio3_s = new MetroFramework.Controls.MetroRadioButton();
+            this.radio2_s = new MetroFramework.Controls.MetroRadioButton();
+            this.radio1_s = new MetroFramework.Controls.MetroRadioButton();
+            this.radio0_s = new MetroFramework.Controls.MetroRadioButton();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.register = new MetroFramework.Controls.MetroButton();
-            this.combobox_class = new MetroFramework.Controls.MetroComboBox();
-            this.textbox_name = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.radio3 = new MetroFramework.Controls.MetroRadioButton();
+            this.radio2 = new MetroFramework.Controls.MetroRadioButton();
+            this.radio1 = new MetroFramework.Controls.MetroRadioButton();
+            this.radio0 = new MetroFramework.Controls.MetroRadioButton();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -73,7 +78,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(3, 32);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(503, 713);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 3;
@@ -112,17 +117,20 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.radio3_s);
+            this.groupBox2.Controls.Add(this.radio2_s);
+            this.groupBox2.Controls.Add(this.radio1_s);
+            this.groupBox2.Controls.Add(this.radio0_s);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.textbox_name_s);
             this.groupBox2.Controls.Add(this.btn_clean);
-            this.groupBox2.Controls.Add(this.search);
+            this.groupBox2.Controls.Add(this.btn_search);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.combobox_class_s);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
             this.groupBox2.Location = new System.Drawing.Point(0, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(494, 172);
+            this.groupBox2.Size = new System.Drawing.Size(494, 164);
             this.groupBox2.TabIndex = 43;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtros";
@@ -174,45 +182,35 @@
             this.btn_clean.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_clean.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_clean.ForeColor = System.Drawing.Color.White;
-            this.btn_clean.Location = new System.Drawing.Point(261, 121);
+            this.btn_clean.Location = new System.Drawing.Point(230, 120);
             this.btn_clean.Name = "btn_clean";
             this.btn_clean.Size = new System.Drawing.Size(85, 29);
             this.btn_clean.TabIndex = 53;
             this.btn_clean.Text = "Limpiar";
             this.btn_clean.UseVisualStyleBackColor = false;
             // 
-            // search
+            // btn_search
             // 
-            this.search.BackColor = System.Drawing.Color.DarkCyan;
-            this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.ForeColor = System.Drawing.Color.White;
-            this.search.Location = new System.Drawing.Point(143, 121);
-            this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(85, 29);
-            this.search.TabIndex = 50;
-            this.search.Text = "Buscar";
-            this.search.UseVisualStyleBackColor = false;
+            this.btn_search.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_search.ForeColor = System.Drawing.Color.White;
+            this.btn_search.Location = new System.Drawing.Point(131, 120);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(85, 29);
+            this.btn_search.TabIndex = 50;
+            this.btn_search.Text = "Buscar";
+            this.btn_search.UseVisualStyleBackColor = false;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label13.Location = new System.Drawing.Point(24, 80);
+            this.label13.Location = new System.Drawing.Point(35, 67);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(46, 13);
             this.label13.TabIndex = 34;
             this.label13.Text = "Clase :";
-            // 
-            // combobox_class_s
-            // 
-            this.combobox_class_s.FormattingEnabled = true;
-            this.combobox_class_s.ItemHeight = 23;
-            this.combobox_class_s.Location = new System.Drawing.Point(107, 64);
-            this.combobox_class_s.Name = "combobox_class_s";
-            this.combobox_class_s.Size = new System.Drawing.Size(267, 29);
-            this.combobox_class_s.TabIndex = 22;
-            this.combobox_class_s.UseSelectable = true;
             // 
             // groupBox1
             // 
@@ -220,7 +218,7 @@
             this.groupBox1.Controls.Add(this.panel4);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(0, 192);
+            this.groupBox1.Location = new System.Drawing.Point(0, 175);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(495, 291);
             this.groupBox1.TabIndex = 49;
@@ -255,8 +253,7 @@
             this.Column1,
             this.Column5,
             this.Column2,
-            this.Column3,
-            this.Column4});
+            this.Column3});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -285,41 +282,16 @@
             this.metroGrid1.Size = new System.Drawing.Size(472, 246);
             this.metroGrid1.TabIndex = 2;
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "index";
-            this.Column5.Name = "Column5";
-            this.Column5.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Nombre";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 230;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Clase";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Estado";
-            this.Column4.Name = "Column4";
-            // 
             // metroTabPage2
             // 
-            this.metroTabPage2.Controls.Add(this.metroButton1);
+            this.metroTabPage2.Controls.Add(this.radio3);
+            this.metroTabPage2.Controls.Add(this.radio2);
+            this.metroTabPage2.Controls.Add(this.radio1);
+            this.metroTabPage2.Controls.Add(this.radio0);
+            this.metroTabPage2.Controls.Add(this.btn_cancel);
             this.metroTabPage2.Controls.Add(this.label2);
             this.metroTabPage2.Controls.Add(this.label1);
-            this.metroTabPage2.Controls.Add(this.register);
-            this.metroTabPage2.Controls.Add(this.combobox_class);
+            this.metroTabPage2.Controls.Add(this.btn_register);
             this.metroTabPage2.Controls.Add(this.textbox_name);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
@@ -333,19 +305,19 @@
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
-            // metroButton1
+            // btn_cancel
             // 
-            this.metroButton1.BackColor = System.Drawing.Color.DarkCyan;
-            this.metroButton1.ForeColor = System.Drawing.Color.White;
-            this.metroButton1.Location = new System.Drawing.Point(290, 161);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(98, 27);
-            this.metroButton1.TabIndex = 76;
-            this.metroButton1.Text = "Cancelar";
-            this.metroButton1.UseCustomBackColor = true;
-            this.metroButton1.UseCustomForeColor = true;
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.UseStyleColors = true;
+            this.btn_cancel.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_cancel.ForeColor = System.Drawing.Color.White;
+            this.btn_cancel.Location = new System.Drawing.Point(300, 225);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(98, 27);
+            this.btn_cancel.TabIndex = 76;
+            this.btn_cancel.Text = "Cancelar";
+            this.btn_cancel.UseCustomBackColor = true;
+            this.btn_cancel.UseCustomForeColor = true;
+            this.btn_cancel.UseSelectable = true;
+            this.btn_cancel.UseStyleColors = true;
             // 
             // label2
             // 
@@ -371,32 +343,19 @@
             this.label1.TabIndex = 74;
             this.label1.Text = "Nombre :";
             // 
-            // register
+            // btn_register
             // 
-            this.register.BackColor = System.Drawing.Color.DarkCyan;
-            this.register.ForeColor = System.Drawing.Color.White;
-            this.register.Location = new System.Drawing.Point(145, 161);
-            this.register.Name = "register";
-            this.register.Size = new System.Drawing.Size(98, 27);
-            this.register.TabIndex = 71;
-            this.register.Text = "Editar";
-            this.register.UseCustomBackColor = true;
-            this.register.UseCustomForeColor = true;
-            this.register.UseSelectable = true;
-            this.register.UseStyleColors = true;
-            // 
-            // combobox_class
-            // 
-            this.combobox_class.FormattingEnabled = true;
-            this.combobox_class.ItemHeight = 23;
-            this.combobox_class.Items.AddRange(new object[] {
-            "Producción",
-            "Observación"});
-            this.combobox_class.Location = new System.Drawing.Point(191, 77);
-            this.combobox_class.Name = "combobox_class";
-            this.combobox_class.Size = new System.Drawing.Size(261, 29);
-            this.combobox_class.TabIndex = 24;
-            this.combobox_class.UseSelectable = true;
+            this.btn_register.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_register.ForeColor = System.Drawing.Color.White;
+            this.btn_register.Location = new System.Drawing.Point(155, 225);
+            this.btn_register.Name = "btn_register";
+            this.btn_register.Size = new System.Drawing.Size(98, 27);
+            this.btn_register.TabIndex = 71;
+            this.btn_register.Text = "Editar";
+            this.btn_register.UseCustomBackColor = true;
+            this.btn_register.UseCustomForeColor = true;
+            this.btn_register.UseSelectable = true;
+            this.btn_register.UseStyleColors = true;
             // 
             // textbox_name
             // 
@@ -413,7 +372,7 @@
             this.textbox_name.CustomButton.UseSelectable = true;
             this.textbox_name.CustomButton.Visible = false;
             this.textbox_name.Lines = new string[0];
-            this.textbox_name.Location = new System.Drawing.Point(191, 33);
+            this.textbox_name.Location = new System.Drawing.Point(146, 45);
             this.textbox_name.MaxLength = 32767;
             this.textbox_name.Name = "textbox_name";
             this.textbox_name.PasswordChar = '\0';
@@ -439,6 +398,109 @@
             this.metroLabel11.TabIndex = 32;
             this.metroLabel11.Text = "Tipo de Movimiento Producto";
             this.metroLabel11.UseCustomBackColor = true;
+            // 
+            // radio3_s
+            // 
+            this.radio3_s.AutoSize = true;
+            this.radio3_s.Location = new System.Drawing.Point(212, 89);
+            this.radio3_s.Name = "radio3_s";
+            this.radio3_s.Size = new System.Drawing.Size(112, 15);
+            this.radio3_s.TabIndex = 88;
+            this.radio3_s.Text = "Entrada Generica";
+            this.radio3_s.UseSelectable = true;
+            // 
+            // radio2_s
+            // 
+            this.radio2_s.AutoSize = true;
+            this.radio2_s.Location = new System.Drawing.Point(212, 67);
+            this.radio2_s.Name = "radio2_s";
+            this.radio2_s.Size = new System.Drawing.Size(84, 15);
+            this.radio2_s.TabIndex = 87;
+            this.radio2_s.Text = "Producción";
+            this.radio2_s.UseSelectable = true;
+            // 
+            // radio1_s
+            // 
+            this.radio1_s.AutoSize = true;
+            this.radio1_s.Location = new System.Drawing.Point(107, 89);
+            this.radio1_s.Name = "radio1_s";
+            this.radio1_s.Size = new System.Drawing.Size(83, 15);
+            this.radio1_s.TabIndex = 86;
+            this.radio1_s.Text = "Devolución";
+            this.radio1_s.UseSelectable = true;
+            // 
+            // radio0_s
+            // 
+            this.radio0_s.AutoSize = true;
+            this.radio0_s.Location = new System.Drawing.Point(107, 67);
+            this.radio0_s.Name = "radio0_s";
+            this.radio0_s.Size = new System.Drawing.Size(58, 15);
+            this.radio0_s.TabIndex = 85;
+            this.radio0_s.Text = "Ventas";
+            this.radio0_s.UseSelectable = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "index";
+            this.Column5.Name = "Column5";
+            this.Column5.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Nombre";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 230;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Clase";
+            this.Column3.Name = "Column3";
+            // 
+            // radio3
+            // 
+            this.radio3.AutoSize = true;
+            this.radio3.Location = new System.Drawing.Point(82, 173);
+            this.radio3.Name = "radio3";
+            this.radio3.Size = new System.Drawing.Size(112, 15);
+            this.radio3.TabIndex = 84;
+            this.radio3.Text = "Entrada Generica";
+            this.radio3.UseSelectable = true;
+            // 
+            // radio2
+            // 
+            this.radio2.AutoSize = true;
+            this.radio2.Location = new System.Drawing.Point(82, 152);
+            this.radio2.Name = "radio2";
+            this.radio2.Size = new System.Drawing.Size(103, 15);
+            this.radio2.TabIndex = 83;
+            this.radio2.Text = "Salida Generica";
+            this.radio2.UseSelectable = true;
+            // 
+            // radio1
+            // 
+            this.radio1.AutoSize = true;
+            this.radio1.Location = new System.Drawing.Point(82, 131);
+            this.radio1.Name = "radio1";
+            this.radio1.Size = new System.Drawing.Size(66, 15);
+            this.radio1.TabIndex = 82;
+            this.radio1.Text = "Compra";
+            this.radio1.UseSelectable = true;
+            // 
+            // radio0
+            // 
+            this.radio0.AutoSize = true;
+            this.radio0.Location = new System.Drawing.Point(82, 110);
+            this.radio0.Name = "radio0";
+            this.radio0.Size = new System.Drawing.Size(84, 15);
+            this.radio0.TabIndex = 81;
+            this.radio0.Text = "Producción";
+            this.radio0.UseSelectable = true;
             // 
             // UC_ProductMovementsType
             // 
@@ -472,24 +534,29 @@
         private System.Windows.Forms.Label label3;
         private MetroFramework.Controls.MetroTextBox textbox_name_s;
         private System.Windows.Forms.Button btn_clean;
-        private System.Windows.Forms.Button search;
+        private System.Windows.Forms.Button btn_search;
         private System.Windows.Forms.Label label13;
-        private MetroFramework.Controls.MetroComboBox combobox_class_s;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel4;
         private MetroFramework.Controls.MetroGrid metroGrid1;
+        private MetroFramework.Controls.MetroTabPage metroTabPage2;
+        private MetroFramework.Controls.MetroButton btn_cancel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private MetroFramework.Controls.MetroButton btn_register;
+        private MetroFramework.Controls.MetroTextBox textbox_name;
+        private MetroFramework.Controls.MetroLabel metroLabel11;
+        private MetroFramework.Controls.MetroRadioButton radio3_s;
+        private MetroFramework.Controls.MetroRadioButton radio2_s;
+        private MetroFramework.Controls.MetroRadioButton radio1_s;
+        private MetroFramework.Controls.MetroRadioButton radio0_s;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private MetroFramework.Controls.MetroTabPage metroTabPage2;
-        private MetroFramework.Controls.MetroButton metroButton1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private MetroFramework.Controls.MetroButton register;
-        private MetroFramework.Controls.MetroComboBox combobox_class;
-        private MetroFramework.Controls.MetroTextBox textbox_name;
-        private MetroFramework.Controls.MetroLabel metroLabel11;
+        private MetroFramework.Controls.MetroRadioButton radio3;
+        private MetroFramework.Controls.MetroRadioButton radio2;
+        private MetroFramework.Controls.MetroRadioButton radio1;
+        private MetroFramework.Controls.MetroRadioButton radio0;
     }
 }
