@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -35,12 +36,15 @@
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.btn_delete = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radio3_s = new MetroFramework.Controls.MetroRadioButton();
+            this.radio2_s = new MetroFramework.Controls.MetroRadioButton();
+            this.radio1_s = new MetroFramework.Controls.MetroRadioButton();
+            this.radio0_s = new MetroFramework.Controls.MetroRadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.textbox_name_s = new MetroFramework.Controls.MetroTextBox();
             this.btn_clean = new System.Windows.Forms.Button();
             this.btn_search = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.combobox_class_s = new MetroFramework.Controls.MetroComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
@@ -48,14 +52,18 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.radio3 = new MetroFramework.Controls.MetroRadioButton();
+            this.radio2 = new MetroFramework.Controls.MetroRadioButton();
+            this.radio1 = new MetroFramework.Controls.MetroRadioButton();
+            this.radio0 = new MetroFramework.Controls.MetroRadioButton();
             this.btn_cancel = new MetroFramework.Controls.MetroButton();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label_class = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_register = new MetroFramework.Controls.MetroButton();
             this.textbox_name = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -63,6 +71,7 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.metroTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -72,7 +81,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(3, 32);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(503, 713);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 2;
@@ -107,24 +116,72 @@
             this.btn_delete.Text = "Eliminar ";
             this.btn_delete.UseVisualStyleBackColor = false;
             this.btn_delete.UseWaitCursor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.radio3_s);
+            this.groupBox2.Controls.Add(this.radio2_s);
+            this.groupBox2.Controls.Add(this.radio1_s);
+            this.groupBox2.Controls.Add(this.radio0_s);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.textbox_name_s);
             this.groupBox2.Controls.Add(this.btn_clean);
             this.groupBox2.Controls.Add(this.btn_search);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.combobox_class_s);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
             this.groupBox2.Location = new System.Drawing.Point(0, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(494, 172);
+            this.groupBox2.Size = new System.Drawing.Size(494, 164);
             this.groupBox2.TabIndex = 43;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtros";
+            // 
+            // radio3_s
+            // 
+            this.radio3_s.AutoSize = true;
+            this.radio3_s.Location = new System.Drawing.Point(212, 89);
+            this.radio3_s.Name = "radio3_s";
+            this.radio3_s.Size = new System.Drawing.Size(112, 15);
+            this.radio3_s.TabIndex = 84;
+            this.radio3_s.Text = "Entrada Generica";
+            this.radio3_s.UseSelectable = true;
+            this.radio3_s.CheckedChanged += new System.EventHandler(this.radiobutton_CheckedChanged);
+            // 
+            // radio2_s
+            // 
+            this.radio2_s.AutoSize = true;
+            this.radio2_s.Location = new System.Drawing.Point(212, 67);
+            this.radio2_s.Name = "radio2_s";
+            this.radio2_s.Size = new System.Drawing.Size(103, 15);
+            this.radio2_s.TabIndex = 83;
+            this.radio2_s.Text = "Salida Generica";
+            this.radio2_s.UseSelectable = true;
+            this.radio2_s.CheckedChanged += new System.EventHandler(this.radiobutton_CheckedChanged);
+            // 
+            // radio1_s
+            // 
+            this.radio1_s.AutoSize = true;
+            this.radio1_s.Location = new System.Drawing.Point(107, 89);
+            this.radio1_s.Name = "radio1_s";
+            this.radio1_s.Size = new System.Drawing.Size(66, 15);
+            this.radio1_s.TabIndex = 82;
+            this.radio1_s.Text = "Compra";
+            this.radio1_s.UseSelectable = true;
+            this.radio1_s.CheckedChanged += new System.EventHandler(this.radiobutton_CheckedChanged);
+            // 
+            // radio0_s
+            // 
+            this.radio0_s.AutoSize = true;
+            this.radio0_s.Location = new System.Drawing.Point(107, 67);
+            this.radio0_s.Name = "radio0_s";
+            this.radio0_s.Size = new System.Drawing.Size(84, 15);
+            this.radio0_s.TabIndex = 81;
+            this.radio0_s.Text = "Producción";
+            this.radio0_s.UseSelectable = true;
+            this.radio0_s.CheckedChanged += new System.EventHandler(this.radiobutton_CheckedChanged);
             // 
             // label3
             // 
@@ -173,45 +230,37 @@
             this.btn_clean.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_clean.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_clean.ForeColor = System.Drawing.Color.White;
-            this.btn_clean.Location = new System.Drawing.Point(261, 121);
+            this.btn_clean.Location = new System.Drawing.Point(230, 120);
             this.btn_clean.Name = "btn_clean";
             this.btn_clean.Size = new System.Drawing.Size(85, 29);
             this.btn_clean.TabIndex = 53;
             this.btn_clean.Text = "Limpiar";
             this.btn_clean.UseVisualStyleBackColor = false;
+            this.btn_clean.Click += new System.EventHandler(this.btn_clean_Click);
             // 
             // btn_search
             // 
             this.btn_search.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_search.ForeColor = System.Drawing.Color.White;
-            this.btn_search.Location = new System.Drawing.Point(143, 121);
+            this.btn_search.Location = new System.Drawing.Point(131, 120);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(85, 29);
             this.btn_search.TabIndex = 50;
             this.btn_search.Text = "Buscar";
             this.btn_search.UseVisualStyleBackColor = false;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label13.Location = new System.Drawing.Point(24, 80);
+            this.label13.Location = new System.Drawing.Point(35, 67);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(46, 13);
             this.label13.TabIndex = 34;
             this.label13.Text = "Clase :";
-            // 
-            // combobox_class_s
-            // 
-            this.combobox_class_s.FormattingEnabled = true;
-            this.combobox_class_s.ItemHeight = 23;
-            this.combobox_class_s.Location = new System.Drawing.Point(107, 64);
-            this.combobox_class_s.Name = "combobox_class_s";
-            this.combobox_class_s.Size = new System.Drawing.Size(267, 29);
-            this.combobox_class_s.TabIndex = 22;
-            this.combobox_class_s.UseSelectable = true;
             // 
             // groupBox1
             // 
@@ -219,9 +268,9 @@
             this.groupBox1.Controls.Add(this.panel4);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(0, 192);
+            this.groupBox1.Location = new System.Drawing.Point(0, 175);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(495, 292);
+            this.groupBox1.Size = new System.Drawing.Size(495, 309);
             this.groupBox1.TabIndex = 49;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo de Movimientos";
@@ -254,8 +303,7 @@
             this.Column1,
             this.Column5,
             this.Column2,
-            this.Column3,
-            this.Column4});
+            this.Column3});
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -283,6 +331,8 @@
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid1.Size = new System.Drawing.Size(472, 246);
             this.metroGrid1.TabIndex = 2;
+            this.metroGrid1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellContentClick);
+            this.metroGrid1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellContentDoubleClick);
             // 
             // Column1
             // 
@@ -307,15 +357,14 @@
             this.Column3.HeaderText = "Clase";
             this.Column3.Name = "Column3";
             // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Estado";
-            this.Column4.Name = "Column4";
-            // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.radio3);
+            this.metroTabPage2.Controls.Add(this.radio2);
+            this.metroTabPage2.Controls.Add(this.radio1);
+            this.metroTabPage2.Controls.Add(this.radio0);
             this.metroTabPage2.Controls.Add(this.btn_cancel);
-            this.metroTabPage2.Controls.Add(this.label2);
+            this.metroTabPage2.Controls.Add(this.label_class);
             this.metroTabPage2.Controls.Add(this.label1);
             this.metroTabPage2.Controls.Add(this.btn_register);
             this.metroTabPage2.Controls.Add(this.textbox_name);
@@ -331,6 +380,50 @@
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
+            // radio3
+            // 
+            this.radio3.AutoSize = true;
+            this.radio3.Location = new System.Drawing.Point(82, 176);
+            this.radio3.Name = "radio3";
+            this.radio3.Size = new System.Drawing.Size(112, 15);
+            this.radio3.TabIndex = 80;
+            this.radio3.Text = "Entrada Generica";
+            this.radio3.UseSelectable = true;
+            this.radio3.CheckedChanged += new System.EventHandler(this.radiobutton_CheckedChanged);
+            // 
+            // radio2
+            // 
+            this.radio2.AutoSize = true;
+            this.radio2.Location = new System.Drawing.Point(82, 154);
+            this.radio2.Name = "radio2";
+            this.radio2.Size = new System.Drawing.Size(103, 15);
+            this.radio2.TabIndex = 79;
+            this.radio2.Text = "Salida Generica";
+            this.radio2.UseSelectable = true;
+            this.radio2.CheckedChanged += new System.EventHandler(this.radiobutton_CheckedChanged);
+            // 
+            // radio1
+            // 
+            this.radio1.AutoSize = true;
+            this.radio1.Location = new System.Drawing.Point(82, 132);
+            this.radio1.Name = "radio1";
+            this.radio1.Size = new System.Drawing.Size(66, 15);
+            this.radio1.TabIndex = 78;
+            this.radio1.Text = "Compra";
+            this.radio1.UseSelectable = true;
+            this.radio1.CheckedChanged += new System.EventHandler(this.radiobutton_CheckedChanged);
+            // 
+            // radio0
+            // 
+            this.radio0.AutoSize = true;
+            this.radio0.Location = new System.Drawing.Point(82, 110);
+            this.radio0.Name = "radio0";
+            this.radio0.Size = new System.Drawing.Size(84, 15);
+            this.radio0.TabIndex = 77;
+            this.radio0.Text = "Producción";
+            this.radio0.UseSelectable = true;
+            this.radio0.CheckedChanged += new System.EventHandler(this.radiobutton_CheckedChanged);
+            // 
             // btn_cancel
             // 
             this.btn_cancel.BackColor = System.Drawing.Color.DarkCyan;
@@ -344,18 +437,19 @@
             this.btn_cancel.UseCustomForeColor = true;
             this.btn_cancel.UseSelectable = true;
             this.btn_cancel.UseStyleColors = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // label2
+            // label_class
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label2.Location = new System.Drawing.Point(79, 93);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 13);
-            this.label2.TabIndex = 75;
-            this.label2.Text = "Clase :";
+            this.label_class.AutoSize = true;
+            this.label_class.BackColor = System.Drawing.Color.Transparent;
+            this.label_class.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_class.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label_class.Location = new System.Drawing.Point(79, 93);
+            this.label_class.Name = "label_class";
+            this.label_class.Size = new System.Drawing.Size(46, 13);
+            this.label_class.TabIndex = 75;
+            this.label_class.Text = "Clase :";
             // 
             // label1
             // 
@@ -382,6 +476,7 @@
             this.btn_register.UseCustomForeColor = true;
             this.btn_register.UseSelectable = true;
             this.btn_register.UseStyleColors = true;
+            this.btn_register.Click += new System.EventHandler(this.btn_register_Click);
             // 
             // textbox_name
             // 
@@ -398,7 +493,7 @@
             this.textbox_name.CustomButton.UseSelectable = true;
             this.textbox_name.CustomButton.Visible = false;
             this.textbox_name.Lines = new string[0];
-            this.textbox_name.Location = new System.Drawing.Point(191, 33);
+            this.textbox_name.Location = new System.Drawing.Point(146, 45);
             this.textbox_name.MaxLength = 32767;
             this.textbox_name.Name = "textbox_name";
             this.textbox_name.PasswordChar = '\0';
@@ -412,6 +507,7 @@
             this.textbox_name.UseSelectable = true;
             this.textbox_name.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_name.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textbox_name.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             // 
             // metroLabel11
             // 
@@ -424,6 +520,10 @@
             this.metroLabel11.TabIndex = 31;
             this.metroLabel11.Text = "Tipo de Movimiento Material";
             this.metroLabel11.UseCustomBackColor = true;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // UC_MaterialMovementsType
             // 
@@ -444,6 +544,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
             this.metroTabPage2.ResumeLayout(false);
             this.metroTabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -460,21 +561,28 @@
         private System.Windows.Forms.Button btn_clean;
         private System.Windows.Forms.Button btn_search;
         private System.Windows.Forms.Label label13;
-        private MetroFramework.Controls.MetroComboBox combobox_class_s;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel4;
         private MetroFramework.Controls.MetroGrid metroGrid1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
         private MetroFramework.Controls.MetroButton btn_cancel;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_class;
         private System.Windows.Forms.Label label1;
         private MetroFramework.Controls.MetroButton btn_register;
         private MetroFramework.Controls.MetroTextBox textbox_name;
         private MetroFramework.Controls.MetroLabel metroLabel11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private MetroFramework.Controls.MetroRadioButton radio3;
+        private MetroFramework.Controls.MetroRadioButton radio2;
+        private MetroFramework.Controls.MetroRadioButton radio1;
+        private MetroFramework.Controls.MetroRadioButton radio0;
+        private MetroFramework.Controls.MetroRadioButton radio3_s;
+        private MetroFramework.Controls.MetroRadioButton radio2_s;
+        private MetroFramework.Controls.MetroRadioButton radio1_s;
+        private MetroFramework.Controls.MetroRadioButton radio0_s;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

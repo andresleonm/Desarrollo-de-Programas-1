@@ -75,7 +75,7 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result updateMaterial(Models.MaterialMovementType type)
+        public Result updateMaterialMovementType(Models.MaterialMovementType type)
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("id", type.id.ToString()));
@@ -90,7 +90,7 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result deleteMaterial(Models.MaterialMovementType type)
+        public Result deleteMaterialMovementType(Models.MaterialMovementType type)
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("id", type.id.ToString()));
