@@ -140,6 +140,7 @@ namespace WindowsFormsApp1.Views
                 MessageBox.Show(users_result.message);
             }
 
+            combobox_profile.Items.Clear();
 
             foreach (Profile profile in this.profile_list)
             {
@@ -287,7 +288,7 @@ namespace WindowsFormsApp1.Views
             {
                 this.profile_controller = new ProfileController("", "");
                 this.user_controller = new UsersController("", "");
-
+                
                 Load_Data();
                 Load_DataGridView();
             }

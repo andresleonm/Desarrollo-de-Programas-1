@@ -306,5 +306,20 @@ namespace WindowsFormsApp1.Views
             hide_UserControls();
             uC_MovementsType1.Visible = true;
         }
+
+        private void metroLabel1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.metroLabel1.Visible = true;
+        }
+
+        private void metroLabel1_Leave(object sender, EventArgs e)
+        {
+            this.metroLabel1.Visible = false;
+        }
     }
 }

@@ -349,6 +349,7 @@
             this.Controls.Add(this.metroTile1);
             this.Name = "MainDashboard";
             this.Size = new System.Drawing.Size(1003, 593);
+            this.VisibleChanged += new System.EventHandler(this.MainDashboard_VisibleChanged);
             this.ResumeLayout(false);
 
         }
