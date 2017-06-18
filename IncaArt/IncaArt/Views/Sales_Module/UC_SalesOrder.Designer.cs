@@ -44,6 +44,19 @@
             this.gb_Orders = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.grid_orders = new MetroFramework.Controls.MetroGrid();
+            this.currency_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currency_symbol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.order_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currency_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gb_Filter = new System.Windows.Forms.GroupBox();
             this.btn_Search_Orders = new System.Windows.Forms.Button();
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
@@ -102,19 +115,6 @@
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.mbStyle = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.currency_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currency_symbol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.order_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currency_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.tab_Order.SuspendLayout();
             this.order.SuspendLayout();
@@ -282,6 +282,99 @@
             this.grid_orders.Size = new System.Drawing.Size(792, 255);
             this.grid_orders.TabIndex = 51;
             // 
+            // currency_id
+            // 
+            this.currency_id.DataPropertyName = "currency_id";
+            this.currency_id.HeaderText = "currency_id";
+            this.currency_id.Name = "currency_id";
+            this.currency_id.Visible = false;
+            // 
+            // currency_symbol
+            // 
+            this.currency_symbol.DataPropertyName = "currency_symbol";
+            this.currency_symbol.HeaderText = "currency_symbol";
+            this.currency_symbol.Name = "currency_symbol";
+            this.currency_symbol.Visible = false;
+            // 
+            // customer_id
+            // 
+            this.customer_id.DataPropertyName = "customer_id";
+            this.customer_id.HeaderText = "customer_id";
+            this.customer_id.Name = "customer_id";
+            this.customer_id.Visible = false;
+            // 
+            // customer_address
+            // 
+            this.customer_address.DataPropertyName = "customer_address";
+            this.customer_address.HeaderText = "customer_address";
+            this.customer_address.Name = "customer_address";
+            this.customer_address.Visible = false;
+            // 
+            // customer_phone
+            // 
+            this.customer_phone.DataPropertyName = "customer_phone";
+            this.customer_phone.HeaderText = "customer_phone";
+            this.customer_phone.Name = "customer_phone";
+            this.customer_phone.Visible = false;
+            // 
+            // customer_doi
+            // 
+            this.customer_doi.DataPropertyName = "customer_doi";
+            this.customer_doi.HeaderText = "customer_doi";
+            this.customer_doi.Name = "customer_doi";
+            this.customer_doi.Visible = false;
+            // 
+            // order_id2
+            // 
+            this.order_id2.DataPropertyName = "id";
+            this.order_id2.HeaderText = "Pedido";
+            this.order_id2.Name = "order_id2";
+            this.order_id2.ReadOnly = true;
+            // 
+            // customer_name
+            // 
+            this.customer_name.DataPropertyName = "customer_name";
+            this.customer_name.HeaderText = "Cliente";
+            this.customer_name.Name = "customer_name";
+            this.customer_name.ReadOnly = true;
+            // 
+            // issue_date
+            // 
+            this.issue_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.issue_date.DataPropertyName = "issue_date";
+            this.issue_date.HeaderText = "Fecha de Emisión";
+            this.issue_date.Name = "issue_date";
+            this.issue_date.ReadOnly = true;
+            // 
+            // currency_name
+            // 
+            this.currency_name.DataPropertyName = "currency_name";
+            this.currency_name.HeaderText = "Moneda";
+            this.currency_name.Name = "currency_name";
+            this.currency_name.ReadOnly = true;
+            // 
+            // amount2
+            // 
+            this.amount2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.amount2.DataPropertyName = "amount";
+            this.amount2.HeaderText = "Total";
+            this.amount2.Name = "amount2";
+            this.amount2.ReadOnly = true;
+            // 
+            // observation
+            // 
+            this.observation.DataPropertyName = "observation";
+            this.observation.HeaderText = "Observación";
+            this.observation.Name = "observation";
+            this.observation.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.HeaderText = "Estado";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            // 
             // gb_Filter
             // 
             this.gb_Filter.Controls.Add(this.btn_Search_Orders);
@@ -319,7 +412,7 @@
             // metroDateTime1
             // 
             this.metroDateTime1.Location = new System.Drawing.Point(562, 24);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(4, 29);
             this.metroDateTime1.Name = "metroDateTime1";
             this.metroDateTime1.Size = new System.Drawing.Size(209, 29);
             this.metroDateTime1.TabIndex = 49;
@@ -327,7 +420,7 @@
             // metroDateTime2
             // 
             this.metroDateTime2.Location = new System.Drawing.Point(562, 66);
-            this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime2.MinimumSize = new System.Drawing.Size(4, 29);
             this.metroDateTime2.Name = "metroDateTime2";
             this.metroDateTime2.Size = new System.Drawing.Size(209, 29);
             this.metroDateTime2.TabIndex = 48;
@@ -1173,99 +1266,6 @@
             // mbStyle
             // 
             this.mbStyle.Owner = null;
-            // 
-            // currency_id
-            // 
-            this.currency_id.DataPropertyName = "currency_id";
-            this.currency_id.HeaderText = "currency_id";
-            this.currency_id.Name = "currency_id";
-            this.currency_id.Visible = false;
-            // 
-            // currency_symbol
-            // 
-            this.currency_symbol.DataPropertyName = "currency_symbol";
-            this.currency_symbol.HeaderText = "currency_symbol";
-            this.currency_symbol.Name = "currency_symbol";
-            this.currency_symbol.Visible = false;
-            // 
-            // customer_id
-            // 
-            this.customer_id.DataPropertyName = "customer_id";
-            this.customer_id.HeaderText = "customer_id";
-            this.customer_id.Name = "customer_id";
-            this.customer_id.Visible = false;
-            // 
-            // customer_address
-            // 
-            this.customer_address.DataPropertyName = "customer_address";
-            this.customer_address.HeaderText = "customer_address";
-            this.customer_address.Name = "customer_address";
-            this.customer_address.Visible = false;
-            // 
-            // customer_phone
-            // 
-            this.customer_phone.DataPropertyName = "customer_phone";
-            this.customer_phone.HeaderText = "customer_phone";
-            this.customer_phone.Name = "customer_phone";
-            this.customer_phone.Visible = false;
-            // 
-            // customer_doi
-            // 
-            this.customer_doi.DataPropertyName = "customer_doi";
-            this.customer_doi.HeaderText = "customer_doi";
-            this.customer_doi.Name = "customer_doi";
-            this.customer_doi.Visible = false;
-            // 
-            // order_id2
-            // 
-            this.order_id2.DataPropertyName = "id";
-            this.order_id2.HeaderText = "Pedido";
-            this.order_id2.Name = "order_id2";
-            this.order_id2.ReadOnly = true;
-            // 
-            // customer_name
-            // 
-            this.customer_name.DataPropertyName = "customer_name";
-            this.customer_name.HeaderText = "Cliente";
-            this.customer_name.Name = "customer_name";
-            this.customer_name.ReadOnly = true;
-            // 
-            // issue_date
-            // 
-            this.issue_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.issue_date.DataPropertyName = "issue_date";
-            this.issue_date.HeaderText = "Fecha de Emisión";
-            this.issue_date.Name = "issue_date";
-            this.issue_date.ReadOnly = true;
-            // 
-            // currency_name
-            // 
-            this.currency_name.DataPropertyName = "currency_name";
-            this.currency_name.HeaderText = "Moneda";
-            this.currency_name.Name = "currency_name";
-            this.currency_name.ReadOnly = true;
-            // 
-            // amount2
-            // 
-            this.amount2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.amount2.DataPropertyName = "amount";
-            this.amount2.HeaderText = "Total";
-            this.amount2.Name = "amount2";
-            this.amount2.ReadOnly = true;
-            // 
-            // observation
-            // 
-            this.observation.DataPropertyName = "observation";
-            this.observation.HeaderText = "Observación";
-            this.observation.Name = "observation";
-            this.observation.ReadOnly = true;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.HeaderText = "Estado";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
             // 
             // UC_SalesOrder
             // 
