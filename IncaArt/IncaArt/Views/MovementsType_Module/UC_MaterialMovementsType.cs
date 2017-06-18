@@ -30,6 +30,7 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
         {
             data_loaded = false;
             current_class = -1;
+            metroTabControl1.SelectedIndex = 0;
         }
 
         private void UC_MaterialMovementsType_VisibleChanged(object sender, EventArgs e)
@@ -66,7 +67,7 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
             metroGrid1.Rows.Clear();
             for (int i = 0; i < movement_type_list.Count(); i++)
             {
-                String[] row = new String[6];
+                String[] row = new String[4];
                 row[0] = movement_type_list[i].id.ToString();
                 row[1] = i.ToString();
                 row[2] = movement_type_list[i].name;
@@ -105,19 +106,23 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
             switch (value)
             {
                 case "Producción":
-                case "radio0": case "radio0_s":
+                case "radio0":
+                case "radio0_s":
                     clase = 0;
                     break;
                 case "Compra":
-                case "radio1": case "radio1_s":
+                case "radio1":
+                case "radio1_s":
                     clase = 1;
                     break;
                 case "Salida Generica":
-                case "radio2": case "radio2_s":
+                case "radio2":
+                case "radio2_s":
                     clase = 2;
                     break;
                 case "Entrada Generica":
-                case "radio3": case "radio3_s":
+                case "radio3":
+                case "radio3_s":
                     clase = 3;
                     break;
                 default:
@@ -132,10 +137,12 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
             char sign;
             switch (value)
             {
-                case 0: case 2:
+                case 0:
+                case 2:
                     sign = '-';
                     break;
-                case 1: case 3:
+                case 1:
+                case 3:
                     sign = '+';
                     break;
                 default:
@@ -147,6 +154,8 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
 
         private void Clean()
         {
+            name_flag = false;
+            class_flag = false;
             ClearTextBoxes(this);
             operation_value = 0;
             current_class = -1;
@@ -205,7 +214,7 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
                 MessageBox.Show("Hay campos inválidos", "Error", MessageBoxButtons.OK);
                 return null;
             }
-            Models.MaterialMovementType movement_type= new Models.MaterialMovementType();
+            Models.MaterialMovementType movement_type = new Models.MaterialMovementType();
             movement_type.name = textbox_name.Text;
             movement_type.clase = current_class;
             movement_type.sign = getSign(current_class);
@@ -265,11 +274,13 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
                     if (result.success)
                     {
                         MessageBox.Show("Tipo movimiento agregado correctamente", "Registrar Tipo Movimiento Material", MessageBoxButtons.OK);
-                    }else
+                    }
+                    else
                     {
                         MessageBox.Show(result.message, "Error registro de Tipo Movimiento Material", MessageBoxButtons.OK);
                     }
-                }else //UPDATE
+                }
+                else //UPDATE
                 {
                     result = movementTypeController.updateMaterialMovementType(type);
                     if (result.success)
@@ -319,7 +330,7 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
 
         private void metroGrid1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (cur_row != 1 && cur_row< movement_type_list.Count())
+            if (cur_row != 1 && cur_row < movement_type_list.Count())
             {
                 Models.MaterialMovementType type;
                 result = movementTypeController.getMaterialMovementType(Int32.Parse(metroGrid1.Rows[e.RowIndex].Cells[0].Value.ToString()));
@@ -353,7 +364,7 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-            Models.MaterialMovementType type= new Models.MaterialMovementType();
+            Models.MaterialMovementType type = new Models.MaterialMovementType();
             type.name = textbox_name_s.Text;
             type.clase = current_class;
             result = movementTypeController.getMaterialMovementTypes(type);
@@ -361,7 +372,8 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
             {
                 movement_type_list = (List<Models.MaterialMovementType>)result.data;
                 Load_DataGridView();
-            }else
+            }
+            else
             {
                 MessageBox.Show(result.message, "Error al listar Tipo Movimiento Material", MessageBoxButtons.OK);
             }
