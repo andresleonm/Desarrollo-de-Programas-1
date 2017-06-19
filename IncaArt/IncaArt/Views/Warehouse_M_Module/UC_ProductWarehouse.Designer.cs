@@ -672,6 +672,7 @@
             this.Name = "UC_ProductWarehouse";
             this.Size = new System.Drawing.Size(921, 550);
             this.Load += new System.EventHandler(this.UC_ProductWarehouse_Load);
+            this.VisibleChanged += new System.EventHandler(this.UC_ProductWarehouse_VisibleChanged);
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

@@ -52,16 +52,7 @@ namespace WindowsFormsApp1.Views
 
         private void UC_ProductWarehouse_Load(object sender, EventArgs e)
         {
-            Set_Flag_All(false);
-            string user = "dp1admin";
-            string password = "dp1admin";
-            productWarehouseController = new Controller.ProductWarehouseController(user, password);
-            productController = new Controller.ProductsController(user, password);
-            typeController = new Controller.ProductTypeWarehouseController(user, password);
-            unitController = new Controller.UnitController(user, password);
-            Load_Data();
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
+
         }
 
         /*
@@ -817,6 +808,20 @@ namespace WindowsFormsApp1.Views
         {
             sessionUser = user;
             UC_Warehouse_Load();
+        }
+
+        private void UC_ProductWarehouse_VisibleChanged(object sender, EventArgs e)
+        {
+            Set_Flag_All(false);
+            string user = "dp1admin";
+            string password = "dp1admin";
+            productWarehouseController = new Controller.ProductWarehouseController(user, password);
+            productController = new Controller.ProductsController(user, password);
+            typeController = new Controller.ProductTypeWarehouseController(user, password);
+            unitController = new Controller.UnitController(user, password);
+            Load_Data();
+            Load_DataGridView();
+            metroTabControl1.SelectedIndex = 0;
         }
     }
 }

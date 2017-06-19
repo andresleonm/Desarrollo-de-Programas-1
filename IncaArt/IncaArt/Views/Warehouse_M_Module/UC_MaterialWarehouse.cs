@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views.Warehouse_M_Module
 {
-    public partial class UC_MaterialWarehouse : MetroFramework.Controls.MetroUserControl
+    public partial class UC_MaterialWarehouse : ICheckPermissions
     {
         int cur_row;
         bool name_flag;
@@ -19,6 +20,8 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
         bool type_flag;
         bool capacity_flag;
 
+        User sessionUser;
+        bool deletedTab = false;
         //Models.User sessionUser;
 
         List<Models.MaterialWarehouse> warehouse_list;
@@ -41,23 +44,18 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
         public UC_MaterialWarehouse()
         {
             InitializeComponent();
-            //Load_Data();
         }
 
         private void UC_MaterialWarehouse_Load(object sender, EventArgs e)
         {
-            Set_Flag_All(false);
-            string user = "dp1admin";
-            string password = "dp1admin";
-            materialWarehouseController = new Controller.MaterialWarehouseController(user, password);
-            materialController = new Controller.MaterialsController(user, password);
-            typeController = new Controller.MaterialTypeWarehouseController(user, password);
-            unitController = new Controller.UnitController(user, password);
-            Load_Data();
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
+
         }
 
+        public override void CheckPermissions(User user)
+        {
+            sessionUser = user;
+            UC_Warehouse_Load();
+        }
         private void Load_Data()
         {
             result = unitController.getUnits();
@@ -174,8 +172,12 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             Load_DataGridView();
             combobox_product_s.SelectedIndex = 0;
             combobox_type_s.SelectedIndex = 0;
-            combobox_products.SelectedIndex = 0;
-            combobox_type.SelectedIndex = 0;
+
+            if (!deletedTab)
+            {
+                combobox_products.SelectedIndex = 0;
+                combobox_type.SelectedIndex = 0;
+            }
         }
 
 
@@ -307,13 +309,12 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
                 textbox_max_capacity.Text = metroGrid1.Rows[e.RowIndex].Cells[7].Value.ToString();
                 Set_Flag_All(true);
                 register.Text = "Editar";
-                //register.Visible = true;
+                register.Visible = true;
                 metroTabControl1.SelectedIndex = 1;
-                /*
-                if (!sessionUser.Profile.HasFunctionality("EDIT WAREHOUSE"))
+                if (!sessionUser.Profile.HasFunctionality("EDIT MATERIAL WAREHOUSE"))
                 {
                     register.Visible = false;
-                }*/
+                }
             }
         }
 
@@ -359,16 +360,16 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
 
         private void tabIndex_Enter(object sender, EventArgs e)
         {
-            Clean();
+            if (!deletedTab) Clean();
             register.Text = "Guardar";
-            //register.Visible = true;
-            curWarehouse = null;
 
-            /*
-            if (!sessionUser.Profile.HasFunctionality("CREATE WAREHOUSE"))
+
+            if (!sessionUser.Profile.HasFunctionality("CREATE MATERIAL WAREHOUSE"))
             {
                 register.Visible = false;
-            }*/
+            }
+            register.Visible = true;
+            curWarehouse = null;
         }
 
         private void delete_Click(object sender, EventArgs e)
@@ -796,21 +797,38 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
 
 
 
+
         //Permissions
-        /*
-        private void UC_Permissions_Load()
+        private void UC_Warehouse_Load()
         {
-            if (!sessionUser.Profile.HasFunctionality("DELETE WAREHOUSE"))
+            if (!sessionUser.Profile.HasFunctionality("DELETE MATERIAL WAREHOUSE"))
             {
                 delete.Visible = false;
             }
+
+            if (!sessionUser.Profile.HasFunctionality("CREATE MATERIAL WAREHOUSE") && !sessionUser.Profile.HasFunctionality("EDIT MATERIAL WAREHOUSE"))
+            {
+                deletedTab = true;
+                this.metroTabControl1.TabPages.Remove(registerTab);
+
+            }
         }
 
-        private void metroTabControl1_ParentChanged(object sender, EventArgs e)
-        {
 
-            sessionUser = ((Dashboard)Parent).sessionUser;
-            UC_Permissions_Load();
-        }*/
+
+        private void UC_MaterialWarehouse_VisibleChanged(object sender, EventArgs e)
+        {
+            Set_Flag_All(false);
+            string user = "dp1admin";
+            string password = "dp1admin";
+            materialWarehouseController = new Controller.MaterialWarehouseController(user, password);
+            materialController = new Controller.MaterialsController(user, password);
+            typeController = new Controller.MaterialTypeWarehouseController(user, password);
+            unitController = new Controller.UnitController(user, password);
+            Load_Data();
+            Load_DataGridView();
+            metroTabControl1.SelectedIndex = 0;
+        }
+
     }
 }
