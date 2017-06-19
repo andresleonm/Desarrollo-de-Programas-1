@@ -559,5 +559,30 @@ namespace WindowsFormsApp1.Views
             }
             operation_value = 0;
         }
+
+        private void textbox_number_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            if (!char.IsDigit(e.KeyChar))
+            {
+                if (e.KeyChar != 8)//Manejo de Backspace
+                {
+                    e.Handled = true;
+                }
+            }
+
+            if (textbox.Name == "textbox_break")
+            {
+                if (e.KeyChar == '.')
+                {
+                    e.Handled = false;
+                }
+                if ((e.KeyChar == '.') && (textbox.Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+
+            }
+        }
     }
 }

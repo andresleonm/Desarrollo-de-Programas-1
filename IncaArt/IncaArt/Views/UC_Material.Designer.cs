@@ -55,6 +55,10 @@
             this.registro = new MetroFramework.Controls.MetroTabPage();
             this.btn_save = new MetroFramework.Controls.MetroButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
+            this.combobox_currency = new MetroFramework.Controls.MetroComboBox();
+            this.textbox_cost = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
@@ -84,7 +88,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(3, 51);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(721, 450);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.metroTabControl1.TabIndex = 0;
@@ -391,7 +395,7 @@
             // 
             this.btn_save.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_save.Location = new System.Drawing.Point(146, 226);
+            this.btn_save.Location = new System.Drawing.Point(146, 290);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(75, 23);
             this.btn_save.TabIndex = 14;
@@ -404,6 +408,10 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox3.Controls.Add(this.metroLabel10);
+            this.groupBox3.Controls.Add(this.combobox_currency);
+            this.groupBox3.Controls.Add(this.textbox_cost);
+            this.groupBox3.Controls.Add(this.metroLabel4);
             this.groupBox3.Controls.Add(this.metroLabel9);
             this.groupBox3.Controls.Add(this.metroLabel5);
             this.groupBox3.Controls.Add(this.metroLabel6);
@@ -416,10 +424,81 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupBox3.Location = new System.Drawing.Point(19, 22);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(283, 185);
+            this.groupBox3.Size = new System.Drawing.Size(283, 262);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos de Materia Prima";
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel10.ForeColor = System.Drawing.Color.DarkCyan;
+            this.metroLabel10.Location = new System.Drawing.Point(6, 198);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(68, 15);
+            this.metroLabel10.TabIndex = 24;
+            this.metroLabel10.Text = "Moneda (*)";
+            this.metroLabel10.UseCustomForeColor = true;
+            this.metroLabel10.UseStyleColors = true;
+            // 
+            // combobox_currency
+            // 
+            this.combobox_currency.FormattingEnabled = true;
+            this.combobox_currency.ItemHeight = 23;
+            this.combobox_currency.Location = new System.Drawing.Point(109, 194);
+            this.combobox_currency.Name = "combobox_currency";
+            this.combobox_currency.Size = new System.Drawing.Size(121, 29);
+            this.combobox_currency.TabIndex = 23;
+            this.combobox_currency.UseSelectable = true;
+            this.combobox_currency.Validating += new System.ComponentModel.CancelEventHandler(this.combobox_Validating);
+            // 
+            // textbox_cost
+            // 
+            // 
+            // 
+            // 
+            this.textbox_cost.CustomButton.Image = null;
+            this.textbox_cost.CustomButton.Location = new System.Drawing.Point(99, 1);
+            this.textbox_cost.CustomButton.Name = "";
+            this.textbox_cost.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.textbox_cost.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textbox_cost.CustomButton.TabIndex = 1;
+            this.textbox_cost.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textbox_cost.CustomButton.UseSelectable = true;
+            this.textbox_cost.CustomButton.Visible = false;
+            this.textbox_cost.Lines = new string[0];
+            this.textbox_cost.Location = new System.Drawing.Point(109, 163);
+            this.textbox_cost.MaxLength = 32767;
+            this.textbox_cost.Name = "textbox_cost";
+            this.textbox_cost.PasswordChar = '\0';
+            this.textbox_cost.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textbox_cost.SelectedText = "";
+            this.textbox_cost.SelectionLength = 0;
+            this.textbox_cost.SelectionStart = 0;
+            this.textbox_cost.ShortcutsEnabled = true;
+            this.textbox_cost.Size = new System.Drawing.Size(121, 23);
+            this.textbox_cost.TabIndex = 22;
+            this.textbox_cost.UseSelectable = true;
+            this.textbox_cost.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textbox_cost.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textbox_cost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_number_KeyPress);
+            this.textbox_cost.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel4.ForeColor = System.Drawing.Color.DarkCyan;
+            this.metroLabel4.Location = new System.Drawing.Point(6, 168);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(51, 15);
+            this.metroLabel4.TabIndex = 21;
+            this.metroLabel4.Text = "Costo(*)";
+            this.metroLabel4.UseCustomForeColor = true;
+            this.metroLabel4.UseStyleColors = true;
             // 
             // metroLabel9
             // 
@@ -427,7 +506,7 @@
             this.metroLabel9.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel9.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel9.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel9.Location = new System.Drawing.Point(6, 167);
+            this.metroLabel9.Location = new System.Drawing.Point(6, 239);
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.Size = new System.Drawing.Size(134, 15);
             this.metroLabel9.TabIndex = 20;
@@ -550,6 +629,7 @@
             this.textbox_stock_max.UseSelectable = true;
             this.textbox_stock_max.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_stock_max.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textbox_stock_max.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_number_KeyPress);
             this.textbox_stock_max.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_number_Validating);
             // 
             // combobox_unit
@@ -592,13 +672,14 @@
             this.textbox_stock_min.UseSelectable = true;
             this.textbox_stock_min.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_stock_min.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textbox_stock_min.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_number_KeyPress);
             this.textbox_stock_min.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_number_Validating);
             // 
             // btn_cancel
             // 
             this.btn_cancel.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_cancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_cancel.Location = new System.Drawing.Point(227, 226);
+            this.btn_cancel.Location = new System.Drawing.Point(227, 290);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 12;
@@ -687,5 +768,9 @@
         private MetroFramework.Controls.MetroButton btn_import;
         private MetroFramework.Controls.MetroButton btn_template;
         private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroTextBox textbox_cost;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroLabel metroLabel10;
+        private MetroFramework.Controls.MetroComboBox combobox_currency;
     }
 }
