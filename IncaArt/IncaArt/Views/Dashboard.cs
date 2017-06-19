@@ -42,6 +42,7 @@ namespace WindowsFormsApp1.Views
             mainDashboard1.Controls.Find("metroTile16", false)[0].Click += btn_ratio_Click;
             mainDashboard1.Controls.Find("metroTile15", false)[0].Click += btn_currency_Click;
             uc_reports.Controls.Find("metroTile8", false)[0].Click += btn_wperformance_Click;
+            mainDashboard1.Controls.Find("metroTile14", false)[0].Click += btn_movementsType_Click;
             this.sessionUser = sessionUser;
             label_user_role.Text = "(" + sessionUser.Profile.Description + ")";
             label_user_name.Text = sessionUser.Name + " " + sessionUser.Middlename;
@@ -153,8 +154,8 @@ namespace WindowsFormsApp1.Views
         private void btn_logo_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            btn_config_Click((object)btn_config, e);
-            menuButton_Click((object)btn_config, (MouseEventArgs)e);
+            btn_config.PerformClick();// ((object)btn_config, e);
+            btn_config.PerformClick();
         }
 
         private void btn_purchase_Click(object sender, EventArgs e)
@@ -297,6 +298,13 @@ namespace WindowsFormsApp1.Views
         {
             hide_UserControls();
             workersPerformance_Report1.Visible = true;
+        }
+
+        
+        private void btn_movementsType_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            uC_MovementsType1.Visible = true;
         }
     }
 }
