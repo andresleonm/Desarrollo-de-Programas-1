@@ -18,9 +18,9 @@ namespace WindowsFormsApp1.Views
         private List<Models.ProductionOrderWorkLine> work_lines = new List<Models.ProductionOrderWorkLine>();
         private List<Models.ProductionOrderMaterialLine> material_lines = new List<Models.ProductionOrderMaterialLine>();
         //Resumen
-        private List<Models.ProductionOrderProductLine> product_summary_lines = new List<Models.ProductionOrderProductLine>();
+        private Dictionary<int,int> product_summary_lines =new Dictionary<int,int>();
         private List<Models.ProductionOrderMaterialLine> material_summary_lines = new List<Models.ProductionOrderMaterialLine>();
-  
+        private List<Workstation> workstations = new List<Workstation>();
         string user = "dp1admin";
         string password= "dp1admin";
         ProductionOrderController production_controller;
@@ -495,8 +495,16 @@ namespace WindowsFormsApp1.Views
         //Summary
         private void update_SummaryProduct()
         {
-            calculate_products_summary();
-            Load_SummaryProduct_DataGridView();
+            if(comboBox_Product.SelectedIndex != -1)
+            {
+                calculate_products_summary();
+                Load_SummaryProduct_DataGridView();
+            }else
+            {
+                product_summary_lines.Clear();
+                Load_SummaryProduct_DataGridView();
+            }
+            
         }
         private void update_SummaryMaterial()
         {
@@ -520,13 +528,14 @@ namespace WindowsFormsApp1.Views
         private void Load_SummaryProduct_DataGridView()
         {
             metroGrid_products_summary.Rows.Clear();
-            for (int i = 0; i < product_summary_lines.Count(); i++)
+
+            foreach(KeyValuePair<int,int>k in product_summary_lines)
             {
-                String[] row = new String[4];
-                    row[0] = product_summary_lines[i].Product_name;                   
-                    row[1] = product_summary_lines[i].Quantity.ToString();
-                    row[2] = product_summary_lines[i].Produced_quantity.ToString();                               
-                    row[3] = product_summary_lines[i].Unit_name.ToString();
+                String[] row = new String[3];
+                row[0] = workstations.Find(w=>w.Id==k.Key).Name;                  
+                row[1] = k.Value.ToString();
+                row[2] = label_Unit.Text;                               
+                    
                 this.metroGrid_products_summary.Rows.Add(row);
             }
         }
@@ -545,42 +554,30 @@ namespace WindowsFormsApp1.Views
         }
 
         public void calculate_products_summary()
-        {/*
+        {
             product_summary_lines.Clear();
-            foreach (Models.ProductionOrderProductLine product_line in product_lines)
+            Product product = (Product)comboBox_Product.SelectedItem;
+            Workstation workstation = new Workstation();
+            workstation.Product_id = product.Id;
+
+            Result result = workstation_controller.getWorkstations(workstation);
+            if (result.success)
             {
-                int index = product_summary_lines.FindIndex(p => p.Product_id == product_line.Product_id);
-                if (index==-1) //not found
-                {
-                    Models.ProductionOrderProductLine new_line = new Models.ProductionOrderProductLine();
-                    new_line.Product_id = product_line.Product_id;
-                    new_line.Product_name = product_line.Product_name;
-                    new_line.Quantity = product_line.Quantity;
-                    new_line.Produced_quantity = 0;
-                    new_line.Unit_id = product_line.Unit_id;
-                    new_line.Unit_name = product_line.Unit_name;
-                    product_summary_lines.Add(new_line);
-                }
-                else
-                {
-                    product_summary_lines[index].Quantity += product_line.Quantity;
-                }
-            }
+                workstations = (List<Workstation>)result.data;
 
-            Result result = workstation_controller.getWorkstations();
-            List<Models.Workstation> workstations = (List<Models.Workstation>)result.data;
-
-            foreach (Models.ProductionOrderProductLine product_line in product_summary_lines)
-            {
-                foreach(Models.ProductionOrderWorkLine work_line in work_lines)
+                foreach (Workstation w in workstations)
                 {
-                    if ((work_line.Product_id==product_line.Product_id)&&(workstations.Find(w=>w.Id==work_line.Workstation_id).Next_workstation==0)) {
-                            
-                            product_line.Produced_quantity += work_line.Quantity_produced;
-                    }            
-                }
+                    product_summary_lines.Add(w.Id,0);
+                    foreach (Models.ProductionOrderWorkLine work_line in work_lines)
+                    {
+                        if (work_line.Workstation_id==w.Id)
+                        {
+                            product_summary_lines[w.Id] += work_line.Quantity_produced;
+                        }
+                    }
 
-            }*/
+                }
+            }          
         }
 
         public void calculate_materials_summary()
@@ -714,8 +711,7 @@ namespace WindowsFormsApp1.Views
                 label_Unit.Text = unit.Name;
                 label_Unit2.Text = unit.Name;
                 label_Unit3.Text = unit.Name;
-
-                update_SummaryMaterial();
+                
             }else
             {
                 Result result = warehouse_controller.getProductWarehouses();
@@ -737,6 +733,8 @@ namespace WindowsFormsApp1.Views
                 label_Unit2.Text = "";
                 label_Unit3.Text = "";
             }
+            update_SummaryProduct();
+            update_SummaryMaterial();
         }
 
         private void comboBox_Recipe_SelectedIndexChanged(object sender, EventArgs e)
