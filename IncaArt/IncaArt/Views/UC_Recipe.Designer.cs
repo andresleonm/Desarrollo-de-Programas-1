@@ -502,7 +502,8 @@
             this.textbox_quantity.UseSelectable = true;
             this.textbox_quantity.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_quantity.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.textbox_quantity.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_number_Validating);
+            this.textbox_quantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_number_KeyPress);
+            this.textbox_quantity.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             // 
             // metroLabel6
             // 
@@ -756,7 +757,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(25, 34);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(783, 501);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.metroTabControl1.TabIndex = 2;
@@ -786,6 +787,7 @@
             this.Size = new System.Drawing.Size(887, 592);
             this.UseCustomBackColor = true;
             this.Load += new System.EventHandler(this.UC_Recipe_Load);
+            this.VisibleChanged += new System.EventHandler(this.UC_Recipe_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.registro.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);

@@ -40,6 +40,7 @@ namespace WindowsFormsApp1.Views
         private void UC_Material_Load(object sender, EventArgs e)
         {
             data_loaded = false;
+            metroTabControl1.SelectedIndex = 0;
         }
 
         private void UC_Material_VisibleChanged(object sender, EventArgs e)
@@ -55,11 +56,13 @@ namespace WindowsFormsApp1.Views
                 material_list = new List<Models.Material>();
                 currency_list = new List<Currency>();
                 data_loaded = false;
-                Set_Flag_All(false);
-                operation_value = 0;
             }
+            if (!Visible) return;
+            Set_Flag_All(false);
+            operation_value = 0;
             Load_Data();
             Load_DataGridView();
+            metroTabControl1.SelectedIndex = 0;
         }
 
         private void Load_Data()
@@ -89,8 +92,11 @@ namespace WindowsFormsApp1.Views
             {
                 currency_list = (List<Currency>)result.data;
             }
+            Load_Combobox();
+        }
 
-
+        private void Load_Combobox()
+        {
             //Cargar los combobox
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
             //Monedas
@@ -120,9 +126,6 @@ namespace WindowsFormsApp1.Views
             combobox_unit_s.DataSource = new BindingSource(combo_data, null);
             combobox_unit_s.DisplayMember = "Value";
             combobox_unit_s.ValueMember = "Key";
-
-            metroTabControl1.SelectedIndex = 0;
-
         }
 
         private void Load_DataGridView()
@@ -444,16 +447,6 @@ namespace WindowsFormsApp1.Views
                 }
 
             }
-            //if ((textbox.Name == "textbox_cost") && (e.KeyChar == '.'))
-            //{
-            //    e.Handled = false;
-            //}
-
-            //// only allow one decimal point
-            //if ((textbox.Name == "textbox_cost") && (e.KeyChar == '.') && (textbox.Text.IndexOf('.') > -1))
-            //{
-            //    e.Handled = true;
-            //}
         }
 
 
