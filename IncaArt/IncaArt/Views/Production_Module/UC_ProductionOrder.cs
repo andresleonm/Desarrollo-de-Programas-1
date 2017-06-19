@@ -8,18 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Controller;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views
 {
     public partial class UC_ProductionOrder : UserControl
     {
-        private List<Models.ProductionOrderProductLine> product_lines = new List<Models.ProductionOrderProductLine>();
+        
         private List<Models.ProductionOrderWorkLine> work_lines = new List<Models.ProductionOrderWorkLine>();
         private List<Models.ProductionOrderMaterialLine> material_lines = new List<Models.ProductionOrderMaterialLine>();
         //Resumen
-        private List<Models.ProductionOrderProductLine> product_summary_lines = new List<Models.ProductionOrderProductLine>();
+        private Dictionary<int,int> product_summary_lines =new Dictionary<int,int>();
         private List<Models.ProductionOrderMaterialLine> material_summary_lines = new List<Models.ProductionOrderMaterialLine>();
-  
+        private List<Workstation> workstations = new List<Workstation>();
         string user = "dp1admin";
         string password= "dp1admin";
         ProductionOrderController production_controller;
@@ -30,6 +31,9 @@ namespace WindowsFormsApp1.Views
         WorkstationsController workstation_controller;
         MaterialsController material_controller;
         UnitController unit_controller;
+        ProductsController product_controller;
+        ProductMovementDetailController product_movement_controller;
+        ProductWarehouseController warehouse_controller;
 
         public bool editing = false;
         //validate
@@ -40,6 +44,7 @@ namespace WindowsFormsApp1.Views
         public UC_ProductionOrder()
         {
             InitializeComponent();
+           
             production_controller = new ProductionOrderController(user, password);
             product_line_controller = new ProductionOrderProductLineController(user, password);
             material_line_controller = new ProductionOrderMaterialLineController(user, password);
@@ -48,22 +53,9 @@ namespace WindowsFormsApp1.Views
             workstation_controller = new WorkstationsController(user,password);
             material_controller = new MaterialsController(user,password);
             unit_controller = new UnitController(user,password);
-            hide_buttons();
-        }
-        
-        private void hide_buttons()
-        {
-            if (!editing)
-            {            
-                metroTextBox_OrderNumber.Visible = false;
-                metroLabel_numOrder.Visible = false;
-            }
-            else
-            {             
-                metroTextBox_OrderNumber.Visible = true;
-                metroLabel_numOrder.Visible = true;
-            }
-            
+            product_controller = new ProductsController(user,password);
+            product_movement_controller = new ProductMovementDetailController(user,password);
+            warehouse_controller = new ProductWarehouseController(user,password);
         }
 
         private bool validate_data()
@@ -90,11 +82,33 @@ namespace WindowsFormsApp1.Views
                 DateTime end = metroDateTime_End.Value;
                 string description = metroTextBox_Description.Text;
                 string observations = metroTextBox_Observation.Text;
-                string status="Registrado";
+                string state = "Registrado";
                 int order_id;
-                string message="";
+                string message = "";
+                //Product
+                Product product = (Product)comboBox_Product.SelectedItem;
+                string unit_name = label_Unit.Text;
+                int quantity = Int32.Parse(metroTextBox_Quantity.Text);
+                int produced_quantity = Int32.Parse(metroTextBox_Quantity_produced.Text);
+                int quantity_warehouse = Int32.Parse(metroTextBox_Quantity_warehouse.Text);
+                ProductWarehouse warehouse = (ProductWarehouse)comboBox_Warehouse.SelectedItem;
+                Recipe recipe = (Recipe)comboBox_Recipe.SelectedItem;             
+                int estimate_id;
+                int estimate_line;
 
-                Models.ProductionOrder production_order = new Models.ProductionOrder(description,observations,begin,end,status);
+                if (metroTextBox_Estimate.Text != "")
+                {
+                    estimate_id=Int32.Parse(metroTextBox_Estimate.Text);
+                    estimate_line = Int32.Parse(metroTextBox_Estimate_line.Text);
+                }else
+                {
+                    estimate_id = 0;
+                    estimate_line = 0;
+                }
+             
+                Models.ProductionOrder production_order=new Models.ProductionOrder(description,observations,begin,end,state,product.Id,
+                    product.Name,product.Unit_id,unit_name,quantity,produced_quantity,warehouse.Id,warehouse.Name,recipe.Id,recipe.Name,quantity_warehouse,
+                    estimate_id,estimate_line);
                 if (!editing)
                 {
                     //INSERT
@@ -102,17 +116,7 @@ namespace WindowsFormsApp1.Views
                     if (result.success)
                     {
                         order_id = Int32.Parse(result.data.ToString());
-                        /*
-                        //List of products
-                        for (int i = 0; i < product_lines.Count; i++)
-                        {
-                            if (product_lines[i].State != "Anulado")
-                            {
-                                product_lines[i].Order_Id = order_id;
-                                result = product_line_controller.insertProductLine(product_lines[i]);
-                                if (!result.success) message += "-" + product_lines[i].Warehouse_name +":" + result.message + "\n";
-                            }
-                        }*/
+                      
                         //List of materials           
                         for (int i = 0; i < material_lines.Count; i++)
                         {
@@ -145,25 +149,7 @@ namespace WindowsFormsApp1.Views
                     Result result=production_controller.updateProductionOrder(production_order);
                     if (!result.success) message += "-" + result.message + "\n";
                     else { 
-                        /*
-                        //List of products
-                        for (int i = 0; i < product_lines.Count; i++)
-                        {
-                            if (product_lines[i].Id == 0)
-                            {
-                                //INSERT
-                                product_lines[i].Order_Id = production_order.Id;
-                                result = product_line_controller.insertProductLine(product_lines[i]);
-                                if (!result.success) message += "-" + product_lines[i].Warehouse_name + ":" + result.message + "\n";
-                            }
-                            else
-                            {
-                                //UPDATE
-                                result = product_line_controller.updateProductLine(product_lines[i]);
-                                if (!result.success) message += "-" + product_lines[i].Warehouse_name + ":" + result.message + "\n";
-                            }                     
-                        }
-                        */
+                        
                         //List of materials           
                         for (int i = 0; i < material_lines.Count; i++)
                         {
@@ -212,22 +198,7 @@ namespace WindowsFormsApp1.Views
             
           
         }
-        /*
-        private void metroButton_AddProduct_Click(object sender, EventArgs e)
-        {
-            ProductionOrderProductLine product_line = new ProductionOrderProductLine();
-            product_line.ShowDialog();
-            if (product_line.IsRegistered)
-            {
-                product_lines.Add(product_line.Line);
-                Load_Product_DataGridView();
-                update_SummaryProduct();
-            }
-            update_SummaryMaterial();
-            update_SummaryProduct();
-            
-        }
-        */
+      
         private void metroButton_AddMaterial_Click(object sender, EventArgs e)
         {
             Models.ProductionOrderMaterialLine line = new Models.ProductionOrderMaterialLine();
@@ -254,10 +225,9 @@ namespace WindowsFormsApp1.Views
         }
         private void clear_Form()
         {
-            //datagrid_Products.Rows.Clear();
+            
             metroGrid_Material.Rows.Clear();
             metroGrid_Work.Rows.Clear();
-            product_lines.Clear();
             material_lines.Clear();
             work_lines.Clear();
             product_summary_lines.Clear();
@@ -271,36 +241,33 @@ namespace WindowsFormsApp1.Views
             metroTextBox_Observation.Text = "";
             metroDateTime_Begin.Text = "";
             metroDateTime_End.Text = "";
+            metroTextBox_Estimate.Text = "";
+            metroTextBox_Estimate_line.Text = "";
+
+            metroLabel_estimate.Visible = true;
+            metroTextBox_Estimate.Visible = true;
+            metroLabel_Estimate_line.Visible = true;
+            metroTextBox_Estimate_line.Visible = true;
+            //product
+            Load_Product();
+
         }
-        /*
-        private void Load_Product_DataGridView()
+        
+        private void Load_Product()
         {
-            datagrid_Products.Rows.Clear();
-            for (int i = 0; i < product_lines.Count(); i++)
+            Result result = product_controller.getProducts_withWarehouses();
+            if (result.success)
             {
-                if (product_lines[i].State == "Registrado") { 
-                    String[] row = new String[13];
-                    row[0] = "0";
-                    row[1] = product_lines[i].Product_id.ToString();
-                    row[2] = product_lines[i].Product_name;
-                    row[3] = product_lines[i].Quantity.ToString();
-                    row[4] = product_lines[i].Produced_quantity.ToString();
-                    row[5] = product_lines[i].Unit_id.ToString();
-                    row[6] = product_lines[i].Unit_name.ToString();
-                    row[7] = product_lines[i].Recipe_id.ToString();
-                    row[8] = product_lines[i].Recipe_name;
-                    row[9] = product_lines[i].Warehouse_id.ToString();
-                    row[10] = product_lines[i].Warehouse_name;
-                    row[11] = product_lines[i].Quantity_warehouse.ToString();
-                    row[12] = product_lines[i].State;
+                comboBox_Product.DataSource = (List<Product>)result.data;
+                comboBox_Product.DisplayMember = "name";
+                comboBox_Product.SelectedIndex = -1;
+                metroTextBox_Quantity_produced.Text = "0";
+                metroTextBox_Quantity_warehouse.Text = "0";
+                metroTextBox_Quantity.Text = "0";
+            }     
 
-                    this.datagrid_Products.Rows.Add(row);
-               }
-                
-             }
-
-          }
-          */
+        }
+          
         private void Load_Material_DataGridView()
         {
             metroGrid_Material.Rows.Clear();
@@ -361,8 +328,7 @@ namespace WindowsFormsApp1.Views
 
             Result result = production_controller.getProductionOrder(orderId);
             Models.ProductionOrder order = (Models.ProductionOrder)result.data;
-            result=product_line_controller.getProductLines(orderId);
-            if(result.success)product_lines = (List<Models.ProductionOrderProductLine>)result.data;
+            
             result=material_line_controller.getMaterialLines(orderId);
             if (result.success) material_lines = (List<Models.ProductionOrderMaterialLine>)result.data;
             result=work_line_controller.getWorkLines(orderId);
@@ -374,36 +340,55 @@ namespace WindowsFormsApp1.Views
             metroDateTime_End.Text = order.End.Date.ToString();
             metroTextBox_Description.Text = order.Description;
             metroTextBox_Observation.Text = order.Observation;
+            //Estimate
+            if (order.Estimate_id != 0)
+            {
+                metroTextBox_Estimate.Text = order.Estimate_id.ToString();
+                metroTextBox_Estimate.ReadOnly = true;
+
+                metroTextBox_Estimate_line.Text = order.Estimate_line.ToString();
+                metroTextBox_Estimate_line.ReadOnly = true;
+            }else
+            {
+                metroLabel_estimate.Visible = false;
+                metroTextBox_Estimate.Visible = false;
+                metroLabel_Estimate_line.Visible = false;
+                metroTextBox_Estimate_line.Visible = false;
+            }
+            //Product
+            comboBox_Product.Text = order.Product_name;
+            metroTextBox_Quantity.Text = order.Quantity.ToString();
+            metroTextBox_Quantity_produced.Text = order.Produced_quantity.ToString();
+            comboBox_Recipe.Text = order.Recipe_name;
+            comboBox_Warehouse.Text = order.Warehouse_name;
+            metroTextBox_Quantity_warehouse.Text = order.Quantity_warehouse.ToString();
+            label_Unit.Text = order.Unit_name;
+            label_Unit3.Text = order.Unit_name;
+            label_Unit2.Text = order.Unit_name;
+
             //List
-            //Load_Product_DataGridView();
             Load_Material_DataGridView();
             Load_Work_DataGridView();
             update_SummaryMaterial();
             update_SummaryProduct();
-            hide_buttons();
-            flag_begin = true;
-            flag_description = true;
-            flag_end = true;
+
         }
 
         private void UC_ProductionOrder_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void UC_ProductionOrder_VisibleChanged(object sender, EventArgs e)
-        {
-            hide_buttons();
+        {          
             if (!Visible)
             {
                 UC_ProductionOrderSearch uc_productionOrderSearch = (UC_ProductionOrderSearch)(this.Parent.Controls.Find("production_search", false)[0]);
                 uc_productionOrderSearch.Visible = true;
+            }else
+            {
+                Load_Product();
             }
-        }
-
-        private void datagrid_Products_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void metroButton_Cancel_Click(object sender, EventArgs e)
@@ -412,26 +397,7 @@ namespace WindowsFormsApp1.Views
             clear_Form();
             this.Visible = false;
         }
-        /*
-        private void metroButton_EditProduct_Click(object sender, EventArgs e)
-        {
-            if (datagrid_Products.Rows.Count > 0)
-            {
-                int selected_index = datagrid_Products.SelectedRows[0].Index;
-                ProductionOrderProductLine product_line = new ProductionOrderProductLine();
-                product_line.Line = product_lines[selected_index];
-                product_line.Editing = true;
-                product_line.ShowDialog();
-                if (product_line.IsRegistered)
-                {
-                    product_lines[selected_index] = product_line.Line;
-                    Load_Product_DataGridView();
-                }
-            }
-            update_SummaryProduct();
-            update_SummaryMaterial();
-        }
-        */
+        
         private void metroButton_EditMaterial_Click(object sender, EventArgs e)
         {
             if (metroGrid_Material.Rows.Count > 0)
@@ -475,33 +441,7 @@ namespace WindowsFormsApp1.Views
             update_SummaryProduct();
 
         }
-        /*
-        private void metroButton_DeleteProduct_Click(object sender, EventArgs e)
-        {
-            if (datagrid_Products.Rows.Count > 0)
-            {
-                if (datagrid_Products.SelectedRows[0] == null)
-                {
-                    MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    DialogResult result = MessageBox.Show(this, "¿Está seguro que desea eliminar este producto?", "Confirmación", MessageBoxButtons.YesNoCancel);
-                    {
-                        if (result == DialogResult.Yes)
-                        {
-                            int selected_index = datagrid_Products.SelectedRows[0].Index;
-                            Models.ProductionOrderProductLine product_line = product_lines[selected_index];
-                            product_line.State = "Anulado";
-                            Load_Product_DataGridView();
-                        }
-                    }
-                    update_SummaryProduct();
-                    update_SummaryMaterial();
-                }
-            }
-        }
-        */
+      
         private void metroButton_DeleteMaterial_Click(object sender, EventArgs e)
         {
             if (metroGrid_Material.Rows.Count > 0)
@@ -555,26 +495,47 @@ namespace WindowsFormsApp1.Views
         //Summary
         private void update_SummaryProduct()
         {
-            calculate_products_summary();
-            Load_SummaryProduct_DataGridView();
+            if(comboBox_Product.SelectedIndex != -1)
+            {
+                calculate_products_summary();
+                Load_SummaryProduct_DataGridView();
+            }else
+            {
+                product_summary_lines.Clear();
+                Load_SummaryProduct_DataGridView();
+            }
+            
         }
         private void update_SummaryMaterial()
         {
-            calculate_materials_summary();
-            Load_SummaryMaterial_DataGridView();
+            int quantity=0;
+            if (metroTextBox_Quantity.Text != "")
+            {
+                quantity = Int32.Parse(metroTextBox_Quantity.Text);
+            }
+            if((quantity>0) && (comboBox_Product.SelectedIndex != -1) && (comboBox_Recipe.SelectedIndex != -1))
+            {
+                calculate_materials_summary();
+                Load_SummaryMaterial_DataGridView();
+            }else
+            {
+                material_summary_lines.Clear();
+                Load_SummaryMaterial_DataGridView();
+            }           
         }
 
 
         private void Load_SummaryProduct_DataGridView()
         {
             metroGrid_products_summary.Rows.Clear();
-            for (int i = 0; i < product_summary_lines.Count(); i++)
+
+            foreach(KeyValuePair<int,int>k in product_summary_lines)
             {
-                String[] row = new String[4];
-                    row[0] = product_summary_lines[i].Product_name;                   
-                    row[1] = product_summary_lines[i].Quantity.ToString();
-                    row[2] = product_summary_lines[i].Produced_quantity.ToString();                               
-                    row[3] = product_summary_lines[i].Unit_name.ToString();
+                String[] row = new String[3];
+                row[0] = workstations.Find(w=>w.Id==k.Key).Name;                  
+                row[1] = k.Value.ToString();
+                row[2] = label_Unit.Text;                               
+                    
                 this.metroGrid_products_summary.Rows.Add(row);
             }
         }
@@ -595,74 +556,67 @@ namespace WindowsFormsApp1.Views
         public void calculate_products_summary()
         {
             product_summary_lines.Clear();
-            foreach (Models.ProductionOrderProductLine product_line in product_lines)
+            Product product = (Product)comboBox_Product.SelectedItem;
+            Workstation workstation = new Workstation();
+            workstation.Product_id = product.Id;
+
+            Result result = workstation_controller.getWorkstations(workstation);
+            if (result.success)
             {
-                int index = product_summary_lines.FindIndex(p => p.Product_id == product_line.Product_id);
-                if (index==-1) //not found
-                {
-                    Models.ProductionOrderProductLine new_line = new Models.ProductionOrderProductLine();
-                    new_line.Product_id = product_line.Product_id;
-                    new_line.Product_name = product_line.Product_name;
-                    new_line.Quantity = product_line.Quantity;
-                    new_line.Produced_quantity = 0;
-                    new_line.Unit_id = product_line.Unit_id;
-                    new_line.Unit_name = product_line.Unit_name;
-                    product_summary_lines.Add(new_line);
-                }
-                else
-                {
-                    product_summary_lines[index].Quantity += product_line.Quantity;
-                }
-            }
+                workstations = (List<Workstation>)result.data;
 
-            Result result = workstation_controller.getWorkstations();
-            List<Models.Workstation> workstations = (List<Models.Workstation>)result.data;
-
-            foreach (Models.ProductionOrderProductLine product_line in product_summary_lines)
-            {
-                foreach(Models.ProductionOrderWorkLine work_line in work_lines)
+                foreach (Workstation w in workstations)
                 {
-                    if ((work_line.Product_id==product_line.Product_id)&&(workstations.Find(w=>w.Id==work_line.Workstation_id).Next_workstation==0)) {
-                            
-                            product_line.Produced_quantity += work_line.Quantity_produced;
-                    }            
-                }
+                    product_summary_lines.Add(w.Id,0);
+                    foreach (Models.ProductionOrderWorkLine work_line in work_lines)
+                    {
+                        if (work_line.Workstation_id==w.Id)
+                        {
+                            product_summary_lines[w.Id] += work_line.Quantity_produced;
+                        }
+                    }
 
-            }
+                }
+            }          
         }
 
-        public void calculate_materials_summary() 
+        public void calculate_materials_summary()
         {
-            material_summary_lines.Clear();
-            List<Models.Material> materials = (List<Models.Material>)material_controller.getMaterials().data;
-            List<Models.UnitOfMeasure> units = (List<Models.UnitOfMeasure>)unit_controller.getUnits().data;
-            //For product
-            foreach (Models.ProductionOrderProductLine product_line in product_lines)
+            Product product = (Product)comboBox_Product.SelectedItem;
+            int quantity = Int32.Parse(metroTextBox_Quantity.Text);
+            if (product != null)
             {
-                //Detalle de receta de cada producto
-                List<Models.RecipeDetail> recipe_details = (List<Models.RecipeDetail>)recipe_controller.getRecipeDetails(product_line.Recipe_id).data;
+                material_summary_lines.Clear();
+                List<Models.Material> materials = (List<Models.Material>)material_controller.getMaterials().data;
+                List<Models.UnitOfMeasure> units = (List<Models.UnitOfMeasure>)unit_controller.getUnits().data;
+
+                //Detalle de receta del producto
+                Recipe recipe = (Recipe)comboBox_Recipe.SelectedItem;
+                List<RecipeDetail> recipe_details = (List<Models.RecipeDetail>)recipe_controller.getRecipeDetails(recipe.Id).data;
                 //Por cada ingrediente de la receta
                 foreach (Models.RecipeDetail detail in recipe_details)
                 {
                     int index = material_summary_lines.FindIndex(m => m.Material_id == detail.Material_id);
-                    if (index==-1) //No se encuentra
+                    if (index == -1) //No se encuentra
                     {
                         Models.Material material_found = materials.Find(m => m.Id == detail.Material_id);
                         Models.ProductionOrderMaterialLine new_line = new Models.ProductionOrderMaterialLine();
                         new_line.Material_id = material_found.Id;
                         new_line.Material_name = material_found.Name;
-                        new_line.Quantity_required = detail.Quantity * product_line.Quantity;
+                        new_line.Quantity_required = detail.Quantity * quantity;
                         new_line.Unit_id = material_found.Unit_id;
-                        new_line.Unit_name = units.Find(u=>u.Id==material_found.Unit_id).Name;
+                        new_line.Unit_name = units.Find(u => u.Id == material_found.Unit_id).Name;
                         material_summary_lines.Add(new_line);
                     }
                     else
                     {
-                        material_summary_lines[index].Quantity_required += detail.Quantity * product_line.Quantity;
+                        material_summary_lines[index].Quantity_required += detail.Quantity * quantity;
                     }
 
                 }
+
             }
+
         }
 
         //Validaciones
@@ -732,5 +686,83 @@ namespace WindowsFormsApp1.Views
             validate_end_datetime(date_time);
         }
 
+        private void comboBox_Product_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_Product.SelectedIndex != -1)
+            {
+                int product_id = ((Product)comboBox_Product.SelectedItem).Id;
+
+                Result result = product_movement_controller.getWarehouses(product_id);
+                comboBox_Warehouse.DataSource = null;
+                comboBox_Warehouse.DataSource = (List<Warehouse_Module.ProductWarehouseM>)result.data;
+                comboBox_Warehouse.DisplayMember = "name";
+                //validate_comboBox(comboBox_Warehouse);
+
+                Recipe recipe = new Recipe();
+                recipe.Product_id = product_id;
+                result = recipe_controller.getRecipes(recipe);
+                comboBox_Recipe.DataSource = null;
+                comboBox_Recipe.DataSource = (List<Recipe>)result.data;
+                comboBox_Recipe.DisplayMember = "name";
+                //validate_comboBox(comboBox_Recipe);
+
+                UnitOfMeasure unit = (UnitOfMeasure)unit_controller.getUnit(((Product)comboBox_Product.SelectedItem).Unit_id).data;
+
+                label_Unit.Text = unit.Name;
+                label_Unit2.Text = unit.Name;
+                label_Unit3.Text = unit.Name;
+                
+            }else
+            {
+                Result result = warehouse_controller.getProductWarehouses();
+                comboBox_Warehouse.DataSource = null;
+                comboBox_Warehouse.DataSource = (List<ProductWarehouse>)result.data;
+                comboBox_Warehouse.DisplayMember = "name";
+                comboBox_Warehouse.SelectedIndex = -1;
+                
+
+                Recipe recipe = new Recipe();
+                
+                result = recipe_controller.getRecipes();
+                comboBox_Recipe.DataSource = null;
+                comboBox_Recipe.DataSource = (List<Recipe>)result.data;
+                comboBox_Recipe.DisplayMember = "name";
+                comboBox_Recipe.SelectedIndex = -1;             
+
+                label_Unit.Text = "";
+                label_Unit2.Text = "";
+                label_Unit3.Text = "";
+            }
+            update_SummaryProduct();
+            update_SummaryMaterial();
+        }
+
+        private void comboBox_Recipe_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            update_SummaryMaterial();
+        }
+
+        private void metroTextBox_Quantity_TextChanged(object sender, EventArgs e)
+        {
+            update_SummaryMaterial();
+        }
+
+        private void metroTextBox_Estimate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar)) e.Handled = true;
+            if (e.KeyChar == (char)8) e.Handled = false;
+        }
+
+        private void metroTextBox_Estimate_line_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar)) e.Handled = true;
+            if (e.KeyChar == (char)8) e.Handled = false;
+        }
+
+        private void metroTextBox_Quantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar)) e.Handled = true;
+            if (e.KeyChar == (char)8) e.Handled = false;
+        }
     }
 }

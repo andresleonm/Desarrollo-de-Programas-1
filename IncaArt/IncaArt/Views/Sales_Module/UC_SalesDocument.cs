@@ -302,7 +302,10 @@ namespace WindowsFormsApp1.Views.Sales_Module
                         sdl.Id = i;
                         sdl.Document_id = sales_document_id;
                         i++;
-                        sales_document_line_controller.insertSalesDocumentLine(sdl);
+                        var result=sales_document_line_controller.insertSalesDocumentLine(sdl);
+                        if (!result.success)
+                            MessageBox.Show(this, result.message);
+
                     }
                     btn_Clean.PerformClick();
                     tab_Document.SelectedIndex = 0;

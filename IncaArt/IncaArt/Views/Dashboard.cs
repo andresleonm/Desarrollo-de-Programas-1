@@ -154,8 +154,8 @@ namespace WindowsFormsApp1.Views
         private void btn_logo_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            btn_config_Click((object)btn_config, e);
-            menuButton_Click((object)btn_config, (MouseEventArgs)e);
+            btn_config.PerformClick();// ((object)btn_config, e);
+            btn_config.PerformClick();
         }
 
         private void btn_purchase_Click(object sender, EventArgs e)
@@ -305,6 +305,21 @@ namespace WindowsFormsApp1.Views
         {
             hide_UserControls();
             uC_MovementsType1.Visible = true;
+        }
+
+        private void metroLabel1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.metroLabel1.Visible = true;
+        }
+
+        private void metroLabel1_Leave(object sender, EventArgs e)
+        {
+            this.metroLabel1.Visible = false;
         }
     }
 }
