@@ -713,10 +713,11 @@ namespace WindowsFormsApp1.Views
             // 
             // uC_MovementsType1
             // 
-            this.uC_MovementsType1.Location = new System.Drawing.Point(88, 47);
-            this.uC_MovementsType1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uC_MovementsType1.AutoSize = true;
+            this.uC_MovementsType1.Location = new System.Drawing.Point(132, 72);
+            this.uC_MovementsType1.Margin = new System.Windows.Forms.Padding(2);
             this.uC_MovementsType1.Name = "uC_MovementsType1";
-            this.uC_MovementsType1.Size = new System.Drawing.Size(398, 478);
+            this.uC_MovementsType1.Size = new System.Drawing.Size(600, 735);
             this.uC_MovementsType1.TabIndex = 62;
             this.uC_MovementsType1.UseSelectable = true;
             // 
