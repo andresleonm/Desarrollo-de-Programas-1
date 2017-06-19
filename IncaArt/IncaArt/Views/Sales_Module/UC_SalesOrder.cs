@@ -167,7 +167,8 @@ namespace WindowsFormsApp1.Views
         // -----------------------------------------------------
 
         private void btn_Search_Client_Click(object sender, EventArgs e)
-        {
+        {            
+            clean_Customer();
             var customerL = new List<Customer>();
             Sales_Module.SalesOrderSearchClient search_view = new Sales_Module.SalesOrderSearchClient(ref customerL, user, password, 'A');
             search_view.ShowDialog();
@@ -178,7 +179,19 @@ namespace WindowsFormsApp1.Views
 
                 if (customer.Type.Equals("Extranjero"))
                 {
+                    var estimateL = new List<SalesEstimate>();
+                    Sales_Module.SalesOrderEstimate search_view2 = new Sales_Module.SalesOrderEstimate(ref estimateL, user, password, customer.Id);
+                    search_view2.ShowDialog();
 
+                    if (estimateL.Count != 0)
+                    {
+                        txt_name.Text = estimateL[0].Customer_name;
+                        txt_address.Text = estimateL[0].Customer_address;
+                        txt_Doi.Text = estimateL[0].Customer_doi;
+                        txt_phone.Text = estimateL[0].Customer_phone;
+                        //fill_Sales_Order_Form();
+                        btn_New.Visible = false;
+                    }
                 }
                 else
                 {
@@ -406,10 +419,7 @@ namespace WindowsFormsApp1.Views
 
         private void Clean()
         {
-            txt_name.Text = "";
-            txt_Doi.Text = "";
-            txt_address.Text = "";
-            txt_phone.Text = "";
+            clean_Customer();
             
             txt_idOrder.Text = "";
             cbo_Currency.Text = "";
@@ -420,6 +430,14 @@ namespace WindowsFormsApp1.Views
             
             customer = new Customer();
             clean_gridView_OrderLine();
+        }
+
+        private void clean_Customer()
+        {
+            txt_name.Text = "";
+            txt_Doi.Text = "";
+            txt_address.Text = "";
+            txt_phone.Text = "";
         }
 
         private void clean_gridView_OrderLine()

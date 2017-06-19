@@ -38,7 +38,6 @@
             this.tab_Document = new MetroFramework.Controls.MetroTabControl();
             this.order = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_View = new System.Windows.Forms.Button();
             this.gb_Documents = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -184,7 +183,6 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btn_Delete);
             this.panel3.Controls.Add(this.btn_View);
             this.panel3.Controls.Add(this.gb_Documents);
             this.panel3.Controls.Add(this.gb_Filter);
@@ -193,24 +191,12 @@
             this.panel3.Size = new System.Drawing.Size(1028, 539);
             this.panel3.TabIndex = 1;
             // 
-            // btn_Delete
-            // 
-            this.btn_Delete.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Delete.ForeColor = System.Drawing.Color.White;
-            this.btn_Delete.Location = new System.Drawing.Point(560, 494);
-            this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(99, 29);
-            this.btn_Delete.TabIndex = 49;
-            this.btn_Delete.Text = "Anular";
-            this.btn_Delete.UseVisualStyleBackColor = false;
-            // 
             // btn_View
             // 
             this.btn_View.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_View.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_View.ForeColor = System.Drawing.Color.White;
-            this.btn_View.Location = new System.Drawing.Point(382, 494);
+            this.btn_View.Location = new System.Drawing.Point(462, 493);
             this.btn_View.Name = "btn_View";
             this.btn_View.Size = new System.Drawing.Size(99, 29);
             this.btn_View.TabIndex = 48;
@@ -995,7 +981,7 @@
             // 
             this.dt_IssueHour.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dt_IssueHour.Location = new System.Drawing.Point(543, 121);
-            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_IssueHour.Name = "dt_IssueHour";
             this.dt_IssueHour.Size = new System.Drawing.Size(87, 29);
             this.dt_IssueHour.TabIndex = 74;
@@ -1061,7 +1047,7 @@
             this.dt_IssueDate.CalendarMonthBackground = System.Drawing.Color.White;
             this.dt_IssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dt_IssueDate.Location = new System.Drawing.Point(432, 121);
-            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_IssueDate.Name = "dt_IssueDate";
             this.dt_IssueDate.Size = new System.Drawing.Size(105, 29);
             this.dt_IssueDate.TabIndex = 64;
@@ -1743,7 +1729,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;
         private MetroFramework.Controls.MetroTextBox txt_Currency;
-        private System.Windows.Forms.Button btn_Delete;
         private MetroFramework.Controls.MetroTile btn_Pdf;
         private System.Windows.Forms.DataGridViewTextBoxColumn document_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
