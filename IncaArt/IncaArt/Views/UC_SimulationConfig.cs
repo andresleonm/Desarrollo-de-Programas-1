@@ -81,7 +81,10 @@ namespace WindowsFormsApp1.Views
                     List<Algorithm.Ratio> tabu_ratios = new List<Algorithm.Ratio>();
                     foreach(Ratio r in ratios)
                     {
-                        tabu_ratios.Add(new Algorithm.Ratio(r.value, "Efficiency",
+                        string ratio_t = "";
+                        if (r.ratio_type == 1) ratio_t = "Efficiency";
+                        else if (r.ratio_type == 2) ratio_t = "Time";
+                        tabu_ratios.Add(new Algorithm.Ratio(r.value,ratio_t,
                             tabu_wkstations.Where(wkstation => wkstation.id == r.workstation_id).ElementAt(0)));
                     }
                     tabu_worker.ratios = tabu_ratios;

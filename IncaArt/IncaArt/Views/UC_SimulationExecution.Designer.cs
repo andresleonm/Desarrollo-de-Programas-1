@@ -42,6 +42,7 @@
             this.execution_workstation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.efficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.production_line = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productLineAssignmentBindingSource)).BeginInit();
@@ -110,6 +111,7 @@
             this.execution_workstation,
             this.product,
             this.efficiency,
+            this.time,
             this.production_line});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -162,11 +164,19 @@
             // 
             // efficiency
             // 
+            this.efficiency.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.efficiency.DefaultCellStyle = dataGridViewCellStyle2;
-            this.efficiency.HeaderText = "Eficiencia";
+            this.efficiency.HeaderText = "Productividad";
             this.efficiency.Name = "efficiency";
             this.efficiency.ReadOnly = true;
+            // 
+            // time
+            // 
+            this.time.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.time.HeaderText = "Productos por hora";
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
             // 
             // production_line
             // 
@@ -202,6 +212,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn execution_workstation;
         private System.Windows.Forms.DataGridViewTextBoxColumn product;
         private System.Windows.Forms.DataGridViewTextBoxColumn efficiency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewTextBoxColumn production_line;
     }
 }
