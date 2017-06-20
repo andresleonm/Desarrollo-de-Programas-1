@@ -40,7 +40,7 @@
             this.order = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_Edit = new System.Windows.Forms.Button();
-            this.btn_Delete = new System.Windows.Forms.Button();
+            this.btn_Anulate = new System.Windows.Forms.Button();
             this.gb_Orders = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.grid_orders = new MetroFramework.Controls.MetroGrid();
@@ -100,6 +100,7 @@
             this.btn_New = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_order_lines = new MetroFramework.Controls.MetroGrid();
+            this.mbStyle = new MetroFramework.Components.MetroStyleManager(this.components);
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Product_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -113,8 +114,7 @@
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.action = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.mbStyle = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.btn_Delete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tab_Order.SuspendLayout();
             this.order.SuspendLayout();
@@ -170,7 +170,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.btn_Edit);
-            this.panel3.Controls.Add(this.btn_Delete);
+            this.panel3.Controls.Add(this.btn_Anulate);
             this.panel3.Controls.Add(this.gb_Orders);
             this.panel3.Controls.Add(this.gb_Filter);
             this.panel3.Location = new System.Drawing.Point(3, 3);
@@ -191,17 +191,17 @@
             this.btn_Edit.UseVisualStyleBackColor = false;
             this.btn_Edit.Click += new System.EventHandler(this.btn_Edit_Click);
             // 
-            // btn_Delete
+            // btn_Anulate
             // 
-            this.btn_Delete.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Delete.ForeColor = System.Drawing.Color.White;
-            this.btn_Delete.Location = new System.Drawing.Point(445, 495);
-            this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(82, 29);
-            this.btn_Delete.TabIndex = 49;
-            this.btn_Delete.Text = "Eliminar";
-            this.btn_Delete.UseVisualStyleBackColor = false;
+            this.btn_Anulate.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Anulate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Anulate.ForeColor = System.Drawing.Color.White;
+            this.btn_Anulate.Location = new System.Drawing.Point(445, 495);
+            this.btn_Anulate.Name = "btn_Anulate";
+            this.btn_Anulate.Size = new System.Drawing.Size(82, 29);
+            this.btn_Anulate.TabIndex = 49;
+            this.btn_Anulate.Text = "Anular";
+            this.btn_Anulate.UseVisualStyleBackColor = false;
             // 
             // gb_Orders
             // 
@@ -412,7 +412,7 @@
             // metroDateTime1
             // 
             this.metroDateTime1.Location = new System.Drawing.Point(562, 24);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(4, 29);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
             this.metroDateTime1.Size = new System.Drawing.Size(209, 29);
             this.metroDateTime1.TabIndex = 49;
@@ -420,7 +420,7 @@
             // metroDateTime2
             // 
             this.metroDateTime2.Location = new System.Drawing.Point(562, 66);
-            this.metroDateTime2.MinimumSize = new System.Drawing.Size(4, 29);
+            this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime2.Name = "metroDateTime2";
             this.metroDateTime2.Size = new System.Drawing.Size(209, 29);
             this.metroDateTime2.TabIndex = 48;
@@ -1067,6 +1067,7 @@
             // gb_OrderLine
             // 
             this.gb_OrderLine.BackColor = System.Drawing.Color.White;
+            this.gb_OrderLine.Controls.Add(this.btn_Delete);
             this.gb_OrderLine.Controls.Add(this.btn_New);
             this.gb_OrderLine.Controls.Add(this.panel2);
             this.gb_OrderLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1129,8 +1130,7 @@
             this.warehouse,
             this.quantity,
             this.unit_Price,
-            this.amount,
-            this.action});
+            this.amount});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -1160,6 +1160,10 @@
             this.grid_order_lines.TabIndex = 52;
             this.grid_order_lines.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.grid_order_lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_order_lines_CellValueChanged);
+            // 
+            // mbStyle
+            // 
+            this.mbStyle.Owner = null;
             // 
             // Id
             // 
@@ -1258,14 +1262,18 @@
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
             // 
-            // action
+            // btn_Delete
             // 
-            this.action.HeaderText = "Accion";
-            this.action.Name = "action";
-            // 
-            // mbStyle
-            // 
-            this.mbStyle.Owner = null;
+            this.btn_Delete.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Delete.ForeColor = System.Drawing.Color.White;
+            this.btn_Delete.Location = new System.Drawing.Point(615, 11);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(82, 25);
+            this.btn_Delete.TabIndex = 48;
+            this.btn_Delete.Text = "Eliminar";
+            this.btn_Delete.UseVisualStyleBackColor = false;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // UC_SalesOrder
             // 
@@ -1310,7 +1318,7 @@
         private System.Windows.Forms.TabPage order;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btn_Edit;
-        private System.Windows.Forms.Button btn_Delete;
+        private System.Windows.Forms.Button btn_Anulate;
         private System.Windows.Forms.GroupBox gb_Orders;
         private System.Windows.Forms.Panel panel4;
         private MetroFramework.Controls.MetroGrid grid_orders;
@@ -1356,20 +1364,6 @@
         private System.Windows.Forms.Button btn_New;
         private System.Windows.Forms.Panel panel2;
         private MetroFramework.Controls.MetroGrid grid_order_lines;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Type_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Product_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn state;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn delivery_quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prod_warehouse_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn product;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unit_Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
-        private System.Windows.Forms.DataGridViewButtonColumn action;
         private MetroFramework.Controls.MetroDateTime dt_IssueHour;
         private System.Windows.Forms.DataGridViewTextBoxColumn currency_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn currency_symbol;
@@ -1384,5 +1378,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amount2;
         private System.Windows.Forms.DataGridViewTextBoxColumn observation;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.Button btn_Delete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Product_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn state;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn delivery_quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prod_warehouse_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn product;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit_Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
     }
 }
