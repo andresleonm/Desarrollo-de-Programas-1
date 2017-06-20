@@ -220,7 +220,7 @@ namespace WindowsFormsApp1.Views
             }
         }
 
-        private void btn_New_Click(object sender, EventArgs e)
+        private void btn_Add_Click(object sender, EventArgs e)
         {
             var lines = new List<SalesOrderLine>();
             Sales_Module.SalesOrderLine order_line = new Sales_Module.SalesOrderLine(ref lines, user, password);
@@ -560,7 +560,7 @@ namespace WindowsFormsApp1.Views
             txt_observation.Enabled = flag;
             txt_observation.BackColor = color;
 
-            btn_New.Visible = flag;
+            btn_Add.Visible = flag;
             btn_Delete.Visible = flag;
 
             grid_order_lines.Columns["quantity"].ReadOnly = !flag;
