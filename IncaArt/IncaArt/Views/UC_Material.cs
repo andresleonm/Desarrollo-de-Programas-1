@@ -19,13 +19,18 @@ namespace WindowsFormsApp1.Views
         bool unit_flag;
         bool max_flag;
         bool min_flag;
+        bool currency_flag;
+        bool cost_flag;
+        bool data_loaded;
         int cur_row;
         int operation_value;// 0 para Create, 1 para Update
         List<Models.Material> material_list;
         List<Models.UnitOfMeasure> unit_list;
+        List<Models.Currency> currency_list;
         Controller.MaterialsController materialController;
         Controller.UnitController unitController;
         Controller.Result result;
+        Controller.CurrencyController currencyController;
         Models.User sessionUser;
         public UC_Material()
         {
@@ -34,17 +39,79 @@ namespace WindowsFormsApp1.Views
 
         private void UC_Material_Load(object sender, EventArgs e)
         {
+            data_loaded = false;
+            metroTabControl1.SelectedIndex = 0;
+        }
+
+        private void UC_Material_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!data_loaded)
+            {
+                data_loaded = true;
+                string user = "dp1admin";
+                string password = "dp1admin";
+                materialController = new Controller.MaterialsController(user, password);
+                unitController = new Controller.UnitController(user, password);
+                currencyController = new Controller.CurrencyController(user, password);
+                material_list = new List<Models.Material>();
+                currency_list = new List<Currency>();
+                data_loaded = false;
+            }
+            if (!Visible) return;
             Set_Flag_All(false);
             operation_value = 0;
-            string user = "dp1admin";
-            string password = "dp1admin";
-            materialController = new Controller.MaterialsController(user, password);
-            unitController = new Controller.UnitController(user, password);
-            material_list = new List<Models.Material>();
             Load_Data();
+            Load_DataGridView();
+            metroTabControl1.SelectedIndex = 0;
+        }
 
+        private void Load_Data()
+        {
+            result = unitController.getUnits();
+            if (result.success)
+            {
+                unit_list = (List<Models.UnitOfMeasure>)result.data;
+            }
+            else
+            {
+                MessageBox.Show(result.message, "Error al listar unidades", MessageBoxButtons.OK);
+            }
+
+            result = materialController.getMaterials();
+            if (result.success)
+            {
+                material_list = (List<Material>)result.data;
+            }
+            else
+            {
+                MessageBox.Show(result.message, "Error al listar material", MessageBoxButtons.OK);
+            }
+
+            result = currencyController.getCurrencies();
+            if (result.success)
+            {
+                currency_list = (List<Currency>)result.data;
+            }
+            Load_Combobox();
+        }
+
+        private void Load_Combobox()
+        {
             //Cargar los combobox
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
+            //Monedas
+            combo_data.Add(0, "Seleccionar");
+            foreach (var item in currency_list)
+            {
+                combo_data.Add(item.Id, item.Symbol);
+
+            }
+            combobox_currency.DataSource = new BindingSource(combo_data, null);
+            combobox_currency.DisplayMember = "Value";
+            combobox_currency.ValueMember = "Key";
+
+            //Cargar los combobox
+            combo_data = new Dictionary<int, string>();
             //Unidades
             combo_data.Add(0, "Seleccionar");
             foreach (var item in unit_list)
@@ -59,18 +126,6 @@ namespace WindowsFormsApp1.Views
             combobox_unit_s.DataSource = new BindingSource(combo_data, null);
             combobox_unit_s.DisplayMember = "Value";
             combobox_unit_s.ValueMember = "Key";
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
-        }
-
-        private void Load_Data()
-        {
-            result = unitController.getUnits();
-            unit_list = (List<Models.UnitOfMeasure>)result.data;
-            material_list = new List<Models.Material>();
-            result = materialController.getMaterials();
-            if (result.data == null) MessageBox.Show(result.message, "Error al listar material", MessageBoxButtons.OK);
-            else material_list = (List<Models.Material>)result.data;
         }
 
         private void Load_DataGridView()
@@ -80,11 +135,7 @@ namespace WindowsFormsApp1.Views
             {
                 Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
                 result = unitController.getUnit(material_list[i].Unit_id);
-                if (result.data == null)
-                {
-                    MessageBox.Show(result.message, "Error al buscar unit", MessageBoxButtons.OK);
-                }
-                else
+                if (result.success)
                 {
                     unit = (Models.UnitOfMeasure)result.data;
                     String[] row = new String[6];
@@ -96,7 +147,10 @@ namespace WindowsFormsApp1.Views
                     row[5] = material_list[i].Stock_max.ToString();
                     this.metroGrid1.Rows.Add(row);
                 }
-
+                else
+                {
+                    MessageBox.Show(result.message, "Error al buscar unit", MessageBoxButtons.OK);
+                }
             }
         }
 
@@ -137,14 +191,15 @@ namespace WindowsFormsApp1.Views
                 MessageBox.Show("Hay campos inválidos", "Error", MessageBoxButtons.OK);
                 return null;
             }
-            String name, unit;
+            String name;
             name = textbox_name.Text;
-            unit = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Value;
 
             int min_stock, max_stock, id = 0;
             min_stock = int.Parse(textbox_stock_min.Text);
             max_stock = int.Parse(textbox_stock_max.Text);
             int unit_id = ((KeyValuePair<int, string>)combobox_unit.SelectedItem).Key;
+            int currency_id = ((KeyValuePair<int, string>)combobox_currency.SelectedItem).Key;
+            double cost = double.Parse(textbox_cost.Text);
             Models.Material mat = new Models.Material();
 
             if (operacion == 1) //UPDATE
@@ -152,7 +207,8 @@ namespace WindowsFormsApp1.Views
                 id = int.Parse(metroGrid1.Rows[cur_row].Cells[0].Value.ToString());
             }
             mat = new Models.Material(id, unit_id, name, min_stock, max_stock);
-
+            mat.Currency_id = currency_id;
+            mat.Average_cost = cost;
             return mat;
         }
 
@@ -164,25 +220,25 @@ namespace WindowsFormsApp1.Views
             if (mat != null)
             {
                 result = materialController.insertMaterial(mat);
-                if (result.data == null)
-                {
-                    MessageBox.Show(result.message, "Error al registrar material", MessageBoxButtons.OK);
-                }
-                else
+                if (result.success)
                 {
                     MessageBox.Show("material agregado correctamente", "Registrar material", MessageBoxButtons.OK);
                     Load_Data();
+                    Set_Flag_All(false);
+                    Load_DataGridView();
+                    Clean();
+                    metroTabControl1.SelectedIndex = 0;
                 }
-                Set_Flag_All(false);
-                Load_DataGridView();
-                Clean();
-                metroTabControl1.SelectedIndex = 0;
+                else
+                {
+                    MessageBox.Show(result.message, "Error al registrar material", MessageBoxButtons.OK);
+                }
             }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
+            if (e.RowIndex != -1 && e.RowIndex < material_list.Count())
             {
                 cur_row = e.RowIndex;
                 btn_delete.Enabled = true;
@@ -192,23 +248,41 @@ namespace WindowsFormsApp1.Views
         //Mostrar Datos
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            cur_row = e.RowIndex;
-            if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
+            if (cur_row != 1)
             {
-                textbox_name.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                for (int i = 0; i < unit_list.Count(); i++)
+                Models.Material material;
+                result = materialController.getMaterial(Int32.Parse(metroGrid1.Rows[e.RowIndex].Cells[0].Value.ToString()));
+                if (result.success)
                 {
-                    if (unit_list[i].Name == metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString())
+                    material = (Models.Material)result.data;
+                    textbox_name.Text = material.Name;
+                    textbox_stock_min.Text = material.Stock_min.ToString();
+                    textbox_stock_max.Text = material.Stock_max.ToString();
+                    textbox_cost.Text = material.Average_cost.ToString();
+                    for (int i = 0; i < unit_list.Count(); i++)
                     {
-                        combobox_unit.SelectedIndex = i + 1;
-                        break;
+                        if (unit_list[i].Id == material.Unit_id)
+                        {
+                            combobox_unit.SelectedIndex = i + 1;
+                            break;
+                        }
                     }
+                    for (int i = 0; i < currency_list.Count(); i++)
+                    {
+                        if (currency_list[i].Id == material.Currency_id)
+                        {
+                            combobox_currency.SelectedIndex = i + 1;
+                            break;
+                        }
+                    }
+                    metroTabControl1.SelectedIndex = 1;
+                    Set_Flag_All(true);
+                    operation_value = 1;
                 }
-                textbox_stock_min.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                textbox_stock_max.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
-                metroTabControl1.SelectedIndex = 1;
-                Set_Flag_All(true);
-                operation_value = 1;
+                else
+                {
+                    MessageBox.Show(result.message, "Error al buscar material", MessageBoxButtons.OK);
+                }
             }
         }
 
@@ -219,19 +293,19 @@ namespace WindowsFormsApp1.Views
             if (mat != null)
             {
                 result = materialController.updateMaterial(mat);
-                if (result.data == null)
-                {
-                    MessageBox.Show(result.message, "Error al modificar material", MessageBoxButtons.OK);
-                }
-                else
+                if (result.success)
                 {
                     MessageBox.Show("material editado correctamente", "Editar material", MessageBoxButtons.OK);
                     Load_Data();
+                    Set_Flag_All(false);
+                    Load_DataGridView();
+                    Clean();
+                    metroTabControl1.SelectedIndex = 0;
                 }
-                Set_Flag_All(false);
-                Load_DataGridView();
-                Clean();
-                metroTabControl1.SelectedIndex = 0;
+                else
+                {
+                    MessageBox.Show(result.message, "Error al modificar material", MessageBoxButtons.OK);
+                }
             }
 
 
@@ -244,14 +318,14 @@ namespace WindowsFormsApp1.Views
             material.Name = textbox_name_s.Text;
             material.Unit_id = ((KeyValuePair<int, string>)combobox_unit_s.SelectedItem).Key;
             result = materialController.getMaterials(material);
-            if (result.data == null)
-            {
-                MessageBox.Show(result.message, "Error al buscar material con filtros", MessageBoxButtons.OK);
-            }
-            else
+            if (result.success)
             {
                 material_list = (List<Models.Material>)result.data;
                 Load_DataGridView();
+            }
+            else
+            {
+                MessageBox.Show(result.message, "Error al buscar material con filtros", MessageBoxButtons.OK);
             }
         }
 
@@ -260,17 +334,18 @@ namespace WindowsFormsApp1.Views
         {
             int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
             result = materialController.deleteMaterial(material_list[index]);
-            if (result.data == null)
-            {
-                MessageBox.Show(result.message, "Error al eliminar material", MessageBoxButtons.OK);
-            }
-            else
+            if (result.success)
             {
                 MessageBox.Show("material eliminado correctamente", "Eliminar material", MessageBoxButtons.OK);
                 Load_Data();
+                btn_delete.Enabled = false;
+                Load_DataGridView();
             }
-            btn_delete.Enabled = false;
-            Load_DataGridView();
+            else
+            {
+                MessageBox.Show(result.message, "Error al eliminar material", MessageBoxButtons.OK);
+            }
+
         }
 
         private void btn_clean_s_Click(object sender, EventArgs e)
@@ -281,12 +356,14 @@ namespace WindowsFormsApp1.Views
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             Clean();
+            combobox_currency.SelectedIndex = 0;
+            combobox_unit.SelectedIndex = 0;
             metroTabControl1.SelectedIndex = 0;
         }
 
         private bool Validate_Data()
         {
-            if (name_flag && unit_flag && max_flag && min_flag)
+            if (name_flag && unit_flag && max_flag && min_flag && cost_flag && currency_flag)
             {
                 return true;
             }
@@ -299,6 +376,8 @@ namespace WindowsFormsApp1.Views
             min_flag = value;
             max_flag = value;
             unit_flag = value;
+            cost_flag = value;
+            currency_flag = value;
         }
 
         private void Set_Flag(string name, bool value)
@@ -316,6 +395,12 @@ namespace WindowsFormsApp1.Views
                     break;
                 case "combobox_unit":
                     unit_flag = value;
+                    break;
+                case "textbox_cost":
+                    cost_flag = value;
+                    break;
+                case "combobox_currency":
+                    currency_flag = value;
                     break;
             }
         }
@@ -340,6 +425,32 @@ namespace WindowsFormsApp1.Views
             }
         }
 
+        private void textbox_number_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            if (!char.IsDigit(e.KeyChar))
+            {
+                if (e.KeyChar != 8)//Manejo de Backspace
+                {
+                    e.Handled = true;
+                }
+            }
+            if (textbox.Name == "textbox_cost")
+            {
+                if (e.KeyChar == '.')
+                {
+                    e.Handled = false;
+                }
+                if ((e.KeyChar == '.') && (textbox.Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+
+            }
+        }
+
+
+
         private void textbox_number_Validating(object sender, CancelEventArgs e)
         {
             MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
@@ -354,16 +465,6 @@ namespace WindowsFormsApp1.Views
             else
             {
                 errorProvider.SetError(textbox, null);
-                int number;
-                if (!Int32.TryParse(text, out number))
-                {
-                    Set_Flag(textbox.Name, false);
-                    errorProvider.SetError(textbox, "Stock debe ser número");
-                }
-                else
-                {
-                    errorProvider.SetError(textbox, null);
-                }
                 int max, min;
                 if (Int32.TryParse(textbox_stock_max.Text, out max) && Int32.TryParse(textbox_stock_min.Text, out min))
                 {
@@ -374,7 +475,8 @@ namespace WindowsFormsApp1.Views
                     }
                     else
                     {
-                        Set_Flag(textbox.Name, true);
+                        Set_Flag("textbox_stock_min", true);
+                        Set_Flag("textbox_stock_max", true);
                         errorProvider.SetError(textbox, null);
                     }
 
@@ -391,13 +493,13 @@ namespace WindowsFormsApp1.Views
             if (unit_id == 0)
             {
                 Set_Flag(combobox.Name, false);
-                errorProvider.SetError(combobox_unit, combobox_unit.Name);
+                errorProvider.SetError(combobox, "Debe seleccionar campo");
 
             }
             else
             {
                 Set_Flag(combobox.Name, true);
-                errorProvider.SetError(combobox_unit, null);
+                errorProvider.SetError(combobox, null);
             }
         }
 
@@ -409,27 +511,27 @@ namespace WindowsFormsApp1.Views
                 if (mat.Id == 0)//Registrar
                 {
                     result = materialController.insertMaterial(mat);
-                    if (result.data == null)
-                    {
-                        MessageBox.Show(result.message, "Error al registrar material", MessageBoxButtons.OK);
-                    }
-                    else
+                    if (result.success)
                     {
                         MessageBox.Show("material agregado correctamente", "Registrar material", MessageBoxButtons.OK);
                         Load_Data();
+                    }
+                    else
+                    {
+                        MessageBox.Show(result.message, "Error al registrar material", MessageBoxButtons.OK);
                     }
                 }
                 else //Editar
                 {
                     result = materialController.updateMaterial(mat);
-                    if (result.data == null)
-                    {
-                        MessageBox.Show(result.message, "Error al modificar material", MessageBoxButtons.OK);
-                    }
-                    else
+                    if (result.success)
                     {
                         MessageBox.Show("material editado correctamente", "Editar material", MessageBoxButtons.OK);
                         Load_Data();
+                    }
+                    else
+                    {
+                        MessageBox.Show(result.message, "Error al modificar material", MessageBoxButtons.OK);
                     }
                 }
                 Set_Flag_All(false);
@@ -552,17 +654,18 @@ namespace WindowsFormsApp1.Views
                         material.Stock_min = Convert.ToInt32(min);
                         material.Unit_id = unit_id;
                         materialController.insertMaterial(material);
-                        if (result.data == null)
+                        if (result.success)
+                        {
+                            success_lines++;
+                        }
+                        else
                         {
                             MessageBox.Show("Error en registro material");
                             error = true;
                             error_list.Add("register");
                             error_lines++;
                         }
-                        else
-                        {
-                            success_lines++;
-                        }
+
                     }
                 }
                 MessageBox.Show("Lineas correctas: " + success_lines + "\n" + "Lineas inccorrectas: " + error_lines, "Resultado de importación desde Excel", MessageBoxButtons.OK);
@@ -689,5 +792,7 @@ namespace WindowsFormsApp1.Views
             }
 
         }
+
+        
     }
 }

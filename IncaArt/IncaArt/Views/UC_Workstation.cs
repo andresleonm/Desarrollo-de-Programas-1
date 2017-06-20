@@ -17,6 +17,7 @@ namespace WindowsFormsApp1.Views
         bool quantity_flag;
         bool break_flag;
         bool currency_flag;
+        bool data_loaded;
         int cur_row;
         int operation_value;// 0 para Create, 1 para Update
         List<Models.Product> product_list;
@@ -31,17 +32,27 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
         }
 
-        private void UC_Workstation_Load(object sender, EventArgs e)
+        private void UC_Workstation_VisibleChanged(object sender, EventArgs e)
         {
+            if (!data_loaded)
+            {
+                data_loaded = true;
+                string user = "dp1admin";
+                string password = "dp1admin";
+                productController = new Controller.ProductsController(user, password);
+                workstationController = new Controller.WorkstationsController(user, password);
+                currencyController = new Controller.CurrencyController(user, password);
+            }
+            if (!Visible) return;
             operation_value = 0;
             Set_Flag_All(false);
-            string user = "dp1admin";
-            string password = "dp1admin";
-            productController = new Controller.ProductsController(user, password);
-            workstationController = new Controller.WorkstationsController(user, password);
-            currencyController = new Controller.CurrencyController(user, password);
             Load_Data();
+            Load_DataGridView();
+            metroTabControl1.SelectedIndex = 0;
+        }
 
+        private void Load_Combobox()
+        {
             //Cargar los combobox
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
 
@@ -87,9 +98,11 @@ namespace WindowsFormsApp1.Views
             combobox_currency.DataSource = new BindingSource(combo_data, null);
             combobox_currency.DisplayMember = "Value";
             combobox_currency.ValueMember = "Key";
+        }
 
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
+        private void UC_Workstation_Load(object sender, EventArgs e)
+        {
+            data_loaded = false;
         }
 
         private void Load_Data()
@@ -105,6 +118,7 @@ namespace WindowsFormsApp1.Views
             result = workstationController.getWorkstations();
             if (result.data == null) MessageBox.Show(result.message, "Error al listar Puesto de Trabajo", MessageBoxButtons.OK);
             else workstation_list = (List<Models.Workstation>)result.data;
+            Load_Combobox();
         }
 
         private void Load_DataGridView()
@@ -559,5 +573,31 @@ namespace WindowsFormsApp1.Views
             }
             operation_value = 0;
         }
+
+        private void textbox_number_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            if (!char.IsDigit(e.KeyChar))
+            {
+                if (e.KeyChar != 8)//Manejo de Backspace
+                {
+                    e.Handled = true;
+                }
+            }
+
+            if (textbox.Name == "textbox_break")
+            {
+                if (e.KeyChar == '.')
+                {
+                    e.Handled = false;
+                }
+                if ((e.KeyChar == '.') && (textbox.Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+
+            }
+        }
+
     }
 }

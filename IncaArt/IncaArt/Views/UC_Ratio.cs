@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Office.Interop.Excel;
 
 namespace WindowsFormsApp1.Views
 {
@@ -21,7 +22,7 @@ namespace WindowsFormsApp1.Views
         Controller.WorkstationsController workstationController;
         Controller.WorkerController workerController;
         Controller.Result result;
-        bool data_loaded = false;
+        bool data_loaded;
         public UC_Ratio()
         {
             InitializeComponent();
@@ -29,14 +30,7 @@ namespace WindowsFormsApp1.Views
 
         private void UC_Ratio_Load(object sender, EventArgs e)
         {
-            //string user = "dp1admin";
-            //string password = "dp1admin";
-            //ratioController = new Controller.RatioController(user, password);
-            //productController = new Controller.ProductsController(user, password);
-            //workstationController = new Controller.WorkstationsController(user, password);
-            //workerController = new Controller.WorkerController(user, password);
-            //Load_Data();
-            //Load_DataGridView();
+            data_loaded = false;
         }
 
         private void UC_Ratio_VisibleChanged(object sender, EventArgs e)
@@ -51,6 +45,7 @@ namespace WindowsFormsApp1.Views
                 workerController = new Controller.WorkerController(user, password);
                 data_loaded = true;
             }
+            if (!Visible) return;
             Load_Data();
             Load_DataGridView();
         }
@@ -95,9 +90,17 @@ namespace WindowsFormsApp1.Views
                     }
                 }
                 string type = "";
-                if (ratio.ratio_type == 1)
+                switch (ratio.ratio_type)
                 {
-                    type = "Eficiencia";
+                    case 1:
+                        type = "Eficiencia";
+                        break;
+                    case 2:
+                        type = "Tiempo";
+                        break;
+                    default:
+                        type = "";
+                        break;
                 }
                 if (worker != null && product != null && workstation != null)
                 {
@@ -144,7 +147,7 @@ namespace WindowsFormsApp1.Views
                 MessageBox.Show(result.message);
             }
 
-            result = ratioController.getRatios("","","",0,0,0);
+            result = ratioController.getRatios("", "", "", 0, 0, 0);
             if (result.success)
             {
                 ratio_list = (List<Models.Ratio>)result.data;
@@ -153,7 +156,11 @@ namespace WindowsFormsApp1.Views
             {
                 MessageBox.Show(result.message);
             }
+            Load_Combobox();
+        }
 
+        private void Load_Combobox()
+        {
             Dictionary<int, string> combo_data;
             combo_data = new Dictionary<int, string>();
             combo_data.Add(0, "Seleccionar");
@@ -168,6 +175,7 @@ namespace WindowsFormsApp1.Views
             combo_data = new Dictionary<int, string>();
             combo_data.Add(0, "Seleccionar");
             combo_data.Add(1, "Eficiencia");
+            combo_data.Add(2, "Tiempo");
             combobox_ratio_type_s.DataSource = new BindingSource(combo_data, null);
             combobox_ratio_type_s.DisplayMember = "Value";
             combobox_ratio_type_s.ValueMember = "Key";
@@ -181,19 +189,18 @@ namespace WindowsFormsApp1.Views
             combobox_workstation_s.DataSource = new BindingSource(combo_data, null);
             combobox_workstation_s.DisplayMember = "Value";
             combobox_workstation_s.ValueMember = "Key";
-
         }
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-            string worker_name=textbox_wname_s.Text;
+            string worker_name = textbox_wname_s.Text;
             string paternal_name = textbox_wpaternal_s.Text;
             string maternal_name = textbox_wmaternal_s.Text;
             int product_id = ((KeyValuePair<int, string>)combobox_product_s.SelectedItem).Key;
             int workstation_id = ((KeyValuePair<int, string>)combobox_workstation_s.SelectedItem).Key;
             int ratio_type_id = ((KeyValuePair<int, string>)combobox_ratio_type_s.SelectedItem).Key;
 
-            result = ratioController.getRatios(worker_name,paternal_name,maternal_name,workstation_id,product_id,ratio_type_id);
+            result = ratioController.getRatios(worker_name, paternal_name, maternal_name, workstation_id, product_id, ratio_type_id);
             if (result.success)
             {
                 ratio_list = (List<Models.Ratio>)result.data;
@@ -213,6 +220,74 @@ namespace WindowsFormsApp1.Views
             combobox_product_s.SelectedIndex = 0;
             combobox_ratio_type_s.SelectedIndex = 0;
             combobox_workstation_s.SelectedIndex = 0;
+        }
+
+        private void btn_export_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            if (excel == null)
+            {
+                Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
+                return;
+            }
+            excel.Visible = true;
+
+            Workbook wb = excel.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
+            Worksheet ws = (Worksheet)wb.Worksheets[1];
+            ws.Name = "Materiales";
+            if (ws == null)
+            {
+                Console.WriteLine("Worksheet could not be created. Check that your office installation and project references are correct.");
+            }
+
+            ws.Range["A1"].Value2 = "Lista de Ratios";
+            ws.Range["A1"].Font.Size = 15;
+            ws.Range["A1"].Font.Bold = true;
+            ws.Range["A2"].Value2 = "Trabajador";
+            ws.Range["B2"].Value2 = "Puesto de Trabajo";
+            ws.Range["C2"].Value2 = "Tipo de ratio";
+            ws.Range["D2"].Value2 = "Valor de ratio";
+
+            Models.Ratio ratio;
+            Models.Worker worker;
+            Models.Workstation workstation;
+            string ratio_type;
+            for (int i = 0; i < ratio_list.Count(); i++)
+            {
+                ratio = ratio_list[i];
+                result = workerController.getWorker(ratio.worker_id);
+                if (result.success)
+                {
+                    worker = (Models.Worker)result.data;
+                    ((Range)ws.Cells[i + 3, 1]).Value2 = worker.Name + " " + worker.Paternal_name + " " + worker.Maternal_name;
+                }
+                result = workstationController.getWorkstation(ratio.workstation_id);
+                if (result.success)
+                {
+                    workstation = (Models.Workstation)result.data;
+                    ((Range)ws.Cells[i + 3, 2]).Value2 = workstation.Name;
+                }
+                switch (ratio.ratio_type)
+                {
+                    case 1:
+                        ratio_type = "%";
+                        break;
+                    case 2:
+                        ratio_type = "mins";
+                        break;
+                    default:
+                        ratio_type = "";
+                        break;
+                }
+                ((Range)ws.Cells[i + 3, 3]).Value2 = ratio_type;
+                ((Range)ws.Cells[i + 3, 4]).Value2 = ratio.value.ToString("F4");
+            }
+            ws.Columns.AutoFit();
+        }
+
+        private void btn_import_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

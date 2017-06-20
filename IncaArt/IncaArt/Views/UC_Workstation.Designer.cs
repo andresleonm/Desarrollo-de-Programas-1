@@ -53,6 +53,12 @@
             this.registro = new MetroFramework.Controls.MetroTabPage();
             this.btn_save = new MetroFramework.Controls.MetroButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
+            this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
+            this.textbox_maxa_time = new MetroFramework.Controls.MetroLabel();
+            this.textbox_min_time = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.combobox_currency = new MetroFramework.Controls.MetroComboBox();
             this.textbox_break = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
@@ -354,7 +360,7 @@
             // 
             this.btn_save.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_save.Location = new System.Drawing.Point(124, 284);
+            this.btn_save.Location = new System.Drawing.Point(127, 365);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(75, 23);
             this.btn_save.TabIndex = 21;
@@ -367,6 +373,12 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox3.Controls.Add(this.metroLabel13);
+            this.groupBox3.Controls.Add(this.metroLabel12);
+            this.groupBox3.Controls.Add(this.metroTextBox2);
+            this.groupBox3.Controls.Add(this.textbox_maxa_time);
+            this.groupBox3.Controls.Add(this.textbox_min_time);
+            this.groupBox3.Controls.Add(this.metroLabel10);
             this.groupBox3.Controls.Add(this.combobox_currency);
             this.groupBox3.Controls.Add(this.textbox_break);
             this.groupBox3.Controls.Add(this.metroLabel9);
@@ -384,16 +396,131 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupBox3.Location = new System.Drawing.Point(3, 16);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(350, 262);
+            this.groupBox3.Size = new System.Drawing.Size(350, 343);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos de Puesto de Trabajo";
+            // 
+            // metroLabel13
+            // 
+            this.metroLabel13.AutoSize = true;
+            this.metroLabel13.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel13.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel13.ForeColor = System.Drawing.Color.DarkCyan;
+            this.metroLabel13.Location = new System.Drawing.Point(263, 286);
+            this.metroLabel13.Name = "metroLabel13";
+            this.metroLabel13.Size = new System.Drawing.Size(60, 15);
+            this.metroLabel13.TabIndex = 26;
+            this.metroLabel13.Text = "(minutos)";
+            this.metroLabel13.UseCustomForeColor = true;
+            // 
+            // metroLabel12
+            // 
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel12.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel12.ForeColor = System.Drawing.Color.DarkCyan;
+            this.metroLabel12.Location = new System.Drawing.Point(262, 248);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(60, 15);
+            this.metroLabel12.TabIndex = 25;
+            this.metroLabel12.Text = "(minutos)";
+            this.metroLabel12.UseCustomForeColor = true;
+            // 
+            // metroTextBox2
+            // 
+            // 
+            // 
+            // 
+            this.metroTextBox2.CustomButton.Image = null;
+            this.metroTextBox2.CustomButton.Location = new System.Drawing.Point(99, 1);
+            this.metroTextBox2.CustomButton.Name = "";
+            this.metroTextBox2.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBox2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBox2.CustomButton.TabIndex = 1;
+            this.metroTextBox2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBox2.CustomButton.UseSelectable = true;
+            this.metroTextBox2.CustomButton.Visible = false;
+            this.metroTextBox2.Lines = new string[0];
+            this.metroTextBox2.Location = new System.Drawing.Point(134, 281);
+            this.metroTextBox2.MaxLength = 32767;
+            this.metroTextBox2.Name = "metroTextBox2";
+            this.metroTextBox2.PasswordChar = '\0';
+            this.metroTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBox2.SelectedText = "";
+            this.metroTextBox2.SelectionLength = 0;
+            this.metroTextBox2.SelectionStart = 0;
+            this.metroTextBox2.ShortcutsEnabled = true;
+            this.metroTextBox2.Size = new System.Drawing.Size(121, 23);
+            this.metroTextBox2.TabIndex = 24;
+            this.metroTextBox2.UseSelectable = true;
+            this.metroTextBox2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBox2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.metroTextBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_number_KeyPress);
+            // 
+            // textbox_maxa_time
+            // 
+            this.textbox_maxa_time.AutoSize = true;
+            this.textbox_maxa_time.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.textbox_maxa_time.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.textbox_maxa_time.ForeColor = System.Drawing.Color.DarkCyan;
+            this.textbox_maxa_time.Location = new System.Drawing.Point(16, 277);
+            this.textbox_maxa_time.Name = "textbox_maxa_time";
+            this.textbox_maxa_time.Size = new System.Drawing.Size(109, 30);
+            this.textbox_maxa_time.TabIndex = 23;
+            this.textbox_maxa_time.Text = "Tiempo Promedio \r\nmáximos";
+            this.textbox_maxa_time.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.textbox_maxa_time.UseCustomForeColor = true;
+            // 
+            // textbox_min_time
+            // 
+            // 
+            // 
+            // 
+            this.textbox_min_time.CustomButton.Image = null;
+            this.textbox_min_time.CustomButton.Location = new System.Drawing.Point(99, 1);
+            this.textbox_min_time.CustomButton.Name = "";
+            this.textbox_min_time.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.textbox_min_time.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textbox_min_time.CustomButton.TabIndex = 1;
+            this.textbox_min_time.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textbox_min_time.CustomButton.UseSelectable = true;
+            this.textbox_min_time.CustomButton.Visible = false;
+            this.textbox_min_time.Lines = new string[0];
+            this.textbox_min_time.Location = new System.Drawing.Point(134, 244);
+            this.textbox_min_time.MaxLength = 32767;
+            this.textbox_min_time.Name = "textbox_min_time";
+            this.textbox_min_time.PasswordChar = '\0';
+            this.textbox_min_time.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textbox_min_time.SelectedText = "";
+            this.textbox_min_time.SelectionLength = 0;
+            this.textbox_min_time.SelectionStart = 0;
+            this.textbox_min_time.ShortcutsEnabled = true;
+            this.textbox_min_time.Size = new System.Drawing.Size(121, 23);
+            this.textbox_min_time.TabIndex = 22;
+            this.textbox_min_time.UseSelectable = true;
+            this.textbox_min_time.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textbox_min_time.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textbox_min_time.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_number_KeyPress);
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel10.ForeColor = System.Drawing.Color.DarkCyan;
+            this.metroLabel10.Location = new System.Drawing.Point(16, 242);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(109, 30);
+            this.metroLabel10.TabIndex = 21;
+            this.metroLabel10.Text = "Tiempo Promedio \r\nmínimo";
+            this.metroLabel10.UseCustomForeColor = true;
             // 
             // combobox_currency
             // 
             this.combobox_currency.FormattingEnabled = true;
             this.combobox_currency.ItemHeight = 23;
-            this.combobox_currency.Location = new System.Drawing.Point(277, 200);
+            this.combobox_currency.Location = new System.Drawing.Point(262, 199);
             this.combobox_currency.Name = "combobox_currency";
             this.combobox_currency.Size = new System.Drawing.Size(44, 29);
             this.combobox_currency.TabIndex = 20;
@@ -429,6 +556,7 @@
             this.textbox_break.UseSelectable = true;
             this.textbox_break.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_break.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textbox_break.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_number_KeyPress);
             this.textbox_break.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_number_Validating);
             // 
             // metroLabel9
@@ -450,7 +578,7 @@
             this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel4.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel4.Location = new System.Drawing.Point(6, 244);
+            this.metroLabel4.Location = new System.Drawing.Point(6, 325);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(134, 15);
             this.metroLabel4.TabIndex = 17;
@@ -486,7 +614,8 @@
             this.textbox_quantity.UseSelectable = true;
             this.textbox_quantity.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_quantity.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.textbox_quantity.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_number_Validating);
+            this.textbox_quantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_number_KeyPress);
+            this.textbox_quantity.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             // 
             // metroLabel5
             // 
@@ -619,7 +748,7 @@
             // 
             this.btn_cancel.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_cancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_cancel.Location = new System.Drawing.Point(205, 284);
+            this.btn_cancel.Location = new System.Drawing.Point(208, 365);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 12;
@@ -655,6 +784,7 @@
             this.Size = new System.Drawing.Size(872, 658);
             this.UseCustomBackColor = true;
             this.Load += new System.EventHandler(this.UC_Workstation_Load);
+            this.VisibleChanged += new System.EventHandler(this.UC_Workstation_VisibleChanged);
             this.metroTabControl1.ResumeLayout(false);
             this.consulta.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -710,5 +840,11 @@
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroButton btn_save;
         private MetroFramework.Controls.MetroLabel metroLabel11;
+        private MetroFramework.Controls.MetroLabel metroLabel13;
+        private MetroFramework.Controls.MetroLabel metroLabel12;
+        private MetroFramework.Controls.MetroTextBox metroTextBox2;
+        private MetroFramework.Controls.MetroLabel textbox_maxa_time;
+        private MetroFramework.Controls.MetroTextBox textbox_min_time;
+        private MetroFramework.Controls.MetroLabel metroLabel10;
     }
 }

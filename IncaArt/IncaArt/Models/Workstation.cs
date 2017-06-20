@@ -17,6 +17,8 @@ namespace WindowsFormsApp1.Models
         int quantity;
         double break_cost;
         int currency_id;
+        int min_average_time;
+        int max_average_time;
 
         public Workstation(int product_id, string name)
         {
@@ -131,6 +133,45 @@ namespace WindowsFormsApp1.Models
             set
             {
                 currency_id = value;
+            }
+        }
+
+        public int Min_average_time
+        {
+            get
+            {
+                return min_average_time;
+            }
+
+            set
+            {
+                min_average_time = value;
+            }
+        }
+
+        public int Max_average_time
+        {
+            get
+            {
+                return max_average_time;
+            }
+
+            set
+            {
+                max_average_time = value;
+            }
+        }
+
+        public int Assigned_worker
+        {
+            get
+            {
+                return assigned_worker;
+            }
+
+            set
+            {
+                assigned_worker = value;
             }
         }
     }

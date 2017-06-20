@@ -147,7 +147,7 @@
             this.tab_Order.Controls.Add(this.newOrder);
             this.tab_Order.Location = new System.Drawing.Point(10, 5);
             this.tab_Order.Name = "tab_Order";
-            this.tab_Order.SelectedIndex = 0;
+            this.tab_Order.SelectedIndex = 1;
             this.tab_Order.Size = new System.Drawing.Size(849, 608);
             this.tab_Order.Style = MetroFramework.MetroColorStyle.Teal;
             this.tab_Order.TabIndex = 41;
@@ -327,7 +327,7 @@
             // order_id2
             // 
             this.order_id2.DataPropertyName = "id";
-            this.order_id2.HeaderText = "Orden";
+            this.order_id2.HeaderText = "Pedido";
             this.order_id2.Name = "order_id2";
             this.order_id2.ReadOnly = true;
             // 
@@ -412,7 +412,7 @@
             // metroDateTime1
             // 
             this.metroDateTime1.Location = new System.Drawing.Point(562, 24);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(4, 29);
             this.metroDateTime1.Name = "metroDateTime1";
             this.metroDateTime1.Size = new System.Drawing.Size(209, 29);
             this.metroDateTime1.TabIndex = 49;
@@ -420,7 +420,7 @@
             // metroDateTime2
             // 
             this.metroDateTime2.Location = new System.Drawing.Point(562, 66);
-            this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime2.MinimumSize = new System.Drawing.Size(4, 29);
             this.metroDateTime2.Name = "metroDateTime2";
             this.metroDateTime2.Size = new System.Drawing.Size(209, 29);
             this.metroDateTime2.TabIndex = 48;
@@ -520,9 +520,9 @@
             this.label13.ForeColor = System.Drawing.Color.DarkCyan;
             this.label13.Location = new System.Drawing.Point(6, 35);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(67, 13);
+            this.label13.Size = new System.Drawing.Size(72, 13);
             this.label13.TabIndex = 34;
-            this.label13.Text = "N° Orden :";
+            this.label13.Text = "N° Pedido :";
             // 
             // label14
             // 
@@ -1370,6 +1370,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private System.Windows.Forms.DataGridViewButtonColumn action;
+        private MetroFramework.Controls.MetroDateTime dt_IssueHour;
         private System.Windows.Forms.DataGridViewTextBoxColumn currency_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn currency_symbol;
         private System.Windows.Forms.DataGridViewTextBoxColumn customer_id;
@@ -1383,6 +1384,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amount2;
         private System.Windows.Forms.DataGridViewTextBoxColumn observation;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
-        private MetroFramework.Controls.MetroDateTime dt_IssueHour;
     }
 }

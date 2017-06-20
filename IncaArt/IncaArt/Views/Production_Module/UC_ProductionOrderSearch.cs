@@ -38,15 +38,21 @@ namespace WindowsFormsApp1.Views
         {
             datagrid_ProductionOrders.Rows.Clear();
 
-            string[] grid_row = new string[5];
+            string[] grid_row = new string[8];
             foreach (Models.ProductionOrder po in orders)
             {
                 if (po.State == "Registrado") { 
                     grid_row[0] = po.Id.ToString();
                     grid_row[1] = po.Begin.ToShortDateString();
                     grid_row[2] = po.End.ToShortDateString();
-                    grid_row[3] = po.Description;
-                    grid_row[4] = po.Observation;
+                    grid_row[3] = po.Product_name;
+                    grid_row[4] = po.Warehouse_name;
+                    grid_row[5] = po.Recipe_name;
+                    grid_row[6] = po.Quantity.ToString();
+                    if (po.Estimate_id != 0)
+                        grid_row[7] = po.Estimate_id.ToString();
+                    else
+                        grid_row[7] = "";
                     this.datagrid_ProductionOrders.Rows.Add(grid_row);
                 }
             }
@@ -77,8 +83,8 @@ namespace WindowsFormsApp1.Views
                 int selected_index = Int32.Parse(this.datagrid_ProductionOrders.SelectedRows[0].Cells[0].Value.ToString());
                 UC_ProductionOrder uc_productionOrder = (UC_ProductionOrder)(this.Parent.Controls.Find("production_register", false)[0]);
                 uc_productionOrder.editing = true;
-                uc_productionOrder.fillEditForm(selected_index);
                 uc_productionOrder.Visible = true;
+                uc_productionOrder.fillEditForm(selected_index);               
                 this.Visible = false;
             }
         }

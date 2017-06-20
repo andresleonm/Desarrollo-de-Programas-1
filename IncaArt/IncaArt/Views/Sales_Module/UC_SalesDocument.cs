@@ -302,7 +302,10 @@ namespace WindowsFormsApp1.Views.Sales_Module
                         sdl.Id = i;
                         sdl.Document_id = sales_document_id;
                         i++;
-                        sales_document_line_controller.insertSalesDocumentLine(sdl);
+                        var result=sales_document_line_controller.insertSalesDocumentLine(sdl);
+                        if (!result.success)
+                            MessageBox.Show(this, result.message);
+
                     }
                     btn_Clean.PerformClick();
                     tab_Document.SelectedIndex = 0;
@@ -547,6 +550,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 doc.Add(new Paragraph("_________________________________________________________________________________________________________________________"));
                 doc.Close();
                 Process.Start(filename);//Esta parte se puede omitir, si solo se desea guardar el archivo, y que este no se ejecute al instante
+                file.Close();
             }
 
         }

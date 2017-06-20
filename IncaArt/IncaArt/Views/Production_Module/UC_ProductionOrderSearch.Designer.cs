@@ -45,12 +45,15 @@
             this.btn_delete = new MetroFramework.Controls.MetroButton();
             this.btn_edit = new MetroFramework.Controls.MetroButton();
             this.datagrid_ProductionOrders = new MetroFramework.Controls.MetroGrid();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_ProductionOrders)).BeginInit();
@@ -305,8 +308,11 @@
             this.Column1,
             this.Column2,
             this.Column3,
+            this.Column6,
             this.Column4,
-            this.Column5});
+            this.Column7,
+            this.Column8,
+            this.Column9});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -337,9 +343,18 @@
             this.datagrid_ProductionOrders.Style = MetroFramework.MetroColorStyle.Teal;
             this.datagrid_ProductionOrders.TabIndex = 52;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox3.Location = new System.Drawing.Point(14, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(805, 502);
+            this.groupBox3.TabIndex = 58;
+            this.groupBox3.TabStop = false;
+            // 
             // Column1
             // 
-            this.Column1.HeaderText = "Nº de orden";
+            this.Column1.HeaderText = "Nº orden";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
@@ -355,26 +370,35 @@
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Producto";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
             // Column4
             // 
-            this.Column4.HeaderText = "Descripción";
+            this.Column4.HeaderText = "Almacén";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
-            // Column5
+            // Column7
             // 
-            this.Column5.HeaderText = "Observaciones";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
+            this.Column7.HeaderText = "Receta";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             // 
-            // groupBox3
+            // Column8
             // 
-            this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox3.Location = new System.Drawing.Point(14, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(805, 502);
-            this.groupBox3.TabIndex = 58;
-            this.groupBox3.TabStop = false;
+            this.Column8.HeaderText = "Cantidad";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Cotización";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
             // 
             // UC_ProductionOrderSearch
             // 
@@ -408,15 +432,18 @@
         private MetroFramework.Controls.MetroButton btn_search;
         private System.Windows.Forms.GroupBox groupBox2;
         private MetroFramework.Controls.MetroGrid datagrid_ProductionOrders;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private MetroFramework.Controls.MetroButton btn_delete;
         private MetroFramework.Controls.MetroButton btn_edit;
         private System.Windows.Forms.GroupBox groupBox3;
         private MetroFramework.Controls.MetroTextBox metroTextBox_description;
         private MetroFramework.Controls.MetroLabel metroLabel3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
     }
 }

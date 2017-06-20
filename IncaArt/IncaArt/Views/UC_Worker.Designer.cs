@@ -112,11 +112,12 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(15, 21);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(721, 502);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
+            this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 0;
-            this.metroTabControl1.UseCustomBackColor = true;
+            this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTabControl1.UseCustomForeColor = true;
             this.metroTabControl1.UseSelectable = true;
             // 
@@ -631,7 +632,8 @@
             this.textbox_salary.UseSelectable = true;
             this.textbox_salary.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_salary.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.textbox_salary.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_number_Validating);
+            this.textbox_salary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_number_KeyPress);
+            this.textbox_salary.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             // 
             // combobox_shift
             // 
@@ -825,7 +827,8 @@
             this.textbox_doi.UseSelectable = true;
             this.textbox_doi.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_doi.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.textbox_doi.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_number_Validating);
+            this.textbox_doi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_number_KeyPress);
+            this.textbox_doi.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             // 
             // textbox_maternal
             // 
@@ -1009,7 +1012,7 @@
             // 
             this.datetime_birthday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datetime_birthday.Location = new System.Drawing.Point(148, 146);
-            this.datetime_birthday.MinimumSize = new System.Drawing.Size(4, 29);
+            this.datetime_birthday.MinimumSize = new System.Drawing.Size(0, 29);
             this.datetime_birthday.Name = "datetime_birthday";
             this.datetime_birthday.Size = new System.Drawing.Size(119, 29);
             this.datetime_birthday.TabIndex = 15;
@@ -1168,12 +1171,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.metroLabel20);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "UC_Worker";
             this.Size = new System.Drawing.Size(794, 527);
             this.UseCustomBackColor = true;
             this.Load += new System.EventHandler(this.UC_Worker_Load);
+            this.VisibleChanged += new System.EventHandler(this.UC_Worker_VisibleChanged);
             this.metroTabControl1.ResumeLayout(false);
             this.consulta.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

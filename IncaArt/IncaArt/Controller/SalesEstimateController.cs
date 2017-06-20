@@ -62,18 +62,20 @@ namespace WindowsFormsApp1.Controller
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("client_id", id.ToString()));
             GenericResult result = execute_function("get_sales_estimates_by_client", parameters);
+            List<SalesEstimate> sales_estimates = new List<SalesEstimate>();
             if (result.success)
             {
-                var r = result.data[0];
-                //SalesEstimateLineController selc = new SalesEstimateLineController(user, password);
-                //var detail = (List<SalesEstimateLine>)selc.getSalesEstimateLines(Int32.Parse(r.getColumn(0))).data;
-
-                SalesEstimate sales_estimate = new SalesEstimate(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
+                foreach (Row r in result.data)
+                {
+                    SalesEstimateLineController selc = new SalesEstimateLineController(user, password);
+                    //var detail = (List<SalesEstimateLine>)selc.getSalesEstimateLines(Int32.Parse(r.getColumn(0))).data;
+                    sales_estimates.Add(new SalesEstimate(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
                                                           r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
                                                           r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
                                                           r.getColumn(9), r.getColumn(10), DateTime.Parse(r.getColumn(11)),
-                                                          Double.Parse(r.getColumn(12)), r.getColumn(13), null);
-                return new Result(sales_estimate, true, "");
+                                                          Double.Parse(r.getColumn(12)), r.getColumn(13), null));
+                }
+                return new Result(sales_estimates, true, "");
             }
             return new Result(null, result.success, result.message);
         }
