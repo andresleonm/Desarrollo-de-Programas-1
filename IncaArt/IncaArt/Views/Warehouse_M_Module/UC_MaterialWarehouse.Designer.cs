@@ -58,7 +58,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.combobox_type_s = new MetroFramework.Controls.MetroComboBox();
             this.combobox_product_s = new MetroFramework.Controls.MetroComboBox();
-            this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.registerTab = new MetroFramework.Controls.MetroTabPage();
             this.textbox_unit = new MetroFramework.Controls.MetroTextBox();
             this.Cancel = new MetroFramework.Controls.MetroButton();
             this.register = new MetroFramework.Controls.MetroButton();
@@ -77,18 +77,18 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.metroTabPage3.SuspendLayout();
+            this.registerTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
-            this.metroTabControl1.Controls.Add(this.metroTabPage3);
+            this.metroTabControl1.Controls.Add(this.registerTab);
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(915, 713);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 21;
@@ -114,7 +114,6 @@
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = true;
             this.metroTabPage2.VerticalScrollbarSize = 10;
-            this.metroTabPage2.Enter += new System.EventHandler(this.tabIndex_Enter);
             // 
             // groupBox1
             // 
@@ -424,32 +423,32 @@
             this.combobox_product_s.TabIndex = 27;
             this.combobox_product_s.UseSelectable = true;
             // 
-            // metroTabPage3
+            // registerTab
             // 
-            this.metroTabPage3.BackColor = System.Drawing.Color.White;
-            this.metroTabPage3.Controls.Add(this.textbox_unit);
-            this.metroTabPage3.Controls.Add(this.Cancel);
-            this.metroTabPage3.Controls.Add(this.register);
-            this.metroTabPage3.Controls.Add(this.label4);
-            this.metroTabPage3.Controls.Add(this.label3);
-            this.metroTabPage3.Controls.Add(this.label2);
-            this.metroTabPage3.Controls.Add(this.label1);
-            this.metroTabPage3.Controls.Add(this.combobox_products);
-            this.metroTabPage3.Controls.Add(this.textbox_max_capacity);
-            this.metroTabPage3.Controls.Add(this.combobox_type);
-            this.metroTabPage3.Controls.Add(this.textbox_name);
-            this.metroTabPage3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroTabPage3.HorizontalScrollbarBarColor = true;
-            this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.HorizontalScrollbarSize = 10;
-            this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(907, 671);
-            this.metroTabPage3.TabIndex = 2;
-            this.metroTabPage3.Text = "  Registrar   ";
-            this.metroTabPage3.VerticalScrollbarBarColor = true;
-            this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.VerticalScrollbarSize = 10;
+            this.registerTab.BackColor = System.Drawing.Color.White;
+            this.registerTab.Controls.Add(this.textbox_unit);
+            this.registerTab.Controls.Add(this.Cancel);
+            this.registerTab.Controls.Add(this.register);
+            this.registerTab.Controls.Add(this.label4);
+            this.registerTab.Controls.Add(this.label3);
+            this.registerTab.Controls.Add(this.label2);
+            this.registerTab.Controls.Add(this.label1);
+            this.registerTab.Controls.Add(this.combobox_products);
+            this.registerTab.Controls.Add(this.textbox_max_capacity);
+            this.registerTab.Controls.Add(this.combobox_type);
+            this.registerTab.Controls.Add(this.textbox_name);
+            this.registerTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.registerTab.HorizontalScrollbarBarColor = true;
+            this.registerTab.HorizontalScrollbarHighlightOnWheel = false;
+            this.registerTab.HorizontalScrollbarSize = 10;
+            this.registerTab.Location = new System.Drawing.Point(4, 38);
+            this.registerTab.Name = "registerTab";
+            this.registerTab.Size = new System.Drawing.Size(907, 671);
+            this.registerTab.TabIndex = 2;
+            this.registerTab.Text = "  Registrar   ";
+            this.registerTab.VerticalScrollbarBarColor = true;
+            this.registerTab.VerticalScrollbarHighlightOnWheel = false;
+            this.registerTab.VerticalScrollbarSize = 10;
             // 
             // textbox_unit
             // 
@@ -660,6 +659,7 @@
             this.Name = "UC_MaterialWarehouse";
             this.Size = new System.Drawing.Size(921, 550);
             this.Load += new System.EventHandler(this.UC_MaterialWarehouse_Load);
+            this.VisibleChanged += new System.EventHandler(this.UC_MaterialWarehouse_VisibleChanged);
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -667,8 +667,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.metroTabPage3.ResumeLayout(false);
-            this.metroTabPage3.PerformLayout();
+            this.registerTab.ResumeLayout(false);
+            this.registerTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
@@ -681,7 +681,7 @@
         private MetroFramework.Controls.MetroGrid metroGrid1;
         private MetroFramework.Controls.MetroComboBox combobox_product_s;
         private MetroFramework.Controls.MetroComboBox combobox_type_s;
-        private MetroFramework.Controls.MetroTabPage metroTabPage3;
+        private MetroFramework.Controls.MetroTabPage registerTab;
         private MetroFramework.Controls.MetroComboBox combobox_products;
         private MetroFramework.Controls.MetroTextBox textbox_max_capacity;
         private MetroFramework.Controls.MetroComboBox combobox_type;

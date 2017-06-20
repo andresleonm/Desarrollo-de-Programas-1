@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views.Warehouse_M_Module
 {
-    public partial class TypeWarehouseMain: MetroFramework.Controls.MetroUserControl
+    public partial class TypeWarehouseMain:ICheckPermissions
     {
         public TypeWarehouseMain()
         {
@@ -37,5 +38,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             uC_MaterialTypeWarehouse1.Visible = true;
             uC_ProductTypeWarehouse1.Visible = false;
         }
+
+
     }
 }

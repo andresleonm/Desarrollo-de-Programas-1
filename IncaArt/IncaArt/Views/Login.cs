@@ -53,9 +53,10 @@ namespace WindowsFormsApp1
                     Dashboard main_form = new Dashboard(user);
                     main_form.FormClosing += this.DashboardClosingHandler;
                     this.Cursor = Cursors.Arrow;
+                    this.Visible = false;
                     MessageBox.Show("Bienvenido " + user.Name);
                     main_form.Show();
-                    this.Visible = false;
+                    
                 }
                 else
                 {
