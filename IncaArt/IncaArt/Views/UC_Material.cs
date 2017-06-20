@@ -21,7 +21,6 @@ namespace WindowsFormsApp1.Views
         bool min_flag;
         bool currency_flag;
         bool cost_flag;
-        bool data_loaded;
         int cur_row;
         int operation_value;// 0 para Create, 1 para Update
         List<Models.Material> material_list;
@@ -39,30 +38,26 @@ namespace WindowsFormsApp1.Views
 
         private void UC_Material_Load(object sender, EventArgs e)
         {
-            data_loaded = false;
             metroTabControl1.SelectedIndex = 0;
+            string user = "";
+            string password = "";
+            materialController = new Controller.MaterialsController(user, password);
+            unitController = new Controller.UnitController(user, password);
+            currencyController = new Controller.CurrencyController(user, password);
+            material_list = new List<Models.Material>();
+            currency_list = new List<Currency>();
         }
 
         private void UC_Material_VisibleChanged(object sender, EventArgs e)
         {
-            if (!data_loaded && Visible)
+            if (Visible)
             {
-                data_loaded = true;
-                string user = "dp1admin";
-                string password = "dp1admin";
-                materialController = new Controller.MaterialsController(user, password);
-                unitController = new Controller.UnitController(user, password);
-                currencyController = new Controller.CurrencyController(user, password);
-                material_list = new List<Models.Material>();
-                currency_list = new List<Currency>();
-                data_loaded = false;
+                Set_Flag_All(false);
+                operation_value = 0;
+                Load_Data();
+                Load_DataGridView();
+                metroTabControl1.SelectedIndex = 0;
             }
-            if (!Visible) return;
-            Set_Flag_All(false);
-            operation_value = 0;
-            Load_Data();
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
         }
 
         private void Load_Data()
@@ -675,6 +670,8 @@ namespace WindowsFormsApp1.Views
                 }
             }
             openDialog.Dispose();
+            Load_Data();
+            Load_DataGridView();
         }
 
         private void CreateExcelError(List<MaterialError> list)

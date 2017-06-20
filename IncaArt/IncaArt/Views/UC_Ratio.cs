@@ -30,24 +30,21 @@ namespace WindowsFormsApp1.Views
 
         private void UC_Ratio_Load(object sender, EventArgs e)
         {
-            data_loaded = false;
+            string user = "";
+            string password = "";
+            ratioController = new Controller.RatioController(user, password);
+            productController = new Controller.ProductsController(user, password);
+            workstationController = new Controller.WorkstationsController(user, password);
+            workerController = new Controller.WorkerController(user, password);
         }
 
         private void UC_Ratio_VisibleChanged(object sender, EventArgs e)
         {
-            if (!data_loaded && Visible)
+            if (Visible)
             {
-                string user = "dp1admin";
-                string password = "dp1admin";
-                ratioController = new Controller.RatioController(user, password);
-                productController = new Controller.ProductsController(user, password);
-                workstationController = new Controller.WorkstationsController(user, password);
-                workerController = new Controller.WorkerController(user, password);
-                data_loaded = true;
+                Load_Data();
+                Load_DataGridView();
             }
-            if (!Visible) return;
-            Load_Data();
-            Load_DataGridView();
         }
 
         private void UC_Ratio_ParentChanged(object sender, EventArgs e)
