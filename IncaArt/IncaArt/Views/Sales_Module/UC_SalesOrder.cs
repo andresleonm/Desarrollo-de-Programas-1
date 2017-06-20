@@ -21,9 +21,11 @@ namespace WindowsFormsApp1.Views
         private SalesOrder so_edit;
         private List<SalesOrder> sales_orders;
         private Customer customer;
+        private SalesEstimate estimate;
         private List<Currency> currencies;
         private CurrencyController currency_controller;
         private SalesOrderController sales_order_controller;
+        private SalesEstimateLineController sales_estimate_line_controller;
         private SalesOrderLineController sales_order_line_controller;
 
 
@@ -34,6 +36,7 @@ namespace WindowsFormsApp1.Views
             currency_controller = new CurrencyController(user, password);
             sales_order_controller = new SalesOrderController(user, password);
             sales_order_line_controller = new SalesOrderLineController(user, password);
+            sales_estimate_line_controller = new SalesEstimateLineController(user, password);
 
             fill_Sales_Order();
         }
@@ -51,9 +54,11 @@ namespace WindowsFormsApp1.Views
         {
             if (tab_Order.SelectedIndex == 0) // Orders
             {
+                btn_Clean.PerformClick();
                 ctxt_order_id.Text = "";
                 ctxt_customer.Text = "";
                 customer = new Customer();
+                estimate = new SalesEstimate();
                 fill_Sales_Order();
             }
             else if (tab_Order.SelectedIndex == 1) // New_Order
@@ -61,6 +66,7 @@ namespace WindowsFormsApp1.Views
                 if (!edit)
                 {
                     customer = new Customer();
+                    estimate = new SalesEstimate();
                     btn_Clean.PerformClick();
                 }
             }
@@ -119,6 +125,7 @@ namespace WindowsFormsApp1.Views
                 var id = sales_orders[index].Id;
                 so_edit = (Models.SalesOrder)sales_order_controller.getSalesOrder(id).data;
                 grid_order_lines.DataSource = so_edit.Lines;
+
                 tab_Order.SelectedIndex = 1;
                 fill_Sales_Order_Form(so_edit);
             }
@@ -185,16 +192,26 @@ namespace WindowsFormsApp1.Views
 
                     if (estimateL.Count != 0)
                     {
-                        txt_name.Text = estimateL[0].Customer_name;
-                        txt_address.Text = estimateL[0].Customer_address;
-                        txt_Doi.Text = estimateL[0].Customer_doi;
-                        txt_phone.Text = estimateL[0].Customer_phone;
-                        //fill_Sales_Order_Form();
-                        btn_New.Visible = false;
+                        estimate = estimateL[0];
+                        txt_name.Text = estimate.Customer_name;
+                        txt_address.Text = estimate.Customer_address;
+                        txt_Doi.Text = estimate.Customer_doi;
+                        txt_phone.Text = estimate.Customer_phone;
+
+                        var lines = sales_estimate_line_controller.getSalesEstimateLines(estimate.Id).data;
+                        estimate.Lines = (List<SalesEstimateLine>)lines;
+                        fill_Sales_Order_Form_With_Estimation(estimate);
+                        manipulate_options(false);
+                    }
+                    else
+                    {
+                        btn_Clean.PerformClick();
                     }
                 }
                 else
                 {
+                    btn_Clean.PerformClick();
+                    customer = customerL[0];
                     txt_name.Text = customer.Name;
                     txt_address.Text = customer.Address;
                     txt_Doi.Text = customer.Doi;
@@ -203,7 +220,7 @@ namespace WindowsFormsApp1.Views
             }
         }
 
-        private void btn_New_Click(object sender, EventArgs e)
+        private void btn_Add_Click(object sender, EventArgs e)
         {
             var lines = new List<SalesOrderLine>();
             Sales_Module.SalesOrderLine order_line = new Sales_Module.SalesOrderLine(ref lines, user, password);
@@ -307,6 +324,33 @@ namespace WindowsFormsApp1.Views
 
         }
 
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Models.SalesOrderLine> data = (List<Models.SalesOrderLine>)grid_order_lines.DataSource;
+                try
+                {
+                    Models.SalesOrderLine currentObject = (Models.SalesOrderLine)grid_order_lines.CurrentRow.DataBoundItem;
+                    if (currentObject == null)
+                        MessageBox.Show("Seleccione la linea que desea anular");
+                    data.Remove(currentObject);
+                    data = data.Concat(new List<Models.SalesOrderLine>().ToList()).ToList();
+                    grid_order_lines.DataSource = data;
+                }
+                catch (Exception excp)
+                {
+                    grid_order_lines.DataSource = new List<Models.SalesOrderLine>();
+                    return;
+                }
+            }
+            catch (Exception excp)
+            {
+                grid_order_lines.DataSource = new List<Models.MaterialMovementLine>();
+                return;
+            }
+        }
+
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             btn_Clean.PerformClick();
@@ -317,6 +361,7 @@ namespace WindowsFormsApp1.Views
         {
             edit = false;
             so_edit = new SalesOrder();
+            manipulate_options(true);
             Clean();
         }
 
@@ -359,18 +404,7 @@ namespace WindowsFormsApp1.Views
 
         void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if click is on new row or header row
-            if (e.RowIndex == grid_order_lines.NewRowIndex || e.RowIndex < 0)
-                return;
-
-            //Check if click is on specific column 
-            if (e.ColumnIndex == grid_order_lines.Columns["action"].Index)
-            {
-                //Put some logic here, for example to remove row from your binding list.
-                List<SalesOrderLine> list = (List<SalesOrderLine>)grid_order_lines.DataSource;
-                list.RemoveAt(e.RowIndex);
-                grid_order_lines.DataSource = list;
-            }
+            
         }
 
         private void fill_Sales_Order_Object(SalesOrder so)
@@ -417,6 +451,40 @@ namespace WindowsFormsApp1.Views
             }
         }
 
+        private void fill_Sales_Order_Form_With_Estimation(SalesEstimate se)
+        {
+            Clean();
+            txt_name.Text = se.Customer_name;
+            txt_Doi.Text = se.Customer_doi;
+            txt_address.Text = se.Customer_address;
+            txt_phone.Text = se.Customer_phone;
+
+            txt_idOrder.Text = se.Id.ToString();
+            cbo_Currency.Text = se.Currency_symbol + "  -  " + se.Currency_name;
+            dt_IssueDate.Text = se.Issue_date.ToShortDateString();
+            dt_IssueHour.Text = se.Issue_date.ToLongTimeString();
+
+            txt_observation.Text = se.Observation;
+            txt_amount.Text = se.Amount.ToString("0.00");
+            txt_Status.Text = se.Status;
+
+            int i = 0;
+            List<SalesOrderLine> sols = new List<SalesOrderLine>();
+
+            foreach (SalesEstimateLine sel in se.Lines)
+            {
+                sols.Add(new SalesOrderLine(sel));
+            }
+
+            fill_gridView_OrderLine(sols);
+
+            foreach (SalesEstimateLine sel in se.Lines)
+            {
+                grid_order_lines.Rows[i].Cells["amount"].Value = (sel.Quantity * sel.Unit_price).ToString();
+                i++;
+            }
+        }
+
         private void Clean()
         {
             clean_Customer();
@@ -456,7 +524,7 @@ namespace WindowsFormsApp1.Views
             this.grid_order_lines.DataSource = current;
             AdjustColumnOrderLine();
         }
-        
+
         private void AdjustColumnOrderLine()
         {
             grid_order_lines.Columns["product"].DisplayIndex = 0;
@@ -465,15 +533,42 @@ namespace WindowsFormsApp1.Views
             grid_order_lines.Columns["quantity"].DisplayIndex = 3;
             grid_order_lines.Columns["unit_price"].DisplayIndex = 4;
             grid_order_lines.Columns["amount"].DisplayIndex = 5;
-            grid_order_lines.Columns["action"].DisplayIndex = 6;
         }
 
-        
+        private void manipulate_options(bool flag)
+        {
+            Color color = flag ? Color.White : Color.LightGray;
+
+            txt_name.Enabled = flag;
+            txt_name.BackColor = color;
+
+            txt_Doi.Enabled = flag;
+            txt_Doi.BackColor = color;
+
+            txt_address.Enabled = flag;
+            txt_address.BackColor = color;
+
+            txt_phone.Enabled = flag;
+            txt_phone.BackColor = color;
+
+            cbo_Currency.Enabled = flag;
+            cbo_Currency.BackColor = color;
+
+            dt_IssueDate.Enabled = flag;
+            dt_IssueHour.Enabled = flag;
+
+            txt_observation.Enabled = flag;
+            txt_observation.BackColor = color;
+
+            btn_Add.Visible = flag;
+            btn_Delete.Visible = flag;
+
+            grid_order_lines.Columns["quantity"].ReadOnly = !flag;
+            
+        }
+
         #endregion
 
-
-
-        
         
     }
 }

@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views.Warehouse_M_Module
 {
-    public partial class UC_ProductTypeWarehouse : MetroFramework.Controls.MetroUserControl
+    public partial class UC_ProductTypeWarehouse : ICheckPermissions
     {
 
         bool name_flag;
@@ -23,6 +24,8 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
 
         Models.ProductTypeWarehouse curTypeWarehouse;
         Dictionary<int, string> combo_class = new Dictionary<int, string>();
+
+        User sessionUser;
 
         public UC_ProductTypeWarehouse()
         {
@@ -154,7 +157,14 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
         {
             Clean();
             register.Text = "Guardar";
+            //register.Visible = true;
             curTypeWarehouse = null;
+
+            /*
+            if (!sessionUser.Profile.HasFunctionality("CREATE PRODUCT WAREHOUSE"))
+            {
+                register.Visible = false;
+            }*/
         }
 
         private void register_Click(object sender, EventArgs e)
@@ -225,9 +235,15 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
                         combobox_class.SelectedIndex = combo_class.FirstOrDefault(x => x.Value == classname).Key + 1;
                         metroTabControl1.SelectedIndex = 1;
                         register.Text = "Editar";
+                       // register.Visible = true;
                         Set_Flag_All(true);
                     }
-           }
+                    /*
+                    if (!sessionUser.Profile.HasFunctionality("EDIT PRODUCT WAREHOUSE"))
+                    {
+                        register.Visible = false;
+                    }*/
+            }
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -327,6 +343,25 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
                 errorProvider.SetError(combobox, null);
             }
         }
+        /*
+        private void UC_Warehouse_Load()
+        {
+            if (!sessionUser.Profile.HasFunctionality("DELETE PRODUCT WAREHOUSE"))
+            {
+                btn_delete.Visible = false;
+            }
 
+            if (!sessionUser.Profile.HasFunctionality("CREATE PRODUCT WAREHOUSE") && !sessionUser.Profile.HasFunctionality("EDIT PRODUCT WAREHOUSE"))
+            {
+                this.metroTabControl1.TabPages.Remove(tabRegister);
+            }
+        }
+
+        public override void CheckPermissions(User user)
+        {
+            sessionUser = user;
+            UC_Warehouse_Load();
+        }
+        */
     }
 }

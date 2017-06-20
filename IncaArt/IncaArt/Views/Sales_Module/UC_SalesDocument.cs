@@ -127,8 +127,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 sd_edit = (Models.SalesDocument)sales_document_controller.getSalesDocument(id).data;
                 grid_Document_Lines.DataSource = sd_edit.Lines;
 
-                for (int i = 0; i < grid_Document_Lines.RowCount; i++)
-                    grid_Document_Lines.Rows[i].Cells["amount"].Value = (sd_edit.Lines[i].Quantity * sd_edit.Lines[i].Unit_price).ToString("0.00");
+                refresh_amount(sd_edit);
 
                 tab_Document.SelectedIndex = 1;
                 manipulate_options(false);
@@ -171,6 +170,12 @@ namespace WindowsFormsApp1.Views.Sales_Module
             grid_Documents.Columns["amount2"].DisplayIndex = 6;
             grid_Documents.Columns["observation"].DisplayIndex = 7;
             grid_Documents.Columns["status"].DisplayIndex = 8;
+        }
+
+        private void refresh_amount(SalesDocument sd)
+        {
+            for (int i = 0; i < grid_Document_Lines.RowCount; i++)
+                grid_Document_Lines.Rows[i].Cells["amount"].Value = (sd.Lines[i].Quantity * sd.Lines[i].Unit_price).ToString("0.00");
         }
 
         private void btn_Excel_Click(object sender, EventArgs e)

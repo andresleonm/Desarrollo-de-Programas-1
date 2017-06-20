@@ -69,6 +69,19 @@ namespace WindowsFormsApp1.Models
             this.Prod_warehouse_name = prod_WS.Name;
             this.Amount = prod_WS.quantity * prod_WS.unit_price;
             this.Status = "Registrado";
-        }        
+        }
+
+        public SalesOrderLine(SalesEstimateLine se)
+        {            
+            this.Product_id = se.Product_id;
+            this.Product_name = se.Product_name;
+            this.Unit_measure_id = se.Unit_measure_id;
+            this.Unit_measure_name = se.Unit_measure_name;
+            this.Quantity = se.Quantity;
+            this.Unit_price = se.Unit_price;
+            this.Prod_warehouse_id = se.Prod_warehouse_id;
+            this.Prod_warehouse_name= se.Prod_warehouse_name;
+            this.Amount = se.Amount;
+        }
     }
 }
