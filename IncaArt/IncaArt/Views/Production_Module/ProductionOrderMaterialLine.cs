@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.Views.Production_Module
         private Models.ProductionOrderMaterialLine line=new Models.ProductionOrderMaterialLine();
         private bool isRegistered = false;
         private bool editing = false;
-
+        private int idRecipe;
         List<Material> materials;
         List<Warehouse_Module.MaterialWarehouseM> warehouses;
         string user = "dp1admin";
@@ -69,6 +69,19 @@ namespace WindowsFormsApp1.Views.Production_Module
             set
             {
                 editing = value;
+            }
+        }
+
+        public int IdRecipe
+        {
+            get
+            {
+                return idRecipe;
+            }
+
+            set
+            {
+                idRecipe = value;
             }
         }
 
@@ -128,20 +141,12 @@ namespace WindowsFormsApp1.Views.Production_Module
             MaximizeBox = false;
 
             // ComboBox         
-            Result result = material_controller.getMaterials_withWarehouses();
+            Result result = material_controller.getMaterials_ByRecipe(IdRecipe);
             this.materials = (List<Material>)result.data;
 
             comboBox_Material.DataSource = materials;
             comboBox_Material.DisplayMember = "name";
 
-            /*comboBox_Material.SelectedIndex = -1;
-
-            result = material_warehouse_controller.getWarehouses(materials[0].Id);
-            this.warehouses = (List<Warehouse_Module.MaterialWarehouseM>)result.data;
-
-            comboBox_Warehouse.DataSource = warehouses;
-            comboBox_Warehouse.DisplayMember = "name";
-            comboBox_Warehouse.SelectedIndex = -1;*/
 
             metroTextBox_Quantity.Text = "0";
             if (editing)
