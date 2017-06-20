@@ -31,17 +31,20 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
         }
 
-        private void UC_Workstation_Load(object sender, EventArgs e)
+        private void UC_Workstation_VisibleChanged(object sender, EventArgs e)
         {
-            operation_value = 0;
-            Set_Flag_All(false);
-            string user = "dp1admin";
-            string password = "dp1admin";
-            productController = new Controller.ProductsController(user, password);
-            workstationController = new Controller.WorkstationsController(user, password);
-            currencyController = new Controller.CurrencyController(user, password);
-            Load_Data();
+            if (Visible)
+            {
+                operation_value = 0;
+                Set_Flag_All(false);
+                Load_Data();
+                Load_DataGridView();
+                metroTabControl1.SelectedIndex = 0;
+            }
+        }
 
+        private void Load_Combobox()
+        {
             //Cargar los combobox
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
 
@@ -87,9 +90,15 @@ namespace WindowsFormsApp1.Views
             combobox_currency.DataSource = new BindingSource(combo_data, null);
             combobox_currency.DisplayMember = "Value";
             combobox_currency.ValueMember = "Key";
+        }
 
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
+        private void UC_Workstation_Load(object sender, EventArgs e)
+        {
+            string user = "";
+            string password = "";
+            productController = new Controller.ProductsController(user, password);
+            workstationController = new Controller.WorkstationsController(user, password);
+            currencyController = new Controller.CurrencyController(user, password);
         }
 
         private void Load_Data()
@@ -105,6 +114,7 @@ namespace WindowsFormsApp1.Views
             result = workstationController.getWorkstations();
             if (result.data == null) MessageBox.Show(result.message, "Error al listar Puesto de Trabajo", MessageBoxButtons.OK);
             else workstation_list = (List<Models.Workstation>)result.data;
+            Load_Combobox();
         }
 
         private void Load_DataGridView()
@@ -584,5 +594,6 @@ namespace WindowsFormsApp1.Views
 
             }
         }
+
     }
 }

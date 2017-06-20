@@ -93,7 +93,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(15, 49);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(721, 450);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.metroTabControl1.TabIndex = 1;
@@ -593,7 +593,8 @@
             this.textbox_price.UseSelectable = true;
             this.textbox_price.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_price.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.textbox_price.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_number_Validating);
+            this.textbox_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_number_KeyPress);
+            this.textbox_price.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_Validating);
             // 
             // textbox_name
             // 
@@ -668,6 +669,7 @@
             this.textbox_stock_max.UseSelectable = true;
             this.textbox_stock_max.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_stock_max.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textbox_stock_max.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_number_KeyPress);
             this.textbox_stock_max.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_number_Validating);
             // 
             // textbox_stock_min
@@ -699,6 +701,7 @@
             this.textbox_stock_min.UseSelectable = true;
             this.textbox_stock_min.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textbox_stock_min.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textbox_stock_min.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_number_KeyPress);
             this.textbox_stock_min.Validating += new System.ComponentModel.CancelEventHandler(this.textbox_number_Validating);
             // 
             // combobox_unit
@@ -746,12 +749,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.metroLabel11);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "UC_Product";
             this.Size = new System.Drawing.Size(795, 513);
             this.UseCustomBackColor = true;
             this.Load += new System.EventHandler(this.UC_Product_Load);
+            this.VisibleChanged += new System.EventHandler(this.UC_Product_VisibleChanged);
             this.metroTabControl1.ResumeLayout(false);
             this.consulta.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

@@ -54,7 +54,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
         public override void CheckPermissions(User user)
         {
             sessionUser = user;
-            UC_Warehouse_Load();
+            UC_MaterialWarehouse_Load();
         }
         private void Load_Data()
         {
@@ -362,17 +362,17 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
         {
             if (!deletedTab) Clean();
             register.Text = "Guardar";
-
-
-            if (!sessionUser.Profile.HasFunctionality("CREATE MATERIAL WAREHOUSE"))
-            {
-                register.Visible = false;
-            }
             register.Visible = true;
             curWarehouse = null;
+            /*
+                if (!sessionUser.Profile.HasFunctionality("CREATE MATERIAL WAREHOUSE"))
+                {
+                    register.Visible = false;
+                }*/
+            
         }
 
-        private void delete_Click(object sender, EventArgs e)
+    private void delete_Click(object sender, EventArgs e)
         {
             int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
             result = materialWarehouseController.deleteMaterialWarehouse(warehouse_list[index]);
@@ -799,7 +799,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
 
 
         //Permissions
-        private void UC_Warehouse_Load()
+        private void UC_MaterialWarehouse_Load()
         {
             if (!sessionUser.Profile.HasFunctionality("DELETE MATERIAL WAREHOUSE"))
             {

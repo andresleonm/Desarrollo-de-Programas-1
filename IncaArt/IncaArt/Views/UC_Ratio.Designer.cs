@@ -58,6 +58,8 @@
             this.btn_search = new MetroFramework.Controls.MetroButton();
             this.btn_clean_s = new MetroFramework.Controls.MetroButton();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.btn_export = new MetroFramework.Controls.MetroTile();
+            this.btn_import = new MetroFramework.Controls.MetroTile();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -71,18 +73,23 @@
             // 
             this.metroTabControl1.Controls.Add(this.consulta);
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
-            this.metroTabControl1.Location = new System.Drawing.Point(12, 16);
+            this.metroTabControl1.Location = new System.Drawing.Point(19, 28);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(721, 502);
+            this.metroTabControl1.Size = new System.Drawing.Size(720, 548);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
+            this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 1;
+            this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTabControl1.UseCustomBackColor = true;
             this.metroTabControl1.UseCustomForeColor = true;
             this.metroTabControl1.UseSelectable = true;
             // 
             // consulta
             // 
+            this.consulta.BackColor = System.Drawing.Color.Transparent;
+            this.consulta.Controls.Add(this.btn_import);
+            this.consulta.Controls.Add(this.btn_export);
             this.consulta.Controls.Add(this.groupBox3);
             this.consulta.Controls.Add(this.groupBox2);
             this.consulta.HorizontalScrollbarBarColor = true;
@@ -90,7 +97,7 @@
             this.consulta.HorizontalScrollbarSize = 10;
             this.consulta.Location = new System.Drawing.Point(4, 38);
             this.consulta.Name = "consulta";
-            this.consulta.Size = new System.Drawing.Size(713, 460);
+            this.consulta.Size = new System.Drawing.Size(712, 506);
             this.consulta.TabIndex = 0;
             this.consulta.Text = "Consulta";
             this.consulta.VerticalScrollbarBarColor = true;
@@ -102,7 +109,7 @@
             this.groupBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox3.Controls.Add(this.metroGrid1);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox3.Location = new System.Drawing.Point(17, 240);
+            this.groupBox3.Location = new System.Drawing.Point(11, 275);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(650, 220);
             this.groupBox3.TabIndex = 23;
@@ -216,7 +223,7 @@
             this.metroLabel20.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel20.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel20.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel20.Location = new System.Drawing.Point(15, 166);
+            this.metroLabel20.Location = new System.Drawing.Point(15, 159);
             this.metroLabel20.Name = "metroLabel20";
             this.metroLabel20.Size = new System.Drawing.Size(83, 15);
             this.metroLabel20.TabIndex = 20;
@@ -240,17 +247,18 @@
             // 
             this.combobox_product_s.FormattingEnabled = true;
             this.combobox_product_s.ItemHeight = 23;
-            this.combobox_product_s.Location = new System.Drawing.Point(87, 71);
+            this.combobox_product_s.Location = new System.Drawing.Point(86, 25);
             this.combobox_product_s.Name = "combobox_product_s";
             this.combobox_product_s.Size = new System.Drawing.Size(143, 29);
             this.combobox_product_s.TabIndex = 23;
             this.combobox_product_s.UseSelectable = true;
+            this.combobox_product_s.SelectedIndexChanged += new System.EventHandler(this.combobox_product_s_SelectedIndexChanged);
             // 
             // combobox_workstation_s
             // 
             this.combobox_workstation_s.FormattingEnabled = true;
             this.combobox_workstation_s.ItemHeight = 23;
-            this.combobox_workstation_s.Location = new System.Drawing.Point(87, 25);
+            this.combobox_workstation_s.Location = new System.Drawing.Point(86, 71);
             this.combobox_workstation_s.Name = "combobox_workstation_s";
             this.combobox_workstation_s.Size = new System.Drawing.Size(143, 29);
             this.combobox_workstation_s.TabIndex = 22;
@@ -262,7 +270,7 @@
             this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel2.Location = new System.Drawing.Point(6, 30);
+            this.metroLabel2.Location = new System.Drawing.Point(6, 74);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(48, 15);
             this.metroLabel2.TabIndex = 20;
@@ -275,7 +283,7 @@
             this.metroLabel15.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel15.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel15.ForeColor = System.Drawing.Color.DarkCyan;
-            this.metroLabel15.Location = new System.Drawing.Point(6, 74);
+            this.metroLabel15.Location = new System.Drawing.Point(6, 32);
             this.metroLabel15.Name = "metroLabel15";
             this.metroLabel15.Size = new System.Drawing.Size(61, 15);
             this.metroLabel15.TabIndex = 21;
@@ -466,14 +474,52 @@
             this.metroLabel11.Text = "Ratio";
             this.metroLabel11.UseCustomBackColor = true;
             // 
+            // btn_export
+            // 
+            this.btn_export.ActiveControl = null;
+            this.btn_export.BackColor = System.Drawing.Color.Transparent;
+            this.btn_export.Location = new System.Drawing.Point(12, 236);
+            this.btn_export.Name = "btn_export";
+            this.btn_export.Size = new System.Drawing.Size(96, 38);
+            this.btn_export.TabIndex = 75;
+            this.btn_export.Text = "Exportar";
+            this.btn_export.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
+            this.btn_export.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_export.UseCustomBackColor = true;
+            this.btn_export.UseCustomForeColor = true;
+            this.btn_export.UseSelectable = true;
+            this.btn_export.UseStyleColors = true;
+            this.btn_export.UseTileImage = true;
+            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
+            // 
+            // btn_import
+            // 
+            this.btn_import.ActiveControl = null;
+            this.btn_import.BackColor = System.Drawing.Color.Transparent;
+            this.btn_import.Location = new System.Drawing.Point(111, 236);
+            this.btn_import.Name = "btn_import";
+            this.btn_import.Size = new System.Drawing.Size(106, 38);
+            this.btn_import.TabIndex = 76;
+            this.btn_import.Text = "Importar";
+            this.btn_import.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
+            this.btn_import.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_import.UseCustomBackColor = true;
+            this.btn_import.UseCustomForeColor = true;
+            this.btn_import.UseSelectable = true;
+            this.btn_import.UseStyleColors = true;
+            this.btn_import.UseTileImage = true;
+            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
+            // 
             // UC_Ratio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.metroLabel11);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "UC_Ratio";
-            this.Size = new System.Drawing.Size(826, 598);
+            this.Size = new System.Drawing.Size(763, 590);
+            this.Theme = MetroFramework.MetroThemeStyle.Light;
             this.UseCustomBackColor = true;
             this.Load += new System.EventHandler(this.UC_Ratio_Load);
             this.VisibleChanged += new System.EventHandler(this.UC_Ratio_VisibleChanged);
@@ -522,5 +568,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private MetroFramework.Controls.MetroLabel metroLabel11;
+        private MetroFramework.Controls.MetroTile btn_import;
+        private MetroFramework.Controls.MetroTile btn_export;
     }
 }

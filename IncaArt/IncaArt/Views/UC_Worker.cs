@@ -37,16 +37,29 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
         }
 
+        private void UC_Worker_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)
+            {
+                Set_Flag_All(false);
+                operation_value = 0;
+                Load_Data();
+                Load_DataGridView();
+                metroTabControl1.SelectedIndex = 0;
+            }
+        }
+
         private void UC_Worker_Load(object sender, EventArgs e)
         {
-            Set_Flag_All(false);
-            operation_value = 0;
-            string user = "dp1admin";
-            string password = "dp1admin";
+            string user = "";
+            string password = "";
             workerController = new Controller.WorkerController(user, password);
             shiftController = new Controller.ShiftsController(user, password);
             currencyController = new Controller.CurrencyController(user, password);
-            Load_Data();
+        }
+
+        private void Load_Combobox()
+        {
             //Cargar los combobox
 
             //Turno
@@ -75,9 +88,6 @@ namespace WindowsFormsApp1.Views
             combobox_currency.DataSource = new BindingSource(combo_data, null);
             combobox_currency.DisplayMember = "Value";
             combobox_currency.ValueMember = "Key";
-
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
         }
 
         private void Load_Data()
@@ -91,6 +101,7 @@ namespace WindowsFormsApp1.Views
             result = workerController.getWokers();
             if (result.data == null) MessageBox.Show(result.message, "Error al listar trabajadores", MessageBoxButtons.OK);
             else worker_list = (List<Models.Worker>)result.data;
+            Load_Combobox();
         }
 
         private void Load_DataGridView()
@@ -347,6 +358,30 @@ namespace WindowsFormsApp1.Views
             {
                 worker_list = (List<Models.Worker>)result.data;
                 Load_DataGridView();
+            }
+        }
+
+        private void textbox_number_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            if (!char.IsDigit(e.KeyChar))
+            {
+                if (e.KeyChar != 8)//Manejo de Backspace
+                {
+                    e.Handled = true;
+                }
+            }
+            if (textbox.Name == "textbox_salary")
+            {
+                if (e.KeyChar == '.')
+                {
+                    e.Handled = false;
+                }
+                if ((e.KeyChar == '.') && (textbox.Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+
             }
         }
 

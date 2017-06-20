@@ -40,13 +40,105 @@ namespace WindowsFormsApp1.Views
             mainDashboard1.Controls.Find("metroTile12", false)[0].Click += btn_shift_Click;
             mainDashboard1.Controls.Find("metroTile13", false)[0].Click += btn_typewarehouses_Click;
             mainDashboard1.Controls.Find("metroTile16", false)[0].Click += btn_ratio_Click;
-            mainDashboard1.Controls.Find("metroTile15", false)[0].Click += btn_currency_Click;
             uc_reports.Controls.Find("metroTile8", false)[0].Click += btn_wperformance_Click;
             mainDashboard1.Controls.Find("metroTile14", false)[0].Click += btn_movementsType_Click;
             this.sessionUser = sessionUser;
             label_user_role.Text = "(" + sessionUser.Profile.Description + ")";
             label_user_name.Text = sessionUser.Name + " " + sessionUser.Middlename;
+            CheckButtonsVisibility();
             Helpers.CheckPermissionsHelper.Check(this, sessionUser);
+        }
+
+        private void CheckButtonsVisibility()
+        {
+            btn_config.Visible = UserCanViewConfigButton();
+            btn_warehouse.Visible = UserCanViewWarehouseButton();
+            btn_sales.Visible = UserCanViewSalesButton();
+            btn_purchase.Visible = sessionUser.Profile.HasFunctionality("VIEW PURCHASE ORDER");
+            btn_production.Visible = sessionUser.Profile.HasFunctionality("VIEW PRODUCTION ORDER");
+            btn_simulation.Visible = sessionUser.Profile.HasFunctionality("RUN SIMULATION");
+            btn_reportes.Visible = UserCanViewReportsButton();
+        }
+
+        private bool UserCanViewConfigButton()
+        {
+            string[] permissions = new string[] {
+                "VIEW USERS",
+                "VIEW CUSTOMER",
+                "VIEW WORKERS",
+                "VIEW PROFILES",
+                "VIEW RECIPE",
+                "VIEW PRODUCT",
+                "VIEW MATERIAL",
+                "VIEW WORKSTATION",
+                "VIEW PARAMETERS",
+                "VIEW MATERIAL WAREHOUSE",
+                "VIEW PRODUCT WAREHOUSE",
+                "VIEW SUPPLIER",
+                "VIEW SHIFT",
+                "VIEW MATERIAL WAREHOUSE TYPE",
+                "VIEW PRODCUT WAREHOUSE TYPE",
+                "VIEW MATERIAL MOVEMENT TYPE",
+                "VIEW PRODUCT MOVEMENT TYPE",
+                "VIEW RATIOS"
+            };
+
+            foreach(string perm in permissions)
+            {
+                if (sessionUser.Profile.HasFunctionality(perm)) return true;
+            }
+
+            return false;
+        }
+
+        private bool UserCanViewWarehouseButton()
+        {
+            string[] permissions = new string[] {
+                "VIEW MATERIAL MOVEMENT",
+                "VIEW PRODUCT MOVEMENT",
+            };
+
+            foreach (string perm in permissions)
+            {
+                if (sessionUser.Profile.HasFunctionality(perm)) return true;
+            }
+
+            return false;
+        }
+
+        private bool UserCanViewSalesButton()
+        {
+            string[] permissions = new string[] {
+                "VIEW ORDER",
+                "VIEW REFUND",
+                "VIEW DOCUMENT",
+                "VIEW ESTIMATE"
+            };
+
+            foreach (string perm in permissions)
+            {
+                if (sessionUser.Profile.HasFunctionality(perm)) return true;
+            }
+
+            return false;
+        }
+
+        private bool UserCanViewReportsButton()
+        {
+            string[] permissions = new string[] {
+                "VIEW KARDEX REPORT",
+                "VIEW REGISTER/SALES REPORT",
+                "VIEW LOGICAL/PHYSICAL STOCK REPORT",
+                "VIEW WORKERS PERFORMANCE REPORT",
+                "VIEW SIMULATIONS REPORT"
+            };
+
+            foreach (string perm in permissions)
+            {
+                if (sessionUser.Profile.HasFunctionality(perm)) return true;
+            }
+
+            return false;
         }
 
         private void menuButton_Click(object sender, MouseEventArgs e)
@@ -154,8 +246,8 @@ namespace WindowsFormsApp1.Views
         private void btn_logo_Click(object sender, EventArgs e)
         {
             hide_UserControls();
-            btn_config_Click((object)btn_config, e);
-            menuButton_Click((object)btn_config, (MouseEventArgs)e);
+            btn_config.PerformClick();// ((object)btn_config, e);
+            btn_config.PerformClick();
         }
 
         private void btn_purchase_Click(object sender, EventArgs e)
@@ -305,6 +397,21 @@ namespace WindowsFormsApp1.Views
         {
             hide_UserControls();
             uC_MovementsType1.Visible = true;
+        }
+
+        private void metroLabel1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.metroLabel1.Visible = true;
+        }
+
+        private void metroLabel1_Leave(object sender, EventArgs e)
+        {
+            this.metroLabel1.Visible = false;
         }
     }
 }

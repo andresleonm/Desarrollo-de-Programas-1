@@ -34,17 +34,53 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
         }
 
+        private void UC_Recipe_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)
+            {
+                Set_Flag_All(false);
+                operation_value = 0;
+                Load_Data();
+                Load_DataGridView();
+                metroTabControl1.SelectedIndex = 0;
+                detail_list = new List<Models.RecipeDetail>();
+            }
+        }
+
         private void UC_Recipe_Load(object sender, EventArgs e)
         {
-            string user = "dp1admin";
-            string password = "dp1admin";
+
+            string user = "";
+            string password = "";
             operation_value = 0;
             materialController = new Controller.MaterialsController(user, password);
             productController = new Controller.ProductsController(user, password);
             recipeController = new Controller.RecipesController(user, password);
             unitController = new Controller.UnitController(user, password);
-            detail_list = new List<Models.RecipeDetail>();
-            Load_Data();
+        }
+
+        private void Load_Data()
+        {
+
+            result = materialController.getMaterials();
+            material_list = (List<Models.Material>)result.data;
+            result = productController.getProducts();
+            product_list = (List<Models.Product>)result.data;
+
+            result = recipeController.getRecipes();
+            if (result.data == null)
+            {
+                MessageBox.Show(result.message, "Error al listar recetas", MessageBoxButtons.OK);
+            }
+            else
+            {
+                recipe_list = (List<Models.Recipe>)result.data;
+            }
+            Load_Combobox();
+        }
+
+        private void Load_Combobox()
+        {
             //Cargar los combobox
 
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
@@ -73,28 +109,6 @@ namespace WindowsFormsApp1.Views
             combobox_product_s.DisplayMember = "Value";
             combobox_product_s.ValueMember = "Key";
             combobox_product_s.DataSource = new BindingSource(combo_data, null);
-
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
-        }
-
-        private void Load_Data()
-        {
-
-            result = materialController.getMaterials();
-            material_list = (List<Models.Material>)result.data;
-            result = productController.getProducts();
-            product_list = (List<Models.Product>)result.data;
-
-            result = recipeController.getRecipes();
-            if (result.data == null)
-            {
-                MessageBox.Show(result.message, "Error al listar recetas", MessageBoxButtons.OK);
-            }
-            else
-            {
-                recipe_list = (List<Models.Recipe>)result.data;
-            }
         }
 
         private void Load_DataDetail(int id)
@@ -177,6 +191,7 @@ namespace WindowsFormsApp1.Views
             combobox_material.SelectedIndex = 0;
             combobox_product.SelectedIndex = 0;
             combobox_product_s.SelectedIndex = 0;
+            combobox_product.Enabled = true;
         }
 
         private void Clean_Material()
@@ -308,6 +323,7 @@ namespace WindowsFormsApp1.Views
                     metroTabControl1.SelectedIndex = 1;
                     Set_Flag_All(true);
                     operation_value = 1;
+                    combobox_product.Enabled = false;
                 }
 
             }
@@ -568,6 +584,18 @@ namespace WindowsFormsApp1.Views
             }
         }
 
+        private void textbox_number_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            if (!char.IsDigit(e.KeyChar))
+            {
+                if (e.KeyChar != 8)//Manejo de Backspace
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
         private void textbox_number_Validating(object sender, CancelEventArgs e)
         {
             MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
@@ -710,7 +738,9 @@ namespace WindowsFormsApp1.Views
                 metroTabControl1.SelectedIndex = 0;
                 Set_Flag_All(false);
                 operation_value = 0;
+                combobox_product.Enabled = true;
             }
         }
+
     }
 }
