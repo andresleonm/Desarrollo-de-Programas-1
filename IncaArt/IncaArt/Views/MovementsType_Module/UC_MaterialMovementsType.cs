@@ -35,7 +35,7 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
 
         private void UC_MaterialMovementsType_VisibleChanged(object sender, EventArgs e)
         {
-            if (!data_loaded)
+            if (!data_loaded && Visible)
             {
                 data_loaded = true;
                 string user = "dp1admin";

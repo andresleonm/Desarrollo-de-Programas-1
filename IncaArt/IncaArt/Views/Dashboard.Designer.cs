@@ -601,6 +601,7 @@ namespace WindowsFormsApp1.Views
             // uc_material
             // 
             this.uc_material.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.uc_material.BackColor = System.Drawing.Color.White;
             this.uc_material.Location = new System.Drawing.Point(132, 72);
             this.uc_material.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_material.Name = "uc_material";
@@ -612,6 +613,7 @@ namespace WindowsFormsApp1.Views
             // 
             // uc_product
             // 
+            this.uc_product.BackColor = System.Drawing.Color.White;
             this.uc_product.Location = new System.Drawing.Point(132, 72);
             this.uc_product.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_product.Name = "uc_product";
@@ -623,6 +625,7 @@ namespace WindowsFormsApp1.Views
             // 
             // uc_recipe
             // 
+            this.uc_recipe.BackColor = System.Drawing.Color.White;
             this.uc_recipe.Location = new System.Drawing.Point(132, 72);
             this.uc_recipe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_recipe.Name = "uc_recipe";
@@ -634,6 +637,7 @@ namespace WindowsFormsApp1.Views
             // 
             // uc_workstation
             // 
+            this.uc_workstation.BackColor = System.Drawing.Color.White;
             this.uc_workstation.Location = new System.Drawing.Point(132, 72);
             this.uc_workstation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_workstation.Name = "uc_workstation";
@@ -674,11 +678,13 @@ namespace WindowsFormsApp1.Views
             // 
             // uc_ratio
             // 
+            this.uc_ratio.BackColor = System.Drawing.Color.White;
             this.uc_ratio.Location = new System.Drawing.Point(139, 79);
             this.uc_ratio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_ratio.Name = "uc_ratio";
             this.uc_ratio.Size = new System.Drawing.Size(826, 598);
             this.uc_ratio.TabIndex = 47;
+            this.uc_ratio.Theme = MetroFramework.MetroThemeStyle.Light;
             this.uc_ratio.UseCustomBackColor = true;
             this.uc_ratio.UseSelectable = true;
             this.uc_ratio.Visible = false;
@@ -731,6 +737,7 @@ namespace WindowsFormsApp1.Views
             // 
             // uc_worker
             // 
+            this.uc_worker.BackColor = System.Drawing.Color.White;
             this.uc_worker.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uc_worker.Location = new System.Drawing.Point(132, 72);
             this.uc_worker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

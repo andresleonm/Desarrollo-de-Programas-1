@@ -40,7 +40,7 @@ namespace WindowsFormsApp1.Views
 
         private void UC_Worker_VisibleChanged(object sender, EventArgs e)
         {
-            if (!data_loaded)
+            if (!data_loaded && Visible)
             {
                 data_loaded = true;
                 string user = "dp1admin";
