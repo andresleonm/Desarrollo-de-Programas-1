@@ -51,7 +51,10 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
 
         private void Load_Data()
         {
-            result = movementTypeController.getProductMovementTypes(null);
+            Models.ProductMovementType movement= new Models.ProductMovementType();
+            movement.clase = -1;
+            movement.name = "";
+            result = movementTypeController.getProductMovementTypes(movement);
             if (result.success)
             {
                 movement_type_list = (List<Models.ProductMovementType>)result.data;
