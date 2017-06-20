@@ -18,7 +18,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         ProductMovementController pc;
         SalesOrderController soc;
         SalesRefundLineController src;
-        ProductionOrderProductLineController prc;
+        ProductionOrderController prc;
         bool flgBegin=true;
         int claseAnt=-1;
         string idAnt;
@@ -28,7 +28,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             pc = new ProductMovementController("", "");
             soc= new SalesOrderController("", "");
             src = new SalesRefundLineController("", "");
-            prc = new ProductionOrderProductLineController("", "");
+            prc = new ProductionOrderController("", "");
             AdjustColumnOrder();
             fillTypeMovements();
             clearGrid();
@@ -135,7 +135,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             AdjustColumnOrder();
         }
 
-        private void populateDetail(List<Models.ProductionOrderProductLine> production)
+        private void populateDetail(Models.ProductionOrder production)
         {
             clearGrid();
             if (production == null)
@@ -144,14 +144,9 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             var lines = production;
             var movs_lines = new List<Models.ProductMovementLine>();
             int i = 1;
-            foreach (Models.ProductionOrderProductLine line in lines)
-            {
-                if (line.Quantity_warehouse - line.Produced_quantity != 0)
-                {
-                    movs_lines.Add(new Models.ProductMovementLine(line, i, user, password));
-                    i++;
-                }
-            }
+           
+            movs_lines.Add(new Models.ProductMovementLine(production, i, user, password));
+             
             this.grid_movement_lines.DataSource = movs_lines;
             AdjustColumnOrder();
         }
@@ -197,8 +192,8 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                     populateDetail(lines);
                 }else if (clase == 2)
                 {
-                    var productionLines = (List<Models.ProductionOrderProductLine>)prc.getProductLines(Int32.Parse(doc.id)).data;
-                    populateDetail(productionLines);
+                    var production = (Models.ProductionOrder)prc.getProductionOrder(Int32.Parse(doc.id)).data;
+                    populateDetail(production);
                 }
                 claseAnt = clase;
                 idAnt = doc.id;

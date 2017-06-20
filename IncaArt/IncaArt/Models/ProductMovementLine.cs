@@ -84,7 +84,7 @@ namespace WindowsFormsApp1.Models
             this.idDocumentLine = line.Id;
         }
 
-        public ProductMovementLine(ProductionOrderProductLine line, int id, string user, string password)
+        public ProductMovementLine(ProductionOrder line, int id, string user, string password)
         {
             this.warehouse_id = line.Warehouse_id;
             this.product_id = line.Product_id;
