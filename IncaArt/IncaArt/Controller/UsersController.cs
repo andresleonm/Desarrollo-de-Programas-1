@@ -130,5 +130,34 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
              
+        public Result logIn(User user)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", user.Id.ToString()));
+
+            GenericResult result = execute_transaction("log_in_user", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result logOut(User user)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", user.Id.ToString()));
+
+            GenericResult result = execute_transaction("log_out_user", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+
+            return new Result(null, result.success, result.message);
+        }
     }
 }

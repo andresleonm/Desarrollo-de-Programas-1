@@ -37,7 +37,12 @@ namespace WindowsFormsApp1
             {
                 User user = (User)userResult.data;
 
-                if (user.isPassword(this.textBoxPassword.Text))
+                if (user.State == "LOGGED")
+                {
+                    this.Cursor = Cursors.Arrow;
+                    MessageBox.Show("El usuario ingresado ya tiene una sesion abierta");
+                }
+                else if (user.isPassword(this.textBoxPassword.Text))
                 {
                     this.textBoxPassword.Text = "";
                     this.textBoxNickname.Text = "";
@@ -50,12 +55,22 @@ namespace WindowsFormsApp1
 
                     this.Cursor = Cursors.WaitCursor;
                     DataService.DatabaseService.updateConnection(user.Nickname, user.Password);
-                    Dashboard main_form = new Dashboard(user);
-                    main_form.FormClosing += this.DashboardClosingHandler;
-                    this.Cursor = Cursors.Arrow;
-                    MessageBox.Show("Bienvenido " + user.Name);
-                    main_form.Show();
-                    this.Visible = false;
+
+                    Result logInResult = usersController.logIn(user);
+
+                    if (!logInResult.success)
+                    {
+                        MessageBox.Show(logInResult.message);
+                    }
+                    else
+                    {
+                        Dashboard main_form = new Dashboard(user);
+                        main_form.FormClosing += this.DashboardClosingHandler;
+                        this.Cursor = Cursors.Arrow;
+                        MessageBox.Show("Bienvenido " + user.Name);
+                        main_form.Show();
+                        this.Visible = false;
+                    }
                 }
                 else
                 {
@@ -78,6 +93,8 @@ namespace WindowsFormsApp1
 
         private void DashboardClosingHandler(object o, EventArgs e)
         {
+            Dashboard d = (Dashboard)o;
+            usersController.logOut(d.sessionUser);
             this.Visible = true;
         }
     }
