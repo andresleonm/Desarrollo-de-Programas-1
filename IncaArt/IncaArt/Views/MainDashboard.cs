@@ -16,7 +16,7 @@ namespace WindowsFormsApp1.Views
     {
         public MainDashboard()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         private void MainDashboard_Load(User sessionUser)
@@ -25,26 +25,61 @@ namespace WindowsFormsApp1.Views
             {
                 metroTile1.Visible = false;
             }
-
+            if (!sessionUser.Profile.HasFunctionality("VIEW CUSTOMER"))
+            {
+                metroTile2.Visible = false;
+            }
+            if (!sessionUser.Profile.HasFunctionality("VIEW WORKERS"))
+            {
+                metroTile3.Visible = false;
+            }
             if (!sessionUser.Profile.HasFunctionality("VIEW PROFILES"))
             {
                 metroTile4.Visible = false;
-            }
-            if (!sessionUser.Profile.HasFunctionality("VIEW MATERIAL"))
-            {
-                metroTile7.Visible = false;
-            }
-            if (!sessionUser.Profile.HasFunctionality("VIEW PRODUCT"))
-            {
-                metroTile6.Visible = false;
             }
             if (!sessionUser.Profile.HasFunctionality("VIEW RECIPE"))
             {
                 metroTile5.Visible = false;
             }
+            if (!sessionUser.Profile.HasFunctionality("VIEW PRODUCT"))
+            {
+                metroTile6.Visible = false;
+            }
+            if (!sessionUser.Profile.HasFunctionality("VIEW MATERIAL"))
+            {
+                metroTile7.Visible = false;
+            }
             if (!sessionUser.Profile.HasFunctionality("VIEW WORKSTATION"))
             {
                 metroTile8.Visible = false;
+            }
+            if (!sessionUser.Profile.HasFunctionality("VIEW PARAMETERS"))
+            {
+                metroTile9.Visible = false;
+            }
+            if (!sessionUser.Profile.HasFunctionality("VIEW MATERIAL WAREHOUSE") && !sessionUser.Profile.HasFunctionality("VIEW PRODUCT WAREHOUSE"))
+            {
+                metroTile10.Visible = false;
+            }
+            if (!sessionUser.Profile.HasFunctionality("VIEW SUPPLIER"))
+            {
+                metroTile11.Visible = false;
+            }
+            if (!sessionUser.Profile.HasFunctionality("VIEW SHIFT"))
+            {
+                metroTile12.Visible = false;
+            }
+            if (!sessionUser.Profile.HasFunctionality("VIEW MATERIAL WAREHOUSE TYPE") && !sessionUser.Profile.HasFunctionality("VIEW PRODCUT WAREHOUSE TYPE"))
+            {
+                metroTile13.Visible = false;
+            }
+            if (!sessionUser.Profile.HasFunctionality("VIEW MATERIAL MOVEMENT TYPE") && !sessionUser.Profile.HasFunctionality("VIEW PRODUCT MOVEMENT TYPE"))
+            {
+                metroTile14.Visible = false;
+            }
+            if (!sessionUser.Profile.HasFunctionality("VIEW RATIOS"))
+            {
+                metroTile16.Visible = false;
             }
         }
 
@@ -62,7 +97,6 @@ namespace WindowsFormsApp1.Views
             int deltaY = 101;
             int added = 0;
             int tilesPerRow = 4;
-            int hidden = 0;
 
 
             for (int i = (Controls.Count - 1); i >= 0; i--)

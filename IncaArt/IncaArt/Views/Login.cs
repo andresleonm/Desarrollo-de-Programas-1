@@ -39,6 +39,8 @@ namespace WindowsFormsApp1
 
                 if (user.isPassword(this.textBoxPassword.Text))
                 {
+                    this.textBoxPassword.Text = "";
+                    this.textBoxNickname.Text = "";
                     if (user.State == "PENDING")
                     {
                         ChangePassword change = new ChangePassword(user);
