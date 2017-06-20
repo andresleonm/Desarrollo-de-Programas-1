@@ -72,11 +72,10 @@ namespace WindowsFormsApp1.Views
             }       
             return isCorrect;
         }
-
-        private void metroButton_Register_Click(object sender, EventArgs e)
+        private void btn_Register_Click(object sender, EventArgs e)
         {
             if (validate_data())
-            {        
+            {
                 //Header    
                 DateTime begin = metroDateTime_Begin.Value;
                 DateTime end = metroDateTime_End.Value;
@@ -92,23 +91,24 @@ namespace WindowsFormsApp1.Views
                 int produced_quantity = Int32.Parse(metroTextBox_Quantity_produced.Text);
                 int quantity_warehouse = Int32.Parse(metroTextBox_Quantity_warehouse.Text);
                 ProductWarehouse warehouse = (ProductWarehouse)comboBox_Warehouse.SelectedItem;
-                Recipe recipe = (Recipe)comboBox_Recipe.SelectedItem;             
+                Recipe recipe = (Recipe)comboBox_Recipe.SelectedItem;
                 int estimate_id;
                 int estimate_line;
 
                 if (metroTextBox_Estimate.Text != "")
                 {
-                    estimate_id=Int32.Parse(metroTextBox_Estimate.Text);
+                    estimate_id = Int32.Parse(metroTextBox_Estimate.Text);
                     estimate_line = Int32.Parse(metroTextBox_Estimate_line.Text);
-                }else
+                }
+                else
                 {
                     estimate_id = 0;
                     estimate_line = 0;
                 }
-             
-                Models.ProductionOrder production_order=new Models.ProductionOrder(description,observations,begin,end,state,product.Id,
-                    product.Name,product.Unit_id,unit_name,quantity,produced_quantity,warehouse.Id,warehouse.Name,recipe.Id,recipe.Name,quantity_warehouse,
-                    estimate_id,estimate_line);
+
+                Models.ProductionOrder production_order = new Models.ProductionOrder(description, observations, begin, end, state, product.Id,
+                    product.Name, product.Unit_id, unit_name, quantity, produced_quantity, warehouse.Id, warehouse.Name, recipe.Id, recipe.Name, quantity_warehouse,
+                    estimate_id, estimate_line);
                 if (!editing)
                 {
                     //INSERT
@@ -116,7 +116,7 @@ namespace WindowsFormsApp1.Views
                     if (result.success)
                     {
                         order_id = Int32.Parse(result.data.ToString());
-                      
+
                         //List of materials           
                         for (int i = 0; i < material_lines.Count; i++)
                         {
@@ -124,7 +124,7 @@ namespace WindowsFormsApp1.Views
                             {
                                 material_lines[i].Order_Id = order_id;
                                 result = material_line_controller.insertMaterialLine(material_lines[i]);
-                                if (!result.success) message += "-" + material_lines[i].Warehouse_name+":"+ result.message + "\n";
+                                if (!result.success) message += "-" + material_lines[i].Warehouse_name + ":" + result.message + "\n";
                             }
                         }
                         //List of work               
@@ -146,10 +146,11 @@ namespace WindowsFormsApp1.Views
                 {
                     production_order.Id = Int32.Parse(this.metroTextBox_OrderNumber.Text);
                     //UPDATE HEADER
-                    Result result=production_controller.updateProductionOrder(production_order);
+                    Result result = production_controller.updateProductionOrder(production_order);
                     if (!result.success) message += "-" + result.message + "\n";
-                    else { 
-                        
+                    else
+                    {
+
                         //List of materials           
                         for (int i = 0; i < material_lines.Count; i++)
                         {
@@ -166,7 +167,7 @@ namespace WindowsFormsApp1.Views
                                 result = material_line_controller.updateMaterialLine(material_lines[i]);
                                 if (!result.success) message += "-" + material_lines[i].Warehouse_name + ":" + result.message + "\n";
                             }
-                                          
+
                         }
                         //List of work               
                         for (int i = 0; i < work_lines.Count; i++)
@@ -188,12 +189,17 @@ namespace WindowsFormsApp1.Views
                         MessageBox.Show("Order de producción actualizada.");
                     }
                 }
-                if(message!="")
-                    MessageBox.Show(message,"Errores en el registro",MessageBoxButtons.OK);
+                if (message != "")
+                    MessageBox.Show(message, "Errores en el registro", MessageBoxButtons.OK);
                 this.Visible = false;
                 clear_Form();
                 editing = false;
             }
+        }
+
+        private void metroButton_Register_Click(object sender, EventArgs e)
+        {
+            
 
             
           
@@ -397,7 +403,8 @@ namespace WindowsFormsApp1.Views
             clear_Form();
             this.Visible = false;
         }
-        
+
+
         private void metroButton_EditMaterial_Click(object sender, EventArgs e)
         {
             if (metroGrid_Material.Rows.Count > 0)
@@ -763,6 +770,11 @@ namespace WindowsFormsApp1.Views
         {
             if (!char.IsDigit(e.KeyChar)) e.Handled = true;
             if (e.KeyChar == (char)8) e.Handled = false;
+        }
+
+        private void btn_Cancel_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
