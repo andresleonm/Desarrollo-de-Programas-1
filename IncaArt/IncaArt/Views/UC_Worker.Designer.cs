@@ -115,8 +115,9 @@
             this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(721, 502);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
+            this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 0;
-            this.metroTabControl1.UseCustomBackColor = true;
+            this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTabControl1.UseCustomForeColor = true;
             this.metroTabControl1.UseSelectable = true;
             // 
@@ -1170,6 +1171,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.metroLabel20);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "UC_Worker";

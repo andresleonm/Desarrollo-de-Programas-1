@@ -550,6 +550,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 doc.Add(new Paragraph("_________________________________________________________________________________________________________________________"));
                 doc.Close();
                 Process.Start(filename);//Esta parte se puede omitir, si solo se desea guardar el archivo, y que este no se ejecute al instante
+                file.Close();
             }
 
         }

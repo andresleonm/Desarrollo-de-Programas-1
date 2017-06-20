@@ -73,7 +73,6 @@ namespace WindowsFormsApp1.Views
             this.uc_material = new WindowsFormsApp1.Views.UC_Material();
             this.uc_product = new WindowsFormsApp1.Views.UC_Product();
             this.uc_recipe = new WindowsFormsApp1.Views.UC_Recipe();
-            this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
             this.uc_workstation = new WindowsFormsApp1.Views.UC_Workstation();
             this.typeWarehouseMain1 = new WindowsFormsApp1.Views.Warehouse_M_Module.TypeWarehouseMain();
             this.uC_WarehouseMovement1 = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement();
@@ -83,6 +82,7 @@ namespace WindowsFormsApp1.Views
             this.workersPerformance_Report1 = new WindowsFormsApp1.Views.WorkersPerformance_Report();
             this.uC_MovementsType1 = new WindowsFormsApp1.Views.MovementsType_Module.UC_MovementsType();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -632,17 +632,6 @@ namespace WindowsFormsApp1.Views
             this.uc_recipe.UseSelectable = true;
             this.uc_recipe.Visible = false;
             // 
-            // uc_worker
-            // 
-            this.uc_worker.Location = new System.Drawing.Point(132, 72);
-            this.uc_worker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uc_worker.Name = "uc_worker";
-            this.uc_worker.Size = new System.Drawing.Size(794, 527);
-            this.uc_worker.TabIndex = 41;
-            this.uc_worker.UseCustomBackColor = true;
-            this.uc_worker.UseSelectable = true;
-            this.uc_worker.Visible = false;
-            // 
             // uc_workstation
             // 
             this.uc_workstation.Location = new System.Drawing.Point(132, 72);
@@ -714,10 +703,11 @@ namespace WindowsFormsApp1.Views
             // uC_MovementsType1
             // 
             this.uC_MovementsType1.AutoSize = true;
+            this.uC_MovementsType1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_MovementsType1.Location = new System.Drawing.Point(132, 72);
             this.uC_MovementsType1.Margin = new System.Windows.Forms.Padding(2);
             this.uC_MovementsType1.Name = "uC_MovementsType1";
-            this.uC_MovementsType1.Size = new System.Drawing.Size(600, 735);
+            this.uC_MovementsType1.Size = new System.Drawing.Size(502, 309);
             this.uC_MovementsType1.TabIndex = 62;
             this.uC_MovementsType1.UseSelectable = true;
             // 
@@ -739,12 +729,25 @@ namespace WindowsFormsApp1.Views
             this.metroLabel1.Click += new System.EventHandler(this.metroLabel1_Click);
             this.metroLabel1.Leave += new System.EventHandler(this.metroLabel1_Leave);
             // 
+            // uc_worker
+            // 
+            this.uc_worker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_worker.Location = new System.Drawing.Point(132, 72);
+            this.uc_worker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uc_worker.Name = "uc_worker";
+            this.uc_worker.Size = new System.Drawing.Size(414, 309);
+            this.uc_worker.TabIndex = 41;
+            this.uc_worker.UseCustomBackColor = true;
+            this.uc_worker.UseSelectable = true;
+            this.uc_worker.Visible = false;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(634, 381);
+            this.Controls.Add(this.uc_worker);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.uC_MovementsType1);
             this.Controls.Add(this.workersPerformance_Report1);
@@ -773,7 +776,6 @@ namespace WindowsFormsApp1.Views
             this.Controls.Add(this.uc_material);
             this.Controls.Add(this.uc_product);
             this.Controls.Add(this.uc_recipe);
-            this.Controls.Add(this.uc_worker);
             this.Controls.Add(this.uc_workstation);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -830,7 +832,6 @@ namespace WindowsFormsApp1.Views
         private UC_Recipe uc_recipe;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private UC_Worker uc_worker;
         private System.Windows.Forms.Button btn_production;
         private Production_Module.UC_ProductionMenu uc_ProductionMenu;
         private UC_Workstation uc_workstation;
@@ -847,5 +848,6 @@ namespace WindowsFormsApp1.Views
         private WorkersPerformance_Report workersPerformance_Report1;
         private MovementsType_Module.UC_MovementsType uC_MovementsType1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
+        private UC_Worker uc_worker;
     }
 }
