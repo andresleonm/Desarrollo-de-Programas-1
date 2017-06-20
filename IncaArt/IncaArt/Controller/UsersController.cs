@@ -159,5 +159,20 @@ namespace WindowsFormsApp1.Controller
 
             return new Result(null, result.success, result.message);
         }
+
+        public Result block(User user)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", user.Id.ToString()));
+
+            GenericResult result = execute_transaction("block_user", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+
+            return new Result(null, result.success, result.message);
+        }
     }
 }
