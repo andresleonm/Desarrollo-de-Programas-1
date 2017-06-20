@@ -34,17 +34,48 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
         }
 
+        private void UC_Product_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)
+            {
+                operation_value = 0;
+                Set_Flag_All(false);
+                Load_Data();
+                Load_DataGridView();
+                metroTabControl1.SelectedIndex = 0;
+            }
+        }
+
         private void UC_Product_Load(object sender, EventArgs e)
         {
-            string user = "dp1admin";
-            string password = "dp1admin";
-            operation_value = 0;
+            string user = "";
+            string password = "";
             productController = new Controller.ProductsController(user, password);
             unitController = new Controller.UnitController(user, password);
             currencyController = new Controller.CurrencyController(user, password);
-            Load_Data();
+        }
 
+        private void Load_Data()
+        {
+            result = currencyController.getCurrencies();
+            currency_list = (List<Models.Currency>)result.data;
+            result = unitController.getUnits();
+            unit_list = (List<Models.UnitOfMeasure>)result.data;
+            product_list = new List<Models.Product>();
+            result = productController.getProducts();
+            if (result.success)
+            {
+                product_list = (List<Models.Product>)result.data;
+            }
+            else
+            {
+                MessageBox.Show(result.message, "Error al listar producto", MessageBoxButtons.OK);
+            }
+            Load_Combobox();
+        }
 
+        private void Load_Combobox()
+        {
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
             combo_data.Add(0, "Seleccionar");
             combo_data.Add(1, "Ceramico");
@@ -88,22 +119,6 @@ namespace WindowsFormsApp1.Views
             combobox_currency.DataSource = new BindingSource(combo_data, null);
             combobox_currency.DisplayMember = "Value";
             combobox_currency.ValueMember = "Key";
-
-
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
-        }
-
-        private void Load_Data()
-        {
-            result = currencyController.getCurrencies();
-            currency_list = (List<Models.Currency>)result.data;
-            result = unitController.getUnits();
-            unit_list = (List<Models.UnitOfMeasure>)result.data;
-            product_list = new List<Models.Product>();
-            result = productController.getProducts();
-            if (result.data == null) MessageBox.Show(result.message, "Error al listar producto", MessageBoxButtons.OK);
-            else product_list = (List<Models.Product>)result.data;
         }
 
         private void Load_DataGridView()
@@ -113,11 +128,7 @@ namespace WindowsFormsApp1.Views
             {
                 Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
                 result = unitController.getUnit(product_list[i].Unit_id);
-                if (result.data == null)
-                {
-                    MessageBox.Show(result.message, "Error al buscar unit", MessageBoxButtons.OK);
-                }
-                else
+                if (result.success)
                 {
                     unit = (Models.UnitOfMeasure)result.data;
                     String[] row = new String[8];
@@ -130,8 +141,10 @@ namespace WindowsFormsApp1.Views
                     row[6] = product_list[i].Stock_max.ToString();
                     row[7] = product_list[i].Product_type;
                     this.metroGrid1.Rows.Add(row);
+                }else
+                {
+                    MessageBox.Show(result.message, "Error al buscar unit", MessageBoxButtons.OK);
                 }
-
             }
         }
 
@@ -213,14 +226,14 @@ namespace WindowsFormsApp1.Views
             if (product != null)
             {
                 result = productController.insertProduct(product);
-                if (result.data == null)
-                {
-                    MessageBox.Show(result.message, "Error al registrar producto", MessageBoxButtons.OK);
-                }
-                else
+                if (result.success)
                 {
                     MessageBox.Show("Producto registrado correctamente", "Registrar producto", MessageBoxButtons.OK);
                     Load_Data();
+                }
+                else
+                {
+                    MessageBox.Show(result.message, "Error al registrar producto", MessageBoxButtons.OK);
                 }
                 Set_Flag_All(false);
                 Load_DataGridView();
@@ -253,7 +266,7 @@ namespace WindowsFormsApp1.Views
                 int id = Int32.Parse(metroGrid1.Rows[e.RowIndex].Cells[0].Value.ToString());
                 result = productController.getProduct(id);
                 Models.Product product;
-                if (result.data != null)
+                if (result.success)
                 {
                     product = (Models.Product)result.data;
                     textbox_name.Text = product.Name;
@@ -284,9 +297,6 @@ namespace WindowsFormsApp1.Views
                             break;
                     }
                     Set_Flag_All(true);
-                    //textbox_stock_max.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
-                    //textbox_stock_min.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    //textbox_price.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
                     textbox_stock_max.Text = product.Stock_max.ToString();
                     textbox_stock_min.Text = product.Stock_min.ToString();
                     textbox_price.Text = product.Unit_price.ToString();
@@ -303,14 +313,13 @@ namespace WindowsFormsApp1.Views
             if (product != null)
             {
                 result = productController.updateProduct(product);
-                if (result.data == null)
-                {
-                    MessageBox.Show(result.message, "Error al modificar producto", MessageBoxButtons.OK);
-                }
-                else
+                if (result.success)
                 {
                     MessageBox.Show("Producto editado correctamente", "Editar producto", MessageBoxButtons.OK);
                     Load_Data();
+                }else
+                {
+                    MessageBox.Show(result.message, "Error al modificar producto", MessageBoxButtons.OK);
                 }
                 Set_Flag_All(false);
                 Load_DataGridView();
@@ -324,14 +333,13 @@ namespace WindowsFormsApp1.Views
         {
             int index = int.Parse(metroGrid1.Rows[cur_row].Cells[1].Value.ToString());
             result = productController.deleteProduct(product_list[index]);
-            if (result.data == null)
-            {
-                MessageBox.Show(result.message, "Error al eliminar material", MessageBoxButtons.OK);
-            }
-            else
+            if (result.success)
             {
                 MessageBox.Show("Producto eliminado correctamente", "Eliminar producto", MessageBoxButtons.OK);
                 Load_Data();
+            }else
+            {
+                MessageBox.Show(result.message, "Error al eliminar material", MessageBoxButtons.OK);
             }
             Load_DataGridView();
         }
@@ -348,14 +356,37 @@ namespace WindowsFormsApp1.Views
             product.Unit_id = ((KeyValuePair<int, string>)combobox_unit_s.SelectedItem).Key;
             product.Product_type = ((KeyValuePair<int, string>)combobox_product_type_s.SelectedItem).Value;
             result = productController.getProducts(product);
-            if (result.data == null)
-            {
-                MessageBox.Show(result.message, "Error al buscar producto con filtro", MessageBoxButtons.OK);
-            }
-            else
+            if (result.success)
             {
                 product_list = (List<Models.Product>)result.data;
                 Load_DataGridView();
+            }else
+            {
+                MessageBox.Show(result.message, "Error al buscar producto con filtro", MessageBoxButtons.OK);
+            }
+        }
+
+        private void textbox_number_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            if (!char.IsDigit(e.KeyChar))
+            {
+                if (e.KeyChar != 8)//Manejo de Backspace
+                {
+                    e.Handled = true;
+                }
+            }
+            if (textbox.Name == "textbox_price")
+            {
+                if (e.KeyChar == '.')
+                {
+                    e.Handled = false;
+                }
+                if ((e.KeyChar == '.') && (textbox.Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+
             }
         }
 
@@ -393,48 +424,22 @@ namespace WindowsFormsApp1.Views
             else
             {
                 errorProvider.SetError(textbox, null);
-                if (textbox.Name == "textbox_price")
+                int max, min;
+                if (Int32.TryParse(textbox_stock_max.Text, out max) && Int32.TryParse(textbox_stock_min.Text, out min))
                 {
-                    double number;
-                    if (!Double.TryParse(text, out number))
+                    if (max < min)
                     {
                         Set_Flag(textbox.Name, false);
-                        errorProvider.SetError(textbox, "Precio debe ser número");
+                        errorProvider.SetError(textbox, "El Stock Máximo debe ser Mayor que el stock mínimo");
                     }
                     else
                     {
-                        Set_Flag(textbox.Name, true);
-                    }
-                }
-                else
-                {
-                    int number;
-                    if (!Int32.TryParse(text, out number))
-                    {
-                        Set_Flag(textbox.Name, false);
-                        errorProvider.SetError(textbox, "Stock debe ser número");
-                    }
-                    else
-                    {
+                        Set_Flag("textbox_stock_min", true);
+                        Set_Flag("textbox_stock_max", true);
                         errorProvider.SetError(textbox, null);
                     }
-                    int max, min;
-                    if (Int32.TryParse(textbox_stock_max.Text, out max) && Int32.TryParse(textbox_stock_min.Text, out min))
-                    {
-                        if (max < min)
-                        {
-                            Set_Flag(textbox.Name, false);
-                            errorProvider.SetError(textbox, "El Stock Máximo debe ser Mayor que el stock mínimo");
-                        }
-                        else
-                        {
-                            Set_Flag(textbox.Name, true);
-                            errorProvider.SetError(textbox, null);
-                        }
 
-                    }
                 }
-
 
             }
         }
@@ -512,28 +517,28 @@ namespace WindowsFormsApp1.Views
                 if (product.Id == 0)
                 {
                     result = productController.insertProduct(product);
-                    if (result.data == null)
-                    {
-                        MessageBox.Show(result.message, "Error al registrar producto", MessageBoxButtons.OK);
-                    }
-                    else
+                    if (result.success)
                     {
                         MessageBox.Show("Producto registrado correctamente", "Registrar producto", MessageBoxButtons.OK);
                         Load_Data();
+                    }
+                    else
+                    {
+                        MessageBox.Show(result.message, "Error al registrar producto", MessageBoxButtons.OK);
                     }
 
                 }
                 else
                 {
                     result = productController.updateProduct(product);
-                    if (result.data == null)
-                    {
-                        MessageBox.Show(result.message, "Error al modificar producto", MessageBoxButtons.OK);
-                    }
-                    else
+                    if (result.success)
                     {
                         MessageBox.Show("Producto editado correctamente", "Editar producto", MessageBoxButtons.OK);
                         Load_Data();
+                    }
+                    else
+                    {
+                        MessageBox.Show(result.message, "Error al modificar producto", MessageBoxButtons.OK);
                     }
                 }
                 operation_value = 0;
@@ -725,17 +730,16 @@ namespace WindowsFormsApp1.Views
                         product.Stock_min = Convert.ToInt32(min);
                         product.Product_type = type;
                         productController.insertProduct(product);
-
-                        if (result.data == null)
+                        if (result.success)
+                        {
+                            success_lines++;
+                        }
+                        else
                         {
                             MessageBox.Show("Error en registro material");
                             error = true;
                             error_list.Add("register");
                             error_lines++;
-                        }
-                        else
-                        {
-                            success_lines++;
                         }
                     }
                 }
@@ -746,6 +750,8 @@ namespace WindowsFormsApp1.Views
                 }
             }
             openDialog.Dispose();
+            Load_Data();
+            Load_DataGridView();
         }
 
         private void CreateExcelError(List<ProductError> list)

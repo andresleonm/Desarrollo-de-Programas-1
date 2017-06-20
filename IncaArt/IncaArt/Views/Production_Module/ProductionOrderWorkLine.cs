@@ -18,20 +18,19 @@ namespace WindowsFormsApp1.Views.Production_Module
         private bool isRegistered = false;
         private bool editing = false;
 
-        List<Product> products;
         List<Workstation> workstations;
         List<Worker> workers;
         string user = "dp1admin";
         string password = "dp1admin";
 
-        ProductsController product_controller;
+        Product product;
+
         WorkstationsController workstation_controller;
         WorkerController worker_controller;
         UnitController unit_controller;
 
         //validate
         bool flag_worker = true;
-        bool flag_product = true;
         bool flag_workstation = true;
         bool flag_quantity_required = false;
         bool flag_quantity_produced = false;
@@ -77,13 +76,26 @@ namespace WindowsFormsApp1.Views.Production_Module
             }
         }
 
+        public Product Product
+        {
+            get
+            {
+                return product;
+            }
+
+            set
+            {
+                product = value;
+            }
+        }
+
         public ProductionOrderWorkLine()
         {
             InitializeComponent();
             unit_controller = new UnitController(user, password);
-            product_controller = new ProductsController(user, password);
             worker_controller = new WorkerController(user, password);
             workstation_controller = new WorkstationsController(user, password);
+            
         }
 
         private void button_Cancel_Click(object sender, EventArgs e)
@@ -95,14 +107,13 @@ namespace WindowsFormsApp1.Views.Production_Module
             bool isCorrect = true;
 
             validate_comboBox(comboBox_Worker);
-            validate_comboBox(comboBox_Product);
             validate_comboBox(comboBox_Workstation);
             validate_textbox(metroTextBox_quantity_required);
             validate_textbox(metroTextBox_quantity_produced);
             validate_textbox(metroTextBox_quantity_broken);
             validate_numericUpDown();
 
-            if (!flag_worker || !flag_product || !flag_workstation || !flag_quantity_required ||
+            if (!flag_worker || !flag_workstation || !flag_quantity_required ||
                 !flag_quantity_broken || !flag_quantity_produced||!flag_time)
             {
                 MessageBox.Show("Hay campos inválidos en la notificación de trabajo.", "Error en el registro", MessageBoxButtons.OK);
@@ -122,14 +133,11 @@ namespace WindowsFormsApp1.Views.Production_Module
                 Workstation workstation_selected=workstations[comboBox_Workstation.SelectedIndex];
                 line.Workstation_id = workstation_selected.Id;
                 line.Workstation_name = workstation_selected.Name;
-
-                Product product_selected=products[comboBox_Product.SelectedIndex];
-                line.Product_id = product_selected.Id;
-                line.Product_name = product_selected.Name;
-                line.Unit_id = product_selected.Unit_id;
-
                 
-                Result result = unit_controller.getUnit(product_selected.Unit_id);
+                line.Product_id = Product.Id;
+                line.Product_name = Product.Name;
+
+                Result result = unit_controller.getUnit(Product.Unit_id);
                 UnitOfMeasure unit = (UnitOfMeasure)result.data;
                 line.Unit_id = unit.Id;
                 line.Unit_name = unit.Name;
@@ -144,39 +152,19 @@ namespace WindowsFormsApp1.Views.Production_Module
                 this.Close();
             }
         }
-
-        private void comboBox_Product_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBox_Product.SelectedIndex != -1) { 
-                int product_id = ((Product)comboBox_Product.SelectedItem).Id;
-                Workstation workstation = new Workstation();
-                workstation.Product_id = product_id;
-                workstations = (List<Workstation>)workstation_controller.getWorkstations(workstation).data;
-
-                comboBox_Workstation.DataSource = null;
-                comboBox_Workstation.DataSource = workstations;
-                comboBox_Workstation.DisplayMember = "name";
-
-                validate_comboBox(comboBox_Workstation);
-            }
-        }
-
+       
         private void ProductionOrderWorkLine_Load(object sender, EventArgs e)
         {
             MaximizeBox = false;
-            Result result = product_controller.getProducts();
-            this.products = (List<Product>)result.data;
 
-            comboBox_Product.DataSource = products;
-            comboBox_Product.DisplayMember = "name";
-
-            /*
-            result = workstation_controller.getWorkstations();
+            Workstation workstation = new Workstation();
+            workstation.Product_id = Product.Id;
+            Result result = workstation_controller.getWorkstations(workstation);
             this.workstations = (List<Workstation>)result.data;
 
             comboBox_Workstation.DataSource = workstations;
             comboBox_Workstation.DisplayMember = "name";
-            comboBox_Workstation.SelectedIndex = -1;*/
+            comboBox_Workstation.SelectedIndex = -1;
 
             result = worker_controller.getWokers();
             this.workers = (List<Worker>)result.data;
@@ -191,8 +179,7 @@ namespace WindowsFormsApp1.Views.Production_Module
                 flag_quantity_produced = true;
                 flag_quantity_required = true;
                 flag_time = true;
-
-                comboBox_Product.Text = line.Product_name;
+            
                 comboBox_Workstation.Text = line.Workstation_name;
                 comboBox_Worker.Text = line.Worker_name;
                 metroTextBox_observations.Text = line.Observation;
@@ -230,10 +217,7 @@ namespace WindowsFormsApp1.Views.Production_Module
             {
                 case "comboBox_Worker":
                     flag_worker = value;
-                    break;
-                case "comboBox_Product":
-                    flag_product = value;
-                    break;
+                    break;                
                 case "comboBox_Workstation":
                     flag_workstation = value;
                     break;

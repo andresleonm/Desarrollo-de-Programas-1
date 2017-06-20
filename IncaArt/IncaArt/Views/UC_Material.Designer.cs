@@ -710,12 +710,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "UC_Material";
             this.Size = new System.Drawing.Size(752, 512);
             this.UseCustomBackColor = true;
             this.Load += new System.EventHandler(this.UC_Material_Load);
+            this.VisibleChanged += new System.EventHandler(this.UC_Material_VisibleChanged);
             this.metroTabControl1.ResumeLayout(false);
             this.consulta.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

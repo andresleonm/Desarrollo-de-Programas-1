@@ -92,11 +92,13 @@
     <Compile Include="Algorithm\Workstation.cs" />
     <Compile Include="Controller\FunctionalityController.cs" />
     <Compile Include="Controller\KardexController.cs" />
+    <Compile Include="Controller\MaterialMovementTypeController.cs" />
     <Compile Include="Controller\ParametersController.cs" />
     <Compile Include="Controller\MaterialMovementController.cs" />
     <Compile Include="Controller\MaterialMovementDetailController.cs" />
     <Compile Include="Controller\ProductionOrderMaterialLineController.cs" />
     <Compile Include="Controller\ProductionOrderWorkLineController.cs" />
+    <Compile Include="Controller\ProductMovementTypeController.cs" />
     <Compile Include="Controller\ProfileController.cs" />
     <Compile Include="Controller\CurrencyController.cs" />
     <Compile Include="Controller\CustomerController.cs" />

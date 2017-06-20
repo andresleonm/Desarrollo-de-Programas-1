@@ -8,11 +8,11 @@ namespace WindowsFormsApp1.Models
 {
     public class MaterialMovementType
     {
-        public int id;
-        public String name;
-        public char sign;
-        public int clase;
-        public String state;
+        public int id { get; set; }
+        public String name { get; set; }
+        public char sign { get; set; }
+        public int clase { get; set; }
+        public String state { get; set; }
 
         public MaterialMovementType()
         {

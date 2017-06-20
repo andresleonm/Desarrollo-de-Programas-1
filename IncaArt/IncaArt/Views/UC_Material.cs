@@ -38,35 +38,26 @@ namespace WindowsFormsApp1.Views
 
         private void UC_Material_Load(object sender, EventArgs e)
         {
-            Set_Flag_All(false);
-            operation_value = 0;
-            string user = "dp1admin";
-            string password = "dp1admin";
+            metroTabControl1.SelectedIndex = 0;
+            string user = "";
+            string password = "";
             materialController = new Controller.MaterialsController(user, password);
             unitController = new Controller.UnitController(user, password);
             currencyController = new Controller.CurrencyController(user, password);
             material_list = new List<Models.Material>();
             currency_list = new List<Currency>();
-            Load_Data();
-            Load_DataGridView();
-            //Cargar los combobox
-            Dictionary<int, string> combo_data = new Dictionary<int, string>();
-            //Unidades
-            combo_data.Add(0, "Seleccionar");
-            foreach (var item in unit_list)
+        }
+
+        private void UC_Material_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)
             {
-                combo_data.Add(item.Id, item.Symbol);
-
+                Set_Flag_All(false);
+                operation_value = 0;
+                Load_Data();
+                Load_DataGridView();
+                metroTabControl1.SelectedIndex = 0;
             }
-            combobox_unit.DataSource = new BindingSource(combo_data, null);
-            combobox_unit.DisplayMember = "Value";
-            combobox_unit.ValueMember = "Key";
-
-            combobox_unit_s.DataSource = new BindingSource(combo_data, null);
-            combobox_unit_s.DisplayMember = "Value";
-            combobox_unit_s.ValueMember = "Key";
-
-            metroTabControl1.SelectedIndex = 0;
         }
 
         private void Load_Data()
@@ -96,8 +87,11 @@ namespace WindowsFormsApp1.Views
             {
                 currency_list = (List<Currency>)result.data;
             }
+            Load_Combobox();
+        }
 
-
+        private void Load_Combobox()
+        {
             //Cargar los combobox
             Dictionary<int, string> combo_data = new Dictionary<int, string>();
             //Monedas
@@ -111,6 +105,22 @@ namespace WindowsFormsApp1.Views
             combobox_currency.DisplayMember = "Value";
             combobox_currency.ValueMember = "Key";
 
+            //Cargar los combobox
+            combo_data = new Dictionary<int, string>();
+            //Unidades
+            combo_data.Add(0, "Seleccionar");
+            foreach (var item in unit_list)
+            {
+                combo_data.Add(item.Id, item.Symbol);
+
+            }
+            combobox_unit.DataSource = new BindingSource(combo_data, null);
+            combobox_unit.DisplayMember = "Value";
+            combobox_unit.ValueMember = "Key";
+
+            combobox_unit_s.DataSource = new BindingSource(combo_data, null);
+            combobox_unit_s.DisplayMember = "Value";
+            combobox_unit_s.ValueMember = "Key";
         }
 
         private void Load_DataGridView()
@@ -432,16 +442,6 @@ namespace WindowsFormsApp1.Views
                 }
 
             }
-            //if ((textbox.Name == "textbox_cost") && (e.KeyChar == '.'))
-            //{
-            //    e.Handled = false;
-            //}
-
-            //// only allow one decimal point
-            //if ((textbox.Name == "textbox_cost") && (e.KeyChar == '.') && (textbox.Text.IndexOf('.') > -1))
-            //{
-            //    e.Handled = true;
-            //}
         }
 
 
@@ -670,6 +670,8 @@ namespace WindowsFormsApp1.Views
                 }
             }
             openDialog.Dispose();
+            Load_Data();
+            Load_DataGridView();
         }
 
         private void CreateExcelError(List<MaterialError> list)
@@ -787,5 +789,7 @@ namespace WindowsFormsApp1.Views
             }
 
         }
+
+        
     }
 }
