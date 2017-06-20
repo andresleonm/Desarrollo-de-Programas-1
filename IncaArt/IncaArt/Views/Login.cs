@@ -39,6 +39,8 @@ namespace WindowsFormsApp1
 
                 if (user.isPassword(this.textBoxPassword.Text))
                 {
+                    this.textBoxPassword.Text = "";
+                    this.textBoxNickname.Text = "";
                     if (user.State == "PENDING")
                     {
                         ChangePassword change = new ChangePassword(user);
@@ -51,9 +53,10 @@ namespace WindowsFormsApp1
                     Dashboard main_form = new Dashboard(user);
                     main_form.FormClosing += this.DashboardClosingHandler;
                     this.Cursor = Cursors.Arrow;
+                    this.Visible = false;
                     MessageBox.Show("Bienvenido " + user.Name);
                     main_form.Show();
-                    this.Visible = false;
+                    
                 }
                 else
                 {

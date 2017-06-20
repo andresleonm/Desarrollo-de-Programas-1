@@ -23,7 +23,6 @@ namespace WindowsFormsApp1.Views
         bool salary_flag;
         bool currency_flag;
         bool email_flag;
-        bool data_loaded;
         int cur_row;
         int operation_value;// 0 para Create, 1 para Update
         List<Models.Shift> shift_list;
@@ -40,26 +39,23 @@ namespace WindowsFormsApp1.Views
 
         private void UC_Worker_VisibleChanged(object sender, EventArgs e)
         {
-            if (!data_loaded)
+            if (Visible)
             {
-                data_loaded = true;
-                string user = "dp1admin";
-                string password = "dp1admin";
-                workerController = new Controller.WorkerController(user, password);
-                shiftController = new Controller.ShiftsController(user, password);
-                currencyController = new Controller.CurrencyController(user, password);
+                Set_Flag_All(false);
+                operation_value = 0;
+                Load_Data();
+                Load_DataGridView();
+                metroTabControl1.SelectedIndex = 0;
             }
-            if (!Visible) return;
-            Set_Flag_All(false);
-            operation_value = 0;
-            Load_Data();
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
         }
 
         private void UC_Worker_Load(object sender, EventArgs e)
         {
-            data_loaded = false;
+            string user = "";
+            string password = "";
+            workerController = new Controller.WorkerController(user, password);
+            shiftController = new Controller.ShiftsController(user, password);
+            currencyController = new Controller.CurrencyController(user, password);
         }
 
         private void Load_Combobox()

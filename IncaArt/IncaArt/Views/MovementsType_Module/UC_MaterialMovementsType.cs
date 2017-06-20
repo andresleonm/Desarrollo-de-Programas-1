@@ -14,7 +14,6 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
     {
         bool name_flag;
         bool class_flag;
-        bool data_loaded;
         int cur_row;
         int operation_value;// 0 para Create, 1 para Update
         int current_class;
@@ -28,29 +27,32 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
 
         private void UC_MaterialMovementsType_Load(object sender, EventArgs e)
         {
-            data_loaded = false;
             current_class = -1;
-            metroTabControl1.SelectedIndex = 0;
+            //dp1admin
+            string user = "";
+            string password = "";
+            movementTypeController = new Controller.MaterialMovementTypeController(user, password);
         }
 
         private void UC_MaterialMovementsType_VisibleChanged(object sender, EventArgs e)
         {
-            if (!data_loaded)
+            if (Visible)
             {
-                data_loaded = true;
-                string user = "dp1admin";
-                string password = "dp1admin";
-                movementTypeController = new Controller.MaterialMovementTypeController(user, password);
-                //Set_Flag_All(false);
+                Load_Data();
+                Load_DataGridView();
+                metroTabControl1.SelectedIndex = 0;
+                Set_Flag_All(false);
                 operation_value = 0;
             }
-            Load_Data();
-            Load_DataGridView();
+            
         }
 
         private void Load_Data()
         {
-            result = movementTypeController.getMaterialMovementTypes(null);
+            Models.MaterialMovementType movement = new Models.MaterialMovementType();
+            movement.clase = -1;
+            movement.name = "";
+            result = movementTypeController.getMaterialMovementTypes(movement);
             if (result.success)
             {
                 movement_type_list = (List<Models.MaterialMovementType>)result.data;

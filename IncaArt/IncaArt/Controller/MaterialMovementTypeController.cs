@@ -9,7 +9,7 @@ namespace WindowsFormsApp1.Controller
 {
     class MaterialMovementTypeController : DataService.DatabaseService
     {
-        public MaterialMovementTypeController(string user, string password):base( user, password)
+        public MaterialMovementTypeController(string user, string password) : base(user, password)
         {
         }
 
@@ -17,11 +17,9 @@ namespace WindowsFormsApp1.Controller
         {
             //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
-            if (type != null)
-            {
-                if (type.name != "") parameters.Add(new Parameter("name", type.name));
-                if (type.clase != -1) parameters.Add(new Parameter("class", type.clase.ToString()));
-            }
+            if (type.name != "") parameters.Add(new Parameter("name", type.name));
+            if (type.clase != -1) parameters.Add(new Parameter("class", type.clase.ToString()));
+
             GenericResult result = execute_function("get_material_movement_types", parameters);
             List<Models.MaterialMovementType> list = new List<Models.MaterialMovementType>();
             Models.MaterialMovementType item;

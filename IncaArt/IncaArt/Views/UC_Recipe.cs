@@ -17,7 +17,6 @@ namespace WindowsFormsApp1.Views
         bool product_flag;
         bool material_flag;
         bool quantity_flag;
-        bool data_loaded;
         int cur_row;
         int cur_row_detail;
         int operation_value;// 0 para Create, 1 para Update
@@ -37,30 +36,27 @@ namespace WindowsFormsApp1.Views
 
         private void UC_Recipe_VisibleChanged(object sender, EventArgs e)
         {
-            if (!data_loaded)
+            if (Visible)
             {
-                data_loaded = true;
-                string user = "dp1admin";
-                string password = "dp1admin";
+                Set_Flag_All(false);
                 operation_value = 0;
-                materialController = new Controller.MaterialsController(user, password);
-                productController = new Controller.ProductsController(user, password);
-                recipeController = new Controller.RecipesController(user, password);
-                unitController = new Controller.UnitController(user, password);
+                Load_Data();
+                Load_DataGridView();
+                metroTabControl1.SelectedIndex = 0;
                 detail_list = new List<Models.RecipeDetail>();
             }
-            if (!Visible) return;
-            Set_Flag_All(false);
-            operation_value = 0;
-            Load_Data();
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
         }
 
         private void UC_Recipe_Load(object sender, EventArgs e)
         {
 
-            data_loaded = false;
+            string user = "";
+            string password = "";
+            operation_value = 0;
+            materialController = new Controller.MaterialsController(user, password);
+            productController = new Controller.ProductsController(user, password);
+            recipeController = new Controller.RecipesController(user, password);
+            unitController = new Controller.UnitController(user, password);
         }
 
         private void Load_Data()
@@ -195,6 +191,7 @@ namespace WindowsFormsApp1.Views
             combobox_material.SelectedIndex = 0;
             combobox_product.SelectedIndex = 0;
             combobox_product_s.SelectedIndex = 0;
+            combobox_product.Enabled = true;
         }
 
         private void Clean_Material()
@@ -326,6 +323,7 @@ namespace WindowsFormsApp1.Views
                     metroTabControl1.SelectedIndex = 1;
                     Set_Flag_All(true);
                     operation_value = 1;
+                    combobox_product.Enabled = false;
                 }
 
             }
@@ -740,6 +738,7 @@ namespace WindowsFormsApp1.Views
                 metroTabControl1.SelectedIndex = 0;
                 Set_Flag_All(false);
                 operation_value = 0;
+                combobox_product.Enabled = true;
             }
         }
 

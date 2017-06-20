@@ -17,7 +17,6 @@ namespace WindowsFormsApp1.Views
         bool quantity_flag;
         bool break_flag;
         bool currency_flag;
-        bool data_loaded;
         int cur_row;
         int operation_value;// 0 para Create, 1 para Update
         List<Models.Product> product_list;
@@ -34,21 +33,14 @@ namespace WindowsFormsApp1.Views
 
         private void UC_Workstation_VisibleChanged(object sender, EventArgs e)
         {
-            if (!data_loaded)
+            if (Visible)
             {
-                data_loaded = true;
-                string user = "dp1admin";
-                string password = "dp1admin";
-                productController = new Controller.ProductsController(user, password);
-                workstationController = new Controller.WorkstationsController(user, password);
-                currencyController = new Controller.CurrencyController(user, password);
+                operation_value = 0;
+                Set_Flag_All(false);
+                Load_Data();
+                Load_DataGridView();
+                metroTabControl1.SelectedIndex = 0;
             }
-            if (!Visible) return;
-            operation_value = 0;
-            Set_Flag_All(false);
-            Load_Data();
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
         }
 
         private void Load_Combobox()
@@ -102,7 +94,11 @@ namespace WindowsFormsApp1.Views
 
         private void UC_Workstation_Load(object sender, EventArgs e)
         {
-            data_loaded = false;
+            string user = "";
+            string password = "";
+            productController = new Controller.ProductsController(user, password);
+            workstationController = new Controller.WorkstationsController(user, password);
+            currencyController = new Controller.CurrencyController(user, password);
         }
 
         private void Load_Data()

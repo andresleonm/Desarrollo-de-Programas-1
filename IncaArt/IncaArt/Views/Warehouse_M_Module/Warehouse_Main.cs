@@ -7,14 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class Warehouse : MetroFramework.Controls.MetroUserControl
+    public partial class Warehouse : ICheckPermissions
     {
-        List<UC_Product> products = new List<UC_Product>();
-        List<UC_Material2> materials = new List<UC_Material2>();
-        List<Warehouse> warehouses = new List<Warehouse>();
+
         public Warehouse()
         {
             InitializeComponent();
@@ -55,26 +54,6 @@ namespace WindowsFormsApp1.Views
             //mStyle.Style = MetroFramework.MetroColorStyle.Silver;
         }
 
-        private void newA_Click(object sender, EventArgs e)
-        {
-            
-
-            
-/*
-            String nameWarehouse = name.Text;
-            String typeWarehouse = type.Text;
-
-            int m_capacity = Int32.Parse(max_capacity.Text);
-            int a_capacity = Int32.Parse(actual_capacity.Text);
-
-            String u1 = unity1.Text;
-            String u2 = unity1.Text;
-
-            bool isValid =validate_data(nameWarehouse, typeWarehouse, m_capacity, a_capacity, u1, u2);
-            if (isValid) {
-                
-            }*/
-        }
 
         private void select_products_Click(object sender, EventArgs e)
         {
@@ -88,6 +67,11 @@ namespace WindowsFormsApp1.Views
             uC_ProductWarehouse1.Visible = false;
         }
 
+
+        public override void CheckPermissions(User user)
+        {
+            Helpers.CheckPermissionsHelper.Check(this, user);
+        }
 
     }
 }

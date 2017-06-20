@@ -67,7 +67,23 @@ namespace WindowsFormsApp1.Controller
                 return new Result(ratios, true, "");
             }
             return new Result(null, result.success, result.message);
-        }             
+        }
+
+        public Result updateRatio(string worker,string product,string workstation,string ratio_type,double ratio_value)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("worker_name", worker));
+            parameters.Add(new Parameter("product_name", product));
+            parameters.Add(new Parameter("workstation_name", workstation));
+            parameters.Add(new Parameter("ratio_type", ratio_type));
+            parameters.Add(new Parameter("ratio_value", ratio_value.ToString()));
+            GenericResult result = execute_transaction("update_ratio", parameters);
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
 
     }
 }
