@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WindowsFormsApp1.Algorithm;
+using WindowsFormsApp1.Views;
 
 namespace WindowsFormsApp1.Algorithm
 {
@@ -24,7 +27,7 @@ namespace WindowsFormsApp1.Algorithm
 
         List<Worker> workers;
         List<Workstation> workstations;        
-        Order order;
+        Order order;        
 
         public TabuSearch(Order order,List<Worker> workers, List<Workstation> workstations,int iterations,int tabu_list_size,int neighborhood_size, int combinations)
         {
@@ -37,7 +40,7 @@ namespace WindowsFormsApp1.Algorithm
             this.COMBINATION_QUANTITY = combinations;
         }
            
-        public List<ProductLineAssignment> generateSolution()
+        public List<ProductLineAssignment> generateSolution(BackgroundWorker thread)
         {
             List<Workstation> admissible_workstations = new List<Workstation>();
             List<ProductLineAssignment> solution = new List<ProductLineAssignment>();
@@ -183,7 +186,7 @@ namespace WindowsFormsApp1.Algorithm
             }            
 
             DateTime tiempo1 = DateTime.Now;
-            List<ProductLineAssignment> final_solution = tabuSearch(solution, products_quantities, workers);
+            List<ProductLineAssignment> final_solution = tabuSearch(solution, products_quantities, workers,thread);
             return final_solution;
             //DateTime tiempo2 = DateTime.Now;
             //TimeSpan total = new TimeSpan(tiempo2.Ticks - tiempo1.Ticks);
@@ -192,7 +195,7 @@ namespace WindowsFormsApp1.Algorithm
 
         }
 
-        private List<ProductLineAssignment> tabuSearch(List<ProductLineAssignment> initial_s, List<Tuple<int, Product>> product_quantities, List<Worker> workers)
+        private List<ProductLineAssignment> tabuSearch(List<ProductLineAssignment> initial_s, List<Tuple<int, Product>> product_quantities, List<Worker> workers,BackgroundWorker thread)
         {
 
             List<ProductLineAssignment> s = new List<ProductLineAssignment>();
@@ -208,6 +211,12 @@ namespace WindowsFormsApp1.Algorithm
 
             while (iteration <= MAX_ITER)
             {
+                double proportion = (Double)iteration / (Double)MAX_ITER;
+                int perc = Int32.Parse((Math.Round(proportion, 2) * 100).ToString());
+                Console.WriteLine(iteration);
+                Console.WriteLine(iteration / MAX_ITER);
+                Console.WriteLine(perc);
+                thread.ReportProgress(perc);                
                 best_candidate = null;
                 neighborhood = generateNeighborhood(s, workers, iteration);
                 foreach (List<ProductLineAssignment> candidate in neighborhood)

@@ -18,7 +18,9 @@ namespace WindowsFormsApp1.Views
         List<Product> products;
         public List<Algorithm.ProductLineAssignment> solution;
         bool workers_checked = true;
-        public int iterations, tabu_size, neighborhood_size, combinations;
+        public int iterations, tabu_size, neighborhood_size, combinations;        
+        Algorithm.TabuSearch tabu;
+        ProgressForm progress;        
         public UC_SimulationConfig()
         {
             this.iterations = 8000;
@@ -41,8 +43,9 @@ namespace WindowsFormsApp1.Views
             {
                 if (row.Cells[1].Value == null || int.Parse(row.Cells[1].Value.ToString()) == 0)
                 {
-                    MessageBox.Show("Debe haber por lo menos un puesto de trabajo de cada tipo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Debe haber por lo menos un puesto de trabajo de cada tipo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     row.Cells[1].Value = 1;
+                    return;
                 }
                 if (row.Cells[1].Value!=null && int.Parse(row.Cells[1].Value.ToString()) >= 1)
                 {
@@ -92,9 +95,15 @@ namespace WindowsFormsApp1.Views
                 }
             }
 
+            if(tabu_workers.Count < 6)
+            {
+                MessageBox.Show("Debe haber al menos un trabajador para cada puesto de trabajo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if(wkstation_qty > tabu_workers.Count)
             {
-                MessageBox.Show("No puede haber más puestos de trabajos que trabajadores", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No puede haber más puestos de trabajos que trabajadores.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -134,14 +143,62 @@ namespace WindowsFormsApp1.Views
                     detail.lines.Add(line);
                 }                
             }           
-            order.order_detail = detail;
-            Cursor = Cursors.WaitCursor;
-            Algorithm.TabuSearch tabu = new Algorithm.TabuSearch(order, tabu_workers, tabu_wkstations,iterations,tabu_size,neighborhood_size,combinations);
-            solution = tabu.generateSolution();
-            Cursor = Cursors.Arrow;
+            order.order_detail = detail;            
+            tabu = new Algorithm.TabuSearch(order, tabu_workers, tabu_wkstations, iterations, tabu_size, neighborhood_size, combinations);
+            progress = new ProgressForm();
+            progress.Canceled += new EventHandler<EventArgs>(buttonCancel_Click);
+            progress.Show();            
+            backgroundWorker1.RunWorkerAsync(tabu);            
+            
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            if (backgroundWorker1.WorkerSupportsCancellation == true)
+            {
+                // Cancel the asynchronous operation.
+                backgroundWorker1.CancelAsync();
+                // Close the AlertForm
+                progress.Close();
+            }
+        }
+
+        // This event handler is where the time-consuming work is done.
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+            solution = ((Algorithm.TabuSearch)e.Argument).generateSolution(worker);                        
+        }
+
+        // This event handler updates the progress.
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            //Console.WriteLine(e.ProgressPercentage);
+            progress.ProgressValue = e.ProgressPercentage;
+        }
+
+        // This event handler deals with the results of the background operation.
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            //if (e.Cancelled == true)
+            //{
+            //    labelResult.Text = "Canceled!";
+            //}
+            //else if (e.Error != null)
+            //{
+            //    labelResult.Text = "Error: " + e.Error.Message;
+            //}
+            //else
+            //{
+            //    labelResult.Text = "Done!";
+            //}
+            // Close the AlertForm
+            MessageBox.Show("Simulación finalizada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             this.Visible = false;
             this.Parent.Parent.Controls.Find("UC_SimulationExecution1", true)[0].Visible = true;
+            progress.Close();
         }
+
 
         private void workers_grid_ColumnHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
