@@ -364,11 +364,11 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
             register.Text = "Guardar";
             register.Visible = true;
             curWarehouse = null;
-            /*
+          
                 if (!sessionUser.Profile.HasFunctionality("CREATE MATERIAL WAREHOUSE"))
                 {
                     register.Visible = false;
-                }*/
+                }
             
         }
 
@@ -812,6 +812,8 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
                 this.metroTabControl1.TabPages.Remove(registerTab);
 
             }
+
+            this.metroTabPage2.Enter += this.tabIndex_Enter;
         }
 
 
