@@ -40,6 +40,8 @@ namespace WindowsFormsApp1.Views
         bool flag_description = false;
         bool flag_begin = true;
         bool flag_end = true;
+        bool flag_product = false;
+        bool flag_quantity = false;
 
         public UC_ProductionOrder()
         {
@@ -65,7 +67,9 @@ namespace WindowsFormsApp1.Views
             validate_textbox(metroTextBox_Description);
             validate_begin_datetime(metroDateTime_Begin);
             validate_end_datetime(metroDateTime_End);
-            if (!flag_description ||!flag_begin||!flag_end)
+            validate_comboBox(comboBox_Product);
+            validate_textbox_quantity(metroTextBox_Quantity);
+            if (!flag_description ||!flag_begin||!flag_end||!flag_product||!flag_quantity)
             {
                 MessageBox.Show("Hay campos inválidos en los datos de la orden de producción.","Error en el registro",MessageBoxButtons.OK);
                 isCorrect = false;
@@ -197,37 +201,41 @@ namespace WindowsFormsApp1.Views
             }
         }
 
-        private void metroButton_Register_Click(object sender, EventArgs e)
-        {
-            
-
-            
-          
-        }
       
         private void metroButton_AddMaterial_Click(object sender, EventArgs e)
         {
-            Models.ProductionOrderMaterialLine line = new Models.ProductionOrderMaterialLine();
-            Production_Module.ProductionOrderMaterialLine material_line = new Production_Module.ProductionOrderMaterialLine();
-            material_line.ShowDialog();
-            if (material_line.IsRegistered)
-            {
-                material_lines.Add(material_line.Line);
-                Load_Material_DataGridView();
+            if (comboBox_Recipe.SelectedIndex != -1){
+                Production_Module.ProductionOrderMaterialLine material_line = new Production_Module.ProductionOrderMaterialLine();
+                material_line.IdRecipe = ((Recipe)(comboBox_Recipe.SelectedItem)).Id;
+                material_line.ShowDialog();
+                if (material_line.IsRegistered)
+                {
+                    material_lines.Add(material_line.Line);
+                    Load_Material_DataGridView();
+                }
             }
+            else{
+                MessageBox.Show(this, "Seleccione primero la receta que se utilizará en la orden de producción.", "Registro de material", MessageBoxButtons.OK);
+            }
+            
         }
 
         private void metroButton_AddWorker_Click(object sender, EventArgs e)
         {
-            Models.ProductionOrderWorkLine line = new Models.ProductionOrderWorkLine();
-            Production_Module.ProductionOrderWorkLine work_line = new Production_Module.ProductionOrderWorkLine();
-            work_line.ShowDialog();
-            if (work_line.IsRegistered)
-            {
-                work_lines.Add(work_line.Line);
-                Load_Work_DataGridView();
+            if (comboBox_Product.SelectedIndex != -1){
+                Production_Module.ProductionOrderWorkLine work_line = new Production_Module.ProductionOrderWorkLine();
+                work_line.Product = (Product)comboBox_Product.SelectedItem;
+                work_line.ShowDialog();
+                if (work_line.IsRegistered)
+                {
+                    work_lines.Add(work_line.Line);
+                    Load_Work_DataGridView();
+                }
+                update_SummaryProduct();
             }
-            update_SummaryProduct();
+            else {
+                MessageBox.Show(this, "Seleccione primero el producto de la orden de producción.", "Registro de notificación de trabajo", MessageBoxButtons.OK);
+            }
         }
         private void clear_Form()
         {
@@ -256,7 +264,13 @@ namespace WindowsFormsApp1.Views
             metroTextBox_Estimate_line.Visible = true;
             //product
             Load_Product();
+            comboBox_Product.Enabled = true;
 
+            errorProvider.SetError(metroTextBox_Description,null);
+            errorProvider.SetError(comboBox_Product, null);
+            errorProvider.SetError(metroTextBox_Quantity, null);
+            errorProvider.SetError(metroDateTime_Begin, null);
+            errorProvider.SetError(metroDateTime_End, null);
         }
         
         private void Load_Product()
@@ -303,25 +317,23 @@ namespace WindowsFormsApp1.Views
             for (int i = 0; i < work_lines.Count(); i++)
             {
                 if (work_lines[i].State == "Registrado") { 
-                    String[] row = new String[15];
+                    String[] row = new String[13];
                     row[0] = "0";
                     row[1] = work_lines[i].Worker_id.ToString();
                     row[2] = work_lines[i].Worker_name;
-                    row[3] = work_lines[i].Product_id.ToString();
-                    row[4] = work_lines[i].Product_name;
-                    row[5] = work_lines[i].Workstation_id.ToString();
-                    row[6] = work_lines[i].Workstation_name;
-                    row[7] = work_lines[i].Unit_id.ToString();
-                    row[8] = work_lines[i].Unit_name;
-                    row[9] = work_lines[i].Quantity_required.ToString();
-                    row[10] = work_lines[i].Quantity_produced.ToString();
-                    row[11] = work_lines[i].Quantity_broken.ToString();
+                    row[3] = work_lines[i].Workstation_id.ToString();
+                    row[4] = work_lines[i].Workstation_name;
+                    row[5] = work_lines[i].Unit_id.ToString();
+                    row[6] = work_lines[i].Unit_name;
+                    row[7] = work_lines[i].Quantity_required.ToString();
+                    row[8] = work_lines[i].Quantity_produced.ToString();
+                    row[9] = work_lines[i].Quantity_broken.ToString();
                     int minute = (int)(work_lines[i].Production_time) % 60;
                     int hour = (int)(work_lines[i].Production_time) / 60;
                     //row[12] = work_lines[i].Production_time.ToString();
-                    row[12] = hour.ToString() + "h " + minute.ToString() + "min";
-                    row[13] = work_lines[i].Observation;
-                    row[14] = work_lines[i].State;
+                    row[10] = hour.ToString() + "h " + minute.ToString() + "min";
+                    row[11] = work_lines[i].Observation;
+                    row[12] = work_lines[i].State;
                     this.metroGrid_Work.Rows.Add(row);
                 }
             }
@@ -363,6 +375,7 @@ namespace WindowsFormsApp1.Views
             }
             //Product
             comboBox_Product.Text = order.Product_name;
+            comboBox_Product.Enabled = false;
             metroTextBox_Quantity.Text = order.Quantity.ToString();
             metroTextBox_Quantity_produced.Text = order.Produced_quantity.ToString();
             comboBox_Recipe.Text = order.Recipe_name;
@@ -377,6 +390,11 @@ namespace WindowsFormsApp1.Views
             Load_Work_DataGridView();
             update_SummaryMaterial();
             update_SummaryProduct();
+
+            flag_description = true;
+            flag_product = true;
+            flag_quantity = true;
+            
 
         }
 
@@ -498,6 +516,7 @@ namespace WindowsFormsApp1.Views
             }
         }
 
+      
 
         //Summary
         private void update_SummaryProduct()
@@ -506,6 +525,7 @@ namespace WindowsFormsApp1.Views
             {
                 calculate_products_summary();
                 Load_SummaryProduct_DataGridView();
+                
             }else
             {
                 product_summary_lines.Clear();
@@ -582,7 +602,9 @@ namespace WindowsFormsApp1.Views
                             product_summary_lines[w.Id] += work_line.Quantity_produced;
                         }
                     }
-
+                    if (w.Next_workstation == 0){
+                        metroTextBox_Quantity_produced.Text = product_summary_lines[w.Id].ToString();
+                    }
                 }
             }          
         }
@@ -627,8 +649,53 @@ namespace WindowsFormsApp1.Views
         }
 
         //Validaciones
+        private void validate_textbox_quantity(MetroFramework.Controls.MetroTextBox textbox)
+        {
+            string text = textbox.Text;
+            int num;
+            if (String.IsNullOrWhiteSpace(text))
+            {
+                flag_quantity = false;
+                errorProvider.SetError(textbox, "Campo requerido");
+            }
+            else if (!Int32.TryParse(text, out num) || num <= 0)
+            {
+                if (num == 0 && textbox.Name == "metroTextBox_quantity_produced")
+                {
+                    flag_quantity = true;
+                    errorProvider.SetError(textbox, null);
+                }
+                else {
+                    flag_quantity = false;
+                    errorProvider.SetError(textbox, "La cantidad debe ser mayor que cero.");
+                }
 
-       private void validate_textbox(MetroFramework.Controls.MetroTextBox textbox)
+            }
+            else
+            {
+                flag_quantity = true;
+                errorProvider.SetError(textbox, null);
+            }
+        }
+
+
+        private void validate_comboBox(System.Windows.Forms.ComboBox combobox)
+        {
+            int index = combobox.SelectedIndex;
+            if (index == -1)
+            {
+                flag_product=false;
+                errorProvider.SetError(combobox, "Campo requerido");
+
+            }
+            else
+            {
+                flag_product = true;
+                errorProvider.SetError(combobox, null);
+            }
+        }
+
+        private void validate_textbox(MetroFramework.Controls.MetroTextBox textbox)
         {
             string text = textbox.Text;
             if (String.IsNullOrWhiteSpace(text))
@@ -772,9 +839,16 @@ namespace WindowsFormsApp1.Views
             if (e.KeyChar == (char)8) e.Handled = false;
         }
 
-        private void btn_Cancel_Click_1(object sender, EventArgs e)
+        private void metroTextBox_Quantity_Validating(object sender, CancelEventArgs e)
         {
+            MetroFramework.Controls.MetroTextBox textbox = (MetroFramework.Controls.MetroTextBox)sender;
+            validate_textbox_quantity(textbox);
+        }
 
+        private void comboBox_Product_Validating(object sender, CancelEventArgs e)
+        {
+            System.Windows.Forms.ComboBox combobox=(System.Windows.Forms.ComboBox)sender;
+            validate_comboBox(combobox);
         }
     }
 }
