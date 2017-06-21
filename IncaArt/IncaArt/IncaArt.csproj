@@ -921,6 +921,9 @@
     <None Include="Resources\Close Window_52px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\imageedit_2_2547621693.png" />
+    <None Include="Resources\Inca.png" />
+    <None Include="Resources\Tumi.png" />
     <None Include="Resources\Coins_48px.png" />
     <None Include="Resources\Inca Art.PNG" />
     <None Include="Resources\pdf.png" />

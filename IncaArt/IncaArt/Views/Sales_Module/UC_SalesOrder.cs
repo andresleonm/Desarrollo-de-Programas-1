@@ -55,6 +55,7 @@ namespace WindowsFormsApp1.Views
             if (tab_Order.SelectedIndex == 0) // Orders
             {
                 btn_Clean.PerformClick();
+                btn_Clean.PerformClick();
                 ctxt_order_id.Text = "";
                 ctxt_customer.Text = "";
                 customer = new Customer();
@@ -67,6 +68,7 @@ namespace WindowsFormsApp1.Views
                 {
                     customer = new Customer();
                     estimate = new SalesEstimate();
+                    btn_Clean.PerformClick();
                     btn_Clean.PerformClick();
                 }
             }
@@ -206,10 +208,12 @@ namespace WindowsFormsApp1.Views
                     else
                     {
                         btn_Clean.PerformClick();
+                        btn_Clean.PerformClick();
                     }
                 }
                 else
                 {
+                    btn_Clean.PerformClick();
                     btn_Clean.PerformClick();
                     customer = customerL[0];
                     txt_name.Text = customer.Name;
@@ -275,6 +279,7 @@ namespace WindowsFormsApp1.Views
                         i++;
                     }
                     btn_Clean.PerformClick();
+                    btn_Clean.PerformClick();
                     tab_Order.SelectedIndex = 0;
                     MessageBox.Show(this, "Orden actualizada exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                     edit = false;
@@ -311,6 +316,7 @@ namespace WindowsFormsApp1.Views
                             i++;
                             sales_order_line_controller.insertSalesOrderLine(sol);
                         }
+                        btn_Clean.PerformClick();
                         btn_Clean.PerformClick();
                         tab_Order.SelectedIndex = 0;
                         MessageBox.Show(this, "Se ha creado la orden N° : " + sales_order_id.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
@@ -353,6 +359,7 @@ namespace WindowsFormsApp1.Views
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
+            btn_Clean.PerformClick();
             btn_Clean.PerformClick();
             this.Visible = false;
         }

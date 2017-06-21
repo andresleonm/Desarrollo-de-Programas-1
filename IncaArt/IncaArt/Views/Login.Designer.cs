@@ -119,10 +119,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Inca_Art;
-            this.pictureBox1.Location = new System.Drawing.Point(128, 12);
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Tumi;
+            this.pictureBox1.Location = new System.Drawing.Point(99, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(160, 160);
+            this.pictureBox1.Size = new System.Drawing.Size(219, 160);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
@@ -142,8 +142,9 @@
             this.Controls.Add(this.Lbl_Password);
             this.Controls.Add(this.textBoxNickname);
             this.Controls.Add(this.Lbl_Username);
-            this.MinimizeBox = false;
+            this.MaximizeBox = false;
             this.Name = "Frm_Login";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inca Art";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
