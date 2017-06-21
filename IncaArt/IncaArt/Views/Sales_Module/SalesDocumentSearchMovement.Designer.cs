@@ -160,6 +160,7 @@
             this.grid_Movements.AllowUserToResizeRows = false;
             this.grid_Movements.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.grid_Movements.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.grid_Movements.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.grid_Movements.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkCyan;
@@ -324,7 +325,7 @@
             this.ClientSize = new System.Drawing.Size(829, 416);
             this.Controls.Add(this.groupBox1);
             this.Name = "SalesDocumentSearchMovement";
-            this.Text = "SalesDocumentSearchMovement";
+            this.Text = "Búsqueda de Movimientos";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
