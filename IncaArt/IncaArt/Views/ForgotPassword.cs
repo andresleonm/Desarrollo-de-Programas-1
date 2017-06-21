@@ -47,6 +47,7 @@ namespace WindowsFormsApp1.Views
                     if (mail_sent.success)
                     {
                         MessageBox.Show("Hemos enviado un email con tu nueva contraseña con la que podrás acceder al sistema");
+                        this.Close();
                     }
                     else
                     {

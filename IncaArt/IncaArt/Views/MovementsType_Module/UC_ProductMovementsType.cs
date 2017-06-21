@@ -95,6 +95,9 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
                 case 3:
                     clase = "Entrada Generica";
                     break;
+                case 4:
+                    clase = "Salida Generica";
+                    break;
                 default:
                     clase = "";
                     break;
@@ -127,6 +130,11 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
                 case "radio3_s":
                     clase = 3;
                     break;
+                case "Salida Generica":
+                case "radio4":
+                case "radio4_s":
+                    clase = 4;
+                    break;
                 default:
                     clase = -1;
                     break;
@@ -141,6 +149,7 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
             {
                 case 0:
                 case 2:
+                case 4:
                     sign = '-';
                     break;
                 case 1:
@@ -161,6 +170,11 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
             ClearTextBoxes(this);
             operation_value = 0;
             current_class = -1;
+            radio0.Enabled = true;
+            radio1.Enabled = true;
+            radio2.Enabled = true;
+            radio3.Enabled = true;
+            radio4.Enabled = true;
         }
 
         private void ClearTextBoxes(Control control)
@@ -300,6 +314,11 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
                 Clean();
                 metroTabControl1.SelectedIndex = 0;
                 operation_value = 0;
+                radio0.Enabled = true;
+                radio1.Enabled = true;
+                radio2.Enabled = true;
+                radio3.Enabled = true;
+                radio4.Enabled = true;
             }
         }
 
@@ -354,12 +373,20 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
                         case 3:
                             radio3.Checked = true;
                             break;
+                        case 4:
+                            radio4.Checked = true;
+                            break;
                         default:
                             break;
                     }
                     metroTabControl1.SelectedIndex = 1;
                     operation_value = 1;
                     name_flag = true;
+                    radio0.Enabled = false;
+                    radio1.Enabled = false;
+                    radio2.Enabled = false;
+                    radio3.Enabled = false;
+                    radio4.Enabled = false;
                 }
             }
         }

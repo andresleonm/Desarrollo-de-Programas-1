@@ -8,16 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class UC_ProductWarehouse : MetroFramework.Controls.MetroUserControl
+    public partial class UC_ProductWarehouse : ICheckPermissions
     {
         int cur_row;
         bool name_flag;
         bool product_flag;
         bool type_flag;
         bool capacity_flag;
+
+        bool deletedTab = false;
 
 //        Models.User sessionUser;
 
@@ -41,6 +44,7 @@ namespace WindowsFormsApp1.Views
         Dictionary<int, string> combo_data_products;
         Dictionary<int, string> combo_data_types;
 
+        User sessionUser;
         public UC_ProductWarehouse()
         {
             InitializeComponent();
@@ -48,16 +52,7 @@ namespace WindowsFormsApp1.Views
 
         private void UC_ProductWarehouse_Load(object sender, EventArgs e)
         {
-            Set_Flag_All(false);
-            string user = "dp1admin";
-            string password = "dp1admin";
-            productWarehouseController = new Controller.ProductWarehouseController(user, password);
-            productController = new Controller.ProductsController(user, password);
-            typeController = new Controller.ProductTypeWarehouseController(user, password);
-            unitController = new Controller.UnitController(user, password);
-            Load_Data();
-            Load_DataGridView();
-            metroTabControl1.SelectedIndex = 0;
+
         }
 
         /*
@@ -129,53 +124,56 @@ namespace WindowsFormsApp1.Views
             Models.UnitOfMeasure unit = new Models.UnitOfMeasure();
 
             metroGrid1.Rows.Clear();
-            for (int i = 0; i < warehouse_list.Count(); i++)
-            {           
-                product = products_list.Find(u => u.Id == warehouse_list[i].Product_id);
-                type = types_list.Find(u => u.Id == warehouse_list[i].Type_id);
-                //User user_to_delete = user_list.Find(u => u.Id == Int32.Parse(metroGrid1.CurrentRow.Cells[0].Value.ToString()));
-
-                /*
-                //Producto
-                Models.Product product = new Models.Product();
-                resultP = productController.getProduct(warehouse_list[i].Product_id);
-
-
-                //Tipo
-                Models.ProductTypeWarehouse type = new Models.ProductTypeWarehouse();
-                resultT = typeController.getProductWarehouse(warehouse_list[i].Type_id);
-                (resultP.data == null || resultT.data == null
-                */
-                if (product==null || type == null)
+            if (warehouse_list != null)
+            {
+                for (int i = 0; i < warehouse_list.Count(); i++)
                 {
-                    MessageBox.Show("Error en transacción","Error en las búsquedas de Productos o Tipos de Almacén", MessageBoxButtons.OK);
-                }
-                else
-                {
+                    product = products_list.Find(u => u.Id == warehouse_list[i].Product_id);
+                    type = types_list.Find(u => u.Id == warehouse_list[i].Type_id);
+                    //User user_to_delete = user_list.Find(u => u.Id == Int32.Parse(metroGrid1.CurrentRow.Cells[0].Value.ToString()));
+
                     /*
-                    // Producto
-                    product = (Models.Product)resultP.data;
+                    //Producto
+                    Models.Product product = new Models.Product();
+                    resultP = productController.getProduct(warehouse_list[i].Product_id);
+
+
                     //Tipo
-                    type = (Models.ProductTypeWarehouse)resultT.data;*/
-                    //Unidad
+                    Models.ProductTypeWarehouse type = new Models.ProductTypeWarehouse();
+                    resultT = typeController.getProductWarehouse(warehouse_list[i].Type_id);
+                    (resultP.data == null || resultT.data == null
+                    */
+                    if (product == null || type == null)
+                    {
+                        MessageBox.Show("Error en transacción", "Error en las búsquedas de Productos o Tipos de Almacén", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        /*
+                        // Producto
+                        product = (Models.Product)resultP.data;
+                        //Tipo
+                        type = (Models.ProductTypeWarehouse)resultT.data;*/
+                        //Unidad
 
-                    unit = unit_list.Find(u => u.Id == product.Unit_id);
+                        unit = unit_list.Find(u => u.Id == product.Unit_id);
 
-                    //Grilla
-                    String[] row = new String[9];
-                    row[0] = warehouse_list[i].Id.ToString();
-                    row[1] = i.ToString();
-                    row[2] = warehouse_list[i].Name;
-                    row[3] = type.Name;
-                    row[4] = product.Name;
-                    row[5] = unit.Symbol;
-                    row[6] = warehouse_list[i].Current_physical_stock.ToString();
-                    row[7] = warehouse_list[i].Max_capacity.ToString();
-                    row[8] = warehouse_list[i].State;
-                    
-                    this.metroGrid1.Rows.Add(row);
+                        //Grilla
+                        String[] row = new String[9];
+                        row[0] = warehouse_list[i].Id.ToString();
+                        row[1] = i.ToString();
+                        row[2] = warehouse_list[i].Name;
+                        row[3] = type.Name;
+                        row[4] = product.Name;
+                        row[5] = unit.Symbol;
+                        row[6] = warehouse_list[i].Current_physical_stock.ToString();
+                        row[7] = warehouse_list[i].Max_capacity.ToString();
+                        row[8] = warehouse_list[i].State;
+
+                        this.metroGrid1.Rows.Add(row);
+                    }
+
                 }
-
             }
         }
 
@@ -185,10 +183,14 @@ namespace WindowsFormsApp1.Views
         {
             ClearTextBoxes(this);
             Load_DataGridView();
+
+            if (!deletedTab) {
+                combobox_products.SelectedIndex = 0;
+                combobox_type.SelectedIndex = 0;
+            }
             combobox_product_s.SelectedIndex = 0;
             combobox_type_s.SelectedIndex = 0;
-            combobox_products.SelectedIndex = 0;
-            combobox_type.SelectedIndex = 0;
+            
         }
 
         private void ClearTextBoxes(Control control)
@@ -323,13 +325,12 @@ namespace WindowsFormsApp1.Views
                 textbox_max_capacity.Text = metroGrid1.Rows[e.RowIndex].Cells[7].Value.ToString();
                 Set_Flag_All(true);
                 register.Text = "Editar";
-                //register.Visible = true;
+                register.Visible = true;
                 metroTabControl1.SelectedIndex = 1;
-                /*
-                if (!sessionUser.Profile.HasFunctionality("EDIT WAREHOUSE"))
+                if (!sessionUser.Profile.HasFunctionality("EDIT PRODUCT WAREHOUSE"))
                 {
                     register.Visible = false;
-                }*/
+                }
             }
         }
 
@@ -374,15 +375,14 @@ namespace WindowsFormsApp1.Views
         //Limpiar
         private void tabIndex_Enter(object sender, EventArgs e)
         {
-            Clean();
+            if (!deletedTab) Clean();
             register.Text = "Guardar";
-           // register.Visible = true;
+            register.Visible = true;
             curWarehouse = null;
-            /*
-            if (!sessionUser.Profile.HasFunctionality("CREATE WAREHOUSE"))
+            if (!sessionUser.Profile.HasFunctionality("CREATE PRODUCT WAREHOUSE"))
             {
                 register.Visible = false;
-            }*/
+            }
         }
 
         private void btn_clean_Click(object sender, EventArgs e)
@@ -789,19 +789,41 @@ namespace WindowsFormsApp1.Views
         }
 
 
-        //Permissions
-        /*
-        private void UC_Permissions_Load() {
-            if (!sessionUser.Profile.HasFunctionality("DELETE WAREHOUSE"))
+        private void UC_Warehouse_Load()
+        {
+            if (!sessionUser.Profile.HasFunctionality("DELETE PRODUCT WAREHOUSE"))
             {
                 delete.Visible = false;
             }
+
+            if (!sessionUser.Profile.HasFunctionality("CREATE PRODUCT WAREHOUSE") && !sessionUser.Profile.HasFunctionality("EDIT PRODUCT WAREHOUSE"))
+            {
+                deletedTab = true;
+                this.metroTabControl1.TabPages.Remove(registerTab);
+                
+            }
+
+            metroTabPage2.Enter += tabIndex_Enter;
         }
 
-        private void metroTabControl1_ParentChanged(object sender, EventArgs e)
+        public override void CheckPermissions(User user)
         {
-            sessionUser = ((Dashboard)Parent).sessionUser;
-            UC_Permissions_Load();
-        }*/
+            sessionUser = user;
+            UC_Warehouse_Load();
+        }
+
+        private void UC_ProductWarehouse_VisibleChanged(object sender, EventArgs e)
+        {
+            Set_Flag_All(false);
+            string user = "dp1admin";
+            string password = "dp1admin";
+            productWarehouseController = new Controller.ProductWarehouseController(user, password);
+            productController = new Controller.ProductsController(user, password);
+            typeController = new Controller.ProductTypeWarehouseController(user, password);
+            unitController = new Controller.UnitController(user, password);
+            Load_Data();
+            Load_DataGridView();
+            metroTabControl1.SelectedIndex = 0;
+        }
     }
 }
