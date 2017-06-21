@@ -86,19 +86,20 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Search_Documents_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(ctxt_document_id.Text) && String.IsNullOrWhiteSpace(ctxt_customer.Text))
-            {
-                fill_Sales_Documents();
-            }
-            else
-            {
+           // if (String.IsNullOrWhiteSpace(ctxt_document_id.Text) && String.IsNullOrWhiteSpace(ctxt_customer.Text))
+            //{
+              //7  fill_Sales_Documents();
+           // }
+           // else
+            //{
                 SalesDocument sales_doc = new SalesDocument();
+                DateTime init = dt_iniDate.Value.Date;
+                DateTime end = dt_endDate.Value.Date;
                 if (ctxt_document_id.Text != "")
                     sales_doc.Id = Int32.Parse((ctxt_document_id.Text));
-                else
-                    sales_doc.Id = -1;
+                else sales_doc.Id = -1;
                 sales_doc.Customer_name = ctxt_customer.Text;
-                Result result = sales_document_controller.getSalesDocuments_by_filter(sales_doc);
+                Result result = sales_document_controller.getSalesDocuments_by_filter(sales_doc,init,end);
 
                 if (result.data == null)
                     MessageBox.Show(result.message, "Error al buscar proveedor con filtros", MessageBoxButtons.OK);
@@ -107,8 +108,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     sales_documents = new List<SalesDocument>();
                     sales_documents = (List<SalesDocument>)result.data;
                     fill_gridView_Document(sales_documents);
-                }
-            }
+               }
+          //  }
         }
 
         private void btn_View_Click(object sender, EventArgs e)

@@ -59,12 +59,13 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result getSalesDocuments_by_filter(SalesDocument sales_document)
+        public Result getSalesDocuments_by_filter(SalesDocument sales_document, DateTime init, DateTime end)
         {
             List<Parameter> parameters = new List<Parameter>();
-            if (sales_document.Id!=-1) parameters.Add(new Parameter("id", sales_document.Id.ToString()));
+            if (sales_document.Id != -1) parameters.Add(new Parameter("id", sales_document.Id.ToString()));
             if (sales_document.Customer_name != "") parameters.Add(new Parameter("customer_name", sales_document.Customer_name));
-
+            if (init != null) parameters.Add(new Parameter("finit", init.ToString("MM/dd/yyyy")));
+            if (end != null) parameters.Add(new Parameter("fend", end.ToString("MM/dd/yyyy")));
             GenericResult result = execute_function("get_sales_documents_by_filter", parameters);
             List<SalesDocument> sales_documents = new List<SalesDocument>();
             if (result.success)
