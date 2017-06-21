@@ -62,7 +62,7 @@ namespace WindowsFormsApp1.Controller
         public Result getSalesDocuments_by_filter(SalesDocument sales_document)
         {
             List<Parameter> parameters = new List<Parameter>();
-            if (sales_document.Id.ToString() != "") parameters.Add(new Parameter("id", sales_document.Id.ToString()));
+            if (sales_document.Id!=-1) parameters.Add(new Parameter("id", sales_document.Id.ToString()));
             if (sales_document.Customer_name != "") parameters.Add(new Parameter("customer_name", sales_document.Customer_name));
 
             GenericResult result = execute_function("get_sales_documents_by_filter", parameters);

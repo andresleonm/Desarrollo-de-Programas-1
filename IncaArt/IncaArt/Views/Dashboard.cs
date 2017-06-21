@@ -186,7 +186,7 @@ namespace WindowsFormsApp1.Views
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            System.Environment.Exit(0);
+            this.Close();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

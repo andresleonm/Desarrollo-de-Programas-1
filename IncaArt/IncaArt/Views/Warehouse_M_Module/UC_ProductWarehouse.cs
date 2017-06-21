@@ -802,6 +802,8 @@ namespace WindowsFormsApp1.Views
                 this.metroTabControl1.TabPages.Remove(registerTab);
                 
             }
+
+            metroTabPage2.Enter += tabIndex_Enter;
         }
 
         public override void CheckPermissions(User user)
