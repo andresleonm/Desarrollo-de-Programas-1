@@ -178,6 +178,11 @@ namespace WindowsFormsApp1.Views
             btn_simulation.FlatAppearance.BorderColor = Color.FromArgb(64, 104, 104);
             btn_simulation.ImageIndex = 1;
 
+            btn_reportes.BackColor = Color.FromArgb(64, 104, 104);
+            btn_reportes.ForeColor = Color.White;
+            btn_reportes.FlatAppearance.BorderColor = Color.FromArgb(64, 104, 104);
+            btn_reportes.ImageIndex = 1;
+
             ((Button)sender).BackColor = Color.FromArgb(222, 234, 198);
             ((Button)sender).ForeColor = Color.FromArgb(64, 104, 104);
             ((Button)sender).FlatAppearance.BorderColor = Color.FromArgb(222, 234, 198);
@@ -413,5 +418,6 @@ namespace WindowsFormsApp1.Views
         {
             this.metroLabel1.Visible = false;
         }
+
     }
 }

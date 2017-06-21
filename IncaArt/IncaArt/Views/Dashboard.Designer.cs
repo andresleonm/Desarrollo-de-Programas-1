@@ -38,8 +38,9 @@ namespace WindowsFormsApp1.Views
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_reportes = new System.Windows.Forms.Button();
-            this.simulation_imagelist = new System.Windows.Forms.ImageList(this.components);
+            this.report_imagelist = new System.Windows.Forms.ImageList(this.components);
             this.btn_simulation = new System.Windows.Forms.Button();
+            this.simulation_imagelist = new System.Windows.Forms.ImageList(this.components);
             this.btn_production = new System.Windows.Forms.Button();
             this.production_imagelist = new System.Windows.Forms.ImageList(this.components);
             this.btn_purchase = new System.Windows.Forms.Button();
@@ -168,7 +169,7 @@ namespace WindowsFormsApp1.Views
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(132, 354);
+            this.panel1.Size = new System.Drawing.Size(141, 354);
             this.panel1.TabIndex = 11;
             // 
             // btn_reportes
@@ -181,22 +182,23 @@ namespace WindowsFormsApp1.Views
             this.btn_reportes.ForeColor = System.Drawing.Color.White;
             this.btn_reportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_reportes.ImageIndex = 1;
-            this.btn_reportes.ImageList = this.simulation_imagelist;
+            this.btn_reportes.ImageList = this.report_imagelist;
             this.btn_reportes.Location = new System.Drawing.Point(0, 297);
             this.btn_reportes.Name = "btn_reportes";
-            this.btn_reportes.Size = new System.Drawing.Size(132, 42);
+            this.btn_reportes.Size = new System.Drawing.Size(141, 42);
             this.btn_reportes.TabIndex = 8;
             this.btn_reportes.Text = "Reportes";
             this.btn_reportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_reportes.UseVisualStyleBackColor = false;
             this.btn_reportes.Click += new System.EventHandler(this.button1_Click);
+            this.btn_reportes.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
             // 
-            // simulation_imagelist
+            // report_imagelist
             // 
-            this.simulation_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("simulation_imagelist.ImageStream")));
-            this.simulation_imagelist.TransparentColor = System.Drawing.Color.Transparent;
-            this.simulation_imagelist.Images.SetKeyName(0, "green_VirtualBox_20px.png");
-            this.simulation_imagelist.Images.SetKeyName(1, "VirtualBox_20px.png");
+            this.report_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("report_imagelist.ImageStream")));
+            this.report_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.report_imagelist.Images.SetKeyName(0, "green_Increase_20px.png");
+            this.report_imagelist.Images.SetKeyName(1, "Increase_20px.png");
             // 
             // btn_simulation
             // 
@@ -211,13 +213,20 @@ namespace WindowsFormsApp1.Views
             this.btn_simulation.ImageList = this.simulation_imagelist;
             this.btn_simulation.Location = new System.Drawing.Point(0, 255);
             this.btn_simulation.Name = "btn_simulation";
-            this.btn_simulation.Size = new System.Drawing.Size(132, 42);
+            this.btn_simulation.Size = new System.Drawing.Size(141, 42);
             this.btn_simulation.TabIndex = 7;
             this.btn_simulation.Text = "Simulación";
             this.btn_simulation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_simulation.UseVisualStyleBackColor = false;
             this.btn_simulation.Click += new System.EventHandler(this.btn_simulation_Click);
             this.btn_simulation.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            // 
+            // simulation_imagelist
+            // 
+            this.simulation_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("simulation_imagelist.ImageStream")));
+            this.simulation_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.simulation_imagelist.Images.SetKeyName(0, "green_VirtualBox_20px.png");
+            this.simulation_imagelist.Images.SetKeyName(1, "VirtualBox_20px.png");
             // 
             // btn_production
             // 
@@ -232,7 +241,7 @@ namespace WindowsFormsApp1.Views
             this.btn_production.ImageList = this.production_imagelist;
             this.btn_production.Location = new System.Drawing.Point(0, 213);
             this.btn_production.Name = "btn_production";
-            this.btn_production.Size = new System.Drawing.Size(132, 42);
+            this.btn_production.Size = new System.Drawing.Size(141, 42);
             this.btn_production.TabIndex = 6;
             this.btn_production.Text = "Producción";
             this.btn_production.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -260,7 +269,7 @@ namespace WindowsFormsApp1.Views
             this.btn_purchase.ImageList = this.purchase_imagelist;
             this.btn_purchase.Location = new System.Drawing.Point(0, 171);
             this.btn_purchase.Name = "btn_purchase";
-            this.btn_purchase.Size = new System.Drawing.Size(132, 42);
+            this.btn_purchase.Size = new System.Drawing.Size(141, 42);
             this.btn_purchase.TabIndex = 5;
             this.btn_purchase.Text = "Compras";
             this.btn_purchase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -288,7 +297,7 @@ namespace WindowsFormsApp1.Views
             this.btn_sales.ImageList = this.sales_imagelist;
             this.btn_sales.Location = new System.Drawing.Point(0, 129);
             this.btn_sales.Name = "btn_sales";
-            this.btn_sales.Size = new System.Drawing.Size(132, 42);
+            this.btn_sales.Size = new System.Drawing.Size(141, 42);
             this.btn_sales.TabIndex = 4;
             this.btn_sales.Text = "Ventas";
             this.btn_sales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -316,7 +325,7 @@ namespace WindowsFormsApp1.Views
             this.btn_warehouse.ImageList = this.warehouse_imagelist;
             this.btn_warehouse.Location = new System.Drawing.Point(0, 87);
             this.btn_warehouse.Name = "btn_warehouse";
-            this.btn_warehouse.Size = new System.Drawing.Size(132, 42);
+            this.btn_warehouse.Size = new System.Drawing.Size(141, 42);
             this.btn_warehouse.TabIndex = 3;
             this.btn_warehouse.Text = "Almacén";
             this.btn_warehouse.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -344,7 +353,7 @@ namespace WindowsFormsApp1.Views
             this.btn_config.ImageList = this.config_imagelist;
             this.btn_config.Location = new System.Drawing.Point(0, 45);
             this.btn_config.Name = "btn_config";
-            this.btn_config.Size = new System.Drawing.Size(132, 42);
+            this.btn_config.Size = new System.Drawing.Size(141, 42);
             this.btn_config.TabIndex = 2;
             this.btn_config.Text = "Mantenimiento";
             this.btn_config.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -366,7 +375,7 @@ namespace WindowsFormsApp1.Views
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(132, 45);
+            this.panel3.Size = new System.Drawing.Size(141, 45);
             this.panel3.TabIndex = 0;
             // 
             // btn_logo
@@ -381,7 +390,7 @@ namespace WindowsFormsApp1.Views
             this.btn_logo.Image = global::WindowsFormsApp1.Properties.Resources.American_Indians_Seminole_white_40px;
             this.btn_logo.Location = new System.Drawing.Point(0, 0);
             this.btn_logo.Name = "btn_logo";
-            this.btn_logo.Size = new System.Drawing.Size(132, 45);
+            this.btn_logo.Size = new System.Drawing.Size(141, 45);
             this.btn_logo.TabIndex = 6;
             this.btn_logo.Text = "INCA ART";
             this.btn_logo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -396,9 +405,9 @@ namespace WindowsFormsApp1.Views
             this.panel4.Controls.Add(this.label_user_name);
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(132, 27);
+            this.panel4.Location = new System.Drawing.Point(141, 27);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(502, 45);
+            this.panel4.Size = new System.Drawing.Size(493, 45);
             this.panel4.TabIndex = 12;
             // 
             // label_user_role
@@ -406,7 +415,7 @@ namespace WindowsFormsApp1.Views
             this.label_user_role.AutoSize = true;
             this.label_user_role.Dock = System.Windows.Forms.DockStyle.Right;
             this.label_user_role.ForeColor = System.Drawing.Color.White;
-            this.label_user_role.Location = new System.Drawing.Point(292, 0);
+            this.label_user_role.Location = new System.Drawing.Point(283, 0);
             this.label_user_role.Name = "label_user_role";
             this.label_user_role.Size = new System.Drawing.Size(101, 19);
             this.label_user_role.TabIndex = 2;
@@ -419,7 +428,7 @@ namespace WindowsFormsApp1.Views
             this.label_user_name.AutoSize = true;
             this.label_user_name.Dock = System.Windows.Forms.DockStyle.Right;
             this.label_user_name.ForeColor = System.Drawing.Color.White;
-            this.label_user_name.Location = new System.Drawing.Point(393, 0);
+            this.label_user_name.Location = new System.Drawing.Point(384, 0);
             this.label_user_name.Name = "label_user_name";
             this.label_user_name.Size = new System.Drawing.Size(78, 19);
             this.label_user_name.Style = MetroFramework.MetroColorStyle.White;
@@ -433,7 +442,7 @@ namespace WindowsFormsApp1.Views
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox3.Image = global::WindowsFormsApp1.Properties.Resources.Circled_User_Male_40px;
-            this.pictureBox3.Location = new System.Drawing.Point(471, 0);
+            this.pictureBox3.Location = new System.Drawing.Point(462, 0);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(31, 45);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -446,30 +455,30 @@ namespace WindowsFormsApp1.Views
             this.uc_ProductionMenu.BackColor = System.Drawing.SystemColors.Control;
             this.uc_ProductionMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.uc_ProductionMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_ProductionMenu.Location = new System.Drawing.Point(132, 72);
+            this.uc_ProductionMenu.Location = new System.Drawing.Point(141, 72);
             this.uc_ProductionMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_ProductionMenu.Name = "uc_ProductionMenu";
-            this.uc_ProductionMenu.Size = new System.Drawing.Size(502, 309);
+            this.uc_ProductionMenu.Size = new System.Drawing.Size(493, 309);
             this.uc_ProductionMenu.TabIndex = 34;
             this.uc_ProductionMenu.UseSelectable = true;
             // 
             // uC_Simulation1
             // 
             this.uC_Simulation1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_Simulation1.Location = new System.Drawing.Point(132, 72);
+            this.uC_Simulation1.Location = new System.Drawing.Point(141, 72);
             this.uC_Simulation1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uC_Simulation1.Name = "uC_Simulation1";
-            this.uC_Simulation1.Size = new System.Drawing.Size(502, 309);
+            this.uC_Simulation1.Size = new System.Drawing.Size(493, 309);
             this.uC_Simulation1.TabIndex = 45;
             // 
             // uC_SalesMain1
             // 
             this.uC_SalesMain1.BackColor = System.Drawing.Color.White;
             this.uC_SalesMain1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_SalesMain1.Location = new System.Drawing.Point(132, 72);
+            this.uC_SalesMain1.Location = new System.Drawing.Point(141, 72);
             this.uC_SalesMain1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uC_SalesMain1.Name = "uC_SalesMain1";
-            this.uC_SalesMain1.Size = new System.Drawing.Size(502, 309);
+            this.uC_SalesMain1.Size = new System.Drawing.Size(493, 309);
             this.uC_SalesMain1.TabIndex = 31;
             // 
             // parameters1
@@ -477,10 +486,10 @@ namespace WindowsFormsApp1.Views
             this.parameters1.AutoSize = true;
             this.parameters1.BackColor = System.Drawing.Color.White;
             this.parameters1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parameters1.Location = new System.Drawing.Point(132, 72);
+            this.parameters1.Location = new System.Drawing.Point(141, 72);
             this.parameters1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.parameters1.Name = "parameters1";
-            this.parameters1.Size = new System.Drawing.Size(502, 309);
+            this.parameters1.Size = new System.Drawing.Size(493, 309);
             this.parameters1.TabIndex = 22;
             this.parameters1.UseSelectable = true;
             this.parameters1.Visible = false;
@@ -491,10 +500,10 @@ namespace WindowsFormsApp1.Views
             this.warehouse1.AutoSize = true;
             this.warehouse1.BackColor = System.Drawing.Color.White;
             this.warehouse1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.warehouse1.Location = new System.Drawing.Point(132, 72);
+            this.warehouse1.Location = new System.Drawing.Point(141, 72);
             this.warehouse1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.warehouse1.Name = "warehouse1";
-            this.warehouse1.Size = new System.Drawing.Size(502, 309);
+            this.warehouse1.Size = new System.Drawing.Size(493, 309);
             this.warehouse1.Style = MetroFramework.MetroColorStyle.Blue;
             this.warehouse1.TabIndex = 20;
             this.warehouse1.UseCustomBackColor = true;
@@ -506,10 +515,10 @@ namespace WindowsFormsApp1.Views
             // 
             this.supplier1.BackColor = System.Drawing.Color.White;
             this.supplier1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.supplier1.Location = new System.Drawing.Point(132, 72);
+            this.supplier1.Location = new System.Drawing.Point(141, 72);
             this.supplier1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.supplier1.Name = "supplier1";
-            this.supplier1.Size = new System.Drawing.Size(502, 309);
+            this.supplier1.Size = new System.Drawing.Size(493, 309);
             this.supplier1.TabIndex = 18;
             this.supplier1.UseSelectable = true;
             // 
@@ -526,10 +535,10 @@ namespace WindowsFormsApp1.Views
             this.client1.AutoSize = true;
             this.client1.BackColor = System.Drawing.Color.White;
             this.client1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.client1.Location = new System.Drawing.Point(132, 72);
+            this.client1.Location = new System.Drawing.Point(141, 72);
             this.client1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.client1.Name = "client1";
-            this.client1.Size = new System.Drawing.Size(502, 309);
+            this.client1.Size = new System.Drawing.Size(493, 309);
             this.client1.Style = MetroFramework.MetroColorStyle.Teal;
             this.client1.TabIndex = 18;
             this.client1.UseSelectable = true;
@@ -541,20 +550,20 @@ namespace WindowsFormsApp1.Views
             this.uC_PurchasesMenu1.BackColor = System.Drawing.SystemColors.Control;
             this.uC_PurchasesMenu1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.uC_PurchasesMenu1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_PurchasesMenu1.Location = new System.Drawing.Point(132, 72);
+            this.uC_PurchasesMenu1.Location = new System.Drawing.Point(141, 72);
             this.uC_PurchasesMenu1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uC_PurchasesMenu1.Name = "uC_PurchasesMenu1";
-            this.uC_PurchasesMenu1.Size = new System.Drawing.Size(502, 309);
+            this.uC_PurchasesMenu1.Size = new System.Drawing.Size(493, 309);
             this.uC_PurchasesMenu1.TabIndex = 16;
             // 
             // mainDashboard1
             // 
             this.mainDashboard1.BackColor = System.Drawing.Color.White;
             this.mainDashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainDashboard1.Location = new System.Drawing.Point(132, 72);
+            this.mainDashboard1.Location = new System.Drawing.Point(141, 72);
             this.mainDashboard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.mainDashboard1.Name = "mainDashboard1";
-            this.mainDashboard1.Size = new System.Drawing.Size(502, 309);
+            this.mainDashboard1.Size = new System.Drawing.Size(493, 309);
             this.mainDashboard1.TabIndex = 13;
             this.mainDashboard1.UseSelectable = true;
             // 
@@ -659,20 +668,20 @@ namespace WindowsFormsApp1.Views
             // uC_WarehouseMovement1
             // 
             this.uC_WarehouseMovement1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_WarehouseMovement1.Location = new System.Drawing.Point(132, 72);
+            this.uC_WarehouseMovement1.Location = new System.Drawing.Point(141, 72);
             this.uC_WarehouseMovement1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uC_WarehouseMovement1.Name = "uC_WarehouseMovement1";
-            this.uC_WarehouseMovement1.Size = new System.Drawing.Size(502, 309);
+            this.uC_WarehouseMovement1.Size = new System.Drawing.Size(493, 309);
             this.uC_WarehouseMovement1.TabIndex = 47;
             // 
             // uc_reports
             // 
             this.uc_reports.BackColor = System.Drawing.Color.White;
             this.uc_reports.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_reports.Location = new System.Drawing.Point(132, 72);
+            this.uc_reports.Location = new System.Drawing.Point(141, 72);
             this.uc_reports.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_reports.Name = "uc_reports";
-            this.uc_reports.Size = new System.Drawing.Size(502, 309);
+            this.uc_reports.Size = new System.Drawing.Size(493, 309);
             this.uc_reports.TabIndex = 58;
             this.uc_reports.UseSelectable = true;
             // 
@@ -710,10 +719,10 @@ namespace WindowsFormsApp1.Views
             // 
             this.uC_MovementsType1.AutoSize = true;
             this.uC_MovementsType1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_MovementsType1.Location = new System.Drawing.Point(132, 72);
+            this.uC_MovementsType1.Location = new System.Drawing.Point(141, 72);
             this.uC_MovementsType1.Margin = new System.Windows.Forms.Padding(2);
             this.uC_MovementsType1.Name = "uC_MovementsType1";
-            this.uC_MovementsType1.Size = new System.Drawing.Size(502, 309);
+            this.uC_MovementsType1.Size = new System.Drawing.Size(493, 309);
             this.uC_MovementsType1.TabIndex = 62;
             this.uC_MovementsType1.UseSelectable = true;
             // 
@@ -739,10 +748,10 @@ namespace WindowsFormsApp1.Views
             // 
             this.uc_worker.BackColor = System.Drawing.Color.White;
             this.uc_worker.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_worker.Location = new System.Drawing.Point(132, 72);
+            this.uc_worker.Location = new System.Drawing.Point(141, 72);
             this.uc_worker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uc_worker.Name = "uc_worker";
-            this.uc_worker.Size = new System.Drawing.Size(414, 309);
+            this.uc_worker.Size = new System.Drawing.Size(405, 309);
             this.uc_worker.TabIndex = 41;
             this.uc_worker.UseCustomBackColor = true;
             this.uc_worker.UseSelectable = true;
@@ -856,5 +865,6 @@ namespace WindowsFormsApp1.Views
         private MovementsType_Module.UC_MovementsType uC_MovementsType1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private UC_Worker uc_worker;
+        private System.Windows.Forms.ImageList report_imagelist;
     }
 }
