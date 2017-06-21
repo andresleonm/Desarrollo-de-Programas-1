@@ -103,6 +103,7 @@ namespace WindowsFormsApp1
                         ChangePassword change = new ChangePassword(user);
                         this.Cursor = Cursors.Arrow;
                         change.ShowDialog(this);
+                        StartUserSession(user);
                     }
                     //else if (user.State == "LOGGED")
                     //{
