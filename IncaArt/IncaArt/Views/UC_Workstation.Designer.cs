@@ -55,7 +55,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
+            this.textbox_max_time = new MetroFramework.Controls.MetroTextBox();
             this.textbox_maxa_time = new MetroFramework.Controls.MetroLabel();
             this.textbox_min_time = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
@@ -93,7 +93,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(28, 31);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(721, 463);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.metroTabControl1.TabIndex = 1;
@@ -375,7 +375,7 @@
             this.groupBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox3.Controls.Add(this.metroLabel13);
             this.groupBox3.Controls.Add(this.metroLabel12);
-            this.groupBox3.Controls.Add(this.metroTextBox2);
+            this.groupBox3.Controls.Add(this.textbox_max_time);
             this.groupBox3.Controls.Add(this.textbox_maxa_time);
             this.groupBox3.Controls.Add(this.textbox_min_time);
             this.groupBox3.Controls.Add(this.metroLabel10);
@@ -427,36 +427,36 @@
             this.metroLabel12.Text = "(minutos)";
             this.metroLabel12.UseCustomForeColor = true;
             // 
-            // metroTextBox2
+            // textbox_max_time
             // 
             // 
             // 
             // 
-            this.metroTextBox2.CustomButton.Image = null;
-            this.metroTextBox2.CustomButton.Location = new System.Drawing.Point(99, 1);
-            this.metroTextBox2.CustomButton.Name = "";
-            this.metroTextBox2.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox2.CustomButton.TabIndex = 1;
-            this.metroTextBox2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox2.CustomButton.UseSelectable = true;
-            this.metroTextBox2.CustomButton.Visible = false;
-            this.metroTextBox2.Lines = new string[0];
-            this.metroTextBox2.Location = new System.Drawing.Point(134, 281);
-            this.metroTextBox2.MaxLength = 32767;
-            this.metroTextBox2.Name = "metroTextBox2";
-            this.metroTextBox2.PasswordChar = '\0';
-            this.metroTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox2.SelectedText = "";
-            this.metroTextBox2.SelectionLength = 0;
-            this.metroTextBox2.SelectionStart = 0;
-            this.metroTextBox2.ShortcutsEnabled = true;
-            this.metroTextBox2.Size = new System.Drawing.Size(121, 23);
-            this.metroTextBox2.TabIndex = 24;
-            this.metroTextBox2.UseSelectable = true;
-            this.metroTextBox2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.metroTextBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_number_KeyPress);
+            this.textbox_max_time.CustomButton.Image = null;
+            this.textbox_max_time.CustomButton.Location = new System.Drawing.Point(99, 1);
+            this.textbox_max_time.CustomButton.Name = "";
+            this.textbox_max_time.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.textbox_max_time.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textbox_max_time.CustomButton.TabIndex = 1;
+            this.textbox_max_time.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textbox_max_time.CustomButton.UseSelectable = true;
+            this.textbox_max_time.CustomButton.Visible = false;
+            this.textbox_max_time.Lines = new string[0];
+            this.textbox_max_time.Location = new System.Drawing.Point(134, 281);
+            this.textbox_max_time.MaxLength = 32767;
+            this.textbox_max_time.Name = "textbox_max_time";
+            this.textbox_max_time.PasswordChar = '\0';
+            this.textbox_max_time.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textbox_max_time.SelectedText = "";
+            this.textbox_max_time.SelectionLength = 0;
+            this.textbox_max_time.SelectionStart = 0;
+            this.textbox_max_time.ShortcutsEnabled = true;
+            this.textbox_max_time.Size = new System.Drawing.Size(121, 23);
+            this.textbox_max_time.TabIndex = 24;
+            this.textbox_max_time.UseSelectable = true;
+            this.textbox_max_time.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textbox_max_time.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textbox_max_time.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_number_KeyPress);
             // 
             // textbox_maxa_time
             // 
@@ -843,7 +843,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel11;
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroLabel metroLabel12;
-        private MetroFramework.Controls.MetroTextBox metroTextBox2;
+        private MetroFramework.Controls.MetroTextBox textbox_max_time;
         private MetroFramework.Controls.MetroLabel textbox_maxa_time;
         private MetroFramework.Controls.MetroTextBox textbox_min_time;
         private MetroFramework.Controls.MetroLabel metroLabel10;

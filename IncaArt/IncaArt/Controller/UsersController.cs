@@ -130,5 +130,80 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
              
+        public Result logIn(User user)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", user.Id.ToString()));
+
+            GenericResult result = execute_transaction("log_in_user", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result logOut(User user)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", user.Id.ToString()));
+
+            GenericResult result = execute_transaction("log_out_user", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result block(User user)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", user.Id.ToString()));
+
+            GenericResult result = execute_transaction("block_user", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result incFailedAttempts(User user, int amount)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", user.Id.ToString()));
+            parameters.Add(new Parameter("amount", amount.ToString()));
+
+            GenericResult result = execute_transaction("update_user_failed_attempts", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result clearFailedAttempts(User user)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", user.Id.ToString()));
+
+            GenericResult result = execute_transaction("update_user_failed_attempts", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+
+            return new Result(null, result.success, result.message);
+        }
     }
 }

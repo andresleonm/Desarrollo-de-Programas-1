@@ -34,8 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.consulta = new MetroFramework.Controls.MetroTabPage();
-            this.btn_template = new MetroFramework.Controls.MetroButton();
-            this.btn_import = new MetroFramework.Controls.MetroButton();
             this.btn_delete = new MetroFramework.Controls.MetroButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
@@ -94,6 +92,8 @@
             this.btn_cancel = new MetroFramework.Controls.MetroButton();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
+            this.btn_import = new MetroFramework.Controls.MetroTile();
+            this.btn_template = new MetroFramework.Controls.MetroTile();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -112,7 +112,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(15, 21);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(721, 502);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
@@ -123,8 +123,8 @@
             // 
             // consulta
             // 
-            this.consulta.Controls.Add(this.btn_template);
             this.consulta.Controls.Add(this.btn_import);
+            this.consulta.Controls.Add(this.btn_template);
             this.consulta.Controls.Add(this.btn_delete);
             this.consulta.Controls.Add(this.groupBox3);
             this.consulta.Controls.Add(this.groupBox2);
@@ -139,34 +139,6 @@
             this.consulta.VerticalScrollbarBarColor = true;
             this.consulta.VerticalScrollbarHighlightOnWheel = false;
             this.consulta.VerticalScrollbarSize = 10;
-            // 
-            // btn_template
-            // 
-            this.btn_template.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_template.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_template.Location = new System.Drawing.Point(-4, 434);
-            this.btn_template.Name = "btn_template";
-            this.btn_template.Size = new System.Drawing.Size(75, 23);
-            this.btn_template.TabIndex = 25;
-            this.btn_template.Text = "Plantilla";
-            this.btn_template.UseCustomBackColor = true;
-            this.btn_template.UseCustomForeColor = true;
-            this.btn_template.UseSelectable = true;
-            this.btn_template.Click += new System.EventHandler(this.btn_template_Click);
-            // 
-            // btn_import
-            // 
-            this.btn_import.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_import.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_import.Location = new System.Drawing.Point(77, 434);
-            this.btn_import.Name = "btn_import";
-            this.btn_import.Size = new System.Drawing.Size(75, 23);
-            this.btn_import.TabIndex = 24;
-            this.btn_import.Text = "Importar";
-            this.btn_import.UseCustomBackColor = true;
-            this.btn_import.UseCustomForeColor = true;
-            this.btn_import.UseSelectable = true;
-            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
             // 
             // btn_delete
             // 
@@ -187,7 +159,7 @@
             this.groupBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox3.Controls.Add(this.metroGrid1);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox3.Location = new System.Drawing.Point(3, 208);
+            this.groupBox3.Location = new System.Drawing.Point(3, 201);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(562, 220);
             this.groupBox3.TabIndex = 23;
@@ -1167,6 +1139,42 @@
             this.metroLabel20.Text = "Trabajador";
             this.metroLabel20.UseCustomBackColor = true;
             // 
+            // btn_import
+            // 
+            this.btn_import.ActiveControl = null;
+            this.btn_import.BackColor = System.Drawing.Color.Transparent;
+            this.btn_import.Location = new System.Drawing.Point(102, 422);
+            this.btn_import.Name = "btn_import";
+            this.btn_import.Size = new System.Drawing.Size(106, 38);
+            this.btn_import.TabIndex = 78;
+            this.btn_import.Text = "Importar";
+            this.btn_import.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
+            this.btn_import.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_import.UseCustomBackColor = true;
+            this.btn_import.UseCustomForeColor = true;
+            this.btn_import.UseSelectable = true;
+            this.btn_import.UseStyleColors = true;
+            this.btn_import.UseTileImage = true;
+            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
+            // 
+            // btn_template
+            // 
+            this.btn_template.ActiveControl = null;
+            this.btn_template.BackColor = System.Drawing.Color.Transparent;
+            this.btn_template.Location = new System.Drawing.Point(3, 422);
+            this.btn_template.Name = "btn_template";
+            this.btn_template.Size = new System.Drawing.Size(96, 38);
+            this.btn_template.TabIndex = 77;
+            this.btn_template.Text = "Plantilla";
+            this.btn_template.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
+            this.btn_template.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_template.UseCustomBackColor = true;
+            this.btn_template.UseCustomForeColor = true;
+            this.btn_template.UseSelectable = true;
+            this.btn_template.UseStyleColors = true;
+            this.btn_template.UseTileImage = true;
+            this.btn_template.Click += new System.EventHandler(this.btn_template_Click);
+            // 
             // UC_Worker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1257,8 +1265,8 @@
         private MetroFramework.Controls.MetroLabel metroLabel19;
         private MetroFramework.Controls.MetroLabel metroLabel18;
         private MetroFramework.Controls.MetroButton btn_save;
-        private MetroFramework.Controls.MetroButton btn_template;
-        private MetroFramework.Controls.MetroButton btn_import;
         private MetroFramework.Controls.MetroLabel metroLabel20;
+        private MetroFramework.Controls.MetroTile btn_import;
+        private MetroFramework.Controls.MetroTile btn_template;
     }
 }
