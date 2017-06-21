@@ -161,6 +161,10 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
             ClearTextBoxes(this);
             operation_value = 0;
             current_class = -1;
+            radio0.Enabled = true;
+            radio1.Enabled = true;
+            radio2.Enabled = true;
+            radio3.Enabled = true;
         }
 
         private void ClearTextBoxes(Control control)
@@ -300,6 +304,10 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
                 Clean();
                 metroTabControl1.SelectedIndex = 0;
                 operation_value = 0;
+                radio0.Enabled = true;
+                radio1.Enabled = true;
+                radio2.Enabled = true;
+                radio3.Enabled = true;
             }
         }
 
@@ -360,6 +368,10 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
                     metroTabControl1.SelectedIndex = 1;
                     operation_value = 1;
                     name_flag = true;
+                    radio0.Enabled = false;
+                    radio1.Enabled = false;
+                    radio2.Enabled = false;
+                    radio3.Enabled = false;
                 }
             }
         }
