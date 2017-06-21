@@ -84,7 +84,6 @@ namespace WindowsFormsApp1.Views
             this.uC_MovementsType1 = new WindowsFormsApp1.Views.MovementsType_Module.UC_MovementsType();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -758,20 +757,12 @@ namespace WindowsFormsApp1.Views
             this.uc_worker.UseSelectable = true;
             this.uc_worker.Visible = false;
             // 
-            // panel5
-            // 
-            this.panel5.Location = new System.Drawing.Point(333, 636);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(200, 100);
-            this.panel5.TabIndex = 66;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1155, 746);
-            this.Controls.Add(this.panel5);
             this.Controls.Add(this.uc_worker);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.uC_MovementsType1);
@@ -875,6 +866,5 @@ namespace WindowsFormsApp1.Views
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private UC_Worker uc_worker;
         private System.Windows.Forms.ImageList report_imagelist;
-        private System.Windows.Forms.Panel panel5;
     }
 }
