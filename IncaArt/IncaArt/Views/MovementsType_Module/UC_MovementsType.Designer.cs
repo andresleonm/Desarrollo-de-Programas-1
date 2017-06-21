@@ -32,8 +32,8 @@
             this.select_products = new MetroFramework.Controls.MetroTile();
             this.select_materials = new MetroFramework.Controls.MetroTile();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.uC_MaterialMovementsType1 = new WindowsFormsApp1.Views.MovementsType_Module.UC_MaterialMovementsType();
             this.uC_ProductMovementsType1 = new WindowsFormsApp1.Views.MovementsType_Module.UC_ProductMovementsType();
+            this.uC_MaterialMovementsType1 = new WindowsFormsApp1.Views.MovementsType_Module.UC_MaterialMovementsType();
             this.metroPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -101,14 +101,6 @@
             this.panel1.Size = new System.Drawing.Size(590, 650);
             this.panel1.TabIndex = 45;
             // 
-            // uC_MaterialMovementsType1
-            // 
-            this.uC_MaterialMovementsType1.Location = new System.Drawing.Point(3, 3);
-            this.uC_MaterialMovementsType1.Name = "uC_MaterialMovementsType1";
-            this.uC_MaterialMovementsType1.Size = new System.Drawing.Size(546, 645);
-            this.uC_MaterialMovementsType1.TabIndex = 0;
-            this.uC_MaterialMovementsType1.UseSelectable = true;
-            // 
             // uC_ProductMovementsType1
             // 
             this.uC_ProductMovementsType1.Location = new System.Drawing.Point(3, 0);
@@ -116,6 +108,14 @@
             this.uC_ProductMovementsType1.Size = new System.Drawing.Size(531, 643);
             this.uC_ProductMovementsType1.TabIndex = 1;
             this.uC_ProductMovementsType1.UseSelectable = true;
+            // 
+            // uC_MaterialMovementsType1
+            // 
+            this.uC_MaterialMovementsType1.Location = new System.Drawing.Point(3, 0);
+            this.uC_MaterialMovementsType1.Name = "uC_MaterialMovementsType1";
+            this.uC_MaterialMovementsType1.Size = new System.Drawing.Size(546, 645);
+            this.uC_MaterialMovementsType1.TabIndex = 0;
+            this.uC_MaterialMovementsType1.UseSelectable = true;
             // 
             // UC_MovementsType
             // 

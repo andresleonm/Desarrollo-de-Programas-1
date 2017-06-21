@@ -784,6 +784,8 @@ namespace WindowsFormsApp1.Views
                 }
             }
             openDialog.Dispose();
+            Load_Data();
+            Load_DataGridView();
         }
 
         private void CreateExcelError(List<WorkerError> list)
