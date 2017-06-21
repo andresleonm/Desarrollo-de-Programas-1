@@ -413,5 +413,6 @@ namespace WindowsFormsApp1.Views
         {
             this.metroLabel1.Visible = false;
         }
+
     }
 }

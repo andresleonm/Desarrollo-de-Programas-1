@@ -167,7 +167,7 @@
             this.efficiency.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.efficiency.DefaultCellStyle = dataGridViewCellStyle2;
-            this.efficiency.HeaderText = "Productividad";
+            this.efficiency.HeaderText = "Productividad (%)";
             this.efficiency.Name = "efficiency";
             this.efficiency.ReadOnly = true;
             // 
