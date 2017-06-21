@@ -375,7 +375,14 @@ namespace WindowsFormsApp1.Views
         //Limpiar
         private void tabIndex_Enter(object sender, EventArgs e)
         {
-
+            if (!deletedTab) Clean();
+            register.Text = "Guardar";
+            register.Visible = true;
+            curWarehouse = null;
+            if (!sessionUser.Profile.HasFunctionality("CREATE PRODUCT WAREHOUSE"))
+            {
+                register.Visible = false;
+            }
         }
 
         private void btn_clean_Click(object sender, EventArgs e)
@@ -796,7 +803,7 @@ namespace WindowsFormsApp1.Views
                 
             }
 
-            this.metroTabPage2.Enter += this.tabIndex_Enter;
+            metroTabPage2.Enter += tabIndex_Enter;
         }
 
         public override void CheckPermissions(User user)
