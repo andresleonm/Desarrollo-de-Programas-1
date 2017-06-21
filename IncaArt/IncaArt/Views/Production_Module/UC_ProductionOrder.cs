@@ -265,7 +265,7 @@ namespace WindowsFormsApp1.Views
             //product
             Load_Product();
             comboBox_Product.Enabled = true;
-
+            comboBox_Warehouse.Enabled = true;
             errorProvider.SetError(metroTextBox_Description,null);
             errorProvider.SetError(comboBox_Product, null);
             errorProvider.SetError(metroTextBox_Quantity, null);
@@ -376,6 +376,7 @@ namespace WindowsFormsApp1.Views
             //Product
             comboBox_Product.Text = order.Product_name;
             comboBox_Product.Enabled = false;
+            comboBox_Warehouse.Enabled = false;
             metroTextBox_Quantity.Text = order.Quantity.ToString();
             metroTextBox_Quantity_produced.Text = order.Produced_quantity.ToString();
             comboBox_Recipe.Text = order.Recipe_name;
@@ -409,9 +410,6 @@ namespace WindowsFormsApp1.Views
             {
                 UC_ProductionOrderSearch uc_productionOrderSearch = (UC_ProductionOrderSearch)(this.Parent.Controls.Find("production_search", false)[0]);
                 uc_productionOrderSearch.Visible = true;
-            }else
-            {
-                Load_Product();
             }
         }
 
