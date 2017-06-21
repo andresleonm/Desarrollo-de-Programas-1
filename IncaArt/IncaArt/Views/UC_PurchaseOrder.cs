@@ -111,6 +111,10 @@ namespace WindowsFormsApp1.Views
 
         private void btn_save_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrWhiteSpace(txt_total.Text))
+            {
+                btn_calculate.PerformClick();
+            }
             Controller.PurchaseOrderController po_controller = new Controller.PurchaseOrderController("dp1admin", "dp1admin");
             Controller.PurchaseOrderLineController pol_controller = new Controller.PurchaseOrderLineController("dp1admin", "dp1admin");
             Models.PurchaseOrder po = new Models.PurchaseOrder();
@@ -452,5 +456,92 @@ namespace WindowsFormsApp1.Views
         {
             calculateCosts();            
         }
+
+        private void grid_order_lines_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            
+            DataGridViewTextBoxEditingControl tb = (DataGridViewTextBoxEditingControl)e.Control;
+            
+            tb.KeyPress += new KeyPressEventHandler(dataGridViewTextBox_KeyPress);
+
+            e.Control.KeyPress += new KeyPressEventHandler(dataGridViewTextBox_KeyPress);
+        }
+
+
+        private void dataGridViewTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void grid_order_lines_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == 2)
+            {
+                
+            }
+        }
+
+        private void grid_order_lines_EditingControlShowing_1(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (((DataGridView)sender).CurrentCell.ColumnIndex == 6)
+            {
+                try
+                {
+                    DataGridViewTextBoxEditingControl tb = (DataGridViewTextBoxEditingControl)e.Control;
+                    tb.KeyPress += new KeyPressEventHandler(dataGridViewTextBox_KeyPress);
+
+                    e.Control.KeyPress += new KeyPressEventHandler(grid_order_pu_KeyPress);
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            else if (((DataGridView)sender).CurrentCell.ColumnIndex == 2)
+            {
+                try
+                {
+                    DataGridViewTextBoxEditingControl tb = (DataGridViewTextBoxEditingControl)e.Control;
+                    tb.KeyPress += new KeyPressEventHandler(dataGridViewTextBox_KeyPress);
+
+                    e.Control.KeyPress += new KeyPressEventHandler(grid_order_q_KeyPress);
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+                        
+        }
+
+        private void grid_order_pu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void grid_order_q_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }            
+        }
+
     }
 }
