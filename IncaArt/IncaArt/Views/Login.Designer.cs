@@ -142,8 +142,9 @@
             this.Controls.Add(this.Lbl_Password);
             this.Controls.Add(this.textBoxNickname);
             this.Controls.Add(this.Lbl_Username);
-            this.MinimizeBox = false;
+            this.MaximizeBox = false;
             this.Name = "Frm_Login";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inca Art";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

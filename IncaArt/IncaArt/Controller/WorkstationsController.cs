@@ -81,6 +81,8 @@ namespace WindowsFormsApp1.Controller
                 workstation.Quantity = Int32.Parse(r.getColumn(5));
                 workstation.Break_cost = Double.Parse(r.getColumn(6));
                 workstation.Currency_id = Int32.Parse(r.getColumn(7));
+                workstation.Min_average_time = Int32.Parse(r.getColumn(8));
+                workstation.Max_average_time = Int32.Parse(r.getColumn(9));
                 return new Result(workstation, true, "");
             }
             return new Result(null, result.success, result.message);
@@ -116,6 +118,8 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("quantity", workstation.Quantity.ToString()));
             parameters.Add(new Parameter("break_cost", workstation.Break_cost.ToString()));
             parameters.Add(new Parameter("currency_id", workstation.Currency_id.ToString()));
+            parameters.Add(new Parameter("min_average_time", workstation.Min_average_time.ToString()));
+            parameters.Add(new Parameter("max_average_time", workstation.Max_average_time.ToString()));
             GenericResult result = execute_transaction("update_workstation", parameters);
             if (result.success)
             {

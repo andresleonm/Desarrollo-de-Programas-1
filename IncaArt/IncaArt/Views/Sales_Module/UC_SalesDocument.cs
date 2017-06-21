@@ -95,6 +95,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 SalesDocument sales_doc = new SalesDocument();
                 if (ctxt_document_id.Text != "")
                     sales_doc.Id = Int32.Parse((ctxt_document_id.Text));
+                else
+                    sales_doc.Id = -1;
                 sales_doc.Customer_name = ctxt_customer.Text;
                 Result result = sales_document_controller.getSalesDocuments_by_filter(sales_doc);
 
