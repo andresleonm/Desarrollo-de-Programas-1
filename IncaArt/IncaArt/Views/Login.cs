@@ -82,11 +82,11 @@ namespace WindowsFormsApp1
                         this.Cursor = Cursors.Arrow;
                         change.ShowDialog(this);
                     }
-                    else if (user.State == "LOGGED")
-                    {
-                        this.Cursor = Cursors.Arrow;
-                        MessageBox.Show("El usuario ingresado ya tiene una sesion abierta");
-                    }
+                    //else if (user.State == "LOGGED")
+                    //{
+                    //    this.Cursor = Cursors.Arrow;
+                    //    MessageBox.Show("El usuario ingresado ya tiene una sesion abierta");
+                    //}
                     else
                     {
                         StartUserSession(user);
