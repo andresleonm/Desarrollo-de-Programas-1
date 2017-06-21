@@ -230,6 +230,8 @@ namespace WindowsFormsApp1.Views
             workstation.Name = name;
             workstation.Break_cost = break_cost;
             workstation.Currency_id = currency_id;
+            workstation.Min_average_time = Int32.Parse(textbox_min_time.Text);
+            workstation.Max_average_time = Int32.Parse(textbox_max_time.Text);
             int id = 0;
             if (operacion == 1) //UPDATE
             {
@@ -336,6 +338,8 @@ namespace WindowsFormsApp1.Views
                     textbox_break.Text = workstation.Break_cost.ToString();
                     textbox_name.Text = workstation.Name;
                     textbox_quantity.Text = workstation.Quantity.ToString();
+                    textbox_min_time.Text = workstation.Min_average_time.ToString();
+                    textbox_max_time.Text = workstation.Max_average_time.ToString();
                     metroTabControl1.SelectedIndex = 1;
                     operation_value = 1;
                 }
