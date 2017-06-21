@@ -62,6 +62,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 {
                     customer = null;
                     btn_Clean.PerformClick();
+                    btn_Clean.PerformClick();
                 }
             }
         }
@@ -235,6 +236,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                         i++;
                     }
                     btn_Clean.PerformClick();
+                    btn_Clean.PerformClick();
                     tab_Estimate.SelectedIndex = 0;
                     MessageBox.Show(this, "Cotización actualizada exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Set_Flag_All(false);
@@ -277,6 +279,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                                     sales_estimate_line_controller.insertSalesestimateLine(sel);
                                 }
                                 btn_Clean.PerformClick();
+                                btn_Clean.PerformClick();
                                 tab_Estimate.SelectedIndex = 0;
                                 MessageBox.Show(this, "Se ha creado la cotización N° : " + sales_estimate_id.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                             }
@@ -294,6 +297,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
+            btn_Clean.PerformClick();
             btn_Clean.PerformClick();
             this.Visible = false;
         }

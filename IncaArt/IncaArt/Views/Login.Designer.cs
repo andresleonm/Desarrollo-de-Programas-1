@@ -119,10 +119,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Inca_Art;
-            this.pictureBox1.Location = new System.Drawing.Point(128, 12);
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Tumi;
+            this.pictureBox1.Location = new System.Drawing.Point(99, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(160, 160);
+            this.pictureBox1.Size = new System.Drawing.Size(219, 160);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 

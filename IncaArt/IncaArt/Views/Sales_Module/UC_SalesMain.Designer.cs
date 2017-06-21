@@ -30,28 +30,30 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.uC_SalesEstimate1 = new WindowsFormsApp1.Views.Sales_Module.UC_SalesEstimate();
             this.uC_SalesRefund1 = new WindowsFormsApp1.Views.Sales_Module.UC_SalesRefund();
             this.uC_SalesDocument2 = new WindowsFormsApp1.Views.Sales_Module.UC_SalesDocument();
             this.uC_SalesOrder2 = new WindowsFormsApp1.Views.UC_SalesOrder();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.btn_Estimates = new MetroFramework.Controls.MetroTile();
             this.btn_Documents = new MetroFramework.Controls.MetroTile();
             this.btn_Orders = new MetroFramework.Controls.MetroTile();
             this.btn_Refunds = new MetroFramework.Controls.MetroTile();
-            this.uC_SalesEstimate1 = new WindowsFormsApp1.Views.Sales_Module.UC_SalesEstimate();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btn_Estimates);
-            this.panel1.Controls.Add(this.btn_Documents);
-            this.panel1.Controls.Add(this.btn_Orders);
-            this.panel1.Controls.Add(this.btn_Refunds);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(894, 73);
-            this.panel1.TabIndex = 41;
+            this.panel1.Size = new System.Drawing.Size(1300, 700);
+            this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
@@ -60,10 +62,18 @@
             this.panel2.Controls.Add(this.uC_SalesRefund1);
             this.panel2.Controls.Add(this.uC_SalesDocument2);
             this.panel2.Controls.Add(this.uC_SalesOrder2);
-            this.panel2.Location = new System.Drawing.Point(3, 79);
+            this.panel2.Location = new System.Drawing.Point(-2, 76);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1070, 618);
-            this.panel2.TabIndex = 42;
+            this.panel2.TabIndex = 44;
+            // 
+            // uC_SalesEstimate1
+            // 
+            this.uC_SalesEstimate1.BackColor = System.Drawing.Color.White;
+            this.uC_SalesEstimate1.Location = new System.Drawing.Point(0, 3);
+            this.uC_SalesEstimate1.Name = "uC_SalesEstimate1";
+            this.uC_SalesEstimate1.Size = new System.Drawing.Size(875, 615);
+            this.uC_SalesEstimate1.TabIndex = 3;
             // 
             // uC_SalesRefund1
             // 
@@ -92,6 +102,17 @@
             this.uC_SalesOrder2.Theme = MetroFramework.MetroThemeStyle.Light;
             this.uC_SalesOrder2.UseCustomBackColor = true;
             this.uC_SalesOrder2.UseSelectable = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btn_Estimates);
+            this.panel3.Controls.Add(this.btn_Documents);
+            this.panel3.Controls.Add(this.btn_Orders);
+            this.panel3.Controls.Add(this.btn_Refunds);
+            this.panel3.Location = new System.Drawing.Point(-2, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(894, 73);
+            this.panel3.TabIndex = 43;
             // 
             // btn_Estimates
             // 
@@ -162,42 +183,35 @@
             this.btn_Refunds.UseTileImage = true;
             this.btn_Refunds.Click += new System.EventHandler(this.btn_Refunds_Click);
             // 
-            // uC_SalesEstimate1
-            // 
-            this.uC_SalesEstimate1.BackColor = System.Drawing.Color.White;
-            this.uC_SalesEstimate1.Location = new System.Drawing.Point(0, 3);
-            this.uC_SalesEstimate1.Name = "uC_SalesEstimate1";
-            this.uC_SalesEstimate1.Size = new System.Drawing.Size(875, 615);
-            this.uC_SalesEstimate1.TabIndex = 3;
-            // 
             // UC_SalesMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Name = "UC_SalesMain";
-            this.Size = new System.Drawing.Size(1072, 700);
+            this.Size = new System.Drawing.Size(1300, 700);
             this.Load += new System.EventHandler(this.UC_SalesMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private Sales_Module.UC_SalesEstimate uC_SalesEstimate1;
+        private Sales_Module.UC_SalesRefund uC_SalesRefund1;
+        private Sales_Module.UC_SalesDocument uC_SalesDocument2;
+        private UC_SalesOrder uC_SalesOrder2;
+        private System.Windows.Forms.Panel panel3;
+        private MetroFramework.Controls.MetroTile btn_Estimates;
         private MetroFramework.Controls.MetroTile btn_Documents;
         private MetroFramework.Controls.MetroTile btn_Orders;
         private MetroFramework.Controls.MetroTile btn_Refunds;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private Sales_Module.UC_SalesDocument uC_SalesDocument2;
-        private UC_SalesOrder uC_SalesOrder2;
-        private Sales_Module.UC_SalesRefund uC_SalesRefund1;
-        private MetroFramework.Controls.MetroTile btn_Estimates;
-        private Sales_Module.UC_SalesEstimate uC_SalesEstimate1;
     }
 }

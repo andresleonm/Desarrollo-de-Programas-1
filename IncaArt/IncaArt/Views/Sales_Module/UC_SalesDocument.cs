@@ -51,6 +51,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             if (tab_Document.SelectedIndex == 0) // Documents
             {
                 btn_Clean.PerformClick();
+                btn_Clean.PerformClick();
                 ctxt_document_id.Text = "";
                 ctxt_customer.Text = "";
                 fill_Sales_Documents();
@@ -59,6 +60,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             {
                 if (!edit)
                 {
+                    btn_Clean.PerformClick();
                     btn_Clean.PerformClick();
                 }
             }
@@ -313,6 +315,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
                     }
                     btn_Clean.PerformClick();
+                    btn_Clean.PerformClick();
                     tab_Document.SelectedIndex = 0;
                     MessageBox.Show(this, "Se ha creado el documento N° : " + sales_document_id.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                 }
@@ -325,6 +328,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
+            btn_Clean.PerformClick();
             btn_Clean.PerformClick();
             this.Visible = false;
         }
