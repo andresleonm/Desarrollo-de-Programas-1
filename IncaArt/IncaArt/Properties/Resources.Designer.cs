@@ -203,9 +203,29 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Inca {
+            get {
+                object obj = ResourceManager.GetObject("Inca", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Inca_Art {
             get {
                 object obj = ResourceManager.GetObject("Inca Art", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Inca1 {
+            get {
+                object obj = ResourceManager.GetObject("Inca1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -346,6 +366,16 @@ namespace WindowsFormsApp1.Properties {
         public static System.Drawing.Bitmap Shopping_Cart_52px {
             get {
                 object obj = ResourceManager.GetObject("Shopping Cart_52px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Tumi {
+            get {
+                object obj = ResourceManager.GetObject("Tumi", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
