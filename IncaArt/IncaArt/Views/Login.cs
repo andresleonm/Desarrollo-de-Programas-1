@@ -16,13 +16,9 @@ namespace WindowsFormsApp1
     public partial class Frm_Login : Form
     {
         UsersController usersController;
-        int failedAttempts;
-        int prevUserId;
         const int MAX_FAILED_ATTEMPTS = 5;
         public Frm_Login()
         {
-            failedAttempts = 0;
-            prevUserId = 0;
             InitializeComponent();
             usersController = new UsersController("", "");
         }
@@ -54,6 +50,34 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void CheckFailedAttempts(User user)
+        {
+            Result incResult = usersController.incFailedAttempts(user, 1);
+            this.Cursor = Cursors.Arrow;
+
+            if (incResult.success)
+            {
+                int failedAttempts = Int32.Parse((string)incResult.data);
+
+                string msg = "La contraseña es incorrecta";
+
+                if (failedAttempts == MAX_FAILED_ATTEMPTS)
+                {
+                    msg += " y hemos bloqueado tu cuenta razones de seguridad";
+                }
+                else if (failedAttempts >= (MAX_FAILED_ATTEMPTS - 2))
+                {
+                    msg += ". Hemos detectado " + failedAttempts + " intento fallidos, al quinto intento fallido la cuenta sera bloqueada";
+                }
+
+                MessageBox.Show(msg);
+            }
+            else
+            {
+                MessageBox.Show(incResult.message);
+            }
+        }
+
         private void Btn_Login_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
@@ -73,8 +97,6 @@ namespace WindowsFormsApp1
                 {
                     textBoxPassword.Text = "";
                     textBoxNickname.Text = "";
-                    prevUserId = 0;
-                    failedAttempts = 0;
 
                     if (user.State == "PENDING")
                     {
@@ -94,31 +116,7 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    this.Cursor = Cursors.Arrow;
-                    if (prevUserId == user.Id)
-                    {
-                        failedAttempts++;
-                    }
-                    else
-                    {
-                        failedAttempts = 1;
-                    }
-
-                    prevUserId = user.Id;
-
-                    string msg = "La contraseña es incorrecta";
-
-                    if (failedAttempts == MAX_FAILED_ATTEMPTS)
-                    {
-                        msg += " y hemos bloqueado tu cuenta razones de seguridad";
-                        usersController.block(user);
-                    }
-                    else if (failedAttempts >= (MAX_FAILED_ATTEMPTS - 2))
-                    {
-                        msg += ". Hemos detectado " + failedAttempts + " intento fallidos, al quinto intento fallido la cuenta sera bloqueada";
-                    }
-
-                    MessageBox.Show(msg);
+                    CheckFailedAttempts(user);
                 }
             }
             else
