@@ -66,6 +66,14 @@
             this.txt_no_taxes = new MetroFramework.Controls.MetroTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grid_order_lines = new MetroFramework.Controls.MetroGrid();
+            this.dueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.material = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.quant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deliver_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit_measure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.warehouse = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sub_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.combo_supplier = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
@@ -78,14 +86,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.txt_observation = new System.Windows.Forms.RichTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.dueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.material = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.quant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deliver_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit_measure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.warehouse = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sub_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -774,6 +774,81 @@
             this.grid_order_lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_order_lines_CellValueChanged);
             this.grid_order_lines.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.grid_order_lines_EditingControlShowing_1);
             // 
+            // dueDate
+            // 
+            this.dueDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.dueDate.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dueDate.HeaderText = "Fecha Programada";
+            this.dueDate.Name = "dueDate";
+            // 
+            // material
+            // 
+            this.material.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.material.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.material.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.material.HeaderText = "Material";
+            this.material.Name = "material";
+            this.material.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.material.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // quant
+            // 
+            this.quant.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.quant.DefaultCellStyle = dataGridViewCellStyle4;
+            this.quant.HeaderText = "Cantidad";
+            this.quant.MaxInputLength = 8;
+            this.quant.Name = "quant";
+            // 
+            // deliver_quantity
+            // 
+            this.deliver_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle5.NullValue = "0";
+            this.deliver_quantity.DefaultCellStyle = dataGridViewCellStyle5;
+            this.deliver_quantity.HeaderText = "Cantidad Recibida";
+            this.deliver_quantity.Name = "deliver_quantity";
+            this.deliver_quantity.ReadOnly = true;
+            // 
+            // unit_measure
+            // 
+            this.unit_measure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.unit_measure.HeaderText = "Unidad de Medida";
+            this.unit_measure.Name = "unit_measure";
+            this.unit_measure.ReadOnly = true;
+            // 
+            // warehouse
+            // 
+            this.warehouse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.warehouse.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.warehouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.warehouse.HeaderText = "Almacén";
+            this.warehouse.Name = "warehouse";
+            // 
+            // unitPrice
+            // 
+            this.unitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = "0";
+            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle6;
+            this.unitPrice.HeaderText = "Precio Unitario";
+            this.unitPrice.MaxInputLength = 8;
+            this.unitPrice.Name = "unitPrice";
+            // 
+            // sub_total
+            // 
+            this.sub_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle7.Format = "C2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.sub_total.DefaultCellStyle = dataGridViewCellStyle7;
+            this.sub_total.HeaderText = "Subtotal";
+            this.sub_total.Name = "sub_total";
+            this.sub_total.ReadOnly = true;
+            // 
             // combo_supplier
             // 
             this.combo_supplier.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -938,86 +1013,12 @@
             this.metroLabel1.UseCustomBackColor = true;
             this.metroLabel1.UseCustomForeColor = true;
             // 
-            // dueDate
-            // 
-            this.dueDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.dueDate.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dueDate.HeaderText = "Fecha Programada";
-            this.dueDate.Name = "dueDate";
-            // 
-            // material
-            // 
-            this.material.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.material.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.material.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.material.HeaderText = "Material";
-            this.material.Name = "material";
-            this.material.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.material.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // quant
-            // 
-            this.quant.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.quant.DefaultCellStyle = dataGridViewCellStyle4;
-            this.quant.HeaderText = "Cantidad";
-            this.quant.MaxInputLength = 8;
-            this.quant.Name = "quant";
-            // 
-            // deliver_quantity
-            // 
-            this.deliver_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.NullValue = "0";
-            this.deliver_quantity.DefaultCellStyle = dataGridViewCellStyle5;
-            this.deliver_quantity.HeaderText = "Cantidad Recibida";
-            this.deliver_quantity.Name = "deliver_quantity";
-            this.deliver_quantity.ReadOnly = true;
-            // 
-            // unit_measure
-            // 
-            this.unit_measure.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unit_measure.HeaderText = "Unidad de Medida";
-            this.unit_measure.Name = "unit_measure";
-            this.unit_measure.ReadOnly = true;
-            // 
-            // warehouse
-            // 
-            this.warehouse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.warehouse.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.warehouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.warehouse.HeaderText = "Almacén";
-            this.warehouse.Name = "warehouse";
-            // 
-            // unitPrice
-            // 
-            this.unitPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = "0";
-            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle6;
-            this.unitPrice.HeaderText = "Precio Unitario";
-            this.unitPrice.MaxInputLength = 8;
-            this.unitPrice.Name = "unitPrice";
-            // 
-            // sub_total
-            // 
-            this.sub_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.Format = "C2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.sub_total.DefaultCellStyle = dataGridViewCellStyle7;
-            this.sub_total.HeaderText = "Subtotal";
-            this.sub_total.Name = "sub_total";
-            this.sub_total.ReadOnly = true;
-            // 
             // UC_PurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScrollMargin = new System.Drawing.Size(5, 5);
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel2);
             this.DoubleBuffered = true;
             this.Name = "UC_PurchaseOrder";

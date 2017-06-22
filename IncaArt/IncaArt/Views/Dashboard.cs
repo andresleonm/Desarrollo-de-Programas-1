@@ -327,7 +327,7 @@ namespace WindowsFormsApp1.Views
 
         private void hide_UserControls()
         {
-            foreach (UserControl uc in Controls.OfType<UserControl>())
+            foreach (UserControl uc in panel5.Controls.OfType<UserControl>())
             {
                 uc.Visible = false;
             }
