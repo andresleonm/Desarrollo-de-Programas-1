@@ -550,6 +550,7 @@ namespace WindowsFormsApp1.Views
             // 
             // shift
             // 
+            this.shift.BackColor = System.Drawing.Color.White;
             this.shift.Dock = System.Windows.Forms.DockStyle.Fill;
             this.shift.Location = new System.Drawing.Point(0, 0);
             this.shift.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
