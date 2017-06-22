@@ -563,7 +563,7 @@ namespace WindowsFormsApp1.Views
             this.mainDashboard1.Location = new System.Drawing.Point(141, 72);
             this.mainDashboard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.mainDashboard1.Name = "mainDashboard1";
-            this.mainDashboard1.Size = new System.Drawing.Size(1014, 674);
+            this.mainDashboard1.Size = new System.Drawing.Size(926, 674);
             this.mainDashboard1.TabIndex = 13;
             this.mainDashboard1.UseSelectable = true;
             // 
@@ -722,7 +722,7 @@ namespace WindowsFormsApp1.Views
             this.uC_MovementsType1.Location = new System.Drawing.Point(141, 72);
             this.uC_MovementsType1.Margin = new System.Windows.Forms.Padding(2);
             this.uC_MovementsType1.Name = "uC_MovementsType1";
-            this.uC_MovementsType1.Size = new System.Drawing.Size(1014, 674);
+            this.uC_MovementsType1.Size = new System.Drawing.Size(926, 674);
             this.uC_MovementsType1.TabIndex = 62;
             this.uC_MovementsType1.UseSelectable = true;
             // 
@@ -746,6 +746,7 @@ namespace WindowsFormsApp1.Views
             // 
             // uc_worker
             // 
+            this.uc_worker.AutoScroll = true;
             this.uc_worker.BackColor = System.Drawing.Color.White;
             this.uc_worker.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uc_worker.Location = new System.Drawing.Point(141, 72);
@@ -763,10 +764,11 @@ namespace WindowsFormsApp1.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1155, 746);
+            this.Controls.Add(this.mainDashboard1);
+            this.Controls.Add(this.workersPerformance_Report1);
+            this.Controls.Add(this.uC_MovementsType1);
             this.Controls.Add(this.uc_worker);
             this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.uC_MovementsType1);
-            this.Controls.Add(this.workersPerformance_Report1);
             this.Controls.Add(this.uC_CurrencyMain1);
             this.Controls.Add(this.typeWarehouseMain1);
             this.Controls.Add(this.uC_WarehouseMovement1);
@@ -781,7 +783,6 @@ namespace WindowsFormsApp1.Views
             this.Controls.Add(this.bom1);
             this.Controls.Add(this.client1);
             this.Controls.Add(this.uC_PurchasesMenu1);
-            this.Controls.Add(this.mainDashboard1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
