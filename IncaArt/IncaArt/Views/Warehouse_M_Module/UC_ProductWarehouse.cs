@@ -291,7 +291,7 @@ namespace WindowsFormsApp1.Views
             if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
             {
                 cur_row = e.RowIndex;
-                delete.Enabled = true;
+                //delete.Enabled = true;
             }
         }
 
@@ -375,7 +375,14 @@ namespace WindowsFormsApp1.Views
         //Limpiar
         private void tabIndex_Enter(object sender, EventArgs e)
         {
-
+            if (!deletedTab) Clean();
+            register.Text = "Guardar";
+            register.Visible = true;
+            curWarehouse = null;
+            if (!sessionUser.Profile.HasFunctionality("CREATE PRODUCT WAREHOUSE"))
+            {
+                register.Visible = false;
+            }
         }
 
         private void btn_clean_Click(object sender, EventArgs e)
@@ -786,7 +793,7 @@ namespace WindowsFormsApp1.Views
         {
             if (!sessionUser.Profile.HasFunctionality("DELETE PRODUCT WAREHOUSE"))
             {
-                delete.Visible = false;
+                //delete.Visible = false;
             }
 
             if (!sessionUser.Profile.HasFunctionality("CREATE PRODUCT WAREHOUSE") && !sessionUser.Profile.HasFunctionality("EDIT PRODUCT WAREHOUSE"))
@@ -795,7 +802,7 @@ namespace WindowsFormsApp1.Views
                 this.metroTabControl1.TabPages.Remove(registerTab);
                 
             }
-            
+
             metroTabPage2.Enter += tabIndex_Enter;
         }
 
