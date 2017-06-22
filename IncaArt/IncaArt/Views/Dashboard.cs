@@ -25,23 +25,23 @@ namespace WindowsFormsApp1.Views
             hide_UserControls();
             mainDashboard1.Visible = true;
             Cursor = Cursors.Arrow;
-            mainDashboard1.Controls.Find("metroTile11", false)[0].Click += btn_supplier_Click;
-            mainDashboard1.Controls.Find("metroTile10", false)[0].Click += btn_warehouse_Click;
-            mainDashboard1.Controls.Find("metroTile11", false)[0].Click += btn_supplier_Click;
-            mainDashboard1.Controls.Find("metroTile2", false)[0].Click += btn_client_Click;
-            mainDashboard1.Controls.Find("metroTile5", false)[0].Click += btn_bom_Click;
-            mainDashboard1.Controls.Find("metroTile8", false)[0].Click += btn_workstation_Click;
-            mainDashboard1.Controls.Find("metroTile9", false)[0].Click += btn_parameters_Click;
-            mainDashboard1.Controls.Find("metroTile1", false)[0].Click += btn_user_Click;
-            mainDashboard1.Controls.Find("metroTile3", false)[0].Click += btn_worker_Click;
-            mainDashboard1.Controls.Find("metroTile7", false)[0].Click += btn_material_Click;
-            mainDashboard1.Controls.Find("metroTile4", false)[0].Click += btn_profile_Click;
-            mainDashboard1.Controls.Find("metroTile6", false)[0].Click += btn_product_Click;
-            mainDashboard1.Controls.Find("metroTile12", false)[0].Click += btn_shift_Click;
-            mainDashboard1.Controls.Find("metroTile13", false)[0].Click += btn_typewarehouses_Click;
-            mainDashboard1.Controls.Find("metroTile16", false)[0].Click += btn_ratio_Click;
-            uc_reports.Controls.Find("metroTile8", false)[0].Click += btn_wperformance_Click;
-            mainDashboard1.Controls.Find("metroTile14", false)[0].Click += btn_movementsType_Click;
+            mainDashboard1.Controls.Find("metroTile11", true)[0].Click += btn_supplier_Click;
+            mainDashboard1.Controls.Find("metroTile10", true)[0].Click += btn_warehouse_Click;
+            mainDashboard1.Controls.Find("metroTile11", true)[0].Click += btn_supplier_Click;
+            mainDashboard1.Controls.Find("metroTile2", true)[0].Click += btn_client_Click;
+            mainDashboard1.Controls.Find("metroTile5", true)[0].Click += btn_bom_Click;
+            mainDashboard1.Controls.Find("metroTile8", true)[0].Click += btn_workstation_Click;
+            mainDashboard1.Controls.Find("metroTile9", true)[0].Click += btn_parameters_Click;
+            mainDashboard1.Controls.Find("metroTile1", true)[0].Click += btn_user_Click;
+            mainDashboard1.Controls.Find("metroTile3", true)[0].Click += btn_worker_Click;
+            mainDashboard1.Controls.Find("metroTile7", true)[0].Click += btn_material_Click;
+            mainDashboard1.Controls.Find("metroTile4", true)[0].Click += btn_profile_Click;
+            mainDashboard1.Controls.Find("metroTile6", true)[0].Click += btn_product_Click;
+            mainDashboard1.Controls.Find("metroTile12", true)[0].Click += btn_shift_Click;
+            mainDashboard1.Controls.Find("metroTile13", true)[0].Click += btn_typewarehouses_Click;
+            mainDashboard1.Controls.Find("metroTile16", true)[0].Click += btn_ratio_Click;
+            uc_reports.Controls.Find("metroTile8", true)[0].Click += btn_wperformance_Click;
+            mainDashboard1.Controls.Find("metroTile14", true)[0].Click += btn_movementsType_Click;
             this.sessionUser = sessionUser;
             label_user_role.Text = "(" + sessionUser.Profile.Description + ")";
             label_user_name.Text = sessionUser.Name + " " + sessionUser.Middlename;
@@ -327,7 +327,7 @@ namespace WindowsFormsApp1.Views
 
         private void hide_UserControls()
         {
-            foreach (UserControl uc in Controls.OfType<UserControl>())
+            foreach (UserControl uc in panel5.Controls.OfType<UserControl>())
             {
                 uc.Visible = false;
             }

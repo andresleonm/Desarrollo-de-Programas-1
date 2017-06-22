@@ -44,7 +44,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(764, 70);
-            this.panel1.TabIndex = 2;
+            this.panel1.TabIndex = 5;
             // 
             // metroTile1
             // 
@@ -60,7 +60,6 @@
             this.metroTile1.UseCustomBackColor = true;
             this.metroTile1.UseSelectable = true;
             this.metroTile1.UseTileImage = true;
-            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
             // btn_purchase_orders
             // 
@@ -76,32 +75,32 @@
             this.btn_purchase_orders.UseCustomBackColor = true;
             this.btn_purchase_orders.UseSelectable = true;
             this.btn_purchase_orders.UseTileImage = true;
-            this.btn_purchase_orders.Click += new System.EventHandler(this.btn_purchase_orders_Click);
             // 
             // uC_SimulationConfig2
             // 
             this.uC_SimulationConfig2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_SimulationConfig2.Location = new System.Drawing.Point(0, 70);
+            this.uC_SimulationConfig2.Location = new System.Drawing.Point(0, 0);
             this.uC_SimulationConfig2.Name = "uC_SimulationConfig2";
-            this.uC_SimulationConfig2.Size = new System.Drawing.Size(764, 461);
-            this.uC_SimulationConfig2.TabIndex = 4;
+            this.uC_SimulationConfig2.Size = new System.Drawing.Size(764, 531);
+            this.uC_SimulationConfig2.TabIndex = 7;
             // 
             // uC_SimulationExecution1
             // 
+            this.uC_SimulationExecution1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.uC_SimulationExecution1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_SimulationExecution1.Location = new System.Drawing.Point(0, 70);
+            this.uC_SimulationExecution1.Location = new System.Drawing.Point(0, 0);
             this.uC_SimulationExecution1.Name = "uC_SimulationExecution1";
-            this.uC_SimulationExecution1.Size = new System.Drawing.Size(764, 461);
-            this.uC_SimulationExecution1.TabIndex = 3;
+            this.uC_SimulationExecution1.Size = new System.Drawing.Size(764, 531);
+            this.uC_SimulationExecution1.TabIndex = 6;
             this.uC_SimulationExecution1.Visible = false;
             // 
             // UC_Simulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.uC_SimulationConfig2);
             this.Controls.Add(this.uC_SimulationExecution1);
-            this.Controls.Add(this.panel1);
             this.Name = "UC_Simulation";
             this.Size = new System.Drawing.Size(764, 531);
             this.panel1.ResumeLayout(false);
@@ -110,12 +109,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private MetroFramework.Controls.MetroTile btn_purchase_orders;
         private UC_SimulationConfig uC_SimulationConfig1;
+        private System.Windows.Forms.Panel panel1;
         private MetroFramework.Controls.MetroTile metroTile1;
-        private UC_SimulationExecution uC_SimulationExecution1;
+        private MetroFramework.Controls.MetroTile btn_purchase_orders;
         private UC_SimulationConfig uC_SimulationConfig2;
+        private UC_SimulationExecution uC_SimulationExecution1;
     }
 }

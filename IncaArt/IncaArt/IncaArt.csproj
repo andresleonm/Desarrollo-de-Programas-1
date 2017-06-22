@@ -313,24 +313,6 @@
     <Compile Include="Views\Production_Module\UC_ProductionMenu.Designer.cs">
       <DependentUpon>UC_ProductionMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Production_Module\UC_ProductionOrderWorkLine.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Production_Module\UC_ProductionOrderWorkLine.Designer.cs">
-      <DependentUpon>UC_ProductionOrderWorkLine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Production_Module\UC_ProductionOrderMaterialLine.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Production_Module\UC_ProductionOrderMaterialLine.Designer.cs">
-      <DependentUpon>UC_ProductionOrderMaterialLine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Production_Module\UC_ProductionOrderProductLine.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Production_Module\UC_ProductionOrderProductLine.Designer.cs">
-      <DependentUpon>UC_ProductionOrderProductLine.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Sales_Module\ProductWarehouseS.cs" />
     <Compile Include="Views\Sales_Module\Refunds\Refund.cs">
       <SubType>UserControl</SubType>
@@ -772,15 +754,6 @@
     <EmbeddedResource Include="Views\UC_Product.resx">
       <DependentUpon>UC_Product.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderMaterialLine.resx">
-      <DependentUpon>UC_ProductionOrderMaterialLine.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderProductLine.resx">
-      <DependentUpon>UC_ProductionOrderProductLine.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Production_Module\UC_ProductionOrderWorkLine.resx">
-      <DependentUpon>UC_ProductionOrderWorkLine.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Ratio.resx">
       <DependentUpon>UC_Ratio.cs</DependentUpon>
     </EmbeddedResource>
@@ -921,6 +894,9 @@
     <None Include="Resources\Close Window_52px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\imageedit_2_2547621693.png" />
+    <None Include="Resources\Inca.png" />
+    <None Include="Resources\Tumi.png" />
     <None Include="Resources\Coins_48px.png" />
     <None Include="Resources\Inca Art.PNG" />
     <None Include="Resources\pdf.png" />

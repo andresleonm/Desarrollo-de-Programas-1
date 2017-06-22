@@ -431,7 +431,7 @@
             // dt_iniDate
             // 
             this.dt_iniDate.Location = new System.Drawing.Point(664, 22);
-            this.dt_iniDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_iniDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_iniDate.Name = "dt_iniDate";
             this.dt_iniDate.Size = new System.Drawing.Size(222, 29);
             this.dt_iniDate.TabIndex = 59;
@@ -439,7 +439,7 @@
             // dt_endDate
             // 
             this.dt_endDate.Location = new System.Drawing.Point(664, 74);
-            this.dt_endDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_endDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_endDate.Name = "dt_endDate";
             this.dt_endDate.Size = new System.Drawing.Size(222, 29);
             this.dt_endDate.TabIndex = 58;
@@ -909,6 +909,7 @@
             // 
             // dt_IssueHour
             // 
+            this.dt_IssueHour.Enabled = false;
             this.dt_IssueHour.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dt_IssueHour.Location = new System.Drawing.Point(213, 92);
             this.dt_IssueHour.MinimumSize = new System.Drawing.Size(0, 29);
@@ -966,6 +967,7 @@
             // dt_IssueDate
             // 
             this.dt_IssueDate.CalendarMonthBackground = System.Drawing.Color.White;
+            this.dt_IssueDate.Enabled = false;
             this.dt_IssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dt_IssueDate.Location = new System.Drawing.Point(93, 92);
             this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);

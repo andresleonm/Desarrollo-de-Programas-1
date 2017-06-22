@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.consulta = new MetroFramework.Controls.MetroTabPage();
+            this.btn_import = new MetroFramework.Controls.MetroTile();
+            this.btn_export = new MetroFramework.Controls.MetroTile();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,8 +60,8 @@
             this.btn_search = new MetroFramework.Controls.MetroButton();
             this.btn_clean_s = new MetroFramework.Controls.MetroButton();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
-            this.btn_export = new MetroFramework.Controls.MetroTile();
-            this.btn_import = new MetroFramework.Controls.MetroTile();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -67,21 +69,23 @@
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.consulta);
+            this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
-            this.metroTabControl1.Location = new System.Drawing.Point(19, 28);
+            this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(720, 548);
+            this.metroTabControl1.Size = new System.Drawing.Size(763, 564);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 1;
             this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTabControl1.UseCustomBackColor = true;
             this.metroTabControl1.UseCustomForeColor = true;
             this.metroTabControl1.UseSelectable = true;
             // 
@@ -97,12 +101,48 @@
             this.consulta.HorizontalScrollbarSize = 10;
             this.consulta.Location = new System.Drawing.Point(4, 38);
             this.consulta.Name = "consulta";
-            this.consulta.Size = new System.Drawing.Size(712, 506);
+            this.consulta.Size = new System.Drawing.Size(755, 522);
             this.consulta.TabIndex = 0;
             this.consulta.Text = "Consulta";
             this.consulta.VerticalScrollbarBarColor = true;
             this.consulta.VerticalScrollbarHighlightOnWheel = false;
             this.consulta.VerticalScrollbarSize = 10;
+            // 
+            // btn_import
+            // 
+            this.btn_import.ActiveControl = null;
+            this.btn_import.BackColor = System.Drawing.Color.Transparent;
+            this.btn_import.Location = new System.Drawing.Point(111, 236);
+            this.btn_import.Name = "btn_import";
+            this.btn_import.Size = new System.Drawing.Size(106, 38);
+            this.btn_import.TabIndex = 76;
+            this.btn_import.Text = "Importar";
+            this.btn_import.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
+            this.btn_import.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_import.UseCustomBackColor = true;
+            this.btn_import.UseCustomForeColor = true;
+            this.btn_import.UseSelectable = true;
+            this.btn_import.UseStyleColors = true;
+            this.btn_import.UseTileImage = true;
+            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
+            // 
+            // btn_export
+            // 
+            this.btn_export.ActiveControl = null;
+            this.btn_export.BackColor = System.Drawing.Color.Transparent;
+            this.btn_export.Location = new System.Drawing.Point(12, 236);
+            this.btn_export.Name = "btn_export";
+            this.btn_export.Size = new System.Drawing.Size(96, 38);
+            this.btn_export.TabIndex = 75;
+            this.btn_export.Text = "Exportar";
+            this.btn_export.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
+            this.btn_export.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_export.UseCustomBackColor = true;
+            this.btn_export.UseCustomForeColor = true;
+            this.btn_export.UseSelectable = true;
+            this.btn_export.UseStyleColors = true;
+            this.btn_export.UseTileImage = true;
+            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
             // 
             // groupBox3
             // 
@@ -146,10 +186,11 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.metroGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroGrid1.EnableHeadersVisualStyles = false;
             this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid1.Location = new System.Drawing.Point(6, 25);
+            this.metroGrid1.Location = new System.Drawing.Point(3, 16);
             this.metroGrid1.Name = "metroGrid1";
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -162,31 +203,36 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(623, 178);
+            this.metroGrid1.Size = new System.Drawing.Size(644, 201);
             this.metroGrid1.TabIndex = 2;
             // 
             // Column1
             // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column1.HeaderText = "Trabajador";
             this.Column1.Name = "Column1";
             // 
             // Column3
             // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column3.HeaderText = "Producto";
             this.Column3.Name = "Column3";
             // 
             // Column2
             // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column2.HeaderText = "Puesto de Trabajao";
             this.Column2.Name = "Column2";
             // 
             // Column4
             // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column4.HeaderText = "Tipo Ratio";
             this.Column4.Name = "Column4";
             // 
             // Column5
             // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column5.HeaderText = "Valor";
             this.Column5.Name = "Column5";
             // 
@@ -465,58 +511,41 @@
             // metroLabel11
             // 
             this.metroLabel11.AutoSize = true;
+            this.metroLabel11.Dock = System.Windows.Forms.DockStyle.Left;
             this.metroLabel11.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel11.Location = new System.Drawing.Point(19, 0);
+            this.metroLabel11.Location = new System.Drawing.Point(0, 0);
             this.metroLabel11.Name = "metroLabel11";
             this.metroLabel11.Size = new System.Drawing.Size(57, 25);
             this.metroLabel11.TabIndex = 30;
             this.metroLabel11.Text = "Ratio";
             this.metroLabel11.UseCustomBackColor = true;
             // 
-            // btn_export
+            // panel1
             // 
-            this.btn_export.ActiveControl = null;
-            this.btn_export.BackColor = System.Drawing.Color.Transparent;
-            this.btn_export.Location = new System.Drawing.Point(12, 236);
-            this.btn_export.Name = "btn_export";
-            this.btn_export.Size = new System.Drawing.Size(96, 38);
-            this.btn_export.TabIndex = 75;
-            this.btn_export.Text = "Exportar";
-            this.btn_export.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
-            this.btn_export.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_export.UseCustomBackColor = true;
-            this.btn_export.UseCustomForeColor = true;
-            this.btn_export.UseSelectable = true;
-            this.btn_export.UseStyleColors = true;
-            this.btn_export.UseTileImage = true;
-            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
+            this.panel1.Controls.Add(this.metroLabel11);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(763, 26);
+            this.panel1.TabIndex = 31;
             // 
-            // btn_import
+            // panel2
             // 
-            this.btn_import.ActiveControl = null;
-            this.btn_import.BackColor = System.Drawing.Color.Transparent;
-            this.btn_import.Location = new System.Drawing.Point(111, 236);
-            this.btn_import.Name = "btn_import";
-            this.btn_import.Size = new System.Drawing.Size(106, 38);
-            this.btn_import.TabIndex = 76;
-            this.btn_import.Text = "Importar";
-            this.btn_import.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
-            this.btn_import.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_import.UseCustomBackColor = true;
-            this.btn_import.UseCustomForeColor = true;
-            this.btn_import.UseSelectable = true;
-            this.btn_import.UseStyleColors = true;
-            this.btn_import.UseTileImage = true;
-            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
+            this.panel2.Controls.Add(this.metroTabControl1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 26);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(763, 564);
+            this.panel2.TabIndex = 32;
             // 
             // UC_Ratio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.metroLabel11);
-            this.Controls.Add(this.metroTabControl1);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Name = "UC_Ratio";
             this.Size = new System.Drawing.Size(763, 590);
             this.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -534,8 +563,10 @@
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -562,13 +593,15 @@
         private MetroFramework.Controls.MetroTextBox textbox_wmaternal_s;
         private MetroFramework.Controls.MetroButton btn_search;
         private MetroFramework.Controls.MetroButton btn_clean_s;
+        private MetroFramework.Controls.MetroLabel metroLabel11;
+        private MetroFramework.Controls.MetroTile btn_import;
+        private MetroFramework.Controls.MetroTile btn_export;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private MetroFramework.Controls.MetroLabel metroLabel11;
-        private MetroFramework.Controls.MetroTile btn_import;
-        private MetroFramework.Controls.MetroTile btn_export;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

@@ -63,7 +63,7 @@ namespace WindowsFormsApp1.Views
                 result = pol_controller.getPurchaseOrderLines(Int32.Parse(this.metroGrid1.SelectedRows[0].Cells[0].Value.ToString()));
                 List<Models.PurchaseOrderLine> lines = (List<Models.PurchaseOrderLine>)result.data;                
 
-                UC_PurchaseOrder uc = ((UC_PurchaseOrder)(this.Parent.Controls.Find("uC_PurchaseOrder1", false)[0]));                
+                UC_PurchaseOrder uc = ((UC_PurchaseOrder)(this.Parent.Controls.Find("uC_PurchaseOrder1", true)[0]));                
                 
                 foreach (Models.PurchaseOrderLine line in lines)
                 {

@@ -161,7 +161,7 @@
             this.tab_Document.Controls.Add(this.newOrder);
             this.tab_Document.Location = new System.Drawing.Point(10, 5);
             this.tab_Document.Name = "tab_Document";
-            this.tab_Document.SelectedIndex = 0;
+            this.tab_Document.SelectedIndex = 1;
             this.tab_Document.Size = new System.Drawing.Size(1042, 605);
             this.tab_Document.Style = MetroFramework.MetroColorStyle.Teal;
             this.tab_Document.TabIndex = 43;
@@ -979,9 +979,10 @@
             // 
             // dt_IssueHour
             // 
+            this.dt_IssueHour.Enabled = false;
             this.dt_IssueHour.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dt_IssueHour.Location = new System.Drawing.Point(543, 121);
-            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_IssueHour.Name = "dt_IssueHour";
             this.dt_IssueHour.Size = new System.Drawing.Size(87, 29);
             this.dt_IssueHour.TabIndex = 74;
@@ -1045,9 +1046,10 @@
             // dt_IssueDate
             // 
             this.dt_IssueDate.CalendarMonthBackground = System.Drawing.Color.White;
+            this.dt_IssueDate.Enabled = false;
             this.dt_IssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dt_IssueDate.Location = new System.Drawing.Point(432, 121);
-            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_IssueDate.Name = "dt_IssueDate";
             this.dt_IssueDate.Size = new System.Drawing.Size(105, 29);
             this.dt_IssueDate.TabIndex = 64;

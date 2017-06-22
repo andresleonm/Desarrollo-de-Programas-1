@@ -36,6 +36,7 @@
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.btn_delete = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radio4_s = new MetroFramework.Controls.MetroRadioButton();
             this.radio3_s = new MetroFramework.Controls.MetroRadioButton();
             this.radio2_s = new MetroFramework.Controls.MetroRadioButton();
             this.radio1_s = new MetroFramework.Controls.MetroRadioButton();
@@ -53,6 +54,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.radio4 = new MetroFramework.Controls.MetroRadioButton();
             this.radio3 = new MetroFramework.Controls.MetroRadioButton();
             this.radio2 = new MetroFramework.Controls.MetroRadioButton();
             this.radio1 = new MetroFramework.Controls.MetroRadioButton();
@@ -124,6 +126,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.radio4_s);
             this.groupBox2.Controls.Add(this.radio3_s);
             this.groupBox2.Controls.Add(this.radio2_s);
             this.groupBox2.Controls.Add(this.radio1_s);
@@ -143,6 +146,17 @@
             this.groupBox2.TabIndex = 43;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtros";
+            // 
+            // radio4_s
+            // 
+            this.radio4_s.AutoSize = true;
+            this.radio4_s.Location = new System.Drawing.Point(332, 67);
+            this.radio4_s.Name = "radio4_s";
+            this.radio4_s.Size = new System.Drawing.Size(103, 15);
+            this.radio4_s.TabIndex = 89;
+            this.radio4_s.Text = "Salida Generica";
+            this.radio4_s.UseSelectable = true;
+            this.radio4_s.CheckedChanged += new System.EventHandler(this.radiobutton_CheckedChanged);
             // 
             // radio3_s
             // 
@@ -303,6 +317,9 @@
             // 
             // metroGrid1
             // 
+            this.metroGrid1.AllowUserToAddRows = false;
+            this.metroGrid1.AllowUserToDeleteRows = false;
+            this.metroGrid1.AllowUserToResizeColumns = false;
             this.metroGrid1.AllowUserToResizeRows = false;
             this.metroGrid1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -378,6 +395,7 @@
             // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.radio4);
             this.metroTabPage2.Controls.Add(this.radio3);
             this.metroTabPage2.Controls.Add(this.radio2);
             this.metroTabPage2.Controls.Add(this.radio1);
@@ -399,6 +417,17 @@
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 15;
+            // 
+            // radio4
+            // 
+            this.radio4.AutoSize = true;
+            this.radio4.Location = new System.Drawing.Point(82, 197);
+            this.radio4.Name = "radio4";
+            this.radio4.Size = new System.Drawing.Size(103, 15);
+            this.radio4.TabIndex = 90;
+            this.radio4.Text = "Salida Generica";
+            this.radio4.UseSelectable = true;
+            this.radio4.CheckedChanged += new System.EventHandler(this.radiobutton_CheckedChanged);
             // 
             // radio3
             // 
@@ -616,5 +645,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private MetroFramework.Controls.MetroRadioButton radio4_s;
+        private MetroFramework.Controls.MetroRadioButton radio4;
     }
 }

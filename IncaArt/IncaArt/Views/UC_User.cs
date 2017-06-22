@@ -25,7 +25,7 @@ namespace WindowsFormsApp1.Views
         public UC_User()
         {
             InitializeComponent();
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 0;            
         }
 
         private bool validate_data(String name, String paternal_last_name, String maternal_last_name,char gender, String phone, String email, String address, String username,String password,String profile)
@@ -276,7 +276,7 @@ namespace WindowsFormsApp1.Views
             textbox_password.Enabled = true;
             selectedUser = null;
 
-            if (!sessionUser.Profile.HasFunctionality("CREATE USERS"))
+            if (sessionUser != null && !sessionUser.Profile.HasFunctionality("CREATE USERS"))
             {
                 btn_new.Visible = false;
             }
