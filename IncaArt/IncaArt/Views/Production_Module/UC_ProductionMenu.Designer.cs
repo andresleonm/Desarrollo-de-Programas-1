@@ -53,12 +53,12 @@
             // 
             this.metroTile_RegisterOrder.ActiveControl = null;
             this.metroTile_RegisterOrder.BackColor = System.Drawing.Color.DarkCyan;
-            this.metroTile_RegisterOrder.Location = new System.Drawing.Point(246, 3);
+            this.metroTile_RegisterOrder.Location = new System.Drawing.Point(242, 3);
             this.metroTile_RegisterOrder.Name = "metroTile_RegisterOrder";
-            this.metroTile_RegisterOrder.Size = new System.Drawing.Size(177, 62);
+            this.metroTile_RegisterOrder.Size = new System.Drawing.Size(171, 61);
             this.metroTile_RegisterOrder.TabIndex = 41;
             this.metroTile_RegisterOrder.Text = "Registrar orden";
-            this.metroTile_RegisterOrder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile_RegisterOrder.TileImage = global::WindowsFormsApp1.Properties.Resources.Add_File_40px;
             this.metroTile_RegisterOrder.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.metroTile_RegisterOrder.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTile_RegisterOrder.UseCustomBackColor = true;
@@ -70,14 +70,14 @@
             // 
             this.metroTitle_SearchOrder.ActiveControl = null;
             this.metroTitle_SearchOrder.BackColor = System.Drawing.Color.DarkCyan;
-            this.metroTitle_SearchOrder.Location = new System.Drawing.Point(26, 3);
+            this.metroTitle_SearchOrder.Location = new System.Drawing.Point(13, 3);
             this.metroTitle_SearchOrder.Name = "metroTitle_SearchOrder";
             this.metroTitle_SearchOrder.PaintTileCount = false;
-            this.metroTitle_SearchOrder.Size = new System.Drawing.Size(177, 62);
+            this.metroTitle_SearchOrder.Size = new System.Drawing.Size(183, 64);
             this.metroTitle_SearchOrder.TabIndex = 40;
             this.metroTitle_SearchOrder.Text = "Orden de producción";
-            this.metroTitle_SearchOrder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTitle_SearchOrder.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.metroTitle_SearchOrder.TileImage = global::WindowsFormsApp1.Properties.Resources.Documents_40px;
+            this.metroTitle_SearchOrder.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.metroTitle_SearchOrder.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.metroTitle_SearchOrder.UseCustomBackColor = true;
             this.metroTitle_SearchOrder.UseSelectable = true;
