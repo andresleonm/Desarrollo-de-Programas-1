@@ -95,11 +95,13 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private void AdjustColumnOrder()
         {
             grid_clients.Columns["name"].DisplayIndex = 0;
-            grid_clients.Columns["address"].DisplayIndex = 1;
-            grid_clients.Columns["doi"].DisplayIndex = 2;
-            grid_clients.Columns["phone"].DisplayIndex = 3;
-            grid_clients.Columns["email"].DisplayIndex = 4;
-            grid_clients.Columns["priority"].DisplayIndex = 5;
+            grid_clients.Columns["type"].DisplayIndex = 1;
+            grid_clients.Columns["address"].DisplayIndex = 2;
+            grid_clients.Columns["doi"].DisplayIndex = 3;
+            grid_clients.Columns["phone"].DisplayIndex = 4;
+            grid_clients.Columns["email"].DisplayIndex = 5;
+            grid_clients.Columns["priority"].DisplayIndex = 6;
+            
         }
 
         private void fill_GridView(List<Customer> list)

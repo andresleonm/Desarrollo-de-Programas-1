@@ -102,6 +102,7 @@
             this.btn_New = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_estimate_lines = new MetroFramework.Controls.MetroGrid();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.Estimate_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -116,8 +117,6 @@
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.action = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             this.tab_Estimate.SuspendLayout();
             this.order.SuspendLayout();
@@ -619,6 +618,7 @@
             // 
             // dt_IssueHour
             // 
+            this.dt_IssueHour.Enabled = false;
             this.dt_IssueHour.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dt_IssueHour.Location = new System.Drawing.Point(254, 105);
             this.dt_IssueHour.MinimumSize = new System.Drawing.Size(0, 29);
@@ -638,6 +638,7 @@
             // 
             // dt_IssueDate
             // 
+            this.dt_IssueDate.Enabled = false;
             this.dt_IssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dt_IssueDate.Location = new System.Drawing.Point(134, 105);
             this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);
@@ -1162,8 +1163,7 @@
             this.warehouse,
             this.quantity,
             this.unit_Price,
-            this.amount,
-            this.action});
+            this.amount});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -1192,6 +1192,10 @@
             this.grid_estimate_lines.Size = new System.Drawing.Size(794, 168);
             this.grid_estimate_lines.TabIndex = 52;
             this.grid_estimate_lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_estimate_lines_CellValueChanged);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // Estimate_id2
             // 
@@ -1297,15 +1301,6 @@
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
             // 
-            // action
-            // 
-            this.action.HeaderText = "Accion";
-            this.action.Name = "action";
-            // 
-            // errorProvider
-            // 
-            this.errorProvider.ContainerControl = this;
-            // 
             // UC_SalesEstimate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1407,6 +1402,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amount2;
         private System.Windows.Forms.DataGridViewTextBoxColumn observation;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estimate_id2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type_id;
@@ -1421,7 +1417,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
-        private System.Windows.Forms.DataGridViewButtonColumn action;
-        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

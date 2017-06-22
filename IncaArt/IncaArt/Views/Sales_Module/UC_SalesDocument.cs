@@ -487,8 +487,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_external.Enabled = booleano;
             txt_external.BackColor = color;
 
-            dt_IssueDate.Enabled = booleano;
-            dt_IssueHour.Enabled = booleano;
+            //dt_IssueDate.Enabled = booleano;
+            //dt_IssueHour.Enabled = booleano;
 
             txt_observation.Enabled = booleano;
             txt_observation.BackColor = color;
