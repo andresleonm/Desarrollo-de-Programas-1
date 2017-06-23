@@ -88,7 +88,7 @@ namespace WindowsFormsApp1.Views
                         if (r.ratio_type == 1) ratio_t = "Efficiency";
                         else if (r.ratio_type == 2) ratio_t = "Time";
                         tabu_ratios.Add(new Algorithm.Ratio(r.value,ratio_t,
-                            tabu_wkstations.Where(wkstation => wkstation.id == r.workstation_id).ElementAt(0)));
+                            tabu_wkstations.Where(wkstation => wkstation.id == r.workstation_id).ElementAt(0),r.produced_quantity,r.broken_quantity));
                     }
                     tabu_worker.ratios = tabu_ratios;
                     tabu_workers.Add(tabu_worker);
@@ -242,6 +242,7 @@ namespace WindowsFormsApp1.Views
 
                 string[] rows = new string[2];
                 products_grid.Rows.Clear();
+                ((DataGridViewComboBoxColumn)products_grid.Columns[0]).Items.Clear();
                 foreach (Product p in products)
                 {                    
                     ((DataGridViewComboBoxColumn)products_grid.Columns[0]).Items.Add(p.Name);

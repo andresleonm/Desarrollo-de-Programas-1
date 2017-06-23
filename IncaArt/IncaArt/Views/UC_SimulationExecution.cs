@@ -84,7 +84,7 @@ namespace WindowsFormsApp1.Views
                 Cursor = Cursors.Arrow;
                 this.metroGrid1.Rows.Clear();
                 List<Algorithm.ProductLineAssignment> solution =
-                    ((UC_SimulationConfig)(Parent.Controls.Find("UC_SimulationConfig2", true))[0]).solution;
+                    ((UC_SimulationConfig)(Parent.Parent.Controls.Find("UC_SimulationConfig2", true))[0]).solution;
                 if (solution != null && solution.Count >= 1)
                 {
                     string[] row = new string[6];
