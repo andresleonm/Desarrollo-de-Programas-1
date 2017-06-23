@@ -470,6 +470,7 @@ namespace WindowsFormsApp1.Views
             // panel5
             // 
             this.panel5.AutoScroll = true;
+            this.panel5.Controls.Add(this.warehouse1);
             this.panel5.Controls.Add(this.uc_recipe);
             this.panel5.Controls.Add(this.supplier1);
             this.panel5.Controls.Add(this.profile);
@@ -561,6 +562,7 @@ namespace WindowsFormsApp1.Views
             // 
             // user
             // 
+            this.user.AutoScroll = true;
             this.user.AutoSize = true;
             this.user.BackColor = System.Drawing.SystemColors.Window;
             this.user.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -782,12 +784,12 @@ namespace WindowsFormsApp1.Views
             this.warehouse1.AutoSize = true;
             this.warehouse1.BackColor = System.Drawing.Color.White;
             this.warehouse1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.warehouse1.Location = new System.Drawing.Point(141, 27);
+            this.warehouse1.Location = new System.Drawing.Point(0, 0);
             this.warehouse1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.warehouse1.Name = "warehouse1";
-            this.warehouse1.Size = new System.Drawing.Size(723, 379);
+            this.warehouse1.Size = new System.Drawing.Size(723, 334);
             this.warehouse1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.warehouse1.TabIndex = 20;
+            this.warehouse1.TabIndex = 66;
             this.warehouse1.UseCustomBackColor = true;
             this.warehouse1.UseCustomForeColor = true;
             this.warehouse1.UseSelectable = true;
@@ -803,7 +805,6 @@ namespace WindowsFormsApp1.Views
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.workersPerformance_Report1);
             this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.warehouse1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.DoubleBuffered = true;
@@ -849,7 +850,6 @@ namespace WindowsFormsApp1.Views
         private System.Windows.Forms.ImageList purchase_imagelist;
         private UC_PurchasesMenu uC_PurchasesMenu1;
         private Supplier supplier1;
-        private Warehouse warehouse1;
         private Client client1;
         private Parameters parameters1;
         private UC_User user;
@@ -880,5 +880,6 @@ namespace WindowsFormsApp1.Views
         private System.Windows.Forms.Panel panel5;
         private Production_Module.UC_ProductionMenu uc_ProductionMenu;
         private MovementsType_Module.UC_MovementsType uC_MovementsType1;
+        private Warehouse warehouse1;
     }
 }
