@@ -561,8 +561,8 @@ namespace WindowsFormsApp1.Views
             cbo_Currency.Enabled = flag;
             cbo_Currency.BackColor = color;
 
-            dt_IssueDate.Enabled = flag;
-            dt_IssueHour.Enabled = flag;
+            //dt_IssueDate.Enabled = flag;
+            //dt_IssueHour.Enabled = flag;
 
             txt_observation.Enabled = flag;
             txt_observation.BackColor = color;

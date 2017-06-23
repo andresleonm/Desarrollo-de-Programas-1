@@ -29,25 +29,76 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.metroTile_RegisterOrder = new MetroFramework.Controls.MetroTile();
-            this.metroTitle_SearchOrder = new MetroFramework.Controls.MetroTile();
             this.panel2 = new System.Windows.Forms.Panel();
             this.production_search = new WindowsFormsApp1.Views.UC_ProductionOrderSearch();
             this.production_register = new WindowsFormsApp1.Views.UC_ProductionOrder();
             this.worker_performance = new WindowsFormsApp1.Views.WorkersPerformance_Report();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.metroTile_RegisterOrder = new MetroFramework.Controls.MetroTile();
+            this.metroTitle_SearchOrder = new MetroFramework.Controls.MetroTile();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.metroTile_RegisterOrder);
-            this.panel1.Controls.Add(this.metroTitle_SearchOrder);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(861, 70);
-            this.panel1.TabIndex = 1;
+            this.panel1.Size = new System.Drawing.Size(1265, 650);
+            this.panel1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.production_search);
+            this.panel2.Controls.Add(this.production_register);
+            this.panel2.Controls.Add(this.worker_performance);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 70);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1265, 580);
+            this.panel2.TabIndex = 4;
+            // 
+            // production_search
+            // 
+            this.production_search.BackColor = System.Drawing.Color.White;
+            this.production_search.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.production_search.Location = new System.Drawing.Point(0, 0);
+            this.production_search.Name = "production_search";
+            this.production_search.Size = new System.Drawing.Size(1265, 580);
+            this.production_search.TabIndex = 0;
+            this.production_search.UseSelectable = true;
+            // 
+            // production_register
+            // 
+            this.production_register.BackColor = System.Drawing.Color.White;
+            this.production_register.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.production_register.Location = new System.Drawing.Point(0, 0);
+            this.production_register.Name = "production_register";
+            this.production_register.Size = new System.Drawing.Size(1265, 580);
+            this.production_register.TabIndex = 1;
+            // 
+            // worker_performance
+            // 
+            this.worker_performance.Location = new System.Drawing.Point(0, 0);
+            this.worker_performance.Name = "worker_performance";
+            this.worker_performance.Size = new System.Drawing.Size(838, 508);
+            this.worker_performance.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.metroTile_RegisterOrder);
+            this.panel3.Controls.Add(this.metroTitle_SearchOrder);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1265, 70);
+            this.panel3.TabIndex = 3;
+            this.panel3.BackColor = System.Drawing.Color.White;
             // 
             // metroTile_RegisterOrder
             // 
@@ -84,53 +135,17 @@
             this.metroTitle_SearchOrder.UseTileImage = true;
             this.metroTitle_SearchOrder.Click += new System.EventHandler(this.metroTitle_SearchOrder_Click);
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.production_search);
-            this.panel2.Controls.Add(this.production_register);
-            this.panel2.Controls.Add(this.worker_performance);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 70);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(861, 504);
-            this.panel2.TabIndex = 2;
-            // 
-            // production_search
-            // 
-            this.production_search.BackColor = System.Drawing.SystemColors.Control;
-            this.production_search.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.production_search.Location = new System.Drawing.Point(0, 0);
-            this.production_search.Name = "production_search";
-            this.production_search.Size = new System.Drawing.Size(861, 504);
-            this.production_search.TabIndex = 0;
-            this.production_search.UseSelectable = true;
-            // 
-            // production_register
-            // 
-            this.production_register.BackColor = System.Drawing.SystemColors.Control;
-            this.production_register.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.production_register.Location = new System.Drawing.Point(0, 0);
-            this.production_register.Name = "production_register";
-            this.production_register.Size = new System.Drawing.Size(861, 504);
-            this.production_register.TabIndex = 1;
-            // 
-            // worker_performance
-            // 
-            this.worker_performance.Location = new System.Drawing.Point(0, 0);
-            this.worker_performance.Name = "worker_performance";
-            this.worker_performance.Size = new System.Drawing.Size(838, 508);
-            this.worker_performance.TabIndex = 2;
-            // 
             // UC_ProductionMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel2);
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel1);
             this.Name = "UC_ProductionMenu";
-            this.Size = new System.Drawing.Size(861, 574);
+            this.Size = new System.Drawing.Size(1265, 650);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -138,12 +153,12 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private MetroFramework.Controls.MetroTile metroTile_RegisterOrder;
-        private MetroFramework.Controls.MetroTile metroTitle_SearchOrder;
         private System.Windows.Forms.Panel panel2;
         private UC_ProductionOrderSearch production_search;
         private UC_ProductionOrder production_register;
-        //
-        private Views.WorkersPerformance_Report worker_performance;
+        private WorkersPerformance_Report worker_performance;
+        private System.Windows.Forms.Panel panel3;
+        private MetroFramework.Controls.MetroTile metroTile_RegisterOrder;
+        private MetroFramework.Controls.MetroTile metroTitle_SearchOrder;
     }
 }

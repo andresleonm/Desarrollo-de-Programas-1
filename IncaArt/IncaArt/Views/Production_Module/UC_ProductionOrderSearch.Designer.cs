@@ -45,7 +45,6 @@
             this.btn_delete = new MetroFramework.Controls.MetroButton();
             this.btn_edit = new MetroFramework.Controls.MetroButton();
             this.datagrid_ProductionOrders = new MetroFramework.Controls.MetroGrid();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +53,7 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_ProductionOrders)).BeginInit();
@@ -292,7 +292,7 @@
             this.datagrid_ProductionOrders.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.datagrid_ProductionOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datagrid_ProductionOrders.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.datagrid_ProductionOrders.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.datagrid_ProductionOrders.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.datagrid_ProductionOrders.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.datagrid_ProductionOrders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -343,15 +343,6 @@
             this.datagrid_ProductionOrders.Style = MetroFramework.MetroColorStyle.Teal;
             this.datagrid_ProductionOrders.TabIndex = 52;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox3.Location = new System.Drawing.Point(14, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(805, 502);
-            this.groupBox3.TabIndex = 58;
-            this.groupBox3.TabStop = false;
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "Nº orden";
@@ -399,6 +390,15 @@
             this.Column9.HeaderText = "Cotización";
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox3.Location = new System.Drawing.Point(14, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(805, 502);
+            this.groupBox3.TabIndex = 58;
+            this.groupBox3.TabStop = false;
             // 
             // UC_ProductionOrderSearch
             // 

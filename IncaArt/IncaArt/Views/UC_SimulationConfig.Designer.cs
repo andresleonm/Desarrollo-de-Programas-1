@@ -108,6 +108,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.White;
             this.tabPage2.Controls.Add(this.panel7);
             this.tabPage2.Controls.Add(this.panel6);
             this.tabPage2.Controls.Add(this.panel3);
@@ -168,6 +169,7 @@
             // 
             // panel6
             // 
+            this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.products_grid);
             this.panel6.Location = new System.Drawing.Point(0, 3);
             this.panel6.Name = "panel6";
@@ -680,6 +682,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.metroTabControl1);
             this.Name = "UC_SimulationConfig";
             this.Size = new System.Drawing.Size(631, 462);

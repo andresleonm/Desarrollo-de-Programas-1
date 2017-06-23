@@ -37,18 +37,18 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grid_clients = new MetroFramework.Controls.MetroGrid();
+            this.btn_Cancel = new System.Windows.Forms.Button();
+            this.btn_Save = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priority = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_Cancel = new System.Windows.Forms.Button();
-            this.btn_Save = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -71,7 +71,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(750, 346);
+            this.groupBox1.Size = new System.Drawing.Size(881, 349);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Búsqueda";
@@ -81,7 +81,7 @@
             this.btn_Search.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Search.ForeColor = System.Drawing.Color.White;
-            this.btn_Search.Location = new System.Drawing.Point(520, 19);
+            this.btn_Search.Location = new System.Drawing.Point(601, 25);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(82, 29);
             this.btn_Search.TabIndex = 54;
@@ -104,7 +104,7 @@
             this.txt_name.CustomButton.UseSelectable = true;
             this.txt_name.CustomButton.Visible = false;
             this.txt_name.Lines = new string[0];
-            this.txt_name.Location = new System.Drawing.Point(240, 19);
+            this.txt_name.Location = new System.Drawing.Point(321, 25);
             this.txt_name.MaxLength = 32767;
             this.txt_name.Name = "txt_name";
             this.txt_name.PasswordChar = '\0';
@@ -125,7 +125,7 @@
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Location = new System.Drawing.Point(20, 72);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(708, 212);
+            this.groupBox2.Size = new System.Drawing.Size(844, 212);
             this.groupBox2.TabIndex = 52;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos del Cliente";
@@ -135,7 +135,7 @@
             this.panel1.Controls.Add(this.grid_clients);
             this.panel1.Location = new System.Drawing.Point(13, 19);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(682, 178);
+            this.panel1.Size = new System.Drawing.Size(818, 178);
             this.panel1.TabIndex = 52;
             // 
             // grid_clients
@@ -157,9 +157,9 @@
             this.grid_clients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid_clients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
-            this.Type_id,
             this.state,
             this.name,
+            this.type,
             this.address,
             this.doi,
             this.phone,
@@ -190,80 +190,8 @@
             this.grid_clients.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.grid_clients.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.grid_clients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_clients.Size = new System.Drawing.Size(682, 178);
+            this.grid_clients.Size = new System.Drawing.Size(818, 178);
             this.grid_clients.TabIndex = 51;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.Visible = false;
-            // 
-            // Type_id
-            // 
-            this.Type_id.DataPropertyName = "type";
-            this.Type_id.HeaderText = "Type_id";
-            this.Type_id.Name = "Type_id";
-            this.Type_id.Visible = false;
-            // 
-            // state
-            // 
-            this.state.DataPropertyName = "state";
-            this.state.HeaderText = "state";
-            this.state.Name = "state";
-            this.state.Visible = false;
-            // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.name.DataPropertyName = "name";
-            this.name.FillWeight = 150F;
-            this.name.HeaderText = "Razón Social";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 95;
-            // 
-            // address
-            // 
-            this.address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.address.DataPropertyName = "address";
-            this.address.HeaderText = "Dirección";
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
-            // 
-            // doi
-            // 
-            this.doi.DataPropertyName = "doi";
-            this.doi.HeaderText = "RUC / DNI";
-            this.doi.Name = "doi";
-            this.doi.ReadOnly = true;
-            // 
-            // phone
-            // 
-            this.phone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.phone.DataPropertyName = "phone";
-            this.phone.HeaderText = "Teléfono";
-            this.phone.Name = "phone";
-            this.phone.ReadOnly = true;
-            this.phone.Width = 74;
-            // 
-            // email
-            // 
-            this.email.DataPropertyName = "email";
-            this.email.HeaderText = "E-mail";
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            this.email.Width = 160;
-            // 
-            // priority
-            // 
-            this.priority.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.priority.DataPropertyName = "priority";
-            this.priority.HeaderText = "Prioridad";
-            this.priority.Name = "priority";
-            this.priority.ReadOnly = true;
-            this.priority.Width = 77;
             // 
             // btn_Cancel
             // 
@@ -271,7 +199,7 @@
             this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_Cancel.Location = new System.Drawing.Point(399, 298);
+            this.btn_Cancel.Location = new System.Drawing.Point(489, 301);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(82, 29);
             this.btn_Cancel.TabIndex = 17;
@@ -284,7 +212,7 @@
             this.btn_Save.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Save.ForeColor = System.Drawing.Color.White;
-            this.btn_Save.Location = new System.Drawing.Point(249, 298);
+            this.btn_Save.Location = new System.Drawing.Point(321, 301);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(82, 29);
             this.btn_Save.TabIndex = 16;
@@ -297,18 +225,88 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label1.Location = new System.Drawing.Point(85, 27);
+            this.label1.Location = new System.Drawing.Point(166, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Datos del cliente :";
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            // 
+            // state
+            // 
+            this.state.DataPropertyName = "state";
+            this.state.HeaderText = "state";
+            this.state.Name = "state";
+            this.state.Visible = false;
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "name";
+            this.name.FillWeight = 150F;
+            this.name.HeaderText = "Razón Social";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 150;
+            // 
+            // type
+            // 
+            this.type.DataPropertyName = "type";
+            this.type.HeaderText = "Tipo";
+            this.type.Name = "type";
+            this.type.Width = 60;
+            // 
+            // address
+            // 
+            this.address.DataPropertyName = "address";
+            this.address.HeaderText = "Dirección";
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            this.address.Width = 200;
+            // 
+            // doi
+            // 
+            this.doi.DataPropertyName = "doi";
+            this.doi.HeaderText = "RUC / DNI";
+            this.doi.Name = "doi";
+            this.doi.ReadOnly = true;
+            this.doi.Width = 70;
+            // 
+            // phone
+            // 
+            this.phone.DataPropertyName = "phone";
+            this.phone.HeaderText = "Teléfono";
+            this.phone.Name = "phone";
+            this.phone.ReadOnly = true;
+            this.phone.Width = 70;
+            // 
+            // email
+            // 
+            this.email.DataPropertyName = "email";
+            this.email.HeaderText = "E-mail";
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            this.email.Width = 180;
+            // 
+            // priority
+            // 
+            this.priority.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.priority.DataPropertyName = "priority";
+            this.priority.HeaderText = "Prioridad";
+            this.priority.Name = "priority";
+            this.priority.ReadOnly = true;
             // 
             // SalesOrderSearchClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(774, 361);
+            this.ClientSize = new System.Drawing.Size(905, 361);
             this.Controls.Add(this.groupBox1);
             this.Name = "SalesOrderSearchClient";
             this.Text = "Búsqueda de Cliente";
@@ -335,9 +333,9 @@
         private MetroFramework.Controls.MetroTextBox txt_name;
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Type_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn state;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn type;
         private System.Windows.Forms.DataGridViewTextBoxColumn address;
         private System.Windows.Forms.DataGridViewTextBoxColumn doi;
         private System.Windows.Forms.DataGridViewTextBoxColumn phone;
