@@ -10,8 +10,10 @@ namespace WindowsFormsApp1.Controller
 {
     class SalesEstimateController: DataService.DatabaseService
     {
+        private SalesEstimateLineController sales_estimate_line_controller;
         public SalesEstimateController(string user, string password) : base( user, password)
         {
+            sales_estimate_line_controller = new SalesEstimateLineController(user, password);
         }
 
         public Result getSalesEstimates(int idEstimate = 0, int idClient = 0, string iniDate = "", string endDate = "")
@@ -139,6 +141,7 @@ namespace WindowsFormsApp1.Controller
             GenericResult result = execute_transaction("insert_sales_estimate", parameters);
             if (result.success)
             {
+
                 return new Result(result.singleValue, true, "");
             }
             return new Result(null, result.success, result.message);
@@ -158,9 +161,63 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("customer_doi", sales_estimate.Customer_doi));
             parameters.Add(new Parameter("issue_date", sales_estimate.Issue_date.ToString("MM/dd/yyyy hh:mm:ss")));
             parameters.Add(new Parameter("observation", sales_estimate.Observation));
-            GenericResult result = execute_transaction("update_sales_estimate", parameters);
+            GenericResult resultU = execute_transaction("update_sales_estimate", parameters);
+            if (resultU.success)
+            {
+
+                int id = sales_estimate.Id;
+                int i = 1;
+                Result result;
+                foreach (Models.SalesEstimateLine sel in sales_estimate.Lines)
+                {
+                    if (sel.Id == 0)
+                    {
+                        sel.Id = id + 1;
+                        sel.Estimate_id = sales_estimate.Id;
+                        result = sales_estimate_line_controller.insertSalesestimateLine(sel);
+                        id++;
+                    }
+                    else
+                        result = sales_estimate_line_controller.updateSalesEstimateLine(sel);
+
+                    if (!result.success)
+                    {
+                        return new Result(null, result.success, result.message);
+                    }
+                    i++;
+                }
+
+
+
+                return new Result("Actualizado", true, "");
+            }
+            return new Result(null, resultU.success, resultU.message);
+        }
+
+        public Result make_production(SalesEstimate sales_estimate)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id",sales_estimate.Id.ToString()));
+            GenericResult result = execute_transaction("make_production", parameters);
             if (result.success)
             {
+                ProductionOrderController poc = new ProductionOrderController("dp1admin", "dp1admin");
+             
+                foreach (SalesEstimateLine line in sales_estimate.Lines)
+                {
+                    ProductionOrder po = new ProductionOrder();
+                    po.Product_id = line.Product_id;
+                    po.Warehouse_id = line.Prod_warehouse_id;
+                    po.Quantity = line.Quantity;
+                    po.Estimate_id = sales_estimate.Id;
+                    po.Estimate_line = line.Id;
+                    po.Begin = DateTime.Now;
+                    po.End = DateTime.Now;
+                    po.State = "Registrado";
+                    po.Unit_id = line.Unit_measure_id;
+                    po.Description = "Orden de Produccion Autogenerada para la Cotizacion Nro " + sales_estimate.Id.ToString() + ", para la linea Nro " + line.Id.ToString();
+                    poc.insertProductionOrder(po);
+                }
                 return new Result(result.singleValue, true, "");
             }
             return new Result(null, result.success, result.message);

@@ -25,7 +25,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
         Models.ProductTypeWarehouse curTypeWarehouse;
         Dictionary<int, string> combo_class = new Dictionary<int, string>();
 
-        User sessionUser;
+     
 
         public UC_ProductTypeWarehouse()
         {

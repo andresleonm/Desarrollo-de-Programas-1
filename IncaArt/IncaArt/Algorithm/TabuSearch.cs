@@ -173,7 +173,7 @@ namespace WindowsFormsApp1.Algorithm
                                 }
                             }
                         }
-                        catch (System.InvalidOperationException e)
+                        catch 
                         {
 
                         }

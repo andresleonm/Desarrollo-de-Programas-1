@@ -24,8 +24,7 @@ namespace WindowsFormsApp1.Views
         List<Models.Supplier> supplier_list;
         Controller.SupplierController supplierController;
         Controller.Result result;
-        int priority_list = 10;
-        int type_list = 4;
+        
 
         Models.Supplier curSupplier;
         public Supplier()
@@ -113,7 +112,7 @@ namespace WindowsFormsApp1.Views
                 MessageBox.Show("Hay campos inválidos", "Error", MessageBoxButtons.OK);
                 return null;
             }
-            String name, doi, address, phone, email, type, state;
+            String name, doi, address, phone, email, state;
             int id = 0;
             name = textbox_name.Text;
             doi = textbox_doi.Text;

@@ -344,13 +344,13 @@ namespace WindowsFormsApp1.Views
                     data = data.Concat(new List<Models.SalesOrderLine>().ToList()).ToList();
                     grid_order_lines.DataSource = data;
                 }
-                catch (Exception excp)
+                catch
                 {
                     grid_order_lines.DataSource = new List<Models.SalesOrderLine>();
                     return;
                 }
             }
-            catch (Exception excp)
+            catch 
             {
                 grid_order_lines.DataSource = new List<Models.MaterialMovementLine>();
                 return;

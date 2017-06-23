@@ -19,7 +19,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         PurchaseOrderController poc;
         PurchaseOrderLineController pocl;
         ProductionOrderMaterialLineController pomlc;
-        bool flgBegin = true;
+      
         int claseAnt = -1;
         string idAnt;
         List<int> lineIds= new List<int>();
@@ -103,7 +103,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 this.document_input.Visible = true;
                 grid_movement_lines.Columns["documentQuantity"].Visible = true;
                 populate_document_combo_box(mov.clase);
-                flgBegin = true;
+                
             } else
             {
                 this.buttonAddRow.Visible = true;
@@ -176,7 +176,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 claseAnt = clase;
                 idAnt = doc.id;
 
-            flgBegin = false;
+            
             Cursor.Current = Cursors.Default;
         }
 
@@ -322,7 +322,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 order_line.ShowDialog();
                 buttonSearchV.PerformClick();
             }
-            catch(Exception exc)
+            catch
             {
 
             }
@@ -357,13 +357,13 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                     data = data.Concat(new List<Models.MaterialMovementLine>().ToList()).ToList();
                     grid_movement_lines.DataSource = data;
                 }
-                catch (Exception excp)
+                catch 
                 {
                     grid_movement_lines.DataSource = new List<Models.MaterialMovementLine>();
                     return;
                 }
             }
-            catch(Exception excp)
+            catch
             {
                 grid_movement_lines.DataSource = new List<Models.MaterialMovementLine>();
                 return;

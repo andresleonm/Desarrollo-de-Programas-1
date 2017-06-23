@@ -493,6 +493,8 @@ namespace WindowsFormsApp1.Views
             this.panel5.Controls.Add(this.uC_PurchasesMenu1);
             this.panel5.Controls.Add(this.uC_WarehouseMovement1);
             this.panel5.Controls.Add(this.typeWarehouseMain1);
+            this.panel5.Controls.Add(this.warehouse1);
+            this.panel5.Controls.Add(this.workersPerformance_Report1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(141, 72);
             this.panel5.Name = "panel5";
@@ -717,7 +719,7 @@ namespace WindowsFormsApp1.Views
             this.uC_MovementsType1.AutoSize = true;
             this.uC_MovementsType1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_MovementsType1.Location = new System.Drawing.Point(0, 0);
-            this.uC_MovementsType1.Margin = new System.Windows.Forms.Padding(2);
+            this.uC_MovementsType1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uC_MovementsType1.Name = "uC_MovementsType1";
             this.uC_MovementsType1.Size = new System.Drawing.Size(723, 334);
             this.uC_MovementsType1.TabIndex = 64;

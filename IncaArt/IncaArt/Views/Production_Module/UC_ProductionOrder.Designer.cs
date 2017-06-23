@@ -1376,7 +1376,7 @@
         private MetroFramework.Controls.MetroGrid metroGrid_materials_summary;
         private System.Windows.Forms.GroupBox groupBox4;
         private MetroFramework.Controls.MetroGrid metroGrid_products_summary;
-        private MetroFramework.Controls.MetroButton metroButton_Cancel;
+        
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;

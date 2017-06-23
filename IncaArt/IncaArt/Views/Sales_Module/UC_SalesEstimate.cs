@@ -25,7 +25,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private SalesEstimateController sales_estimate_controller;
         private SalesEstimateLineController sales_estimate_line_controller;
 
-        bool doc_flag;
+    
         bool phone_flag;
         bool obs_flag;
 
@@ -44,6 +44,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
             foreach (Currency curr in currencies)
                 this.cbo_Currency.Items.Add(curr.Symbol + "  -  " + curr.Name);
+
+            btn_production.Visible = false;
 
         }
 
@@ -116,6 +118,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             else if (selectedRowCount == 1)
             {
                 edit = true;
+                btn_production.Visible = edit;
                 int index = grid_estimates.SelectedRows[0].Index;
                 var id = sales_estimates[index].Id;
                 se_edit = (Models.SalesEstimate)sales_estimate_controller.getSalesEstimate(id).data;
@@ -214,33 +217,13 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
                 if (result.success)
                 {
-                    int id = se_edit.getMaxId();
-                    int i = 1;
-                    foreach (Models.SalesEstimateLine sel in se_edit.Lines)
-                    {
-                        if (sel.Id == 0)
-                        {
-                            sel.Id = id + 1;
-                            sel.Estimate_id = se_edit.Id;
-                            result = sales_estimate_line_controller.insertSalesestimateLine(sel);
-                            id++;
-                        }
-                        else
-                            result = sales_estimate_line_controller.updateSalesEstimateLine(sel);
-
-                        if (!result.success)
-                        {
-                            MessageBox.Show(this, result.message + "  -  Error fila " + i.ToString(), "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                        i++;
-                    }
                     btn_Clean.PerformClick();
                     btn_Clean.PerformClick();
                     tab_Estimate.SelectedIndex = 0;
                     MessageBox.Show(this, "Cotización actualizada exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Set_Flag_All(false);
                     edit = false;
+                    btn_production.Visible = false;
                     se_edit = new SalesEstimate();
                 }
                 else
@@ -282,6 +265,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                                 btn_Clean.PerformClick();
                                 tab_Estimate.SelectedIndex = 0;
                                 MessageBox.Show(this, "Se ha creado la cotización N° : " + sales_estimate_id.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                
                             }
                             else
                             {
@@ -305,6 +289,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private void btn_Clean_Click(object sender, EventArgs e)
         {
             edit = false;
+            btn_production.Visible = false;
             se_edit = new SalesEstimate();
             Clean();
         }
@@ -361,6 +346,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
             se.Observation = txt_observation.Text;
             se.Amount = double.Parse(txt_amount.Text);
+            
         }
 
         private void fill_Sales_Estimate_Form(SalesEstimate se)
@@ -433,7 +419,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
             grid_estimate_lines.Columns["quantity"].DisplayIndex = 3;
             grid_estimate_lines.Columns["unit_price"].DisplayIndex = 4;
             grid_estimate_lines.Columns["amount"].DisplayIndex = 5;
-            grid_estimate_lines.Columns["action"].DisplayIndex = 6;
         }
 
         #endregion
@@ -542,6 +527,42 @@ namespace WindowsFormsApp1.Views.Sales_Module
         {
             if (!char.IsDigit(e.KeyChar)) e.Handled = true;
             if (e.KeyChar == (char)8) e.Handled = false;
+        }
+
+        private void btn_production_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Esta seguro que desea generar las ordenes de produccion?", "Confirmacion", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Set_Flag_All(true);
+                fill_Sales_Estimate_Object(se_edit);
+                var lines = (List<Models.SalesEstimateLine>)grid_estimate_lines.DataSource;
+                if (lines.Count > 0)
+                    se_edit.Lines = lines;
+
+                Result result = sales_estimate_controller.updateSalesEstimate(se_edit);
+
+                if (result.success)
+                {
+                    sales_estimate_controller.make_production(se_edit);
+                    btn_Clean.PerformClick();
+                    btn_Clean.PerformClick();
+                    tab_Estimate.SelectedIndex = 0;
+                    MessageBox.Show(this, "Ordenes de Produccion Generadas Exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    Set_Flag_All(false);
+                    edit = false;
+                    btn_production.Visible = false;
+                    se_edit = new SalesEstimate();
+                }
+                else
+                {
+                    MessageBox.Show(result.message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
         }
     }
 }

@@ -12,8 +12,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 {
     public partial class UC_WarehouseMovement : UserControl
     {
-        string user;
-        string password;
+     
         public UC_WarehouseMovement()
         {
             InitializeComponent();

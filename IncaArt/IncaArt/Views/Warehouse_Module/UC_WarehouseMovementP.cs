@@ -19,7 +19,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
         SalesOrderController soc;
         SalesRefundLineController src;
         ProductionOrderController prc;
-        bool flgBegin=true;
+
         int claseAnt=-1;
         string idAnt;
         public UC_WarehouseMovementP()
@@ -101,7 +101,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 this.btn_delete.Visible = false;
                 grid_movement_lines.Columns["documentQuantity"].Visible = true;
                 populate_document_combo_box(mov.clase);
-                flgBegin = true;
+                
             }else            
             {
                 this.btn_delete.Visible = true;
@@ -199,7 +199,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 idAnt = doc.id;
          
 
-            flgBegin = false;
+          
             Cursor.Current = Cursors.Default;
         }
 
@@ -347,7 +347,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                 order_line.ShowDialog();
                 buttonSearchV.PerformClick();
             }
-            catch(Exception exc)
+            catch
             {
 
             }
@@ -383,13 +383,13 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
                     data = data.Concat(new List<Models.ProductMovementLine>().ToList()).ToList();
                     grid_movement_lines.DataSource = data;
                 }
-                catch (Exception excp)
+                catch 
                 {
                     grid_movement_lines.DataSource = new List<Models.ProductMovementLine>();
                     return;
                 }
             }
-            catch (Exception excp)
+            catch
             {
                 grid_movement_lines.DataSource = new List<Models.ProductMovementLine>();
                 return;

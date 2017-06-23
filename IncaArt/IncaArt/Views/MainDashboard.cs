@@ -132,5 +132,20 @@ namespace WindowsFormsApp1.Views
                 ReorderTiles();
             }
         }
+
+        private void metroTile10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroTile11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroTile7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

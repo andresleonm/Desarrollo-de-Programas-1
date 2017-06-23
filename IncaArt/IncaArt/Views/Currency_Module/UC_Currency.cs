@@ -13,15 +13,14 @@ namespace WindowsFormsApp1.Views.Currency_Module
     public partial class UC_Currency : ICheckPermissions
     {
         
-        bool name_flag;
-        bool symbol_flag;
+        
 
         List<Models.Currency> currency_list;
         Controller.CurrencyController currencyController;
-        int cur_row;
+        
         Controller.Result result;
 
-        Models.Currency curCurrency;
+     
         Dictionary<int, string> combo_class = new Dictionary<int, string>();
         public UC_Currency()
         {
