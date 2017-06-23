@@ -109,7 +109,7 @@
         }
 
         #endregion
-        private UC_SimulationConfig uC_SimulationConfig1;
+        
         private System.Windows.Forms.Panel panel1;
         private MetroFramework.Controls.MetroTile metroTile1;
         private MetroFramework.Controls.MetroTile btn_purchase_orders;

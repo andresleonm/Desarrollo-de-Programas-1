@@ -22,7 +22,7 @@ namespace WindowsFormsApp1.Views
         Controller.WorkstationsController workstationController;
         Controller.WorkerController workerController;
         Controller.Result result;
-        bool data_loaded;
+        
         public UC_Ratio()
         {
             InitializeComponent();
@@ -329,7 +329,7 @@ namespace WindowsFormsApp1.Views
                 double ratio_value=-1, number;
                 bool error; //error individual
                 int success_line = 0, error_line = 0;
-                Models.Ratio ratio;
+                
                 //En Interop Excel el indice comienza en 1
                 for (int i = 3; i <= row_count; i++) //Fila 3 comienza las filas de materiales
                 {

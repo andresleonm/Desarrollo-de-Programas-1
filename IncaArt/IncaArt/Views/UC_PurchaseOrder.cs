@@ -501,7 +501,7 @@ namespace WindowsFormsApp1.Views
 
                     e.Control.KeyPress += new KeyPressEventHandler(grid_order_pu_KeyPress);
                 }
-                catch (Exception ex)
+                catch
                 {
                 }
             }
@@ -514,7 +514,7 @@ namespace WindowsFormsApp1.Views
 
                     e.Control.KeyPress += new KeyPressEventHandler(grid_order_q_KeyPress);
                 }
-                catch (Exception ex)
+                catch 
                 {
                 }
             }
