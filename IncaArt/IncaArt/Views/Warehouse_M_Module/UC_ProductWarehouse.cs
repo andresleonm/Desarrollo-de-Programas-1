@@ -291,7 +291,7 @@ namespace WindowsFormsApp1.Views
             if (metroGrid1.Rows[e.RowIndex].Cells[1].Value != null)
             {
                 cur_row = e.RowIndex;
-                delete.Enabled = true;
+                //delete.Enabled = true;
             }
         }
 
@@ -793,7 +793,7 @@ namespace WindowsFormsApp1.Views
         {
             if (!sessionUser.Profile.HasFunctionality("DELETE PRODUCT WAREHOUSE"))
             {
-                delete.Visible = false;
+                //delete.Visible = false;
             }
 
             if (!sessionUser.Profile.HasFunctionality("CREATE PRODUCT WAREHOUSE") && !sessionUser.Profile.HasFunctionality("EDIT PRODUCT WAREHOUSE"))

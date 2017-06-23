@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class ProductionOrder
+    public class ProductionOrder
     {
         private int id;
         private string description;

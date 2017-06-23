@@ -33,6 +33,10 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             this.grid_movement_lines.DataSource=pm.detail;
             this.textbox_observation.Text = pm.Observacion;
             this.fecha.Text = pm.Fecha;
+            if (movement.State == "Anulado")
+            {
+                this.btn_Anular.Visible = false;
+            }
             types_movements.SelectedIndex = types_movements.FindString(pm.Tipo.name);
             document.Text = pm.TipoDocumentoOrigen + " - "+pm.NroDocumentoOrigen.ToString();
             var mov = movement.Tipo;
@@ -149,10 +153,11 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             if (result.success)
             {
                 MessageBox.Show("El documento fue anulado satisfactoriamente");
-                this.Close();
+                
             }                
             else
                 MessageBox.Show(result.message);
+            this.Close();
         }
 
         private void movementid_Click(object sender, EventArgs e)

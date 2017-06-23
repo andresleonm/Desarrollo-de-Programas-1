@@ -53,7 +53,7 @@
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDocumentLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_Save = new System.Windows.Forms.Button();
+            this.btn_Anular = new System.Windows.Forms.Button();
             this.document_input = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.types_movements = new MetroFramework.Controls.MetroComboBox();
@@ -83,7 +83,7 @@
             this.registro.Controls.Add(this.fecha);
             this.registro.Controls.Add(this.document);
             this.registro.Controls.Add(this.gb_OrderLine);
-            this.registro.Controls.Add(this.btn_Save);
+            this.registro.Controls.Add(this.btn_Anular);
             this.registro.Controls.Add(this.document_input);
             this.registro.Controls.Add(this.metroLabel3);
             this.registro.Controls.Add(this.types_movements);
@@ -139,6 +139,51 @@
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.Location = new System.Drawing.Point(19, 26);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(106, 19);
+            this.metroLabel2.TabIndex = 68;
+            this.metroLabel2.Text = "Movimiento Nro";
+            // 
+            // movementid
+            // 
+            // 
+            // 
+            // 
+            this.movementid.CustomButton.Image = null;
+            this.movementid.CustomButton.Location = new System.Drawing.Point(256, 2);
+            this.movementid.CustomButton.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.movementid.CustomButton.Name = "";
+            this.movementid.CustomButton.Size = new System.Drawing.Size(41, 41);
+            this.movementid.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.movementid.CustomButton.TabIndex = 1;
+            this.movementid.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.movementid.CustomButton.UseSelectable = true;
+            this.movementid.CustomButton.UseWaitCursor = true;
+            this.movementid.CustomButton.Visible = false;
+            this.movementid.Enabled = false;
+            this.movementid.Lines = new string[0];
+            this.movementid.Location = new System.Drawing.Point(240, 28);
+            this.movementid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.movementid.MaxLength = 32767;
+            this.movementid.Name = "movementid";
+            this.movementid.PasswordChar = '\0';
+            this.movementid.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.movementid.SelectedText = "";
+            this.movementid.SelectionLength = 0;
+            this.movementid.SelectionStart = 0;
+            this.movementid.ShortcutsEnabled = true;
+            this.movementid.Size = new System.Drawing.Size(300, 46);
+            this.movementid.TabIndex = 69;
+            this.movementid.UseSelectable = true;
+            this.movementid.UseWaitCursor = true;
+            this.movementid.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.movementid.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(28, 40);
+            this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(106, 19);
             this.metroLabel2.TabIndex = 68;
@@ -381,18 +426,19 @@
             this.idDocumentLine.Name = "idDocumentLine";
             this.idDocumentLine.Visible = false;
             // 
-            // btn_Save
+            // btn_Anular
             // 
-            this.btn_Save.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Save.ForeColor = System.Drawing.Color.White;
-            this.btn_Save.Location = new System.Drawing.Point(395, 404);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(82, 29);
-            this.btn_Save.TabIndex = 60;
-            this.btn_Save.Text = "Anular";
-            this.btn_Save.UseVisualStyleBackColor = false;
-            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click_1);
+            this.btn_Anular.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Anular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Anular.ForeColor = System.Drawing.Color.White;
+            this.btn_Anular.Location = new System.Drawing.Point(592, 622);
+            this.btn_Anular.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Anular.Name = "btn_Anular";
+            this.btn_Anular.Size = new System.Drawing.Size(123, 45);
+            this.btn_Anular.TabIndex = 60;
+            this.btn_Anular.Text = "Anular";
+            this.btn_Anular.UseVisualStyleBackColor = false;
+            this.btn_Anular.Click += new System.EventHandler(this.btn_Save_Click_1);
             // 
             // document_input
             // 
@@ -494,7 +540,7 @@
 
         private MetroFramework.Controls.MetroTabControl metroTabControl1;
         private MetroFramework.Controls.MetroTabPage registro;
-        private System.Windows.Forms.Button btn_Save;
+        private System.Windows.Forms.Button btn_Anular;
         private MetroFramework.Controls.MetroLabel document_input;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroComboBox types_movements;

@@ -53,7 +53,7 @@
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDocumentLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_Save = new System.Windows.Forms.Button();
+            this.btn_Anular = new System.Windows.Forms.Button();
             this.document_input = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.types_movements = new MetroFramework.Controls.MetroComboBox();
@@ -84,7 +84,7 @@
             this.registro.Controls.Add(this.fecha);
             this.registro.Controls.Add(this.document);
             this.registro.Controls.Add(this.gb_OrderLine);
-            this.registro.Controls.Add(this.btn_Save);
+            this.registro.Controls.Add(this.btn_Anular);
             this.registro.Controls.Add(this.document_input);
             this.registro.Controls.Add(this.metroLabel3);
             this.registro.Controls.Add(this.types_movements);
@@ -393,19 +393,19 @@
             this.idDocumentLine.Name = "idDocumentLine";
             this.idDocumentLine.Visible = false;
             // 
-            // btn_Save
+            // btn_Anular
             // 
-            this.btn_Save.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Save.ForeColor = System.Drawing.Color.White;
-            this.btn_Save.Location = new System.Drawing.Point(592, 593);
-            this.btn_Save.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(123, 45);
-            this.btn_Save.TabIndex = 60;
-            this.btn_Save.Text = "Anular";
-            this.btn_Save.UseVisualStyleBackColor = false;
-            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click_1);
+            this.btn_Anular.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Anular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Anular.ForeColor = System.Drawing.Color.White;
+            this.btn_Anular.Location = new System.Drawing.Point(592, 593);
+            this.btn_Anular.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Anular.Name = "btn_Anular";
+            this.btn_Anular.Size = new System.Drawing.Size(123, 45);
+            this.btn_Anular.TabIndex = 60;
+            this.btn_Anular.Text = "Anular";
+            this.btn_Anular.UseVisualStyleBackColor = false;
+            this.btn_Anular.Click += new System.EventHandler(this.btn_Save_Click_1);
             // 
             // document_input
             // 
@@ -515,7 +515,7 @@
 
         private MetroFramework.Controls.MetroTabControl metroTabControl1;
         private MetroFramework.Controls.MetroTabPage registro;
-        private System.Windows.Forms.Button btn_Save;
+        private System.Windows.Forms.Button btn_Anular;
         private MetroFramework.Controls.MetroLabel document_input;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroComboBox types_movements;

@@ -207,7 +207,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
                 if (metroGrid1.Rows[e.RowIndex].Cells[0].Value != null)
                 {
                     cur_row = e.RowIndex;
-                    btn_delete.Enabled = true;
+                    //btn_delete.Enabled = true;
                 }
             }
         }
@@ -247,7 +247,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
                 MessageBox.Show("Tipo almacén eliminado correctamente", "Eliminar Tipo almacén", MessageBoxButtons.OK);
                 Load_Data();
             }
-            btn_delete.Enabled = false;
+            //btn_delete.Enabled = false;
             Load_DataGridView();
         }
 
