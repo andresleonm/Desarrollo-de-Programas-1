@@ -268,7 +268,15 @@ namespace WindowsFormsApp1.Views
                 textbox_paternal.Text = worker.Paternal_name;
                 textbox_maternal.Text = worker.Maternal_name;
                 textbox_doi.Text = worker.Doi;
-                datetime_birthday.Value = worker.Birthday;
+                string birthday_string = worker.Birthday.ToShortDateString();
+                if (birthday_string.Equals("01/01/0001"))
+                {
+                    datetime_birthday.Value = new DateTime(1900,01,01);
+                }
+                else
+                {
+                    datetime_birthday.Value = worker.Birthday;
+                }
                 metroTabControl1.SelectedIndex = 1;
                 if (worker.Gender == 'M')
                 {

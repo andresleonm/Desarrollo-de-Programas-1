@@ -34,8 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.consulta = new MetroFramework.Controls.MetroTabPage();
-            this.btn_template = new MetroFramework.Controls.MetroButton();
-            this.btn_import = new MetroFramework.Controls.MetroButton();
             this.btn_delete = new MetroFramework.Controls.MetroButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
@@ -78,6 +76,8 @@
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_import = new MetroFramework.Controls.MetroTile();
+            this.btn_template = new MetroFramework.Controls.MetroTile();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -109,8 +109,8 @@
             // 
             // consulta
             // 
-            this.consulta.Controls.Add(this.btn_template);
             this.consulta.Controls.Add(this.btn_import);
+            this.consulta.Controls.Add(this.btn_template);
             this.consulta.Controls.Add(this.btn_delete);
             this.consulta.Controls.Add(this.groupBox2);
             this.consulta.Controls.Add(this.groupBox1);
@@ -125,34 +125,6 @@
             this.consulta.VerticalScrollbarBarColor = true;
             this.consulta.VerticalScrollbarHighlightOnWheel = false;
             this.consulta.VerticalScrollbarSize = 10;
-            // 
-            // btn_template
-            // 
-            this.btn_template.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_template.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_template.Location = new System.Drawing.Point(35, 372);
-            this.btn_template.Name = "btn_template";
-            this.btn_template.Size = new System.Drawing.Size(75, 23);
-            this.btn_template.TabIndex = 19;
-            this.btn_template.Text = "Plantilla";
-            this.btn_template.UseCustomBackColor = true;
-            this.btn_template.UseCustomForeColor = true;
-            this.btn_template.UseSelectable = true;
-            this.btn_template.Click += new System.EventHandler(this.btn_template_Click);
-            // 
-            // btn_import
-            // 
-            this.btn_import.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_import.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_import.Location = new System.Drawing.Point(116, 372);
-            this.btn_import.Name = "btn_import";
-            this.btn_import.Size = new System.Drawing.Size(75, 23);
-            this.btn_import.TabIndex = 18;
-            this.btn_import.Text = "Importar";
-            this.btn_import.UseCustomBackColor = true;
-            this.btn_import.UseCustomForeColor = true;
-            this.btn_import.UseSelectable = true;
-            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
             // 
             // btn_delete
             // 
@@ -182,6 +154,9 @@
             // 
             // metroGrid1
             // 
+            this.metroGrid1.AllowUserToAddRows = false;
+            this.metroGrid1.AllowUserToDeleteRows = false;
+            this.metroGrid1.AllowUserToResizeColumns = false;
             this.metroGrid1.AllowUserToResizeRows = false;
             this.metroGrid1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -218,6 +193,7 @@
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid1.Location = new System.Drawing.Point(6, 19);
             this.metroGrid1.Name = "metroGrid1";
+            this.metroGrid1.ReadOnly = true;
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkCyan;
@@ -238,45 +214,53 @@
             // 
             this.id.HeaderText = "ID";
             this.id.Name = "id";
+            this.id.ReadOnly = true;
             this.id.Visible = false;
             // 
             // index
             // 
             this.index.HeaderText = "Index";
             this.index.Name = "index";
+            this.index.ReadOnly = true;
             this.index.Visible = false;
             // 
             // nombre
             // 
             this.nombre.HeaderText = "Nombre";
             this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
             // 
             // unidad
             // 
             this.unidad.HeaderText = "Unidad";
             this.unidad.Name = "unidad";
+            this.unidad.ReadOnly = true;
             // 
             // price
             // 
             this.price.HeaderText = "Precio";
             this.price.Name = "price";
+            this.price.ReadOnly = true;
             // 
             // stock_minimo
             // 
             this.stock_minimo.HeaderText = "Stock Mínimo";
             this.stock_minimo.Name = "stock_minimo";
+            this.stock_minimo.ReadOnly = true;
             this.stock_minimo.Width = 110;
             // 
             // stock_maximo
             // 
             this.stock_maximo.HeaderText = "Stock Máximo";
             this.stock_maximo.Name = "stock_maximo";
+            this.stock_maximo.ReadOnly = true;
             this.stock_maximo.Width = 110;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Tipo";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -769,10 +753,49 @@
             this.panel2.Size = new System.Drawing.Size(795, 485);
             this.panel2.TabIndex = 31;
             // 
+            // btn_import
+            // 
+            this.btn_import.ActiveControl = null;
+            this.btn_import.BackColor = System.Drawing.Color.Transparent;
+            this.btn_import.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btn_import.Location = new System.Drawing.Point(134, 372);
+            this.btn_import.Name = "btn_import";
+            this.btn_import.Size = new System.Drawing.Size(106, 38);
+            this.btn_import.TabIndex = 80;
+            this.btn_import.Text = "Importar";
+            this.btn_import.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
+            this.btn_import.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_import.UseCustomBackColor = true;
+            this.btn_import.UseCustomForeColor = true;
+            this.btn_import.UseSelectable = true;
+            this.btn_import.UseStyleColors = true;
+            this.btn_import.UseTileImage = true;
+            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
+            // 
+            // btn_template
+            // 
+            this.btn_template.ActiveControl = null;
+            this.btn_template.BackColor = System.Drawing.Color.Transparent;
+            this.btn_template.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btn_template.Location = new System.Drawing.Point(35, 372);
+            this.btn_template.Name = "btn_template";
+            this.btn_template.Size = new System.Drawing.Size(96, 38);
+            this.btn_template.TabIndex = 79;
+            this.btn_template.Text = "Plantilla";
+            this.btn_template.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
+            this.btn_template.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_template.UseCustomBackColor = true;
+            this.btn_template.UseCustomForeColor = true;
+            this.btn_template.UseSelectable = true;
+            this.btn_template.UseStyleColors = true;
+            this.btn_template.UseTileImage = true;
+            this.btn_template.Click += new System.EventHandler(this.btn_template_Click);
+            // 
             // UC_Product
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -841,10 +864,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn stock_minimo;
         private System.Windows.Forms.DataGridViewTextBoxColumn stock_maximo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private MetroFramework.Controls.MetroButton btn_template;
-        private MetroFramework.Controls.MetroButton btn_import;
         private MetroFramework.Controls.MetroLabel metroLabel11;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private MetroFramework.Controls.MetroTile btn_import;
+        private MetroFramework.Controls.MetroTile btn_template;
     }
 }
