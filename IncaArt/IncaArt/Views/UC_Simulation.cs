@@ -29,6 +29,6 @@ namespace WindowsFormsApp1.Views
             uC_SimulationConfig2.Visible = false;
 
             //Algorithm.TabuSearch tabu = new Algorithm.TabuSearch();
-        }
+        }        
     }
 }
