@@ -531,7 +531,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_production_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Esta seguro que desea generar las ordenes de produccion", "Confirmacion", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Esta seguro que desea generar las ordenes de produccion?", "Confirmacion", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 Set_Flag_All(true);
@@ -548,7 +548,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     btn_Clean.PerformClick();
                     btn_Clean.PerformClick();
                     tab_Estimate.SelectedIndex = 0;
-                    MessageBox.Show(this, "Ordenes Generadas exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    MessageBox.Show(this, "Ordenes de Produccion Generadas Exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Set_Flag_All(false);
                     edit = false;
                     btn_production.Visible = false;
