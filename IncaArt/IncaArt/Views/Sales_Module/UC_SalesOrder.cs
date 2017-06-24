@@ -133,6 +133,18 @@ namespace WindowsFormsApp1.Views
             }
         }
 
+        private void grid_orders_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            edit = true;
+            int index = grid_orders.SelectedRows[0].Index;
+            var id = sales_orders[index].Id;
+            so_edit = (Models.SalesOrder)sales_order_controller.getSalesOrder(id).data;
+            grid_order_lines.DataSource = so_edit.Lines;
+
+            tab_Order.SelectedIndex = 1;
+            fill_Sales_Order_Form(so_edit);
+        }
+
         private void fill_Sales_Order()
         {
             Result result = sales_order_controller.getSalesOrders();
@@ -342,7 +354,7 @@ namespace WindowsFormsApp1.Views
                 {
                     Models.SalesOrderLine currentObject = (Models.SalesOrderLine)grid_order_lines.CurrentRow.DataBoundItem;
                     if (currentObject == null)
-                        MessageBox.Show("Seleccione la linea que desea anular");
+                        MessageBox.Show("Seleccione la línea que desea eliminar");
                     data.Remove(currentObject);
                     data = data.Concat(new List<Models.SalesOrderLine>().ToList()).ToList();
                     grid_order_lines.DataSource = data;
@@ -355,7 +367,7 @@ namespace WindowsFormsApp1.Views
             }
             catch 
             {
-                grid_order_lines.DataSource = new List<Models.MaterialMovementLine>();
+                grid_order_lines.DataSource = new List<Models.SalesOrderLine>();
                 return;
             }
         }
@@ -592,8 +604,8 @@ namespace WindowsFormsApp1.Views
             
         }
 
+
         #endregion
 
-        
     }
 }

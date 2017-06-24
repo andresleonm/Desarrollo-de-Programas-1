@@ -147,7 +147,7 @@
             this.tab_Order.Controls.Add(this.newOrder);
             this.tab_Order.Location = new System.Drawing.Point(10, 5);
             this.tab_Order.Name = "tab_Order";
-            this.tab_Order.SelectedIndex = 1;
+            this.tab_Order.SelectedIndex = 0;
             this.tab_Order.Size = new System.Drawing.Size(849, 608);
             this.tab_Order.Style = MetroFramework.MetroColorStyle.Teal;
             this.tab_Order.TabIndex = 41;
@@ -281,6 +281,7 @@
             this.grid_orders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_orders.Size = new System.Drawing.Size(792, 255);
             this.grid_orders.TabIndex = 51;
+            this.grid_orders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_orders_CellContentClick);
             // 
             // currency_id
             // 
@@ -412,7 +413,7 @@
             // metroDateTime1
             // 
             this.metroDateTime1.Location = new System.Drawing.Point(562, 24);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(4, 29);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
             this.metroDateTime1.Size = new System.Drawing.Size(209, 29);
             this.metroDateTime1.TabIndex = 49;
@@ -420,7 +421,7 @@
             // metroDateTime2
             // 
             this.metroDateTime2.Location = new System.Drawing.Point(562, 66);
-            this.metroDateTime2.MinimumSize = new System.Drawing.Size(4, 29);
+            this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime2.Name = "metroDateTime2";
             this.metroDateTime2.Size = new System.Drawing.Size(209, 29);
             this.metroDateTime2.TabIndex = 48;
@@ -1086,7 +1087,7 @@
             this.btn_Delete.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Delete.ForeColor = System.Drawing.Color.White;
-            this.btn_Delete.Location = new System.Drawing.Point(615, 11);
+            this.btn_Delete.Location = new System.Drawing.Point(633, 11);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(82, 25);
             this.btn_Delete.TabIndex = 48;
