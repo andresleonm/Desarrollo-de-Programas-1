@@ -62,7 +62,7 @@ namespace WindowsFormsApp1.Views
                 estimate = new SalesEstimate();
                 fill_Sales_Order();
             }
-            else if (tab_Order.SelectedIndex == 1) // New_Order
+            else if (tab_Order.SelectedIndex == 1) // New Order
             {
                 if (!edit)
                 {
@@ -122,18 +122,16 @@ namespace WindowsFormsApp1.Views
             }
             else if (selectedRowCount == 1)
             {
-                edit = true;
-                int index = grid_orders.SelectedRows[0].Index;
-                var id = sales_orders[index].Id;
-                so_edit = (Models.SalesOrder)sales_order_controller.getSalesOrder(id).data;
-                grid_order_lines.DataSource = so_edit.Lines;
-
-                tab_Order.SelectedIndex = 1;
-                fill_Sales_Order_Form(so_edit);
+                active_Edit();
             }
         }
 
         private void grid_orders_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            active_Edit();
+        }
+
+        private void active_Edit()
         {
             edit = true;
             int index = grid_orders.SelectedRows[0].Index;
