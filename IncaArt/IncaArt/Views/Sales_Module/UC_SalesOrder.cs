@@ -279,7 +279,6 @@ namespace WindowsFormsApp1.Views
                         i++;
                     }
                     btn_Clean.PerformClick();
-                    btn_Clean.PerformClick();
                     tab_Order.SelectedIndex = 0;
                     MessageBox.Show(this, "Orden actualizada exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                     edit = false;
@@ -292,39 +291,43 @@ namespace WindowsFormsApp1.Views
             }
             else
             {
-                if (customer.Name == "" || customer.Phone == ""
-                    || customer.Doi == "" || grid_order_lines.DataSource == null || String.IsNullOrWhiteSpace(cbo_Currency.Text) || String.IsNullOrWhiteSpace(txt_name.Text) || String.IsNullOrWhiteSpace(txt_address.Text) || String.IsNullOrWhiteSpace(txt_Doi.Text) || String.IsNullOrWhiteSpace(txt_phone.Text))
+                if (customer.Name == "" || customer.Phone == "" || customer.Doi == "" ||
+                    String.IsNullOrWhiteSpace(cbo_Currency.Text) || 
+                    String.IsNullOrWhiteSpace(txt_name.Text) || String.IsNullOrWhiteSpace(txt_address.Text) || String.IsNullOrWhiteSpace(txt_Doi.Text) || String.IsNullOrWhiteSpace(txt_phone.Text))
                 {
                     MessageBox.Show(this, "Debe completar los campos de cliente y/o moneda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                List<Models.SalesOrderLine> detail = (List<Models.SalesOrderLine>)this.grid_order_lines.DataSource;
+                if (detail == null || detail.Count == 0 || allIsZero(detail))
+                {
+                    MessageBox.Show("Seleccione por lo menos una línea del pedido con cantidad diferente de 0");
+                    return;
+                }
+
+                if (!allGreatherThanZero(detail))
+                {
+                    MessageBox.Show("Las cantidades deben ser mayores a 0");
+                    return;
+                }
+
+                Models.SalesOrder sales_order = new Models.SalesOrder();
+                sales_order.Lines = detail;
+                fill_Sales_Order_Object(sales_order);
+                sales_order.Customer_id = customer.Id;
+
+                Result result = sales_order_controller.insertSalesOrder(sales_order);
+
+                if (result.success)
+                {                    
+                    MessageBox.Show(this, "Se ha creado el pedido N° : " + result.data.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    btn_Clean.PerformClick();
+                    tab_Order.SelectedIndex = 0;
                 }
                 else
                 {
-                    SalesOrder sales_order = new SalesOrder();
-                    fill_Sales_Order_Object(sales_order);
-                    sales_order.Customer_id = customer.Id;
-                    sales_order.Lines = (List<SalesOrderLine>)grid_order_lines.DataSource;
-
-                    int sales_order_id = Int32.Parse(sales_order_controller.insertSalesOrder(sales_order).data.ToString());
-
-                    if (sales_order_id > 0)
-                    {
-                        int i = 1;
-                        foreach (SalesOrderLine sol in sales_order.Lines)
-                        {
-                            sol.Id = i;
-                            sol.Order_id = sales_order_id;
-                            i++;
-                            sales_order_line_controller.insertSalesOrderLine(sol);
-                        }
-                        btn_Clean.PerformClick();
-                        btn_Clean.PerformClick();
-                        tab_Order.SelectedIndex = 0;
-                        MessageBox.Show(this, "Se ha creado la orden N° : " + sales_order_id.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo crear la orden", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    MessageBox.Show(result.message);
                 }
             }
 
@@ -409,9 +412,24 @@ namespace WindowsFormsApp1.Views
             }
         }
 
-        void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private bool allIsZero(List<Models.SalesOrderLine> lines)
         {
-            
+            foreach (Models.SalesOrderLine line in lines)
+            {
+                if (line.Quantity != 0)
+                    return false;
+            }
+            return true;
+        }
+
+        private bool allGreatherThanZero(List<Models.SalesOrderLine> lines)
+        {
+            foreach (Models.SalesOrderLine line in lines)
+            {
+                if (line.Quantity < 0)
+                    return false;
+            }
+            return true;
         }
 
         private void fill_Sales_Order_Object(SalesOrder so)

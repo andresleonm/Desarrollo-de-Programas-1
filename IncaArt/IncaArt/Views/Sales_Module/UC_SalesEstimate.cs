@@ -231,49 +231,53 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     MessageBox.Show("No se pudo actualizar la cotización", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            else
-            if (Validate_Data()) {
-
+            else if (Validate_Data())
+            {
+                if (customer != null)
                 {
-                    if (customer != null)
+                    if (customer.Name == "" || customer.Phone == "" || customer.Doi == "" ||
+                        String.IsNullOrWhiteSpace(cbo_Currency.Text) ||
+                        String.IsNullOrWhiteSpace(txt_name.Text) || String.IsNullOrWhiteSpace(txt_address.Text) || String.IsNullOrWhiteSpace(txt_Doi.Text) || String.IsNullOrWhiteSpace(txt_phone.Text))
                     {
-                        if (customer.Name == "" || customer.Phone == ""
-                       || customer.Doi == "" || grid_estimate_lines.DataSource == null || String.IsNullOrWhiteSpace(cbo_Currency.Text) || String.IsNullOrWhiteSpace(txt_name.Text) || String.IsNullOrWhiteSpace(txt_address.Text) || String.IsNullOrWhiteSpace(txt_Doi.Text) || String.IsNullOrWhiteSpace(txt_phone.Text))
-                        {
-                            MessageBox.Show(this, "Debe completar los campos de cliente y/o moneda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            SalesEstimate sales_estimate = new SalesEstimate();
-                            fill_Sales_Estimate_Object(sales_estimate);
-                            sales_estimate.Customer_id = customer.Id;
-                            sales_estimate.Lines = (List<Models.SalesEstimateLine>)grid_estimate_lines.DataSource;
-
-                            int sales_estimate_id = Int32.Parse(sales_estimate_controller.insertSalesEstimate(sales_estimate).data.ToString());
-
-                            if (sales_estimate_id > 0)
-                            {
-                                int i = 1;
-                                foreach (Models.SalesEstimateLine sel in sales_estimate.Lines)
-                                {
-                                    sel.Id = i;
-                                    sel.Estimate_id = sales_estimate_id;
-                                    i++;
-                                    sales_estimate_line_controller.insertSalesestimateLine(sel);
-                                }
-                                btn_Clean.PerformClick();
-                                btn_Clean.PerformClick();
-                                tab_Estimate.SelectedIndex = 0;
-                                MessageBox.Show(this, "Se ha creado la cotización N° : " + sales_estimate_id.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
-                                
-                            }
-                            else
-                            {
-                                MessageBox.Show("No se pudo crear la cotización", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-                        }
+                        MessageBox.Show(this, "Debe completar los campos de cliente y/o moneda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
-                }             
+
+                    List<Models.SalesEstimateLine> detail = (List<Models.SalesEstimateLine>)this.grid_estimate_lines.DataSource;
+                    if (detail == null || detail.Count == 0 || allIsZero(detail))
+                    {
+                        MessageBox.Show("Seleccione por lo menos una línea de la cotización con cantidad diferente de 0");
+                        return;
+                    }
+
+                    if (!allGreatherThanZero(detail))
+                    {
+                        MessageBox.Show("Las cantidades deben ser mayores a 0");
+                        return;
+                    }
+
+                    Models.SalesEstimate sales_estimate = new Models.SalesEstimate();
+                    sales_estimate.Customer_id = customer.Id;
+                    fill_Sales_Estimate_Object(sales_estimate);
+                    sales_estimate.Lines = detail;
+
+                    Result result = sales_estimate_controller.insertSalesEstimate(sales_estimate);
+
+                    if (result.success)
+                    {
+                        MessageBox.Show(this, "Se ha creado la cotización N° : " + result.data.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        btn_Clean.PerformClick();
+                        tab_Estimate.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        MessageBox.Show(result.message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un cliente", "Error", MessageBoxButtons.OK);
+                }
             }else {
                 MessageBox.Show("Hay campos inválidos", "Error", MessageBoxButtons.OK);
             }
@@ -329,6 +333,26 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     txt_amount.Text = acumulate.ToString("0.00");
                 }
             }
+        }
+
+        private bool allIsZero(List<Models.SalesEstimateLine> lines)
+        {
+            foreach (Models.SalesEstimateLine line in lines)
+            {
+                if (line.Quantity != 0)
+                    return false;
+            }
+            return true;
+        }
+
+        private bool allGreatherThanZero(List<Models.SalesEstimateLine> lines)
+        {
+            foreach (Models.SalesEstimateLine line in lines)
+            {
+                if (line.Quantity < 0)
+                    return false;
+            }
+            return true;
         }
 
         private void fill_Sales_Estimate_Object(SalesEstimate se)
@@ -423,14 +447,12 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         #endregion
 
+        #region VALIDATES
 
-        //Validaciones
         private bool Validate_Data()
         {
-            if ( phone_flag && obs_flag )
-            {
+            if (phone_flag && obs_flag)
                 return true;
-            }
             return false;
         }
 
@@ -439,6 +461,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             phone_flag = value;
             obs_flag = value;
         }
+
         private void Set_Flag(string name, bool value)
         {
             switch (name)
@@ -482,7 +505,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 //e.Cancel = true;
                 Set_Flag(textbox.Name, false);
                 errorProvider.SetError(textbox, "La longitud máxima es de 400 caracteres");
-
             }
             else
             {
@@ -492,15 +514,18 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
         }
 
-        private Boolean isObservationCorrect(String observation) {
-            if (observation.Length > 400) return false;
-            else return true;
-
+        private Boolean isObservationCorrect(String observation)
+        {
+            if (observation.Length > 400)
+                return false;
+            else
+                return true;
         }
         private Boolean isPhoneCorrect(String phone)
         {
             String expresion;
-            if (phone.Length > 11) return false;
+            if (phone.Length > 11)
+                return false;
             expresion = "^[+-]?\\d+(\\.\\d+)?$";
 
             if (Regex.IsMatch(phone, expresion))
@@ -525,9 +550,13 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void txt_Doi_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar)) e.Handled = true;
-            if (e.KeyChar == (char)8) e.Handled = false;
+            if (!char.IsDigit(e.KeyChar))
+                e.Handled = true;
+            if (e.KeyChar == (char)8)
+                e.Handled = false;
         }
+
+        #endregion
 
         private void btn_production_Click(object sender, EventArgs e)
         {
