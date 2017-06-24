@@ -39,7 +39,7 @@
             // register_sale
             // 
             this.register_sale.ActiveControl = null;
-            this.register_sale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.register_sale.BackColor = System.Drawing.Color.DarkCyan;
             this.register_sale.Location = new System.Drawing.Point(31, 3);
             this.register_sale.Name = "register_sale";
             this.register_sale.Size = new System.Drawing.Size(177, 62);
@@ -57,7 +57,7 @@
             // sales
             // 
             this.sales.ActiveControl = null;
-            this.sales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.sales.BackColor = System.Drawing.Color.DarkCyan;
             this.sales.Location = new System.Drawing.Point(250, 3);
             this.sales.Name = "sales";
             this.sales.Size = new System.Drawing.Size(177, 62);

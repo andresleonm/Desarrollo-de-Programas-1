@@ -60,7 +60,7 @@
             // select_products
             // 
             this.select_products.ActiveControl = null;
-            this.select_products.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.select_products.BackColor = System.Drawing.Color.DarkCyan;
             this.select_products.Location = new System.Drawing.Point(3, 3);
             this.select_products.Name = "select_products";
             this.select_products.Size = new System.Drawing.Size(177, 62);
@@ -78,7 +78,7 @@
             // select_materials
             // 
             this.select_materials.ActiveControl = null;
-            this.select_materials.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.select_materials.BackColor = System.Drawing.Color.DarkCyan;
             this.select_materials.Location = new System.Drawing.Point(205, 3);
             this.select_materials.Name = "select_materials";
             this.select_materials.Size = new System.Drawing.Size(177, 62);
@@ -108,7 +108,6 @@
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
-            // 
             // 
             // uC_MaterialWarehouse1
             // 
