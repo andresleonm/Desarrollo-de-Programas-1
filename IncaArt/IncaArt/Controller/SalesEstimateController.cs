@@ -11,6 +11,7 @@ namespace WindowsFormsApp1.Controller
     class SalesEstimateController: DataService.DatabaseService
     {
         private SalesEstimateLineController sales_estimate_line_controller;
+
         public SalesEstimateController(string user, string password) : base( user, password)
         {
             sales_estimate_line_controller = new SalesEstimateLineController(user, password);
@@ -19,8 +20,10 @@ namespace WindowsFormsApp1.Controller
         public Result getSalesEstimates(int idEstimate = 0, int idClient = 0, string iniDate = "", string endDate = "")
         {
             List<Parameter> parameters = new List<Parameter>();
+
             GenericResult result = execute_function("get_sales_estimates", parameters);
             List<SalesEstimate> sales_estimates = new List<SalesEstimate>();
+
             if (result.success)
             {
                 foreach (Row r in result.data)
@@ -42,7 +45,9 @@ namespace WindowsFormsApp1.Controller
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("id", id.ToString()));
+
             GenericResult result = execute_function("get_sales_estimate", parameters);
+
             if (result.success)
             {
                 var r = result.data[0];
@@ -63,8 +68,10 @@ namespace WindowsFormsApp1.Controller
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("client_id", id.ToString()));
+
             GenericResult result = execute_function("get_sales_estimates_by_client", parameters);
             List<SalesEstimate> sales_estimates = new List<SalesEstimate>();
+
             if (result.success)
             {
                 foreach (Row r in result.data)
@@ -87,8 +94,10 @@ namespace WindowsFormsApp1.Controller
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("name", text));
             parameters.Add(new Parameter("client_id", id.ToString()));
+
             GenericResult result = execute_function("get_estimate_by_text_by_client", parameters);
             List<Models.SalesEstimate> estimates = new List<Models.SalesEstimate>();
+
             if (result.success)
             {
                 foreach (Row r in result.data)
@@ -111,8 +120,10 @@ namespace WindowsFormsApp1.Controller
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("id", id.ToString()));
             parameters.Add(new Parameter("class_warehouse", class_warehouse.ToString()));
+
             GenericResult result = execute_function("get_productwarehouse_byclass", parameters);
             List<Views.Sales_Module.ProductWarehouseS> productWarehouses = new List<Views.Sales_Module.ProductWarehouseS>();
+
             if (result.success)
             {
                 foreach (Row r in result.data)
@@ -127,21 +138,70 @@ namespace WindowsFormsApp1.Controller
 
         public Result insertSalesEstimate(SalesEstimate sales_estimate)
         {
-            List<Parameter> parameters = new List<Parameter>();
-            parameters.Add(new Parameter("currency", sales_estimate.Currency_id.ToString()));
+            List<Parameter> parameters = new List<Parameter>();            
             parameters.Add(new Parameter("customer_id", sales_estimate.Customer_id.ToString()));
             parameters.Add(new Parameter("customer_name", sales_estimate.Customer_name));
+            parameters.Add(new Parameter("customer_doi", sales_estimate.Customer_doi));
             parameters.Add(new Parameter("customer_address", sales_estimate.Customer_address));
             parameters.Add(new Parameter("customer_phone", sales_estimate.Customer_phone));
+            parameters.Add(new Parameter("currency", sales_estimate.Currency_id.ToString()));
             parameters.Add(new Parameter("amount", sales_estimate.Amount.ToString()));
-            parameters.Add(new Parameter("state", "Registrado"));
-            parameters.Add(new Parameter("customer_doi", sales_estimate.Customer_doi));
+            parameters.Add(new Parameter("state", "Registrado"));            
             parameters.Add(new Parameter("issue_date", sales_estimate.Issue_date.ToString("MM/dd/yyyy hh:mm:ss")));
             parameters.Add(new Parameter("observation", sales_estimate.Observation));
+
             GenericResult result = execute_transaction("insert_sales_estimate", parameters);
+            int id;
+
             if (result.success)
             {
+                try
+                {
+                    id = Int32.Parse(result.singleValue);
+                }
+                catch (Exception e)
+                {
+                    return new Result(null, false, e.Message);
+                }
 
+                try
+                {
+                    int n = 1;
+                    foreach (SalesEstimateLine line in sales_estimate.Lines)
+                    {
+                        if (line.Quantity != 0)
+                        {
+                            line.Id = n;
+                            line.Estimate_id = id;
+                            Result resultLine = sales_estimate_line_controller.insertSalesestimateLine(line);
+                            if (!resultLine.success)
+                            {
+                                deleteSalesEstimate(id);
+                                return new Result(null, resultLine.success, resultLine.message);
+                            }
+                            n++;
+                        }
+                    }
+                    return new Result(id, true, "");
+                }
+                catch (Exception e)
+                {
+                    deleteSalesEstimate(id);
+                    return new Result(null, false, e.Message);
+                }
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result deleteSalesEstimate(int id)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", id.ToString()));
+
+            GenericResult result = execute_transaction("delete_sales_estimate", parameters);
+
+            if (result.success)
+            {
                 return new Result(result.singleValue, true, "");
             }
             return new Result(null, result.success, result.message);
@@ -161,7 +221,9 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("customer_doi", sales_estimate.Customer_doi));
             parameters.Add(new Parameter("issue_date", sales_estimate.Issue_date.ToString("MM/dd/yyyy hh:mm:ss")));
             parameters.Add(new Parameter("observation", sales_estimate.Observation));
+
             GenericResult resultU = execute_transaction("update_sales_estimate", parameters);
+
             if (resultU.success)
             {
 
@@ -186,8 +248,6 @@ namespace WindowsFormsApp1.Controller
                     }
                     i++;
                 }
-
-
 
                 return new Result("Actualizado", true, "");
             }
