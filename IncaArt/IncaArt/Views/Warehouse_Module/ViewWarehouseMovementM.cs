@@ -146,6 +146,12 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
 
         private void btn_Save_Click_1(object sender, EventArgs e)
         {
+            
+                
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             var result = pc.cancelMovement(Int32.Parse(movementid.Text));
             if (result.success)
             {
@@ -154,7 +160,6 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             else
                 MessageBox.Show(result.message);
             this.Close();
-                
         }
     }
 }

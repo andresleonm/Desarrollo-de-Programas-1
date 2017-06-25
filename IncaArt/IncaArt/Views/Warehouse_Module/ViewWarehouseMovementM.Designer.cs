@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.registro = new MetroFramework.Controls.MetroTabPage();
             this.movementid = new MetroFramework.Controls.MetroTextBox();
@@ -60,6 +60,7 @@
             this.textbox_observation = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.button1 = new System.Windows.Forms.Button();
             this.metroTabControl1.SuspendLayout();
             this.registro.SuspendLayout();
             this.gb_OrderLine.SuspendLayout();
@@ -72,12 +73,13 @@
             this.metroTabControl1.Location = new System.Drawing.Point(2, 1);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(865, 478);
+            this.metroTabControl1.Size = new System.Drawing.Size(865, 537);
             this.metroTabControl1.TabIndex = 1;
             this.metroTabControl1.UseSelectable = true;
             // 
             // registro
             // 
+            this.registro.Controls.Add(this.button1);
             this.registro.Controls.Add(this.movementid);
             this.registro.Controls.Add(this.metroLabel2);
             this.registro.Controls.Add(this.fecha);
@@ -95,7 +97,7 @@
             this.registro.HorizontalScrollbarSize = 10;
             this.registro.Location = new System.Drawing.Point(4, 38);
             this.registro.Name = "registro";
-            this.registro.Size = new System.Drawing.Size(857, 436);
+            this.registro.Size = new System.Drawing.Size(857, 495);
             this.registro.TabIndex = 1;
             this.registro.Text = "Ver";
             this.registro.VerticalScrollbarBarColor = true;
@@ -108,49 +110,7 @@
             // 
             // 
             this.movementid.CustomButton.Image = null;
-            this.movementid.CustomButton.Location = new System.Drawing.Point(115, 1);
-            this.movementid.CustomButton.Name = "";
-            this.movementid.CustomButton.Size = new System.Drawing.Size(17, 16);
-            this.movementid.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.movementid.CustomButton.TabIndex = 1;
-            this.movementid.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.movementid.CustomButton.UseSelectable = true;
-            this.movementid.CustomButton.UseWaitCursor = true;
-            this.movementid.CustomButton.Visible = false;
-            this.movementid.Enabled = false;
-            this.movementid.Lines = new string[0];
-            this.movementid.Location = new System.Drawing.Point(160, 18);
-            this.movementid.MaxLength = 32767;
-            this.movementid.Name = "movementid";
-            this.movementid.PasswordChar = '\0';
-            this.movementid.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.movementid.SelectedText = "";
-            this.movementid.SelectionLength = 0;
-            this.movementid.SelectionStart = 0;
-            this.movementid.ShortcutsEnabled = true;
-            this.movementid.Size = new System.Drawing.Size(200, 30);
-            this.movementid.TabIndex = 69;
-            this.movementid.UseSelectable = true;
-            this.movementid.UseWaitCursor = true;
-            this.movementid.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.movementid.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(19, 26);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(106, 19);
-            this.metroLabel2.TabIndex = 68;
-            this.metroLabel2.Text = "Movimiento Nro";
-            // 
-            // movementid
-            // 
-            // 
-            // 
-            // 
-            this.movementid.CustomButton.Image = null;
-            this.movementid.CustomButton.Location = new System.Drawing.Point(256, 2);
+            this.movementid.CustomButton.Location = new System.Drawing.Point(186, 2);
             this.movementid.CustomButton.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.movementid.CustomButton.Name = "";
             this.movementid.CustomButton.Size = new System.Drawing.Size(41, 41);
@@ -162,7 +122,7 @@
             this.movementid.CustomButton.Visible = false;
             this.movementid.Enabled = false;
             this.movementid.Lines = new string[0];
-            this.movementid.Location = new System.Drawing.Point(240, 28);
+            this.movementid.Location = new System.Drawing.Point(160, 9);
             this.movementid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.movementid.MaxLength = 32767;
             this.movementid.Name = "movementid";
@@ -172,7 +132,7 @@
             this.movementid.SelectionLength = 0;
             this.movementid.SelectionStart = 0;
             this.movementid.ShortcutsEnabled = true;
-            this.movementid.Size = new System.Drawing.Size(300, 46);
+            this.movementid.Size = new System.Drawing.Size(230, 46);
             this.movementid.TabIndex = 69;
             this.movementid.UseSelectable = true;
             this.movementid.UseWaitCursor = true;
@@ -182,7 +142,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(28, 40);
+            this.metroLabel2.Location = new System.Drawing.Point(22, 18);
             this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(106, 19);
@@ -195,9 +155,9 @@
             // 
             // 
             this.fecha.CustomButton.Image = null;
-            this.fecha.CustomButton.Location = new System.Drawing.Point(115, 1);
+            this.fecha.CustomButton.Location = new System.Drawing.Point(172, 2);
             this.fecha.CustomButton.Name = "";
-            this.fecha.CustomButton.Size = new System.Drawing.Size(17, 16);
+            this.fecha.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.fecha.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.fecha.CustomButton.TabIndex = 1;
             this.fecha.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -226,9 +186,9 @@
             // 
             // 
             this.document.CustomButton.Image = null;
-            this.document.CustomButton.Location = new System.Drawing.Point(115, 1);
+            this.document.CustomButton.Location = new System.Drawing.Point(172, 2);
             this.document.CustomButton.Name = "";
-            this.document.CustomButton.Size = new System.Drawing.Size(17, 16);
+            this.document.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.document.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.document.CustomButton.TabIndex = 1;
             this.document.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -269,15 +229,16 @@
             this.grid_movement_lines.AllowUserToResizeRows = false;
             this.grid_movement_lines.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.grid_movement_lines.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.grid_movement_lines.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.grid_movement_lines.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_movement_lines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_movement_lines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.grid_movement_lines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid_movement_lines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.movement_id,
@@ -294,14 +255,14 @@
             this.quantity,
             this.state,
             this.idDocumentLine});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid_movement_lines.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid_movement_lines.DefaultCellStyle = dataGridViewCellStyle5;
             this.grid_movement_lines.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_movement_lines.Enabled = false;
             this.grid_movement_lines.EnableHeadersVisualStyles = false;
@@ -310,14 +271,14 @@
             this.grid_movement_lines.Location = new System.Drawing.Point(3, 16);
             this.grid_movement_lines.Name = "grid_movement_lines";
             this.grid_movement_lines.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_movement_lines.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_movement_lines.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.grid_movement_lines.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.grid_movement_lines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_movement_lines.Size = new System.Drawing.Size(785, 170);
@@ -476,9 +437,9 @@
             // 
             // 
             this.textbox_observation.CustomButton.Image = null;
-            this.textbox_observation.CustomButton.Location = new System.Drawing.Point(137, 1);
+            this.textbox_observation.CustomButton.Location = new System.Drawing.Point(206, 2);
             this.textbox_observation.CustomButton.Name = "";
-            this.textbox_observation.CustomButton.Size = new System.Drawing.Size(50, 49);
+            this.textbox_observation.CustomButton.Size = new System.Drawing.Size(75, 75);
             this.textbox_observation.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textbox_observation.CustomButton.TabIndex = 1;
             this.textbox_observation.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -519,11 +480,24 @@
             this.metroLabel5.TabIndex = 2;
             this.metroLabel5.Text = "Tipo de Movimiento";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkCyan;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(383, 420);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(82, 29);
+            this.button1.TabIndex = 70;
+            this.button1.Text = "Anular";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ViewWarehouseMovementM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(869, 475);
+            this.ClientSize = new System.Drawing.Size(869, 550);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "ViewWarehouseMovementM";
             this.Text = "Movimiento";
@@ -567,5 +541,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idDocumentLine;
         private MetroFramework.Controls.MetroTextBox movementid;
         private MetroFramework.Controls.MetroLabel metroLabel2;
+        private System.Windows.Forms.Button button1;
     }
 }
