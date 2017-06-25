@@ -26,11 +26,11 @@ namespace WindowsFormsApp1.Controller
                     SalesRefundLineController rlc = new SalesRefundLineController(user, password);
                     //var detail = (List<SalesOrderLine>)solc.getSalesOrderLines(Int32.Parse(r.getColumn(0))).data;
                     refunds.Add(new SalesRefund(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
-                                                        r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
-                                                        r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
-                                                        r.getColumn(9), DateTime.Parse(r.getColumn(10))
-                                                        , Double.Parse(r.getColumn(11)), Double.Parse(r.getColumn(12)), 
-                                                        r.getColumn(13), Int32.Parse(r.getColumn(14)), null));
+                                                r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
+                                                r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
+                                                r.getColumn(9), DateTime.Parse(r.getColumn(10)),
+                                                Double.Parse(r.getColumn(11)), Double.Parse(r.getColumn(12)), 
+                                                r.getColumn(13), Int32.Parse(r.getColumn(14)), null));
                 }
                 return new Result(refunds, true, "");
             }

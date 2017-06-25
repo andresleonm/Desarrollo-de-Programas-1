@@ -286,14 +286,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     grid_Document_Lines.DataSource = doc_lines;
                     AdjustColumnDocumentLine();
 
-                    double acumulate = 0;
-                    for (int i = 0; i < grid_Document_Lines.RowCount; i++)
-                    {
-                        acumulate += double.Parse(grid_Document_Lines.Rows[i].Cells["amount"].Value.ToString());
-                    }
-                    txt_amount.Text = acumulate.ToString("0.00");
-                    txt_igv.Text = Math.Round((acumulate * igv), 2).ToString("0.00");
-                    txt_total.Text = Math.Round((acumulate * (1 + igv)), 2).ToString("0.00");
+                    update_Amount_Document();
                 }
             }
             else
@@ -325,11 +318,13 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     {
                         sdl.Id = i;
                         sdl.Document_id = sales_document_id;
-                        i++;
-                        var result=sales_document_line_controller.insertSalesDocumentLine(sdl);
+                        var result = sales_document_line_controller.insertSalesDocumentLine(sdl);
                         if (!result.success)
+                        {
                             MessageBox.Show(this, result.message);
-
+                            return;
+                        }
+                        i++;
                     }
                     btn_Clean.PerformClick();
                     btn_Clean.PerformClick();
@@ -356,6 +351,17 @@ namespace WindowsFormsApp1.Views.Sales_Module
             sd_see = new SalesDocument();
             manipulate_options(true);
             Clean();
+        }
+
+        private void update_Amount_Document()
+        {
+            double acumulate = 0;
+            for (int i = 0; i < grid_Document_Lines.RowCount; i++)
+                acumulate += double.Parse(grid_Document_Lines.Rows[i].Cells["amount"].Value.ToString());
+
+            txt_amount.Text = acumulate.ToString("0.00");
+            txt_igv.Text = Math.Round((acumulate * igv), 2).ToString("0.00");
+            txt_total.Text = Math.Round((acumulate * (1 + igv)), 2).ToString("0.00");
         }
 
         private void fill_Sales_Document_Object(SalesDocument sd)

@@ -80,7 +80,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
         {
             if (String.IsNullOrWhiteSpace(ctxt_refund_id.Text))
             {
-                fill_Sales_Refund_Grid();
+                fill_Sales_Refunds();
             }
             else
             {
@@ -174,9 +174,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
         #endregion
 
 
-        #region REGISTER DOCUMENT
+        #region REGISTER REFUND
         // -----------------------------------------------------
-        //                   REGISTER DOCUMENT
+        //                   REGISTER REFUND
         // -----------------------------------------------------
         
         private void btn_Search_Document_Click(object sender, EventArgs e)
@@ -202,43 +202,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
         }
 
-        #endregion
-
-
-        private void manipulate_options(bool flag)
-        {
-            Color color = flag ? Color.White : Color.LightGray;
-
-            txt_observation.Enabled = flag;
-            txt_observation.BackColor = color;
-
-            btn_Search_Document.Visible = flag;
-            btn_Save.Visible = flag;
-            grid_Refund_Lines.Columns["Quantity"].ReadOnly = !flag;
-
-        }
-
-        
-
-        private void btn_Cancel_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-        }
-
-        private void btn_Clean_Click(object sender, EventArgs e)
-        {
-            Clean();
-        }
-
-        private void fill_Sales_Refund_Grid()
-        {
-            Result result = sales_refund_controller.getSalesRefunds();
-            sales_refunds = (List<SalesRefund>)result.data;
-            fill_gridView_Refund(sales_refunds);
-        }
-
-
-
         private void btn_Save_Click(object sender, EventArgs e)
         {
             if (document == null || String.IsNullOrWhiteSpace(txt_Document_id.Text))
@@ -247,7 +210,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
             else
             {
-                Result result;
                 SalesRefund sales_refund = new SalesRefund();
                 fill_Sales_Refund_Object(sales_refund);
 
@@ -263,8 +225,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     {
                         srl.Id = i;
                         srl.Refund_id = sales_refund_id;
-                        srl.Status = "Registrado";                        
-                        result = sales_refund_line_controller.insertSalesRefundLine(srl);
+                        var result = sales_refund_line_controller.insertSalesRefundLine(srl);
                         if (!result.success)
                         {
                             MessageBox.Show(this, result.message + "  -  Error fila " + i.ToString(), "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -272,18 +233,56 @@ namespace WindowsFormsApp1.Views.Sales_Module
                         }
                         i++;
                     }
-                    txt_Refund_id.Text = sales_refund_id.ToString();
-                    txt_Status.Text = sales_refund.Status;
-                    fill_Sales_Refunds();
                     btn_Clean.PerformClick();
+                    btn_Clean.PerformClick();                    
                     tab_Refund.SelectedIndex = 0;
-                    MessageBox.Show(this, "Devolución creada exitosamente", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    MessageBox.Show(this, "Se ha creado el documento N° : " + sales_refund_id.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                 }
                 else
                 {
                     MessageBox.Show("No se pudo crear la devolución", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            btn_Clean.PerformClick();
+            btn_Clean.PerformClick();
+            this.Visible = false;
+        }
+
+        private void btn_Clean_Click(object sender, EventArgs e)
+        {
+            see = false;
+            sr_see = new SalesRefund();
+            manipulate_options(true);
+            Clean();
+        }
+
+        private void grid_Refund_Lines_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                if (e.ColumnIndex == 12)
+                {
+                    double update_amount = double.Parse(grid_Refund_Lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString()) * double.Parse(grid_Refund_Lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
+                    grid_Refund_Lines.Rows[e.RowIndex].Cells["amount"].Value = update_amount;
+
+                    update_Amount_Refund();
+                }
+            }
+        }
+
+        private void update_Amount_Refund()
+        {
+            double acumulate = 0;
+            for (int i = 0; i < grid_Refund_Lines.RowCount; i++)
+                acumulate += double.Parse(grid_Refund_Lines.Rows[i].Cells["amount"].Value.ToString());
+
+            txt_amount.Text = acumulate.ToString("0.00");
+            txt_igv.Text = Math.Round((acumulate * igv), 2).ToString("0.00");
+            txt_total.Text = Math.Round((acumulate * (1 + igv)), 2).ToString("0.00");
         }
 
         private void fill_Sales_Refund_Object(SalesRefund sr)
@@ -301,10 +300,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
             sr.Issue_date = dt_IssueDate.Value.Date + dt_IssueHour.Value.TimeOfDay;
             sr.Observation = txt_observation.Text;
             sr.Amount = double.Parse(txt_amount.Text);
-            sr.Status = "Registrado";
         }
 
-        private void fill_Sales_Refund_Form(SalesRefund  sr)
+        private void fill_Sales_Refund_Form(SalesRefund sr)
         {
             Clean();
             txt_name.Text = sr.Customer_name;
@@ -322,7 +320,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_amount.Text = sr.Amount.ToString();
             txt_igv.Text = (sr.Amount * sr.Porc_igv).ToString();
             txt_total.Text = (sr.Amount * (1 + sr.Porc_igv)).ToString();
-            txt_Status.Text = sr.Status;            
+            txt_Status.Text = sr.Status;
         }
 
         private void fill_Sales_Refund_Form(SalesDocument sd)
@@ -356,7 +354,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_Document_id.Text = "";
             txt_Refund_id.Text = "";
             txt_Currency.Text = "";
-            
+
             txt_observation.Text = "";
             txt_amount.Text = "";
             txt_igv.Text = "";
@@ -383,30 +381,20 @@ namespace WindowsFormsApp1.Views.Sales_Module
             grid_Refund_Lines.Columns["amount"].DisplayIndex = 7;
         }
 
-        private void update_Amount_Refund()
+        private void manipulate_options(bool flag)
         {
-            double acumulate = 0;
-            for (int i = 0; i < grid_Refund_Lines.RowCount; i++)
-            {
-                acumulate += double.Parse(grid_Refund_Lines.Rows[i].Cells["amount"].Value.ToString());
-            }
-            txt_amount.Text = acumulate.ToString();
-            txt_igv.Text = Math.Round((acumulate * igv), 2).ToString();
-            txt_total.Text = Math.Round((acumulate * (1 + igv)), 2).ToString();
+            Color color = flag ? Color.White : Color.LightGray;
+
+            txt_observation.Enabled = flag;
+            txt_observation.BackColor = color;
+
+            btn_Search_Document.Visible = flag;
+            btn_Save.Visible = flag;
+            grid_Refund_Lines.Columns["Quantity"].ReadOnly = !flag;
+
         }
 
-        private void grid_Refund_Lines_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                if (e.ColumnIndex == 12)
-                {
-                    double update_amount = double.Parse(grid_Refund_Lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString()) * double.Parse(grid_Refund_Lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
-                    grid_Refund_Lines.Rows[e.RowIndex].Cells["amount"].Value = update_amount;
-
-                    update_Amount_Refund();
-                }
-            }
-        }
+        #endregion
+        
     }
 }

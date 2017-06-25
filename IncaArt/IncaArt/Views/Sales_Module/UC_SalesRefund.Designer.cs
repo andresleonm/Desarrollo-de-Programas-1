@@ -107,7 +107,6 @@
             this.gb_RefundLine = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_Refund_Lines = new MetroFramework.Controls.MetroGrid();
-            this.salesRefundLineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.refund_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.documenti_d_line = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -123,6 +122,7 @@
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salesRefundLineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.tab_Refund.SuspendLayout();
             this.refund.SuspendLayout();
@@ -156,7 +156,7 @@
             this.tab_Refund.Controls.Add(this.newRefund);
             this.tab_Refund.Location = new System.Drawing.Point(10, 5);
             this.tab_Refund.Name = "tab_Refund";
-            this.tab_Refund.SelectedIndex = 1;
+            this.tab_Refund.SelectedIndex = 0;
             this.tab_Refund.Size = new System.Drawing.Size(1042, 605);
             this.tab_Refund.Style = MetroFramework.MetroColorStyle.Teal;
             this.tab_Refund.TabIndex = 44;
@@ -434,7 +434,7 @@
             // dt_iniDate
             // 
             this.dt_iniDate.Location = new System.Drawing.Point(664, 22);
-            this.dt_iniDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_iniDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_iniDate.Name = "dt_iniDate";
             this.dt_iniDate.Size = new System.Drawing.Size(222, 29);
             this.dt_iniDate.TabIndex = 59;
@@ -442,7 +442,7 @@
             // dt_endDate
             // 
             this.dt_endDate.Location = new System.Drawing.Point(664, 74);
-            this.dt_endDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_endDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_endDate.Name = "dt_endDate";
             this.dt_endDate.Size = new System.Drawing.Size(222, 29);
             this.dt_endDate.TabIndex = 58;
@@ -1374,10 +1374,6 @@
             this.grid_Refund_Lines.TabIndex = 52;
             this.grid_Refund_Lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Refund_Lines_CellValueChanged);
             // 
-            // salesRefundLineBindingSource
-            // 
-            this.salesRefundLineBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesRefundLine);
-            // 
             // id
             // 
             this.id.DataPropertyName = "Id";
@@ -1484,6 +1480,10 @@
             this.amount.HeaderText = "SubTotal";
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
+            // 
+            // salesRefundLineBindingSource
+            // 
+            this.salesRefundLineBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesRefundLine);
             // 
             // UC_SalesRefund
             // 
