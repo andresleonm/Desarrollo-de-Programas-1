@@ -186,6 +186,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             sr.Observation = txt_observation.Text;
             sr.Amount = double.Parse(txt_amount.Text);
             sr.Status = "Registrado";
+            sr.Document_id = Int32.Parse(txt_Document_id.Text);
         }
 
         private void fill_Sales_Refund_Form(SalesDocument sd)
