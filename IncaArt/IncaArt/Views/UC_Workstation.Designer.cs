@@ -132,6 +132,9 @@
             // 
             // metroGrid1
             // 
+            this.metroGrid1.AllowUserToAddRows = false;
+            this.metroGrid1.AllowUserToDeleteRows = false;
+            this.metroGrid1.AllowUserToResizeColumns = false;
             this.metroGrid1.AllowUserToResizeRows = false;
             this.metroGrid1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -166,6 +169,7 @@
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid1.Location = new System.Drawing.Point(6, 20);
             this.metroGrid1.Name = "metroGrid1";
+            this.metroGrid1.ReadOnly = true;
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkCyan;
@@ -186,33 +190,39 @@
             // 
             this.id.HeaderText = "ID";
             this.id.Name = "id";
+            this.id.ReadOnly = true;
             this.id.Visible = false;
             // 
             // index
             // 
             this.index.HeaderText = "Index";
             this.index.Name = "index";
+            this.index.ReadOnly = true;
             this.index.Visible = false;
             // 
             // nombre
             // 
             this.nombre.HeaderText = "Nombre";
             this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
             // 
             // producto
             // 
             this.producto.HeaderText = "Producto";
             this.producto.Name = "producto";
+            this.producto.ReadOnly = true;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Anterior Puesto";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Siguiente Puesto";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // btn_delete
             // 
@@ -778,6 +788,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.metroLabel11);
             this.Controls.Add(this.metroTabControl1);

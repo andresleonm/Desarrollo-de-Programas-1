@@ -233,7 +233,7 @@
             // 
             // metroTextBox_Estimate_line
             // 
-            this.metroTextBox_Estimate_line.BackColor = System.Drawing.SystemColors.Window;
+            this.metroTextBox_Estimate_line.BackColor = System.Drawing.SystemColors.ScrollBar;
             // 
             // 
             // 
@@ -248,11 +248,13 @@
             this.metroTextBox_Estimate_line.CustomButton.UseSelectable = true;
             this.metroTextBox_Estimate_line.CustomButton.UseVisualStyleBackColor = false;
             this.metroTextBox_Estimate_line.CustomButton.Visible = false;
+            this.metroTextBox_Estimate_line.Enabled = false;
             this.metroTextBox_Estimate_line.Lines = new string[0];
             this.metroTextBox_Estimate_line.Location = new System.Drawing.Point(562, 25);
             this.metroTextBox_Estimate_line.MaxLength = 8;
             this.metroTextBox_Estimate_line.Name = "metroTextBox_Estimate_line";
             this.metroTextBox_Estimate_line.PasswordChar = '\0';
+            this.metroTextBox_Estimate_line.ReadOnly = true;
             this.metroTextBox_Estimate_line.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.metroTextBox_Estimate_line.SelectedText = "";
             this.metroTextBox_Estimate_line.SelectionLength = 0;
@@ -285,7 +287,7 @@
             // 
             // metroTextBox_Estimate
             // 
-            this.metroTextBox_Estimate.BackColor = System.Drawing.SystemColors.Window;
+            this.metroTextBox_Estimate.BackColor = System.Drawing.SystemColors.ScrollBar;
             // 
             // 
             // 
@@ -300,11 +302,13 @@
             this.metroTextBox_Estimate.CustomButton.UseSelectable = true;
             this.metroTextBox_Estimate.CustomButton.UseVisualStyleBackColor = false;
             this.metroTextBox_Estimate.CustomButton.Visible = false;
+            this.metroTextBox_Estimate.Enabled = false;
             this.metroTextBox_Estimate.Lines = new string[0];
             this.metroTextBox_Estimate.Location = new System.Drawing.Point(378, 25);
             this.metroTextBox_Estimate.MaxLength = 8;
             this.metroTextBox_Estimate.Name = "metroTextBox_Estimate";
             this.metroTextBox_Estimate.PasswordChar = '\0';
+            this.metroTextBox_Estimate.ReadOnly = true;
             this.metroTextBox_Estimate.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.metroTextBox_Estimate.SelectedText = "";
             this.metroTextBox_Estimate.SelectionLength = 0;
@@ -1036,7 +1040,7 @@
             this.metroGrid_Work.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroGrid_Work.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.metroGrid_Work.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid_Work.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.metroGrid_Work.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGrid_Work.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGrid_Work.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -1194,7 +1198,7 @@
             this.metroGrid_materials_summary.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroGrid_materials_summary.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.metroGrid_materials_summary.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid_materials_summary.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.metroGrid_materials_summary.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGrid_materials_summary.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGrid_materials_summary.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -1277,7 +1281,7 @@
             this.metroGrid_products_summary.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroGrid_products_summary.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.metroGrid_products_summary.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid_products_summary.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.metroGrid_products_summary.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGrid_products_summary.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGrid_products_summary.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;

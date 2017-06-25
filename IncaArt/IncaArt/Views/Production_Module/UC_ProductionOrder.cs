@@ -401,7 +401,7 @@ namespace WindowsFormsApp1.Views
 
         private void UC_ProductionOrder_Load(object sender, EventArgs e)
         {
-            
+            Load_Product();
         }
 
         private void UC_ProductionOrder_VisibleChanged(object sender, EventArgs e)
@@ -481,6 +481,11 @@ namespace WindowsFormsApp1.Views
                         {
                             int selected_index = metroGrid_Material.SelectedRows[0].Index;
                             Models.ProductionOrderMaterialLine material_line = material_lines[selected_index];
+                            if (material_line.Quantity_taken_real != 0){
+                                MessageBox.Show(this, "No es posible eliminar un material el cual ya ha sido sacado de almacen", "Mensaje", MessageBoxButtons.OK);
+                                return;
+                            }
+
                             material_line.State = "Anulado";
                             Load_Material_DataGridView();
                         }

@@ -37,7 +37,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Search_Click(object sender, EventArgs e)
         {
-            var documents = (List<SalesDocument>)sales_document_controller.getSalesDocuments().data;
+            var documents = (List<SalesDocument>)sales_document_controller.getSalesDocumentsforRefund().data;
             if (documents == null)
                 documents = new List<SalesDocument>();
             grid_Documents.DataSource = documents;

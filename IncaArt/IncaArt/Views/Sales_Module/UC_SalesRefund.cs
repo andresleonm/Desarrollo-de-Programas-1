@@ -139,13 +139,20 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void fill_gridView_Refund(List<SalesRefund> list)
         {
-            clean_gridView_Refund();
-            List<SalesRefund> current = (List<SalesRefund>)this.grid_Refunds.DataSource;
-            if (current == null)
-                current = new List<SalesRefund>();
-            current = current.Concat(list).ToList();
-            this.grid_Refunds.DataSource = current;
-            AdjustColumnRefund();
+            try{
+                clean_gridView_Refund();
+                List<SalesRefund> current = (List<SalesRefund>)this.grid_Refunds.DataSource;
+                if (current == null)
+                    current = new List<SalesRefund>();
+                current = current.Concat(list).ToList();
+                this.grid_Refunds.DataSource = current;
+                AdjustColumnRefund();
+            }
+            catch{
+                this.grid_Refunds.DataSource = new List<SalesRefund>();
+                AdjustColumnRefund();
+            }
+            
         }
 
         private void clean_gridView_Refund()
@@ -300,6 +307,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             sr.Issue_date = dt_IssueDate.Value.Date + dt_IssueHour.Value.TimeOfDay;
             sr.Observation = txt_observation.Text;
             sr.Amount = double.Parse(txt_amount.Text);
+            sr.Document_id = Int32.Parse(txt_Document_id.Text);
         }
 
         private void fill_Sales_Refund_Form(SalesRefund sr)

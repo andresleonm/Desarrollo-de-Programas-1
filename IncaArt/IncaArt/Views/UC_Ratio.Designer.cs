@@ -158,6 +158,9 @@
             // 
             // metroGrid1
             // 
+            this.metroGrid1.AllowUserToAddRows = false;
+            this.metroGrid1.AllowUserToDeleteRows = false;
+            this.metroGrid1.AllowUserToResizeColumns = false;
             this.metroGrid1.AllowUserToResizeRows = false;
             this.metroGrid1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -192,6 +195,7 @@
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid1.Location = new System.Drawing.Point(3, 16);
             this.metroGrid1.Name = "metroGrid1";
+            this.metroGrid1.ReadOnly = true;
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkCyan;
@@ -211,30 +215,35 @@
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column1.HeaderText = "Trabajador";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column3.HeaderText = "Producto";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column2.HeaderText = "Puesto de Trabajao";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column4
             // 
             this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column4.HeaderText = "Tipo Ratio";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column5.HeaderText = "Valor";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // groupBox2
             // 
@@ -543,6 +552,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
