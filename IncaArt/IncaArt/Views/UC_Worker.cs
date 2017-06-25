@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.Office.Interop.Excel;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class UC_Worker : MetroFramework.Controls.MetroUserControl
+    public partial class UC_Worker : ICheckPermissions
     {
         bool name_flag;
         bool paternal_flag;
@@ -32,6 +33,7 @@ namespace WindowsFormsApp1.Views
         Controller.ShiftsController shiftController;
         Controller.CurrencyController currencyController;
         Controller.Result result;
+        Models.User sessionUser;
         public UC_Worker()
         {
             InitializeComponent();
@@ -906,6 +908,25 @@ namespace WindowsFormsApp1.Views
             ws.Range["F2"].Value2 = "Salario";
             ws.Range["G2"].Value2 = "Moneda";
             ws.Columns.AutoFit();
+        }
+
+        public override void CheckPermissions(User u)
+        {
+            sessionUser = u;
+            Permissions();
+        }
+
+        private void Permissions()
+        {
+            if (!sessionUser.Profile.HasFunctionality("CREATE WORKERS") && !sessionUser.Profile.HasFunctionality("EDIT WORKERS"))
+            {
+                this.metroTabControl1.TabPages.Remove(tabRegister);
+            }
+            if (!sessionUser.Profile.HasFunctionality("DELETE WORKERS"))
+            {
+                btn_delete.Visible = false;
+            }
+
         }
     }
 }
