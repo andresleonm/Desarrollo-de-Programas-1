@@ -118,6 +118,7 @@
             this.btn_delete.Text = "Eliminar ";
             this.btn_delete.UseVisualStyleBackColor = false;
             this.btn_delete.UseWaitCursor = true;
+            this.btn_delete.Visible = false;
             this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // groupBox2
@@ -145,8 +146,8 @@
             // radio4_s
             // 
             this.radio4_s.AutoSize = true;
-            this.radio4_s.Location = new System.Drawing.Point(221, 44);
-            this.radio4_s.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radio4_s.Location = new System.Drawing.Point(332, 67);
+            this.radio4_s.Margin = new System.Windows.Forms.Padding(2);
             this.radio4_s.Name = "radio4_s";
             this.radio4_s.Size = new System.Drawing.Size(103, 15);
             this.radio4_s.TabIndex = 89;
@@ -216,9 +217,9 @@
             // 
             // 
             this.textbox_name_s.CustomButton.Image = null;
-            this.textbox_name_s.CustomButton.Location = new System.Drawing.Point(161, 1);
+            this.textbox_name_s.CustomButton.Location = new System.Drawing.Point(241, 1);
             this.textbox_name_s.CustomButton.Name = "";
-            this.textbox_name_s.CustomButton.Size = new System.Drawing.Size(17, 16);
+            this.textbox_name_s.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.textbox_name_s.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textbox_name_s.CustomButton.TabIndex = 1;
             this.textbox_name_s.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -407,8 +408,8 @@
             // radio4
             // 
             this.radio4.AutoSize = true;
-            this.radio4.Location = new System.Drawing.Point(55, 128);
-            this.radio4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radio4.Location = new System.Drawing.Point(82, 196);
+            this.radio4.Margin = new System.Windows.Forms.Padding(2);
             this.radio4.Name = "radio4";
             this.radio4.Size = new System.Drawing.Size(103, 15);
             this.radio4.TabIndex = 90;
@@ -520,9 +521,9 @@
             // 
             // 
             this.textbox_name.CustomButton.Image = null;
-            this.textbox_name.CustomButton.Location = new System.Drawing.Point(157, 1);
+            this.textbox_name.CustomButton.Location = new System.Drawing.Point(235, 1);
             this.textbox_name.CustomButton.Name = "";
-            this.textbox_name.CustomButton.Size = new System.Drawing.Size(17, 16);
+            this.textbox_name.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.textbox_name.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textbox_name.CustomButton.TabIndex = 1;
             this.textbox_name.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -569,7 +570,7 @@
             this.Controls.Add(this.metroLabel11);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "UC_ProductMovementsType";
-            this.Size = new System.Drawing.Size(514, 643);
+            this.Size = new System.Drawing.Size(463, 592);
             this.Load += new System.EventHandler(this.UC_ProductMovementsType_Load);
             this.VisibleChanged += new System.EventHandler(this.UC_ProductMovementsType_VisibleChanged);
             this.metroTabControl1.ResumeLayout(false);
