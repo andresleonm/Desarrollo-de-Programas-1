@@ -401,7 +401,7 @@ namespace WindowsFormsApp1.Views
 
         private void UC_ProductionOrder_Load(object sender, EventArgs e)
         {
-            
+            Load_Product();
         }
 
         private void UC_ProductionOrder_VisibleChanged(object sender, EventArgs e)

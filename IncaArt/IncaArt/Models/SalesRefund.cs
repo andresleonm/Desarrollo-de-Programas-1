@@ -18,6 +18,7 @@ namespace WindowsFormsApp1.Models
         public string Customer_phone { get; set; }
         public string Customer_doi { get; set; }
         public double Amount { get; set; }
+        public double Porc_igv { get; set; }
         public string Status { get; set; }
         public DateTime Issue_date { get; set; }
         public string Observation { get; set; }
@@ -28,7 +29,7 @@ namespace WindowsFormsApp1.Models
 
 
         // Construct for controller
-        public SalesRefund(int order_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, double amount, string observation, int doc_id, List<SalesRefundLine> lines)
+        public SalesRefund(int order_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, double amount,double porc_igv, string observation, int doc_id, List<SalesRefundLine> lines)
         {
             this.Id = order_id;
             this.Currency_id = currency_id;
@@ -42,6 +43,7 @@ namespace WindowsFormsApp1.Models
             this.Status = status;
             this.Issue_date = issue_date;
             this.Amount = amount;
+            this.Porc_igv = porc_igv;
             this.Observation = observation;
             this.Document_id = doc_id;
             this.Lines = lines;

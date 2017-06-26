@@ -26,11 +26,11 @@ namespace WindowsFormsApp1.Controller
                     SalesRefundLineController rlc = new SalesRefundLineController(user, password);
                     //var detail = (List<SalesOrderLine>)solc.getSalesOrderLines(Int32.Parse(r.getColumn(0))).data;
                     refunds.Add(new SalesRefund(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
-                                                        r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
-                                                        r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
-                                                        r.getColumn(9), DateTime.Parse(r.getColumn(10))
-                                                        , Double.Parse(r.getColumn(11)), r.getColumn(12),
-                                                        Int32.Parse(r.getColumn(13)), null));
+                                                r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
+                                                r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
+                                                r.getColumn(9), DateTime.Parse(r.getColumn(10)),
+                                                Double.Parse(r.getColumn(11)), Double.Parse(r.getColumn(12)), 
+                                                r.getColumn(13), Int32.Parse(r.getColumn(14)), null));
                 }
                 return new Result(refunds, true, "");
             }
@@ -51,8 +51,8 @@ namespace WindowsFormsApp1.Controller
                                                         r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
                                                         r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
                                                         r.getColumn(9), DateTime.Parse(r.getColumn(10)), 
-                                                         Double.Parse(r.getColumn(11)),
-                                                        r.getColumn(12), Int32.Parse(r.getColumn(13)), detail);
+                                                         Double.Parse(r.getColumn(11)), Double.Parse(r.getColumn(12)),
+                                                        r.getColumn(13), Int32.Parse(r.getColumn(14)), detail);
                 return new Result(refund, true, "");
             }
             return new Result(null, result.success, result.message);
@@ -61,18 +61,22 @@ namespace WindowsFormsApp1.Controller
         public Result insertSalesRefund(SalesRefund sales_refund)
         {
             List<Parameter> parameters = new List<Parameter>();
-            parameters.Add(new Parameter("currency_id", sales_refund.Currency_id.ToString()));
+            
             parameters.Add(new Parameter("customer_id", sales_refund.Customer_id.ToString()));
             parameters.Add(new Parameter("customer_name", sales_refund.Customer_name));
+            parameters.Add(new Parameter("customer_doi", sales_refund.Customer_doi));
             parameters.Add(new Parameter("customer_address", sales_refund.Customer_address));
             parameters.Add(new Parameter("customer_phone", sales_refund.Customer_phone));
+            parameters.Add(new Parameter("currency_id", sales_refund.Currency_id.ToString()));
             parameters.Add(new Parameter("amount", sales_refund.Amount.ToString()));
-            parameters.Add(new Parameter("state", "Registrado"));
-            parameters.Add(new Parameter("customer_doi", sales_refund.Customer_doi));
+            parameters.Add(new Parameter("porc_igv", sales_refund.Porc_igv.ToString()));
+            parameters.Add(new Parameter("state", "Registrado"));            
             parameters.Add(new Parameter("date", sales_refund.Issue_date.ToString("MM/dd/yyyy hh:mm:ss")));
             parameters.Add(new Parameter("observation", sales_refund.Observation));
             parameters.Add(new Parameter("document_id", sales_refund.Document_id.ToString()));
+
             GenericResult result = execute_transaction("insert_sales_refund", parameters);
+
             if (result.success)
             {
                 return new Result(result.singleValue, true, "");

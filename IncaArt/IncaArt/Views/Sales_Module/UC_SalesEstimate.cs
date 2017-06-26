@@ -58,7 +58,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 customer = null;
                 fill_Sales_Estimate();
             }
-            else if (tab_Estimate.SelectedIndex == 1) // New_Estimate
+            else if (tab_Estimate.SelectedIndex == 1) // New Estimate
             {
                 if (!edit)
                 {
@@ -117,15 +117,25 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
             else if (selectedRowCount == 1)
             {
-                edit = true;
-                btn_production.Visible = edit;
-                int index = grid_estimates.SelectedRows[0].Index;
-                var id = sales_estimates[index].Id;
-                se_edit = (Models.SalesEstimate)sales_estimate_controller.getSalesEstimate(id).data;
-                grid_estimate_lines.DataSource = se_edit.Lines;
-                tab_Estimate.SelectedIndex = 1;
-                fill_Sales_Estimate_Form(se_edit);
+                active_Edit();
             }
+        }
+
+        private void grid_estimates_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            active_Edit();
+        }
+
+        private void active_Edit()
+        {
+            edit = true;
+            btn_production.Visible = edit;
+            int index = grid_estimates.SelectedRows[0].Index;
+            var id = sales_estimates[index].Id;
+            se_edit = (Models.SalesEstimate)sales_estimate_controller.getSalesEstimate(id).data;
+            grid_estimate_lines.DataSource = se_edit.Lines;
+            tab_Estimate.SelectedIndex = 1;
+            fill_Sales_Estimate_Form(se_edit);
         }
 
         private void fill_Sales_Estimate()
@@ -280,6 +290,33 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 }
             }else {
                 MessageBox.Show("Hay campos inválidos", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Models.SalesEstimateLine> data = (List<Models.SalesEstimateLine>)grid_estimate_lines.DataSource;
+                try
+                {
+                    Models.SalesEstimateLine currentObject = (Models.SalesEstimateLine)grid_estimate_lines.CurrentRow.DataBoundItem;
+                    if (currentObject == null)
+                        MessageBox.Show("Seleccione la línea que desea eliminar");
+                    data.Remove(currentObject);
+                    data = data.Concat(new List<Models.SalesEstimateLine>().ToList()).ToList();
+                    grid_estimate_lines.DataSource = data;
+                }
+                catch
+                {
+                    grid_estimate_lines.DataSource = new List<Models.SalesEstimateLine>();
+                    return;
+                }
+            }
+            catch
+            {
+                grid_estimate_lines.DataSource = new List<Models.SalesEstimateLine>();
+                return;
             }
         }
 

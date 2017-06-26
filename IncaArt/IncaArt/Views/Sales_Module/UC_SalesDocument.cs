@@ -25,13 +25,13 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private string company_phone = "(01)565-1541 / (01)566-1023";
         private string company_mail = "inca_art@gmail.com";
         private string company_address = "Jr. Cajamarca 658 - Lima";
-        private bool edit = false;
+        private bool see = false;
         private SalesOrder so;
         private SalesRefund rf;
-        private SalesDocument sd_edit;
+        private SalesDocument sd_see;
         private ProductMovement prodMovement;
-        private List<SalesDocument> sales_documents;
         private ProductMovementController pmc;
+        private List<SalesDocument> sales_documents;
         private SalesDocumentController sales_document_controller;
         private SalesDocumentLineController sales_document_line_controller;
 
@@ -56,9 +56,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 ctxt_customer.Text = "";
                 fill_Sales_Documents();
             }
-            else if (tab_Document.SelectedIndex == 1) // New_Document
+            else if (tab_Document.SelectedIndex == 1) // New Document
             {
-                if (!edit)
+                if (!see)
                 {
                     btn_Clean.PerformClick();
                     btn_Clean.PerformClick();
@@ -88,18 +88,22 @@ namespace WindowsFormsApp1.Views.Sales_Module
         {
            // if (String.IsNullOrWhiteSpace(ctxt_document_id.Text) && String.IsNullOrWhiteSpace(ctxt_customer.Text))
             //{
-              //7  fill_Sales_Documents();
+              //  fill_Sales_Documents();
            // }
            // else
             //{
                 SalesDocument sales_doc = new SalesDocument();
                 DateTime init = dt_iniDate.Value.Date;
                 DateTime end = dt_endDate.Value.Date;
+
                 if (ctxt_document_id.Text != "")
                     sales_doc.Id = Int32.Parse((ctxt_document_id.Text));
-                else sales_doc.Id = -1;
+                else
+                    sales_doc.Id = -1;
+
                 sales_doc.Customer_name = ctxt_customer.Text;
-                Result result = sales_document_controller.getSalesDocuments_by_filter(sales_doc,init,end);
+
+                Result result = sales_document_controller.getSalesDocuments_by_filter(sales_doc, init, end);
 
                 if (result.data == null)
                     MessageBox.Show(result.message, "Error al buscar proveedor con filtros", MessageBoxButtons.OK);
@@ -126,18 +130,28 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
             else if (selectedRowCount == 1)
             {
-                edit = true;
-                int index = grid_Documents.SelectedRows[0].Index;
-                var id = sales_documents[index].Id;
-                sd_edit = (Models.SalesDocument)sales_document_controller.getSalesDocument(id).data;
-                grid_Document_Lines.DataSource = sd_edit.Lines;
-
-                refresh_amount(sd_edit);
-
-                tab_Document.SelectedIndex = 1;
-                manipulate_options(false);
-                fill_Sales_Document_Form(sd_edit);
+                active_See();
             }
+        }
+
+        private void grid_Documents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            active_See();
+        }
+
+        private void active_See()
+        {
+            see = true;
+            int index = grid_Documents.SelectedRows[0].Index;
+            var id = sales_documents[index].Id;
+            sd_see = (Models.SalesDocument)sales_document_controller.getSalesDocument(id).data;
+            grid_Document_Lines.DataSource = sd_see.Lines;
+
+            refresh_amount(sd_see);
+
+            tab_Document.SelectedIndex = 1;
+            manipulate_options(false);
+            fill_Sales_Document_Form(sd_see);
         }
 
         private void fill_Sales_Documents()
@@ -272,14 +286,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     grid_Document_Lines.DataSource = doc_lines;
                     AdjustColumnDocumentLine();
 
-                    double acumulate = 0;
-                    for (int i = 0; i < grid_Document_Lines.RowCount; i++)
-                    {
-                        acumulate += double.Parse(grid_Document_Lines.Rows[i].Cells["amount"].Value.ToString());
-                    }
-                    txt_amount.Text = acumulate.ToString("0.00");
-                    txt_igv.Text = Math.Round((acumulate * igv), 2).ToString("0.00");
-                    txt_total.Text = Math.Round((acumulate * (1 + igv)), 2).ToString("0.00");
+                    update_Amount_Document();
                 }
             }
             else
@@ -311,11 +318,13 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     {
                         sdl.Id = i;
                         sdl.Document_id = sales_document_id;
-                        i++;
-                        var result=sales_document_line_controller.insertSalesDocumentLine(sdl);
+                        var result = sales_document_line_controller.insertSalesDocumentLine(sdl);
                         if (!result.success)
+                        {
                             MessageBox.Show(this, result.message);
-
+                            return;
+                        }
+                        i++;
                     }
                     btn_Clean.PerformClick();
                     btn_Clean.PerformClick();
@@ -338,10 +347,21 @@ namespace WindowsFormsApp1.Views.Sales_Module
     
         private void btn_Clean_Click(object sender, EventArgs e)
         {
-            edit = false;
-            sd_edit = new SalesDocument();
+            see = false;
+            sd_see = new SalesDocument();
             manipulate_options(true);
             Clean();
+        }
+
+        private void update_Amount_Document()
+        {
+            double acumulate = 0;
+            for (int i = 0; i < grid_Document_Lines.RowCount; i++)
+                acumulate += double.Parse(grid_Document_Lines.Rows[i].Cells["amount"].Value.ToString());
+
+            txt_amount.Text = acumulate.ToString("0.00");
+            txt_igv.Text = Math.Round((acumulate * igv), 2).ToString("0.00");
+            txt_total.Text = Math.Round((acumulate * (1 + igv)), 2).ToString("0.00");
         }
 
         private void fill_Sales_Document_Object(SalesDocument sd)
@@ -500,8 +520,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Pdf_Click(object sender, EventArgs e)
         {
-            if (sd_edit != null)
-                To_pdf(sd_edit);
+            if (sd_see != null)
+                To_pdf(sd_see);
             else
                 MessageBox.Show(this, "Debe haber seleccionado un documento, primero", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -517,7 +537,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             saveFileDialog1.Filter = "pdf Files (*.pdf)|*.pdf| All Files (*.*)|*.*";
             saveFileDialog1.FilterIndex = 2;
             saveFileDialog1.RestoreDirectory = true;
-            saveFileDialog1.FileName = sd_edit.Type_name + " " + sd_edit.Id.ToString();
+            saveFileDialog1.FileName = sd_see.Type_name + " " + sd_see.Id.ToString();
             string filename = "";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -781,6 +801,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
            
 
         }
+
         
     }
 }
