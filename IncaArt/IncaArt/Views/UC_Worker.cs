@@ -504,7 +504,7 @@ namespace WindowsFormsApp1.Views
 
         private bool Validate_Data()
         {
-            if (name_flag && paternal_flag && maternal_flag && doi_flag && birthday_flag && shift_flag && salary_flag && currency_flag && email_flag)
+            if (name_flag && paternal_flag && maternal_flag && doi_flag && shift_flag && salary_flag && currency_flag && email_flag)
             {
                 return true;
             }
