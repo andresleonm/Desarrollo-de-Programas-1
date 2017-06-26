@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views.MovementsType_Module
 {
@@ -20,6 +21,7 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
         List<Models.ProductMovementType> movement_type_list;
         Controller.ProductMovementTypeController movementTypeController;
         Controller.Result result;
+        Models.User sessionUser;
         //Controller.ProductMovementController
         public UC_ProductMovementsType()
         {
@@ -412,6 +414,25 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
         private void btn_clean_Click(object sender, EventArgs e)
         {
             Clean();
+        }
+
+        public override void CheckPermissions(User u)
+        {
+            sessionUser = u;
+            Permissions();
+        }
+
+        private void Permissions()
+        {
+            if (!sessionUser.Profile.HasFunctionality("CREATE PRODUCT MOVEMENT TYPE") && !sessionUser.Profile.HasFunctionality("EDIT PRODUCT MOVEMENT TYPE"))
+            {
+                this.metroTabControl1.TabPages.Remove(tabRegister);
+            }
+            if (!sessionUser.Profile.HasFunctionality("DELETE PRODUCT MOVEMENT TYPE"))
+            {
+                btn_delete.Visible = false;
+            }
+
         }
     }
 }

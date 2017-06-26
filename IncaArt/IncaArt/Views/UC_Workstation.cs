@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class UC_Workstation : MetroFramework.Controls.MetroUserControl
+    public partial class UC_Workstation : ICheckPermissions
     {
         bool name_flag;
         bool product_flag;
@@ -26,6 +27,7 @@ namespace WindowsFormsApp1.Views
         Controller.WorkstationsController workstationController;
         Controller.CurrencyController currencyController;
         Controller.Result result;
+        Models.User sessionUser;
         public UC_Workstation()
         {
             InitializeComponent();
@@ -597,6 +599,25 @@ namespace WindowsFormsApp1.Views
                 }
 
             }
+        }
+
+        public override void CheckPermissions(User u)
+        {
+            sessionUser = u;
+            Permissions();
+        }
+
+        private void Permissions()
+        {
+            if (!sessionUser.Profile.HasFunctionality("CREATE WORKSTATION") && !sessionUser.Profile.HasFunctionality("EDIT WORKSTATION"))
+            {
+                this.metroTabControl1.TabPages.Remove(tabRegister);
+            }
+            if (!sessionUser.Profile.HasFunctionality("DELETE WORKSTATION"))
+            {
+                btn_delete.Visible = false;
+            }
+
         }
 
     }

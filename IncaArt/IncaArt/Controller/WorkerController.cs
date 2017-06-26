@@ -93,8 +93,48 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result validate_data(Models.Worker worker)
+        {
+            Models.Worker temp_worker = new Models.Worker();
+            temp_worker.Name = worker.Name;
+            temp_worker.Paternal_name = worker.Paternal_name;
+            temp_worker.Maternal_name = worker.Maternal_name;
+            Result result = getWokers(temp_worker);
+            List<Models.Worker> workers;
+            if (result.success)
+            {
+                workers = (List<Models.Worker>)result.data;
+                if (workers.Count() > 0)
+                {
+                    result.success = false;
+                    result.message = "Nombre con apellidos del trabajador ya existe";
+                    return result;
+                }
+            }
+            temp_worker = new Models.Worker();
+            temp_worker.Doi = worker.Doi;
+            result = getWokers(temp_worker);
+            if (result.success)
+            {
+                workers = (List<Models.Worker>)result.data;
+                if (workers.Count() > 0)
+                {
+                    result.success = false;
+                    result.message = "DNI del trabajador ya existe";
+                    return result;
+                }
+            }
+            result.success = true;
+            return result;
+        }
+
         public Result insertWorker(Models.Worker worker)
         {
+            Result temp = validate_data(worker);
+            if (!temp.success)
+            {
+                return temp;
+            }
             //consultar permisos
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("name", worker.Name.ToString()));
