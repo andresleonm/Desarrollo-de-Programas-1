@@ -32,9 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_Search = new System.Windows.Forms.Button();
             this.metroTextBox_description = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.btn_search = new MetroFramework.Controls.MetroButton();
             this.metroTextBox_numOrder = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroDateTime_Begin = new MetroFramework.Controls.MetroDateTime();
@@ -42,8 +42,6 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_delete = new MetroFramework.Controls.MetroButton();
-            this.btn_edit = new MetroFramework.Controls.MetroButton();
             this.datagrid_ProductionOrders = new MetroFramework.Controls.MetroGrid();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +52,8 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.btn_edit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_ProductionOrders)).BeginInit();
@@ -62,9 +62,9 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.btn_Search);
             this.groupBox1.Controls.Add(this.metroTextBox_description);
             this.groupBox1.Controls.Add(this.metroLabel3);
-            this.groupBox1.Controls.Add(this.btn_search);
             this.groupBox1.Controls.Add(this.metroTextBox_numOrder);
             this.groupBox1.Controls.Add(this.metroLabel4);
             this.groupBox1.Controls.Add(this.metroDateTime_Begin);
@@ -78,6 +78,19 @@
             this.groupBox1.TabIndex = 56;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros de búsqueda";
+            // 
+            // btn_Search
+            // 
+            this.btn_Search.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Search.ForeColor = System.Drawing.Color.White;
+            this.btn_Search.Location = new System.Drawing.Point(641, 113);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(82, 29);
+            this.btn_Search.TabIndex = 67;
+            this.btn_Search.Text = "Buscar";
+            this.btn_Search.UseVisualStyleBackColor = false;
+            this.btn_Search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // metroTextBox_description
             // 
@@ -126,23 +139,6 @@
             this.metroLabel3.Text = "Descripción:";
             this.metroLabel3.UseCustomBackColor = true;
             this.metroLabel3.UseCustomForeColor = true;
-            // 
-            // btn_search
-            // 
-            this.btn_search.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_search.ForeColor = System.Drawing.Color.White;
-            this.btn_search.Highlight = true;
-            this.btn_search.Location = new System.Drawing.Point(648, 115);
-            this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(75, 23);
-            this.btn_search.Style = MetroFramework.MetroColorStyle.White;
-            this.btn_search.TabIndex = 55;
-            this.btn_search.Text = "Buscar";
-            this.btn_search.UseCustomBackColor = true;
-            this.btn_search.UseCustomForeColor = true;
-            this.btn_search.UseSelectable = true;
-            this.btn_search.UseStyleColors = true;
-            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // metroTextBox_numOrder
             // 
@@ -252,42 +248,11 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultados de búsqueda";
             // 
-            // btn_delete
-            // 
-            this.btn_delete.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_delete.ForeColor = System.Drawing.Color.White;
-            this.btn_delete.Highlight = true;
-            this.btn_delete.Location = new System.Drawing.Point(671, 248);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(75, 23);
-            this.btn_delete.Style = MetroFramework.MetroColorStyle.White;
-            this.btn_delete.TabIndex = 58;
-            this.btn_delete.Text = "Eliminar";
-            this.btn_delete.UseCustomBackColor = true;
-            this.btn_delete.UseCustomForeColor = true;
-            this.btn_delete.UseSelectable = true;
-            this.btn_delete.UseStyleColors = true;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
-            // 
-            // btn_edit
-            // 
-            this.btn_edit.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_edit.ForeColor = System.Drawing.Color.White;
-            this.btn_edit.Highlight = true;
-            this.btn_edit.Location = new System.Drawing.Point(562, 248);
-            this.btn_edit.Name = "btn_edit";
-            this.btn_edit.Size = new System.Drawing.Size(75, 23);
-            this.btn_edit.Style = MetroFramework.MetroColorStyle.White;
-            this.btn_edit.TabIndex = 57;
-            this.btn_edit.Text = "Editar";
-            this.btn_edit.UseCustomBackColor = true;
-            this.btn_edit.UseCustomForeColor = true;
-            this.btn_edit.UseSelectable = true;
-            this.btn_edit.UseStyleColors = true;
-            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
-            // 
             // datagrid_ProductionOrders
             // 
+            this.datagrid_ProductionOrders.AllowUserToAddRows = false;
+            this.datagrid_ProductionOrders.AllowUserToDeleteRows = false;
+            this.datagrid_ProductionOrders.AllowUserToOrderColumns = true;
             this.datagrid_ProductionOrders.AllowUserToResizeRows = false;
             this.datagrid_ProductionOrders.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.datagrid_ProductionOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -400,6 +365,32 @@
             this.groupBox3.TabIndex = 58;
             this.groupBox3.TabStop = false;
             // 
+            // btn_delete
+            // 
+            this.btn_delete.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_delete.ForeColor = System.Drawing.Color.White;
+            this.btn_delete.Location = new System.Drawing.Point(664, 254);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(82, 29);
+            this.btn_delete.TabIndex = 74;
+            this.btn_delete.Text = "Eliminar";
+            this.btn_delete.UseVisualStyleBackColor = false;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
+            // 
+            // btn_edit
+            // 
+            this.btn_edit.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_edit.ForeColor = System.Drawing.Color.White;
+            this.btn_edit.Location = new System.Drawing.Point(561, 254);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.Size = new System.Drawing.Size(82, 29);
+            this.btn_edit.TabIndex = 73;
+            this.btn_edit.Text = "Editar";
+            this.btn_edit.UseVisualStyleBackColor = false;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
+            // 
             // UC_ProductionOrderSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -429,11 +420,8 @@
         private MetroFramework.Controls.MetroDateTime metroDateTime_End;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroButton btn_search;
         private System.Windows.Forms.GroupBox groupBox2;
         private MetroFramework.Controls.MetroGrid datagrid_ProductionOrders;
-        private MetroFramework.Controls.MetroButton btn_delete;
-        private MetroFramework.Controls.MetroButton btn_edit;
         private System.Windows.Forms.GroupBox groupBox3;
         private MetroFramework.Controls.MetroTextBox metroTextBox_description;
         private MetroFramework.Controls.MetroLabel metroLabel3;
@@ -445,5 +433,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.Button btn_Search;
+        private System.Windows.Forms.Button btn_delete;
+        private System.Windows.Forms.Button btn_edit;
     }
 }
