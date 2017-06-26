@@ -212,6 +212,22 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 int cellRowIndex = 1;
                 int cellColumnIndex = 1;
 
+                // Formato
+           
+
+
+                Microsoft.Office.Interop.Excel.Range formatRange;
+                formatRange = worksheet.get_Range("a1","h1");
+                formatRange.EntireRow.Font.Bold = true;
+                worksheet.Cells[1, 5] = "Bold";
+
+                formatRange.Interior.Color = System.Drawing.
+                ColorTranslator.ToOle(System.Drawing.Color.DarkCyan);
+                formatRange.EntireRow.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.White); ;
+                worksheet.Cells[1, 5] = "DarkCyan";
+
+
+
                 //Loop through each row and read value from each column. 
                 for (int i = -1; i < grid_Documents.Rows.Count; i++)
                 {
