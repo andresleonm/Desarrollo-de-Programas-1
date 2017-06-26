@@ -33,7 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_search = new MetroFramework.Controls.MetroButton();
+            this.btn_search = new System.Windows.Forms.Button();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroDateTime_Begin = new MetroFramework.Controls.MetroDateTime();
             this.metroDateTime_End = new MetroFramework.Controls.MetroDateTime();
@@ -44,6 +44,8 @@
             this.btn_export = new MetroFramework.Controls.MetroButton();
             this.datagrid_WorkersPerformance = new MetroFramework.Controls.MetroGrid();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,18 +87,14 @@
             // btn_search
             // 
             this.btn_search.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_search.ForeColor = System.Drawing.Color.White;
-            this.btn_search.Highlight = true;
-            this.btn_search.Location = new System.Drawing.Point(660, 54);
+            this.btn_search.Location = new System.Drawing.Point(651, 54);
             this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(75, 23);
-            this.btn_search.Style = MetroFramework.MetroColorStyle.White;
-            this.btn_search.TabIndex = 55;
+            this.btn_search.Size = new System.Drawing.Size(84, 25);
+            this.btn_search.TabIndex = 68;
             this.btn_search.Text = "Buscar";
-            this.btn_search.UseCustomBackColor = true;
-            this.btn_search.UseCustomForeColor = true;
-            this.btn_search.UseSelectable = true;
-            this.btn_search.UseStyleColors = true;
+            this.btn_search.UseVisualStyleBackColor = false;
             this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // metroLabel4
@@ -211,6 +209,7 @@
             // datagrid_WorkersPerformance
             // 
             this.datagrid_WorkersPerformance.AllowUserToAddRows = false;
+            this.datagrid_WorkersPerformance.AllowUserToDeleteRows = false;
             this.datagrid_WorkersPerformance.AllowUserToResizeRows = false;
             this.datagrid_WorkersPerformance.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.datagrid_WorkersPerformance.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -229,6 +228,8 @@
             this.datagrid_WorkersPerformance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagrid_WorkersPerformance.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.Column6,
+            this.Column7,
             this.Column5,
             this.Column2,
             this.Column3,
@@ -262,12 +263,25 @@
             this.datagrid_WorkersPerformance.Size = new System.Drawing.Size(729, 286);
             this.datagrid_WorkersPerformance.Style = MetroFramework.MetroColorStyle.Teal;
             this.datagrid_WorkersPerformance.TabIndex = 52;
+            this.datagrid_WorkersPerformance.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_WorkersPerformance_CellContentClick);
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "Trabajador";
+            this.Column1.HeaderText = "Nombre del trabajador";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Apellido Paterno";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Apellido Materno";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             // 
             // Column5
             // 
@@ -301,6 +315,7 @@
             this.Name = "WorkersPerformance_Report";
             this.Size = new System.Drawing.Size(838, 508);
             this.Load += new System.EventHandler(this.WorkersPerformance_Report_Load);
+            this.VisibleChanged += new System.EventHandler(this.WorkersPerformance_Report_VisibleChanged);
             this.groupBox3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -317,7 +332,6 @@
         private MetroFramework.Controls.MetroButton btn_export;
         private MetroFramework.Controls.MetroGrid datagrid_WorkersPerformance;
         private System.Windows.Forms.GroupBox groupBox1;
-        private MetroFramework.Controls.MetroButton btn_search;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroDateTime metroDateTime_Begin;
         private MetroFramework.Controls.MetroDateTime metroDateTime_End;
@@ -325,9 +339,12 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTile btn_Excel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.Button btn_search;
     }
 }

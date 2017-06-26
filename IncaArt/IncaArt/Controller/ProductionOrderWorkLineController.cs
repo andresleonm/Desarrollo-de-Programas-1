@@ -87,7 +87,7 @@ namespace WindowsFormsApp1.Controller
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("begin", begin.ToString("MM/dd/yyyy")));
             parameters.Add(new Parameter("end_date", end.ToString("MM/dd/yyyy")));
-            GenericResult result = execute_function("get_workersperformance", parameters);
+            GenericResult result = execute_function("get_workersperformance_bydate", parameters);
             List<Worker> workers = new List<Worker>();
             if (result.success)
             {
@@ -114,6 +114,42 @@ namespace WindowsFormsApp1.Controller
 
                     workers.Add(worker);
                  
+                }
+                return new Result(workers, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result getWorkerPerformanceLines()
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            GenericResult result = execute_function("get_workersperformance", parameters);
+            List<Worker> workers = new List<Worker>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    // "O"."WORKER_ID" AS WORKER,"T"."NAME","T"."PATERNAL_NAME","T"."MATERNAL_NAME","O"."WORKSTATION_ID",
+                    //"O"."EFFICIENCY", "O"."TIME","O"."TOTAL"
+
+                    Worker worker = new Worker();
+                    worker.Id = Int32.Parse(r.getColumn(0));
+                    worker.Name = r.getColumn(1);
+                    worker.Paternal_name = r.getColumn(2);
+                    worker.Maternal_name = r.getColumn(3);
+
+                    worker.ratios = new List<Ratio>();
+                    Ratio efficiency = new Ratio();
+                    efficiency.workstation_id = Int32.Parse(r.getColumn(4));
+                    efficiency.value = Double.Parse(r.getColumn(5)) / Double.Parse(r.getColumn(7));
+                    worker.ratios.Add(efficiency);
+                    Ratio time = new Ratio();
+                    time.workstation_id = Int32.Parse(r.getColumn(4));
+                    time.value = Double.Parse(r.getColumn(6)) / Double.Parse(r.getColumn(7));
+                    worker.ratios.Add(time);
+
+                    workers.Add(worker);
+
                 }
                 return new Result(workers, true, "");
             }

@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Controller;
+using System.IO;
+using Microsoft.Office.Interop.Excel;
 
 namespace WindowsFormsApp1.Views
 {
@@ -26,25 +29,36 @@ namespace WindowsFormsApp1.Views
 
         private void WorkersPerformance_Report_Load(object sender, EventArgs e)
         {
+           
+        }
 
+        private void datagrid_Fill()
+        {
+            Result result = work_controller.getWorkerPerformanceLines();
+            if (result.success)
+            {
+                List<Models.Worker> workers = (List<Models.Worker>)(result.data);
+                Load_datagrid_WorkersPerformance(workers);
+            }
         }
 
         void Load_datagrid_WorkersPerformance(List<Models.Worker> workers)
         {
-            if((workers!=null) && (workers.Count > 0))
+            datagrid_WorkersPerformance.Rows.Clear();
+            if ((workers!=null) && (workers.Count > 0))
             {
-                datagrid_WorkersPerformance.Rows.Clear();
-
-                string[] grid_row = new string[5];
+                string[] grid_row = new string[7];
                 foreach (Models.Worker w in workers)
                 {
 
-                    grid_row[0] = w.Name + " " + w.Paternal_name + " " + w.Maternal_name;
+                    grid_row[0] = w.Name;
+                    grid_row[1] = w.Paternal_name;
+                    grid_row[2] = w.Maternal_name;
                     Models.Workstation workstation=(Models.Workstation)( workstation_controller.getWorkstation(w.ratios[0].workstation_id).data);
-                    grid_row[1] =workstation.Name;
-                    grid_row[2] = w.ratios[0].value.ToString("F4");
-                    grid_row[3] = (1 - w.ratios[0].value).ToString("F4");
-                    grid_row[4] = w.ratios[1].value.ToString("F4");
+                    grid_row[3] =workstation.Name;
+                    grid_row[4] = w.ratios[0].value.ToString("F4");
+                    grid_row[5] = (1 - w.ratios[0].value).ToString("F4");
+                    grid_row[6] = w.ratios[1].value.ToString("F4");
                     this.datagrid_WorkersPerformance.Rows.Add(grid_row);
                 }
             }
@@ -54,9 +68,13 @@ namespace WindowsFormsApp1.Views
         {
             DateTime begin = metroDateTime_Begin.Value;
             DateTime end = metroDateTime_End.Value;
-            
-            List<Models.Worker> workers = (List<Models.Worker>)(work_controller.getWorkerPerformanceLines(begin, end).data);
-            Load_datagrid_WorkersPerformance(workers);
+            Result result=work_controller.getWorkerPerformanceLines(begin, end);
+            if (result.success)
+            {
+                List<Models.Worker> workers = (List<Models.Worker>)(result.data);
+                Load_datagrid_WorkersPerformance(workers);
+            }
+           
         }
 
         private void btn_export_Click(object sender, EventArgs e)
@@ -121,9 +139,13 @@ namespace WindowsFormsApp1.Views
 
         private void btn_Excel_Click(object sender, EventArgs e)
         {
+            //Path
+            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+            string fileName = string.Format("{0}Resources\\Excel\\workerPerformance.xlsx", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
+
             // Creating a Excel object. 
             Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(fileName);
             Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
 
             try
@@ -131,30 +153,25 @@ namespace WindowsFormsApp1.Views
 
                 worksheet = workbook.ActiveSheet;
 
-                worksheet.Name = "Rendimiento de trabajadores";
-
-                int cellRowIndex = 1;
-                int cellColumnIndex = 1;
+                int cellRowIndex = 7;
+                int cellColumnIndex = 2;
 
                 //Loop through each row and read value from each column. 
-                for (int i = -1; i < datagrid_WorkersPerformance.Rows.Count; i++)
+                for (int i = 0; i < datagrid_WorkersPerformance.Rows.Count; i++)
                 {
                     for (int j = 0; j < datagrid_WorkersPerformance.Columns.Count; j++)
-                    {
-                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check. 
-                        if (cellRowIndex == 1)
-                        {
-                            worksheet.Cells[cellRowIndex, cellColumnIndex] = datagrid_WorkersPerformance.Columns[j].HeaderText;
-                        }
-                        else
-                        {
-                            worksheet.Cells[cellRowIndex, cellColumnIndex] = datagrid_WorkersPerformance.Rows[i].Cells[j].Value.ToString();
-                        }
+                    {                    
+                        worksheet.Cells[cellRowIndex, cellColumnIndex] = datagrid_WorkersPerformance.Rows[i].Cells[j].Value.ToString();
+                        worksheet.Cells[cellRowIndex, cellColumnIndex].BorderAround(XlLineStyle.xlContinuous,XlBorderWeight.xlThin, 
+                        XlColorIndex.xlColorIndexAutomatic,XlColorIndex.xlColorIndexAutomatic);
+
                         cellColumnIndex++;
                     }
-                    cellColumnIndex = 1;
+                    cellColumnIndex = 2;
                     cellRowIndex++;
                 }
+
+                worksheet.Cells[3, 3] = "Desde el " + metroDateTime_Begin.Value.Date.ToString("dd/MM/yyyy") + " hasta el " + metroDateTime_End.Value.Date.ToString("dd/MM/yyyy");
 
                 //Getting the location and file name of the excel to save from user. 
                 SaveFileDialog saveDialog = new SaveFileDialog();
@@ -177,6 +194,16 @@ namespace WindowsFormsApp1.Views
                 workbook = null;
                 excel = null;
             }
+        }
+
+        private void datagrid_WorkersPerformance_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void WorkersPerformance_Report_VisibleChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
