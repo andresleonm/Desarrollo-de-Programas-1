@@ -59,7 +59,7 @@ namespace WindowsFormsApp1.Views
             btn_purchase.Visible = sessionUser.Profile.HasFunctionality("VIEW PURCHASE MODULE");
             btn_production.Visible = sessionUser.Profile.HasFunctionality("VIEW PRODUCTION MODULE");
             btn_simulation.Visible = sessionUser.Profile.HasFunctionality("RUN SIMULATION");
-            btn_reportes.Visible = UserCanViewReportsButton();
+            btn_reportes.Visible = sessionUser.Profile.HasFunctionality("VIEW REPORTS MODULE");
         }
 
         private bool UserCanViewConfigButton()
@@ -86,41 +86,6 @@ namespace WindowsFormsApp1.Views
             };
 
             foreach(string perm in permissions)
-            {
-                if (sessionUser.Profile.HasFunctionality(perm)) return true;
-            }
-
-            return false;
-        }
-
-        private bool UserCanViewSalesButton()
-        {
-            string[] permissions = new string[] {
-                "VIEW ORDER",
-                "VIEW REFUND",
-                "VIEW DOCUMENT",
-                "VIEW ESTIMATE"
-            };
-
-            foreach (string perm in permissions)
-            {
-                if (sessionUser.Profile.HasFunctionality(perm)) return true;
-            }
-
-            return false;
-        }
-
-        private bool UserCanViewReportsButton()
-        {
-            string[] permissions = new string[] {
-                "VIEW KARDEX REPORT",
-                "VIEW REGISTER/SALES REPORT",
-                "VIEW LOGICAL/PHYSICAL STOCK REPORT",
-                "VIEW WORKERS PERFORMANCE REPORT",
-                "VIEW SIMULATIONS REPORT"
-            };
-
-            foreach (string perm in permissions)
             {
                 if (sessionUser.Profile.HasFunctionality(perm)) return true;
             }
