@@ -34,14 +34,7 @@ namespace WindowsFormsApp1.Views.Production_Module
 
         public override void CheckPermissions(User u)
         {
-            base.CheckPermissions(u);
-            
-            if(!u.Profile.HasFunctionality("REGISTER PRODUCTION ORDER"))
-            {
-                metroTile_RegisterOrder.Visible = false;
-            }
            
-            Helpers.CheckPermissionsHelper.Check(this, u);
         }
     }
 }
