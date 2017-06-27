@@ -107,9 +107,6 @@
             this.gb_RefundLine = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_Refund_Lines = new MetroFramework.Controls.MetroGrid();
-            this.productWarehouseSBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.salesRefundLineBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.warehousesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.refund_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.documenti_d_line = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -126,6 +123,9 @@
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salesRefundLineBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productWarehouseSBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.warehousesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.tab_Refund.SuspendLayout();
             this.refund.SuspendLayout();
@@ -141,8 +141,8 @@
             this.gb_RefundLine.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_Refund_Lines)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productWarehouseSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesRefundLineBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productWarehouseSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.warehousesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1379,21 +1379,8 @@
             this.grid_Refund_Lines.Size = new System.Drawing.Size(984, 191);
             this.grid_Refund_Lines.TabIndex = 52;
             this.grid_Refund_Lines.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Refund_Lines_CellContentClick);
-              this.grid_Refund_Lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Refund_Lines_CellValueChanged);
+            this.grid_Refund_Lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Refund_Lines_CellValueChanged);
             this.grid_Refund_Lines.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.grid_Refund_Lines_DataError);
-            // 
-            // productWarehouseSBindingSource
-            // 
-            this.productWarehouseSBindingSource.DataSource = typeof(WindowsFormsApp1.Views.Sales_Module.ProductWarehouseS);
-            // 
-            // salesRefundLineBindingSource
-            // 
-            this.salesRefundLineBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesRefundLine);
-            // 
-            // warehousesBindingSource
-            // 
-            this.warehousesBindingSource.DataMember = "warehouses";
-            this.warehousesBindingSource.DataSource = this.salesRefundLineBindingSource;
             // 
             // id
             // 
@@ -1512,6 +1499,19 @@
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
             // 
+            // salesRefundLineBindingSource
+            // 
+            this.salesRefundLineBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesRefundLine);
+            // 
+            // productWarehouseSBindingSource
+            // 
+            this.productWarehouseSBindingSource.DataSource = typeof(WindowsFormsApp1.Views.Sales_Module.ProductWarehouseS);
+            // 
+            // warehousesBindingSource
+            // 
+            this.warehousesBindingSource.DataMember = "warehouses";
+            this.warehousesBindingSource.DataSource = this.salesRefundLineBindingSource;
+            // 
             // UC_SalesRefund
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1539,8 +1539,8 @@
             this.gb_RefundLine.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_Refund_Lines)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productWarehouseSBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesRefundLineBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productWarehouseSBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.warehousesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -1595,7 +1595,7 @@
         private MetroFramework.Controls.MetroTextBox txt_observation;
         private System.Windows.Forms.Label label3;
         private MetroFramework.Controls.MetroTextBox txt_amount;
-        private System.Windows.Forms.Button btn_Clean;
+        public System.Windows.Forms.Button btn_Clean;
         private System.Windows.Forms.Button btn_Cancel;
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.Label label6;

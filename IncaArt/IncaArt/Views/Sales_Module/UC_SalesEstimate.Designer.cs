@@ -1394,7 +1394,7 @@
         private MetroFramework.Controls.MetroTextBox txt_observation;
         private System.Windows.Forms.Label label3;
         private MetroFramework.Controls.MetroTextBox txt_amount;
-        private System.Windows.Forms.Button btn_Clean;
+        public System.Windows.Forms.Button btn_Clean;
         private System.Windows.Forms.Button btn_Cancel;
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.Label label6;
