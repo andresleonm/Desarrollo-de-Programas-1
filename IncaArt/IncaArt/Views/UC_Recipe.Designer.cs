@@ -42,12 +42,6 @@
             this.btn_cancel = new MetroFramework.Controls.MetroButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
-            this.recipe_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.material_row = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.material_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.textbox_name = new MetroFramework.Controls.MetroTextBox();
@@ -83,6 +77,12 @@
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.recipe_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.material_row = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.material_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.tabRegister.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -231,45 +231,6 @@
             this.metroGrid2.TabIndex = 17;
             this.metroGrid2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellClick);
             this.metroGrid2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellDoubleClick);
-            // 
-            // recipe_id
-            // 
-            this.recipe_id.HeaderText = "ID";
-            this.recipe_id.Name = "recipe_id";
-            this.recipe_id.ReadOnly = true;
-            this.recipe_id.Visible = false;
-            // 
-            // material_row
-            // 
-            this.material_row.HeaderText = "Index";
-            this.material_row.Name = "material_row";
-            this.material_row.ReadOnly = true;
-            this.material_row.Visible = false;
-            // 
-            // operation
-            // 
-            this.operation.HeaderText = "Operation";
-            this.operation.Name = "operation";
-            this.operation.ReadOnly = true;
-            this.operation.Width = 75;
-            // 
-            // material_name
-            // 
-            this.material_name.HeaderText = "Material";
-            this.material_name.Name = "material_name";
-            this.material_name.ReadOnly = true;
-            // 
-            // unit
-            // 
-            this.unit.HeaderText = "Unidad";
-            this.unit.Name = "unit";
-            this.unit.ReadOnly = true;
-            // 
-            // quantity
-            // 
-            this.quantity.HeaderText = "Cantidad";
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
             // 
             // groupBox2
             // 
@@ -581,7 +542,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupBox4.Location = new System.Drawing.Point(300, 175);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(311, 219);
+            this.groupBox4.Size = new System.Drawing.Size(350, 219);
             this.groupBox4.TabIndex = 20;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Resultados";
@@ -636,7 +597,7 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(305, 200);
+            this.metroGrid1.Size = new System.Drawing.Size(344, 200);
             this.metroGrid1.TabIndex = 2;
             this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
             this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
@@ -681,7 +642,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupBox3.Location = new System.Drawing.Point(300, 17);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(311, 152);
+            this.groupBox3.Size = new System.Drawing.Size(350, 152);
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Filtros";
@@ -690,7 +651,7 @@
             // 
             this.btn_clean_s.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_clean_s.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_clean_s.Location = new System.Drawing.Point(230, 123);
+            this.btn_clean_s.Location = new System.Drawing.Point(228, 123);
             this.btn_clean_s.Name = "btn_clean_s";
             this.btn_clean_s.Size = new System.Drawing.Size(75, 23);
             this.btn_clean_s.TabIndex = 12;
@@ -703,10 +664,11 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel1.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel1.Location = new System.Drawing.Point(11, 24);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(62, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(69, 19);
             this.metroLabel1.TabIndex = 3;
             this.metroLabel1.Text = "Nombre:";
             this.metroLabel1.UseCustomForeColor = true;
@@ -726,7 +688,7 @@
             this.textbox_name_s.CustomButton.UseSelectable = true;
             this.textbox_name_s.CustomButton.Visible = false;
             this.textbox_name_s.Lines = new string[0];
-            this.textbox_name_s.Location = new System.Drawing.Point(79, 23);
+            this.textbox_name_s.Location = new System.Drawing.Point(92, 24);
             this.textbox_name_s.MaxLength = 32767;
             this.textbox_name_s.Name = "textbox_name_s";
             this.textbox_name_s.PasswordChar = '\0';
@@ -745,7 +707,7 @@
             // 
             this.combobox_product_s.FormattingEnabled = true;
             this.combobox_product_s.ItemHeight = 23;
-            this.combobox_product_s.Location = new System.Drawing.Point(79, 74);
+            this.combobox_product_s.Location = new System.Drawing.Point(92, 74);
             this.combobox_product_s.Name = "combobox_product_s";
             this.combobox_product_s.Size = new System.Drawing.Size(211, 29);
             this.combobox_product_s.TabIndex = 18;
@@ -755,7 +717,7 @@
             // 
             this.btn_search.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            this.btn_search.Location = new System.Drawing.Point(149, 123);
+            this.btn_search.Location = new System.Drawing.Point(147, 123);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(75, 23);
             this.btn_search.TabIndex = 11;
@@ -768,10 +730,11 @@
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
+            this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel7.ForeColor = System.Drawing.Color.DarkCyan;
             this.metroLabel7.Location = new System.Drawing.Point(11, 74);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(66, 19);
+            this.metroLabel7.Size = new System.Drawing.Size(75, 19);
             this.metroLabel7.TabIndex = 17;
             this.metroLabel7.Text = "Producto:";
             this.metroLabel7.UseCustomForeColor = true;
@@ -823,6 +786,49 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(887, 564);
             this.panel2.TabIndex = 30;
+            // 
+            // recipe_id
+            // 
+            this.recipe_id.HeaderText = "ID";
+            this.recipe_id.Name = "recipe_id";
+            this.recipe_id.ReadOnly = true;
+            this.recipe_id.Visible = false;
+            // 
+            // material_row
+            // 
+            this.material_row.HeaderText = "Index";
+            this.material_row.Name = "material_row";
+            this.material_row.ReadOnly = true;
+            this.material_row.Visible = false;
+            // 
+            // operation
+            // 
+            this.operation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.operation.HeaderText = "Operation";
+            this.operation.Name = "operation";
+            this.operation.ReadOnly = true;
+            this.operation.Visible = false;
+            // 
+            // material_name
+            // 
+            this.material_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.material_name.HeaderText = "Material";
+            this.material_name.Name = "material_name";
+            this.material_name.ReadOnly = true;
+            // 
+            // unit
+            // 
+            this.unit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.unit.HeaderText = "Unidad";
+            this.unit.Name = "unit";
+            this.unit.ReadOnly = true;
+            // 
+            // quantity
+            // 
+            this.quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.quantity.HeaderText = "Cantidad";
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
             // 
             // UC_Recipe
             // 
@@ -893,12 +899,6 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroLabel metroLabel9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn recipe_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn material_row;
-        private System.Windows.Forms.DataGridViewTextBoxColumn operation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn material_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private MetroFramework.Controls.MetroButton btn_save;
         private System.Windows.Forms.Panel panel1;
         private MetroFramework.Controls.MetroLabel metroLabel10;
@@ -907,5 +907,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn product;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn recipe_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn material_row;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn material_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
     }
 }

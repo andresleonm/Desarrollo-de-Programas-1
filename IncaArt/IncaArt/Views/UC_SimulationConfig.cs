@@ -66,8 +66,9 @@ namespace WindowsFormsApp1.Views
                     
                     Algorithm.Workstation wkst = new Algorithm.Workstation(
                         new Algorithm.Product(prod_name, 0, aux_prod.Unit_price,aux_prod.Name),
-                        row.Cells[0].Value.ToString(), int.Parse(row.Cells[1].Value.ToString()),
+                        ((Workstation)row.DataBoundItem).Name, int.Parse(row.Cells[1].Value.ToString()),
                         ((Workstation)row.DataBoundItem).Break_cost);
+                    wkst.complete_name = ((Workstation)row.DataBoundItem).complete_name;
                     wkst.id = ((Workstation)row.DataBoundItem).Id;
                     tabu_wkstations.Add(wkst);
                     wkstation_qty += wkst.quantity;   
@@ -111,20 +112,20 @@ namespace WindowsFormsApp1.Views
             bool contains = false;
             foreach (DataGridViewRow row in products_grid.Rows)
             {
-                if (int.Parse(row.Cells[1].Value.ToString()) > 0)
+                if (int.Parse(row.Cells[2].Value.ToString()) > 0)
                 {
                     foreach(Algorithm.OrderDetailLine l in detail.lines)
                     {
                         if (row.Cells[0].Value.ToString().ToLower().Contains(l.product.name.ToLower()))
                         {
-                            l.quantity += int.Parse(row.Cells[1].Value.ToString());
+                            l.quantity += int.Parse(row.Cells[2].Value.ToString());
                             contains = true;
                             break;
                         }
                     }
                     if (contains) continue;
                     Algorithm.OrderDetailLine line = new Algorithm.OrderDetailLine();
-                    Models.Product aux_prod = products.Where(p => p.Name == row.Cells[0].Value.ToString()).ElementAt(0);
+                    Models.Product aux_prod = products.Where(p => p.Name == row.Cells[1].Value.ToString()).ElementAt(0);
                     string prod_name = "";
                     if (aux_prod.Name.ToLower().Contains("ceramico") || aux_prod.Name.ToLower().Contains("cerámico"))
                     {
@@ -139,7 +140,7 @@ namespace WindowsFormsApp1.Views
                         prod_name = "retablo";
                     }
                     line.product = new Algorithm.Product(prod_name, 0, aux_prod.Unit_price,aux_prod.Name);
-                    line.quantity = int.Parse(row.Cells[1].Value.ToString());
+                    line.quantity = int.Parse(row.Cells[2].Value.ToString());
                     detail.lines.Add(line);
                 }                
             }           
@@ -156,28 +157,24 @@ namespace WindowsFormsApp1.Views
         {
             if (backgroundWorker1.WorkerSupportsCancellation == true)
             {
-                // Cancel the asynchronous operation.
                 backgroundWorker1.CancelAsync();
-                // Close the AlertForm
+
                 progress.Close();
             }
         }
 
-        // This event handler is where the time-consuming work is done.
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
             solution = ((Algorithm.TabuSearch)e.Argument).generateSolution(worker);                        
         }
 
-        // This event handler updates the progress.
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            //Console.WriteLine(e.ProgressPercentage);
+  
             progress.ProgressValue = e.ProgressPercentage;
         }
 
-        // This event handler deals with the results of the background operation.
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             //if (e.Cancelled == true)
@@ -217,6 +214,50 @@ namespace WindowsFormsApp1.Views
             this.metroTabControl1.SelectTab(this.metroTabControl1.SelectedIndex + 1);
         }
 
+        private void products_grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1)
+            {
+                ((DataGridViewComboBoxCell)products_grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Items.Clear();
+                switch (products_grid.Rows[e.RowIndex].Cells[0].Value.ToString().ToLower())
+                {
+                    case "ceramico":
+                        {
+                            foreach (Product p in products)
+                            {
+                                if (p.Product_type.ToLower() == "ceramico")
+                                {
+                                    ((DataGridViewComboBoxCell)products_grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Items.Add(p.Name);
+                                }
+                            }
+                            break;
+                        }
+                    case "piedra":
+                        {
+                            foreach (Product p in products)
+                            {
+                                if (p.Product_type.ToLower() == "piedra")
+                                {
+                                    ((DataGridViewComboBoxCell)products_grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Items.Add(p.Name);
+                                }
+                            }
+                            break;
+                        }
+                    case "retablo":
+                        {
+                            foreach (Product p in products)
+                            {
+                                if (p.Product_type.ToLower() == "retablo")
+                                {
+                                    ((DataGridViewComboBoxCell)products_grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Items.Add(p.Name);
+                                }
+                            }
+                            break;
+                        }
+                }
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             this.metroTabControl1.SelectTab(this.metroTabControl1.SelectedIndex -1);
@@ -232,23 +273,62 @@ namespace WindowsFormsApp1.Views
 
                 workers = (List<Worker>)worker_controller.getWokers().data;
                 workstations = (List<Workstation>)workstation_controller.getWorkstations().data;
+                foreach(Workstation wokst in workstations)
+                {
+                    switch (wokst.Name)
+                    {
+                        case "Horneado":
+                            {
+                                wokst.complete_name = "Horneado de Cerámico";
+                                break;
+                            }
+                        case "MoldeadoC":
+                            {
+                                wokst.complete_name = "Moldeado de Cerámico";
+                                break;
+                            }
+                        case "PintadoC":
+                            {
+                                wokst.complete_name = "Pintado de Cerámico";
+                                break;
+                            }
+                        case "MoldeadoR":
+                            {
+                                wokst.complete_name = "Moldeado de Retablo";
+                                break;
+                            }
+                        case "PintadoR":
+                            {
+                                wokst.complete_name = "Pintado de Retablo";
+                                break;
+                            }
+                        case "Tallado":
+                            {
+                                wokst.complete_name = "Tallado de Piedra";
+                                break;
+                            }
+                    }
+                }
                 products = (List<Product>)product_controller.getProducts().data;
 
                 workers_grid.DataSource = workers;
 
-
-
                 workstations_grid.DataSource = workstations;
-
-                string[] rows = new string[2];
-                products_grid.Rows.Clear();
-                ((DataGridViewComboBoxColumn)products_grid.Columns[0]).Items.Clear();
-                foreach (Product p in products)
-                {                    
-                    ((DataGridViewComboBoxColumn)products_grid.Columns[0]).Items.Add(p.Name);
-                    rows[1] = "0";
-                    products_grid.Rows.Add(rows);
+                for(int i=0; i<6; i++)
+                {                                       
+                    workstations_grid.Rows[i].Cells[1].Value = "1";
                 }
+
+                string[] rows = new string[3];
+                products_grid.Rows.Clear();
+                
+                for (int i = 0; i < 3; i++)
+                {
+                    rows[0] = products[i].Product_type;
+                    rows[1] = "";
+                    rows[2] = "1";
+                    products_grid.Rows.Add(rows);
+                }               
             }
         }
 

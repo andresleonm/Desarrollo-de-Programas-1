@@ -19,6 +19,7 @@ namespace WindowsFormsApp1.Models
         int currency_id;
         int min_average_time;
         int max_average_time;
+        public string complete_name { get; set; }
 
         public Workstation(int product_id, string name)
         {

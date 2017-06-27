@@ -118,6 +118,8 @@
     <Compile Include="Controller\SalesEstimateLineController.cs" />
     <Compile Include="Controller\SalesRefundController.cs" />
     <Compile Include="Controller\SalesRefundLineController.cs" />
+    <Compile Include="Controller\SimulationReportController.cs" />
+    <Compile Include="Controller\SimulationReportHeaderController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
     <Compile Include="Models\KardexLine.cs" />
     <Compile Include="Models\Log.cs" />
@@ -173,6 +175,8 @@
     <Compile Include="Models\SalesDocumentLine.cs" />
     <Compile Include="Models\Shift.cs" />
     <Compile Include="Algorithm\TabuSearch.cs" />
+    <Compile Include="Models\SimulationReport.cs" />
+    <Compile Include="Models\SimulationReportHeader.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\Material.cs" />
@@ -905,6 +909,7 @@
     <None Include="Resources\Close Window_52px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Save_40px.png" />
     <None Include="Resources\imageedit_2_2547621693.png" />
     <None Include="Resources\Inca.png" />
     <None Include="Resources\Tumi.png" />
