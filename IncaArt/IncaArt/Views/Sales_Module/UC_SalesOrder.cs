@@ -97,7 +97,8 @@ namespace WindowsFormsApp1.Views
             SalesOrder sales_order = new SalesOrder();
             DateTime init = dt_iniDate.Value.Date;
             DateTime end = dt_endDate.Value.Date;
-
+            Boolean equals = false;
+            if (init == end) equals = true;
             if (ctxt_order_id.Text != "")
                 sales_order.Id = Int32.Parse((ctxt_order_id.Text));
             else
@@ -105,7 +106,7 @@ namespace WindowsFormsApp1.Views
 
             sales_order.Customer_name = ctxt_customer.Text;
 
-            Result result = sales_order_controller.getSalesOrder_by_filter(sales_order, init, end);
+            Result result = sales_order_controller.getSalesOrder_by_filter(sales_order, init, end,equals);
 
             if (result.data == null)
                 MessageBox.Show(result.message, "Error al buscar pedidos con filtros", MessageBoxButtons.OK);

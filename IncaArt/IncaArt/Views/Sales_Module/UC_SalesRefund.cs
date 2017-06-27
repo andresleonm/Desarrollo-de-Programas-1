@@ -81,7 +81,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
             SalesRefund sales_refund = new SalesRefund();
             DateTime init = dt_iniDate.Value.Date;
             DateTime end = dt_endDate.Value.Date;
+            Boolean equals = false;
 
+            if (init == end) equals = true;
             if (ctxt_refund_id.Text != "")
                 sales_refund.Id = Int32.Parse((ctxt_refund_id.Text));
             else
@@ -89,7 +91,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
             sales_refund.Customer_name = ctxt_customer.Text;
 
-            Result result = sales_refund_controller.getSalesRefund_by_filter(sales_refund, init, end);
+            Result result = sales_refund_controller.getSalesRefund_by_filter(sales_refund, init, end,equals);
 
             if (result.data == null)
                 MessageBox.Show(result.message, "Error al buscar devoluciones con filtros", MessageBoxButtons.OK);

@@ -90,7 +90,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 SalesDocument sales_doc = new SalesDocument();
                 DateTime init = dt_iniDate.Value.Date;
                 DateTime end = dt_endDate.Value.Date;
-
+                Boolean equals = false;
+                if (init == end) equals = true;
                 if (ctxt_document_id.Text != "")
                     sales_doc.Id = Int32.Parse((ctxt_document_id.Text));
                 else
@@ -98,7 +99,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
                 sales_doc.Customer_name = ctxt_customer.Text;
 
-                Result result = sales_document_controller.getSalesDocuments_by_filter(sales_doc, init, end);
+                Result result = sales_document_controller.getSalesDocuments_by_filter(sales_doc, init, end,equals);
 
                 if (result.data == null)
                     MessageBox.Show(result.message, "Error al buscar documentos con filtros", MessageBoxButtons.OK);

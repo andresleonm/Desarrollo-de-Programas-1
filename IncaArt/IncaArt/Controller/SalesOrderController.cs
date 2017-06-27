@@ -201,13 +201,16 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result getSalesOrder_by_filter(SalesOrder sales_order, DateTime init, DateTime end)
+        public Result getSalesOrder_by_filter(SalesOrder sales_order, DateTime init, DateTime end,Boolean equals)
         {
             List<Parameter> parameters = new List<Parameter>();
             if (sales_order.Id != -1) parameters.Add(new Parameter("id", sales_order.Id.ToString()));
             if (sales_order.Customer_name != "") parameters.Add(new Parameter("customer_name", sales_order.Customer_name));
             if (init != null) parameters.Add(new Parameter("finit", init.ToString("MM/dd/yyyy")));
-            if (end != null) parameters.Add(new Parameter("fend", end.ToString("MM/dd/yyyy")));
+            if (!equals)
+            {
+                if (end != null) parameters.Add(new Parameter("fend", end.ToString("MM/dd/yyyy")));
+            }
             GenericResult result = execute_function("get_sales_order_by_filter", parameters);
             List<SalesOrder> sales_orders = new List<SalesOrder>();
 

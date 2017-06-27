@@ -285,13 +285,16 @@ namespace WindowsFormsApp1.Controller
 
 
 
-        public Result getSalesEstimate_by_filter(SalesEstimate sales_estimate, DateTime init, DateTime end)
+        public Result getSalesEstimate_by_filter(SalesEstimate sales_estimate, DateTime init, DateTime end,Boolean equals)
         {
             List<Parameter> parameters = new List<Parameter>();
             if (sales_estimate.Id != -1) parameters.Add(new Parameter("id", sales_estimate.Id.ToString()));
             if (sales_estimate.Customer_name != "") parameters.Add(new Parameter("customer_name", sales_estimate.Customer_name));
             if (init != null) parameters.Add(new Parameter("finit", init.ToString("MM/dd/yyyy")));
-            if (end != null) parameters.Add(new Parameter("fend", end.ToString("MM/dd/yyyy")));
+            if (!equals)
+            {
+                if (end != null) parameters.Add(new Parameter("fend", end.ToString("MM/dd/yyyy")));
+            }
             GenericResult result = execute_function("get_sales_estimate_by_filter", parameters);
             List<SalesEstimate> sales_estimates = new List<SalesEstimate>();
 
