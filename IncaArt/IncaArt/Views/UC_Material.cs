@@ -243,7 +243,7 @@ namespace WindowsFormsApp1.Views
         //Mostrar Datos
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (cur_row != 1)
+            if (cur_row != -1)
             {
                 Models.Material material;
                 result = materialController.getMaterial(Int32.Parse(metroGrid1.Rows[e.RowIndex].Cells[0].Value.ToString()));
@@ -562,12 +562,12 @@ namespace WindowsFormsApp1.Views
                 int row_count = range.Rows.Count;
                 int column_count = range.Columns.Count;
                 Range datarange;
-                string name = "", unit = "";
-                double max = -1, min = -1, number;
-                bool error; //error individual
+                string name = "", unit = "",currency;
+                double max = -1, min = -1, number,cost=-1;
+                bool found,error; //error individual
                 List<string> error_list, string_list; //para hacer control de cada error de fila
                 Models.Material material;
-                int unit_id, success_lines = 0, error_lines = 0;
+                int unit_id, currency_id=0,success_lines = 0, error_lines = 0;
                 List<MaterialError> material_error_list = new List<MaterialError>(); //Lista de materiales para el Excel con error
                 //En Interop Excel el indice comienza en 1
                 for (int i = 3; i <= row_count; i++) //Fila 3 comienza las filas de materiales
@@ -634,6 +634,45 @@ namespace WindowsFormsApp1.Views
                     {
                         max = (double)datarange.Value2;
                     }
+                    datarange = (Range)ws.Cells[i, 5];//Costo
+                    string_list.Add((string)datarange.Text);
+                    if (datarange.Value2 == null || !double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("cost");
+                    }
+                    else
+                    {
+                        cost = (double)datarange.Value2;
+                    }
+
+                    datarange = (Range)ws.Cells[i, 6];
+                    found = false;
+                    string_list.Add((string)datarange.Text);
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("currency");
+                    }
+                    else
+                    {
+                        currency = (string)datarange.Value2;
+                        foreach (var item in currency_list)
+                        {
+                            if (item.Name.ToUpper().Equals(currency.ToUpper()))
+                            {
+                                currency_id = item.Id;
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found)
+                        {
+                            error = true;
+                            error_list.Add("currency_find");
+                        }
+                    }
+
                     if (error)//Si hay error entonces, se agrega a la lista de material error
                     {
                         material_error.error_list = error_list;
@@ -648,6 +687,8 @@ namespace WindowsFormsApp1.Views
                         material.Stock_max = Convert.ToInt32(max);
                         material.Stock_min = Convert.ToInt32(min);
                         material.Unit_id = unit_id;
+                        material.Average_cost = cost;
+                        material.Currency_id = currency_id;
                         materialController.insertMaterial(material);
                         if (result.success)
                         {
@@ -699,7 +740,9 @@ namespace WindowsFormsApp1.Views
             ws.Range["B2"].Value2 = "Unidad";
             ws.Range["C2"].Value2 = "Stock minimo";
             ws.Range["D2"].Value2 = "Stock maximo";
-            ws.Range["E2"].Value2 = "Observaciones";
+            ws.Range["E2"].Value2 = "Costo";
+            ws.Range["F2"].Value2 = "Moneda";
+            ws.Range["G2"].Value2 = "Observaciones";
             string observation;
             MaterialError material_error;
             for (int i = 0; i < list.Count(); i++)
@@ -733,9 +776,18 @@ namespace WindowsFormsApp1.Views
                         case "register":
                             observation += "Error en registro";
                             break;
+                        case "cost":
+                            observation += "Error en el costo";
+                            break;
+                        case "currency":
+                            observation += "Moneda inválida. ";
+                            break;
+                        case "currency_find":
+                            observation += "Moneda no encontrada. ";
+                            break;
                     }
                 }
-                ((Range)ws.Cells[i + 3, 5]).Value2 = observation;
+                ((Range)ws.Cells[i + 3, 7]).Value2 = observation;
             }
             ws.Columns.AutoFit();
         }
@@ -764,6 +816,8 @@ namespace WindowsFormsApp1.Views
             ws.Range["B2"].Value2 = "Unidad";
             ws.Range["C2"].Value2 = "Stock minimo";
             ws.Range["D2"].Value2 = "Stock maximo";
+            ws.Range["E2"].Value2 = "Costo";
+            ws.Range["F2"].Value2 = "Moneda";
             ws.Columns.AutoFit();
         }
 

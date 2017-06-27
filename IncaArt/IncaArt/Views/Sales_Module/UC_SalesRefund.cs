@@ -78,16 +78,27 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Search_Refunds_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(ctxt_refund_id.Text))
-            {
-                fill_Sales_Refunds();
-            }
+            SalesRefund sales_refund = new SalesRefund();
+            DateTime init = dt_iniDate.Value.Date;
+            DateTime end = dt_endDate.Value.Date;
+            Boolean equals = false;
+
+            if (init == end) equals = true;
+            if (ctxt_refund_id.Text != "")
+                sales_refund.Id = Int32.Parse((ctxt_refund_id.Text));
+            else
+                sales_refund.Id = -1;
+
+            sales_refund.Customer_name = ctxt_customer.Text;
+
+            Result result = sales_refund_controller.getSalesRefund_by_filter(sales_refund, init, end,equals);
+
+            if (result.data == null)
+                MessageBox.Show(result.message, "Error al buscar devoluciones con filtros", MessageBoxButtons.OK);
             else
             {
                 sales_refunds = new List<SalesRefund>();
-                Result result = sales_refund_controller.getSalesRefund(Int32.Parse(ctxt_refund_id.Text));
-                SalesRefund sr = (SalesRefund)result.data;
-                sales_refunds.Add(sr);
+                sales_refunds = (List<SalesRefund>)result.data;
                 fill_gridView_Refund(sales_refunds);
             }
         }

@@ -793,7 +793,7 @@ namespace WindowsFormsApp1.Views
         {
             if (!sessionUser.Profile.HasFunctionality("DELETE PRODUCT WAREHOUSE"))
             {
-                //delete.Visible = false;
+                delete.Visible = false;
             }
 
             if (!sessionUser.Profile.HasFunctionality("CREATE PRODUCT WAREHOUSE") && !sessionUser.Profile.HasFunctionality("EDIT PRODUCT WAREHOUSE"))
