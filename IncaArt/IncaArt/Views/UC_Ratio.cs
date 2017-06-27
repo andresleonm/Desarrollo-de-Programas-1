@@ -48,11 +48,8 @@ namespace WindowsFormsApp1.Views
         {
             if (Visible)
             {
-                progressform.SetupValues(0, 50, 0);
-                progressform.Show();
                 Load_Data();
                 Load_DataGridView();
-                progressform.Hide();
             }
         }
 
@@ -87,6 +84,7 @@ namespace WindowsFormsApp1.Views
 
         private void Load_DataGridView()
         {
+            progressform.SetupValues(40, 40 + worker_list.Count(), 40);
             metroGrid1.Rows.Clear();
             foreach (Models.Ratio ratio in ratio_list)
             {
@@ -148,11 +146,15 @@ namespace WindowsFormsApp1.Views
                         
                     metroGrid1.Rows.Add(row);
                 }
+                progressform.IncrementProgress(1);
             }
+            progressform.Hide();
         }
 
         private void Load_Data()
         {
+            progressform.SetupValues(0, 40, 0);
+            progressform.Show();
             result = workerController.getWokers();
             if (result.success)
             {
@@ -349,7 +351,10 @@ namespace WindowsFormsApp1.Views
             {
 
                 worksheet = workbook.ActiveSheet;
+                worksheet.Name = "Ratios";
                 int k = 0;
+                progressform.SetupValues(0, ratio_list.Count(), 0);
+                progressform.Show();
                 for (int i = 0; i < worker_list.Count(); i++)
                 {
                     worker = worker_list[i];
@@ -365,9 +370,11 @@ namespace WindowsFormsApp1.Views
                         worksheet.Cells[i + 7, j + 2].BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin,
                         XlColorIndex.xlColorIndexAutomatic, XlColorIndex.xlColorIndexAutomatic);
                         k++;
+                        progressform.IncrementProgress(1);
                     }
                 
                 }
+                progressform.Hide();
                 worksheet.Columns.AutoFit();
                 //Loop through each row and read value from each column. 
 
