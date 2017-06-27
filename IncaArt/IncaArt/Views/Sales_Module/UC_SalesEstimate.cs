@@ -215,6 +215,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
+            dt_IssueHour.Text = "";
+            dt_IssueDate.Text = "";
+
             if (edit)
             {
                 Set_Flag_All(true);
@@ -450,6 +453,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_observation.Text = "";
             txt_amount.Text = "";
             txt_Status.Text = "";
+
+            dt_IssueHour.Text = "";
+            dt_IssueDate.Text = "";
 
             customer = new Customer();
             clean_gridView_EstimateLine();

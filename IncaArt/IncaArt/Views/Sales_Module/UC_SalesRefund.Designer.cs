@@ -107,6 +107,7 @@
             this.gb_RefundLine = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_Refund_Lines = new MetroFramework.Controls.MetroGrid();
+            this.salesRefundLineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.refund_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.documenti_d_line = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -116,13 +117,12 @@
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_measure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prodwarehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prodwarehouse = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.quantity_available = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.refund_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salesRefundLineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.tab_Refund.SuspendLayout();
             this.refund.SuspendLayout();
@@ -156,7 +156,7 @@
             this.tab_Refund.Controls.Add(this.newRefund);
             this.tab_Refund.Location = new System.Drawing.Point(10, 5);
             this.tab_Refund.Name = "tab_Refund";
-            this.tab_Refund.SelectedIndex = 0;
+            this.tab_Refund.SelectedIndex = 1;
             this.tab_Refund.Size = new System.Drawing.Size(1042, 605);
             this.tab_Refund.Style = MetroFramework.MetroColorStyle.Teal;
             this.tab_Refund.TabIndex = 44;
@@ -916,7 +916,7 @@
             this.dt_IssueHour.Enabled = false;
             this.dt_IssueHour.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dt_IssueHour.Location = new System.Drawing.Point(213, 92);
-            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_IssueHour.Name = "dt_IssueHour";
             this.dt_IssueHour.Size = new System.Drawing.Size(92, 29);
             this.dt_IssueHour.TabIndex = 67;
@@ -974,7 +974,7 @@
             this.dt_IssueDate.Enabled = false;
             this.dt_IssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dt_IssueDate.Location = new System.Drawing.Point(93, 92);
-            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_IssueDate.Name = "dt_IssueDate";
             this.dt_IssueDate.Size = new System.Drawing.Size(114, 29);
             this.dt_IssueDate.TabIndex = 64;
@@ -1374,6 +1374,10 @@
             this.grid_Refund_Lines.TabIndex = 52;
             this.grid_Refund_Lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Refund_Lines_CellValueChanged);
             // 
+            // salesRefundLineBindingSource
+            // 
+            this.salesRefundLineBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesRefundLine);
+            // 
             // id
             // 
             this.id.DataPropertyName = "Id";
@@ -1444,6 +1448,8 @@
             this.prodwarehouse.HeaderText = "Almacén";
             this.prodwarehouse.Name = "prodwarehouse";
             this.prodwarehouse.ReadOnly = true;
+            this.prodwarehouse.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.prodwarehouse.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.prodwarehouse.Width = 200;
             // 
             // quantity_available
@@ -1480,10 +1486,6 @@
             this.amount.HeaderText = "SubTotal";
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
-            // 
-            // salesRefundLineBindingSource
-            // 
-            this.salesRefundLineBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesRefundLine);
             // 
             // UC_SalesRefund
             // 
@@ -1601,7 +1603,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn product;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_measure;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prodwarehouse;
+        private System.Windows.Forms.DataGridViewComboBoxColumn prodwarehouse;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity_available;
         private System.Windows.Forms.DataGridViewTextBoxColumn refund_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;

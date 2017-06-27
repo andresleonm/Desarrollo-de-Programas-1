@@ -25,6 +25,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private SalesRefundLineController sales_refund_line_controller;
         private SalesDocumentController sdc;
         private SalesDocumentLineController sdlc;
+        private SalesOrderController soc;
 
         public UC_SalesRefund()
         {
@@ -34,6 +35,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             sales_refund_line_controller = new SalesRefundLineController(user, password);
             sdc = new SalesDocumentController(user, password);
             sdlc = new SalesDocumentLineController(user, password);
+            soc = new SalesOrderController(user, password);
 
             fill_Sales_Refunds();
         }
@@ -211,6 +213,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
+            dt_IssueHour.Text = "";
+            dt_IssueDate.Text = "";
+
             if (document == null || String.IsNullOrWhiteSpace(txt_Document_id.Text))
             {
                 MessageBox.Show(this, "Debe seleccionar un documento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -368,6 +373,10 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_igv.Text = "";
             txt_total.Text = "";
             txt_Status.Text = "";
+
+            dt_IssueHour.Text = "";
+            dt_IssueDate.Text = "";
+
             clean_gridView_RefundLine();
         }
 

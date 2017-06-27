@@ -250,6 +250,9 @@ namespace WindowsFormsApp1.Views
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
+            dt_IssueHour.Text = "";
+            dt_IssueDate.Text = "";
+
             if (customer == null)
                 customer = new Customer(txt_name.Text, txt_address.Text, txt_phone.Text, txt_Doi.Text);
             if (edit)
@@ -530,7 +533,10 @@ namespace WindowsFormsApp1.Views
             txt_observation.Text = "";
             txt_amount.Text = "";
             txt_Status.Text = "";
-            
+
+            dt_IssueHour.Text = "";
+            dt_IssueDate.Text = "";
+
             customer = new Customer();
             clean_gridView_OrderLine();
         }
