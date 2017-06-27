@@ -92,7 +92,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
             SalesEstimate sales_estimate = new SalesEstimate();
             DateTime init = dt_iniDate.Value.Date;
             DateTime end = dt_endDate.Value.Date;
-
+            Boolean equals = false;
+            if (init == end) equals = true;
             if (ctxt_estimate_id.Text != "")
                 sales_estimate.Id = Int32.Parse((ctxt_estimate_id.Text));
             else
@@ -100,7 +101,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
             sales_estimate.Customer_name = ctxt_customer.Text;
 
-            Result result = sales_estimate_controller.getSalesEstimate_by_filter(sales_estimate, init, end);
+            Result result = sales_estimate_controller.getSalesEstimate_by_filter(sales_estimate, init, end,equals);
 
             if (result.data == null)
                 MessageBox.Show(result.message, "Error al buscar cotizaciones con filtros", MessageBoxButtons.OK);
