@@ -709,6 +709,9 @@ namespace WindowsFormsApp1.Views
                 {
                     CreateExcelError(material_error_list);
                 }
+                excel.Quit();
+                excel = null;
+                wb = null;
             }
             openDialog.Dispose();
             Load_Data();
