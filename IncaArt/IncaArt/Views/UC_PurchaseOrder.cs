@@ -134,25 +134,40 @@ namespace WindowsFormsApp1.Views
             po.Currency_id = currencies.Find(c => c.Name == combo_currency.Text).Id;       
             if (editing)
             {
+                bool edited = false;
                 po.Id = Int32.Parse(txt_id.Text);
-                po_controller.updatePurchaseOrder(po);
+                Controller.Result r = po_controller.updatePurchaseOrder(po);
+                if (r.success) edited = true;
                 for (int i = 0; i < grid_order_lines.RowCount - 1; i++)
                 {
-                    int unit_of_measure_id = units_of_measure.Find(uom => uom.Name == grid_order_lines.Rows[i].Cells[4].Value.ToString()).Id;
-                    int material_id = materials.Find(m => m.Name == grid_order_lines.Rows[i].Cells[1].Value.ToString()).Id;
-                    int warehouse_id = warehouses.Find(w => w.Name == grid_order_lines.Rows[i].Cells[5].Value.ToString()).Id;
-                    Models.PurchaseOrderLine pol = new Models.PurchaseOrderLine(editing_order.Lines[i].Id, po.Id, unit_of_measure_id, Int32.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString())
-                                                        , Double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString()), DateTime.Parse(grid_order_lines.Rows[i].Cells[0].Value.ToString()),editing_order.Lines[i].State,
-                                                        Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()), material_id, warehouse_id, double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString()));
-                    Controller.Result result =  pol_controller.updatePurchaseOrderLine(pol);
-                    if (result.success)
+                    if (i < editing_order.Lines.Count)
                     {
-                        MessageBox.Show("Orden editada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        int unit_of_measure_id = units_of_measure.Find(uom => uom.Name == grid_order_lines.Rows[i].Cells[4].Value.ToString()).Id;
+                        int material_id = materials.Find(m => m.Name == grid_order_lines.Rows[i].Cells[1].Value.ToString()).Id;
+                        int warehouse_id = warehouses.Find(w => w.Name == grid_order_lines.Rows[i].Cells[5].Value.ToString()).Id;
+                        Models.PurchaseOrderLine pol = new Models.PurchaseOrderLine(editing_order.Lines[i].Id, po.Id, unit_of_measure_id, Int32.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString())
+                                                            , Double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()), DateTime.Parse(grid_order_lines.Rows[i].Cells[0].Value.ToString()), editing_order.Lines[i].State,
+                                                            Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()), material_id, warehouse_id, double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString()));
+                        Controller.Result result = pol_controller.updatePurchaseOrderLine(pol);                        
+                        edited = result.success ? true : false;
                     }
                     else
                     {
-                        MessageBox.Show("No se pudo editar la orden", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        int unit_of_measure_id = units_of_measure.Find(uom => uom.Name == grid_order_lines.Rows[i].Cells[4].Value.ToString()).Id;
+                        int material_id = materials.Find(m => m.Name == grid_order_lines.Rows[i].Cells[1].Value.ToString()).Id;
+                        int warehouse_id = warehouses.Find(w => w.Name == grid_order_lines.Rows[i].Cells[5].Value.ToString()).Id;
+                        Models.PurchaseOrderLine pol = new Models.PurchaseOrderLine(po.Id,unit_of_measure_id, Int32.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString())
+                                                            , Double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()), DateTime.Parse(grid_order_lines.Rows[i].Cells[0].Value.ToString()),
+                                                            Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()), material_id, warehouse_id, double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString()));
                     }
+                }
+                if (edited)
+                {
+                    MessageBox.Show("Orden editada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo editar la orden", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
@@ -169,7 +184,7 @@ namespace WindowsFormsApp1.Views
                     }
                     Models.PurchaseOrderLine pol = new Models.PurchaseOrderLine(po_id, unit_of_measure_id, Int32.Parse(grid_order_lines.Rows[i].Cells[2].Value.ToString())
                                                         , Double.Parse(grid_order_lines.Rows[i].Cells[7].Value.ToString()), DateTime.Parse(grid_order_lines.Rows[i].Cells[0].Value.ToString()),
-                                                        Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()),material_id, warehouse_id);
+                                                        Int32.Parse(grid_order_lines.Rows[i].Cells[3].Value.ToString()),material_id, warehouse_id, double.Parse(grid_order_lines.Rows[i].Cells[6].Value.ToString()));
                     Controller.Result result = pol_controller.insertPurchaseOrderLine(pol);
                     if (result.success)
                     {
@@ -185,6 +200,11 @@ namespace WindowsFormsApp1.Views
 
         private void UC_PurchaseOrder_Load(object sender, EventArgs e)
         {
+            Controller.ParametersController param_controller = new Controller.ParametersController("dp1admin", "dp1admin");
+            Controller.Result result = param_controller.getParameters();
+            List<Models.Parameters> parameters = (List<Models.Parameters>)result.data;
+            lbl_igv.Text = (Double.Parse(parameters.Where(p => p.Name == "IGV").ElementAt(0).Value) * 100).ToString();
+
             loadLists();
             loadCombos();                    
 
