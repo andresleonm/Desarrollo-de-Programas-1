@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Models
 {
@@ -21,6 +22,7 @@ namespace WindowsFormsApp1.Models
         public int Refund_quantity { get; set; }
         public int Prod_warehouse_id { get; set; }
         public string Prod_warehouse_name { get; set; }
+        public string Prod_warehouse_destiny { get; set; }
         public double Amount { get; set; }
         public string Status { get; set; }
 

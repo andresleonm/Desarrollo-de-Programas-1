@@ -914,6 +914,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\WindowsFormsApp1.Views.Sales_Module.ProductWarehouseS.datasource" />
     <None Include="Resources\Minimize Window_52px.png" />
     <None Include="Resources\Close Window_52px.png" />
   </ItemGroup>

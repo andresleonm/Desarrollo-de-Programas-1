@@ -44,7 +44,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("state", "Registrado"));
             parameters.Add(new Parameter("refund_quantity",0.ToString()));
             parameters.Add(new Parameter("product_id", line.Product_id.ToString()));
-            parameters.Add(new Parameter("warehouse_id", line.Prod_warehouse_id.ToString()));
+            parameters.Add(new Parameter("warehouse_id", line.Prod_warehouse_destiny.ToString()));
             parameters.Add(new Parameter("document_line_id", line.Document_id_line.ToString()));
             GenericResult result = execute_transaction("insert_sales_refund_line", parameters);
             if (result.success)

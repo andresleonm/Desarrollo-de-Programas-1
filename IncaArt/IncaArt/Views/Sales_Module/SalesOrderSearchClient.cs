@@ -19,6 +19,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private CustomerController customer_controller;
         private string customer_type;
 
+
         public SalesOrderSearchClient( ref List<Customer> client, string user, string password, char type)
         {
             InitializeComponent();
@@ -85,13 +86,17 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
         }
 
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void txt_name_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
                 btn_Search.PerformClick();
         }
-
-
+        
         private void AdjustColumnOrder()
         {
             grid_clients.Columns["name"].DisplayIndex = 0;
@@ -101,7 +106,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
             grid_clients.Columns["phone"].DisplayIndex = 4;
             grid_clients.Columns["email"].DisplayIndex = 5;
             grid_clients.Columns["priority"].DisplayIndex = 6;
-            
         }
 
         private void fill_GridView(List<Customer> list)
@@ -111,8 +115,10 @@ namespace WindowsFormsApp1.Views.Sales_Module
             AdjustColumnOrder();
         }
 
-        private void btn_Cancel_Click(object sender, EventArgs e)
+        private void grid_clients_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            Customer client_found = (Customer)grid_clients.CurrentRow.DataBoundItem;
+            clientList.Add(client_found);
             this.Close();
         }
     }

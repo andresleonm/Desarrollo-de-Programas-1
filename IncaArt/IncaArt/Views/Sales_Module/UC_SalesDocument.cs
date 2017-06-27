@@ -62,7 +62,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 if (!see)
                 {
                     btn_Clean.PerformClick();
-                    btn_Clean.PerformClick();
+                    btn_Clean.PerformClick();                    
                 }
             }
         }
@@ -129,7 +129,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
         }
 
-        private void grid_Documents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void grid_Documents_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             active_See();
         }
@@ -209,6 +209,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 worksheet.Name = "Ventas";
 
                 int cellRowIndex = 7;
+                double acumulate = 0;
 
                 // Formato
            
@@ -238,10 +239,29 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     cellPainted(worksheet, cellRowIndex, 8, i, "currency_name");
                     cellPainted(worksheet, cellRowIndex, 9, i, "amount2");
                     cellPainted(worksheet, cellRowIndex, 10, i, "status");
+
+                    string type = grid_Documents.Rows[i].Cells["type_document_id"].Value.ToString();
+                    type.ToLower();
+                    double amount = Double.Parse(grid_Documents.Rows[i].Cells["amount2"].Value.ToString());
+
+                    if (type.Equals("factura") || type.Equals("boleta"))
+                        acumulate += amount;
+                    else if(type.Equals("nota de crédito"))
+                        acumulate -= amount;
+
                     cellRowIndex++;
                 }
 
                 worksheet.Cells[4, 5] = "Desde el " + dt_iniDate.Value.Date.ToString("dd/MM/yyyy") + " hasta el " + dt_endDate.Value.Date.ToString("dd/MM/yyyy");
+                //worksheet.Columns.AutoFit();
+
+                worksheet.Cells[cellRowIndex + 3, 8] = "Total: ";
+                worksheet.Cells[cellRowIndex + 3, 8].Font.Bold = true;
+                worksheet.Cells[cellRowIndex + 3, 8].BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexAutomatic, XlColorIndex.xlColorIndexAutomatic);
+                worksheet.Cells[cellRowIndex + 3, 9] = acumulate.ToString("0.00");
+                worksheet.Cells[cellRowIndex + 3, 9].Font.Bold = true;
+                worksheet.Cells[cellRowIndex + 3, 9].BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexAutomatic, XlColorIndex.xlColorIndexAutomatic);
+
 
                 //Getting the location and file name of the excel to save from user. 
                 SaveFileDialog saveDialog = new SaveFileDialog();
@@ -320,6 +340,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
+            dt_IssueHour.Text = "";
+            dt_IssueDate.Text = "";
+
             if (prodMovement == null || String.IsNullOrWhiteSpace(cbo_document_type.Text) || String.IsNullOrWhiteSpace(txt_external.Text) || String.IsNullOrWhiteSpace(txt_Movement_id.Text))
             {
                 MessageBox.Show(this, "Debe completar los datos del documento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -499,6 +522,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_igv.Text = "";
             txt_total.Text = "";
             txt_Status.Text = "";
+
+            dt_IssueHour.Text = "";
+            dt_IssueDate.Text = "";
             
             clean_gridView_DocumentLine();
         }
@@ -823,7 +849,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
            
 
         }
-
         
     }
 }
