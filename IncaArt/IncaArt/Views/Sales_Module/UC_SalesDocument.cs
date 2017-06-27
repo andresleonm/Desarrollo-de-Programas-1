@@ -35,7 +35,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private List<SalesDocument> sales_documents;
         private SalesDocumentController sales_document_controller;
         private SalesDocumentLineController sales_document_line_controller;
-
+        private ParametersController rucParam;
         public UC_SalesDocument()
         {
             InitializeComponent();
@@ -43,6 +43,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             sales_document_controller = new SalesDocumentController(user, password);
             sales_document_line_controller = new SalesDocumentLineController(user, password);
             pmc = new ProductMovementController(user, password);
+            rucParam = new ParametersController(user, password);
             ccbo_document_type.SelectedIndex = 0;
             fill_Sales_Documents();
         }
@@ -343,10 +344,12 @@ namespace WindowsFormsApp1.Views.Sales_Module
         {
             dt_IssueHour.Text = "";
             dt_IssueDate.Text = "";
-
+            int num;
             if (prodMovement == null || String.IsNullOrWhiteSpace(cbo_document_type.Text) || String.IsNullOrWhiteSpace(txt_external.Text) || String.IsNullOrWhiteSpace(txt_Movement_id.Text))
             {
                 MessageBox.Show(this, "Debe completar los datos del documento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }else if (!Int32.TryParse(txt_external.Text,out num)){
+                MessageBox.Show(this, "El número externo es inválido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {                
@@ -593,45 +596,57 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 filename = saveFileDialog1.FileName;
             }
 
+           
             if (filename.Trim() != "")
             {
-                FileStream file = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
-                PdfWriter.GetInstance(doc, file);
-                doc.Open();
-                string date = DateTime.Now.ToString();
+                try
+                {
+                    FileStream file = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
 
-                Chunk chunk = new Chunk(sd.Type_name + "N° " + sd.Id.ToString(), FontFactory.GetFont("ARIAL", 20, iTextSharp.text.Font.BOLD));
-                doc.Add(new Paragraph(chunk));
-                doc.Add(new Paragraph("                       "));
-                doc.Add(new Paragraph("                       "));
-                doc.Add(new Paragraph("                       " + company_name.ToUpper(), FontFactory.GetFont("ARIAL", 16, iTextSharp.text.Font.BOLD)));
-                doc.Add(new Paragraph("                                        Dirección: " + company_address));
-                doc.Add(new Paragraph("                                        Teléfono: " + company_phone));
-                doc.Add(new Paragraph("                                        Correo: " + company_mail));
-                doc.Add(new Paragraph("                       "));
-                doc.Add(new Paragraph("                       "));
-                doc.Add(new Paragraph("     Fecha: " + date));
-                doc.Add(new Paragraph("     Cliente: " + sd.Customer_name));
-                doc.Add(new Paragraph("     RUC: " + sd.Customer_doi));
-                doc.Add(new Paragraph("     Dirección: " + sd.Customer_address));
-                doc.Add(new Paragraph("     Teléfono: " + sd.Customer_phone));
-                doc.Add(new Paragraph("                       "));
-                doc.Add(new Paragraph("_________________________________________________________________________________________________________________________"));
-                doc.Add(new Paragraph("                       "));
-                doc.Add(new Paragraph("                       "));
-                GenerateDocument(doc, grid_Document_Lines);
-                doc.Add(new Paragraph("                       "));
-                doc.Add(new Paragraph("                       "));
-                doc.AddCreationDate();
-                doc.Add(new Paragraph("_________________________________________________________________________________________________________________________"));
-                doc.Add(new Paragraph("                                                                                                                                                                                            SubTotal   " + sd.Amount.ToString("0.00"), FontFactory.GetFont("ARIAL", 12, iTextSharp.text.Font.BOLD)));
-                doc.Add(new Paragraph("                                                                                                                                                                                                 IGV   " + (sd.Porc_igv * sd.Amount).ToString("0.00"), FontFactory.GetFont("ARIAL", 12, iTextSharp.text.Font.BOLD)));
-                doc.Add(new Paragraph("                                                                                                                                                                                                          __________________"));
-                doc.Add(new Paragraph("                                                                                                                                                                                               Total   " + ((1 + sd.Porc_igv) * sd.Amount).ToString("0.00"), FontFactory.GetFont("ARIAL", 12, iTextSharp.text.Font.BOLD)));
-                doc.Add(new Paragraph("_________________________________________________________________________________________________________________________"));
-                doc.Close();
-                Process.Start(filename);//Esta parte se puede omitir, si solo se desea guardar el archivo, y que este no se ejecute al instante
-                file.Close();
+                    PdfWriter.GetInstance(doc, file);
+                    String cadena;
+                    String ruc;
+                    ruc = ((Models.Parameters)rucParam.getParameterByName("ruc").data).Value;
+                    doc.Open();
+                    string date = DateTime.Now.ToString();
+                    if (sd.Type_document_id == 'N')
+                    {
+                        cadena = "";
+                    }
+                    else {
+                        cadena = "              ";
+                    }
+                    doc.Add(new Paragraph("                                                                              RUC: " + ruc, FontFactory.GetFont("ARIAL", 25, iTextSharp.text.Font.BOLD, iTextSharp.text.BaseColor.GRAY)));
+                    Chunk chunk = new Chunk("                                                                           " + cadena + sd.Type_name.ToUpper() + "\n" +
+                                            "                                                                                  " + "    N° " + sd.Id.ToString() + " - " + sd.External_number.ToString(), FontFactory.GetFont("ARIAL", 25, iTextSharp.text.Font.BOLD, iTextSharp.text.BaseColor.GRAY));
+                    doc.Add(new Paragraph(chunk));
+                    doc.Add(new Paragraph("                       " + company_name.ToUpper(), FontFactory.GetFont("ARIAL", 16, iTextSharp.text.Font.BOLD)));
+                    doc.Add(new Paragraph("                                        Dirección: " + company_address, FontFactory.GetFont("ARIAL", 16, iTextSharp.text.Font.BOLD)));
+                    doc.Add(new Paragraph("                                        Teléfono: " + company_phone, FontFactory.GetFont("ARIAL", 16, iTextSharp.text.Font.BOLD)));
+                    doc.Add(new Paragraph("                                        Correo: " + company_mail, FontFactory.GetFont("ARIAL", 16, iTextSharp.text.Font.BOLD)));
+                    doc.Add(new Paragraph("                       "));
+                    doc.Add(new Paragraph("     Fecha     :  " + date, FontFactory.GetFont("ARIAL", 15, iTextSharp.text.Font.BOLD)));
+                    doc.Add(new Paragraph("     Cliente   :  " + sd.Customer_name, FontFactory.GetFont("ARIAL", 15, iTextSharp.text.Font.BOLD)));
+                    doc.Add(new Paragraph("     RUC       :  " + sd.Customer_doi, FontFactory.GetFont("ARIAL", 15, iTextSharp.text.Font.BOLD)));
+                    doc.Add(new Paragraph("     Dirección :  " + sd.Customer_address, FontFactory.GetFont("ARIAL", 15, iTextSharp.text.Font.BOLD)));
+                    doc.Add(new Paragraph("     Teléfono  :  " + sd.Customer_phone, FontFactory.GetFont("ARIAL", 15, iTextSharp.text.Font.BOLD)));
+                    doc.Add(new Paragraph("_________________________________________________________________________________________________________________________"));
+                    GenerateDocument(doc, grid_Document_Lines);
+                    doc.AddCreationDate();
+                    doc.Add(new Paragraph("_________________________________________________________________________________________________________________________"));
+                    doc.Add(new Paragraph("                                                                                                                                                                                                        SubTotal    :    " + sd.Amount.ToString("0.00"), FontFactory.GetFont("ARIAL", 12, iTextSharp.text.Font.BOLD)));
+                    doc.Add(new Paragraph("                                                                                                                                                                                                        IGV           :    " + (sd.Porc_igv * sd.Amount).ToString("0.00"), FontFactory.GetFont("ARIAL", 12, iTextSharp.text.Font.BOLD)));
+                    doc.Add(new Paragraph("                                                                                                                                                                                                                             -------------"));
+                    doc.Add(new Paragraph("                                                                                                                                                                                                        Total         :    " + ((1 + sd.Porc_igv) * sd.Amount).ToString("0.00"), FontFactory.GetFont("ARIAL", 12, iTextSharp.text.Font.BOLD)));
+                    doc.Add(new Paragraph("_________________________________________________________________________________________________________________________"));
+                    doc.Close();
+                    Process.Start(filename);//Esta parte se puede omitir, si solo se desea guardar el archivo, y que este no se ejecute al instante
+                    file.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(this, "Ya existe un archivo con el mismo nombre", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
 
         }
@@ -653,7 +668,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             for (i = 0; i < dgv.ColumnCount; i++)
             {
                 if (dgv.Columns[i].Visible == true && !dgv.Columns[i].HeaderText.Equals("Almacen"))
-                    datatable.AddCell(new Phrase(dgv.Columns[i].HeaderText, FontFactory.GetFont("ARIAL", 12, iTextSharp.text.Font.BOLD)));
+                    datatable.AddCell(new Phrase(dgv.Columns[i].HeaderText, FontFactory.GetFont("ARIAL", 14, iTextSharp.text.Font.BOLD)));
             }
 
             datatable.HeaderRows = 1;
@@ -850,6 +865,11 @@ namespace WindowsFormsApp1.Views.Sales_Module
            
 
         }
-        
+
+        private void txt_external_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar)) e.Handled = true;
+            if (e.KeyChar == (char)8) e.Handled = false;
+        }
     }
 }

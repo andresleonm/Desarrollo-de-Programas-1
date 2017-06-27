@@ -47,6 +47,21 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result getParameterByName(String name)
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("name", name.ToString()));
+            GenericResult result = execute_function("get_parameterbyname", parameters);
+            if (result.success)
+            {
+                var r = result.data[0];
+                Models.Parameters param = new Models.Parameters(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2), r.getColumn(3));
+                return new Result(param, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
         public Result getParameters(Models.Parameters param)
         {
             //consultar permisos
