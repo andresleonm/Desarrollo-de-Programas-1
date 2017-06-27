@@ -155,7 +155,7 @@ namespace WindowsFormsApp1.Views
             address = textbox_address.Text;
             email = textbox_email.Text;
             state = "ACTIVE";
-            type = ((KeyValuePair<int, string>)combobox_type.SelectedItem).Value;
+            type = ((KeyValuePair<int, string>)combobox_type.SelectedItem).Value.ToUpper();
             priority = Int32.Parse(((KeyValuePair<int, string>)combobox_priority.SelectedItem).Value);
 
             Models.Customer customer = new Models.Customer();
