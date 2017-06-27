@@ -495,6 +495,7 @@
             this.ccbo_document_type.FormattingEnabled = true;
             this.ccbo_document_type.ItemHeight = 23;
             this.ccbo_document_type.Items.AddRange(new object[] {
+            "Seleccionar",
             "Factura",
             "Boleta",
             "Nota de Crédito"});
