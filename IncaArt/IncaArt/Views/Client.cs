@@ -869,7 +869,7 @@ namespace WindowsFormsApp1.Views
 
             Workbook wb = excel.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
             Worksheet ws = (Worksheet)wb.Worksheets[1];
-            ws.Name = "Trabajadores";
+            ws.Name = "Clientes";
             if (ws == null)
             {
                 Console.WriteLine("Worksheet could not be created. Check that your office installation and project references are correct.");

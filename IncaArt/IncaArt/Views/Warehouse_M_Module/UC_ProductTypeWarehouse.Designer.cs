@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.delete = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textbox_name_s = new MetroFramework.Controls.MetroTextBox();
@@ -73,31 +74,43 @@
             this.metroTabControl1.Controls.Add(this.tabRegister);
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
-            this.metroTabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(754, 1097);
+            this.metroTabControl1.Size = new System.Drawing.Size(503, 713);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 1;
             this.metroTabControl1.UseSelectable = true;
             // 
             // metroTabPage1
             // 
+            this.metroTabPage1.Controls.Add(this.delete);
             this.metroTabPage1.Controls.Add(this.groupBox2);
             this.metroTabPage1.Controls.Add(this.groupBox1);
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.HorizontalScrollbarSize = 15;
+            this.metroTabPage1.HorizontalScrollbarSize = 10;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(746, 1055);
+            this.metroTabPage1.Size = new System.Drawing.Size(495, 671);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "  Consultar  ";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.VerticalScrollbarSize = 15;
+            this.metroTabPage1.VerticalScrollbarSize = 10;
             this.metroTabPage1.Enter += new System.EventHandler(this.tabIndex_Enter);
+            // 
+            // delete
+            // 
+            this.delete.BackColor = System.Drawing.Color.DarkCyan;
+            this.delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.delete.ForeColor = System.Drawing.Color.White;
+            this.delete.Location = new System.Drawing.Point(410, 442);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(85, 29);
+            this.delete.TabIndex = 55;
+            this.delete.Text = "Eliminar";
+            this.delete.UseVisualStyleBackColor = false;
+            this.delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // groupBox2
             // 
@@ -110,11 +123,9 @@
             this.groupBox2.Controls.Add(this.combobox_class_s);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(0, 8);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Location = new System.Drawing.Point(0, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Size = new System.Drawing.Size(741, 265);
+            this.groupBox2.Size = new System.Drawing.Size(494, 172);
             this.groupBox2.TabIndex = 43;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtros";
@@ -125,10 +136,9 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label3.Location = new System.Drawing.Point(36, 51);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(24, 33);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 20);
+            this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 76;
             this.label3.Text = "Nombre :";
             // 
@@ -138,18 +148,16 @@
             // 
             // 
             this.textbox_name_s.CustomButton.Image = null;
-            this.textbox_name_s.CustomButton.Location = new System.Drawing.Point(540, 3);
-            this.textbox_name_s.CustomButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textbox_name_s.CustomButton.Location = new System.Drawing.Point(241, 1);
             this.textbox_name_s.CustomButton.Name = "";
-            this.textbox_name_s.CustomButton.Size = new System.Drawing.Size(56, 57);
+            this.textbox_name_s.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.textbox_name_s.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textbox_name_s.CustomButton.TabIndex = 1;
             this.textbox_name_s.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textbox_name_s.CustomButton.UseSelectable = true;
             this.textbox_name_s.CustomButton.Visible = false;
             this.textbox_name_s.Lines = new string[0];
-            this.textbox_name_s.Location = new System.Drawing.Point(160, 29);
-            this.textbox_name_s.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textbox_name_s.Location = new System.Drawing.Point(107, 19);
             this.textbox_name_s.MaxLength = 32767;
             this.textbox_name_s.Name = "textbox_name_s";
             this.textbox_name_s.PasswordChar = '\0';
@@ -158,7 +166,7 @@
             this.textbox_name_s.SelectionLength = 0;
             this.textbox_name_s.SelectionStart = 0;
             this.textbox_name_s.ShortcutsEnabled = true;
-            this.textbox_name_s.Size = new System.Drawing.Size(400, 42);
+            this.textbox_name_s.Size = new System.Drawing.Size(267, 27);
             this.textbox_name_s.TabIndex = 75;
             this.textbox_name_s.UseSelectable = true;
             this.textbox_name_s.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -169,10 +177,9 @@
             this.btn_clean.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_clean.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_clean.ForeColor = System.Drawing.Color.White;
-            this.btn_clean.Location = new System.Drawing.Point(392, 186);
-            this.btn_clean.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_clean.Location = new System.Drawing.Point(261, 121);
             this.btn_clean.Name = "btn_clean";
-            this.btn_clean.Size = new System.Drawing.Size(128, 45);
+            this.btn_clean.Size = new System.Drawing.Size(85, 29);
             this.btn_clean.TabIndex = 53;
             this.btn_clean.Text = "Limpiar";
             this.btn_clean.UseVisualStyleBackColor = false;
@@ -183,10 +190,9 @@
             this.search.BackColor = System.Drawing.Color.DarkCyan;
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search.ForeColor = System.Drawing.Color.White;
-            this.search.Location = new System.Drawing.Point(214, 186);
-            this.search.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.search.Location = new System.Drawing.Point(143, 121);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(128, 45);
+            this.search.Size = new System.Drawing.Size(85, 29);
             this.search.TabIndex = 50;
             this.search.Text = "Buscar";
             this.search.UseVisualStyleBackColor = false;
@@ -197,10 +203,9 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label13.Location = new System.Drawing.Point(36, 123);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(24, 80);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 20);
+            this.label13.Size = new System.Drawing.Size(46, 13);
             this.label13.TabIndex = 34;
             this.label13.Text = "Clase :";
             // 
@@ -208,10 +213,9 @@
             // 
             this.combobox_class_s.FormattingEnabled = true;
             this.combobox_class_s.ItemHeight = 23;
-            this.combobox_class_s.Location = new System.Drawing.Point(160, 98);
-            this.combobox_class_s.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.combobox_class_s.Location = new System.Drawing.Point(107, 64);
             this.combobox_class_s.Name = "combobox_class_s";
-            this.combobox_class_s.Size = new System.Drawing.Size(398, 29);
+            this.combobox_class_s.Size = new System.Drawing.Size(267, 29);
             this.combobox_class_s.TabIndex = 22;
             this.combobox_class_s.UseSelectable = true;
             // 
@@ -221,11 +225,9 @@
             this.groupBox1.Controls.Add(this.panel4);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(0, 295);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Location = new System.Drawing.Point(0, 192);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(748, 569);
+            this.groupBox1.Size = new System.Drawing.Size(494, 244);
             this.groupBox1.TabIndex = 49;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Almacenes";
@@ -233,10 +235,9 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.metroGrid1);
-            this.panel4.Location = new System.Drawing.Point(9, 43);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel4.Location = new System.Drawing.Point(6, 28);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(708, 378);
+            this.panel4.Size = new System.Drawing.Size(472, 210);
             this.panel4.TabIndex = 0;
             // 
             // metroGrid1
@@ -274,8 +275,8 @@
             this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid1.Location = new System.Drawing.Point(0, 0);
-            this.metroGrid1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.metroGrid1.Name = "metroGrid1";
+            this.metroGrid1.ReadOnly = true;
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkCyan;
@@ -287,7 +288,7 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(708, 378);
+            this.metroGrid1.Size = new System.Drawing.Size(472, 210);
             this.metroGrid1.TabIndex = 2;
             this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
             this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
@@ -296,29 +297,34 @@
             // 
             this.Column1.HeaderText = "ID";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.Visible = false;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "index";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             this.Column5.Visible = false;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Nombre";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             this.Column2.Width = 230;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Clase";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Estado";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // tabRegister
             // 
@@ -330,25 +336,23 @@
             this.tabRegister.Controls.Add(this.textbox_name);
             this.tabRegister.HorizontalScrollbarBarColor = true;
             this.tabRegister.HorizontalScrollbarHighlightOnWheel = false;
-            this.tabRegister.HorizontalScrollbarSize = 15;
-            this.tabRegister.Location = new System.Drawing.Point(4, 38);
-            this.tabRegister.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabRegister.HorizontalScrollbarSize = 10;
+            this.tabRegister.Location = new System.Drawing.Point(4, 35);
             this.tabRegister.Name = "tabRegister";
-            this.tabRegister.Size = new System.Drawing.Size(746, 1055);
+            this.tabRegister.Size = new System.Drawing.Size(495, 674);
             this.tabRegister.TabIndex = 1;
             this.tabRegister.Text = "  Registro  ";
             this.tabRegister.VerticalScrollbarBarColor = true;
             this.tabRegister.VerticalScrollbarHighlightOnWheel = false;
-            this.tabRegister.VerticalScrollbarSize = 15;
+            this.tabRegister.VerticalScrollbarSize = 10;
             // 
             // metroButton1
             // 
             this.metroButton1.BackColor = System.Drawing.Color.DarkCyan;
             this.metroButton1.ForeColor = System.Drawing.Color.White;
-            this.metroButton1.Location = new System.Drawing.Point(435, 248);
-            this.metroButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.metroButton1.Location = new System.Drawing.Point(290, 161);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(147, 42);
+            this.metroButton1.Size = new System.Drawing.Size(98, 27);
             this.metroButton1.TabIndex = 76;
             this.metroButton1.Text = "Cancelar";
             this.metroButton1.UseCustomBackColor = true;
@@ -363,10 +367,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label2.Location = new System.Drawing.Point(118, 143);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(79, 93);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 20);
+            this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 75;
             this.label2.Text = "Clase :";
             // 
@@ -376,10 +379,9 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label1.Location = new System.Drawing.Point(118, 75);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(79, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 20);
+            this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 74;
             this.label1.Text = "Nombre :";
             // 
@@ -387,10 +389,9 @@
             // 
             this.register.BackColor = System.Drawing.Color.DarkCyan;
             this.register.ForeColor = System.Drawing.Color.White;
-            this.register.Location = new System.Drawing.Point(218, 248);
-            this.register.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.register.Location = new System.Drawing.Point(145, 161);
             this.register.Name = "register";
-            this.register.Size = new System.Drawing.Size(147, 42);
+            this.register.Size = new System.Drawing.Size(98, 27);
             this.register.TabIndex = 71;
             this.register.Text = "Editar";
             this.register.UseCustomBackColor = true;
@@ -406,10 +407,9 @@
             this.combobox_class.Items.AddRange(new object[] {
             "Producción",
             "Observación"});
-            this.combobox_class.Location = new System.Drawing.Point(286, 118);
-            this.combobox_class.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.combobox_class.Location = new System.Drawing.Point(191, 77);
             this.combobox_class.Name = "combobox_class";
-            this.combobox_class.Size = new System.Drawing.Size(390, 29);
+            this.combobox_class.Size = new System.Drawing.Size(261, 29);
             this.combobox_class.TabIndex = 24;
             this.combobox_class.UseSelectable = true;
             this.combobox_class.Validating += new System.ComponentModel.CancelEventHandler(this.combobox_Validating);
@@ -420,18 +420,16 @@
             // 
             // 
             this.textbox_name.CustomButton.Image = null;
-            this.textbox_name.CustomButton.Location = new System.Drawing.Point(528, 3);
-            this.textbox_name.CustomButton.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.textbox_name.CustomButton.Location = new System.Drawing.Point(235, 1);
             this.textbox_name.CustomButton.Name = "";
-            this.textbox_name.CustomButton.Size = new System.Drawing.Size(56, 57);
+            this.textbox_name.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.textbox_name.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textbox_name.CustomButton.TabIndex = 1;
             this.textbox_name.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textbox_name.CustomButton.UseSelectable = true;
             this.textbox_name.CustomButton.Visible = false;
             this.textbox_name.Lines = new string[0];
-            this.textbox_name.Location = new System.Drawing.Point(286, 51);
-            this.textbox_name.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textbox_name.Location = new System.Drawing.Point(191, 33);
             this.textbox_name.MaxLength = 32767;
             this.textbox_name.Name = "textbox_name";
             this.textbox_name.PasswordChar = '\0';
@@ -440,7 +438,7 @@
             this.textbox_name.SelectionLength = 0;
             this.textbox_name.SelectionStart = 0;
             this.textbox_name.ShortcutsEnabled = true;
-            this.textbox_name.Size = new System.Drawing.Size(392, 42);
+            this.textbox_name.Size = new System.Drawing.Size(261, 27);
             this.textbox_name.TabIndex = 28;
             this.textbox_name.UseSelectable = true;
             this.textbox_name.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -453,13 +451,12 @@
             // 
             // UC_ProductTypeWarehouse
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.metroTabControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UC_ProductTypeWarehouse";
-            this.Size = new System.Drawing.Size(790, 1335);
+            this.Size = new System.Drawing.Size(527, 868);
             this.Load += new System.EventHandler(this.UC_ProductTypeWarehouse_Load);
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
@@ -502,5 +499,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.Button delete;
     }
 }

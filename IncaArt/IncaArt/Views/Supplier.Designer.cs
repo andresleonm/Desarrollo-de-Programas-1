@@ -60,6 +60,8 @@
             this.textbox_doi = new MetroFramework.Controls.MetroTextBox();
             this.textbox_address = new MetroFramework.Controls.MetroTextBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btn_import = new MetroFramework.Controls.MetroTile();
+            this.btn_template = new MetroFramework.Controls.MetroTile();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,6 +96,9 @@
             // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.btn_import);
+            this.metroTabPage2.Controls.Add(this.btn_template);
+            this.metroTabPage2.Controls.Add(this.delete);
             this.metroTabPage2.Controls.Add(this.groupBox2);
             this.metroTabPage2.Controls.Add(this.groupBox1);
             this.metroTabPage2.ForeColor = System.Drawing.Color.White;
@@ -240,7 +245,6 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.panel4);
-            this.groupBox1.Controls.Add(this.delete);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(0, 192);
@@ -298,6 +302,7 @@
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid1.Location = new System.Drawing.Point(0, 0);
             this.metroGrid1.Name = "metroGrid1";
+            this.metroGrid1.ReadOnly = true;
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkCyan;
@@ -322,7 +327,7 @@
             this.delete.BackColor = System.Drawing.Color.DarkCyan;
             this.delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.delete.ForeColor = System.Drawing.Color.White;
-            this.delete.Location = new System.Drawing.Point(409, 280);
+            this.delete.Location = new System.Drawing.Point(816, 513);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(85, 29);
             this.delete.TabIndex = 51;
@@ -617,10 +622,49 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // btn_import
+            // 
+            this.btn_import.ActiveControl = null;
+            this.btn_import.BackColor = System.Drawing.Color.Transparent;
+            this.btn_import.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btn_import.Location = new System.Drawing.Point(99, 513);
+            this.btn_import.Name = "btn_import";
+            this.btn_import.Size = new System.Drawing.Size(106, 38);
+            this.btn_import.TabIndex = 82;
+            this.btn_import.Text = "Importar";
+            this.btn_import.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
+            this.btn_import.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_import.UseCustomBackColor = true;
+            this.btn_import.UseCustomForeColor = true;
+            this.btn_import.UseSelectable = true;
+            this.btn_import.UseStyleColors = true;
+            this.btn_import.UseTileImage = true;
+            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
+            // 
+            // btn_template
+            // 
+            this.btn_template.ActiveControl = null;
+            this.btn_template.BackColor = System.Drawing.Color.Transparent;
+            this.btn_template.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btn_template.Location = new System.Drawing.Point(0, 513);
+            this.btn_template.Name = "btn_template";
+            this.btn_template.Size = new System.Drawing.Size(96, 38);
+            this.btn_template.TabIndex = 81;
+            this.btn_template.Text = "Plantilla";
+            this.btn_template.TileImage = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
+            this.btn_template.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_template.UseCustomBackColor = true;
+            this.btn_template.UseCustomForeColor = true;
+            this.btn_template.UseSelectable = true;
+            this.btn_template.UseStyleColors = true;
+            this.btn_template.UseTileImage = true;
+            this.btn_template.Click += new System.EventHandler(this.btn_template_Click);
+            // 
             // Column2
             // 
             this.Column2.HeaderText = "ID";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             this.Column2.Visible = false;
             this.Column2.Width = 20;
             // 
@@ -628,43 +672,50 @@
             // 
             this.Column4.HeaderText = "index";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             this.Column4.Visible = false;
             this.Column4.Width = 20;
             // 
             // Column3
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.FillWeight = 33.99052F;
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column3.FillWeight = 49.76717F;
             this.Column3.HeaderText = "DOI";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 50;
             // 
             // Almacén
             // 
-            this.Almacén.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Almacén.FillWeight = 319.7971F;
+            this.Almacén.FillWeight = 320.8219F;
             this.Almacén.HeaderText = "Nombre";
             this.Almacén.Name = "Almacén";
+            this.Almacén.ReadOnly = true;
+            this.Almacén.Width = 300;
             // 
             // Column1
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.FillWeight = 210.2505F;
+            this.Column1.FillWeight = 139.2251F;
             this.Column1.HeaderText = "Dirección";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 200;
             // 
             // Column6
             // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.FillWeight = 33.99052F;
+            this.Column6.FillWeight = 28.84549F;
             this.Column6.HeaderText = "Teléfono";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 80;
             // 
             // Column11
             // 
             this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column11.FillWeight = 33.99052F;
+            this.Column11.FillWeight = 93.35954F;
             this.Column11.HeaderText = "Correo";
             this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
             // 
             // Supplier
             // 
@@ -719,6 +770,8 @@
         private MetroFramework.Controls.MetroTextBox textbox_doi_s;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.GroupBox groupBox3;
+        private MetroFramework.Controls.MetroTile btn_import;
+        private MetroFramework.Controls.MetroTile btn_template;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
