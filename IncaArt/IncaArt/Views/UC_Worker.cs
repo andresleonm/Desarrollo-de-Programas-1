@@ -184,6 +184,7 @@ namespace WindowsFormsApp1.Views
             worker.Maternal_name = textbox_maternal.Text;
             worker.Doi = textbox_doi.Text;
             worker.Birthday = datetime_birthday.Value.Date;
+            worker.Gender = 'M';
             if (radiobutton_m.Checked)
             {
                 worker.Gender = 'M';
