@@ -124,7 +124,6 @@
             this.unit_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salesRefundLineBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.productWarehouseSBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.warehousesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.tab_Refund.SuspendLayout();
@@ -142,7 +141,6 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_Refund_Lines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesRefundLineBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productWarehouseSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.warehousesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1436,7 +1434,6 @@
             this.product.HeaderText = "Producto";
             this.product.Name = "product";
             this.product.ReadOnly = true;
-            this.product.Width = 150;
             // 
             // unit_measure
             // 
@@ -1469,6 +1466,7 @@
             this.quantity_available.HeaderText = "Cantidad Disponible";
             this.quantity_available.Name = "quantity_available";
             this.quantity_available.ReadOnly = true;
+            this.quantity_available.Width = 90;
             // 
             // refund_quantity
             // 
@@ -1476,12 +1474,14 @@
             this.refund_quantity.HeaderText = "Cantidad Devuelta Física";
             this.refund_quantity.Name = "refund_quantity";
             this.refund_quantity.ReadOnly = true;
+            this.refund_quantity.Width = 90;
             // 
             // quantity
             // 
             this.quantity.DataPropertyName = "Quantity";
             this.quantity.HeaderText = "Cantidad a Devolver";
             this.quantity.Name = "quantity";
+            this.quantity.Width = 90;
             // 
             // unit_price
             // 
@@ -1501,10 +1501,6 @@
             // salesRefundLineBindingSource
             // 
             this.salesRefundLineBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesRefundLine);
-            // 
-            // productWarehouseSBindingSource
-            // 
-            this.productWarehouseSBindingSource.DataSource = typeof(WindowsFormsApp1.Views.Sales_Module.ProductWarehouseS);
             // 
             // warehousesBindingSource
             // 
@@ -1539,7 +1535,6 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_Refund_Lines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesRefundLineBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productWarehouseSBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.warehousesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -1620,7 +1615,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn observation;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private MetroFramework.Controls.MetroDateTime dt_IssueHour;
-        private System.Windows.Forms.BindingSource productWarehouseSBindingSource;
         private System.Windows.Forms.BindingSource warehousesBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn refund_id2;

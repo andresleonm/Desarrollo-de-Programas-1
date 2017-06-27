@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace WindowsFormsApp1.Models
 {
     public class SalesRefund
-    {        
+    {
         public int Id { get; set; }
         public int Currency_id { get; set; }
         public string Currency_name { get; set; }
@@ -25,8 +25,7 @@ namespace WindowsFormsApp1.Models
         public int Refund_reason_id { get; set; }
         public string Refund_reason_name { get; set; }
         public int Document_id { get; set; }
-        public List<SalesRefundLine> Lines { get; set; }
-
+        public List<SalesRefundLine> Lines { get; set;}
 
         // Construct for controller
         public SalesRefund(int order_id, int currency_id, string currency_name, string currency_symbol, int customer_id, string cli_name, string cli_addr, string cli_phone, string cli_doi, string status, DateTime issue_date, double amount,double porc_igv, string observation, int doc_id, List<SalesRefundLine> lines)

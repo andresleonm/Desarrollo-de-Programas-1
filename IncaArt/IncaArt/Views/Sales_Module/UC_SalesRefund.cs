@@ -186,6 +186,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
         // -----------------------------------------------------
         //                   REGISTER REFUND
         // -----------------------------------------------------
+
         List<SalesRefundLine> ref_lines;
 
         private void btn_Search_Document_Click(object sender, EventArgs e)
@@ -201,38 +202,23 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 SalesDocument sd = (SalesDocument)sdc.getSalesDocument(document.Id).data;
 
                 ref_lines = new List<SalesRefundLine>();
-
                 foreach (SalesDocumentLine line in sd.Lines) {
                     var lineR = new SalesRefundLine(line);
                     ref_lines.Add(lineR);
                 }
-
-                   
-
-                
-
+                                
                 int i = 0;
                 grid_Refund_Lines.DataSource = ref_lines;
                 AdjustColumnRefundLine();
-                foreach (SalesDocumentLine line in sd.Lines)
+
+                foreach (SalesRefundLine line in ref_lines)
                 {
                     List<ProductWarehouseS> warehouses = (List<ProductWarehouseS>)soc.getWarehousesS(line.Product_id, '1').data;
-
-
-
-                    DataGridViewComboBoxCell combo = grid_Refund_Lines[10, i] as DataGridViewComboBoxCell;
-
-                    combo.DataSource = warehouses;
-                    combo.DisplayMember = "Name";
-                    combo.ValueMember = "Id";
-
-                   
-
-
-
+                    
+                    foreach (ProductWarehouseS w in warehouses)
+                        ((DataGridViewComboBoxCell)grid_Refund_Lines.Rows[i].Cells["warehouses"]).Items.Add(w.Name);
+                    i++;
                 }
-
-                
 
                 update_Amount_Refund();
             }
@@ -275,6 +261,13 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
                 sales_refund.Lines = (List<SalesRefundLine>)grid_Refund_Lines.DataSource;
 
+                int i = 0;
+                foreach (SalesRefundLine line in sales_refund.Lines)
+                {
+                    line.Prod_warehouse_destiny = (string)grid_Refund_Lines.Rows[i].Cells["warehouses"].Value;
+                    i++;
+                }
+
                 Result result = sales_refund_controller.insertSalesRefund(sales_refund);
 
                 if (result.success)
@@ -309,7 +302,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
         {
             if (e.RowIndex != -1)
             {
-                if (e.ColumnIndex == 12)
+                if (e.ColumnIndex == 13)
                 {
                     double update_amount = double.Parse(grid_Refund_Lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString()) * double.Parse(grid_Refund_Lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
                     grid_Refund_Lines.Rows[e.RowIndex].Cells["amount"].Value = update_amount;
