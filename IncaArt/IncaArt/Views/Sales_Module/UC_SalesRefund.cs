@@ -80,27 +80,16 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Search_Refunds_Click(object sender, EventArgs e)
         {
-            SalesRefund sales_refund = new SalesRefund();
-            DateTime init = dt_iniDate.Value.Date;
-            DateTime end = dt_endDate.Value.Date;
-            Boolean equals = false;
-
-            if (init == end) equals = true;
-            if (ctxt_refund_id.Text != "")
-                sales_refund.Id = Int32.Parse((ctxt_refund_id.Text));
-            else
-                sales_refund.Id = -1;
-
-            sales_refund.Customer_name = ctxt_customer.Text;
-
-            Result result = sales_refund_controller.getSalesRefund_by_filter(sales_refund, init, end,equals);
-
-            if (result.data == null)
-                MessageBox.Show(result.message, "Error al buscar devoluciones con filtros", MessageBoxButtons.OK);
+            if (String.IsNullOrWhiteSpace(ctxt_refund_id.Text))
+            {
+                fill_Sales_Refunds();
+            }
             else
             {
                 sales_refunds = new List<SalesRefund>();
-                sales_refunds = (List<SalesRefund>)result.data;
+                Result result = sales_refund_controller.getSalesRefund(Int32.Parse(ctxt_refund_id.Text));
+                SalesRefund sr = (SalesRefund)result.data;
+                sales_refunds.Add(sr);
                 fill_gridView_Refund(sales_refunds);
             }
         }
@@ -198,7 +187,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
         // -----------------------------------------------------
         //                   REGISTER REFUND
         // -----------------------------------------------------
-        
+        List<SalesRefundLine> ref_lines;
+
         private void btn_Search_Document_Click(object sender, EventArgs e)
         {
             var documentL = new List<SalesDocument>();
@@ -211,16 +201,44 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 fill_Sales_Refund_Form(document);
                 SalesDocument sd = (SalesDocument)sdc.getSalesDocument(document.Id).data;
 
-                List<SalesRefundLine> ref_lines = new List<SalesRefundLine>();
-                foreach (SalesDocumentLine line in sd.Lines)
-                    ref_lines.Add(new SalesRefundLine(line));
+                ref_lines = new List<SalesRefundLine>();
 
+                foreach (SalesDocumentLine line in sd.Lines) {
+                    var lineR = new SalesRefundLine(line);
+                    ref_lines.Add(lineR);
+                }
+
+                   
+
+                
+
+                int i = 0;
                 grid_Refund_Lines.DataSource = ref_lines;
                 AdjustColumnRefundLine();
+                foreach (SalesDocumentLine line in sd.Lines)
+                {
+                    List<ProductWarehouseS> warehouses = (List<ProductWarehouseS>)soc.getWarehousesS(line.Product_id, '1').data;
+
+
+
+                    DataGridViewComboBoxCell combo = grid_Refund_Lines[10, i] as DataGridViewComboBoxCell;
+
+                    combo.DataSource = warehouses;
+                    combo.DisplayMember = "Name";
+                    combo.ValueMember = "Id";
+
+                    grid_Refund_Lines[10, i] = combo;
+
+
+
+                }
+
+                
 
                 update_Amount_Refund();
             }
         }
+
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
@@ -282,6 +300,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             manipulate_options(true);
             Clean();
         }
+
 
         private void grid_Refund_Lines_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -402,11 +421,12 @@ namespace WindowsFormsApp1.Views.Sales_Module
             grid_Refund_Lines.Columns["product"].DisplayIndex = 0;
             grid_Refund_Lines.Columns["unit_measure"].DisplayIndex = 1;
             grid_Refund_Lines.Columns["prodwarehouse"].DisplayIndex = 2;
-            grid_Refund_Lines.Columns["quantity_available"].DisplayIndex = 3;
-            grid_Refund_Lines.Columns["refund_quantity"].DisplayIndex = 4;
-            grid_Refund_Lines.Columns["quantity"].DisplayIndex = 5;
-            grid_Refund_Lines.Columns["unit_price"].DisplayIndex = 6;
-            grid_Refund_Lines.Columns["amount"].DisplayIndex = 7;
+            grid_Refund_Lines.Columns["warehouses"].DisplayIndex = 3;
+            grid_Refund_Lines.Columns["quantity_available"].DisplayIndex = 4;
+            grid_Refund_Lines.Columns["refund_quantity"].DisplayIndex = 5;
+            grid_Refund_Lines.Columns["quantity"].DisplayIndex = 6;
+            grid_Refund_Lines.Columns["unit_price"].DisplayIndex = 7;
+            grid_Refund_Lines.Columns["amount"].DisplayIndex = 8;
         }
 
         private void manipulate_options(bool flag)
@@ -422,7 +442,21 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         }
 
+
         #endregion
-        
+
+        private void grid_Refund_Lines_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.ThrowException = false;
+        }
+
+        private void grid_Refund_Lines_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
     }
 }
+
+
+

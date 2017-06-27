@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Models
 {
@@ -23,6 +24,7 @@ namespace WindowsFormsApp1.Models
         public string Prod_warehouse_name { get; set; }
         public double Amount { get; set; }
         public string Status { get; set; }
+        public List<Views.Sales_Module.ProductWarehouseS> warehouses { get; set; }
 
         
         // Construct for controller

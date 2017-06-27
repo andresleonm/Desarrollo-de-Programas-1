@@ -369,6 +369,8 @@ namespace WindowsFormsApp1.Views
                     data.Remove(currentObject);
                     data = data.Concat(new List<Models.SalesOrderLine>().ToList()).ToList();
                     grid_order_lines.DataSource = data;
+                    AdjustColumnOrderLine();
+                    refresh_amount();
                 }
                 catch
                 {
@@ -420,19 +422,24 @@ namespace WindowsFormsApp1.Views
         {
             if (e.RowIndex != -1)
             {
-                if (e.ColumnIndex == 7 || e.ColumnIndex == 8)
+                if (e.ColumnIndex == 6 || e.ColumnIndex == 7)
                 {
                     double update_amount = double.Parse(grid_order_lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString()) * double.Parse(grid_order_lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
                     grid_order_lines.Rows[e.RowIndex].Cells["amount"].Value = update_amount;
 
-                    double acumulate = 0;
-                    for (int i = 0; i < grid_order_lines.RowCount; i++)
-                    {
-                        acumulate += double.Parse(grid_order_lines.Rows[i].Cells["amount"].Value.ToString());
-                    }
-                    txt_amount.Text = acumulate.ToString("0.00");
+                    refresh_amount();
                 }
             }
+        }
+
+        private void refresh_amount()
+        {
+            double acumulate = 0;
+            for (int i = 0; i < grid_order_lines.RowCount; i++)
+            {
+                acumulate += double.Parse(grid_order_lines.Rows[i].Cells["amount"].Value.ToString());
+            }
+            txt_amount.Text = acumulate.ToString("0.00");
         }
 
         private bool allIsZero(List<Models.SalesOrderLine> lines)
