@@ -418,12 +418,12 @@ namespace WindowsFormsApp1.Views
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            this.metroLabel1.Visible = true;
+            //this.metroLabel1.Visible = true;
         }
 
         private void metroLabel1_Leave(object sender, EventArgs e)
         {
-            this.metroLabel1.Visible = false;
+            //this.metroLabel1.Visible = false;
         }
 
     }

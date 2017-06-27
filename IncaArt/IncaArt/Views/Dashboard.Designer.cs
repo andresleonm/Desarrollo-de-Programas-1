@@ -402,6 +402,7 @@ namespace WindowsFormsApp1.Views
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.panel4.Controls.Add(this.metroLabel1);
             this.panel4.Controls.Add(this.label_user_role);
             this.panel4.Controls.Add(this.label_user_name);
             this.panel4.Controls.Add(this.pictureBox3);
@@ -453,29 +454,24 @@ namespace WindowsFormsApp1.Views
             // 
             // metroLabel1
             // 
+            this.metroLabel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
             this.metroLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroLabel1.ForeColor = System.Drawing.Color.White;
-            this.metroLabel1.Location = new System.Drawing.Point(1067, 27);
+            this.metroLabel1.Location = new System.Drawing.Point(601, 22);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(88, 19);
             this.metroLabel1.TabIndex = 64;
             this.metroLabel1.Text = "Cerrar Sesión";
             this.metroLabel1.UseCustomBackColor = true;
             this.metroLabel1.UseCustomForeColor = true;
-            this.metroLabel1.Visible = false;
             this.metroLabel1.Click += new System.EventHandler(this.metroLabel1_Click);
             this.metroLabel1.Leave += new System.EventHandler(this.metroLabel1_Leave);
             // 
             // panel5
             // 
             this.panel5.AutoScroll = true;
-            this.panel5.Controls.Add(this.uc_recipe);
-            this.panel5.Controls.Add(this.supplier1);
-            this.panel5.Controls.Add(this.profile);
-            this.panel5.Controls.Add(this.parameters1);
-            this.panel5.Controls.Add(this.shift);
             this.panel5.Controls.Add(this.user);
             this.panel5.Controls.Add(this.uc_workstation);
             this.panel5.Controls.Add(this.uc_worker);
@@ -496,6 +492,11 @@ namespace WindowsFormsApp1.Views
             this.panel5.Controls.Add(this.warehouse1);
             this.panel5.Controls.Add(this.workersPerformance_Report1);
             this.panel5.Controls.Add(this.uC_LogReport1);
+            this.panel5.Controls.Add(this.uc_recipe);
+            this.panel5.Controls.Add(this.supplier1);
+            this.panel5.Controls.Add(this.profile);
+            this.panel5.Controls.Add(this.parameters1);
+            this.panel5.Controls.Add(this.shift);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(141, 72);
             this.panel5.Name = "panel5";
@@ -818,7 +819,6 @@ namespace WindowsFormsApp1.Views
             this.ClientSize = new System.Drawing.Size(864, 406);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.DoubleBuffered = true;
@@ -839,7 +839,6 @@ namespace WindowsFormsApp1.Views
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
