@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views.MovementsType_Module
 {
     public partial class UC_MovementsType : ICheckPermissions
     {
+        Models.User sessionUser;
         public UC_MovementsType()
         {
             InitializeComponent();
@@ -33,6 +35,24 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
         {
             uC_MaterialMovementsType1.Visible = true;
             uC_ProductMovementsType1.Visible = false;
+        }
+
+        public override void CheckPermissions(User u)
+        {
+            sessionUser = u;
+            Permissions();
+        }
+
+        private void Permissions()
+        {
+            if (!sessionUser.Profile.HasFunctionality("VIEW MATERIAL MOVEMENT TYPE"))
+            {
+                select_materials.Visible = false;
+            }
+            if (!sessionUser.Profile.HasFunctionality("VIEW PRODUCT MOVEMENT TYPE"))
+            {
+                select_products.Visible = false;
+            }
         }
     }
 }

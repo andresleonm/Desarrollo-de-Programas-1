@@ -53,7 +53,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.tabRegister = new MetroFramework.Controls.MetroTabPage();
             this.radio4 = new MetroFramework.Controls.MetroRadioButton();
             this.radio3 = new MetroFramework.Controls.MetroRadioButton();
             this.radio2 = new MetroFramework.Controls.MetroRadioButton();
@@ -72,14 +72,14 @@
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
-            this.metroTabPage2.SuspendLayout();
+            this.tabRegister.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
-            this.metroTabControl1.Controls.Add(this.metroTabPage2);
+            this.metroTabControl1.Controls.Add(this.tabRegister);
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(3, 32);
             this.metroTabControl1.Name = "metroTabControl1";
@@ -381,29 +381,29 @@
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
-            // metroTabPage2
+            // tabRegister
             // 
-            this.metroTabPage2.Controls.Add(this.radio4);
-            this.metroTabPage2.Controls.Add(this.radio3);
-            this.metroTabPage2.Controls.Add(this.radio2);
-            this.metroTabPage2.Controls.Add(this.radio1);
-            this.metroTabPage2.Controls.Add(this.radio0);
-            this.metroTabPage2.Controls.Add(this.btn_cancel);
-            this.metroTabPage2.Controls.Add(this.label2);
-            this.metroTabPage2.Controls.Add(this.label1);
-            this.metroTabPage2.Controls.Add(this.btn_register);
-            this.metroTabPage2.Controls.Add(this.textbox_name);
-            this.metroTabPage2.HorizontalScrollbarBarColor = true;
-            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.HorizontalScrollbarSize = 10;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(495, 671);
-            this.metroTabPage2.TabIndex = 1;
-            this.metroTabPage2.Text = "  Registro  ";
-            this.metroTabPage2.VerticalScrollbarBarColor = true;
-            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.VerticalScrollbarSize = 10;
+            this.tabRegister.Controls.Add(this.radio4);
+            this.tabRegister.Controls.Add(this.radio3);
+            this.tabRegister.Controls.Add(this.radio2);
+            this.tabRegister.Controls.Add(this.radio1);
+            this.tabRegister.Controls.Add(this.radio0);
+            this.tabRegister.Controls.Add(this.btn_cancel);
+            this.tabRegister.Controls.Add(this.label2);
+            this.tabRegister.Controls.Add(this.label1);
+            this.tabRegister.Controls.Add(this.btn_register);
+            this.tabRegister.Controls.Add(this.textbox_name);
+            this.tabRegister.HorizontalScrollbarBarColor = true;
+            this.tabRegister.HorizontalScrollbarHighlightOnWheel = false;
+            this.tabRegister.HorizontalScrollbarSize = 10;
+            this.tabRegister.Location = new System.Drawing.Point(4, 38);
+            this.tabRegister.Name = "tabRegister";
+            this.tabRegister.Size = new System.Drawing.Size(495, 671);
+            this.tabRegister.TabIndex = 1;
+            this.tabRegister.Text = "  Registro  ";
+            this.tabRegister.VerticalScrollbarBarColor = true;
+            this.tabRegister.VerticalScrollbarHighlightOnWheel = false;
+            this.tabRegister.VerticalScrollbarSize = 10;
             // 
             // radio4
             // 
@@ -570,7 +570,7 @@
             this.Controls.Add(this.metroLabel11);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "UC_ProductMovementsType";
-            this.Size = new System.Drawing.Size(463, 592);
+            this.Size = new System.Drawing.Size(446, 575);
             this.Load += new System.EventHandler(this.UC_ProductMovementsType_Load);
             this.VisibleChanged += new System.EventHandler(this.UC_ProductMovementsType_VisibleChanged);
             this.metroTabControl1.ResumeLayout(false);
@@ -580,8 +580,8 @@
             this.groupBox1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
-            this.metroTabPage2.ResumeLayout(false);
-            this.metroTabPage2.PerformLayout();
+            this.tabRegister.ResumeLayout(false);
+            this.tabRegister.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -602,7 +602,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel4;
         private MetroFramework.Controls.MetroGrid metroGrid1;
-        private MetroFramework.Controls.MetroTabPage metroTabPage2;
+        private MetroFramework.Controls.MetroTabPage tabRegister;
         private MetroFramework.Controls.MetroButton btn_cancel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

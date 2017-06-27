@@ -37,7 +37,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_delete = new MetroFramework.Controls.MetroButton();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.registro = new MetroFramework.Controls.MetroTabPage();
+            this.tabRegister = new MetroFramework.Controls.MetroTabPage();
             this.btn_save = new MetroFramework.Controls.MetroButton();
             this.btn_cancel = new MetroFramework.Controls.MetroButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -84,7 +84,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            this.registro.SuspendLayout();
+            this.tabRegister.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -116,24 +116,24 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // registro
+            // tabRegister
             // 
-            this.registro.Controls.Add(this.btn_save);
-            this.registro.Controls.Add(this.btn_cancel);
-            this.registro.Controls.Add(this.groupBox5);
-            this.registro.Controls.Add(this.groupBox2);
-            this.registro.Controls.Add(this.groupBox1);
-            this.registro.HorizontalScrollbarBarColor = true;
-            this.registro.HorizontalScrollbarHighlightOnWheel = false;
-            this.registro.HorizontalScrollbarSize = 10;
-            this.registro.Location = new System.Drawing.Point(4, 38);
-            this.registro.Name = "registro";
-            this.registro.Size = new System.Drawing.Size(879, 522);
-            this.registro.TabIndex = 1;
-            this.registro.Text = "Registro";
-            this.registro.VerticalScrollbarBarColor = true;
-            this.registro.VerticalScrollbarHighlightOnWheel = false;
-            this.registro.VerticalScrollbarSize = 10;
+            this.tabRegister.Controls.Add(this.btn_save);
+            this.tabRegister.Controls.Add(this.btn_cancel);
+            this.tabRegister.Controls.Add(this.groupBox5);
+            this.tabRegister.Controls.Add(this.groupBox2);
+            this.tabRegister.Controls.Add(this.groupBox1);
+            this.tabRegister.HorizontalScrollbarBarColor = true;
+            this.tabRegister.HorizontalScrollbarHighlightOnWheel = false;
+            this.tabRegister.HorizontalScrollbarSize = 10;
+            this.tabRegister.Location = new System.Drawing.Point(4, 38);
+            this.tabRegister.Name = "tabRegister";
+            this.tabRegister.Size = new System.Drawing.Size(879, 522);
+            this.tabRegister.TabIndex = 1;
+            this.tabRegister.Text = "Registro";
+            this.tabRegister.VerticalScrollbarBarColor = true;
+            this.tabRegister.VerticalScrollbarHighlightOnWheel = false;
+            this.tabRegister.VerticalScrollbarSize = 10;
             // 
             // btn_save
             // 
@@ -779,7 +779,7 @@
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.consulta);
-            this.metroTabControl1.Controls.Add(this.registro);
+            this.metroTabControl1.Controls.Add(this.tabRegister);
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
@@ -838,7 +838,7 @@
             this.Load += new System.EventHandler(this.UC_Recipe_Load);
             this.VisibleChanged += new System.EventHandler(this.UC_Recipe_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            this.registro.ResumeLayout(false);
+            this.tabRegister.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -871,7 +871,7 @@
         private MetroFramework.Controls.MetroComboBox combobox_product_s;
         private MetroFramework.Controls.MetroButton btn_search;
         private MetroFramework.Controls.MetroLabel metroLabel7;
-        private MetroFramework.Controls.MetroTabPage registro;
+        private MetroFramework.Controls.MetroTabPage tabRegister;
         private MetroFramework.Controls.MetroButton btn_cancel;
         private System.Windows.Forms.GroupBox groupBox2;
         private MetroFramework.Controls.MetroTextBox textbox_name;

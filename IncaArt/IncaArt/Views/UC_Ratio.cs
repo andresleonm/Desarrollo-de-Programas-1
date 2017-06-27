@@ -244,6 +244,7 @@ namespace WindowsFormsApp1.Views
             }
             excel.Visible = true;
 
+            excel.Interactive = false;
             Workbook wb = excel.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
             Worksheet ws = (Worksheet)wb.Worksheets[1];
             ws.Name = "Materiales";
@@ -304,6 +305,7 @@ namespace WindowsFormsApp1.Views
                 ((Range)ws.Cells[i + 3, 5]).Value2 = ratio.value.ToString("F4");
             }
             ws.Columns.AutoFit();
+            excel.Interactive = true;
         }
 
         private void btn_import_Click(object sender, EventArgs e)

@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class UC_Product : MetroFramework.Controls.MetroUserControl
+    public partial class UC_Product : ICheckPermissions
     {
         bool name_flag;
         bool unit_flag;
@@ -29,6 +30,7 @@ namespace WindowsFormsApp1.Views
         Controller.UnitController unitController;
         Controller.CurrencyController currencyController;
         Controller.Result result;
+        Models.User sessionUser;
         public UC_Product()
         {
             InitializeComponent();
@@ -867,6 +869,25 @@ namespace WindowsFormsApp1.Views
             ws.Range["F2"].Value2 = "Stock Máximo";
             ws.Range["G2"].Value2 = "Tipo de Producto";
             ws.Columns.AutoFit();
+        }
+
+        public override void CheckPermissions(User u)
+        {
+            sessionUser = u;
+            Permissions();
+        }
+
+        private void Permissions()
+        {
+            if (!sessionUser.Profile.HasFunctionality("CREATE PRODUCT") && !sessionUser.Profile.HasFunctionality("EDIT PRODUCT"))
+            {
+                this.metroTabControl1.TabPages.Remove(tabRegister);
+            }
+            if (!sessionUser.Profile.HasFunctionality("DELETE PRODUCT"))
+            {
+                btn_delete.Visible = false;
+            }
+
         }
     }
 }

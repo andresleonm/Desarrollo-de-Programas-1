@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views
 {
-    public partial class UC_Recipe : MetroFramework.Controls.MetroUserControl
+    public partial class UC_Recipe : ICheckPermissions
     {
         bool name_flag;
         bool description_flag;
@@ -29,6 +30,7 @@ namespace WindowsFormsApp1.Views
         Controller.RecipesController recipeController;
         Controller.UnitController unitController;
         Controller.Result result;
+        Models.User sessionUser;
         public UC_Recipe()
         {
             InitializeComponent();
@@ -740,6 +742,25 @@ namespace WindowsFormsApp1.Views
                 operation_value = 0;
                 combobox_product.Enabled = true;
             }
+        }
+
+        public override void CheckPermissions(User u)
+        {
+            sessionUser = u;
+            Permissions();
+        }
+
+        private void Permissions()
+        {
+            if (!sessionUser.Profile.HasFunctionality("CREATE RECIPE") && !sessionUser.Profile.HasFunctionality("EDIT RECIPE"))
+            {
+                this.metroTabControl1.TabPages.Remove(tabRegister);
+            }
+            if (!sessionUser.Profile.HasFunctionality("DELETE RECIPE"))
+            {
+                btn_delete.Visible = false;
+            }
+
         }
 
     }

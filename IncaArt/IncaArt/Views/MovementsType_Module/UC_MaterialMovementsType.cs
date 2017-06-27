@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views.MovementsType_Module
 {
-    public partial class UC_MaterialMovementsType : MetroFramework.Controls.MetroUserControl
+    public partial class UC_MaterialMovementsType : ICheckPermissions
     {
         bool name_flag;
         bool class_flag;
@@ -20,6 +21,7 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
         List<Models.MaterialMovementType> movement_type_list;
         Controller.MaterialMovementTypeController movementTypeController;
         Controller.Result result;
+        Models.User sessionUser;
         public UC_MaterialMovementsType()
         {
             InitializeComponent();
@@ -397,6 +399,25 @@ namespace WindowsFormsApp1.Views.MovementsType_Module
         private void btn_clean_Click(object sender, EventArgs e)
         {
             Clean();
+        }
+
+        public override void CheckPermissions(User u)
+        {
+            sessionUser = u;
+            Permissions();
+        }
+
+        private void Permissions()
+        {
+            if (!sessionUser.Profile.HasFunctionality("CREATE MATERIAL MOVEMENT TYPE") && !sessionUser.Profile.HasFunctionality("EDIT MATERIAL MOVEMENT TYPE"))
+            {
+                this.metroTabControl1.TabPages.Remove(tabRegister);
+            }
+            if (!sessionUser.Profile.HasFunctionality("DELETE MATERIAL MOVEMENT TYPE"))
+            {
+                btn_delete.Visible = false;
+            }
+
         }
     }
 }

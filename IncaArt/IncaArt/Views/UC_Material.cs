@@ -775,13 +775,9 @@ namespace WindowsFormsApp1.Views
 
         private void Permissions()
         {
-            if (!sessionUser.Profile.HasFunctionality("CREATE MATERIAL"))
+            if (!sessionUser.Profile.HasFunctionality("CREATE MATERIAL") && !sessionUser.Profile.HasFunctionality("EDIT MATERIAL"))
             {
-
-            }
-            if (!sessionUser.Profile.HasFunctionality("EDIT MATERIAL"))
-            {
-
+                this.metroTabControl1.TabPages.Remove(tabRegister);
             }
             if (!sessionUser.Profile.HasFunctionality("DELETE MATERIAL"))
             {

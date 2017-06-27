@@ -50,7 +50,7 @@
             this.combobox_product_s = new MetroFramework.Controls.MetroComboBox();
             this.btn_clean_s = new MetroFramework.Controls.MetroButton();
             this.btn_search = new MetroFramework.Controls.MetroButton();
-            this.registro = new MetroFramework.Controls.MetroTabPage();
+            this.tabRegister = new MetroFramework.Controls.MetroTabPage();
             this.btn_save = new MetroFramework.Controls.MetroButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
@@ -81,7 +81,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.registro.SuspendLayout();
+            this.tabRegister.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -89,7 +89,7 @@
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.consulta);
-            this.metroTabControl1.Controls.Add(this.registro);
+            this.metroTabControl1.Controls.Add(this.tabRegister);
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(28, 31);
             this.metroTabControl1.Name = "metroTabControl1";
@@ -349,22 +349,22 @@
             this.btn_search.UseSelectable = true;
             this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
-            // registro
+            // tabRegister
             // 
-            this.registro.Controls.Add(this.btn_save);
-            this.registro.Controls.Add(this.groupBox3);
-            this.registro.Controls.Add(this.btn_cancel);
-            this.registro.HorizontalScrollbarBarColor = true;
-            this.registro.HorizontalScrollbarHighlightOnWheel = false;
-            this.registro.HorizontalScrollbarSize = 10;
-            this.registro.Location = new System.Drawing.Point(4, 38);
-            this.registro.Name = "registro";
-            this.registro.Size = new System.Drawing.Size(713, 421);
-            this.registro.TabIndex = 1;
-            this.registro.Text = "Registro";
-            this.registro.VerticalScrollbarBarColor = true;
-            this.registro.VerticalScrollbarHighlightOnWheel = false;
-            this.registro.VerticalScrollbarSize = 10;
+            this.tabRegister.Controls.Add(this.btn_save);
+            this.tabRegister.Controls.Add(this.groupBox3);
+            this.tabRegister.Controls.Add(this.btn_cancel);
+            this.tabRegister.HorizontalScrollbarBarColor = true;
+            this.tabRegister.HorizontalScrollbarHighlightOnWheel = false;
+            this.tabRegister.HorizontalScrollbarSize = 10;
+            this.tabRegister.Location = new System.Drawing.Point(4, 38);
+            this.tabRegister.Name = "tabRegister";
+            this.tabRegister.Size = new System.Drawing.Size(713, 421);
+            this.tabRegister.TabIndex = 1;
+            this.tabRegister.Text = "Registro";
+            this.tabRegister.VerticalScrollbarBarColor = true;
+            this.tabRegister.VerticalScrollbarHighlightOnWheel = false;
+            this.tabRegister.VerticalScrollbarSize = 10;
             // 
             // btn_save
             // 
@@ -803,7 +803,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.registro.ResumeLayout(false);
+            this.tabRegister.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
@@ -824,7 +824,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroGrid metroGrid1;
-        private MetroFramework.Controls.MetroTabPage registro;
+        private MetroFramework.Controls.MetroTabPage tabRegister;
         private MetroFramework.Controls.MetroButton btn_cancel;
         private MetroFramework.Controls.MetroComboBox combobox_product;
         private MetroFramework.Controls.MetroTextBox textbox_name;

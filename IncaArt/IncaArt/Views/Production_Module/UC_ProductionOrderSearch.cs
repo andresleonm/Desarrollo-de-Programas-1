@@ -75,34 +75,38 @@ namespace WindowsFormsApp1.Views
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            if(datagrid_ProductionOrders.SelectedRows[0]==null)
-            {
-                MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }else
-            {
-                int selected_index = Int32.Parse(this.datagrid_ProductionOrders.SelectedRows[0].Cells[0].Value.ToString());
-                UC_ProductionOrder uc_productionOrder = (UC_ProductionOrder)(this.Parent.Controls.Find("production_register", false)[0]);
-                uc_productionOrder.editing = true;
-                uc_productionOrder.Visible = true;
-                uc_productionOrder.fillEditForm(selected_index);               
-                this.Visible = false;
+            if (datagrid_ProductionOrders.Rows.Count > 0) { 
+                if (datagrid_ProductionOrders.SelectedRows[0]==null)
+                {
+                    MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }else 
+                {
+                    int selected_index = Int32.Parse(this.datagrid_ProductionOrders.SelectedRows[0].Cells[0].Value.ToString());
+                    UC_ProductionOrder uc_productionOrder = (UC_ProductionOrder)(this.Parent.Controls.Find("production_register", false)[0]);
+                    uc_productionOrder.editing = true;
+                    uc_productionOrder.Visible = true;
+                    uc_productionOrder.fillEditForm(selected_index);               
+                    this.Visible = false;
+                }
             }
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            if (datagrid_ProductionOrders.SelectedRows[0] == null)
-            {
-                MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }else
-            {
-                DialogResult result = MessageBox.Show(this, "¿Está seguro que desea eliminar esta orden de producción?", "Confirmación", MessageBoxButtons.YesNoCancel);
+            if (datagrid_ProductionOrders.Rows.Count > 0) { 
+                if (datagrid_ProductionOrders.SelectedRows[0] == null)
                 {
-                    if (result == DialogResult.Yes)
+                    MessageBox.Show(this, "Primero debe seleccionar una fila", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }else 
+                {
+                    DialogResult result = MessageBox.Show(this, "¿Está seguro que desea eliminar esta orden de producción?", "Confirmación", MessageBoxButtons.YesNoCancel);
                     {
-                        int selected_index = Int32.Parse(this.datagrid_ProductionOrders.SelectedRows[0].Cells[0].Value.ToString());
-                        order_controller.deleteProductionOrder(selected_index);
-                        datagrid_Products_Fill();
+                        if (result == DialogResult.Yes)
+                        {
+                            int selected_index = Int32.Parse(this.datagrid_ProductionOrders.SelectedRows[0].Cells[0].Value.ToString());
+                            order_controller.deleteProductionOrder(selected_index);
+                            datagrid_Products_Fill();
+                        }
                     }
                 }
             }
