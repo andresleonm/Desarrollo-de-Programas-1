@@ -353,7 +353,6 @@ namespace WindowsFormsApp1.Views
                     MessageBox.Show(result.message);
                 }
             }
-
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)

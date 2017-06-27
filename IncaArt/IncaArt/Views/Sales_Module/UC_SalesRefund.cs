@@ -250,37 +250,42 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
             else
             {
-                SalesRefund sales_refund = new SalesRefund();
+                if (document.Id.ToString() == "")                   
+                {
+                    MessageBox.Show(this, "Debe seleccionar un documento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                List<Models.SalesRefundLine> detail = (List<Models.SalesRefundLine>)this.grid_Refund_Lines.DataSource;
+                if (detail == null || detail.Count == 0 || allIsZero(detail))
+                {
+                    MessageBox.Show("Seleccione por lo menos una línea de la devolución con cantidad diferente de 0");
+                    return;
+                }
+
+                if (!allGreatherThanZero(detail))
+                {
+                    MessageBox.Show("Las cantidades deben ser mayores a 0");
+                    return;
+                }
+
+                Models.SalesRefund sales_refund = new Models.SalesRefund();
+                sales_refund.Lines = detail;
                 fill_Sales_Refund_Object(sales_refund);
 
                 sales_refund.Lines = (List<SalesRefundLine>)grid_Refund_Lines.DataSource;
 
-                int sales_refund_id = Int32.Parse(sales_refund_controller.insertSalesRefund(sales_refund).data.ToString());
-                sales_refund.Document_id = document.Id;
+                Result result = sales_refund_controller.insertSalesRefund(sales_refund);
 
-                if (sales_refund_id > 0)
+                if (result.success)
                 {
-                    int i = 1;
-                    foreach (SalesRefundLine srl in sales_refund.Lines)
-                    {
-                        srl.Id = i;
-                        srl.Refund_id = sales_refund_id;
-                        var result = sales_refund_line_controller.insertSalesRefundLine(srl);
-                        if (!result.success)
-                        {
-                            MessageBox.Show(this, result.message + "  -  Error fila " + i.ToString(), "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                        i++;
-                    }
+                    MessageBox.Show(this, "Se ha creado la devolución N° : " + result.data.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                     btn_Clean.PerformClick();
-                    btn_Clean.PerformClick();                    
                     tab_Refund.SelectedIndex = 0;
-                    MessageBox.Show(this, "Se ha creado el documento N° : " + sales_refund_id.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo crear la devolución", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(result.message);
                 }
             }
         }
@@ -299,7 +304,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
             manipulate_options(true);
             Clean();
         }
-
 
         private void grid_Refund_Lines_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -326,6 +330,26 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_total.Text = Math.Round((acumulate * (1 + igv)), 2).ToString("0.00");
         }
 
+        private bool allIsZero(List<Models.SalesRefundLine> lines)
+        {
+            foreach (Models.SalesRefundLine line in lines)
+            {
+                if (line.Quantity != 0)
+                    return false;
+            }
+            return true;
+        }
+
+        private bool allGreatherThanZero(List<Models.SalesRefundLine> lines)
+        {
+            foreach (Models.SalesRefundLine line in lines)
+            {
+                if (line.Quantity < 0)
+                    return false;
+            }
+            return true;
+        }
+
         private void fill_Sales_Refund_Object(SalesRefund sr)
         {
             sr.Currency_id = document.Currency_id;
@@ -342,6 +366,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             sr.Observation = txt_observation.Text;
             sr.Amount = double.Parse(txt_amount.Text);
             sr.Document_id = Int32.Parse(txt_Document_id.Text);
+            sr.Porc_igv = igv;
         }
 
         private void fill_Sales_Refund_Form(SalesRefund sr)
