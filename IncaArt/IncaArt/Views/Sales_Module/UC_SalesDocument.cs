@@ -347,37 +347,35 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 MessageBox.Show(this, "Debe completar los datos del documento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-            {                
-                SalesDocument sales_document = new SalesDocument();
+            {
+                List<Models.SalesDocumentLine> detail = (List<Models.SalesDocumentLine>)this.grid_Document_Lines.DataSource;
+                if (detail == null || detail.Count == 0 || allIsZero(detail))
+                {
+                    MessageBox.Show("Seleccione por lo menos una línea de la devolución con cantidad diferente de 0");
+                    return;
+                }
+
+                if (!allGreatherThanZero(detail))
+                {
+                    MessageBox.Show("Las cantidades deben ser mayores a 0");
+                    return;
+                }
+
+                Models.SalesDocument sales_document = new Models.SalesDocument();
+                sales_document.Lines = detail;
                 fill_Sales_Document_Object(sales_document);
 
-                sales_document.Lines = (List<SalesDocumentLine>)grid_Document_Lines.DataSource;
+                Result result = sales_document_controller.insertSalesDocument(sales_document);
 
-                int sales_document_id = Int32.Parse(sales_document_controller.insertSalesDocument(sales_document).data.ToString());
-
-                if (sales_document_id > 0)
+                if (result.success)
                 {
-                    int i = 1;
-                    foreach (SalesDocumentLine sdl in sales_document.Lines)
-                    {
-                        sdl.Id = i;
-                        sdl.Document_id = sales_document_id;
-                        var result = sales_document_line_controller.insertSalesDocumentLine(sdl);
-                        if (!result.success)
-                        {
-                            MessageBox.Show(this, result.message);
-                            return;
-                        }
-                        i++;
-                    }
-                    btn_Clean.PerformClick();
+                    MessageBox.Show(this, "Se ha creado el documento N° : " + result.data.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                     btn_Clean.PerformClick();
                     tab_Document.SelectedIndex = 0;
-                    MessageBox.Show(this, "Se ha creado el documento N° : " + sales_document_id.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo crear el documento", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(result.message);
                 }
             }
         }
@@ -406,6 +404,26 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_amount.Text = acumulate.ToString("0.00");
             txt_igv.Text = Math.Round((acumulate * igv), 2).ToString("0.00");
             txt_total.Text = Math.Round((acumulate * (1 + igv)), 2).ToString("0.00");
+        }
+
+        private bool allIsZero(List<Models.SalesDocumentLine> lines)
+        {
+            foreach (Models.SalesDocumentLine line in lines)
+            {
+                if (line.Quantity != 0)
+                    return false;
+            }
+            return true;
+        }
+
+        private bool allGreatherThanZero(List<Models.SalesDocumentLine> lines)
+        {
+            foreach (Models.SalesDocumentLine line in lines)
+            {
+                if (line.Quantity < 0)
+                    return false;
+            }
+            return true;
         }
 
         private void fill_Sales_Document_Object(SalesDocument sd)
