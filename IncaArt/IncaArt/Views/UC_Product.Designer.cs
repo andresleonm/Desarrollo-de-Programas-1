@@ -176,6 +176,7 @@
             this.btn_delete.UseCustomBackColor = true;
             this.btn_delete.UseCustomForeColor = true;
             this.btn_delete.UseSelectable = true;
+            this.btn_delete.Visible = false;
             this.btn_delete.Click += new System.EventHandler(this.button_Delete_Click);
             // 
             // groupBox2
@@ -745,7 +746,6 @@
             this.id.HeaderText = "ID";
             this.id.Name = "id";
             this.id.ReadOnly = true;
-            this.id.Visible = false;
             // 
             // index
             // 

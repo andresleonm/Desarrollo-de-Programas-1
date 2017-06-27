@@ -39,12 +39,6 @@
             this.btn_delete = new MetroFramework.Controls.MetroButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_maximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.combobox_unit_s = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -73,6 +67,12 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_maximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -173,6 +173,7 @@
             this.btn_delete.UseCustomBackColor = true;
             this.btn_delete.UseCustomForeColor = true;
             this.btn_delete.UseSelectable = true;
+            this.btn_delete.Visible = false;
             this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // groupBox2
@@ -245,48 +246,6 @@
             this.metroGrid1.UseStyleColors = true;
             this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // index
-            // 
-            this.index.HeaderText = "Index";
-            this.index.Name = "index";
-            this.index.ReadOnly = true;
-            this.index.Visible = false;
-            // 
-            // nombre
-            // 
-            this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            // 
-            // unidad
-            // 
-            this.unidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unidad.HeaderText = "Unidad";
-            this.unidad.Name = "unidad";
-            this.unidad.ReadOnly = true;
-            // 
-            // stock_minimo
-            // 
-            this.stock_minimo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.stock_minimo.HeaderText = "Stock Mínimo";
-            this.stock_minimo.Name = "stock_minimo";
-            this.stock_minimo.ReadOnly = true;
-            // 
-            // stock_maximo
-            // 
-            this.stock_maximo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.stock_maximo.HeaderText = "Stock Máximo";
-            this.stock_maximo.Name = "stock_maximo";
-            this.stock_maximo.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -752,6 +711,47 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(752, 484);
             this.panel2.TabIndex = 29;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // index
+            // 
+            this.index.HeaderText = "Index";
+            this.index.Name = "index";
+            this.index.ReadOnly = true;
+            this.index.Visible = false;
+            // 
+            // nombre
+            // 
+            this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // unidad
+            // 
+            this.unidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.unidad.HeaderText = "Unidad";
+            this.unidad.Name = "unidad";
+            this.unidad.ReadOnly = true;
+            // 
+            // stock_minimo
+            // 
+            this.stock_minimo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.stock_minimo.HeaderText = "Stock Mínimo";
+            this.stock_minimo.Name = "stock_minimo";
+            this.stock_minimo.ReadOnly = true;
+            // 
+            // stock_maximo
+            // 
+            this.stock_maximo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.stock_maximo.HeaderText = "Stock Máximo";
+            this.stock_maximo.Name = "stock_maximo";
+            this.stock_maximo.ReadOnly = true;
             // 
             // UC_Material
             // 

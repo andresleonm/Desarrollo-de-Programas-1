@@ -40,6 +40,7 @@
             this.combobox_class = new MetroFramework.Controls.MetroComboBox();
             this.textbox_name = new MetroFramework.Controls.MetroTextBox();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.delete = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textbox_name_s = new MetroFramework.Controls.MetroTextBox();
@@ -57,7 +58,6 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.delete = new System.Windows.Forms.Button();
             this.metroTabPage2.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -166,9 +166,9 @@
             // 
             // 
             this.textbox_name.CustomButton.Image = null;
-            this.textbox_name.CustomButton.Location = new System.Drawing.Point(114, 1);
+            this.textbox_name.CustomButton.Location = new System.Drawing.Point(171, 1);
             this.textbox_name.CustomButton.Name = "";
-            this.textbox_name.CustomButton.Size = new System.Drawing.Size(17, 16);
+            this.textbox_name.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.textbox_name.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textbox_name.CustomButton.TabIndex = 1;
             this.textbox_name.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -210,6 +210,20 @@
             this.metroTabPage1.VerticalScrollbarSize = 10;
             this.metroTabPage1.Enter += new System.EventHandler(this.tabIndex_Enter);
             // 
+            // delete
+            // 
+            this.delete.BackColor = System.Drawing.Color.DarkCyan;
+            this.delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.delete.ForeColor = System.Drawing.Color.White;
+            this.delete.Location = new System.Drawing.Point(407, 442);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(85, 29);
+            this.delete.TabIndex = 54;
+            this.delete.Text = "Eliminar";
+            this.delete.UseVisualStyleBackColor = false;
+            this.delete.Visible = false;
+            this.delete.Click += new System.EventHandler(this.btn_delete_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
@@ -246,9 +260,9 @@
             // 
             // 
             this.textbox_name_s.CustomButton.Image = null;
-            this.textbox_name_s.CustomButton.Location = new System.Drawing.Point(153, 1);
+            this.textbox_name_s.CustomButton.Location = new System.Drawing.Point(229, 1);
             this.textbox_name_s.CustomButton.Name = "";
-            this.textbox_name_s.CustomButton.Size = new System.Drawing.Size(17, 16);
+            this.textbox_name_s.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.textbox_name_s.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textbox_name_s.CustomButton.TabIndex = 1;
             this.textbox_name_s.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -440,19 +454,6 @@
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // delete
-            // 
-            this.delete.BackColor = System.Drawing.Color.DarkCyan;
-            this.delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.delete.ForeColor = System.Drawing.Color.White;
-            this.delete.Location = new System.Drawing.Point(407, 442);
-            this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(85, 29);
-            this.delete.TabIndex = 54;
-            this.delete.Text = "Eliminar";
-            this.delete.UseVisualStyleBackColor = false;
-            this.delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // UC_MaterialTypeWarehouse
             // 

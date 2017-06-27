@@ -599,17 +599,17 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
                     }
                     datarange = (Range)ws.Cells[i, 2];//Material
                     string_list.Add((string)datarange.Text);
-                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || !Int32.TryParse((string)datarange.Text, out material_id))
                     {
                         error = true;
                         error_list.Add("material");
                     }
                     else
                     {
-                        material = (string)datarange.Value2;
+                        material_id = (Int32)datarange.Value2;
                         foreach (var item in materials_list)
                         {
-                            if (item.Name.Equals(material))
+                            if (item.Id==material_id)
                             {
                                 material_id = item.Id;
                                 break;
@@ -624,17 +624,17 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
 
                     datarange = (Range)ws.Cells[i, 3];//Tipo Almacén
                     string_list.Add((string)datarange.Text);
-                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || !Int32.TryParse((string)datarange.Text, out type_id))
                     {
                         error = true;
                         error_list.Add("typewarehouse");
                     }
                     else
                     {
-                        typewarehouse = (string)datarange.Value2;
+                        type_id = (Int32)datarange.Value2;
                         foreach (var item in types_list)
                         {
-                            if (item.Name.ToUpper().Equals(typewarehouse.ToUpper()))
+                            if (item.Id== type_id)
                             {
                                 type_id = item.Id;
                                 break;

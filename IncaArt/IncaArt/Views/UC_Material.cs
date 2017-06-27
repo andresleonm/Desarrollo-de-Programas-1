@@ -588,19 +588,43 @@ namespace WindowsFormsApp1.Views
                     {
                         name = (string)datarange.Value2;
                     }
+                    //datarange = (Range)ws.Cells[i, 2];//Unidad
+                    //string_list.Add((string)datarange.Text);
+                    //if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    //{
+                    //    error = true;
+                    //    error_list.Add("unit");
+                    //}
+                    //else
+                    //{
+                    //    unit = (string)datarange.Value2;
+                    //    foreach (var item in unit_list)
+                    //    {
+                    //        if (item.Symbol.ToUpper().Equals(unit.ToUpper()))
+                    //        {
+                    //            unit_id = item.Id;
+                    //            break;
+                    //        }
+                    //    }
+                    //    if (unit_id == -1)
+                    //    {
+                    //        error = true;
+                    //        error_list.Add("unit_find");
+                    //    }
+                    //}
                     datarange = (Range)ws.Cells[i, 2];//Unidad
                     string_list.Add((string)datarange.Text);
-                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || !Int32.TryParse((string)datarange.Text, out unit_id))
                     {
                         error = true;
                         error_list.Add("unit");
                     }
                     else
                     {
-                        unit = (string)datarange.Value2;
+                        unit_id = (Int32)datarange.Value2;
                         foreach (var item in unit_list)
                         {
-                            if (item.Symbol.ToUpper().Equals(unit.ToUpper()))
+                            if (item.Id== unit_id)
                             {
                                 unit_id = item.Id;
                                 break;
@@ -646,20 +670,46 @@ namespace WindowsFormsApp1.Views
                         cost = (double)datarange.Value2;
                     }
 
+                    //datarange = (Range)ws.Cells[i, 6];
+                    //found = false;
+                    //string_list.Add((string)datarange.Text);
+                    //if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    //{
+                    //    error = true;
+                    //    error_list.Add("currency");
+                    //}
+                    //else
+                    //{
+                    //    currency = (string)datarange.Value2;
+                    //    foreach (var item in currency_list)
+                    //    {
+                    //        if (item.Name.ToUpper().Equals(currency.ToUpper()))
+                    //        {
+                    //            currency_id = item.Id;
+                    //            found = true;
+                    //            break;
+                    //        }
+                    //    }
+                    //    if (!found)
+                    //    {
+                    //        error = true;
+                    //        error_list.Add("currency_find");
+                    //    }
+                    //}
                     datarange = (Range)ws.Cells[i, 6];
                     found = false;
                     string_list.Add((string)datarange.Text);
-                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || !Int32.TryParse((string)datarange.Text, out currency_id))
                     {
                         error = true;
                         error_list.Add("currency");
                     }
                     else
                     {
-                        currency = (string)datarange.Value2;
+                        currency_id = (Int32)datarange.Value2;
                         foreach (var item in currency_list)
                         {
-                            if (item.Name.ToUpper().Equals(currency.ToUpper()))
+                            if (item.Id == currency_id)
                             {
                                 currency_id = item.Id;
                                 found = true;
