@@ -260,6 +260,7 @@
             // 
             // metroGrid1
             // 
+            this.metroGrid1.AllowUserToAddRows = false;
             this.metroGrid1.AllowUserToOrderColumns = true;
             this.metroGrid1.AllowUserToResizeRows = false;
             this.metroGrid1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -632,37 +633,38 @@
             // 
             // Column3
             // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column3.FillWeight = 33.99052F;
             this.Column3.HeaderText = "DOI";
             this.Column3.Name = "Column3";
-            this.Column3.Width = 50;
             // 
             // Almacén
             // 
+            this.Almacén.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Almacén.FillWeight = 319.7971F;
             this.Almacén.HeaderText = "Nombre";
             this.Almacén.Name = "Almacén";
-            this.Almacén.Width = 150;
             // 
             // Column1
             // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column1.FillWeight = 210.2505F;
             this.Column1.HeaderText = "Dirección";
             this.Column1.Name = "Column1";
-            this.Column1.Width = 200;
             // 
             // Column6
             // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column6.FillWeight = 33.99052F;
             this.Column6.HeaderText = "Teléfono";
             this.Column6.Name = "Column6";
             // 
             // Column11
             // 
+            this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column11.FillWeight = 33.99052F;
             this.Column11.HeaderText = "Correo";
             this.Column11.Name = "Column11";
-            this.Column11.Width = 200;
             // 
             // Supplier
             // 

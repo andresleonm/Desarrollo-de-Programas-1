@@ -14,6 +14,7 @@ namespace WindowsFormsApp1.Algorithm
         public double break_cost { get; set; }
         public int id { get; set; }
         public Product product { get; set; }
+        public string complete_name { get; set; }
 
         public Workstation()
         {

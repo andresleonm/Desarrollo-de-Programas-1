@@ -24,6 +24,7 @@ namespace WindowsFormsApp1.Views
         Controller.WorkstationsController workstationController;
         Controller.WorkerController workerController;
         Controller.Result result;
+        ProgressBarForm progressform;
         bool first;
         public UC_Ratio()
         {
@@ -39,6 +40,8 @@ namespace WindowsFormsApp1.Views
             workstationController = new Controller.WorkstationsController(user, password);
             workerController = new Controller.WorkerController(user, password);
             first = true;
+            progressform = new ProgressBarForm();
+
         }
 
         private void UC_Ratio_VisibleChanged(object sender, EventArgs e)
@@ -75,17 +78,16 @@ namespace WindowsFormsApp1.Views
                 combobox_workstation_s.DisplayMember = "Value";
                 combobox_workstation_s.ValueMember = "Key";
             }
-
+            progressform.IncrementProgress(10);
             
         }
 
         private void Load_DataGridView()
         {
+            progressform.SetupValues(40, 40 + worker_list.Count(), 40);
             metroGrid1.Rows.Clear();
-
             foreach (Models.Ratio ratio in ratio_list)
             {
-
                 Models.Worker worker = null;
                 foreach (var item in worker_list)
                 {
@@ -135,20 +137,24 @@ namespace WindowsFormsApp1.Views
                     row[3] = type;
                     if (ratio.ratio_type == 1)
                     {
-                        row[4] = ratio.broken_quantity.ToString("F4");
+                        row[4] = ratio.broken_quantity.ToString();
                     }
                     else
                     {
-                        row[4] = ratio.value.ToString("F4");
+                        row[4] = ratio.value.ToString();
                     }
                         
                     metroGrid1.Rows.Add(row);
                 }
+                progressform.IncrementProgress(1);
             }
+            progressform.Hide();
         }
 
         private void Load_Data()
         {
+            progressform.SetupValues(0, 40, 0);
+            progressform.Show();
             result = workerController.getWokers();
             if (result.success)
             {
@@ -158,7 +164,7 @@ namespace WindowsFormsApp1.Views
             {
                 MessageBox.Show(result.message);
             }
-
+            progressform.IncrementProgress(10);
             result = productController.getProducts();
             if (result.success)
             {
@@ -168,7 +174,7 @@ namespace WindowsFormsApp1.Views
             {
                 MessageBox.Show(result.message);
             }
-
+            progressform.IncrementProgress(10);
             result = workstationController.getWorkstations();
             if (result.success)
             {
@@ -178,7 +184,7 @@ namespace WindowsFormsApp1.Views
             {
                 MessageBox.Show(result.message);
             }
-
+            progressform.IncrementProgress(10);
             result = ratioController.getRatios("", "", "", 0, 0, 0);
             if (result.success)
             {
@@ -188,6 +194,7 @@ namespace WindowsFormsApp1.Views
             {
                 MessageBox.Show(result.message);
             }
+            progressform.IncrementProgress(10);
             Load_Combobox();
             if (first)
             {
@@ -344,7 +351,10 @@ namespace WindowsFormsApp1.Views
             {
 
                 worksheet = workbook.ActiveSheet;
+                worksheet.Name = "Ratios";
                 int k = 0;
+                progressform.SetupValues(0, ratio_list.Count(), 0);
+                progressform.Show();
                 for (int i = 0; i < worker_list.Count(); i++)
                 {
                     worker = worker_list[i];
@@ -353,13 +363,18 @@ namespace WindowsFormsApp1.Views
                         XlColorIndex.xlColorIndexAutomatic, XlColorIndex.xlColorIndexAutomatic);
                     for (int j = 0; j < 12; j++)
                     {
-                        worksheet.Cells[i + 7, j + 2] = ratio_list_full[k].value.ToString("F4");
+                        if (ratio_list_full[k].ratio_type==1)
+                            worksheet.Cells[i + 7, j + 2] = ratio_list_full[k].broken_quantity.ToString("F4");
+                        else
+                            worksheet.Cells[i + 7, j + 2] = ratio_list_full[k].value.ToString("F4");
                         worksheet.Cells[i + 7, j + 2].BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin,
                         XlColorIndex.xlColorIndexAutomatic, XlColorIndex.xlColorIndexAutomatic);
                         k++;
+                        progressform.IncrementProgress(1);
                     }
                 
                 }
+                progressform.Hide();
                 worksheet.Columns.AutoFit();
                 //Loop through each row and read value from each column. 
 
@@ -409,10 +424,13 @@ namespace WindowsFormsApp1.Views
                 double ratio_value = -1, number;
                 bool error; //error individual
                 int ratio_type_id = 0,workstation_id=0;
-
+                progressform.Show();
+                progressform.SetupValues(0, worker_list.Count(), 0);
                 //En Interop Excel el indice comienza en 1
                 for (int i = 0; i <= worker_list.Count(); i++) //Fila 3 comienza las filas de materiales
                 {
+                    progressform.IncrementProgress(1);
+                    //progress.Value = 
                     error = false;
                     datarange = (Range)ws.Cells[i+7, 1];//Trabajador
                     if (string.IsNullOrWhiteSpace((string)datarange.Text))
@@ -425,6 +443,7 @@ namespace WindowsFormsApp1.Views
                     }
                     for (int j = 0; j < 12; j++)
                     {
+                        error = false;
                         datarange = (Range)ws.Cells[i+7, j+2];//Valor
                         if (datarange.Value2 == null || !double.TryParse((string)datarange.Text, out number))
                         {
@@ -454,18 +473,27 @@ namespace WindowsFormsApp1.Views
                                     workstation_id = 6;
                                     break;
                             }
-                            ratio_type_id = j % 2;
+                            ratio_type_id = (j % 2)+1;
+                        }
+                        if (!error)
+                        {
+                            result = ratioController.updateRatio2(worker, workstation_id, ratio_type_id, ratio_value);
                         }
                     }
-                    if (!error)
-                    {
-                        result = ratioController.updateRatio2(worker, workstation_id, ratio_type_id, ratio_value);
-                    }
+                    
 
                 }
-                
+                excel.Quit();
+                wb = null;
+                excel = null;
             }
+            progressform.Hide();
+            MessageBox.Show("Se terminó de importar los ratios","Importación completada");
             openDialog.Dispose();
+            Load_Data();
+            Load_DataGridView();
+            ratio_list_full = ratio_list;
+            
         }
 
         private void btn_import_Click(object sender, EventArgs e)
@@ -565,5 +593,9 @@ namespace WindowsFormsApp1.Views
             openDialog.Dispose();
         }
 
+        private void consulta_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

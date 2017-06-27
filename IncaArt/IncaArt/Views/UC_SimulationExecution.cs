@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Controller;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Views
 {
@@ -94,10 +96,10 @@ namespace WindowsFormsApp1.Views
                         foreach (Algorithm.Assignment assig in pla.assignments)
                         {
                             row[0] = assig.assigned_worker.name + " " + assig.assigned_worker.lastname;
-                            row[1] = assig.assigned_workstation.name;
-                            row[2] = assig.assigned_workstation.product.name;
-                            row[3] = (assig.assigned_worker.ratios.Where(r => r.workstation.name == assig.assigned_workstation.name && r.type == "Efficiency").ElementAt(0).value*100).ToString("0.00");
-                            row[4] = Math.Truncate((assig.assigned_worker.ratios.Where(r => r.workstation.name == assig.assigned_workstation.name && r.type == "Time").ElementAt(0).value)).ToString();
+                            row[1] = assig.assigned_workstation.complete_name;
+                            row[2] = assig.assigned_workstation.product.type;
+                            row[3] = (assig.assigned_worker.ratios.Where(r => r.workstation.name == assig.assigned_workstation.name && r.type == "Efficiency").ElementAt(0).broken_quantity).ToString();
+                            row[4] = (assig.assigned_worker.ratios.Where(r => r.workstation.name == assig.assigned_workstation.name && r.type == "Time").ElementAt(0).produced_quantity).ToString();
                             row[5] = count.ToString();
                             this.metroGrid1.Rows.Add(row);
                         }
@@ -105,6 +107,32 @@ namespace WindowsFormsApp1.Views
                     }
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SimulationReportController sr_controller = new SimulationReportController("dp1admin","dp1admin");
+            SimulationReportHeaderController srh_controller = new SimulationReportHeaderController("dp1admin", "dp1admin");
+
+            Result r  = srh_controller.insertSimulationReportHeader();
+            int id = int.Parse(r.data.ToString());
+            bool result = false;
+            foreach(DataGridViewRow row in metroGrid1.Rows)
+            {
+                SimulationReport sr = new SimulationReport(id, row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(),
+                    row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[4].Value.ToString(), row.Cells[5].Value.ToString());
+                Result r_sr = sr_controller.inserSimulationReport(sr);
+                result = r_sr.success ? true : false;                
+            }
+            if (result)
+            {
+                MessageBox.Show("Guardado correctamente", "Notificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("No se pudo guardar. Intente de nuevo", "Notificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
     }
 }

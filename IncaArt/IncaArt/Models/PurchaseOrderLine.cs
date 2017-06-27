@@ -35,7 +35,7 @@ namespace WindowsFormsApp1.Models
             this.Unit_price = unit_price;
         }
 
-        public PurchaseOrderLine(int purchase_order, int unit_of_measure, int quantity, double price, DateTime scheluded_date,int deliver_quantity, int material, int warehouse)
+        public PurchaseOrderLine(int purchase_order, int unit_of_measure, int quantity, double price, DateTime scheluded_date,int deliver_quantity, int material, int warehouse,double unit_price)
         {
             this.purchase_order = purchase_order;
             this.unit_of_measure = unit_of_measure;
@@ -45,6 +45,7 @@ namespace WindowsFormsApp1.Models
             this.deliver_quantity = deliver_quantity;
             this.material = material;
             this.warehouse = warehouse;
+            this.Unit_price = unit_price;
         }
 
         public int Id
