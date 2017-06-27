@@ -53,10 +53,11 @@ namespace WindowsFormsApp1.Views
         private void CheckButtonsVisibility()
         {
             btn_config.Visible = UserCanViewConfigButton();
-            btn_warehouse.Visible = UserCanViewWarehouseButton();
-            btn_sales.Visible = UserCanViewSalesButton();
-            btn_purchase.Visible = sessionUser.Profile.HasFunctionality("VIEW PURCHASE ORDER");
-            btn_production.Visible = sessionUser.Profile.HasFunctionality("VIEW PRODUCTION ORDER");
+            // -------------------------------------------------------
+            btn_warehouse.Visible = sessionUser.Profile.HasFunctionality("VIEW WAREHOUSE MODULE");
+            btn_sales.Visible = sessionUser.Profile.HasFunctionality("VIEW SALES MODULE");
+            btn_purchase.Visible = sessionUser.Profile.HasFunctionality("VIEW PURCHASE MODULE");
+            btn_production.Visible = sessionUser.Profile.HasFunctionality("VIEW PRODUCTION MODULE");
             btn_simulation.Visible = sessionUser.Profile.HasFunctionality("RUN SIMULATION");
             btn_reportes.Visible = UserCanViewReportsButton();
         }
@@ -85,21 +86,6 @@ namespace WindowsFormsApp1.Views
             };
 
             foreach(string perm in permissions)
-            {
-                if (sessionUser.Profile.HasFunctionality(perm)) return true;
-            }
-
-            return false;
-        }
-
-        private bool UserCanViewWarehouseButton()
-        {
-            string[] permissions = new string[] {
-                "VIEW MATERIAL MOVEMENT",
-                "VIEW PRODUCT MOVEMENT",
-            };
-
-            foreach (string perm in permissions)
             {
                 if (sessionUser.Profile.HasFunctionality(perm)) return true;
             }
