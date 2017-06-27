@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApp1.Views
+﻿namespace WindowsFormsApp1.Views.Purchase_Module
 {
-    partial class UC_SalesOrder
+    partial class UC_PurchaseOrder
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -29,29 +29,28 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tab_Order = new MetroFramework.Controls.MetroTabControl();
             this.order = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_Edit = new System.Windows.Forms.Button();
-            this.btn_Anulate = new System.Windows.Forms.Button();
             this.gb_Orders = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.grid_orders = new MetroFramework.Controls.MetroGrid();
             this.currency_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currency_symbol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplier_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplier_address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplier_phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customer_doi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.order_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchase_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplier_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.issue_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currency_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,20 +100,25 @@
             this.btn_Add = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_order_lines = new MetroFramework.Controls.MetroGrid();
-            this.mbStyle = new MetroFramework.Components.MetroStyleManager(this.components);
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Product_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Material_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delivery_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prod_warehouse_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.material = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delivery_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mbStyle = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.igv_amount = new MetroFramework.Controls.MetroTextBox();
+            this.subtotal = new MetroFramework.Controls.MetroTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.igv_label = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tab_Order.SuspendLayout();
             this.order.SuspendLayout();
@@ -147,7 +151,7 @@
             this.tab_Order.Controls.Add(this.newOrder);
             this.tab_Order.Location = new System.Drawing.Point(10, 5);
             this.tab_Order.Name = "tab_Order";
-            this.tab_Order.SelectedIndex = 1;
+            this.tab_Order.SelectedIndex = 0;
             this.tab_Order.Size = new System.Drawing.Size(849, 608);
             this.tab_Order.Style = MetroFramework.MetroColorStyle.Teal;
             this.tab_Order.TabIndex = 41;
@@ -170,7 +174,6 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.btn_Edit);
-            this.panel3.Controls.Add(this.btn_Anulate);
             this.panel3.Controls.Add(this.gb_Orders);
             this.panel3.Controls.Add(this.gb_Filter);
             this.panel3.Location = new System.Drawing.Point(3, 3);
@@ -183,26 +186,13 @@
             this.btn_Edit.BackColor = System.Drawing.Color.DarkCyan;
             this.btn_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Edit.ForeColor = System.Drawing.Color.White;
-            this.btn_Edit.Location = new System.Drawing.Point(300, 495);
+            this.btn_Edit.Location = new System.Drawing.Point(370, 495);
             this.btn_Edit.Name = "btn_Edit";
             this.btn_Edit.Size = new System.Drawing.Size(82, 29);
             this.btn_Edit.TabIndex = 48;
             this.btn_Edit.Text = "Editar";
             this.btn_Edit.UseVisualStyleBackColor = false;
             this.btn_Edit.Click += new System.EventHandler(this.btn_Edit_Click);
-            // 
-            // btn_Anulate
-            // 
-            this.btn_Anulate.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Anulate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Anulate.ForeColor = System.Drawing.Color.White;
-            this.btn_Anulate.Location = new System.Drawing.Point(445, 495);
-            this.btn_Anulate.Name = "btn_Anulate";
-            this.btn_Anulate.Size = new System.Drawing.Size(82, 29);
-            this.btn_Anulate.TabIndex = 49;
-            this.btn_Anulate.Text = "Anular";
-            this.btn_Anulate.UseVisualStyleBackColor = false;
-            this.btn_Anulate.Click += new System.EventHandler(this.btn_Anulate_Click);
             // 
             // gb_Orders
             // 
@@ -215,7 +205,7 @@
             this.gb_Orders.Size = new System.Drawing.Size(811, 289);
             this.gb_Orders.TabIndex = 46;
             this.gb_Orders.TabStop = false;
-            this.gb_Orders.Text = "Pedidos";
+            this.gb_Orders.Text = "Ordenes de Compra";
             // 
             // panel4
             // 
@@ -232,37 +222,37 @@
             this.grid_orders.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.grid_orders.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.grid_orders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_orders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_orders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.grid_orders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid_orders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.currency_id,
             this.currency_symbol,
-            this.customer_id,
-            this.customer_address,
-            this.customer_phone,
+            this.supplier_id,
+            this.supplier_address,
+            this.supplier_phone,
             this.customer_doi,
-            this.order_id2,
-            this.customer_name,
+            this.purchase_id2,
+            this.supplier_name,
             this.issue_date,
             this.currency_name,
             this.amount2,
             this.observation,
             this.status});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid_orders.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid_orders.DefaultCellStyle = dataGridViewCellStyle14;
             this.grid_orders.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_orders.EnableHeadersVisualStyles = false;
             this.grid_orders.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -270,19 +260,19 @@
             this.grid_orders.Location = new System.Drawing.Point(0, 0);
             this.grid_orders.Name = "grid_orders";
             this.grid_orders.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_orders.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_orders.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.grid_orders.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.grid_orders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_orders.Size = new System.Drawing.Size(792, 255);
             this.grid_orders.TabIndex = 51;
-            this.grid_orders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_orders_CellDoubleClick);
+            this.grid_orders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_orders_CellContentClick);
             // 
             // currency_id
             // 
@@ -298,47 +288,47 @@
             this.currency_symbol.Name = "currency_symbol";
             this.currency_symbol.Visible = false;
             // 
-            // customer_id
+            // supplier_id
             // 
-            this.customer_id.DataPropertyName = "customer_id";
-            this.customer_id.HeaderText = "customer_id";
-            this.customer_id.Name = "customer_id";
-            this.customer_id.Visible = false;
+            this.supplier_id.DataPropertyName = "supplier_id";
+            this.supplier_id.HeaderText = "customer_id";
+            this.supplier_id.Name = "supplier_id";
+            this.supplier_id.Visible = false;
             // 
-            // customer_address
+            // supplier_address
             // 
-            this.customer_address.DataPropertyName = "customer_address";
-            this.customer_address.HeaderText = "customer_address";
-            this.customer_address.Name = "customer_address";
-            this.customer_address.Visible = false;
+            this.supplier_address.DataPropertyName = "supplier_address";
+            this.supplier_address.HeaderText = "customer_address";
+            this.supplier_address.Name = "supplier_address";
+            this.supplier_address.Visible = false;
             // 
-            // customer_phone
+            // supplier_phone
             // 
-            this.customer_phone.DataPropertyName = "customer_phone";
-            this.customer_phone.HeaderText = "customer_phone";
-            this.customer_phone.Name = "customer_phone";
-            this.customer_phone.Visible = false;
+            this.supplier_phone.DataPropertyName = "supplier_phone";
+            this.supplier_phone.HeaderText = "customer_phone";
+            this.supplier_phone.Name = "supplier_phone";
+            this.supplier_phone.Visible = false;
             // 
             // customer_doi
             // 
-            this.customer_doi.DataPropertyName = "customer_doi";
+            this.customer_doi.DataPropertyName = "supplier_doi";
             this.customer_doi.HeaderText = "customer_doi";
             this.customer_doi.Name = "customer_doi";
             this.customer_doi.Visible = false;
             // 
-            // order_id2
+            // purchase_id2
             // 
-            this.order_id2.DataPropertyName = "id";
-            this.order_id2.HeaderText = "Pedido";
-            this.order_id2.Name = "order_id2";
-            this.order_id2.ReadOnly = true;
+            this.purchase_id2.DataPropertyName = "id";
+            this.purchase_id2.HeaderText = "Orden de Compra";
+            this.purchase_id2.Name = "purchase_id2";
+            this.purchase_id2.ReadOnly = true;
             // 
-            // customer_name
+            // supplier_name
             // 
-            this.customer_name.DataPropertyName = "customer_name";
-            this.customer_name.HeaderText = "Cliente";
-            this.customer_name.Name = "customer_name";
-            this.customer_name.ReadOnly = true;
+            this.supplier_name.DataPropertyName = "supplier_name";
+            this.supplier_name.HeaderText = "Proveedor";
+            this.supplier_name.Name = "supplier_name";
+            this.supplier_name.ReadOnly = true;
             // 
             // issue_date
             // 
@@ -522,9 +512,9 @@
             this.label13.ForeColor = System.Drawing.Color.DarkCyan;
             this.label13.Location = new System.Drawing.Point(6, 35);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(72, 13);
+            this.label13.Size = new System.Drawing.Size(67, 13);
             this.label13.TabIndex = 34;
-            this.label13.Text = "N° Pedido :";
+            this.label13.Text = "N° Orden :";
             // 
             // label14
             // 
@@ -533,9 +523,9 @@
             this.label14.ForeColor = System.Drawing.Color.DarkCyan;
             this.label14.Location = new System.Drawing.Point(6, 80);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(54, 13);
+            this.label14.Size = new System.Drawing.Size(73, 13);
             this.label14.TabIndex = 32;
-            this.label14.Text = "Cliente :";
+            this.label14.Text = "Proveedor :";
             // 
             // label15
             // 
@@ -552,6 +542,11 @@
             // 
             this.newOrder.BackColor = System.Drawing.Color.White;
             this.newOrder.CausesValidation = false;
+            this.newOrder.Controls.Add(this.igv_label);
+            this.newOrder.Controls.Add(this.label16);
+            this.newOrder.Controls.Add(this.label4);
+            this.newOrder.Controls.Add(this.subtotal);
+            this.newOrder.Controls.Add(this.igv_amount);
             this.newOrder.Controls.Add(this.gb_Order);
             this.newOrder.Controls.Add(this.gb_Client);
             this.newOrder.Controls.Add(this.txt_Status);
@@ -588,7 +583,7 @@
             this.gb_Order.Size = new System.Drawing.Size(374, 160);
             this.gb_Order.TabIndex = 65;
             this.gb_Order.TabStop = false;
-            this.gb_Order.Text = "Datos del Pedido";
+            this.gb_Order.Text = "Datos de la Orden";
             // 
             // dt_IssueHour
             // 
@@ -674,9 +669,9 @@
             this.label8.ForeColor = System.Drawing.Color.DarkCyan;
             this.label8.Location = new System.Drawing.Point(6, 30);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 13);
+            this.label8.Size = new System.Drawing.Size(67, 13);
             this.label8.TabIndex = 32;
-            this.label8.Text = "N° Pedido :";
+            this.label8.Text = "N° Orden :";
             // 
             // label2
             // 
@@ -707,7 +702,7 @@
             this.gb_Client.Size = new System.Drawing.Size(427, 160);
             this.gb_Client.TabIndex = 64;
             this.gb_Client.TabStop = false;
-            this.gb_Client.Text = "Datos del Cliente";
+            this.gb_Client.Text = "Datos del Proveedor";
             // 
             // btn_Search_Client
             // 
@@ -990,7 +985,7 @@
             this.txt_amount.CustomButton.Visible = false;
             this.txt_amount.Enabled = false;
             this.txt_amount.Lines = new string[0];
-            this.txt_amount.Location = new System.Drawing.Point(668, 408);
+            this.txt_amount.Location = new System.Drawing.Point(668, 470);
             this.txt_amount.MaxLength = 32767;
             this.txt_amount.Name = "txt_amount";
             this.txt_amount.PasswordChar = '\0';
@@ -1062,7 +1057,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label5.Location = new System.Drawing.Point(611, 416);
+            this.label5.Location = new System.Drawing.Point(611, 480);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 51;
@@ -1081,7 +1076,7 @@
             this.gb_OrderLine.Size = new System.Drawing.Size(815, 229);
             this.gb_OrderLine.TabIndex = 45;
             this.gb_OrderLine.TabStop = false;
-            this.gb_OrderLine.Text = "Detalle del Pedido";
+            this.gb_OrderLine.Text = "Detalle de la orden";
             // 
             // btn_Delete
             // 
@@ -1125,37 +1120,37 @@
             this.grid_order_lines.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.grid_order_lines.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.grid_order_lines.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_order_lines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_order_lines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.grid_order_lines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid_order_lines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Type_id,
-            this.Product_id,
+            this.Material_id,
             this.state,
             this.unitId,
+            this.delivery_quantity,
             this.prod_warehouse_id,
-            this.product,
+            this.material,
             this.unit,
             this.warehouse,
             this.quantity,
-            this.delivery_quantity,
             this.unit_Price,
             this.amount});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid_order_lines.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid_order_lines.DefaultCellStyle = dataGridViewCellStyle17;
             this.grid_order_lines.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_order_lines.EnableHeadersVisualStyles = false;
             this.grid_order_lines.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -1163,23 +1158,19 @@
             this.grid_order_lines.Location = new System.Drawing.Point(0, 0);
             this.grid_order_lines.Name = "grid_order_lines";
             this.grid_order_lines.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_order_lines.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_order_lines.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.grid_order_lines.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.grid_order_lines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_order_lines.Size = new System.Drawing.Size(794, 168);
             this.grid_order_lines.TabIndex = 52;
             this.grid_order_lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_order_lines_CellValueChanged);
-            // 
-            // mbStyle
-            // 
-            this.mbStyle.Owner = null;
             // 
             // Id
             // 
@@ -1195,12 +1186,12 @@
             this.Type_id.Name = "Type_id";
             this.Type_id.Visible = false;
             // 
-            // Product_id
+            // Material_id
             // 
-            this.Product_id.DataPropertyName = "product_id";
-            this.Product_id.HeaderText = "Product_id";
-            this.Product_id.Name = "Product_id";
-            this.Product_id.Visible = false;
+            this.Material_id.DataPropertyName = "material_id";
+            this.Material_id.HeaderText = "Product_id";
+            this.Material_id.Name = "Material_id";
+            this.Material_id.Visible = false;
             // 
             // state
             // 
@@ -1216,6 +1207,13 @@
             this.unitId.Name = "unitId";
             this.unitId.Visible = false;
             // 
+            // delivery_quantity
+            // 
+            this.delivery_quantity.DataPropertyName = "delivery_quantity";
+            this.delivery_quantity.HeaderText = "delivery_quantity";
+            this.delivery_quantity.Name = "delivery_quantity";
+            this.delivery_quantity.Visible = false;
+            // 
             // prod_warehouse_id
             // 
             this.prod_warehouse_id.DataPropertyName = "prod_warehouse_id";
@@ -1223,15 +1221,15 @@
             this.prod_warehouse_id.Name = "prod_warehouse_id";
             this.prod_warehouse_id.Visible = false;
             // 
-            // product
+            // material
             // 
-            this.product.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.product.DataPropertyName = "product_name";
-            this.product.FillWeight = 150F;
-            this.product.HeaderText = "Producto";
-            this.product.Name = "product";
-            this.product.ReadOnly = true;
-            this.product.Width = 77;
+            this.material.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.material.DataPropertyName = "material_name";
+            this.material.FillWeight = 150F;
+            this.material.HeaderText = "Material";
+            this.material.Name = "material";
+            this.material.ReadOnly = true;
+            this.material.Width = 72;
             // 
             // unit
             // 
@@ -1258,13 +1256,6 @@
             this.quantity.Name = "quantity";
             this.quantity.Width = 77;
             // 
-            // delivery_quantity
-            // 
-            this.delivery_quantity.DataPropertyName = "delivery_quantity";
-            this.delivery_quantity.HeaderText = "Cantidad Entregada";
-            this.delivery_quantity.Name = "delivery_quantity";
-            this.delivery_quantity.ReadOnly = true;
-            // 
             // unit_Price
             // 
             this.unit_Price.DataPropertyName = "unit_price";
@@ -1278,14 +1269,124 @@
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
             // 
-            // UC_SalesOrder
+            // mbStyle
+            // 
+            this.mbStyle.Owner = null;
+            // 
+            // igv_amount
+            // 
+            this.igv_amount.BackColor = System.Drawing.SystemColors.ScrollBar;
+            // 
+            // 
+            // 
+            this.igv_amount.CustomButton.BackColor = System.Drawing.SystemColors.Control;
+            this.igv_amount.CustomButton.Image = null;
+            this.igv_amount.CustomButton.Location = new System.Drawing.Point(117, 1);
+            this.igv_amount.CustomButton.Name = "";
+            this.igv_amount.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.igv_amount.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.igv_amount.CustomButton.TabIndex = 1;
+            this.igv_amount.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.igv_amount.CustomButton.UseSelectable = true;
+            this.igv_amount.CustomButton.UseVisualStyleBackColor = false;
+            this.igv_amount.CustomButton.Visible = false;
+            this.igv_amount.Enabled = false;
+            this.igv_amount.Lines = new string[0];
+            this.igv_amount.Location = new System.Drawing.Point(668, 430);
+            this.igv_amount.MaxLength = 32767;
+            this.igv_amount.Name = "igv_amount";
+            this.igv_amount.PasswordChar = '\0';
+            this.igv_amount.ReadOnly = true;
+            this.igv_amount.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.igv_amount.SelectedText = "";
+            this.igv_amount.SelectionLength = 0;
+            this.igv_amount.SelectionStart = 0;
+            this.igv_amount.ShortcutsEnabled = true;
+            this.igv_amount.Size = new System.Drawing.Size(145, 29);
+            this.igv_amount.TabIndex = 67;
+            this.igv_amount.UseCustomBackColor = true;
+            this.igv_amount.UseSelectable = true;
+            this.igv_amount.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.igv_amount.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // subtotal
+            // 
+            this.subtotal.BackColor = System.Drawing.SystemColors.ScrollBar;
+            // 
+            // 
+            // 
+            this.subtotal.CustomButton.BackColor = System.Drawing.SystemColors.Control;
+            this.subtotal.CustomButton.Image = null;
+            this.subtotal.CustomButton.Location = new System.Drawing.Point(117, 1);
+            this.subtotal.CustomButton.Name = "";
+            this.subtotal.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.subtotal.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.subtotal.CustomButton.TabIndex = 1;
+            this.subtotal.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.subtotal.CustomButton.UseSelectable = true;
+            this.subtotal.CustomButton.UseVisualStyleBackColor = false;
+            this.subtotal.CustomButton.Visible = false;
+            this.subtotal.Enabled = false;
+            this.subtotal.Lines = new string[0];
+            this.subtotal.Location = new System.Drawing.Point(668, 390);
+            this.subtotal.MaxLength = 32767;
+            this.subtotal.Name = "subtotal";
+            this.subtotal.PasswordChar = '\0';
+            this.subtotal.ReadOnly = true;
+            this.subtotal.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.subtotal.SelectedText = "";
+            this.subtotal.SelectionLength = 0;
+            this.subtotal.SelectionStart = 0;
+            this.subtotal.ShortcutsEnabled = true;
+            this.subtotal.Size = new System.Drawing.Size(145, 29);
+            this.subtotal.TabIndex = 68;
+            this.subtotal.UseCustomBackColor = true;
+            this.subtotal.UseSelectable = true;
+            this.subtotal.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.subtotal.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.subtotal.Click += new System.EventHandler(this.metroTextBox2_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label4.Location = new System.Drawing.Point(611, 400);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 13);
+            this.label4.TabIndex = 69;
+            this.label4.Text = "Subtotal";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label16.Location = new System.Drawing.Point(611, 440);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(36, 13);
+            this.label16.TabIndex = 70;
+            this.label16.Text = "IGV :";
+            // 
+            // igv_label
+            // 
+            this.igv_label.AutoSize = true;
+            this.igv_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.igv_label.ForeColor = System.Drawing.Color.DarkCyan;
+            this.igv_label.Location = new System.Drawing.Point(585, 440);
+            this.igv_label.Name = "igv_label";
+            this.igv_label.Size = new System.Drawing.Size(21, 13);
+            this.igv_label.TabIndex = 71;
+            this.igv_label.Text = "18";
+            // 
+            // UC_PurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
-            this.Name = "UC_SalesOrder";
+            this.Name = "UC_PurchaseOrder";
             this.Size = new System.Drawing.Size(872, 614);
             this.Theme = MetroFramework.MetroThemeStyle.Light;
             this.UseCustomBackColor = true;
@@ -1321,7 +1422,6 @@
         private System.Windows.Forms.TabPage order;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btn_Edit;
-        private System.Windows.Forms.Button btn_Anulate;
         private System.Windows.Forms.GroupBox gb_Orders;
         private System.Windows.Forms.Panel panel4;
         private MetroFramework.Controls.MetroGrid grid_orders;
@@ -1368,32 +1468,37 @@
         private System.Windows.Forms.Panel panel2;
         private MetroFramework.Controls.MetroGrid grid_order_lines;
         private MetroFramework.Controls.MetroDateTime dt_IssueHour;
+        private System.Windows.Forms.Button btn_Delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn currency_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn currency_symbol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customer_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customer_address;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customer_phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplier_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplier_address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplier_phone;
         private System.Windows.Forms.DataGridViewTextBoxColumn customer_doi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn order_id2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customer_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn purchase_id2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplier_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn issue_date;
         private System.Windows.Forms.DataGridViewTextBoxColumn currency_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount2;
         private System.Windows.Forms.DataGridViewTextBoxColumn observation;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
-        private System.Windows.Forms.Button btn_Delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Product_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Material_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn state;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn delivery_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn prod_warehouse_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn product;
+        private System.Windows.Forms.DataGridViewTextBoxColumn material;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn delivery_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label4;
+        private MetroFramework.Controls.MetroTextBox subtotal;
+        private MetroFramework.Controls.MetroTextBox igv_amount;
+        private System.Windows.Forms.Label igv_label;
     }
 }

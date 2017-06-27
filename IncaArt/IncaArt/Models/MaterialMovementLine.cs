@@ -50,20 +50,20 @@ namespace WindowsFormsApp1.Models
         }
         public MaterialMovementLine(PurchaseOrderLine line,int id, string user, string password)
         {
-            this.warehouse_id = line.Warehouse;
-            this.material_id = line.Material;
-            this.unit_id = line.Unit_of_measure;
+            this.warehouse_id = line.Prod_warehouse_id;
+            this.material_id = line.Material_id;
+            this.unit_id = line.Unit_measure_id;
             MaterialWarehouseController mwc = new MaterialWarehouseController(user, password);
-            Models.MaterialWarehouse warehouse = (Models.MaterialWarehouse)mwc.getMaterialWarehouse(line.Warehouse).data;
+            Models.MaterialWarehouse warehouse = (Models.MaterialWarehouse)mwc.getMaterialWarehouse(line.Prod_warehouse_id).data;
             warehouse_name = warehouse.Name;
             MaterialsController mc = new MaterialsController(user, password);
-            Models.Material material = (Models.Material)mc.getMaterial(line.Material).data;
+            Models.Material material = (Models.Material)mc.getMaterial(line.Material_id).data;
             material_name = material.Name;
             UnitController uc = new UnitController(user, password);
-            Models.UnitOfMeasure unit = (Models.UnitOfMeasure)uc.getUnit(line.Unit_of_measure).data;
+            Models.UnitOfMeasure unit = (Models.UnitOfMeasure)uc.getUnit(line.Unit_measure_id).data;
             unit_name = unit.Name;
             this.warehouseQuantity = warehouse.Current_physical_stock;
-            this.documentQuantity = line.Quantity - line.Deliver_quantity;
+            this.documentQuantity = line.Quantity - line.Delivery_quantity;
             this.State = "Active";
             this.idDocumentLine = line.Id;
         }

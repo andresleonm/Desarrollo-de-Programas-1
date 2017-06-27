@@ -59,6 +59,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
             if (!flg)
                 grid_products.DataSource = new List<ProductWarehouseS>();
             else flg = false;
+            if (warehouses == null)
+                warehouses = new List<ProductWarehouseS>();
             grid_products.DataSource = warehouses;
             AdjustColumnOrder();
 

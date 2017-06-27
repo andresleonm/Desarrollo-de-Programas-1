@@ -53,7 +53,7 @@ namespace WindowsFormsApp1.Controller
             {
                 var r = result.data[0];
                 SalesRefundLineController rlc = new SalesRefundLineController(user, password);
-                var detail= (List<SalesRefundLine>)rlc.getSalesRefundLines(Int32.Parse(r.getColumn(0))).data;            
+                var detail = (List<SalesRefundLine>)rlc.getSalesRefundLines(Int32.Parse(r.getColumn(0))).data;            
                 SalesRefund refund = new SalesRefund(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
                                                         r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
                                                         r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),

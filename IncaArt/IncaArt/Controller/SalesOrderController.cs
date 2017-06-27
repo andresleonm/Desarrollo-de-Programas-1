@@ -156,6 +156,20 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result cancel(int id)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", id.ToString()));
+
+            GenericResult result = execute_transaction("cancel_sales_order", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
         public Result updateSalesOrder(SalesOrder sales_order)
         {
             List<Parameter> parameters = new List<Parameter>();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class Supplier
+    public class Supplier
     {
 
         int id;
@@ -124,6 +124,14 @@ namespace WindowsFormsApp1.Models
             {
                 state = value;
             }
+        }
+
+        public Supplier(string txt_name, string txt_address, string txt_phone, string txt_Doi)
+        {
+            this.name = txt_name;
+            this.address = txt_address;
+            this.phone = txt_phone;
+            this.doi = txt_Doi;
         }
     }
 }
