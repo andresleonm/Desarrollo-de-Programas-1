@@ -33,37 +33,32 @@ namespace WindowsFormsApp1.Views
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.report_imagelist = new System.Windows.Forms.ImageList(this.components);
+            this.simulation_imagelist = new System.Windows.Forms.ImageList(this.components);
+            this.production_imagelist = new System.Windows.Forms.ImageList(this.components);
+            this.purchase_imagelist = new System.Windows.Forms.ImageList(this.components);
+            this.sales_imagelist = new System.Windows.Forms.ImageList(this.components);
+            this.warehouse_imagelist = new System.Windows.Forms.ImageList(this.components);
+            this.config_imagelist = new System.Windows.Forms.ImageList(this.components);
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.label_user_role = new MetroFramework.Controls.MetroLabel();
+            this.label_user_name = new MetroFramework.Controls.MetroLabel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btn_reportes = new System.Windows.Forms.Button();
+            this.btn_simulation = new System.Windows.Forms.Button();
+            this.btn_production = new System.Windows.Forms.Button();
+            this.btn_purchase = new System.Windows.Forms.Button();
+            this.btn_sales = new System.Windows.Forms.Button();
+            this.btn_warehouse = new System.Windows.Forms.Button();
+            this.btn_config = new System.Windows.Forms.Button();
+            this.btn_logo = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_reportes = new System.Windows.Forms.Button();
-            this.report_imagelist = new System.Windows.Forms.ImageList(this.components);
-            this.btn_simulation = new System.Windows.Forms.Button();
-            this.simulation_imagelist = new System.Windows.Forms.ImageList(this.components);
-            this.btn_production = new System.Windows.Forms.Button();
-            this.production_imagelist = new System.Windows.Forms.ImageList(this.components);
-            this.btn_purchase = new System.Windows.Forms.Button();
-            this.purchase_imagelist = new System.Windows.Forms.ImageList(this.components);
-            this.btn_sales = new System.Windows.Forms.Button();
-            this.sales_imagelist = new System.Windows.Forms.ImageList(this.components);
-            this.btn_warehouse = new System.Windows.Forms.Button();
-            this.warehouse_imagelist = new System.Windows.Forms.ImageList(this.components);
-            this.btn_config = new System.Windows.Forms.Button();
-            this.config_imagelist = new System.Windows.Forms.ImageList(this.components);
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btn_logo = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label_user_role = new MetroFramework.Controls.MetroLabel();
-            this.label_user_name = new MetroFramework.Controls.MetroLabel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.uc_recipe = new WindowsFormsApp1.Views.UC_Recipe();
-            this.supplier1 = new WindowsFormsApp1.Views.Supplier();
-            this.profile = new WindowsFormsApp1.Views.UC_Profile();
-            this.parameters1 = new WindowsFormsApp1.Views.Parameters();
-            this.shift = new WindowsFormsApp1.Views.UC_Shift();
             this.user = new WindowsFormsApp1.Views.UC_User();
             this.uc_workstation = new WindowsFormsApp1.Views.UC_Workstation();
             this.uc_worker = new WindowsFormsApp1.Views.UC_Worker();
@@ -84,15 +79,21 @@ namespace WindowsFormsApp1.Views
             this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
             this.workersPerformance_Report1 = new WindowsFormsApp1.Views.WorkersPerformance_Report();
             this.uC_LogReport1 = new WindowsFormsApp1.Views.UC_LogReport();
+            this.uc_recipe = new WindowsFormsApp1.Views.UC_Recipe();
+            this.supplier1 = new WindowsFormsApp1.Views.Supplier();
+            this.profile = new WindowsFormsApp1.Views.UC_Profile();
+            this.parameters1 = new WindowsFormsApp1.Views.Parameters();
+            this.shift = new WindowsFormsApp1.Views.UC_Shift();
+            this.uC_SimulationReport1 = new WindowsFormsApp1.Views.UC_SimulationReport();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -107,6 +108,354 @@ namespace WindowsFormsApp1.Views
             this.panel2.Size = new System.Drawing.Size(864, 27);
             this.panel2.TabIndex = 10;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.panel1.Controls.Add(this.btn_reportes);
+            this.panel1.Controls.Add(this.btn_simulation);
+            this.panel1.Controls.Add(this.btn_production);
+            this.panel1.Controls.Add(this.btn_purchase);
+            this.panel1.Controls.Add(this.btn_sales);
+            this.panel1.Controls.Add(this.btn_warehouse);
+            this.panel1.Controls.Add(this.btn_config);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 27);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(141, 379);
+            this.panel1.TabIndex = 11;
+            // 
+            // report_imagelist
+            // 
+            this.report_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("report_imagelist.ImageStream")));
+            this.report_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.report_imagelist.Images.SetKeyName(0, "green_Increase_20px.png");
+            this.report_imagelist.Images.SetKeyName(1, "Increase_20px.png");
+            // 
+            // simulation_imagelist
+            // 
+            this.simulation_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("simulation_imagelist.ImageStream")));
+            this.simulation_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.simulation_imagelist.Images.SetKeyName(0, "green_VirtualBox_20px.png");
+            this.simulation_imagelist.Images.SetKeyName(1, "VirtualBox_20px.png");
+            // 
+            // production_imagelist
+            // 
+            this.production_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("production_imagelist.ImageStream")));
+            this.production_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.production_imagelist.Images.SetKeyName(0, "green_Hammer_20px.png");
+            this.production_imagelist.Images.SetKeyName(1, "Hammer_20px.png");
+            // 
+            // purchase_imagelist
+            // 
+            this.purchase_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("purchase_imagelist.ImageStream")));
+            this.purchase_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.purchase_imagelist.Images.SetKeyName(0, "Shopping Cart_20px.png");
+            this.purchase_imagelist.Images.SetKeyName(1, "Shopping Cart_52px.png");
+            // 
+            // sales_imagelist
+            // 
+            this.sales_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("sales_imagelist.ImageStream")));
+            this.sales_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.sales_imagelist.Images.SetKeyName(0, "Sales Performance_20px.png");
+            this.sales_imagelist.Images.SetKeyName(1, "Sales Performance_64px.png");
+            // 
+            // warehouse_imagelist
+            // 
+            this.warehouse_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("warehouse_imagelist.ImageStream")));
+            this.warehouse_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.warehouse_imagelist.Images.SetKeyName(0, "Move by Trolley_20px.png");
+            this.warehouse_imagelist.Images.SetKeyName(1, "Hangar_64px.png");
+            // 
+            // config_imagelist
+            // 
+            this.config_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("config_imagelist.ImageStream")));
+            this.config_imagelist.TransparentColor = System.Drawing.Color.Transparent;
+            this.config_imagelist.Images.SetKeyName(0, "Settings_48px.png");
+            this.config_imagelist.Images.SetKeyName(1, "Settings_48px.png");
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btn_logo);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(141, 45);
+            this.panel3.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.panel4.Controls.Add(this.metroLabel1);
+            this.panel4.Controls.Add(this.label_user_role);
+            this.panel4.Controls.Add(this.label_user_name);
+            this.panel4.Controls.Add(this.pictureBox3);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(141, 27);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(723, 45);
+            this.panel4.TabIndex = 12;
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.metroLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.metroLabel1.ForeColor = System.Drawing.Color.White;
+            this.metroLabel1.Location = new System.Drawing.Point(601, 22);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(88, 19);
+            this.metroLabel1.TabIndex = 64;
+            this.metroLabel1.Text = "Cerrar Sesión";
+            this.metroLabel1.UseCustomBackColor = true;
+            this.metroLabel1.UseCustomForeColor = true;
+            this.metroLabel1.Click += new System.EventHandler(this.metroLabel1_Click);
+            this.metroLabel1.Leave += new System.EventHandler(this.metroLabel1_Leave);
+            // 
+            // label_user_role
+            // 
+            this.label_user_role.AutoSize = true;
+            this.label_user_role.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label_user_role.ForeColor = System.Drawing.Color.White;
+            this.label_user_role.Location = new System.Drawing.Point(513, 0);
+            this.label_user_role.Name = "label_user_role";
+            this.label_user_role.Size = new System.Drawing.Size(101, 19);
+            this.label_user_role.TabIndex = 2;
+            this.label_user_role.Text = "(Administrador)";
+            this.label_user_role.UseCustomBackColor = true;
+            this.label_user_role.UseCustomForeColor = true;
+            // 
+            // label_user_name
+            // 
+            this.label_user_name.AutoSize = true;
+            this.label_user_name.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label_user_name.ForeColor = System.Drawing.Color.White;
+            this.label_user_name.Location = new System.Drawing.Point(614, 0);
+            this.label_user_name.Name = "label_user_name";
+            this.label_user_name.Size = new System.Drawing.Size(78, 19);
+            this.label_user_name.Style = MetroFramework.MetroColorStyle.White;
+            this.label_user_name.TabIndex = 1;
+            this.label_user_name.Text = "Rony Cueva";
+            this.label_user_name.UseCustomBackColor = true;
+            this.label_user_name.UseCustomForeColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.AutoScroll = true;
+            this.panel5.Controls.Add(this.uC_SimulationReport1);
+            this.panel5.Controls.Add(this.user);
+            this.panel5.Controls.Add(this.uc_workstation);
+            this.panel5.Controls.Add(this.uc_worker);
+            this.panel5.Controls.Add(this.uC_Simulation1);
+            this.panel5.Controls.Add(this.uC_SalesMain1);
+            this.panel5.Controls.Add(this.client1);
+            this.panel5.Controls.Add(this.uc_reports);
+            this.panel5.Controls.Add(this.uc_ratio);
+            this.panel5.Controls.Add(this.uc_product);
+            this.panel5.Controls.Add(this.uC_CurrencyMain1);
+            this.panel5.Controls.Add(this.uc_material);
+            this.panel5.Controls.Add(this.uc_ProductionMenu);
+            this.panel5.Controls.Add(this.uC_MovementsType1);
+            this.panel5.Controls.Add(this.mainDashboard1);
+            this.panel5.Controls.Add(this.uC_PurchasesMenu1);
+            this.panel5.Controls.Add(this.uC_WarehouseMovement1);
+            this.panel5.Controls.Add(this.typeWarehouseMain1);
+            this.panel5.Controls.Add(this.warehouse1);
+            this.panel5.Controls.Add(this.workersPerformance_Report1);
+            this.panel5.Controls.Add(this.uC_LogReport1);
+            this.panel5.Controls.Add(this.uc_recipe);
+            this.panel5.Controls.Add(this.supplier1);
+            this.panel5.Controls.Add(this.profile);
+            this.panel5.Controls.Add(this.parameters1);
+            this.panel5.Controls.Add(this.shift);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(141, 72);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(723, 334);
+            this.panel5.TabIndex = 66;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(692, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(31, 45);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // btn_reportes
+            // 
+            this.btn_reportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_reportes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_reportes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_reportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_reportes.ForeColor = System.Drawing.Color.White;
+            this.btn_reportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_reportes.ImageIndex = 1;
+            this.btn_reportes.ImageList = this.report_imagelist;
+            this.btn_reportes.Location = new System.Drawing.Point(0, 297);
+            this.btn_reportes.Name = "btn_reportes";
+            this.btn_reportes.Size = new System.Drawing.Size(141, 42);
+            this.btn_reportes.TabIndex = 8;
+            this.btn_reportes.Text = "Reportes";
+            this.btn_reportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_reportes.UseVisualStyleBackColor = false;
+            this.btn_reportes.Click += new System.EventHandler(this.button1_Click);
+            this.btn_reportes.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            // 
+            // btn_simulation
+            // 
+            this.btn_simulation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_simulation.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_simulation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_simulation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_simulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_simulation.ForeColor = System.Drawing.Color.White;
+            this.btn_simulation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_simulation.ImageIndex = 1;
+            this.btn_simulation.ImageList = this.simulation_imagelist;
+            this.btn_simulation.Location = new System.Drawing.Point(0, 255);
+            this.btn_simulation.Name = "btn_simulation";
+            this.btn_simulation.Size = new System.Drawing.Size(141, 42);
+            this.btn_simulation.TabIndex = 7;
+            this.btn_simulation.Text = "Simulación";
+            this.btn_simulation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_simulation.UseVisualStyleBackColor = false;
+            this.btn_simulation.Click += new System.EventHandler(this.btn_simulation_Click);
+            this.btn_simulation.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            // 
+            // btn_production
+            // 
+            this.btn_production.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_production.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_production.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_production.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_production.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_production.ForeColor = System.Drawing.Color.White;
+            this.btn_production.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_production.ImageIndex = 1;
+            this.btn_production.ImageList = this.production_imagelist;
+            this.btn_production.Location = new System.Drawing.Point(0, 213);
+            this.btn_production.Name = "btn_production";
+            this.btn_production.Size = new System.Drawing.Size(141, 42);
+            this.btn_production.TabIndex = 6;
+            this.btn_production.Text = "Producción";
+            this.btn_production.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_production.UseVisualStyleBackColor = false;
+            this.btn_production.Click += new System.EventHandler(this.btn_production_Click);
+            this.btn_production.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            // 
+            // btn_purchase
+            // 
+            this.btn_purchase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_purchase.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_purchase.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_purchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_purchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_purchase.ForeColor = System.Drawing.Color.White;
+            this.btn_purchase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_purchase.ImageIndex = 1;
+            this.btn_purchase.ImageList = this.purchase_imagelist;
+            this.btn_purchase.Location = new System.Drawing.Point(0, 171);
+            this.btn_purchase.Name = "btn_purchase";
+            this.btn_purchase.Size = new System.Drawing.Size(141, 42);
+            this.btn_purchase.TabIndex = 5;
+            this.btn_purchase.Text = "Compras";
+            this.btn_purchase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_purchase.UseVisualStyleBackColor = false;
+            this.btn_purchase.Click += new System.EventHandler(this.btn_purchase_Click);
+            this.btn_purchase.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            // 
+            // btn_sales
+            // 
+            this.btn_sales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_sales.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_sales.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_sales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_sales.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_sales.ForeColor = System.Drawing.Color.White;
+            this.btn_sales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_sales.ImageIndex = 1;
+            this.btn_sales.ImageList = this.sales_imagelist;
+            this.btn_sales.Location = new System.Drawing.Point(0, 129);
+            this.btn_sales.Name = "btn_sales";
+            this.btn_sales.Size = new System.Drawing.Size(141, 42);
+            this.btn_sales.TabIndex = 4;
+            this.btn_sales.Text = "Ventas";
+            this.btn_sales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_sales.UseVisualStyleBackColor = false;
+            this.btn_sales.Click += new System.EventHandler(this.btn_sales_Click);
+            this.btn_sales.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            // 
+            // btn_warehouse
+            // 
+            this.btn_warehouse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_warehouse.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_warehouse.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_warehouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_warehouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_warehouse.ForeColor = System.Drawing.Color.White;
+            this.btn_warehouse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_warehouse.ImageIndex = 1;
+            this.btn_warehouse.ImageList = this.warehouse_imagelist;
+            this.btn_warehouse.Location = new System.Drawing.Point(0, 87);
+            this.btn_warehouse.Name = "btn_warehouse";
+            this.btn_warehouse.Size = new System.Drawing.Size(141, 42);
+            this.btn_warehouse.TabIndex = 3;
+            this.btn_warehouse.Text = "Almacén";
+            this.btn_warehouse.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_warehouse.UseVisualStyleBackColor = false;
+            this.btn_warehouse.Click += new System.EventHandler(this.btn_warehouse_Click_2);
+            this.btn_warehouse.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            // 
+            // btn_config
+            // 
+            this.btn_config.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_config.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_config.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_config.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_config.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_config.ForeColor = System.Drawing.Color.White;
+            this.btn_config.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_config.ImageIndex = 1;
+            this.btn_config.ImageList = this.config_imagelist;
+            this.btn_config.Location = new System.Drawing.Point(0, 45);
+            this.btn_config.Name = "btn_config";
+            this.btn_config.Size = new System.Drawing.Size(141, 42);
+            this.btn_config.TabIndex = 2;
+            this.btn_config.Text = "Mantenimiento";
+            this.btn_config.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_config.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_config.UseVisualStyleBackColor = false;
+            this.btn_config.Click += new System.EventHandler(this.btn_config_Click);
+            this.btn_config.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
+            // 
+            // btn_logo
+            // 
+            this.btn_logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_logo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_logo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
+            this.btn_logo.FlatAppearance.BorderSize = 0;
+            this.btn_logo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_logo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_logo.ForeColor = System.Drawing.Color.White;
+            this.btn_logo.Image = ((System.Drawing.Image)(resources.GetObject("btn_logo.Image")));
+            this.btn_logo.Location = new System.Drawing.Point(0, 0);
+            this.btn_logo.Name = "btn_logo";
+            this.btn_logo.Size = new System.Drawing.Size(141, 45);
+            this.btn_logo.TabIndex = 6;
+            this.btn_logo.Text = "INCA ART";
+            this.btn_logo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_logo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_logo.UseVisualStyleBackColor = false;
+            this.btn_logo.Click += new System.EventHandler(this.btn_logo_Click);
             // 
             // pictureBox2
             // 
@@ -155,415 +504,6 @@ namespace WindowsFormsApp1.Views
             this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox_MouseHover);
             this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox_MouseLeave);
             this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox_MouseHover);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.panel1.Controls.Add(this.btn_reportes);
-            this.panel1.Controls.Add(this.btn_simulation);
-            this.panel1.Controls.Add(this.btn_production);
-            this.panel1.Controls.Add(this.btn_purchase);
-            this.panel1.Controls.Add(this.btn_sales);
-            this.panel1.Controls.Add(this.btn_warehouse);
-            this.panel1.Controls.Add(this.btn_config);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 27);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(141, 379);
-            this.panel1.TabIndex = 11;
-            // 
-            // btn_reportes
-            // 
-            this.btn_reportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_reportes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_reportes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_reportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_reportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_reportes.ForeColor = System.Drawing.Color.White;
-            this.btn_reportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_reportes.ImageIndex = 1;
-            this.btn_reportes.ImageList = this.report_imagelist;
-            this.btn_reportes.Location = new System.Drawing.Point(0, 297);
-            this.btn_reportes.Name = "btn_reportes";
-            this.btn_reportes.Size = new System.Drawing.Size(141, 42);
-            this.btn_reportes.TabIndex = 8;
-            this.btn_reportes.Text = "Reportes";
-            this.btn_reportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_reportes.UseVisualStyleBackColor = false;
-            this.btn_reportes.Click += new System.EventHandler(this.button1_Click);
-            this.btn_reportes.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
-            // 
-            // report_imagelist
-            // 
-            this.report_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("report_imagelist.ImageStream")));
-            this.report_imagelist.TransparentColor = System.Drawing.Color.Transparent;
-            this.report_imagelist.Images.SetKeyName(0, "green_Increase_20px.png");
-            this.report_imagelist.Images.SetKeyName(1, "Increase_20px.png");
-            // 
-            // btn_simulation
-            // 
-            this.btn_simulation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_simulation.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_simulation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_simulation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_simulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_simulation.ForeColor = System.Drawing.Color.White;
-            this.btn_simulation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_simulation.ImageIndex = 1;
-            this.btn_simulation.ImageList = this.simulation_imagelist;
-            this.btn_simulation.Location = new System.Drawing.Point(0, 255);
-            this.btn_simulation.Name = "btn_simulation";
-            this.btn_simulation.Size = new System.Drawing.Size(141, 42);
-            this.btn_simulation.TabIndex = 7;
-            this.btn_simulation.Text = "Simulación";
-            this.btn_simulation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_simulation.UseVisualStyleBackColor = false;
-            this.btn_simulation.Click += new System.EventHandler(this.btn_simulation_Click);
-            this.btn_simulation.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
-            // 
-            // simulation_imagelist
-            // 
-            this.simulation_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("simulation_imagelist.ImageStream")));
-            this.simulation_imagelist.TransparentColor = System.Drawing.Color.Transparent;
-            this.simulation_imagelist.Images.SetKeyName(0, "green_VirtualBox_20px.png");
-            this.simulation_imagelist.Images.SetKeyName(1, "VirtualBox_20px.png");
-            // 
-            // btn_production
-            // 
-            this.btn_production.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_production.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_production.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_production.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_production.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_production.ForeColor = System.Drawing.Color.White;
-            this.btn_production.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_production.ImageIndex = 1;
-            this.btn_production.ImageList = this.production_imagelist;
-            this.btn_production.Location = new System.Drawing.Point(0, 213);
-            this.btn_production.Name = "btn_production";
-            this.btn_production.Size = new System.Drawing.Size(141, 42);
-            this.btn_production.TabIndex = 6;
-            this.btn_production.Text = "Producción";
-            this.btn_production.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_production.UseVisualStyleBackColor = false;
-            this.btn_production.Click += new System.EventHandler(this.btn_production_Click);
-            this.btn_production.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
-            // 
-            // production_imagelist
-            // 
-            this.production_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("production_imagelist.ImageStream")));
-            this.production_imagelist.TransparentColor = System.Drawing.Color.Transparent;
-            this.production_imagelist.Images.SetKeyName(0, "green_Hammer_20px.png");
-            this.production_imagelist.Images.SetKeyName(1, "Hammer_20px.png");
-            // 
-            // btn_purchase
-            // 
-            this.btn_purchase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_purchase.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_purchase.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_purchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_purchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_purchase.ForeColor = System.Drawing.Color.White;
-            this.btn_purchase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_purchase.ImageIndex = 1;
-            this.btn_purchase.ImageList = this.purchase_imagelist;
-            this.btn_purchase.Location = new System.Drawing.Point(0, 171);
-            this.btn_purchase.Name = "btn_purchase";
-            this.btn_purchase.Size = new System.Drawing.Size(141, 42);
-            this.btn_purchase.TabIndex = 5;
-            this.btn_purchase.Text = "Compras";
-            this.btn_purchase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_purchase.UseVisualStyleBackColor = false;
-            this.btn_purchase.Click += new System.EventHandler(this.btn_purchase_Click);
-            this.btn_purchase.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
-            // 
-            // purchase_imagelist
-            // 
-            this.purchase_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("purchase_imagelist.ImageStream")));
-            this.purchase_imagelist.TransparentColor = System.Drawing.Color.Transparent;
-            this.purchase_imagelist.Images.SetKeyName(0, "Shopping Cart_20px.png");
-            this.purchase_imagelist.Images.SetKeyName(1, "Shopping Cart_52px.png");
-            // 
-            // btn_sales
-            // 
-            this.btn_sales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_sales.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_sales.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_sales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_sales.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_sales.ForeColor = System.Drawing.Color.White;
-            this.btn_sales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_sales.ImageIndex = 1;
-            this.btn_sales.ImageList = this.sales_imagelist;
-            this.btn_sales.Location = new System.Drawing.Point(0, 129);
-            this.btn_sales.Name = "btn_sales";
-            this.btn_sales.Size = new System.Drawing.Size(141, 42);
-            this.btn_sales.TabIndex = 4;
-            this.btn_sales.Text = "Ventas";
-            this.btn_sales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_sales.UseVisualStyleBackColor = false;
-            this.btn_sales.Click += new System.EventHandler(this.btn_sales_Click);
-            this.btn_sales.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
-            // 
-            // sales_imagelist
-            // 
-            this.sales_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("sales_imagelist.ImageStream")));
-            this.sales_imagelist.TransparentColor = System.Drawing.Color.Transparent;
-            this.sales_imagelist.Images.SetKeyName(0, "Sales Performance_20px.png");
-            this.sales_imagelist.Images.SetKeyName(1, "Sales Performance_64px.png");
-            // 
-            // btn_warehouse
-            // 
-            this.btn_warehouse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_warehouse.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_warehouse.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_warehouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_warehouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_warehouse.ForeColor = System.Drawing.Color.White;
-            this.btn_warehouse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_warehouse.ImageIndex = 1;
-            this.btn_warehouse.ImageList = this.warehouse_imagelist;
-            this.btn_warehouse.Location = new System.Drawing.Point(0, 87);
-            this.btn_warehouse.Name = "btn_warehouse";
-            this.btn_warehouse.Size = new System.Drawing.Size(141, 42);
-            this.btn_warehouse.TabIndex = 3;
-            this.btn_warehouse.Text = "Almacén";
-            this.btn_warehouse.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_warehouse.UseVisualStyleBackColor = false;
-            this.btn_warehouse.Click += new System.EventHandler(this.btn_warehouse_Click_2);
-            this.btn_warehouse.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
-            // 
-            // warehouse_imagelist
-            // 
-            this.warehouse_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("warehouse_imagelist.ImageStream")));
-            this.warehouse_imagelist.TransparentColor = System.Drawing.Color.Transparent;
-            this.warehouse_imagelist.Images.SetKeyName(0, "Move by Trolley_20px.png");
-            this.warehouse_imagelist.Images.SetKeyName(1, "Hangar_64px.png");
-            // 
-            // btn_config
-            // 
-            this.btn_config.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_config.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_config.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_config.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_config.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_config.ForeColor = System.Drawing.Color.White;
-            this.btn_config.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_config.ImageIndex = 1;
-            this.btn_config.ImageList = this.config_imagelist;
-            this.btn_config.Location = new System.Drawing.Point(0, 45);
-            this.btn_config.Name = "btn_config";
-            this.btn_config.Size = new System.Drawing.Size(141, 42);
-            this.btn_config.TabIndex = 2;
-            this.btn_config.Text = "Mantenimiento";
-            this.btn_config.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_config.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_config.UseVisualStyleBackColor = false;
-            this.btn_config.Click += new System.EventHandler(this.btn_config_Click);
-            this.btn_config.MouseClick += new System.Windows.Forms.MouseEventHandler(this.menuButton_Click);
-            // 
-            // config_imagelist
-            // 
-            this.config_imagelist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("config_imagelist.ImageStream")));
-            this.config_imagelist.TransparentColor = System.Drawing.Color.Transparent;
-            this.config_imagelist.Images.SetKeyName(0, "Settings_48px.png");
-            this.config_imagelist.Images.SetKeyName(1, "Settings_48px.png");
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btn_logo);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(141, 45);
-            this.panel3.TabIndex = 0;
-            // 
-            // btn_logo
-            // 
-            this.btn_logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_logo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_logo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.btn_logo.FlatAppearance.BorderSize = 0;
-            this.btn_logo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_logo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_logo.ForeColor = System.Drawing.Color.White;
-            this.btn_logo.Image = ((System.Drawing.Image)(resources.GetObject("btn_logo.Image")));
-            this.btn_logo.Location = new System.Drawing.Point(0, 0);
-            this.btn_logo.Name = "btn_logo";
-            this.btn_logo.Size = new System.Drawing.Size(141, 45);
-            this.btn_logo.TabIndex = 6;
-            this.btn_logo.Text = "INCA ART";
-            this.btn_logo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_logo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_logo.UseVisualStyleBackColor = false;
-            this.btn_logo.Click += new System.EventHandler(this.btn_logo_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.panel4.Controls.Add(this.metroLabel1);
-            this.panel4.Controls.Add(this.label_user_role);
-            this.panel4.Controls.Add(this.label_user_name);
-            this.panel4.Controls.Add(this.pictureBox3);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(141, 27);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(723, 45);
-            this.panel4.TabIndex = 12;
-            // 
-            // label_user_role
-            // 
-            this.label_user_role.AutoSize = true;
-            this.label_user_role.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label_user_role.ForeColor = System.Drawing.Color.White;
-            this.label_user_role.Location = new System.Drawing.Point(513, 0);
-            this.label_user_role.Name = "label_user_role";
-            this.label_user_role.Size = new System.Drawing.Size(101, 19);
-            this.label_user_role.TabIndex = 2;
-            this.label_user_role.Text = "(Administrador)";
-            this.label_user_role.UseCustomBackColor = true;
-            this.label_user_role.UseCustomForeColor = true;
-            // 
-            // label_user_name
-            // 
-            this.label_user_name.AutoSize = true;
-            this.label_user_name.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label_user_name.ForeColor = System.Drawing.Color.White;
-            this.label_user_name.Location = new System.Drawing.Point(614, 0);
-            this.label_user_name.Name = "label_user_name";
-            this.label_user_name.Size = new System.Drawing.Size(78, 19);
-            this.label_user_name.Style = MetroFramework.MetroColorStyle.White;
-            this.label_user_name.TabIndex = 1;
-            this.label_user_name.Text = "Rony Cueva";
-            this.label_user_name.UseCustomBackColor = true;
-            this.label_user_name.UseCustomForeColor = true;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(692, 0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(31, 45);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(104)))), ((int)(((byte)(104)))));
-            this.metroLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroLabel1.ForeColor = System.Drawing.Color.White;
-            this.metroLabel1.Location = new System.Drawing.Point(601, 22);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(88, 19);
-            this.metroLabel1.TabIndex = 64;
-            this.metroLabel1.Text = "Cerrar Sesión";
-            this.metroLabel1.UseCustomBackColor = true;
-            this.metroLabel1.UseCustomForeColor = true;
-            this.metroLabel1.Click += new System.EventHandler(this.metroLabel1_Click);
-            this.metroLabel1.Leave += new System.EventHandler(this.metroLabel1_Leave);
-            // 
-            // panel5
-            // 
-            this.panel5.AutoScroll = true;
-            this.panel5.Controls.Add(this.user);
-            this.panel5.Controls.Add(this.uc_workstation);
-            this.panel5.Controls.Add(this.uc_worker);
-            this.panel5.Controls.Add(this.uC_Simulation1);
-            this.panel5.Controls.Add(this.uC_SalesMain1);
-            this.panel5.Controls.Add(this.client1);
-            this.panel5.Controls.Add(this.uc_reports);
-            this.panel5.Controls.Add(this.uc_ratio);
-            this.panel5.Controls.Add(this.uc_product);
-            this.panel5.Controls.Add(this.uC_CurrencyMain1);
-            this.panel5.Controls.Add(this.uc_material);
-            this.panel5.Controls.Add(this.uc_ProductionMenu);
-            this.panel5.Controls.Add(this.uC_MovementsType1);
-            this.panel5.Controls.Add(this.mainDashboard1);
-            this.panel5.Controls.Add(this.uC_PurchasesMenu1);
-            this.panel5.Controls.Add(this.uC_WarehouseMovement1);
-            this.panel5.Controls.Add(this.typeWarehouseMain1);
-            this.panel5.Controls.Add(this.warehouse1);
-            this.panel5.Controls.Add(this.workersPerformance_Report1);
-            this.panel5.Controls.Add(this.uC_LogReport1);
-            this.panel5.Controls.Add(this.uc_recipe);
-            this.panel5.Controls.Add(this.supplier1);
-            this.panel5.Controls.Add(this.profile);
-            this.panel5.Controls.Add(this.parameters1);
-            this.panel5.Controls.Add(this.shift);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(141, 72);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(723, 334);
-            this.panel5.TabIndex = 66;
-            // 
-            // uc_recipe
-            // 
-            this.uc_recipe.AutoScroll = true;
-            this.uc_recipe.BackColor = System.Drawing.Color.White;
-            this.uc_recipe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_recipe.Location = new System.Drawing.Point(0, 0);
-            this.uc_recipe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uc_recipe.Name = "uc_recipe";
-            this.uc_recipe.Size = new System.Drawing.Size(1046, 657);
-            this.uc_recipe.TabIndex = 39;
-            this.uc_recipe.UseCustomBackColor = true;
-            this.uc_recipe.UseSelectable = true;
-            this.uc_recipe.Visible = false;
-            // 
-            // supplier1
-            // 
-            this.supplier1.BackColor = System.Drawing.Color.White;
-            this.supplier1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.supplier1.Location = new System.Drawing.Point(0, 0);
-            this.supplier1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.supplier1.Name = "supplier1";
-            this.supplier1.Size = new System.Drawing.Size(1046, 657);
-            this.supplier1.TabIndex = 18;
-            this.supplier1.UseSelectable = true;
-            this.supplier1.Visible = false;
-            // 
-            // profile
-            // 
-            this.profile.BackColor = System.Drawing.SystemColors.Window;
-            this.profile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.profile.Location = new System.Drawing.Point(0, 0);
-            this.profile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.profile.Name = "profile";
-            this.profile.Size = new System.Drawing.Size(1046, 657);
-            this.profile.TabIndex = 27;
-            this.profile.UseCustomBackColor = true;
-            this.profile.UseSelectable = true;
-            // 
-            // parameters1
-            // 
-            this.parameters1.AutoSize = true;
-            this.parameters1.BackColor = System.Drawing.Color.White;
-            this.parameters1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parameters1.Location = new System.Drawing.Point(0, 0);
-            this.parameters1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.parameters1.Name = "parameters1";
-            this.parameters1.Size = new System.Drawing.Size(1046, 657);
-            this.parameters1.TabIndex = 22;
-            this.parameters1.UseSelectable = true;
-            this.parameters1.Visible = false;
-            // 
-            // shift
-            // 
-            this.shift.BackColor = System.Drawing.Color.White;
-            this.shift.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.shift.Location = new System.Drawing.Point(0, 0);
-            this.shift.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.shift.Name = "shift";
-            this.shift.Size = new System.Drawing.Size(1046, 657);
-            this.shift.TabIndex = 28;
-            this.shift.Visible = false;
             // 
             // user
             // 
@@ -811,6 +751,78 @@ namespace WindowsFormsApp1.Views
             this.uC_LogReport1.Size = new System.Drawing.Size(907, 576);
             this.uC_LogReport1.TabIndex = 67;
             // 
+            // uc_recipe
+            // 
+            this.uc_recipe.AutoScroll = true;
+            this.uc_recipe.BackColor = System.Drawing.Color.White;
+            this.uc_recipe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_recipe.Location = new System.Drawing.Point(0, 0);
+            this.uc_recipe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uc_recipe.Name = "uc_recipe";
+            this.uc_recipe.Size = new System.Drawing.Size(1046, 657);
+            this.uc_recipe.TabIndex = 39;
+            this.uc_recipe.UseCustomBackColor = true;
+            this.uc_recipe.UseSelectable = true;
+            this.uc_recipe.Visible = false;
+            // 
+            // supplier1
+            // 
+            this.supplier1.BackColor = System.Drawing.Color.White;
+            this.supplier1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.supplier1.Location = new System.Drawing.Point(0, 0);
+            this.supplier1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.supplier1.Name = "supplier1";
+            this.supplier1.Size = new System.Drawing.Size(1046, 657);
+            this.supplier1.TabIndex = 18;
+            this.supplier1.UseSelectable = true;
+            this.supplier1.Visible = false;
+            // 
+            // profile
+            // 
+            this.profile.BackColor = System.Drawing.SystemColors.Window;
+            this.profile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.profile.Location = new System.Drawing.Point(0, 0);
+            this.profile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.profile.Name = "profile";
+            this.profile.Size = new System.Drawing.Size(1046, 657);
+            this.profile.TabIndex = 27;
+            this.profile.UseCustomBackColor = true;
+            this.profile.UseSelectable = true;
+            // 
+            // parameters1
+            // 
+            this.parameters1.AutoSize = true;
+            this.parameters1.BackColor = System.Drawing.Color.White;
+            this.parameters1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.parameters1.Location = new System.Drawing.Point(0, 0);
+            this.parameters1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.parameters1.Name = "parameters1";
+            this.parameters1.Size = new System.Drawing.Size(1046, 657);
+            this.parameters1.TabIndex = 22;
+            this.parameters1.UseSelectable = true;
+            this.parameters1.Visible = false;
+            // 
+            // shift
+            // 
+            this.shift.BackColor = System.Drawing.Color.White;
+            this.shift.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.shift.Location = new System.Drawing.Point(0, 0);
+            this.shift.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.shift.Name = "shift";
+            this.shift.Size = new System.Drawing.Size(1046, 657);
+            this.shift.TabIndex = 28;
+            this.shift.Visible = false;
+            // 
+            // uC_SimulationReport1
+            // 
+            this.uC_SimulationReport1.BackColor = System.Drawing.Color.White;
+            this.uC_SimulationReport1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_SimulationReport1.Location = new System.Drawing.Point(0, 0);
+            this.uC_SimulationReport1.Name = "uC_SimulationReport1";
+            this.uC_SimulationReport1.Size = new System.Drawing.Size(1046, 657);
+            this.uC_SimulationReport1.TabIndex = 68;
+            this.uC_SimulationReport1.Visible = false;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -828,16 +840,16 @@ namespace WindowsFormsApp1.Views
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -895,5 +907,6 @@ namespace WindowsFormsApp1.Views
         private MovementsType_Module.UC_MovementsType uC_MovementsType1;
         private Warehouse warehouse1;
         private UC_LogReport uC_LogReport1;
+        private UC_SimulationReport uC_SimulationReport1;
     }
 }

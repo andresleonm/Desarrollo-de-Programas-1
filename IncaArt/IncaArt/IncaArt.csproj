@@ -416,6 +416,12 @@
     <Compile Include="Views\UC_Ratio.designer.cs">
       <DependentUpon>UC_Ratio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UC_SimulationReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_SimulationReport.Designer.cs">
+      <DependentUpon>UC_SimulationReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Warehouse_Module\MaterialMovementLine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -772,6 +778,9 @@
     <EmbeddedResource Include="Views\UC_Ratio.resx">
       <DependentUpon>UC_Ratio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_SimulationReport.resx">
+      <DependentUpon>UC_SimulationReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Warehouse_Module\MaterialMovementLine.resx">
       <DependentUpon>MaterialMovementLine.cs</DependentUpon>
     </EmbeddedResource>
@@ -898,6 +907,8 @@
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.SalesEstimate.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.SalesRefund.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.SalesRefundLine.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApp1.Models.SimulationReport.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApp1.Models.SimulationReportHeader.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.Worker.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp1.Models.Workstation.datasource" />
   </ItemGroup>

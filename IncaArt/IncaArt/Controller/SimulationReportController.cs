@@ -41,6 +41,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("accuracy", simulation_report.accuracy));
             parameters.Add(new Parameter("products_per_hour", simulation_report.products_per_hour));
             parameters.Add(new Parameter("product_line", simulation_report.product_line));
+            parameters.Add(new Parameter("header_id", simulation_report.simulation_report_id.ToString()));
             GenericResult result = execute_transaction("insert_simulation_report", parameters);
             if (result.success)
             {

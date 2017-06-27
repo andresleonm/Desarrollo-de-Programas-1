@@ -23,16 +23,18 @@ namespace WindowsFormsApp1.Controller
             {
                 foreach (Row r in result.data)
                 {
-                    simulation_report_headers.Add(new SimulationReportHeader(int.Parse(r.columns[0])));
+                    simulation_report_headers.Add(new SimulationReportHeader(int.Parse(r.columns[0]),int.Parse(r.columns[1]),int.Parse(r.columns[2])));
                 }
                 return new Result(simulation_report_headers, true, "");
             }
             return new Result(null, result.success, result.message);
         }
 
-        public Result insertSimulationReportHeader()
+        public Result insertSimulationReportHeader(int accuracy, int products)
         {
             List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("accuracy", accuracy.ToString()));
+            parameters.Add(new Parameter("products", products.ToString()));
             GenericResult result = execute_transaction("insert_simulation_report_header", parameters);
             if (result.success)
             {

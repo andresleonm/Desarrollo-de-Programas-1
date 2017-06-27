@@ -12,8 +12,7 @@ namespace WindowsFormsApp1.Algorithm
         public string type { get; set; }
         public int stock { get; set; }
         public double unit_price { get; set; }
-        public List<string> production_line { get; set; }
-
+        public List<string> production_line { get; set; }        
         public Product()
         {
 

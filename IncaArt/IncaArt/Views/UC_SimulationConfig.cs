@@ -35,10 +35,12 @@ namespace WindowsFormsApp1.Views
             List<Algorithm.Worker> tabu_workers = new List<Algorithm.Worker>();
             List<Algorithm.Workstation> tabu_wkstations = new List<Algorithm.Workstation>();
             Controller.RatioController ratio_controller = new Controller.RatioController("dp1admin", "dp1admin");
+            Controller.ProductsController product_controller = new Controller.ProductsController("dp1admin", "dp1admin");
 
             int wkstation_qty = 0;
             Algorithm.Order order = new Algorithm.Order();
 
+            #region Workstations
             foreach (DataGridViewRow row in workstations_grid.Rows)
             {
                 if (row.Cells[1].Value == null || int.Parse(row.Cells[1].Value.ToString()) == 0)
@@ -49,7 +51,7 @@ namespace WindowsFormsApp1.Views
                 }
                 if (row.Cells[1].Value!=null && int.Parse(row.Cells[1].Value.ToString()) >= 1)
                 {
-                    Models.Product aux_prod = products.Where(p => p.Id == ((Workstation)row.DataBoundItem).Product_id).ElementAt(0);
+                    Models.Product aux_prod = (Models.Product)product_controller.getProduct(((Workstation)row.DataBoundItem).Product_id).data;                    
                     string prod_name = "";
                     if (aux_prod.Name.ToLower().Contains("ceramico") || aux_prod.Name.ToLower().Contains("cerámico"))
                     {
@@ -63,18 +65,22 @@ namespace WindowsFormsApp1.Views
                     {
                         prod_name = "retablo";
                     }
-                    
-                    Algorithm.Workstation wkst = new Algorithm.Workstation(
-                        new Algorithm.Product(prod_name, 0, aux_prod.Unit_price,aux_prod.Name),
+
+                    Algorithm.Product p = new Algorithm.Product(prod_name, 0, aux_prod.Unit_price, aux_prod.Name);                    
+                    Algorithm.Workstation wkst = new Algorithm.Workstation(p,
                         ((Workstation)row.DataBoundItem).Name, int.Parse(row.Cells[1].Value.ToString()),
                         ((Workstation)row.DataBoundItem).Break_cost);
                     wkst.complete_name = ((Workstation)row.DataBoundItem).complete_name;
                     wkst.id = ((Workstation)row.DataBoundItem).Id;
+                    wkst.complete_name = ((Workstation)row.DataBoundItem).complete_name;
                     tabu_wkstations.Add(wkst);
                     wkstation_qty += wkst.quantity;   
                 }
             }
-            
+
+            #endregion
+
+            #region Workers
             foreach (DataGridViewRow row in workers_grid.Rows)
             {
                 if (row.Cells[3].Value != null)
@@ -95,6 +101,7 @@ namespace WindowsFormsApp1.Views
                     tabu_workers.Add(tabu_worker);
                 }
             }
+            #endregion
 
             if(tabu_workers.Count < 6)
             {
@@ -109,6 +116,8 @@ namespace WindowsFormsApp1.Views
             }
 
             Algorithm.OrderDetail detail = new Algorithm.OrderDetail();
+
+            #region Products
             bool contains = false;
             foreach (DataGridViewRow row in products_grid.Rows)
             {
@@ -143,7 +152,9 @@ namespace WindowsFormsApp1.Views
                     line.quantity = int.Parse(row.Cells[2].Value.ToString());
                     detail.lines.Add(line);
                 }                
-            }           
+            }
+
+            #endregion
             order.order_detail = detail;            
             tabu = new Algorithm.TabuSearch(order, tabu_workers, tabu_wkstations, iterations, tabu_size, neighborhood_size, combinations);
             progress = new ProgressForm();
@@ -218,43 +229,7 @@ namespace WindowsFormsApp1.Views
         {
             if (e.ColumnIndex == 1)
             {
-                ((DataGridViewComboBoxCell)products_grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Items.Clear();
-                switch (products_grid.Rows[e.RowIndex].Cells[0].Value.ToString().ToLower())
-                {
-                    case "ceramico":
-                        {
-                            foreach (Product p in products)
-                            {
-                                if (p.Product_type.ToLower() == "ceramico")
-                                {
-                                    ((DataGridViewComboBoxCell)products_grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Items.Add(p.Name);
-                                }
-                            }
-                            break;
-                        }
-                    case "piedra":
-                        {
-                            foreach (Product p in products)
-                            {
-                                if (p.Product_type.ToLower() == "piedra")
-                                {
-                                    ((DataGridViewComboBoxCell)products_grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Items.Add(p.Name);
-                                }
-                            }
-                            break;
-                        }
-                    case "retablo":
-                        {
-                            foreach (Product p in products)
-                            {
-                                if (p.Product_type.ToLower() == "retablo")
-                                {
-                                    ((DataGridViewComboBoxCell)products_grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Items.Add(p.Name);
-                                }
-                            }
-                            break;
-                        }
-                }
+                
             }
         }
 
@@ -321,14 +296,71 @@ namespace WindowsFormsApp1.Views
 
                 string[] rows = new string[3];
                 products_grid.Rows.Clear();
-                
+
+                rows[0] = "Cerámico";
+                rows[1] = "";
+                rows[2] = "1";
+                products_grid.Rows.Add(rows);
+                rows[0] = "Retablo";
+                rows[1] = "";
+                rows[2] = "1";
+                products_grid.Rows.Add(rows);
+                rows[0] = "Piedra";
+                rows[1] = "";
+                rows[2] = "1";
+                products_grid.Rows.Add(rows);
+
                 for (int i = 0; i < 3; i++)
                 {
-                    rows[0] = products[i].Product_type;
-                    rows[1] = "";
-                    rows[2] = "1";
-                    products_grid.Rows.Add(rows);
-                }               
+                    ((DataGridViewComboBoxCell)products_grid.Rows[i].Cells[1]).Items.Clear();
+                    switch (products_grid.Rows[i].Cells[0].Value.ToString().ToLower())
+                    {
+                        case "ceramico":
+                            {
+                                foreach (Product p in products)
+                                {
+                                    if (p.Product_type.ToLower() == "ceramico")
+                                    {
+                                        ((DataGridViewComboBoxCell)products_grid.Rows[i].Cells[1]).Items.Add(p.Name);
+                                    }
+                                }
+                                break;
+                            }
+                        case "cerámico":
+                            {
+                                foreach (Product p in products)
+                                {
+                                    if (p.Product_type.ToLower() == "ceramico")
+                                    {
+                                        ((DataGridViewComboBoxCell)products_grid.Rows[i].Cells[1]).Items.Add(p.Name);
+                                    }
+                                }
+                                break;
+                            }
+                        case "piedra":
+                            {
+                                foreach (Product p in products)
+                                {
+                                    if (p.Product_type.ToLower() == "piedra")
+                                    {
+                                        ((DataGridViewComboBoxCell)products_grid.Rows[i].Cells[1]).Items.Add(p.Name);
+                                    }
+                                }
+                                break;
+                            }
+                        case "retablo":
+                            {
+                                foreach (Product p in products)
+                                {
+                                    if (p.Product_type.ToLower() == "retablo")
+                                    {
+                                        ((DataGridViewComboBoxCell)products_grid.Rows[i].Cells[1]).Items.Add(p.Name);
+                                    }
+                                }
+                                break;
+                            }
+                    }
+                }
             }
         }
 
