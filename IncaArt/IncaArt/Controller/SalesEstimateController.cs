@@ -283,5 +283,33 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+
+
+        public Result getSalesEstimate_by_filter(SalesEstimate sales_estimate, DateTime init, DateTime end)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            if (sales_estimate.Id != -1) parameters.Add(new Parameter("id", sales_estimate.Id.ToString()));
+            if (sales_estimate.Customer_name != "") parameters.Add(new Parameter("customer_name", sales_estimate.Customer_name));
+            if (init != null) parameters.Add(new Parameter("finit", init.ToString("MM/dd/yyyy")));
+            if (end != null) parameters.Add(new Parameter("fend", end.ToString("MM/dd/yyyy")));
+            GenericResult result = execute_function("get_sales_estimate_by_filter", parameters);
+            List<SalesEstimate> sales_estimates = new List<SalesEstimate>();
+
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    SalesEstimateLineController selc = new SalesEstimateLineController(user, password);
+                    //var detail = (List<SalesEstimateLine>)selc.getSalesEstimateLines(Int32.Parse(r.getColumn(0))).data;
+                    sales_estimates.Add(new SalesEstimate(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
+                                                          r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
+                                                          r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
+                                                          r.getColumn(9), r.getColumn(10), DateTime.Parse(r.getColumn(11)),
+                                                          Double.Parse(r.getColumn(12)), r.getColumn(13), null));
+                }
+                return new Result(sales_estimates, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
     }
 }

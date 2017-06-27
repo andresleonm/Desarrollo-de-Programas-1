@@ -59,8 +59,8 @@
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gb_Filter = new System.Windows.Forms.GroupBox();
             this.btn_Search_Orders = new System.Windows.Forms.Button();
-            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
-            this.metroDateTime2 = new MetroFramework.Controls.MetroDateTime();
+            this.dt_iniDate = new MetroFramework.Controls.MetroDateTime();
+            this.dt_endDate = new MetroFramework.Controls.MetroDateTime();
             this.btn_SearchClient = new MetroFramework.Controls.MetroTile();
             this.ctxt_order_id = new MetroFramework.Controls.MetroTextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -379,8 +379,8 @@
             // gb_Filter
             // 
             this.gb_Filter.Controls.Add(this.btn_Search_Orders);
-            this.gb_Filter.Controls.Add(this.metroDateTime1);
-            this.gb_Filter.Controls.Add(this.metroDateTime2);
+            this.gb_Filter.Controls.Add(this.dt_iniDate);
+            this.gb_Filter.Controls.Add(this.dt_endDate);
             this.gb_Filter.Controls.Add(this.btn_SearchClient);
             this.gb_Filter.Controls.Add(this.ctxt_order_id);
             this.gb_Filter.Controls.Add(this.label10);
@@ -410,21 +410,21 @@
             this.btn_Search_Orders.UseVisualStyleBackColor = false;
             this.btn_Search_Orders.Click += new System.EventHandler(this.btn_Search_Orders_Click);
             // 
-            // metroDateTime1
+            // dt_iniDate
             // 
-            this.metroDateTime1.Location = new System.Drawing.Point(562, 24);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
-            this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(209, 29);
-            this.metroDateTime1.TabIndex = 49;
+            this.dt_iniDate.Location = new System.Drawing.Point(562, 24);
+            this.dt_iniDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_iniDate.Name = "dt_iniDate";
+            this.dt_iniDate.Size = new System.Drawing.Size(209, 29);
+            this.dt_iniDate.TabIndex = 49;
             // 
-            // metroDateTime2
+            // dt_endDate
             // 
-            this.metroDateTime2.Location = new System.Drawing.Point(562, 66);
-            this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
-            this.metroDateTime2.Name = "metroDateTime2";
-            this.metroDateTime2.Size = new System.Drawing.Size(209, 29);
-            this.metroDateTime2.TabIndex = 48;
+            this.dt_endDate.Location = new System.Drawing.Point(562, 66);
+            this.dt_endDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_endDate.Name = "dt_endDate";
+            this.dt_endDate.Size = new System.Drawing.Size(209, 29);
+            this.dt_endDate.TabIndex = 48;
             // 
             // btn_SearchClient
             // 
@@ -594,7 +594,7 @@
             this.dt_IssueHour.Enabled = false;
             this.dt_IssueHour.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dt_IssueHour.Location = new System.Drawing.Point(254, 105);
-            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_IssueHour.Name = "dt_IssueHour";
             this.dt_IssueHour.Size = new System.Drawing.Size(107, 29);
             this.dt_IssueHour.TabIndex = 49;
@@ -614,7 +614,7 @@
             this.dt_IssueDate.Enabled = false;
             this.dt_IssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dt_IssueDate.Location = new System.Drawing.Point(134, 105);
-            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_IssueDate.Name = "dt_IssueDate";
             this.dt_IssueDate.Size = new System.Drawing.Size(107, 29);
             this.dt_IssueDate.TabIndex = 47;
@@ -1326,8 +1326,8 @@
         private MetroFramework.Controls.MetroGrid grid_orders;
         private System.Windows.Forms.GroupBox gb_Filter;
         private System.Windows.Forms.Button btn_Search_Orders;
-        private MetroFramework.Controls.MetroDateTime metroDateTime1;
-        private MetroFramework.Controls.MetroDateTime metroDateTime2;
+        private MetroFramework.Controls.MetroDateTime dt_iniDate;
+        private MetroFramework.Controls.MetroDateTime dt_endDate;
         private MetroFramework.Controls.MetroTile btn_SearchClient;
         private MetroFramework.Controls.MetroTextBox ctxt_order_id;
         private System.Windows.Forms.Label label10;

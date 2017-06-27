@@ -201,5 +201,34 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result getSalesOrder_by_filter(SalesOrder sales_order, DateTime init, DateTime end)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            if (sales_order.Id != -1) parameters.Add(new Parameter("id", sales_order.Id.ToString()));
+            if (sales_order.Customer_name != "") parameters.Add(new Parameter("customer_name", sales_order.Customer_name));
+            if (init != null) parameters.Add(new Parameter("finit", init.ToString("MM/dd/yyyy")));
+            if (end != null) parameters.Add(new Parameter("fend", end.ToString("MM/dd/yyyy")));
+            GenericResult result = execute_function("get_sales_order_by_filter", parameters);
+            List<SalesOrder> sales_orders = new List<SalesOrder>();
+
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    SalesOrderLineController solc = new SalesOrderLineController(user, password);
+                    //var detail = (List<SalesOrderLine>)solc.getSalesOrderLines(Int32.Parse(r.getColumn(0))).data;
+                    sales_orders.Add(new SalesOrder(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
+                                                        r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
+                                                        r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
+                                                        r.getColumn(9), DateTime.Parse(r.getColumn(10)),
+                                                         Double.Parse(r.getColumn(11)),
+                                                        r.getColumn(12), null));
+                }
+                return new Result(sales_orders, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+
     }
 }
