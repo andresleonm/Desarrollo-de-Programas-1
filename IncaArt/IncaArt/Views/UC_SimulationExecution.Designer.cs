@@ -34,21 +34,27 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_export = new System.Windows.Forms.Button();
-            this.productLineAssignmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
             this.execution_workers = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.execution_workstation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.efficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.production_line = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productLineAssignmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.txt_total_accuracy = new MetroFramework.Controls.MetroTextBox();
+            this.txt_total_products_per_hour = new MetroFramework.Controls.MetroTextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productLineAssignmentBindingSource)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -62,8 +68,40 @@
             this.panel2.Size = new System.Drawing.Size(715, 37);
             this.panel2.TabIndex = 1;
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::WindowsFormsApp1.Properties.Resources.Save_40px;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.Location = new System.Drawing.Point(133, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(154, 37);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Guardar en Reportes";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btn_export
+            // 
+            this.btn_export.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_export.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_export.Image = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
+            this.btn_export.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_export.Location = new System.Drawing.Point(0, 0);
+            this.btn_export.Name = "btn_export";
+            this.btn_export.Size = new System.Drawing.Size(133, 37);
+            this.btn_export.TabIndex = 0;
+            this.btn_export.Text = "Exportar a Excel";
+            this.btn_export.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_export.UseVisualStyleBackColor = true;
+            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
+            // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.metroGrid1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 37);
@@ -124,40 +162,6 @@
             this.metroGrid1.Size = new System.Drawing.Size(715, 438);
             this.metroGrid1.TabIndex = 2;
             // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::WindowsFormsApp1.Properties.Resources.Save_40px;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(133, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 37);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Guardar en Reportes";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btn_export
-            // 
-            this.btn_export.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_export.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_export.Image = global::WindowsFormsApp1.Properties.Resources.Microsoft_Excel_40px;
-            this.btn_export.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_export.Location = new System.Drawing.Point(0, 0);
-            this.btn_export.Name = "btn_export";
-            this.btn_export.Size = new System.Drawing.Size(133, 37);
-            this.btn_export.TabIndex = 0;
-            this.btn_export.Text = "Exportar a Excel";
-            this.btn_export.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_export.UseVisualStyleBackColor = true;
-            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
-            // 
-            // productLineAssignmentBindingSource
-            // 
-            this.productLineAssignmentBindingSource.DataSource = typeof(WindowsFormsApp1.Algorithm.ProductLineAssignment);
-            // 
             // execution_workers
             // 
             this.execution_workers.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -202,6 +206,124 @@
             this.production_line.Name = "production_line";
             this.production_line.ReadOnly = true;
             // 
+            // productLineAssignmentBindingSource
+            // 
+            this.productLineAssignmentBindingSource.DataSource = typeof(WindowsFormsApp1.Algorithm.ProductLineAssignment);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txt_total_products_per_hour);
+            this.panel3.Controls.Add(this.txt_total_accuracy);
+            this.panel3.Controls.Add(this.metroLabel1);
+            this.panel3.Controls.Add(this.metroLabel11);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 402);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(715, 36);
+            this.panel3.TabIndex = 3;
+            // 
+            // metroLabel11
+            // 
+            this.metroLabel11.AutoSize = true;
+            this.metroLabel11.BackColor = System.Drawing.Color.White;
+            this.metroLabel11.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel11.ForeColor = System.Drawing.Color.DarkCyan;
+            this.metroLabel11.Location = new System.Drawing.Point(101, 3);
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.Size = new System.Drawing.Size(172, 15);
+            this.metroLabel11.TabIndex = 50;
+            this.metroLabel11.Text = "Total Cantidad Rota por Hora :";
+            this.metroLabel11.UseCustomBackColor = true;
+            this.metroLabel11.UseCustomForeColor = true;
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.BackColor = System.Drawing.Color.White;
+            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.metroLabel1.Location = new System.Drawing.Point(394, 4);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(151, 15);
+            this.metroLabel1.TabIndex = 51;
+            this.metroLabel1.Text = "Total Productos por Hora :";
+            this.metroLabel1.UseCustomBackColor = true;
+            this.metroLabel1.UseCustomForeColor = true;
+            // 
+            // txt_total_accuracy
+            // 
+            this.txt_total_accuracy.BackColor = System.Drawing.SystemColors.ScrollBar;
+            // 
+            // 
+            // 
+            this.txt_total_accuracy.CustomButton.BackColor = System.Drawing.SystemColors.Control;
+            this.txt_total_accuracy.CustomButton.Image = null;
+            this.txt_total_accuracy.CustomButton.Location = new System.Drawing.Point(65, 1);
+            this.txt_total_accuracy.CustomButton.Name = "";
+            this.txt_total_accuracy.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_total_accuracy.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txt_total_accuracy.CustomButton.TabIndex = 1;
+            this.txt_total_accuracy.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txt_total_accuracy.CustomButton.UseSelectable = true;
+            this.txt_total_accuracy.CustomButton.UseVisualStyleBackColor = false;
+            this.txt_total_accuracy.CustomButton.Visible = false;
+            this.txt_total_accuracy.Enabled = false;
+            this.txt_total_accuracy.Lines = new string[0];
+            this.txt_total_accuracy.Location = new System.Drawing.Point(279, 4);
+            this.txt_total_accuracy.MaxLength = 32767;
+            this.txt_total_accuracy.Name = "txt_total_accuracy";
+            this.txt_total_accuracy.PasswordChar = '\0';
+            this.txt_total_accuracy.ReadOnly = true;
+            this.txt_total_accuracy.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_total_accuracy.SelectedText = "";
+            this.txt_total_accuracy.SelectionLength = 0;
+            this.txt_total_accuracy.SelectionStart = 0;
+            this.txt_total_accuracy.ShortcutsEnabled = true;
+            this.txt_total_accuracy.Size = new System.Drawing.Size(93, 29);
+            this.txt_total_accuracy.TabIndex = 52;
+            this.txt_total_accuracy.UseCustomBackColor = true;
+            this.txt_total_accuracy.UseSelectable = true;
+            this.txt_total_accuracy.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txt_total_accuracy.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // txt_total_products_per_hour
+            // 
+            this.txt_total_products_per_hour.BackColor = System.Drawing.SystemColors.ScrollBar;
+            // 
+            // 
+            // 
+            this.txt_total_products_per_hour.CustomButton.BackColor = System.Drawing.SystemColors.Control;
+            this.txt_total_products_per_hour.CustomButton.Image = null;
+            this.txt_total_products_per_hour.CustomButton.Location = new System.Drawing.Point(65, 1);
+            this.txt_total_products_per_hour.CustomButton.Name = "";
+            this.txt_total_products_per_hour.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txt_total_products_per_hour.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txt_total_products_per_hour.CustomButton.TabIndex = 1;
+            this.txt_total_products_per_hour.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txt_total_products_per_hour.CustomButton.UseSelectable = true;
+            this.txt_total_products_per_hour.CustomButton.UseVisualStyleBackColor = false;
+            this.txt_total_products_per_hour.CustomButton.Visible = false;
+            this.txt_total_products_per_hour.Enabled = false;
+            this.txt_total_products_per_hour.Lines = new string[0];
+            this.txt_total_products_per_hour.Location = new System.Drawing.Point(551, 3);
+            this.txt_total_products_per_hour.MaxLength = 32767;
+            this.txt_total_products_per_hour.Name = "txt_total_products_per_hour";
+            this.txt_total_products_per_hour.PasswordChar = '\0';
+            this.txt_total_products_per_hour.ReadOnly = true;
+            this.txt_total_products_per_hour.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_total_products_per_hour.SelectedText = "";
+            this.txt_total_products_per_hour.SelectionLength = 0;
+            this.txt_total_products_per_hour.SelectionStart = 0;
+            this.txt_total_products_per_hour.ShortcutsEnabled = true;
+            this.txt_total_products_per_hour.Size = new System.Drawing.Size(93, 29);
+            this.txt_total_products_per_hour.TabIndex = 53;
+            this.txt_total_products_per_hour.UseCustomBackColor = true;
+            this.txt_total_products_per_hour.UseSelectable = true;
+            this.txt_total_products_per_hour.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txt_total_products_per_hour.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // UC_SimulationExecution
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,6 +337,8 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productLineAssignmentBindingSource)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -232,5 +356,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn efficiency;
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewTextBoxColumn production_line;
+        private System.Windows.Forms.Panel panel3;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel metroLabel11;
+        private MetroFramework.Controls.MetroTextBox txt_total_products_per_hour;
+        private MetroFramework.Controls.MetroTextBox txt_total_accuracy;
     }
 }

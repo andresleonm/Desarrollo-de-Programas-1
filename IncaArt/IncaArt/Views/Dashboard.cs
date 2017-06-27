@@ -42,6 +42,7 @@ namespace WindowsFormsApp1.Views
             mainDashboard1.Controls.Find("metroTile16", true)[0].Click += btn_ratio_Click;
             uc_reports.Controls.Find("metroTile8", true)[0].Click += btn_wperformance_Click;
             uc_reports.Controls.Find("metroTileLog", true)[0].Click += btn_log_Click;
+            uc_reports.Controls.Find("metroTile4", true)[0].Click += btn_simulation_report_Click;
             mainDashboard1.Controls.Find("metroTile14", true)[0].Click += btn_movementsType_Click;
             this.sessionUser = sessionUser;
             label_user_role.Text = "(" + sessionUser.Profile.Description + ")";
@@ -375,6 +376,12 @@ namespace WindowsFormsApp1.Views
         private void metroLabel1_Leave(object sender, EventArgs e)
         {
             //this.metroLabel1.Visible = false;
+        }
+
+        private void btn_simulation_report_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            uC_SimulationReport1.Visible = true;
         }
 
     }

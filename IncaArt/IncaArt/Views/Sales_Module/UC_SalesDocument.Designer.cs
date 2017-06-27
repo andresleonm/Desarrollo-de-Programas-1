@@ -1365,7 +1365,7 @@
             this.txt_observation.CustomButton.Visible = false;
             this.txt_observation.Lines = new string[0];
             this.txt_observation.Location = new System.Drawing.Point(108, 408);
-            this.txt_observation.MaxLength = 32767;
+            this.txt_observation.MaxLength = 400;
             this.txt_observation.Multiline = true;
             this.txt_observation.Name = "txt_observation";
             this.txt_observation.PasswordChar = '\0';

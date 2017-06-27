@@ -14,6 +14,9 @@ namespace WindowsFormsApp1.Views
 {
     public partial class UC_SimulationExecution : UserControl
     {
+
+        int accuracy;
+        int products;
         public UC_SimulationExecution()
         {
             InitializeComponent();
@@ -84,6 +87,8 @@ namespace WindowsFormsApp1.Views
             if (this.Visible == true)
             {
                 Cursor = Cursors.Arrow;
+                accuracy = 0;
+                products = 0;
                 this.metroGrid1.Rows.Clear();
                 List<Algorithm.ProductLineAssignment> solution =
                     ((UC_SimulationConfig)(Parent.Parent.Controls.Find("UC_SimulationConfig2", true))[0]).solution;
@@ -99,12 +104,16 @@ namespace WindowsFormsApp1.Views
                             row[1] = assig.assigned_workstation.complete_name;
                             row[2] = assig.assigned_workstation.product.type;
                             row[3] = (assig.assigned_worker.ratios.Where(r => r.workstation.name == assig.assigned_workstation.name && r.type == "Efficiency").ElementAt(0).broken_quantity).ToString();
-                            row[4] = (assig.assigned_worker.ratios.Where(r => r.workstation.name == assig.assigned_workstation.name && r.type == "Time").ElementAt(0).produced_quantity).ToString();
+                            row[4] = (assig.assigned_worker.ratios.Where(r => r.workstation.name == assig.assigned_workstation.name && r.type == "Time").ElementAt(0).value).ToString();
                             row[5] = count.ToString();
+                            accuracy += (assig.assigned_worker.ratios.Where(r => r.workstation.name == assig.assigned_workstation.name && r.type == "Efficiency").ElementAt(0).broken_quantity);
+                            products += int.Parse(assig.assigned_worker.ratios.Where(r => r.workstation.name == assig.assigned_workstation.name && r.type == "Time").ElementAt(0).value.ToString());
                             this.metroGrid1.Rows.Add(row);
                         }
                         count++;
                     }
+                    this.txt_total_accuracy.Text = accuracy.ToString();
+                    this.txt_total_products_per_hour.Text = products.ToString();
                 }
             }
         }
@@ -114,7 +123,7 @@ namespace WindowsFormsApp1.Views
             SimulationReportController sr_controller = new SimulationReportController("dp1admin","dp1admin");
             SimulationReportHeaderController srh_controller = new SimulationReportHeaderController("dp1admin", "dp1admin");
 
-            Result r  = srh_controller.insertSimulationReportHeader();
+            Result r  = srh_controller.insertSimulationReportHeader(accuracy,products);
             int id = int.Parse(r.data.ToString());
             bool result = false;
             foreach(DataGridViewRow row in metroGrid1.Rows)
