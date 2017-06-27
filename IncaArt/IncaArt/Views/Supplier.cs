@@ -672,7 +672,7 @@ namespace WindowsFormsApp1.Views
             ws.Range["A1"].Font.Size = 15;
             ws.Range["A1"].Font.Bold = true;
             ws.Range["A2"].Value2 = "Nombre";
-            ws.Range["B2"].Value2 = "DNI";
+            ws.Range["B2"].Value2 = "RUC";
             ws.Range["C2"].Value2 = "Dirección";
             ws.Range["D2"].Value2 = "Teléfono";
             ws.Range["E2"].Value2 = "Correo";
