@@ -33,7 +33,7 @@ namespace WindowsFormsApp1.Views.Production_Module
 
 
         public override void CheckPermissions(User u)
-        {
+        {/*
             base.CheckPermissions(u);
             
             if(!u.Profile.HasFunctionality("REGISTER PRODUCTION ORDER"))
@@ -42,6 +42,7 @@ namespace WindowsFormsApp1.Views.Production_Module
             }
            
             Helpers.CheckPermissionsHelper.Check(this, u);
-        }
+        */
+         }
     }
 }
