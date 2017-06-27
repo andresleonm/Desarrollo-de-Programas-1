@@ -704,7 +704,7 @@
             this.metroTextBox_Description.CustomButton.Visible = false;
             this.metroTextBox_Description.Lines = new string[0];
             this.metroTextBox_Description.Location = new System.Drawing.Point(100, 89);
-            this.metroTextBox_Description.MaxLength = 15;
+            this.metroTextBox_Description.MaxLength = 100;
             this.metroTextBox_Description.Name = "metroTextBox_Description";
             this.metroTextBox_Description.PasswordChar = '\0';
             this.metroTextBox_Description.ScrollBars = System.Windows.Forms.ScrollBars.None;
