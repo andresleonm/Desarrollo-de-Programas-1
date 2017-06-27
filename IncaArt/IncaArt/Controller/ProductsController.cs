@@ -38,7 +38,7 @@ namespace WindowsFormsApp1.Controller
                     product.Name = r.getColumn(2);
                     product.Stock_min = Int32.Parse(r.getColumn(3));
                     product.Stock_max = Int32.Parse(r.getColumn(4));
-                    product.Average_cost = double.Parse(r.getColumn(5));
+                    product.Unit_price = double.Parse(r.getColumn(5));
                     product.Product_type = r.getColumn(6);
                     products.Add(product);
                 }
@@ -74,7 +74,7 @@ namespace WindowsFormsApp1.Controller
                     item.Name = r.getColumn(2);
                     item.Stock_min = Int32.Parse(r.getColumn(3));
                     item.Stock_max = Int32.Parse(r.getColumn(4));
-                    item.Average_cost = double.Parse(r.getColumn(5));
+                    item.Unit_price = double.Parse(r.getColumn(5));
                     item.Product_type = r.getColumn(6);
                     products.Add(item);
                 }
@@ -148,6 +148,7 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("stock_min", product.Stock_min.ToString()));
             parameters.Add(new Parameter("stock_max", product.Stock_max.ToString()));
             parameters.Add(new Parameter("price", product.Unit_price.ToString()));
+            parameters.Add(new Parameter("cost", product.Average_cost.ToString()));
             parameters.Add(new Parameter("currency_id", product.Currency_id.ToString()));
             parameters.Add(new Parameter("product_type", product.Product_type.ToString()));
             GenericResult result = execute_transaction("insert_product", parameters);

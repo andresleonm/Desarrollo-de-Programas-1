@@ -138,7 +138,7 @@ namespace WindowsFormsApp1.Views
                     row[1] = i.ToString();
                     row[2] = product_list[i].Name;
                     row[3] = unit.Name;
-                    row[4] = product_list[i].Unit_price.ToString();
+                    row[4] = product_list[i].Unit_price.ToString("F4");
                     row[5] = product_list[i].Stock_min.ToString();
                     row[6] = product_list[i].Stock_max.ToString();
                     row[7] = product_list[i].Product_type;
@@ -731,6 +731,8 @@ namespace WindowsFormsApp1.Views
                         product.Stock_max = Convert.ToInt32(max);
                         product.Stock_min = Convert.ToInt32(min);
                         product.Product_type = type;
+                        product.Unit_price = price;
+                        product.Average_cost = price*0.25;
                         productController.insertProduct(product);
                         if (result.success)
                         {

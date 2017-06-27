@@ -143,7 +143,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(794, 495);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 1;
@@ -1063,7 +1063,7 @@
             // 
             this.datetime_birthday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datetime_birthday.Location = new System.Drawing.Point(148, 146);
-            this.datetime_birthday.MinimumSize = new System.Drawing.Size(4, 29);
+            this.datetime_birthday.MinimumSize = new System.Drawing.Size(0, 29);
             this.datetime_birthday.Name = "datetime_birthday";
             this.datetime_birthday.Size = new System.Drawing.Size(119, 29);
             this.datetime_birthday.TabIndex = 15;
