@@ -39,6 +39,14 @@
             this.btn_delete = new MetroFramework.Controls.MetroButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_maximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.combobox_product_type_s = new MetroFramework.Controls.MetroComboBox();
@@ -70,14 +78,6 @@
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_maximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.consulta.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -98,7 +98,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(795, 485);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
@@ -249,6 +249,62 @@
             this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
             this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
             // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // index
+            // 
+            this.index.HeaderText = "Index";
+            this.index.Name = "index";
+            this.index.ReadOnly = true;
+            this.index.Visible = false;
+            // 
+            // nombre
+            // 
+            this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // unidad
+            // 
+            this.unidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.unidad.HeaderText = "Unidad";
+            this.unidad.Name = "unidad";
+            this.unidad.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.price.HeaderText = "Precio";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // stock_minimo
+            // 
+            this.stock_minimo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.stock_minimo.HeaderText = "Stock Mínimo";
+            this.stock_minimo.Name = "stock_minimo";
+            this.stock_minimo.ReadOnly = true;
+            // 
+            // stock_maximo
+            // 
+            this.stock_maximo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.stock_maximo.HeaderText = "Stock Máximo";
+            this.stock_maximo.Name = "stock_maximo";
+            this.stock_maximo.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "Tipo";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -307,7 +363,7 @@
             this.textbox_name_s.CustomButton.Visible = false;
             this.textbox_name_s.Lines = new string[0];
             this.textbox_name_s.Location = new System.Drawing.Point(77, 19);
-            this.textbox_name_s.MaxLength = 32767;
+            this.textbox_name_s.MaxLength = 100;
             this.textbox_name_s.Name = "textbox_name_s";
             this.textbox_name_s.PasswordChar = '\0';
             this.textbox_name_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -557,7 +613,7 @@
             this.textbox_price.CustomButton.Visible = false;
             this.textbox_price.Lines = new string[0];
             this.textbox_price.Location = new System.Drawing.Point(130, 99);
-            this.textbox_price.MaxLength = 32767;
+            this.textbox_price.MaxLength = 8;
             this.textbox_price.Name = "textbox_price";
             this.textbox_price.PasswordChar = '\0';
             this.textbox_price.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -589,7 +645,7 @@
             this.textbox_name.CustomButton.Visible = false;
             this.textbox_name.Lines = new string[0];
             this.textbox_name.Location = new System.Drawing.Point(130, 26);
-            this.textbox_name.MaxLength = 32767;
+            this.textbox_name.MaxLength = 100;
             this.textbox_name.Name = "textbox_name";
             this.textbox_name.PasswordChar = '\0';
             this.textbox_name.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -633,7 +689,7 @@
             this.textbox_stock_max.CustomButton.Visible = false;
             this.textbox_stock_max.Lines = new string[0];
             this.textbox_stock_max.Location = new System.Drawing.Point(130, 166);
-            this.textbox_stock_max.MaxLength = 32767;
+            this.textbox_stock_max.MaxLength = 8;
             this.textbox_stock_max.Name = "textbox_stock_max";
             this.textbox_stock_max.PasswordChar = '\0';
             this.textbox_stock_max.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -665,7 +721,7 @@
             this.textbox_stock_min.CustomButton.Visible = false;
             this.textbox_stock_min.Lines = new string[0];
             this.textbox_stock_min.Location = new System.Drawing.Point(130, 132);
-            this.textbox_stock_min.MaxLength = 32767;
+            this.textbox_stock_min.MaxLength = 8;
             this.textbox_stock_min.Name = "textbox_stock_min";
             this.textbox_stock_min.PasswordChar = '\0';
             this.textbox_stock_min.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -739,62 +795,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(795, 485);
             this.panel2.TabIndex = 31;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // index
-            // 
-            this.index.HeaderText = "Index";
-            this.index.Name = "index";
-            this.index.ReadOnly = true;
-            this.index.Visible = false;
-            // 
-            // nombre
-            // 
-            this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            // 
-            // unidad
-            // 
-            this.unidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.unidad.HeaderText = "Unidad";
-            this.unidad.Name = "unidad";
-            this.unidad.ReadOnly = true;
-            // 
-            // price
-            // 
-            this.price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.price.HeaderText = "Precio";
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
-            // 
-            // stock_minimo
-            // 
-            this.stock_minimo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.stock_minimo.HeaderText = "Stock Mínimo";
-            this.stock_minimo.Name = "stock_minimo";
-            this.stock_minimo.ReadOnly = true;
-            // 
-            // stock_maximo
-            // 
-            this.stock_maximo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.stock_maximo.HeaderText = "Stock Máximo";
-            this.stock_maximo.Name = "stock_maximo";
-            this.stock_maximo.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "Tipo";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
             // 
             // UC_Product
             // 

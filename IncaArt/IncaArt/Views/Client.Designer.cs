@@ -103,7 +103,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(1384, 861);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 23;
@@ -231,7 +231,7 @@
             this.textbox_name_s.CustomButton.Visible = false;
             this.textbox_name_s.Lines = new string[0];
             this.textbox_name_s.Location = new System.Drawing.Point(105, 26);
-            this.textbox_name_s.MaxLength = 32767;
+            this.textbox_name_s.MaxLength = 100;
             this.textbox_name_s.Name = "textbox_name_s";
             this.textbox_name_s.PasswordChar = '\0';
             this.textbox_name_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -330,7 +330,7 @@
             this.textbox_doi_s.CustomButton.Visible = false;
             this.textbox_doi_s.Lines = new string[0];
             this.textbox_doi_s.Location = new System.Drawing.Point(535, 26);
-            this.textbox_doi_s.MaxLength = 32767;
+            this.textbox_doi_s.MaxLength = 11;
             this.textbox_doi_s.Name = "textbox_doi_s";
             this.textbox_doi_s.PasswordChar = '\0';
             this.textbox_doi_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -655,7 +655,7 @@
             this.textbox_email.CustomButton.Visible = false;
             this.textbox_email.Lines = new string[0];
             this.textbox_email.Location = new System.Drawing.Point(361, 213);
-            this.textbox_email.MaxLength = 32767;
+            this.textbox_email.MaxLength = 100;
             this.textbox_email.Name = "textbox_email";
             this.textbox_email.PasswordChar = '\0';
             this.textbox_email.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -686,7 +686,7 @@
             this.textbox_phone.CustomButton.Visible = false;
             this.textbox_phone.Lines = new string[0];
             this.textbox_phone.Location = new System.Drawing.Point(361, 169);
-            this.textbox_phone.MaxLength = 32767;
+            this.textbox_phone.MaxLength = 11;
             this.textbox_phone.Name = "textbox_phone";
             this.textbox_phone.PasswordChar = '\0';
             this.textbox_phone.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -717,7 +717,7 @@
             this.textbox_doi.CustomButton.Visible = false;
             this.textbox_doi.Lines = new string[0];
             this.textbox_doi.Location = new System.Drawing.Point(361, 77);
-            this.textbox_doi.MaxLength = 32767;
+            this.textbox_doi.MaxLength = 12;
             this.textbox_doi.Name = "textbox_doi";
             this.textbox_doi.PasswordChar = '\0';
             this.textbox_doi.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -748,7 +748,7 @@
             this.textbox_address.CustomButton.Visible = false;
             this.textbox_address.Lines = new string[0];
             this.textbox_address.Location = new System.Drawing.Point(361, 120);
-            this.textbox_address.MaxLength = 32767;
+            this.textbox_address.MaxLength = 200;
             this.textbox_address.Name = "textbox_address";
             this.textbox_address.PasswordChar = '\0';
             this.textbox_address.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -808,7 +808,7 @@
             this.textbox_name.CustomButton.Visible = false;
             this.textbox_name.Lines = new string[0];
             this.textbox_name.Location = new System.Drawing.Point(361, 33);
-            this.textbox_name.MaxLength = 32767;
+            this.textbox_name.MaxLength = 100;
             this.textbox_name.Name = "textbox_name";
             this.textbox_name.PasswordChar = '\0';
             this.textbox_name.ScrollBars = System.Windows.Forms.ScrollBars.None;

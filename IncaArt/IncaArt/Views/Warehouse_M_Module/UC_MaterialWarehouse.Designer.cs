@@ -361,7 +361,7 @@
             this.textbox_name_s.CustomButton.Visible = false;
             this.textbox_name_s.Lines = new string[0];
             this.textbox_name_s.Location = new System.Drawing.Point(115, 26);
-            this.textbox_name_s.MaxLength = 32767;
+            this.textbox_name_s.MaxLength = 100;
             this.textbox_name_s.Name = "textbox_name_s";
             this.textbox_name_s.PasswordChar = '\0';
             this.textbox_name_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -610,7 +610,7 @@
             this.textbox_max_capacity.CustomButton.Visible = false;
             this.textbox_max_capacity.Lines = new string[0];
             this.textbox_max_capacity.Location = new System.Drawing.Point(378, 183);
-            this.textbox_max_capacity.MaxLength = 32767;
+            this.textbox_max_capacity.MaxLength = 8;
             this.textbox_max_capacity.Name = "textbox_max_capacity";
             this.textbox_max_capacity.PasswordChar = '\0';
             this.textbox_max_capacity.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -652,7 +652,7 @@
             this.textbox_name.CustomButton.Visible = false;
             this.textbox_name.Lines = new string[0];
             this.textbox_name.Location = new System.Drawing.Point(378, 71);
-            this.textbox_name.MaxLength = 32767;
+            this.textbox_name.MaxLength = 100;
             this.textbox_name.Name = "textbox_name";
             this.textbox_name.PasswordChar = '\0';
             this.textbox_name.ScrollBars = System.Windows.Forms.ScrollBars.None;

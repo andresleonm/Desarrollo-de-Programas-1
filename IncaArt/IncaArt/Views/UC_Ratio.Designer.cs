@@ -377,7 +377,7 @@
             this.textbox_wname_s.CustomButton.Visible = false;
             this.textbox_wname_s.Lines = new string[0];
             this.textbox_wname_s.Location = new System.Drawing.Point(127, 27);
-            this.textbox_wname_s.MaxLength = 32767;
+            this.textbox_wname_s.MaxLength = 100;
             this.textbox_wname_s.Name = "textbox_wname_s";
             this.textbox_wname_s.PasswordChar = '\0';
             this.textbox_wname_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -446,7 +446,7 @@
             this.textbox_wpaternal_s.CustomButton.Visible = false;
             this.textbox_wpaternal_s.Lines = new string[0];
             this.textbox_wpaternal_s.Location = new System.Drawing.Point(127, 56);
-            this.textbox_wpaternal_s.MaxLength = 32767;
+            this.textbox_wpaternal_s.MaxLength = 100;
             this.textbox_wpaternal_s.Name = "textbox_wpaternal_s";
             this.textbox_wpaternal_s.PasswordChar = '\0';
             this.textbox_wpaternal_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -476,7 +476,7 @@
             this.textbox_wmaternal_s.CustomButton.Visible = false;
             this.textbox_wmaternal_s.Lines = new string[0];
             this.textbox_wmaternal_s.Location = new System.Drawing.Point(127, 85);
-            this.textbox_wmaternal_s.MaxLength = 32767;
+            this.textbox_wmaternal_s.MaxLength = 100;
             this.textbox_wmaternal_s.Name = "textbox_wmaternal_s";
             this.textbox_wmaternal_s.PasswordChar = '\0';
             this.textbox_wmaternal_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
