@@ -13,6 +13,7 @@ using iTextSharp.text.pdf;
 using iTextSharp.text;
 using System.IO;
 using System.Diagnostics;
+using Microsoft.Office.Interop.Excel;
 
 namespace WindowsFormsApp1.Views.Sales_Module
 {
@@ -86,16 +87,11 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Search_Documents_Click(object sender, EventArgs e)
         {
-           // if (String.IsNullOrWhiteSpace(ctxt_document_id.Text) && String.IsNullOrWhiteSpace(ctxt_customer.Text))
-            //{
-              //  fill_Sales_Documents();
-           // }
-           // else
-            //{
                 SalesDocument sales_doc = new SalesDocument();
                 DateTime init = dt_iniDate.Value.Date;
                 DateTime end = dt_endDate.Value.Date;
-
+                Boolean equals = false;
+                if (init == end) equals = true;
                 if (ctxt_document_id.Text != "")
                     sales_doc.Id = Int32.Parse((ctxt_document_id.Text));
                 else
@@ -103,17 +99,16 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
                 sales_doc.Customer_name = ctxt_customer.Text;
 
-                Result result = sales_document_controller.getSalesDocuments_by_filter(sales_doc, init, end);
+                Result result = sales_document_controller.getSalesDocuments_by_filter(sales_doc, init, end,equals);
 
                 if (result.data == null)
-                    MessageBox.Show(result.message, "Error al buscar proveedor con filtros", MessageBoxButtons.OK);
+                    MessageBox.Show(result.message, "Error al buscar documentos con filtros", MessageBoxButtons.OK);
                 else
                 {
                     sales_documents = new List<SalesDocument>();
                     sales_documents = (List<SalesDocument>)result.data;
                     fill_gridView_Document(sales_documents);
                }
-          //  }
         }
 
         private void btn_View_Click(object sender, EventArgs e)
@@ -199,9 +194,13 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Excel_Click(object sender, EventArgs e)
         {
+            //Path
+            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+            string fileName = string.Format("{0}Resources\\Excel\\SalesReport.xlsx", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
+
             // Creating an Excel object. 
             Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(fileName);
             Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
 
             try
@@ -209,29 +208,40 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 worksheet = workbook.ActiveSheet;
                 worksheet.Name = "Ventas";
 
-                int cellRowIndex = 1;
-                int cellColumnIndex = 1;
+                int cellRowIndex = 7;
+
+                // Formato
+           
+
+
+                Microsoft.Office.Interop.Excel.Range formatRange;
+                formatRange = worksheet.get_Range("a1","h1");
+                formatRange.EntireRow.Font.Bold = true;
+                worksheet.Cells[1, 5] = "Bold";
+
+                formatRange.Interior.Color = System.Drawing.
+                ColorTranslator.ToOle(System.Drawing.Color.DarkCyan);
+                formatRange.EntireRow.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.White); ;
+                worksheet.Cells[1, 5] = "DarkCyan";
+
+
 
                 //Loop through each row and read value from each column. 
-                for (int i = -1; i < grid_Documents.Rows.Count; i++)
-                {
-                    int k = 0;
-                    for (int j = 0; j < grid_Documents.Columns.Count; j++)
-                    {
-                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check. 
-                        if (grid_Documents.Columns[j].Visible)
-                        {
-                            if (cellRowIndex == 1)
-                                worksheet.Cells[cellRowIndex, k + 1] = grid_Documents.Columns[j].HeaderText;
-                            else
-                                worksheet.Cells[cellRowIndex, k + 1] = grid_Documents.Rows[i].Cells[j].Value.ToString();
-                            k++;
-                        }
-                        cellColumnIndex++;
-                    }
-                    cellColumnIndex = 1;
+                for (int i = 0; i < grid_Documents.Rows.Count; i++)
+                {                                                               
+                    cellPainted(worksheet, cellRowIndex, 2, i, "document_id2");
+                    cellPainted(worksheet, cellRowIndex, 3, i, "type_document_id");
+                    cellPainted(worksheet, cellRowIndex, 4, i, "external_number");
+                    cellPainted(worksheet, cellRowIndex, 5, i, "customer_name");
+                    cellPainted(worksheet, cellRowIndex, 6, i, "observation");
+                    cellPainted(worksheet, cellRowIndex, 7, i, "issue_date");
+                    cellPainted(worksheet, cellRowIndex, 8, i, "currency_name");
+                    cellPainted(worksheet, cellRowIndex, 9, i, "amount2");
+                    cellPainted(worksheet, cellRowIndex, 10, i, "status");
                     cellRowIndex++;
                 }
+
+                worksheet.Cells[4, 5] = "Desde el " + dt_iniDate.Value.Date.ToString("dd/MM/yyyy") + " hasta el " + dt_endDate.Value.Date.ToString("dd/MM/yyyy");
 
                 //Getting the location and file name of the excel to save from user. 
                 SaveFileDialog saveDialog = new SaveFileDialog();
@@ -244,10 +254,16 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     workbook.SaveAs(saveDialog.FileName);
                     MessageBox.Show("Exportado correctamente", "Notificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                else if(saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.Cancel)
+                {
+                    excel.Quit();
+                    workbook = null;
+                    excel = null;
+                }
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);               
             }
             finally
             {
@@ -255,6 +271,12 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 workbook = null;
                 excel = null;
             }
+        }
+
+        private void cellPainted(Microsoft.Office.Interop.Excel._Worksheet worksheet, int row_excel, int col_excel, int row_grid, string col_grid)
+        {
+            worksheet.Cells[row_excel, col_excel] = grid_Documents.Rows[row_grid].Cells[col_grid].Value.ToString();
+            worksheet.Cells[row_excel, col_excel].BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexAutomatic, XlColorIndex.xlColorIndexAutomatic);
         }
 
         #endregion

@@ -107,6 +107,7 @@
             this.consulta.VerticalScrollbarBarColor = true;
             this.consulta.VerticalScrollbarHighlightOnWheel = false;
             this.consulta.VerticalScrollbarSize = 10;
+            this.consulta.Click += new System.EventHandler(this.consulta_Click);
             // 
             // btn_import
             // 
@@ -124,7 +125,7 @@
             this.btn_import.UseSelectable = true;
             this.btn_import.UseStyleColors = true;
             this.btn_import.UseTileImage = true;
-            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
+            this.btn_import.Click += new System.EventHandler(this.btn_import2);
             // 
             // btn_export
             // 
@@ -142,7 +143,7 @@
             this.btn_export.UseSelectable = true;
             this.btn_export.UseStyleColors = true;
             this.btn_export.UseTileImage = true;
-            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
+            this.btn_export.Click += new System.EventHandler(this.btn_export2);
             // 
             // groupBox3
             // 

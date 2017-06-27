@@ -916,7 +916,7 @@
             this.dt_IssueHour.Enabled = false;
             this.dt_IssueHour.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dt_IssueHour.Location = new System.Drawing.Point(213, 92);
-            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_IssueHour.Name = "dt_IssueHour";
             this.dt_IssueHour.Size = new System.Drawing.Size(92, 29);
             this.dt_IssueHour.TabIndex = 67;
@@ -974,7 +974,7 @@
             this.dt_IssueDate.Enabled = false;
             this.dt_IssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dt_IssueDate.Location = new System.Drawing.Point(93, 92);
-            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_IssueDate.Name = "dt_IssueDate";
             this.dt_IssueDate.Size = new System.Drawing.Size(114, 29);
             this.dt_IssueDate.TabIndex = 64;

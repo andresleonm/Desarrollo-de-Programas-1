@@ -29,12 +29,16 @@ namespace WindowsFormsApp1.Controller
                     ratio.workstation_id = Int32.Parse(r.getColumn(1));
                     ratio.ratio_type = Int32.Parse(r.getColumn(2));
                     ratio.value = Double.Parse(r.getColumn(3));
+                    ratio.produced_quantity = Int32.Parse(r.getColumn(4));
+                    ratio.transform();
                     ratios.Add(ratio);
                 }
                 return new Result(ratios, true, "");
             }
             return new Result(null, result.success, result.message);
         }
+
+        
 
         public Result getRatios(string worker_name,string paternal,string maternal,int workstation_id,int product_id,int radio_type_id)
         {
@@ -62,6 +66,8 @@ namespace WindowsFormsApp1.Controller
                     ratio.workstation_id = Int32.Parse(r.getColumn(2));
                     ratio.ratio_type = Int32.Parse(r.getColumn(3));
                     ratio.value = Double.Parse(r.getColumn(4));
+                    ratio.produced_quantity = Int32.Parse(r.getColumn(5));
+                    ratio.transform();
                     ratios.Add(ratio);
                 }
                 return new Result(ratios, true, "");
@@ -78,6 +84,21 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("ratio_type", ratio_type));
             parameters.Add(new Parameter("ratio_value", ratio_value.ToString()));
             GenericResult result = execute_transaction("update_ratio", parameters);
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result updateRatio2(string worker, int workstation_id, int ratio_type_id, double ratio_value)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("worker_name", worker));
+            parameters.Add(new Parameter("workstation_id", workstation_id.ToString()));
+            parameters.Add(new Parameter("ratio_type_id", ratio_type_id.ToString()));
+            parameters.Add(new Parameter("ratio_value", ratio_value.ToString()));
+            GenericResult result = execute_transaction("update_ratio2", parameters);
             if (result.success)
             {
                 return new Result(result.singleValue, true, "");

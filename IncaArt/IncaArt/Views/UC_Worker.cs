@@ -504,7 +504,7 @@ namespace WindowsFormsApp1.Views
 
         private bool Validate_Data()
         {
-            if (name_flag && paternal_flag && maternal_flag && doi_flag && birthday_flag && shift_flag && salary_flag && currency_flag && email_flag)
+            if (name_flag && paternal_flag && maternal_flag && doi_flag && shift_flag && salary_flag && currency_flag && email_flag)
             {
                 return true;
             }
@@ -629,6 +629,8 @@ namespace WindowsFormsApp1.Views
                 Models.Worker worker;
                 int currency_id = 0, shift_id = 0, success_lines = 0, error_lines = 0;
                 List<WorkerError> worker_error_list = new List<WorkerError>(); //Lista de materiales para el Excel con error
+                Controller.Result temp;
+
                 //En Interop Excel el indice comienza en 1
                 for (int i = 3; i <= row_count; i++) //Fila 3 comienza las filas de materiales
                 {
@@ -773,12 +775,14 @@ namespace WindowsFormsApp1.Views
                         worker.Telephone = " ";
                         worker.Address = " ";
                         worker.Gender = ' ';
-                        workerController.insertWorker(worker);
-                        if (result.data == null)
+                        temp=workerController.insertWorker(worker);
+                        if (!temp.success)
                         {
-                            MessageBox.Show("Error en registro material");
                             error = true;
-                            error_list.Add("register");
+                            error_list.Add(temp.message);
+                            worker_error.error_list = error_list;
+                            worker_error.string_list = string_list;
+                            worker_error_list.Add(worker_error);
                             error_lines++;
                         }
                         else
@@ -872,6 +876,7 @@ namespace WindowsFormsApp1.Views
                             observation += "Error en registro";
                             break;
                         default:
+                            observation += item;
                             break;
                     }
                 }

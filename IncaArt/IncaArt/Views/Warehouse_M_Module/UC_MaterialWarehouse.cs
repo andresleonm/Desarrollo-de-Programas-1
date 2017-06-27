@@ -803,7 +803,7 @@ namespace WindowsFormsApp1.Views.Warehouse_M_Module
         {
             if (!sessionUser.Profile.HasFunctionality("DELETE MATERIAL WAREHOUSE"))
             {
-                //delete.Visible = false;
+                delete.Visible = false;
             }
 
             if (!sessionUser.Profile.HasFunctionality("CREATE MATERIAL WAREHOUSE") && !sessionUser.Profile.HasFunctionality("EDIT MATERIAL WAREHOUSE"))

@@ -21,6 +21,15 @@ namespace WindowsFormsApp1.Models
 
         }
 
-
+        public void transform()
+        {
+            double produced = produced_quantity;
+            double broke = value;
+            if (ratio_type == 1){
+                produced_quantity = Int32.Parse(produced.ToString());
+                broken_quantity = Int32.Parse(broke.ToString());
+                value = broke / produced;                
+            }
+        }
     }
 }

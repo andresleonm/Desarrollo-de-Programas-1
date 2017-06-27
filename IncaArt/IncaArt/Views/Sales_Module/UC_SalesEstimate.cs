@@ -89,16 +89,26 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Search_Estimates_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(ctxt_estimate_id.Text))
-            {
-                fill_Sales_Estimate();
-            }
+            SalesEstimate sales_estimate = new SalesEstimate();
+            DateTime init = dt_iniDate.Value.Date;
+            DateTime end = dt_endDate.Value.Date;
+            Boolean equals = false;
+            if (init == end) equals = true;
+            if (ctxt_estimate_id.Text != "")
+                sales_estimate.Id = Int32.Parse((ctxt_estimate_id.Text));
+            else
+                sales_estimate.Id = -1;
+
+            sales_estimate.Customer_name = ctxt_customer.Text;
+
+            Result result = sales_estimate_controller.getSalesEstimate_by_filter(sales_estimate, init, end,equals);
+
+            if (result.data == null)
+                MessageBox.Show(result.message, "Error al buscar cotizaciones con filtros", MessageBoxButtons.OK);
             else
             {
                 sales_estimates = new List<SalesEstimate>();
-                Result result = sales_estimate_controller.getSalesEstimate(Int32.Parse(ctxt_estimate_id.Text));
-                SalesEstimate se = (SalesEstimate)result.data;
-                sales_estimates.Add(se);
+                sales_estimates = (List<SalesEstimate>)result.data;
                 fill_gridView_Estimate(sales_estimates);
             }
         }

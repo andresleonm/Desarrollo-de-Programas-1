@@ -41,6 +41,7 @@ namespace WindowsFormsApp1.Views
             mainDashboard1.Controls.Find("metroTile13", true)[0].Click += btn_typewarehouses_Click;
             mainDashboard1.Controls.Find("metroTile16", true)[0].Click += btn_ratio_Click;
             uc_reports.Controls.Find("metroTile8", true)[0].Click += btn_wperformance_Click;
+            uc_reports.Controls.Find("metroTileLog", true)[0].Click += btn_log_Click;
             mainDashboard1.Controls.Find("metroTile14", true)[0].Click += btn_movementsType_Click;
             this.sessionUser = sessionUser;
             label_user_role.Text = "(" + sessionUser.Profile.Description + ")";
@@ -52,12 +53,13 @@ namespace WindowsFormsApp1.Views
         private void CheckButtonsVisibility()
         {
             btn_config.Visible = UserCanViewConfigButton();
-            btn_warehouse.Visible = UserCanViewWarehouseButton();
-            btn_sales.Visible = UserCanViewSalesButton();
-            btn_purchase.Visible = sessionUser.Profile.HasFunctionality("VIEW PURCHASE ORDER");
-            btn_production.Visible = sessionUser.Profile.HasFunctionality("VIEW PRODUCTION ORDER");
+            // -------------------------------------------------------
+            btn_warehouse.Visible = sessionUser.Profile.HasFunctionality("VIEW WAREHOUSE MODULE");
+            btn_sales.Visible = sessionUser.Profile.HasFunctionality("VIEW SALES MODULE");
+            btn_purchase.Visible = sessionUser.Profile.HasFunctionality("VIEW PURCHASE MODULE");
+            btn_production.Visible = sessionUser.Profile.HasFunctionality("VIEW PRODUCTION MODULE");
             btn_simulation.Visible = sessionUser.Profile.HasFunctionality("RUN SIMULATION");
-            btn_reportes.Visible = UserCanViewReportsButton();
+            btn_reportes.Visible = sessionUser.Profile.HasFunctionality("VIEW REPORTS MODULE");
         }
 
         private bool UserCanViewConfigButton()
@@ -84,56 +86,6 @@ namespace WindowsFormsApp1.Views
             };
 
             foreach(string perm in permissions)
-            {
-                if (sessionUser.Profile.HasFunctionality(perm)) return true;
-            }
-
-            return false;
-        }
-
-        private bool UserCanViewWarehouseButton()
-        {
-            string[] permissions = new string[] {
-                "VIEW MATERIAL MOVEMENT",
-                "VIEW PRODUCT MOVEMENT",
-            };
-
-            foreach (string perm in permissions)
-            {
-                if (sessionUser.Profile.HasFunctionality(perm)) return true;
-            }
-
-            return false;
-        }
-
-        private bool UserCanViewSalesButton()
-        {
-            string[] permissions = new string[] {
-                "VIEW ORDER",
-                "VIEW REFUND",
-                "VIEW DOCUMENT",
-                "VIEW ESTIMATE"
-            };
-
-            foreach (string perm in permissions)
-            {
-                if (sessionUser.Profile.HasFunctionality(perm)) return true;
-            }
-
-            return false;
-        }
-
-        private bool UserCanViewReportsButton()
-        {
-            string[] permissions = new string[] {
-                "VIEW KARDEX REPORT",
-                "VIEW REGISTER/SALES REPORT",
-                "VIEW LOGICAL/PHYSICAL STOCK REPORT",
-                "VIEW WORKERS PERFORMANCE REPORT",
-                "VIEW SIMULATIONS REPORT"
-            };
-
-            foreach (string perm in permissions)
             {
                 if (sessionUser.Profile.HasFunctionality(perm)) return true;
             }
@@ -397,7 +349,13 @@ namespace WindowsFormsApp1.Views
             workersPerformance_Report1.Visible = true;
         }
 
-        
+        private void btn_log_Click(object sender, EventArgs e)
+        {
+            hide_UserControls();
+            uC_LogReport1.Visible = true;
+        }
+
+
         private void btn_movementsType_Click(object sender, EventArgs e)
         {
             hide_UserControls();
@@ -411,12 +369,12 @@ namespace WindowsFormsApp1.Views
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            this.metroLabel1.Visible = true;
+            //this.metroLabel1.Visible = true;
         }
 
         private void metroLabel1_Leave(object sender, EventArgs e)
         {
-            this.metroLabel1.Visible = false;
+            //this.metroLabel1.Visible = false;
         }
 
     }
