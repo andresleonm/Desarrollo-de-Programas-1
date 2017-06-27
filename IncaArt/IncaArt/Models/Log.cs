@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace WindowsFormsApp1.Models
 {
@@ -23,6 +25,20 @@ namespace WindowsFormsApp1.Models
             this.Target = target;
             this.TargetId = targetId;
             this.TargetData = targetData;
+        }
+
+        public string ParseData()
+        {
+            JObject[] rawObject = JsonConvert.DeserializeObject<JObject[]>(TargetData);
+            JObject raw = rawObject[0];
+            string result = "";
+
+            foreach (JProperty prop in raw.Properties())
+            {
+                result += "- " + prop.Name + " = " + prop.Value + "\n";
+            }
+
+            return result;
         }
 
         public string Username { get; set; }
