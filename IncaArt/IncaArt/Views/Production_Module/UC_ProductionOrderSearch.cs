@@ -104,7 +104,7 @@ namespace WindowsFormsApp1.Views
                         if (result == DialogResult.Yes)
                         {
                             int selected_index = Int32.Parse(this.datagrid_ProductionOrders.SelectedRows[0].Cells[0].Value.ToString());
-                            order_controller.deleteProductionOrder(selected_index);
+                            order_controller.logicalDeleteProductionOrder(selected_index);
                             datagrid_Products_Fill();
                         }
                     }

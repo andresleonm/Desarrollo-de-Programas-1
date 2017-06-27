@@ -27,6 +27,8 @@ namespace WindowsFormsApp1.Models
         private string warehouse_name;
         private int estimate_id;
         private int estimate_line;
+        List<ProductionOrderMaterialLine> material_lines;
+        List<ProductionOrderWorkLine> work_lines;
 
         public int Id
         {
@@ -274,6 +276,32 @@ namespace WindowsFormsApp1.Models
             set
             {
                 estimate_line = value;
+            }
+        }
+
+        public List<ProductionOrderMaterialLine> Material_lines
+        {
+            get
+            {
+                return material_lines;
+            }
+
+            set
+            {
+                material_lines = value;
+            }
+        }
+
+        internal List<ProductionOrderWorkLine> Work_lines
+        {
+            get
+            {
+                return work_lines;
+            }
+
+            set
+            {
+                work_lines = value;
             }
         }
 

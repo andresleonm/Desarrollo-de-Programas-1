@@ -86,7 +86,7 @@ namespace WindowsFormsApp1.Views
                 string description = metroTextBox_Description.Text;
                 string observations = metroTextBox_Observation.Text;
                 string state = "Registrado";
-                int order_id;
+                bool success = true;
                 string message = "";
                 //Product
                 Product product = (Product)comboBox_Product.SelectedItem;
@@ -115,36 +115,19 @@ namespace WindowsFormsApp1.Views
                     estimate_id, estimate_line);
                 if (!editing)
                 {
+                    production_order.Material_lines = material_lines;
+                    production_order.Work_lines = work_lines;
                     //INSERT
                     Result result = production_controller.insertProductionOrder(production_order);
                     if (result.success)
                     {
-                        order_id = Int32.Parse(result.data.ToString());
-
-                        //List of materials           
-                        for (int i = 0; i < material_lines.Count; i++)
-                        {
-                            if (material_lines[i].State != "Anulado")
-                            {
-                                material_lines[i].Order_Id = order_id;
-                                result = material_line_controller.insertMaterialLine(material_lines[i]);
-                                if (!result.success) message += "-" + material_lines[i].Warehouse_name + ":" + result.message + "\n";
-                            }
-                        }
-                        //List of work               
-                        for (int i = 0; i < work_lines.Count; i++)
-                        {
-                            if (work_lines[i].State != "Anulado")
-                            {
-                                work_lines[i].Order_Id = order_id;
-                                result = work_line_controller.insertWorkLine(work_lines[i]);
-                                if (!result.success) message += "-" + result.message + "\n";
-                            }
-                        }
-
                         MessageBox.Show("Order de producción registrada.");
                     }
-                    else { message += "-" + result.message + "\n"; }
+                    else
+                    {
+                        MessageBox.Show("No fue posible registrar la orden de producción." + result.message, "Error en el registro", MessageBoxButtons.OK);
+                        success = false;
+                    }
                 }
                 else
                 {
@@ -154,7 +137,6 @@ namespace WindowsFormsApp1.Views
                     if (!result.success) message += "-" + result.message + "\n";
                     else
                     {
-
                         //List of materials           
                         for (int i = 0; i < material_lines.Count; i++)
                         {
@@ -193,11 +175,16 @@ namespace WindowsFormsApp1.Views
                         MessageBox.Show("Order de producción actualizada.");
                     }
                 }
-                if (message != "")
+                if (message != "") {
+                    success = false;
                     MessageBox.Show(message, "Errores en el registro", MessageBoxButtons.OK);
-                this.Visible = false;
-                clear_Form();
-                editing = false;
+                }
+                if (success)
+                {
+                    this.Visible = false;
+                    clear_Form();
+                    editing = false;
+                }        
             }
         }
 

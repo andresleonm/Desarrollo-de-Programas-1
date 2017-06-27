@@ -10,8 +10,13 @@ namespace WindowsFormsApp1.Controller
 {
     class ProductionOrderController : DataService.DatabaseService
     {
+        ProductionOrderMaterialLineController material_controller;
+        ProductionOrderWorkLineController work_controller;
+
         public ProductionOrderController(string user, string password) : base( user, password)
         {
+            material_controller = new ProductionOrderMaterialLineController(user,password);
+            work_controller = new ProductionOrderWorkLineController(user,password);
         }
         public Result insertProductionOrder(ProductionOrder production_order)
         {
@@ -32,6 +37,65 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("estimate_line", production_order.Estimate_line.ToString()));
 
             GenericResult result = execute_transaction("insert_production_order", parameters);
+            int id;
+
+            if (result.success)
+            {
+                try
+                {
+                    id = Int32.Parse(result.singleValue);
+                }
+                catch (Exception e)
+                {
+                    return new Result(null, false, e.Message);
+                }
+
+                try
+                {
+                    foreach (ProductionOrderMaterialLine line in production_order.Material_lines)
+                    {
+                        if (line.State!="Anulado") {
+                            line.Id = id;
+                            Result resultLine = material_controller.insertMaterialLine(line);
+                            if (!resultLine.success)
+                            {
+                                deleteProductionOrder(id);
+                                return new Result(null, resultLine.success, resultLine.message);
+                            }
+                        }                                       
+                    }
+                    foreach (ProductionOrderWorkLine line in production_order.Work_lines)
+                    {
+                        if (line.State != "Anulado")
+                        {
+                            line.Id = id;
+                            Result resultLine = work_controller.insertWorkLine(line);
+                            if (!resultLine.success)
+                            {
+                                deleteProductionOrder(id);
+                                return new Result(null, resultLine.success, resultLine.message);
+                            }
+                        }
+
+                    }
+                    return new Result(id, true, "");
+                }
+                catch (Exception e)
+                {
+                    deleteProductionOrder(id);
+                    return new Result(null, false, e.Message);
+                }
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result deleteProductionOrder(int id)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", id.ToString()));
+
+            GenericResult result = execute_transaction("delete_production_order", parameters);
+
             if (result.success)
             {
                 return new Result(result.singleValue, true, "");
@@ -141,11 +205,11 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        public Result deleteProductionOrder(int order_id)
+        public Result logicalDeleteProductionOrder(int order_id)
         {
             List<Parameter> parameters = new List<Parameter>();
             parameters.Add(new Parameter("order_id", order_id.ToString()));
-            GenericResult result = execute_transaction("delete_production_order", parameters);
+            GenericResult result = execute_transaction("logical_delete_production_order", parameters);
             if (result.success)
             {
                 return new Result(result.singleValue, true, "");
