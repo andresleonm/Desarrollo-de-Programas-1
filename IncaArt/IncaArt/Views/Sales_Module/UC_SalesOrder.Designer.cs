@@ -101,20 +101,20 @@
             this.btn_Add = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_order_lines = new MetroFramework.Controls.MetroGrid();
+            this.mbStyle = new MetroFramework.Components.MetroStyleManager(this.components);
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Product_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delivery_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prod_warehouse_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delivery_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mbStyle = new MetroFramework.Components.MetroStyleManager(this.components);
             this.panel1.SuspendLayout();
             this.tab_Order.SuspendLayout();
             this.order.SuspendLayout();
@@ -147,7 +147,7 @@
             this.tab_Order.Controls.Add(this.newOrder);
             this.tab_Order.Location = new System.Drawing.Point(10, 5);
             this.tab_Order.Name = "tab_Order";
-            this.tab_Order.SelectedIndex = 0;
+            this.tab_Order.SelectedIndex = 1;
             this.tab_Order.Size = new System.Drawing.Size(849, 608);
             this.tab_Order.Style = MetroFramework.MetroColorStyle.Teal;
             this.tab_Order.TabIndex = 41;
@@ -594,7 +594,7 @@
             this.dt_IssueHour.Enabled = false;
             this.dt_IssueHour.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dt_IssueHour.Location = new System.Drawing.Point(254, 105);
-            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_IssueHour.Name = "dt_IssueHour";
             this.dt_IssueHour.Size = new System.Drawing.Size(107, 29);
             this.dt_IssueHour.TabIndex = 49;
@@ -614,7 +614,7 @@
             this.dt_IssueDate.Enabled = false;
             this.dt_IssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dt_IssueDate.Location = new System.Drawing.Point(134, 105);
-            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_IssueDate.Name = "dt_IssueDate";
             this.dt_IssueDate.Size = new System.Drawing.Size(107, 29);
             this.dt_IssueDate.TabIndex = 47;
@@ -1139,12 +1139,12 @@
             this.Product_id,
             this.state,
             this.unitId,
-            this.delivery_quantity,
             this.prod_warehouse_id,
             this.product,
             this.unit,
             this.warehouse,
             this.quantity,
+            this.delivery_quantity,
             this.unit_Price,
             this.amount});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1175,6 +1175,10 @@
             this.grid_order_lines.Size = new System.Drawing.Size(794, 168);
             this.grid_order_lines.TabIndex = 52;
             this.grid_order_lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_order_lines_CellValueChanged);
+            // 
+            // mbStyle
+            // 
+            this.mbStyle.Owner = null;
             // 
             // Id
             // 
@@ -1210,13 +1214,6 @@
             this.unitId.HeaderText = "unitId";
             this.unitId.Name = "unitId";
             this.unitId.Visible = false;
-            // 
-            // delivery_quantity
-            // 
-            this.delivery_quantity.DataPropertyName = "delivery_quantity";
-            this.delivery_quantity.HeaderText = "delivery_quantity";
-            this.delivery_quantity.Name = "delivery_quantity";
-            this.delivery_quantity.Visible = false;
             // 
             // prod_warehouse_id
             // 
@@ -1260,6 +1257,13 @@
             this.quantity.Name = "quantity";
             this.quantity.Width = 77;
             // 
+            // delivery_quantity
+            // 
+            this.delivery_quantity.DataPropertyName = "delivery_quantity";
+            this.delivery_quantity.HeaderText = "Cantidad Entregada";
+            this.delivery_quantity.Name = "delivery_quantity";
+            this.delivery_quantity.ReadOnly = true;
+            // 
             // unit_Price
             // 
             this.unit_Price.DataPropertyName = "unit_price";
@@ -1272,10 +1276,6 @@
             this.amount.HeaderText = "SubTotal";
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
-            // 
-            // mbStyle
-            // 
-            this.mbStyle.Owner = null;
             // 
             // UC_SalesOrder
             // 
@@ -1386,12 +1386,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Product_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn state;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn delivery_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn prod_warehouse_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn product;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn warehouse;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn delivery_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
     }

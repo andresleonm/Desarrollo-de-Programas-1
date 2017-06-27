@@ -140,13 +140,11 @@ namespace WindowsFormsApp1.Views.Sales_Module
             int index = grid_Documents.SelectedRows[0].Index;
             var id = sales_documents[index].Id;
             sd_see = (Models.SalesDocument)sales_document_controller.getSalesDocument(id).data;
-            grid_Document_Lines.DataSource = sd_see.Lines;
-
-            refresh_amount(sd_see);
-
+      
             tab_Document.SelectedIndex = 1;
             manipulate_options(false);
             fill_Sales_Document_Form(sd_see);
+            refresh_amount(sd_see);
         }
 
         private void fill_Sales_Documents()
@@ -481,7 +479,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private void fill_Sales_Document_Form(SalesDocument sd)
         {
             Clean();
-            clean_gridView_DocumentLine();
             txt_name.Text = sd.Customer_name;
             txt_address.Text = sd.Customer_address;
             txt_Doi.Text = sd.Customer_doi;

@@ -587,8 +587,9 @@ namespace WindowsFormsApp1.Views
             grid_order_lines.Columns["unit"].DisplayIndex = 1;
             grid_order_lines.Columns["warehouse"].DisplayIndex = 2;
             grid_order_lines.Columns["quantity"].DisplayIndex = 3;
-            grid_order_lines.Columns["unit_price"].DisplayIndex = 4;
-            grid_order_lines.Columns["amount"].DisplayIndex = 5;
+            grid_order_lines.Columns["delivery_quantity"].DisplayIndex = 4;
+            grid_order_lines.Columns["unit_price"].DisplayIndex = 5;
+            grid_order_lines.Columns["amount"].DisplayIndex = 6;
         }
 
         private void manipulate_options(bool flag)

@@ -123,13 +123,11 @@ namespace WindowsFormsApp1.Views.Sales_Module
             int index = grid_Refunds.SelectedRows[0].Index;
             var id = sales_refunds[index].Id;
             sr_see = (Models.SalesRefund)sales_refund_controller.getSalesRefund(id).data;
-            grid_Refund_Lines.DataSource = sr_see.Lines;
-
-            refresh_amount(sr_see);
 
             tab_Refund.SelectedIndex = 1;
             manipulate_options(false);
             fill_Sales_Refund_Form(sr_see);
+            refresh_amount(sr_see);
         }
 
         private void fill_Sales_Refunds()
@@ -176,7 +174,13 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private void refresh_amount(SalesRefund sr)
         {
             for (int i = 0; i < grid_Refund_Lines.RowCount; i++)
+            {
+                grid_Refund_Lines.Rows[i].Cells["warehouses_origin"].Value = sr.Lines[i].Prod_warehouse_name;
+                grid_Refund_Lines.Rows[i].Cells["Prod_warehouse_id"].Value = sr.Lines[i].Prod_warehouse_id;
+                grid_Refund_Lines.Rows[i].Cells["prodwarehouse"].Value = sr.Lines[i].Prod_warehouse_destiny;
                 grid_Refund_Lines.Rows[i].Cells["amount"].Value = (sr.Lines[i].Quantity * sr.Lines[i].Unit_price).ToString("0.00");
+            }
+                
         }
 
         #endregion
@@ -377,10 +381,13 @@ namespace WindowsFormsApp1.Views.Sales_Module
             dt_IssueHour.Text = sr.Issue_date.ToLongTimeString();
 
             txt_observation.Text = sr.Observation;
-            txt_amount.Text = sr.Amount.ToString();
-            txt_igv.Text = (sr.Amount * sr.Porc_igv).ToString();
-            txt_total.Text = (sr.Amount * (1 + sr.Porc_igv)).ToString();
+            txt_amount.Text = sr.Amount.ToString("0.00");
+            txt_igv.Text = (sr.Amount * sr.Porc_igv).ToString("0.00");
+            txt_total.Text = (sr.Amount * (1 + sr.Porc_igv)).ToString("0.00");
             txt_Status.Text = sr.Status;
+
+            grid_Refund_Lines.DataSource = sr.Lines;
+            AdjustColumnRefundLine();
         }
 
         private void fill_Sales_Refund_Form(SalesDocument sd)
@@ -435,10 +442,16 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void AdjustColumnRefundLine()
         {
+            string col;
+            if (see)
+                col = "warehouses_origin";
+            else
+                col = "warehouses";
+
             grid_Refund_Lines.Columns["product"].DisplayIndex = 0;
             grid_Refund_Lines.Columns["unit_measure"].DisplayIndex = 1;
             grid_Refund_Lines.Columns["prodwarehouse"].DisplayIndex = 2;
-            grid_Refund_Lines.Columns["warehouses"].DisplayIndex = 3;
+            grid_Refund_Lines.Columns[col].DisplayIndex = 3;
             grid_Refund_Lines.Columns["quantity_available"].DisplayIndex = 4;
             grid_Refund_Lines.Columns["refund_quantity"].DisplayIndex = 5;
             grid_Refund_Lines.Columns["quantity"].DisplayIndex = 6;
@@ -456,6 +469,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
             btn_Search_Document.Visible = flag;
             btn_Save.Visible = flag;
             grid_Refund_Lines.Columns["Quantity"].ReadOnly = !flag;
+            grid_Refund_Lines.Columns["warehouses"].ReadOnly = !flag;
+            grid_Refund_Lines.Columns["warehouses"].Visible = flag;
+            grid_Refund_Lines.Columns["warehouses_origin"].Visible = !flag;
 
         }
 
