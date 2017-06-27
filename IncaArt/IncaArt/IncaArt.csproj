@@ -272,12 +272,6 @@
       <DependentUpon>ProgressForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Purchase_Module\MaterialWarehouseS.cs" />
-    <Compile Include="Views\Purchase_Module\PurchaseOrderLine.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Purchase_Module\PurchaseOrderLine.Designer.cs">
-      <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Purchase_Module\PurchaseOrderSearchSupplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -650,6 +644,12 @@
     <Compile Include="Views\Purchase_Module\ConfirmationDialog.Designer.cs">
       <DependentUpon>ConfirmationDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Purchase_Module\PurchaseOrderLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Purchase_Module\PurchaseOrderLine.Designer.cs">
+      <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UC_WorkersPerformance Report.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -694,9 +694,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ProgressForm.resx">
       <DependentUpon>ProgressForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrderLine.resx">
-      <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrderSearchSupplier.resx">
       <DependentUpon>PurchaseOrderSearchSupplier.cs</DependentUpon>
@@ -881,6 +878,9 @@
     <EmbeddedResource Include="Views\Purchase_Module\ConfirmationDialog.resx">
       <DependentUpon>ConfirmationDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrderLine.resx">
+      <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_WorkersPerformance Report.resx">
       <DependentUpon>UC_WorkersPerformance Report.cs</DependentUpon>
     </EmbeddedResource>
@@ -899,7 +899,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\DataSources\WindowsFormsApp1.Views.Sales_Module.ProductWarehouseS.datasource" />
     <None Include="Resources\Minimize Window_52px.png" />
     <None Include="Resources\Close Window_52px.png" />
   </ItemGroup>

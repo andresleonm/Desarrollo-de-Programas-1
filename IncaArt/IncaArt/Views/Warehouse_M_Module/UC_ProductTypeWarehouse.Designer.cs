@@ -110,6 +110,7 @@
             this.delete.TabIndex = 55;
             this.delete.Text = "Eliminar";
             this.delete.UseVisualStyleBackColor = false;
+            this.delete.Visible = false;
             this.delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // groupBox2
@@ -337,9 +338,9 @@
             this.tabRegister.HorizontalScrollbarBarColor = true;
             this.tabRegister.HorizontalScrollbarHighlightOnWheel = false;
             this.tabRegister.HorizontalScrollbarSize = 10;
-            this.tabRegister.Location = new System.Drawing.Point(4, 35);
+            this.tabRegister.Location = new System.Drawing.Point(4, 38);
             this.tabRegister.Name = "tabRegister";
-            this.tabRegister.Size = new System.Drawing.Size(495, 674);
+            this.tabRegister.Size = new System.Drawing.Size(495, 671);
             this.tabRegister.TabIndex = 1;
             this.tabRegister.Text = "  Registro  ";
             this.tabRegister.VerticalScrollbarBarColor = true;

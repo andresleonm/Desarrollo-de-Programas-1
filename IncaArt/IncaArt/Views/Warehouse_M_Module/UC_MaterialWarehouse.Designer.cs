@@ -142,6 +142,7 @@
             this.delete.TabIndex = 81;
             this.delete.Text = "Eliminar";
             this.delete.UseVisualStyleBackColor = false;
+            this.delete.Visible = false;
             this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
             // btn_import

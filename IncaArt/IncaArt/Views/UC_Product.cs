@@ -138,7 +138,7 @@ namespace WindowsFormsApp1.Views
                     row[1] = i.ToString();
                     row[2] = product_list[i].Name;
                     row[3] = unit.Name;
-                    row[4] = product_list[i].Unit_price.ToString("F4");
+                    row[4] = product_list[i].Unit_price.ToString("F2");
                     row[5] = product_list[i].Stock_min.ToString();
                     row[6] = product_list[i].Stock_max.ToString();
                     row[7] = product_list[i].Product_type;
@@ -607,17 +607,17 @@ namespace WindowsFormsApp1.Views
                     datarange = (Range)ws.Cells[i, 2];
                     found = false;
                     string_list.Add((string)datarange.Text);
-                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || !Int32.TryParse((string)datarange.Text, out unit_id))
                     {
                         error = true;
                         error_list.Add("unit");
                     }
                     else
                     {
-                        unit = (string)datarange.Value2;
+                        unit_id = (Int32)datarange.Value2;
                         foreach (var item in unit_list)
                         {
-                            if (item.Symbol.Equals(unit))
+                            if (item.Id==unit_id)
                             {
                                 unit_id = item.Id;
                                 found = true;
@@ -646,17 +646,17 @@ namespace WindowsFormsApp1.Views
                     datarange = (Range)ws.Cells[i, 4];
                     found = false;
                     string_list.Add((string)datarange.Text);
-                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || !Int32.TryParse((string)datarange.Text, out currency_id))
                     {
                         error = true;
                         error_list.Add("currency");
                     }
                     else
                     {
-                        currency = (string)datarange.Value2;
+                        currency_id = (Int32)datarange.Value2;
                         foreach (var item in currency_list)
                         {
-                            if (item.Name.ToUpper().Equals(currency.ToUpper()))
+                            if (item.Id==currency_id)
                             {
                                 currency_id = item.Id;
                                 found = true;
