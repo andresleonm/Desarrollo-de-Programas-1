@@ -16,6 +16,7 @@ namespace WindowsFormsApp1.Views
     {
         LogController log_controller;
         UsersController user_constroller;
+        List<Log> logs_list;
 
         public UC_LogReport()
         {
@@ -23,19 +24,21 @@ namespace WindowsFormsApp1.Views
             log_controller = new LogController("", "");
         }
 
-        private void Load_DataGrid(List<Log> logs)
+        private void Load_DataGrid()
         {
             datagrid1.Rows.Clear();
 
-            foreach (Log l in logs)
+            for (int i = 0; i < logs_list.Count; i++)
             {
-                string[] row = new string[5];
+                Log l = logs_list[i];
+                string[] row = new string[6];
 
                 row[0] = l.Username;
                 row[1] = l.Action;
                 row[2] = l.Date.ToString("dd/MM/yyyy");
                 row[3] = l.Target;
                 row[4] = l.TargetId;
+                row[5] = l.ParseData();
 
                 datagrid1.Rows.Add(row);
             }
@@ -64,9 +67,9 @@ namespace WindowsFormsApp1.Views
                 
                 if (logResult.success)
                 {
-                    List<Log> logs = (List<Log>)logResult.data;
-                    Load_DataGrid(logs);
-                    MessageBox.Show(logs.Count + " filas retornadas");
+                    logs_list = (List<Log>)logResult.data;
+                    Load_DataGrid();
+                    MessageBox.Show(logs_list.Count + " filas retornadas");
                     //Cursor = Cursors.Arrow;
                 }
                 else
@@ -127,16 +130,22 @@ namespace WindowsFormsApp1.Views
                         {
                             worksheet.Cells[cellRowIndex, cellColumnIndex] = datagrid1.Rows[i].Cells[j].Value.ToString();
                         }
+
+
                         cellColumnIndex++;
                     }
                     cellColumnIndex = 1;
                     cellRowIndex++;
                 }
 
+                worksheet.get_Range("A1", "F"+(datagrid1.Rows.Count+1)).Columns.ClearFormats();
+
+                //Microsoft.Office.Interop.Excel.Range.
+
                 //Getting the location and file name of the excel to save from user. 
                 SaveFileDialog saveDialog = new SaveFileDialog();
                 saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-                saveDialog.FilterIndex = 2;
+                saveDialog.FilterIndex = 1;
 
                 if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -178,6 +187,18 @@ namespace WindowsFormsApp1.Views
                 {
                     MessageBox.Show(usersResult.message);
                 }
+            }
+        }
+
+        private void btn_expand_Click(object sender, EventArgs e)
+        {
+            if (datagrid1.CurrentRow is null)
+            {
+                MessageBox.Show("Selecciona una fila");
+            }
+            else
+            {
+                MessageBox.Show((string)datagrid1.CurrentRow.Cells[5].Value);
             }
         }
     }
