@@ -92,6 +92,7 @@
     <Compile Include="Algorithm\Workstation.cs" />
     <Compile Include="Controller\FunctionalityController.cs" />
     <Compile Include="Controller\KardexController.cs" />
+    <Compile Include="Controller\LogController.cs" />
     <Compile Include="Controller\MaterialMovementTypeController.cs" />
     <Compile Include="Controller\ParametersController.cs" />
     <Compile Include="Controller\MaterialMovementController.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Controller\SalesRefundLineController.cs" />
     <Compile Include="Controller\SupplierController.cs" />
     <Compile Include="Models\KardexLine.cs" />
+    <Compile Include="Models\Log.cs" />
     <Compile Include="Models\MaterialMovement.cs" />
     <Compile Include="Models\MaterialMovementLine.cs" />
     <Compile Include="Controller\RatioController.cs" />
@@ -373,6 +375,12 @@
     </Compile>
     <Compile Include="Views\UC_Currency2.Designer.cs">
       <DependentUpon>UC_Currency2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_LogReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC_LogReport.Designer.cs">
+      <DependentUpon>UC_LogReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_Material.cs">
       <SubType>UserControl</SubType>
@@ -741,6 +749,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Currency2.resx">
       <DependentUpon>UC_Currency2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC_LogReport.resx">
+      <DependentUpon>UC_LogReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_Material.resx">
       <DependentUpon>UC_Material.cs</DependentUpon>
