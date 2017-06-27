@@ -43,7 +43,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             sales_document_controller = new SalesDocumentController(user, password);
             sales_document_line_controller = new SalesDocumentLineController(user, password);
             pmc = new ProductMovementController(user, password);
-
+            ccbo_document_type.SelectedIndex = 0;
             fill_Sales_Documents();
         }
 
@@ -90,6 +90,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 SalesDocument sales_doc = new SalesDocument();
                 DateTime init = dt_iniDate.Value.Date;
                 DateTime end = dt_endDate.Value.Date;
+                sales_doc.Type_document_id = ccbo_document_type.Text[0];
                 Boolean equals = false;
                 if (init == end) equals = true;
                 if (ctxt_document_id.Text != "")

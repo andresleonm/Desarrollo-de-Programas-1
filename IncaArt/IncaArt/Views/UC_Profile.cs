@@ -270,5 +270,37 @@ namespace WindowsFormsApp1.Views
                 }
             }
         }
+
+        private void metroButtonClear_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in metroGrid2.Rows)
+            {
+                row.Cells[3].Value = false;
+            }
+        }
+
+        private void metroGrid2_ColumnHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == 3)
+            {
+                foreach (DataGridViewRow row in metroGrid2.Rows)
+                {
+                    row.Cells[3].Value = true;
+                }
+
+                MessageBox.Show($"{metroGrid2.Rows.Count} filas seleccionadas");
+            }
+        }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            String searchString = metroTextBoxSearch.Text;
+
+            foreach (DataGridViewRow row in metroGrid2.Rows)
+            {
+                String desc = (String)row.Cells[2].Value;
+                row.Visible = searchString == "" || desc.IndexOf(searchString, StringComparison.OrdinalIgnoreCase) >= 0;
+            }
+        }
     }
 }

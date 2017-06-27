@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
 using System.Text.RegularExpressions;
+using Microsoft.Office.Interop.Excel;
 
 namespace WindowsFormsApp1.Views
 {
@@ -31,6 +32,7 @@ namespace WindowsFormsApp1.Views
         Dictionary<int, string> combo_type;
 
         Models.Customer curCustomer;
+        ProgressBarForm progressform;
         public Client()
         {
             InitializeComponent();
@@ -74,6 +76,7 @@ namespace WindowsFormsApp1.Views
             Load_DataGridView();
             metroTabControl1.SelectedIndex = 0;
 
+            progressform = new ProgressBarForm();
         }
 
 
@@ -119,9 +122,9 @@ namespace WindowsFormsApp1.Views
         {
             foreach (Control c in control.Controls)
             {
-                if (c is TextBox)
+                if (c is System.Windows.Forms.TextBox)
                 {
-                    ((TextBox)c).Clear();
+                    ((System.Windows.Forms.TextBox)c).Clear();
                 }
 
                 if (c.HasChildren)
@@ -129,19 +132,11 @@ namespace WindowsFormsApp1.Views
                     ClearTextBoxes(c);
                 }
 
-
-                if (c is CheckBox)
-                {
-
-                    ((CheckBox)c).Checked = false;
-                }
-
                 if (c is RadioButton)
                 {
                     ((RadioButton)c).Checked = false;
                 }
             }
-
         }
 
 
@@ -160,7 +155,7 @@ namespace WindowsFormsApp1.Views
             address = textbox_address.Text;
             email = textbox_email.Text;
             state = "ACTIVE";
-            type = ((KeyValuePair<int, string>)combobox_type.SelectedItem).Value;
+            type = ((KeyValuePair<int, string>)combobox_type.SelectedItem).Value.ToUpper();
             priority = Int32.Parse(((KeyValuePair<int, string>)combobox_priority.SelectedItem).Value);
 
             Models.Customer customer = new Models.Customer();
@@ -568,7 +563,329 @@ namespace WindowsFormsApp1.Views
         }
 
 
-        // --
+        // Excel - Import 
+        private partial class CustomerError //Clase temporal para manejo de Excel con filas con errores
+        {
+            public List<string> error_list;
+            public List<string> string_list;
+        }
+
+        private void btn_import_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Filter = "Excel |*.xlsx;*.xls";
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                //MessageBox.Show(openDialog.FileName, "Ventana", MessageBoxButtons.OK);
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                if (excel == null)
+                {
+                    Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
+                    return;
+                }   
+                Workbook wb = excel.Workbooks.Open(openDialog.FileName);
+                Worksheet ws = (Worksheet)wb.Worksheets[1];
+                Range range = ws.UsedRange;
+                int row_count = range.Rows.Count;
+                int column_count = range.Columns.Count,priority=-1;
+                Range datarange;
+                string name = "", doi = "",address ="", phone = "", email = "",type="";
+                double  number;
+                bool error; //error individual
+                bool found;
+                List<string> error_list, string_list; //para hacer control de cada error de fila
+                Models.Customer customer;
+                int  success_lines = 0, error_lines = 0;
+                List<CustomerError> customer_error_list = new List<CustomerError>(); //Lista de materiales para el Excel con error
+                Controller.Result temp;
+                progressform.SetupValues(0, row_count, 0);
+                progressform.Show();
+                //En Interop Excel el indice comienza en 1
+                for (int i = 3; i <= row_count; i++) //Fila 3 comienza las filas de materiales
+                {
+                    error = false;
+                    CustomerError customer_error = new CustomerError();
+                    error_list = new List<string>();
+                    string_list = new List<string>();
+                    //Nombre
+                    datarange = (Range)ws.Cells[i, 1];
+                    string_list.Add((string)datarange.Text);
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("name");
+                    }
+                    else
+                    {
+                        name = (string)datarange.Value2;
+                    }
+                    
+                    //DNI
+                    datarange = (Range)ws.Cells[i, 2];
+                    string_list.Add((string)datarange.Text);
+                    if (datarange.Value2 == null || !double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("dni");
+                    }
+                    else
+                    {
+                        doi = ((double)datarange.Value2).ToString();
+                    }
+                    //Dirección
+                    datarange = (Range)ws.Cells[i, 3];
+                    string_list.Add((string)datarange.Text);
+                    if (datarange.Value2 == null || double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("address");
+                    }
+                    else
+                    {
+                        address = ((string)datarange.Value2).ToString();
+                    }
+
+                    //Teléfono
+                    datarange = (Range)ws.Cells[i, 4];
+                    string_list.Add((string)datarange.Text);
+                    if (datarange.Value2 == null || !isPhoneCorrect((string)datarange.Text))
+                    {
+                        error = true;
+                        error_list.Add("phone");
+                    }
+                    else
+                    {
+                        phone = ((double)datarange.Value2).ToString();
+                    }
+
+                    //Correo
+                    datarange = (Range)ws.Cells[i, 5];
+                    string_list.Add((string)datarange.Text);
+                    if (datarange.Value2 == null || !isEmailCorrect((string)datarange.Text))
+                    {
+                        error = true;
+                        error_list.Add("email");
+                    }
+                    else
+                    {
+                        email = ((string)datarange.Value2).ToString();
+                    }
+
+                    //Type
+                    datarange = (Range)ws.Cells[i, 6];
+                    string_list.Add((string)datarange.Text);
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("type");
+                    }
+                    else
+                    {
+                        type = (string)datarange.Value2;
+                        found = false;
+                        foreach (var item in combo_type)
+                        {
+                            if (item.Value.ToUpper().Equals(type.ToUpper()))
+                            {
+                                type = item.Value.ToUpper();
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found)
+                        {
+                            error = true;
+                            error_list.Add("type_find");
+                        }
+                    }
+
+                    //Priority
+                    datarange = (Range)ws.Cells[i, 7];
+                    string_list.Add((string)datarange.Text);
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text) || !double.TryParse((string)datarange.Text, out number))
+                    {
+                        error = true;
+                        error_list.Add("priority");
+                    }
+                    else
+                    {
+                        priority = (int)datarange.Value2;
+                        found = false;
+                        foreach (var item in combo_priority)
+                        {
+                            if (item.Key.Equals(priority))
+                            {
+                                priority = item.Key;
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found)
+                        {
+                            error = true;
+                            error_list.Add("priority_find");
+                        }
+                    }
+                    
+
+                    if (error)//Si hay error entonces, se agrega a la lista de material error
+                    {
+                        customer_error.error_list = error_list;
+                        customer_error.string_list = string_list;
+                        customer_error_list.Add(customer_error);
+                        error_lines++;
+                    }
+                    else
+                    {
+                        customer = new Models.Customer();
+                        customer.Name = name;
+                        customer.Doi = doi;
+                        customer.Email = email;
+                        customer.Phone = phone;
+                        customer.Address = address;
+                        customer.Priority = priority;
+                        customer.Type = type;
+                        temp = customerController.insertCustomer(customer);
+                        if (!temp.success)
+                        {
+                            error = true;
+                            error_list.Add(temp.message);
+                            customer_error.error_list = error_list;
+                            customer_error.string_list = string_list;
+                            customer_error_list.Add(customer_error);
+                            error_lines++;
+                        }
+                        else
+                        {
+                            success_lines++;
+                        }
+                        progressform.IncrementProgress(1);
+                    }
+                }
+                MessageBox.Show("Lineas correctas: " + success_lines + "\n" + "Lineas inccorrectas: " + error_lines, "Resultado de importación desde Excel", MessageBoxButtons.OK);
+                if (customer_error_list.Count > 0) //Hubo por lo menos una fila con error
+                {
+                    CreateExcelError(customer_error_list);
+                }
+                excel.Quit();
+                excel = null;
+                wb = null;
+
+               
+            }
+            progressform.Hide();
+            openDialog.Dispose();
+            Load_Data();
+            Load_DataGridView();
+
+        }
+
+        private void CreateExcelError(List<CustomerError> list)
+        {
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            if (excel == null)
+            {
+                Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
+                return;
+            }
+            excel.Visible = true;
+
+            Workbook wb = excel.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
+            Worksheet ws = (Worksheet)wb.Worksheets[1];
+            ws.Name = "Clientes";
+            if (ws == null)
+            {
+                Console.WriteLine("Worksheet could not be created. Check that your office installation and project references are correct.");
+            }
+
+            ws.Range["A1"].Value2 = "Lista de Clientes con Error";
+            ws.Range["A1"].Font.Size = 15;
+            ws.Range["A1"].Font.Bold = true;
+            ws.Range["A2"].Value2 = "Nombre";
+            ws.Range["B2"].Value2 = "DNI";
+            ws.Range["C2"].Value2 = "Dirección";
+            ws.Range["D2"].Value2 = "Teléfono";
+            ws.Range["E2"].Value2 = "Correo";
+            ws.Range["F2"].Value2 = "Tipo";
+            ws.Range["G2"].Value2 = "Prioridad";
+
+            string observation;
+            CustomerError customer_error;
+            for (int i = 0; i < list.Count(); i++)
+            {
+                observation = "";
+                customer_error = list[i];
+                for (int j = 0; j < list[i].string_list.Count(); j++)//Se pone los datos del material escrito
+                {
+                    ((Range)ws.Cells[i + 3, j + 1]).Value2 = customer_error.string_list[j];
+                }
+                foreach (var item in customer_error.error_list)
+                {
+                    switch (item)
+                    {
+                        case "name":
+                            observation += "Nombre inválido. ";
+                            break;
+                        case "dni":
+                            observation += "DNI inválido. ";
+                            break;
+                        case "address":
+                            observation += "Dirección inválido. ";
+                            break;
+                        case "phone":
+                            observation += "Teléfono inválido. ";
+                            break;
+                        case "email":
+                            observation += "Correo inválido. ";
+                            break;
+                        case "type_find":
+                            observation += "Tipo no encontrado. ";
+                            break;
+                        case "priority_find":
+                            observation += "Prioridad no encontrado. ";
+                            break;
+                        case "register":
+                            observation += "Error en registro";
+                            break;
+                        default:
+                            observation += item;
+                            break;
+                    }
+                }
+                ((Range)ws.Cells[i + 3, 8]).Value2 = observation;
+            }
+            ws.Columns.AutoFit();
+        }
+
+        private void btn_template_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            if (excel == null)
+            {
+                Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
+                return;
+            }
+            excel.Visible = true;
+
+            Workbook wb = excel.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
+            Worksheet ws = (Worksheet)wb.Worksheets[1];
+            ws.Name = "Clientes";
+            if (ws == null)
+            {
+                Console.WriteLine("Worksheet could not be created. Check that your office installation and project references are correct.");
+            }
+            ws.Range["A1"].Value2 = "Lista de Clientes";
+            ws.Range["A1"].Font.Size = 15;
+            ws.Range["A1"].Font.Bold = true;
+            ws.Range["A2"].Value2 = "Nombre";
+            ws.Range["B2"].Value2 = "DNI";
+            ws.Range["C2"].Value2 = "Dirección";
+            ws.Range["D2"].Value2 = "Teléfono";
+            ws.Range["E2"].Value2 = "Correo";
+            ws.Range["F2"].Value2 = "Tipo";
+            ws.Range["G2"].Value2 = "Prioridad";
+            ws.Columns.AutoFit();
+        }
 
     }
-}
+ }
