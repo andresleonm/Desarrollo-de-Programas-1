@@ -28,6 +28,7 @@ namespace WindowsFormsApp1.Views
         private void btn_Estimates_Click(object sender, EventArgs e)
         {
             uC_SalesEstimate1.Visible = true;
+            uC_SalesEstimate1.btn_Clean.PerformClick();
             uC_SalesOrder2.Visible = false;
             uC_SalesDocument2.Visible = false;
             uC_SalesRefund1.Visible = false;
@@ -36,6 +37,7 @@ namespace WindowsFormsApp1.Views
         private void btn_Orders_Click(object sender, EventArgs e)
         {
             uC_SalesOrder2.Visible = true;
+            uC_SalesOrder2.btn_Clean.PerformClick();
             uC_SalesDocument2.Visible = false;
             uC_SalesRefund1.Visible = false;
             uC_SalesEstimate1.Visible = false;
@@ -44,6 +46,7 @@ namespace WindowsFormsApp1.Views
         private void btn_Documents_Click(object sender, EventArgs e)
         {
             uC_SalesDocument2.Visible = true;
+            uC_SalesDocument2.btn_Clean.PerformClick();
             uC_SalesEstimate1.Visible = false;
             uC_SalesOrder2.Visible = false;
             uC_SalesRefund1.Visible = false;
@@ -52,6 +55,7 @@ namespace WindowsFormsApp1.Views
         private void btn_Refunds_Click(object sender, EventArgs e)
         {
             uC_SalesRefund1.Visible = true;
+            uC_SalesRefund1.btn_Clean.PerformClick();
             uC_SalesEstimate1.Visible = false;
             uC_SalesOrder2.Visible = false;
             uC_SalesDocument2.Visible = false;

@@ -291,6 +291,7 @@
             this.cbo_Product.Size = new System.Drawing.Size(228, 29);
             this.cbo_Product.TabIndex = 49;
             this.cbo_Product.UseSelectable = true;
+            this.cbo_Product.SelectedIndexChanged += new System.EventHandler(this.cbo_Product_SelectedIndexChanged);
             // 
             // btn_Cancel
             // 

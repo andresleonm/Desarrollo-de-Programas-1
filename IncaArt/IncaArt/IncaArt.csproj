@@ -259,6 +259,12 @@
     <Compile Include="Views\ICheckPermissions.Designer.cs">
       <DependentUpon>ICheckPermissions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProgressBarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ProgressBarForm.Designer.cs">
+      <DependentUpon>ProgressBarForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProgressForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -694,6 +700,9 @@
     <EmbeddedResource Include="Views\Frm_AdvancedSimulationConfig.resx">
       <DependentUpon>Frm_AdvancedSimulationConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProgressBarForm.resx">
+      <DependentUpon>ProgressBarForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ProgressForm.resx">
       <DependentUpon>ProgressForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -905,6 +914,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\WindowsFormsApp1.Views.Sales_Module.ProductWarehouseS.datasource" />
     <None Include="Resources\Minimize Window_52px.png" />
     <None Include="Resources\Close Window_52px.png" />
   </ItemGroup>
