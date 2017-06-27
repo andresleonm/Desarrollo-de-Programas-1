@@ -288,7 +288,7 @@
             this.grid_Refunds.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_Refunds.Size = new System.Drawing.Size(975, 255);
             this.grid_Refunds.TabIndex = 52;
-            this.grid_Refunds.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Refunds_CellContentClick);
+            this.grid_Refunds.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Refunds_CellDoubleClick);
             // 
             // currencyidDataGridViewTextBoxColumn
             // 
@@ -439,7 +439,7 @@
             // dt_iniDate
             // 
             this.dt_iniDate.Location = new System.Drawing.Point(664, 22);
-            this.dt_iniDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_iniDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_iniDate.Name = "dt_iniDate";
             this.dt_iniDate.Size = new System.Drawing.Size(222, 29);
             this.dt_iniDate.TabIndex = 59;
@@ -447,7 +447,7 @@
             // dt_endDate
             // 
             this.dt_endDate.Location = new System.Drawing.Point(664, 74);
-            this.dt_endDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_endDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_endDate.Name = "dt_endDate";
             this.dt_endDate.Size = new System.Drawing.Size(222, 29);
             this.dt_endDate.TabIndex = 58;
@@ -1378,7 +1378,6 @@
             this.grid_Refund_Lines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_Refund_Lines.Size = new System.Drawing.Size(984, 191);
             this.grid_Refund_Lines.TabIndex = 52;
-            this.grid_Refund_Lines.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Refund_Lines_CellContentClick);
             this.grid_Refund_Lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Refund_Lines_CellValueChanged);
             this.grid_Refund_Lines.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.grid_Refund_Lines_DataError);
             // 

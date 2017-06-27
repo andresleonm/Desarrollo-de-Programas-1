@@ -129,7 +129,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
         }
 
-        private void grid_Documents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void grid_Documents_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             active_See();
         }
@@ -849,7 +849,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
            
 
         }
-
         
     }
 }

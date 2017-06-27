@@ -106,7 +106,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
             grid_clients.Columns["phone"].DisplayIndex = 4;
             grid_clients.Columns["email"].DisplayIndex = 5;
             grid_clients.Columns["priority"].DisplayIndex = 6;
-            
         }
 
         private void fill_GridView(List<Customer> list)
@@ -116,7 +115,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             AdjustColumnOrder();
         }
 
-        private void grid_clients_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void grid_clients_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Customer client_found = (Customer)grid_clients.CurrentRow.DataBoundItem;
             clientList.Add(client_found);

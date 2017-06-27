@@ -131,7 +131,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
         }
 
-        private void grid_estimates_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void grid_estimates_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             active_Edit();
         }
@@ -320,7 +320,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     data = data.Concat(new List<Models.SalesEstimateLine>().ToList()).ToList();
                     grid_estimate_lines.DataSource = data;
                     AdjustColumnEstimateLine();
-                    refresh_amount();
+                    update_amount();
                 }
                 catch
                 {
@@ -374,21 +374,20 @@ namespace WindowsFormsApp1.Views.Sales_Module
             {
                 if (e.ColumnIndex == 8 || e.ColumnIndex == 9)
                 {
-                    double update_amount = double.Parse(grid_estimate_lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString()) * double.Parse(grid_estimate_lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
-                    grid_estimate_lines.Rows[e.RowIndex].Cells["amount"].Value = update_amount;
+                    double refresh_amount = double.Parse(grid_estimate_lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString()) * double.Parse(grid_estimate_lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
+                    grid_estimate_lines.Rows[e.RowIndex].Cells["amount"].Value = refresh_amount;
 
-                    refresh_amount();
+                    update_amount();
                 }
             }
         }
 
-        private void refresh_amount()
+        private void update_amount()
         {
             double acumulate = 0;
             for (int i = 0; i < grid_estimate_lines.RowCount; i++)
-            {
                 acumulate += double.Parse(grid_estimate_lines.Rows[i].Cells["amount"].Value.ToString());
-            }
+           
             txt_amount.Text = acumulate.ToString("0.00");
         }
 
@@ -653,5 +652,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 //do something else
             }
         }
+        
     }
 }

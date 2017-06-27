@@ -112,7 +112,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
         }
 
-        private void grid_Refunds_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void grid_Refunds_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             active_See();
         }
@@ -153,8 +153,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             catch{
                 this.grid_Refunds.DataSource = new List<SalesRefund>();
                 AdjustColumnRefund();
-            }
-            
+            }            
         }
 
         private void clean_gridView_Refund()
@@ -227,7 +226,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     combo.DisplayMember = "Name";
                     combo.ValueMember = "Id";
 
-                    grid_Refund_Lines[10, i] = combo;
+                   
 
 
 
@@ -449,12 +448,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
         {
             e.ThrowException = false;
         }
-
-        private void grid_Refund_Lines_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
     }
 }
 

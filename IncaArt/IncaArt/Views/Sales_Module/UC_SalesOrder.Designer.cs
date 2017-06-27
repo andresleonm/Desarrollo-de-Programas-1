@@ -281,7 +281,7 @@
             this.grid_orders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_orders.Size = new System.Drawing.Size(792, 255);
             this.grid_orders.TabIndex = 51;
-            this.grid_orders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_orders_CellContentClick);
+            this.grid_orders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_orders_CellDoubleClick);
             // 
             // currency_id
             // 
