@@ -135,11 +135,11 @@ namespace WindowsFormsApp1.Views
                     row[3] = type;
                     if (ratio.ratio_type == 1)
                     {
-                        row[4] = ratio.broken_quantity.ToString("F4");
+                        row[4] = ratio.broken_quantity.ToString();
                     }
                     else
                     {
-                        row[4] = ratio.value.ToString("F4");
+                        row[4] = ratio.value.ToString();
                     }
                         
                     metroGrid1.Rows.Add(row);
@@ -413,6 +413,7 @@ namespace WindowsFormsApp1.Views
                 //En Interop Excel el indice comienza en 1
                 for (int i = 0; i <= worker_list.Count(); i++) //Fila 3 comienza las filas de materiales
                 {
+                    if (i == 1) break;
                     error = false;
                     datarange = (Range)ws.Cells[i+7, 1];//Trabajador
                     if (string.IsNullOrWhiteSpace((string)datarange.Text))
@@ -425,6 +426,7 @@ namespace WindowsFormsApp1.Views
                     }
                     for (int j = 0; j < 12; j++)
                     {
+                        error = false;
                         datarange = (Range)ws.Cells[i+7, j+2];//Valor
                         if (datarange.Value2 == null || !double.TryParse((string)datarange.Text, out number))
                         {
@@ -454,18 +456,23 @@ namespace WindowsFormsApp1.Views
                                     workstation_id = 6;
                                     break;
                             }
-                            ratio_type_id = j % 2;
+                            ratio_type_id = (j % 2)+1;
+                        }
+                        if (!error)
+                        {
+                            result = ratioController.updateRatio2(worker, workstation_id, ratio_type_id, ratio_value);
                         }
                     }
-                    if (!error)
-                    {
-                        result = ratioController.updateRatio2(worker, workstation_id, ratio_type_id, ratio_value);
-                    }
+                    
 
                 }
                 
             }
+            MessageBox.Show("Termino");
             openDialog.Dispose();
+            Load_Data();
+            Load_DataGridView();
+            ratio_list_full = ratio_list;
         }
 
         private void btn_import_Click(object sender, EventArgs e)
