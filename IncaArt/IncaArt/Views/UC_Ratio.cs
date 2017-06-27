@@ -24,6 +24,7 @@ namespace WindowsFormsApp1.Views
         Controller.WorkstationsController workstationController;
         Controller.WorkerController workerController;
         Controller.Result result;
+        ProgressBarForm progressform;
         bool first;
         public UC_Ratio()
         {
@@ -39,14 +40,19 @@ namespace WindowsFormsApp1.Views
             workstationController = new Controller.WorkstationsController(user, password);
             workerController = new Controller.WorkerController(user, password);
             first = true;
+            progressform = new ProgressBarForm();
+
         }
 
         private void UC_Ratio_VisibleChanged(object sender, EventArgs e)
         {
             if (Visible)
             {
+                progressform.SetupValues(0, 50, 0);
+                progressform.Show();
                 Load_Data();
                 Load_DataGridView();
+                progressform.Hide();
             }
         }
 
@@ -75,17 +81,15 @@ namespace WindowsFormsApp1.Views
                 combobox_workstation_s.DisplayMember = "Value";
                 combobox_workstation_s.ValueMember = "Key";
             }
-
+            progressform.IncrementProgress(10);
             
         }
 
         private void Load_DataGridView()
         {
             metroGrid1.Rows.Clear();
-
             foreach (Models.Ratio ratio in ratio_list)
             {
-
                 Models.Worker worker = null;
                 foreach (var item in worker_list)
                 {
@@ -158,7 +162,7 @@ namespace WindowsFormsApp1.Views
             {
                 MessageBox.Show(result.message);
             }
-
+            progressform.IncrementProgress(10);
             result = productController.getProducts();
             if (result.success)
             {
@@ -168,7 +172,7 @@ namespace WindowsFormsApp1.Views
             {
                 MessageBox.Show(result.message);
             }
-
+            progressform.IncrementProgress(10);
             result = workstationController.getWorkstations();
             if (result.success)
             {
@@ -178,7 +182,7 @@ namespace WindowsFormsApp1.Views
             {
                 MessageBox.Show(result.message);
             }
-
+            progressform.IncrementProgress(10);
             result = ratioController.getRatios("", "", "", 0, 0, 0);
             if (result.success)
             {
@@ -188,6 +192,7 @@ namespace WindowsFormsApp1.Views
             {
                 MessageBox.Show(result.message);
             }
+            progressform.IncrementProgress(10);
             Load_Combobox();
             if (first)
             {
@@ -412,11 +417,13 @@ namespace WindowsFormsApp1.Views
                 double ratio_value = -1, number;
                 bool error; //error individual
                 int ratio_type_id = 0,workstation_id=0;
-
+                progressform.Show();
+                progressform.SetupValues(0, worker_list.Count(), 0);
                 //En Interop Excel el indice comienza en 1
                 for (int i = 0; i <= worker_list.Count(); i++) //Fila 3 comienza las filas de materiales
                 {
-                    if (i == 1) break;
+                    progressform.IncrementProgress(1);
+                    //progress.Value = 
                     error = false;
                     datarange = (Range)ws.Cells[i+7, 1];//Trabajador
                     if (string.IsNullOrWhiteSpace((string)datarange.Text))
@@ -469,13 +476,17 @@ namespace WindowsFormsApp1.Views
                     
 
                 }
-                
+                excel.Quit();
+                wb = null;
+                excel = null;
             }
-            MessageBox.Show("Termino");
+            progressform.Hide();
+            MessageBox.Show("Se terminó de importar los ratios","Importación completada");
             openDialog.Dispose();
             Load_Data();
             Load_DataGridView();
             ratio_list_full = ratio_list;
+            
         }
 
         private void btn_import_Click(object sender, EventArgs e)
