@@ -16,9 +16,15 @@ namespace WindowsFormsApp1.Controller
 
         }
 
-        public Result getLogs()
+        public Result getLogs(string startDate, string endDate, string type, string action, string username, string number)
         {
             List<Parameter> parameters = new List<Parameter>();
+            if (startDate != "") parameters.Add(new Parameter("start_date", startDate));
+            if (endDate != "") parameters.Add(new Parameter("end_date", endDate));
+            if (type != "") parameters.Add(new Parameter("type", type));
+            if (action != "") parameters.Add(new Parameter("action", action));
+            if (username != "") parameters.Add(new Parameter("user_name", username));
+            if (number != "") parameters.Add(new Parameter("number", number));
 
             GenericResult result = execute_function("get_log", parameters);
 
