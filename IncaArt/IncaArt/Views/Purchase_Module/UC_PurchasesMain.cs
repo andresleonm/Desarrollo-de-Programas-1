@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1.Views
+namespace WindowsFormsApp1.Views.Purchase_Module
 {
-    public partial class UC_SalesMain : UserControl
+    public partial class UC_PurchasesMain : UserControl
     {
-        public UC_SalesMain()
+        public UC_PurchasesMain()
         {
             InitializeComponent();
         }

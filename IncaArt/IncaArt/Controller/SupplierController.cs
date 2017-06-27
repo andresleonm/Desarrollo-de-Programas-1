@@ -115,5 +115,25 @@ namespace WindowsFormsApp1.Controller
             }
             return new Result(null, result.success, result.message);
         }
+
+        public Result getSupplier_by_text(string text)
+        {
+            //consultar permisos
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("name", text));
+            GenericResult result = execute_function("get_supplier_by_name", parameters);
+            List<Models.Supplier> customers = new List<Models.Supplier>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    customers.Add(new Models.Supplier(Int32.Parse(r.getColumn(0)), r.getColumn(1), r.getColumn(2), r.getColumn(3), r.getColumn(4), r.getColumn(5), r.getColumn(6)));
+                }
+
+                return new Result(customers, true, "");
+            }
+            return new Result(null, result.success, result.message);
+
+        }
     }
 }

@@ -62,6 +62,9 @@
             this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gb_Filter = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.ccbo_document_type = new MetroFramework.Controls.MetroComboBox();
             this.btn_Excel = new MetroFramework.Controls.MetroTile();
             this.btn_Search_Documents = new System.Windows.Forms.Button();
             this.dt_iniDate = new MetroFramework.Controls.MetroDateTime();
@@ -161,7 +164,7 @@
             this.tab_Document.Controls.Add(this.newOrder);
             this.tab_Document.Location = new System.Drawing.Point(10, 5);
             this.tab_Document.Name = "tab_Document";
-            this.tab_Document.SelectedIndex = 0;
+            this.tab_Document.SelectedIndex = 1;
             this.tab_Document.Size = new System.Drawing.Size(1042, 605);
             this.tab_Document.Style = MetroFramework.MetroColorStyle.Teal;
             this.tab_Document.TabIndex = 43;
@@ -291,7 +294,7 @@
             this.grid_Documents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_Documents.Size = new System.Drawing.Size(975, 255);
             this.grid_Documents.TabIndex = 52;
-            this.grid_Documents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Documents_CellContentClick);
+            this.grid_Documents.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Documents_CellDoubleClick);
             // 
             // currency_id
             // 
@@ -442,6 +445,9 @@
             // 
             // gb_Filter
             // 
+            this.gb_Filter.Controls.Add(this.label19);
+            this.gb_Filter.Controls.Add(this.label21);
+            this.gb_Filter.Controls.Add(this.ccbo_document_type);
             this.gb_Filter.Controls.Add(this.btn_Excel);
             this.gb_Filter.Controls.Add(this.btn_Search_Documents);
             this.gb_Filter.Controls.Add(this.dt_iniDate);
@@ -462,11 +468,49 @@
             this.gb_Filter.TabStop = false;
             this.gb_Filter.Text = "Filtros";
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label19.Location = new System.Drawing.Point(14, 125);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(75, 13);
+            this.label19.TabIndex = 77;
+            this.label19.Text = "Documento:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label21.Location = new System.Drawing.Point(13, 107);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(50, 13);
+            this.label21.TabIndex = 76;
+            this.label21.Text = "Tipo de";
+            // 
+            // ccbo_document_type
+            // 
+            this.ccbo_document_type.FormattingEnabled = true;
+            this.ccbo_document_type.ItemHeight = 23;
+            this.ccbo_document_type.Items.AddRange(new object[] {
+            "Seleccionar",
+            "Factura",
+            "Boleta",
+            "Nota de Crédito"});
+            this.ccbo_document_type.Location = new System.Drawing.Point(125, 108);
+            this.ccbo_document_type.Name = "ccbo_document_type";
+            this.ccbo_document_type.Size = new System.Drawing.Size(214, 29);
+            this.ccbo_document_type.TabIndex = 75;
+            this.ccbo_document_type.UseCustomBackColor = true;
+            this.ccbo_document_type.UseSelectable = true;
+            // 
             // btn_Excel
             // 
             this.btn_Excel.ActiveControl = null;
             this.btn_Excel.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Excel.Location = new System.Drawing.Point(664, 117);
+            this.btn_Excel.Location = new System.Drawing.Point(664, 107);
             this.btn_Excel.Name = "btn_Excel";
             this.btn_Excel.Size = new System.Drawing.Size(145, 38);
             this.btn_Excel.TabIndex = 74;
@@ -496,15 +540,15 @@
             // dt_iniDate
             // 
             this.dt_iniDate.Location = new System.Drawing.Point(664, 22);
-            this.dt_iniDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_iniDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_iniDate.Name = "dt_iniDate";
             this.dt_iniDate.Size = new System.Drawing.Size(222, 29);
             this.dt_iniDate.TabIndex = 59;
             // 
             // dt_endDate
             // 
-            this.dt_endDate.Location = new System.Drawing.Point(664, 74);
-            this.dt_endDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_endDate.Location = new System.Drawing.Point(664, 65);
+            this.dt_endDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_endDate.Name = "dt_endDate";
             this.dt_endDate.Size = new System.Drawing.Size(222, 29);
             this.dt_endDate.TabIndex = 58;
@@ -513,7 +557,7 @@
             // 
             this.btn_Search_Client.ActiveControl = null;
             this.btn_Search_Client.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_Search_Client.Location = new System.Drawing.Point(368, 74);
+            this.btn_Search_Client.Location = new System.Drawing.Point(371, 67);
             this.btn_Search_Client.Name = "btn_Search_Client";
             this.btn_Search_Client.Size = new System.Drawing.Size(41, 29);
             this.btn_Search_Client.TabIndex = 57;
@@ -561,7 +605,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label10.Location = new System.Drawing.Point(543, 84);
+            this.label10.Location = new System.Drawing.Point(561, 75);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(76, 13);
             this.label10.TabIndex = 55;
@@ -582,7 +626,7 @@
             this.ctxt_customer.CustomButton.UseSelectable = true;
             this.ctxt_customer.CustomButton.Visible = false;
             this.ctxt_customer.Lines = new string[0];
-            this.ctxt_customer.Location = new System.Drawing.Point(125, 74);
+            this.ctxt_customer.Location = new System.Drawing.Point(125, 65);
             this.ctxt_customer.MaxLength = 32767;
             this.ctxt_customer.Name = "ctxt_customer";
             this.ctxt_customer.PasswordChar = '\0';
@@ -613,7 +657,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label14.Location = new System.Drawing.Point(14, 84);
+            this.label14.Location = new System.Drawing.Point(14, 67);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(54, 13);
             this.label14.TabIndex = 52;
@@ -624,7 +668,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label15.Location = new System.Drawing.Point(543, 32);
+            this.label15.Location = new System.Drawing.Point(561, 33);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(70, 13);
             this.label15.TabIndex = 51;
@@ -983,7 +1027,7 @@
             this.dt_IssueHour.Enabled = false;
             this.dt_IssueHour.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dt_IssueHour.Location = new System.Drawing.Point(543, 121);
-            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_IssueHour.Name = "dt_IssueHour";
             this.dt_IssueHour.Size = new System.Drawing.Size(87, 29);
             this.dt_IssueHour.TabIndex = 74;
@@ -1050,7 +1094,7 @@
             this.dt_IssueDate.Enabled = false;
             this.dt_IssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dt_IssueDate.Location = new System.Drawing.Point(432, 121);
-            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(4, 29);
+            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.dt_IssueDate.Name = "dt_IssueDate";
             this.dt_IssueDate.Size = new System.Drawing.Size(105, 29);
             this.dt_IssueDate.TabIndex = 64;
@@ -1187,7 +1231,7 @@
             this.txt_external.CustomButton.Visible = false;
             this.txt_external.Lines = new string[0];
             this.txt_external.Location = new System.Drawing.Point(87, 124);
-            this.txt_external.MaxLength = 32767;
+            this.txt_external.MaxLength = 8;
             this.txt_external.Name = "txt_external";
             this.txt_external.PasswordChar = '\0';
             this.txt_external.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -1201,6 +1245,7 @@
             this.txt_external.UseSelectable = true;
             this.txt_external.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txt_external.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txt_external.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_external_KeyPress);
             // 
             // btn_Search_Movement
             // 
@@ -1320,7 +1365,7 @@
             this.txt_observation.CustomButton.Visible = false;
             this.txt_observation.Lines = new string[0];
             this.txt_observation.Location = new System.Drawing.Point(108, 408);
-            this.txt_observation.MaxLength = 32767;
+            this.txt_observation.MaxLength = 400;
             this.txt_observation.Multiline = true;
             this.txt_observation.Name = "txt_observation";
             this.txt_observation.PasswordChar = '\0';
@@ -1685,7 +1730,7 @@
         private MetroFramework.Controls.MetroTextBox txt_observation;
         private System.Windows.Forms.Label label3;
         private MetroFramework.Controls.MetroTextBox txt_amount;
-        private System.Windows.Forms.Button btn_Clean;
+        public System.Windows.Forms.Button btn_Clean;
         private System.Windows.Forms.Button btn_Cancel;
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.Label label6;
@@ -1768,5 +1813,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amount2;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private MetroFramework.Controls.MetroDateTime dt_IssueHour;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label21;
+        private MetroFramework.Controls.MetroComboBox ccbo_document_type;
     }
 }

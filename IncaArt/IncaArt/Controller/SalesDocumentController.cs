@@ -10,8 +10,11 @@ namespace WindowsFormsApp1.Controller
 {
     class SalesDocumentController : DataService.DatabaseService
     {
+        SalesDocumentLineController sdlc;
+
         public SalesDocumentController(string user, string password) : base( user, password)
         {
+            sdlc = new SalesDocumentLineController(user, password);
         }
 
         public Result getSalesDocumentsforRefund(int idDocument = 0, int idClient = 0, string iniDate = "", string endDate = "")
@@ -92,6 +95,7 @@ namespace WindowsFormsApp1.Controller
             {
                 if (end != null) parameters.Add(new Parameter("fend", end.ToString("MM/dd/yyyy")));
             }
+            if (sales_document.Type_document_id.CompareTo('S') != 0) parameters.Add(new Parameter("type", sales_document.Type_document_id.ToString()));
             GenericResult result = execute_function("get_sales_documents_by_filter", parameters);
             List<SalesDocument> sales_documents = new List<SalesDocument>();
             if (result.success)
@@ -130,7 +134,57 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("observation", sales_document.Observation));
             parameters.Add(new Parameter("movement_id", sales_document.Movement_id.ToString()));
             parameters.Add(new Parameter("external_number", sales_document.External_number.ToString()));
+
             GenericResult result = execute_transaction("insert_sales_document", parameters);
+            int id;
+
+            if (result.success)
+            {
+                try
+                {
+                    id = Int32.Parse(result.singleValue);
+                }
+                catch (Exception e)
+                {
+                    return new Result(null, false, e.Message);
+                }
+
+                try
+                {
+                    int n = 1;
+                    foreach (SalesDocumentLine line in sales_document.Lines)
+                    {
+                        if (line.Quantity != 0)
+                        {
+                            line.Id = n;
+                            line.Document_id = id;
+                            Result resultLine = sdlc.insertSalesDocumentLine(line);
+                            if (!resultLine.success)
+                            {
+                                deleteSalesDocument(id);
+                                return new Result(null, resultLine.success, resultLine.message);
+                            }
+                            n++;
+                        }
+                    }
+                    return new Result(id, true, "");
+                }
+                catch (Exception e)
+                {
+                    deleteSalesDocument(id);
+                    return new Result(null, false, e.Message);
+                }
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result deleteSalesDocument(int id)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", id.ToString()));
+
+            GenericResult result = execute_transaction("delete_sales_document", parameters);
+
             if (result.success)
             {
                 return new Result(result.singleValue, true, "");

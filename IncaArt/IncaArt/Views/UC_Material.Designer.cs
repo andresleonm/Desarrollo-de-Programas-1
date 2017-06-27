@@ -93,7 +93,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(752, 484);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
@@ -499,7 +499,7 @@
             this.textbox_cost.CustomButton.Visible = false;
             this.textbox_cost.Lines = new string[0];
             this.textbox_cost.Location = new System.Drawing.Point(109, 163);
-            this.textbox_cost.MaxLength = 32767;
+            this.textbox_cost.MaxLength = 8;
             this.textbox_cost.Name = "textbox_cost";
             this.textbox_cost.PasswordChar = '\0';
             this.textbox_cost.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -645,7 +645,7 @@
             this.textbox_stock_max.CustomButton.Visible = false;
             this.textbox_stock_max.Lines = new string[0];
             this.textbox_stock_max.Location = new System.Drawing.Point(109, 130);
-            this.textbox_stock_max.MaxLength = 32767;
+            this.textbox_stock_max.MaxLength = 8;
             this.textbox_stock_max.Name = "textbox_stock_max";
             this.textbox_stock_max.PasswordChar = '\0';
             this.textbox_stock_max.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -688,7 +688,7 @@
             this.textbox_stock_min.CustomButton.Visible = false;
             this.textbox_stock_min.Lines = new string[0];
             this.textbox_stock_min.Location = new System.Drawing.Point(109, 98);
-            this.textbox_stock_min.MaxLength = 32767;
+            this.textbox_stock_min.MaxLength = 8;
             this.textbox_stock_min.Name = "textbox_stock_min";
             this.textbox_stock_min.PasswordChar = '\0';
             this.textbox_stock_min.ScrollBars = System.Windows.Forms.ScrollBars.None;

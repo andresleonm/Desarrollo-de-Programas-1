@@ -387,7 +387,7 @@
             this.textbox_name_s.CustomButton.Visible = false;
             this.textbox_name_s.Lines = new string[0];
             this.textbox_name_s.Location = new System.Drawing.Point(137, 27);
-            this.textbox_name_s.MaxLength = 32767;
+            this.textbox_name_s.MaxLength = 100;
             this.textbox_name_s.Name = "textbox_name_s";
             this.textbox_name_s.PasswordChar = '\0';
             this.textbox_name_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -481,7 +481,7 @@
             this.textbox_maternal_s.CustomButton.Visible = false;
             this.textbox_maternal_s.Lines = new string[0];
             this.textbox_maternal_s.Location = new System.Drawing.Point(400, 66);
-            this.textbox_maternal_s.MaxLength = 32767;
+            this.textbox_maternal_s.MaxLength = 100;
             this.textbox_maternal_s.Name = "textbox_maternal_s";
             this.textbox_maternal_s.PasswordChar = '\0';
             this.textbox_maternal_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -511,7 +511,7 @@
             this.textbox_doi_s.CustomButton.Visible = false;
             this.textbox_doi_s.Lines = new string[0];
             this.textbox_doi_s.Location = new System.Drawing.Point(400, 27);
-            this.textbox_doi_s.MaxLength = 32767;
+            this.textbox_doi_s.MaxLength = 11;
             this.textbox_doi_s.Name = "textbox_doi_s";
             this.textbox_doi_s.PasswordChar = '\0';
             this.textbox_doi_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -567,7 +567,7 @@
             this.textbox_paternal_s.CustomButton.Visible = false;
             this.textbox_paternal_s.Lines = new string[0];
             this.textbox_paternal_s.Location = new System.Drawing.Point(137, 66);
-            this.textbox_paternal_s.MaxLength = 32767;
+            this.textbox_paternal_s.MaxLength = 100;
             this.textbox_paternal_s.Name = "textbox_paternal_s";
             this.textbox_paternal_s.PasswordChar = '\0';
             this.textbox_paternal_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -1063,7 +1063,7 @@
             // 
             this.datetime_birthday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datetime_birthday.Location = new System.Drawing.Point(148, 146);
-            this.datetime_birthday.MinimumSize = new System.Drawing.Size(0, 29);
+            this.datetime_birthday.MinimumSize = new System.Drawing.Size(4, 29);
             this.datetime_birthday.Name = "datetime_birthday";
             this.datetime_birthday.Size = new System.Drawing.Size(119, 29);
             this.datetime_birthday.TabIndex = 15;

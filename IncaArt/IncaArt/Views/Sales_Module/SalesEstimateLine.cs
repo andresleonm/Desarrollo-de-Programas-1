@@ -59,6 +59,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
             if (!flg)
                 grid_products.DataSource = new List<ProductWarehouseS>();
             else flg = false;
+            if (warehouses == null)
+                warehouses = new List<ProductWarehouseS>();
             grid_products.DataSource = warehouses;
             AdjustColumnEstimate();
         }
@@ -86,6 +88,11 @@ namespace WindowsFormsApp1.Views.Sales_Module
             grid_products.Columns["quantity"].DisplayIndex = 4;
             grid_products.Columns["unit_price"].DisplayIndex = 5;
             grid_products.Columns["select"].DisplayIndex = 6;
+        }
+
+        private void cbo_Product_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btn_Search.PerformClick();
         }
     }
 }

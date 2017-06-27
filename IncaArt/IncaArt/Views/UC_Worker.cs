@@ -34,6 +34,7 @@ namespace WindowsFormsApp1.Views
         Controller.CurrencyController currencyController;
         Controller.Result result;
         Models.User sessionUser;
+        ProgressBarForm progressform;
         public UC_Worker()
         {
             InitializeComponent();
@@ -58,6 +59,7 @@ namespace WindowsFormsApp1.Views
             workerController = new Controller.WorkerController(user, password);
             shiftController = new Controller.ShiftsController(user, password);
             currencyController = new Controller.CurrencyController(user, password);
+            progressform = new ProgressBarForm();
         }
 
         private void Load_Combobox()
@@ -94,20 +96,25 @@ namespace WindowsFormsApp1.Views
 
         private void Load_Data()
         {
+            progressform.SetupValues(0, 30, 0);
+            progressform.Show();
             result = currencyController.getCurrencies();
             currency_list = (List<Models.Currency>)result.data;
+            progressform.IncrementProgress(10);
             result = shiftController.getShifts();
             if (result.data == null) MessageBox.Show(result.message, "Error al listar turnos", MessageBoxButtons.OK);
             else shift_list = (List<Models.Shift>)result.data;
-
+            progressform.IncrementProgress(10);
             result = workerController.getWokers();
             if (result.data == null) MessageBox.Show(result.message, "Error al listar trabajadores", MessageBoxButtons.OK);
             else worker_list = (List<Models.Worker>)result.data;
+            progressform.IncrementProgress(10);
             Load_Combobox();
         }
 
         private void Load_DataGridView()
         {
+            progressform.SetupValues(30, 30 + worker_list.Count(), 30);
             metroGrid1.Rows.Clear();
             for (int i = 0; i < worker_list.Count(); i++)
             {
@@ -130,8 +137,9 @@ namespace WindowsFormsApp1.Views
                     row[6] = shift.Description;
                     this.metroGrid1.Rows.Add(row);
                 }
-
+                progressform.IncrementProgress(1);
             }
+            progressform.Hide();
         }
 
         private void Clean()
@@ -176,6 +184,7 @@ namespace WindowsFormsApp1.Views
             worker.Maternal_name = textbox_maternal.Text;
             worker.Doi = textbox_doi.Text;
             worker.Birthday = datetime_birthday.Value.Date;
+            worker.Gender = 'M';
             if (radiobutton_m.Checked)
             {
                 worker.Gender = 'M';
@@ -359,13 +368,17 @@ namespace WindowsFormsApp1.Views
             worker.Maternal_name = textbox_maternal_s.Text;
             worker.Doi = textbox_doi_s.Text;
             worker.Shift_id = ((KeyValuePair<int, string>)combobox_shift_s.SelectedItem).Key;
+            progressform.SetupValues(0, 30, 0);
+            progressform.Show();
             result = workerController.getWokers(worker);
             if (result.data == null)
             {
                 MessageBox.Show(result.message, "Error al buscar producto con filtro", MessageBoxButtons.OK);
+                progressform.Hide();
             }
             else
             {
+                progressform.IncrementProgress(30);
                 worker_list = (List<Models.Worker>)result.data;
                 Load_DataGridView();
             }
@@ -630,7 +643,8 @@ namespace WindowsFormsApp1.Views
                 int currency_id = 0, shift_id = 0, success_lines = 0, error_lines = 0;
                 List<WorkerError> worker_error_list = new List<WorkerError>(); //Lista de materiales para el Excel con error
                 Controller.Result temp;
-
+                progressform.SetupValues(0, row_count, 0);
+                progressform.Show();
                 //En Interop Excel el indice comienza en 1
                 for (int i = 3; i <= row_count; i++) //Fila 3 comienza las filas de materiales
                 {
@@ -789,6 +803,7 @@ namespace WindowsFormsApp1.Views
                         {
                             success_lines++;
                         }
+                        progressform.IncrementProgress(1);
                     }
                 }
                 MessageBox.Show("Lineas correctas: " + success_lines + "\n" + "Lineas inccorrectas: " + error_lines, "Resultado de importación desde Excel", MessageBoxButtons.OK);
@@ -796,7 +811,11 @@ namespace WindowsFormsApp1.Views
                 {
                     CreateExcelError(worker_error_list);
                 }
+                excel.Quit();
+                excel = null;
+                wb = null;
             }
+            progressform.Hide();
             openDialog.Dispose();
             Load_Data();
             Load_DataGridView();

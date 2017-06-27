@@ -47,6 +47,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.metroButtonClear = new MetroFramework.Controls.MetroButton();
             this.buttonCancel = new MetroFramework.Controls.MetroButton();
             this.buttonSave = new MetroFramework.Controls.MetroButton();
             this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
@@ -59,6 +60,8 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.metroTextBoxSearch = new MetroFramework.Controls.MetroTextBox();
+            this.btn_search = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
@@ -91,7 +94,7 @@
             this.metroTabControl1.HotTrack = true;
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(853, 536);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 29;
@@ -202,6 +205,9 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Window;
+            this.tabPage2.Controls.Add(this.btn_search);
+            this.tabPage2.Controls.Add(this.metroTextBoxSearch);
+            this.tabPage2.Controls.Add(this.metroButtonClear);
             this.tabPage2.Controls.Add(this.buttonCancel);
             this.tabPage2.Controls.Add(this.buttonSave);
             this.tabPage2.Controls.Add(this.metroGrid2);
@@ -214,11 +220,25 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Registrar   ";
             // 
+            // metroButtonClear
+            // 
+            this.metroButtonClear.BackColor = System.Drawing.Color.DarkCyan;
+            this.metroButtonClear.ForeColor = System.Drawing.Color.White;
+            this.metroButtonClear.Location = new System.Drawing.Point(247, 323);
+            this.metroButtonClear.Name = "metroButtonClear";
+            this.metroButtonClear.Size = new System.Drawing.Size(100, 23);
+            this.metroButtonClear.TabIndex = 11;
+            this.metroButtonClear.Text = "Limpiar";
+            this.metroButtonClear.UseCustomBackColor = true;
+            this.metroButtonClear.UseCustomForeColor = true;
+            this.metroButtonClear.UseSelectable = true;
+            this.metroButtonClear.Click += new System.EventHandler(this.metroButtonClear_Click);
+            // 
             // buttonCancel
             // 
             this.buttonCancel.BackColor = System.Drawing.Color.DarkCyan;
             this.buttonCancel.ForeColor = System.Drawing.Color.White;
-            this.buttonCancel.Location = new System.Drawing.Point(323, 282);
+            this.buttonCancel.Location = new System.Drawing.Point(383, 323);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(100, 23);
             this.buttonCancel.TabIndex = 10;
@@ -231,7 +251,7 @@
             // 
             this.buttonSave.BackColor = System.Drawing.Color.DarkCyan;
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(133, 282);
+            this.buttonSave.Location = new System.Drawing.Point(105, 323);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(100, 23);
             this.buttonSave.TabIndex = 9;
@@ -244,6 +264,7 @@
             // metroGrid2
             // 
             this.metroGrid2.AllowUserToAddRows = false;
+            this.metroGrid2.AllowUserToDeleteRows = false;
             this.metroGrid2.AllowUserToResizeRows = false;
             dataGridViewCellStyle96.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle96.ForeColor = System.Drawing.Color.Black;
@@ -278,7 +299,7 @@
             this.metroGrid2.EnableHeadersVisualStyles = false;
             this.metroGrid2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid2.Location = new System.Drawing.Point(31, 116);
+            this.metroGrid2.Location = new System.Drawing.Point(31, 157);
             this.metroGrid2.Name = "metroGrid2";
             this.metroGrid2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle99.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -298,6 +319,7 @@
             this.metroGrid2.Size = new System.Drawing.Size(513, 150);
             this.metroGrid2.TabIndex = 8;
             this.metroGrid2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellValueChanged);
+            this.metroGrid2.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.metroGrid2_ColumnHeaderMouseDoubleClick);
             this.metroGrid2.CurrentCellDirtyStateChanged += new System.EventHandler(this.metroGrid2_CurrentCellDirtyStateChanged);
             // 
             // Column1
@@ -390,6 +412,50 @@
             this.panel2.Size = new System.Drawing.Size(853, 536);
             this.panel2.TabIndex = 31;
             // 
+            // metroTextBoxSearch
+            // 
+            // 
+            // 
+            // 
+            this.metroTextBoxSearch.CustomButton.Image = null;
+            this.metroTextBoxSearch.CustomButton.Location = new System.Drawing.Point(152, 1);
+            this.metroTextBoxSearch.CustomButton.Name = "";
+            this.metroTextBoxSearch.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBoxSearch.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBoxSearch.CustomButton.TabIndex = 1;
+            this.metroTextBoxSearch.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBoxSearch.CustomButton.UseSelectable = true;
+            this.metroTextBoxSearch.CustomButton.Visible = false;
+            this.metroTextBoxSearch.Lines = new string[0];
+            this.metroTextBoxSearch.Location = new System.Drawing.Point(31, 117);
+            this.metroTextBoxSearch.MaxLength = 32767;
+            this.metroTextBoxSearch.Name = "metroTextBoxSearch";
+            this.metroTextBoxSearch.PasswordChar = '\0';
+            this.metroTextBoxSearch.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBoxSearch.SelectedText = "";
+            this.metroTextBoxSearch.SelectionLength = 0;
+            this.metroTextBoxSearch.SelectionStart = 0;
+            this.metroTextBoxSearch.ShortcutsEnabled = true;
+            this.metroTextBoxSearch.Size = new System.Drawing.Size(174, 23);
+            this.metroTextBoxSearch.TabIndex = 12;
+            this.metroTextBoxSearch.UseSelectable = true;
+            this.metroTextBoxSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBoxSearch.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // btn_search
+            // 
+            this.btn_search.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(234)))), ((int)(((byte)(198)))));
+            this.btn_search.Location = new System.Drawing.Point(247, 117);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(75, 23);
+            this.btn_search.TabIndex = 13;
+            this.btn_search.Text = "Buscar";
+            this.btn_search.UseCustomBackColor = true;
+            this.btn_search.UseCustomForeColor = true;
+            this.btn_search.UseSelectable = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
+            // 
             // UC_Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -437,5 +503,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIndex;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private MetroFramework.Controls.MetroButton metroButtonClear;
+        private MetroFramework.Controls.MetroTextBox metroTextBoxSearch;
+        private MetroFramework.Controls.MetroButton btn_search;
     }
 }

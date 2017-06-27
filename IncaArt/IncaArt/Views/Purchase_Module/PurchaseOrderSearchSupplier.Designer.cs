@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApp1.Views.Sales_Module
+﻿namespace WindowsFormsApp1.Views.Purchase_Module
 {
-    partial class SalesOrderSearchClient
+    partial class PurchaseOrderSearchSupplier
     {
         /// <summary>
         /// Required designer variable.
@@ -192,7 +192,7 @@
             this.grid_clients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_clients.Size = new System.Drawing.Size(818, 178);
             this.grid_clients.TabIndex = 51;
-            this.grid_clients.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_clients_CellContentDoubleClick);
+            this.grid_clients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_clients_CellContentClick);
             // 
             // Id
             // 

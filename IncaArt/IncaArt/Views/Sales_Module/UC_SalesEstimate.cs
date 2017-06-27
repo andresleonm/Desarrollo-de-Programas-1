@@ -131,7 +131,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
         }
 
-        private void grid_estimates_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void grid_estimates_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             active_Edit();
         }
@@ -225,6 +225,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
+            dt_IssueHour.Text = "";
+            dt_IssueDate.Text = "";
+
             if (edit)
             {
                 Set_Flag_All(true);
@@ -316,6 +319,8 @@ namespace WindowsFormsApp1.Views.Sales_Module
                     data.Remove(currentObject);
                     data = data.Concat(new List<Models.SalesEstimateLine>().ToList()).ToList();
                     grid_estimate_lines.DataSource = data;
+                    AdjustColumnEstimateLine();
+                    update_amount();
                 }
                 catch
                 {
@@ -367,19 +372,23 @@ namespace WindowsFormsApp1.Views.Sales_Module
         {
             if (e.RowIndex != -1)
             {
-                if (e.ColumnIndex == 7 || e.ColumnIndex == 8)
+                if (e.ColumnIndex == 8 || e.ColumnIndex == 9)
                 {
-                    double update_amount = double.Parse(grid_estimate_lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString()) * double.Parse(grid_estimate_lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
-                    grid_estimate_lines.Rows[e.RowIndex].Cells["amount"].Value = update_amount;
+                    double refresh_amount = double.Parse(grid_estimate_lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString()) * double.Parse(grid_estimate_lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
+                    grid_estimate_lines.Rows[e.RowIndex].Cells["amount"].Value = refresh_amount;
 
-                    double acumulate = 0;
-                    for (int i = 0; i < grid_estimate_lines.RowCount; i++)
-                    {
-                        acumulate += double.Parse(grid_estimate_lines.Rows[i].Cells["amount"].Value.ToString());
-                    }
-                    txt_amount.Text = acumulate.ToString("0.00");
+                    update_amount();
                 }
             }
+        }
+
+        private void update_amount()
+        {
+            double acumulate = 0;
+            for (int i = 0; i < grid_estimate_lines.RowCount; i++)
+                acumulate += double.Parse(grid_estimate_lines.Rows[i].Cells["amount"].Value.ToString());
+           
+            txt_amount.Text = acumulate.ToString("0.00");
         }
 
         private bool allIsZero(List<Models.SalesEstimateLine> lines)
@@ -460,6 +469,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
             txt_observation.Text = "";
             txt_amount.Text = "";
             txt_Status.Text = "";
+
+            dt_IssueHour.Text = "";
+            dt_IssueDate.Text = "";
 
             customer = new Customer();
             clean_gridView_EstimateLine();
@@ -640,5 +652,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 //do something else
             }
         }
+        
     }
 }

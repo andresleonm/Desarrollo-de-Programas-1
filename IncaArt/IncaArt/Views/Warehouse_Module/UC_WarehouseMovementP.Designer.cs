@@ -819,7 +819,7 @@
         private System.Windows.Forms.Button btn_delete;
         private MetroFramework.Controls.MetroDateTime date;
         private MetroFramework.Controls.MetroTile btn_Kardex;
-        private MetroFramework.Controls.MetroDateTime hour;
+        private System.Windows.Forms.DateTimePicker hour;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn movementName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;

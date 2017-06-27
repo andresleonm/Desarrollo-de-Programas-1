@@ -10,33 +10,25 @@ using System.Windows.Forms;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.Controller;
 
-namespace WindowsFormsApp1.Views.Sales_Module
+namespace WindowsFormsApp1.Views.Purchase_Module
 {
-    public partial class SalesOrderSearchClient : Form
+    public partial class PurchaseOrderSearchSupplier : Form
     {   
-        private List<Customer> customers;
-        public List<Customer> clientList;
-        private CustomerController customer_controller;
+        private List<Models.Supplier> customers;
+        public List<Models.Supplier> clientList;
+        private SupplierController customer_controller;
         private string customer_type;
 
 
-        public SalesOrderSearchClient( ref List<Customer> client, string user, string password, char type)
+        public PurchaseOrderSearchSupplier( ref List<Models.Supplier> client, string user, string password)
         {
             InitializeComponent();
             clientList = client;
 
-            customer_controller = new CustomerController(user, password);
-            Result result;
-            if (type == 'E')
-            { 
-                result = customer_controller.getCustomers_foreign();
-                customer_type = "Extranjero";
-            }
-            else { 
-                result = customer_controller.getCustomers();
-                customer_type = "";
-            }
-            customers = (List<Customer>)result.data;
+            customer_controller = new SupplierController(user, password);
+            Result result = customer_controller.getSuppliers();
+            
+            customers = (List<Models.Supplier>)result.data;
             fill_GridView(customers);                      
         }
 
@@ -55,13 +47,9 @@ namespace WindowsFormsApp1.Views.Sales_Module
             else
             {
                 string text = "%" + (txt_name.Text).ToLower() + "%";
-                Result result;
-                if (customer_type.Equals("Extranjero"))
-                    result = customer_controller.getCustomer_by_text_foreign(text, customer_type);
-                else
-                    result = customer_controller.getCustomer_by_text(text);
-                List<Customer> customers_found = new List<Customer>();
-                customers_found = (List<Customer>)result.data;
+                Result result = customer_controller.getSupplier_by_text(text);
+                List<Models.Supplier> customers_found = new List<Models.Supplier>();
+                customers_found = (List<Models.Supplier>)result.data;
                 fill_GridView(customers_found);               
             }
         }
@@ -80,7 +68,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
             else if (selectedRowCount == 1)
             {
-                Customer client_found = (Customer)grid_clients.CurrentRow.DataBoundItem;
+                Models.Supplier client_found = (Models.Supplier)grid_clients.CurrentRow.DataBoundItem;
                 clientList.Add(client_found);
                 this.Close();
             }
@@ -106,18 +94,19 @@ namespace WindowsFormsApp1.Views.Sales_Module
             grid_clients.Columns["phone"].DisplayIndex = 4;
             grid_clients.Columns["email"].DisplayIndex = 5;
             grid_clients.Columns["priority"].DisplayIndex = 6;
+            
         }
 
-        private void fill_GridView(List<Customer> list)
+        private void fill_GridView(List<Models.Supplier> list)
         {
-            grid_clients.DataSource = new List<Customer>();
+            grid_clients.DataSource = new List<Supplier>();
             grid_clients.DataSource = list;
             AdjustColumnOrder();
         }
 
-        private void grid_clients_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void grid_clients_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Customer client_found = (Customer)grid_clients.CurrentRow.DataBoundItem;
+            Models.Supplier client_found = (Models.Supplier)grid_clients.CurrentRow.DataBoundItem;
             clientList.Add(client_found);
             this.Close();
         }

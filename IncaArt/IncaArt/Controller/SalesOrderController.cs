@@ -86,27 +86,6 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
-        //public Result insertSalesOrder(SalesOrder sales_order)
-        //{
-        //    List<Parameter> parameters = new List<Parameter>();
-        //    parameters.Add(new Parameter("currency", sales_order.Currency_id.ToString()));
-        //    parameters.Add(new Parameter("customer_id", sales_order.Customer_id.ToString()));
-        //    parameters.Add(new Parameter("customer_name", sales_order.Customer_name));
-        //    parameters.Add(new Parameter("customer_address", sales_order.Customer_address));
-        //    parameters.Add(new Parameter("customer_phone", sales_order.Customer_phone));
-        //    parameters.Add(new Parameter("amount", sales_order.Amount.ToString()));
-        //    parameters.Add(new Parameter("state", "Registrado"));
-        //    parameters.Add(new Parameter("customer_doi", sales_order.Customer_doi));
-        //    parameters.Add(new Parameter("issue_date", sales_order.Issue_date.ToString("MM/dd/yyyy hh:mm:ss")));
-        //    parameters.Add(new Parameter("observation", sales_order.Observation));
-        //    GenericResult result = execute_transaction("insert_sales_order", parameters);
-        //    if (result.success)
-        //    {
-        //        return new Result(result.singleValue, true, "");
-        //    }
-        //    return new Result(null, result.success, result.message);
-        //}
-
         public Result insertSalesOrder(SalesOrder sales_order)
         {
             List<Parameter> parameters = new List<Parameter>();
@@ -169,6 +148,20 @@ namespace WindowsFormsApp1.Controller
             parameters.Add(new Parameter("id", id.ToString()));
 
             GenericResult result = execute_transaction("delete_sales_order", parameters);
+
+            if (result.success)
+            {
+                return new Result(result.singleValue, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
+        public Result cancel(int id)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            parameters.Add(new Parameter("id", id.ToString()));
+
+            GenericResult result = execute_transaction("cancel_sales_order", parameters);
 
             if (result.success)
             {

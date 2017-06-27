@@ -89,7 +89,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.metroTabControl1.Location = new System.Drawing.Point(-3, -6);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(921, 713);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Teal;
             this.metroTabControl1.TabIndex = 20;
@@ -155,7 +155,7 @@
             this.textbox_name_s.CustomButton.Visible = false;
             this.textbox_name_s.Lines = new string[0];
             this.textbox_name_s.Location = new System.Drawing.Point(112, 24);
-            this.textbox_name_s.MaxLength = 32767;
+            this.textbox_name_s.MaxLength = 100;
             this.textbox_name_s.Name = "textbox_name_s";
             this.textbox_name_s.PasswordChar = '\0';
             this.textbox_name_s.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -345,6 +345,7 @@
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid1.Location = new System.Drawing.Point(0, 0);
             this.metroGrid1.Name = "metroGrid1";
+            this.metroGrid1.ReadOnly = true;
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkCyan;
@@ -368,53 +369,62 @@
             // 
             this.id.HeaderText = "ID";
             this.id.Name = "id";
+            this.id.ReadOnly = true;
             this.id.Visible = false;
             // 
             // index
             // 
             this.index.HeaderText = "index";
             this.index.Name = "index";
+            this.index.ReadOnly = true;
             this.index.Visible = false;
             // 
             // name
             // 
             this.name.HeaderText = "Nombre";
             this.name.Name = "name";
+            this.name.ReadOnly = true;
             this.name.Width = 250;
             // 
             // type_warehouse
             // 
             this.type_warehouse.HeaderText = "Tipo Almacén";
             this.type_warehouse.Name = "type_warehouse";
+            this.type_warehouse.ReadOnly = true;
             this.type_warehouse.Width = 220;
             // 
             // product
             // 
             this.product.HeaderText = "Producto";
             this.product.Name = "product";
+            this.product.ReadOnly = true;
             this.product.Width = 150;
             // 
             // unity
             // 
             this.unity.HeaderText = "Unidad";
             this.unity.Name = "unity";
+            this.unity.ReadOnly = true;
             this.unity.Width = 50;
             // 
             // physical_stock
             // 
             this.physical_stock.HeaderText = "Stock Actual";
             this.physical_stock.Name = "physical_stock";
+            this.physical_stock.ReadOnly = true;
             // 
             // max_capacity
             // 
             this.max_capacity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.max_capacity.HeaderText = "Capacidad Máxima";
             this.max_capacity.Name = "max_capacity";
+            this.max_capacity.ReadOnly = true;
             // 
             // state
             // 
             this.state.HeaderText = "Estado";
             this.state.Name = "state";
+            this.state.ReadOnly = true;
             this.state.Visible = false;
             // 
             // btn_template
@@ -465,9 +475,9 @@
             this.registerTab.HorizontalScrollbarBarColor = true;
             this.registerTab.HorizontalScrollbarHighlightOnWheel = false;
             this.registerTab.HorizontalScrollbarSize = 10;
-            this.registerTab.Location = new System.Drawing.Point(4, 35);
+            this.registerTab.Location = new System.Drawing.Point(4, 38);
             this.registerTab.Name = "registerTab";
-            this.registerTab.Size = new System.Drawing.Size(913, 674);
+            this.registerTab.Size = new System.Drawing.Size(913, 671);
             this.registerTab.TabIndex = 2;
             this.registerTab.Text = "  Registrar   ";
             this.registerTab.VerticalScrollbarBarColor = true;
@@ -612,7 +622,7 @@
             this.textbox_max_capacity.CustomButton.Visible = false;
             this.textbox_max_capacity.Lines = new string[0];
             this.textbox_max_capacity.Location = new System.Drawing.Point(378, 178);
-            this.textbox_max_capacity.MaxLength = 32767;
+            this.textbox_max_capacity.MaxLength = 8;
             this.textbox_max_capacity.Name = "textbox_max_capacity";
             this.textbox_max_capacity.PasswordChar = '\0';
             this.textbox_max_capacity.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -654,7 +664,7 @@
             this.textbox_name.CustomButton.Visible = false;
             this.textbox_name.Lines = new string[0];
             this.textbox_name.Location = new System.Drawing.Point(378, 55);
-            this.textbox_name.MaxLength = 32767;
+            this.textbox_name.MaxLength = 100;
             this.textbox_name.Name = "textbox_name";
             this.textbox_name.PasswordChar = '\0';
             this.textbox_name.ScrollBars = System.Windows.Forms.ScrollBars.None;

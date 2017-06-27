@@ -125,7 +125,7 @@ namespace WindowsFormsApp1.Views.Warehouse_Module
             int i = 1;
             foreach (PurchaseOrderLine line in lines)
             {
-                if (line.Deliver_quantity - line.Quantity != 0)
+                if (line.Delivery_quantity - line.Quantity != 0)
                 {
                     movs_lines.Add(new Models.MaterialMovementLine(line, i, user, password));
                     i++;

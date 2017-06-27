@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Models
 {
@@ -21,12 +22,13 @@ namespace WindowsFormsApp1.Models
         public int Refund_quantity { get; set; }
         public int Prod_warehouse_id { get; set; }
         public string Prod_warehouse_name { get; set; }
+        public string Prod_warehouse_destiny { get; set; }
         public double Amount { get; set; }
         public string Status { get; set; }
 
-        
+
         // Construct for controller
-        public SalesRefundLine(int id, int refund_id, int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int ref_quantity, int prod_warehouse_id, string prod_warehouse_name, string status)
+        public SalesRefundLine(int id, int refund_id, int product_id, string product_name, int unit_measure_id, string unit_measure_name, int quantity, double price, int ref_quantity, int prod_warehouse_id, string prod_warehouse_name, string status, string prod_warehouse_destiny)
         {
             this.Id = id;
             this.Refund_id = refund_id;
@@ -39,6 +41,7 @@ namespace WindowsFormsApp1.Models
             this.Refund_quantity = ref_quantity;
             this.Prod_warehouse_id = prod_warehouse_id;
             this.Prod_warehouse_name = prod_warehouse_name;
+            this.Prod_warehouse_destiny = prod_warehouse_destiny;
             this.Status = status;
         }
 
