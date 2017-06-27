@@ -107,5 +107,35 @@ namespace WindowsFormsApp1.Controller
             return new Result(null, result.success, result.message);
         }
 
+        public Result getSalesRefund_by_filter(SalesRefund sales_refund, DateTime init, DateTime end,Boolean equals)
+        {
+            List<Parameter> parameters = new List<Parameter>();
+            if (sales_refund.Id != -1) parameters.Add(new Parameter("id", sales_refund.Id.ToString()));
+            if (sales_refund.Customer_name != "") parameters.Add(new Parameter("customer_name", sales_refund.Customer_name));
+            if (init != null) parameters.Add(new Parameter("finit", init.ToString("MM/dd/yyyy")));
+            if (!equals)
+            {
+                if (end != null) parameters.Add(new Parameter("fend", end.ToString("MM/dd/yyyy")));
+            }
+            GenericResult result = execute_function("get_sales_refund_byfilter", parameters);
+            List<SalesRefund> refunds = new List<SalesRefund>();
+            if (result.success)
+            {
+                foreach (Row r in result.data)
+                {
+                    SalesRefundLineController rlc = new SalesRefundLineController(user, password);
+                    //var detail = (List<SalesOrderLine>)solc.getSalesOrderLines(Int32.Parse(r.getColumn(0))).data;
+                    refunds.Add(new SalesRefund(Int32.Parse(r.getColumn(0)), Int32.Parse(r.getColumn(1)),
+                                                r.getColumn(2), r.getColumn(3), Int32.Parse(r.getColumn(4)),
+                                                r.getColumn(5), r.getColumn(6), r.getColumn(7), r.getColumn(8),
+                                                r.getColumn(9), DateTime.Parse(r.getColumn(10)),
+                                                Double.Parse(r.getColumn(11)), Double.Parse(r.getColumn(12)),
+                                                r.getColumn(13), Int32.Parse(r.getColumn(14)), null));
+                }
+                return new Result(refunds, true, "");
+            }
+            return new Result(null, result.success, result.message);
+        }
+
     }
 }

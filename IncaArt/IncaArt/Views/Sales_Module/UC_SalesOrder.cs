@@ -94,16 +94,26 @@ namespace WindowsFormsApp1.Views
 
         private void btn_Search_Orders_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(ctxt_order_id.Text))
-            {
-                fill_Sales_Order();
-            }
+            SalesOrder sales_order = new SalesOrder();
+            DateTime init = dt_iniDate.Value.Date;
+            DateTime end = dt_endDate.Value.Date;
+            Boolean equals = false;
+            if (init == end) equals = true;
+            if (ctxt_order_id.Text != "")
+                sales_order.Id = Int32.Parse((ctxt_order_id.Text));
+            else
+                sales_order.Id = -1;
+
+            sales_order.Customer_name = ctxt_customer.Text;
+
+            Result result = sales_order_controller.getSalesOrder_by_filter(sales_order, init, end,equals);
+
+            if (result.data == null)
+                MessageBox.Show(result.message, "Error al buscar pedidos con filtros", MessageBoxButtons.OK);
             else
             {
                 sales_orders = new List<SalesOrder>();
-                Result result = sales_order_controller.getSalesOrder(Int32.Parse(ctxt_order_id.Text));
-                SalesOrder so = (SalesOrder)result.data;
-                sales_orders.Add(so);
+                sales_orders = (List<SalesOrder>)result.data;
                 fill_gridView_Order(sales_orders);
             }
         }
