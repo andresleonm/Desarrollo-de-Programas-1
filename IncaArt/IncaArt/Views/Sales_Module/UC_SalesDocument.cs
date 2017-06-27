@@ -346,8 +346,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
             if (prodMovement == null || String.IsNullOrWhiteSpace(cbo_document_type.Text) || String.IsNullOrWhiteSpace(txt_external.Text) || String.IsNullOrWhiteSpace(txt_Movement_id.Text))
             {
                 MessageBox.Show(this, "Debe completar los datos del documento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }else if (!Int32.TryParse(txt_external.Text,out num)){
-                MessageBox.Show(this, "El número externo es inválido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
