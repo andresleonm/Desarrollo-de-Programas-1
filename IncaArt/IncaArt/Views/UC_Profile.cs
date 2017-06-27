@@ -288,7 +288,7 @@ namespace WindowsFormsApp1.Views
                     row.Cells[3].Value = true;
                 }
 
-                MessageBox.Show(@"{metroGrid2.Rows.Count} filas seleccionadas");
+                MessageBox.Show($"{metroGrid2.Rows.Count} filas seleccionadas");
             }
         }
 
