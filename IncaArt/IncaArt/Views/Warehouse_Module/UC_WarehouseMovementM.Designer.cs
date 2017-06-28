@@ -824,6 +824,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NroDocumentoFin;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn detail;
-        private MetroFramework.Controls.MetroDateTime hour;
+        private System.Windows.Forms.DateTimePicker hour;
     }
 }

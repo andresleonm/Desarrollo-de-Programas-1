@@ -271,6 +271,31 @@
     <Compile Include="Views\ProgressForm.Designer.cs">
       <DependentUpon>ProgressForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Purchase_Module\MaterialWarehouseS.cs" />
+    <Compile Include="Views\Purchase_Module\PurchaseOrderLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Purchase_Module\PurchaseOrderLine.Designer.cs">
+      <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Purchase_Module\PurchaseOrderSearchSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Purchase_Module\PurchaseOrderSearchSupplier.Designer.cs">
+      <DependentUpon>PurchaseOrderSearchSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Purchase_Module\UC_PurchaseOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Purchase_Module\UC_PurchaseOrder.Designer.cs">
+      <DependentUpon>UC_PurchaseOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Purchase_Module\UC_PurchasesMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Purchase_Module\UC_PurchasesMain.Designer.cs">
+      <DependentUpon>UC_PurchasesMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Reports_Module\ReportDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -506,30 +531,6 @@
     <Compile Include="Views\Supplier.Designer.cs">
       <DependentUpon>Supplier.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UC_PurchaseOrder.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\UC_PurchaseOrder.Designer.cs">
-      <DependentUpon>UC_PurchaseOrder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UC_PurchaseOrderGrid.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\UC_PurchaseOrderGrid.Designer.cs">
-      <DependentUpon>UC_PurchaseOrderGrid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UC_PurchaseOrderLine.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\UC_PurchaseOrderLine.Designer.cs">
-      <DependentUpon>UC_PurchaseOrderLine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UC_PurchasesMenu.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\UC_PurchasesMenu.Designer.cs">
-      <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Sales_Module\UC_SalesMain.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -637,29 +638,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Purchase_Module\ConfirmationDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Purchase_Module\ConfirmationDialog.Designer.cs">
       <DependentUpon>ConfirmationDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Purchase_Module\PurchaseOrder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Purchase_Module\PurchaseOrder.Designer.cs">
-      <DependentUpon>PurchaseOrder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Purchase_Module\PurchaseOrderLine.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Purchase_Module\PurchaseOrderLine.Designer.cs">
-      <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UC_WorkersPerformance Report.cs">
       <SubType>UserControl</SubType>
@@ -705,6 +688,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ProgressForm.resx">
       <DependentUpon>ProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrderLine.resx">
+      <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrderSearchSupplier.resx">
+      <DependentUpon>PurchaseOrderSearchSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Purchase_Module\UC_PurchaseOrder.resx">
+      <DependentUpon>UC_PurchaseOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Purchase_Module\UC_PurchasesMain.resx">
+      <DependentUpon>UC_PurchasesMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Reports_Module\ReportDashboard.resx">
       <DependentUpon>ReportDashboard.cs</DependentUpon>
@@ -823,18 +818,6 @@
     <EmbeddedResource Include="Views\Supplier.resx">
       <DependentUpon>Supplier.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_PurchaseOrder.resx">
-      <DependentUpon>UC_PurchaseOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_PurchaseOrderGrid.resx">
-      <DependentUpon>UC_PurchaseOrderGrid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_PurchaseOrderLine.resx">
-      <DependentUpon>UC_PurchaseOrderLine.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UC_PurchasesMenu.resx">
-      <DependentUpon>UC_PurchasesMenu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales_Module\UC_SalesMain.resx">
       <DependentUpon>UC_SalesMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -886,17 +869,8 @@
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Purchase_Module\ConfirmationDialog.resx">
       <DependentUpon>ConfirmationDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrder.resx">
-      <DependentUpon>PurchaseOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Purchase_Module\PurchaseOrderLine.resx">
-      <DependentUpon>PurchaseOrderLine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UC_WorkersPerformance Report.resx">
       <DependentUpon>UC_WorkersPerformance Report.cs</DependentUpon>

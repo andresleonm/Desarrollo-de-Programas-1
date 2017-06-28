@@ -78,7 +78,7 @@ namespace WindowsFormsApp1.Views
             this.uc_ProductionMenu = new WindowsFormsApp1.Views.Production_Module.UC_ProductionMenu();
             this.uC_MovementsType1 = new WindowsFormsApp1.Views.MovementsType_Module.UC_MovementsType();
             this.mainDashboard1 = new WindowsFormsApp1.Views.MainDashboard();
-            this.uC_PurchasesMenu1 = new WindowsFormsApp1.Views.UC_PurchasesMenu();
+            this.uC_PurchasesMenu1 = new WindowsFormsApp1.Views.Purchase_Module.UC_PurchasesMain();
             this.uC_WarehouseMovement1 = new WindowsFormsApp1.Views.Warehouse_Module.UC_WarehouseMovement();
             this.typeWarehouseMain1 = new WindowsFormsApp1.Views.Warehouse_M_Module.TypeWarehouseMain();
             this.warehouse1 = new WindowsFormsApp1.Views.Warehouse();
@@ -861,7 +861,7 @@ namespace WindowsFormsApp1.Views
         private System.Windows.Forms.ImageList warehouse_imagelist;
         private System.Windows.Forms.ImageList sales_imagelist;
         private System.Windows.Forms.ImageList purchase_imagelist;
-        private UC_PurchasesMenu uC_PurchasesMenu1;
+        private Views.Purchase_Module.UC_PurchasesMain uC_PurchasesMenu1;
         private Supplier supplier1;
         private Client client1;
         private Parameters parameters1;
