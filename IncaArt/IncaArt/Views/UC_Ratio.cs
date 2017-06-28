@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace WindowsFormsApp1.Views
 {
     public partial class UC_Ratio : MetroFramework.Controls.MetroUserControl
     {
         List<Models.Ratio> ratio_list;
+        List<Models.Ratio> ratio_list_full;
         List<Models.Product> product_list;
         List<Models.Workstation> workstation_list;
         List<Models.Worker> worker_list;
@@ -22,7 +24,7 @@ namespace WindowsFormsApp1.Views
         Controller.WorkstationsController workstationController;
         Controller.WorkerController workerController;
         Controller.Result result;
-        
+        bool first;
         public UC_Ratio()
         {
             InitializeComponent();
@@ -36,6 +38,7 @@ namespace WindowsFormsApp1.Views
             productController = new Controller.ProductsController(user, password);
             workstationController = new Controller.WorkstationsController(user, password);
             workerController = new Controller.WorkerController(user, password);
+            first = true;
         }
 
         private void UC_Ratio_VisibleChanged(object sender, EventArgs e)
@@ -114,10 +117,10 @@ namespace WindowsFormsApp1.Views
                 switch (ratio.ratio_type)
                 {
                     case 1:
-                        type = "Eficiencia";
+                        type = "Cantidad rota";
                         break;
                     case 2:
-                        type = "Tiempo";
+                        type = "Cantidad producida por hora";
                         break;
                     default:
                         type = "";
@@ -130,7 +133,15 @@ namespace WindowsFormsApp1.Views
                     row[1] = product.Name;
                     row[2] = workstation.Name;
                     row[3] = type;
-                    row[4] = ratio.value.ToString("F4");
+                    if (ratio.ratio_type == 1)
+                    {
+                        row[4] = ratio.broken_quantity.ToString("F4");
+                    }
+                    else
+                    {
+                        row[4] = ratio.value.ToString("F4");
+                    }
+                        
                     metroGrid1.Rows.Add(row);
                 }
             }
@@ -178,6 +189,10 @@ namespace WindowsFormsApp1.Views
                 MessageBox.Show(result.message);
             }
             Load_Combobox();
+            if (first)
+            {
+                ratio_list_full = ratio_list;
+            }
         }
 
         private void Load_Combobox()
@@ -195,8 +210,8 @@ namespace WindowsFormsApp1.Views
 
             combo_data = new Dictionary<int, string>();
             combo_data.Add(0, "Seleccionar");
-            combo_data.Add(1, "Eficiencia");
-            combo_data.Add(2, "Tiempo");
+            combo_data.Add(1, "Cantidad rota");
+            combo_data.Add(2, "Cantidad producida por hora");
             combobox_ratio_type_s.DataSource = new BindingSource(combo_data, null);
             combobox_ratio_type_s.DisplayMember = "Value";
             combobox_ratio_type_s.ValueMember = "Key";
@@ -236,76 +251,221 @@ namespace WindowsFormsApp1.Views
 
         private void btn_export_Click(object sender, EventArgs e)
         {
-            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-            if (excel == null)
-            {
-                Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
-                return;
-            }
-            excel.Visible = true;
 
-            excel.Interactive = false;
-            Workbook wb = excel.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
-            Worksheet ws = (Worksheet)wb.Worksheets[1];
-            ws.Name = "Materiales";
-            if (ws == null)
-            {
-                Console.WriteLine("Worksheet could not be created. Check that your office installation and project references are correct.");
-            }
+        }
 
-            ws.Range["A1"].Value2 = "Lista de Ratios";
-            ws.Range["A1"].Font.Size = 15;
-            ws.Range["A1"].Font.Bold = true;
-            ws.Range["A2"].Value2 = "Trabajador";
-            ws.Range["B2"].Value2 = "Producto";
-            ws.Range["C2"].Value2 = "Puesto de Trabajo";
-            ws.Range["D2"].Value2 = "Tipo de ratio";
-            ws.Range["E2"].Value2 = "Valor de ratio";
+        //private void btn_export_Click(object sender, EventArgs e)
+        //{
+        //    Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+        //    if (excel == null)
+        //    {
+        //        Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
+        //        return;
+        //    }
+        //    excel.Visible = true;
 
-            Models.Ratio ratio;
+        //    excel.Interactive = false;
+        //    Workbook wb = excel.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
+        //    Worksheet ws = (Worksheet)wb.Worksheets[1];
+        //    ws.Name = "Materiales";
+        //    if (ws == null)
+        //    {
+        //        Console.WriteLine("Worksheet could not be created. Check that your office installation and project references are correct.");
+        //    }
+
+        //    ws.Range["A1"].Value2 = "Lista de Ratios";
+        //    ws.Range["A1"].Font.Size = 15;
+        //    ws.Range["A1"].Font.Bold = true;
+        //    ws.Range["A2"].Value2 = "Trabajador";
+        //    ws.Range["B2"].Value2 = "Producto";
+        //    ws.Range["C2"].Value2 = "Puesto de Trabajo";
+        //    ws.Range["D2"].Value2 = "Tipo de ratio";
+        //    ws.Range["E2"].Value2 = "Valor de ratio";
+
+        //    Models.Ratio ratio;
+        //    Models.Worker worker;
+        //    Models.Product product;
+        //    Models.Workstation workstation;
+        //    string ratio_type;
+        //    for (int i = 0; i < ratio_list.Count(); i++)
+        //    {
+        //        ratio = ratio_list[i];
+        //        result = workerController.getWorker(ratio.worker_id);
+        //        if (result.success)
+        //        {
+        //            worker = (Models.Worker)result.data;
+        //            ((Range)ws.Cells[i + 3, 1]).Value2 = worker.Name + " " + worker.Paternal_name + " " + worker.Maternal_name;
+        //        }
+        //        result = productController.getProduct(ratio.product_id);
+        //        if (result.success)
+        //        {
+        //            product = (Models.Product)result.data;
+        //            ((Range)ws.Cells[i + 3, 2]).Value2 = product.Name;
+        //        }
+
+        //        result = workstationController.getWorkstation(ratio.workstation_id);
+        //        if (result.success)
+        //        {
+        //            workstation = (Models.Workstation)result.data;
+        //            ((Range)ws.Cells[i + 3, 3]).Value2 = workstation.Name;
+        //        }
+        //        switch (ratio.ratio_type)
+        //        {
+        //            case 1:
+        //                ratio_type = "%";
+        //                break;
+        //            case 2:
+        //                ratio_type = "mins";
+        //                break;
+        //            default:
+        //                ratio_type = "";
+        //                break;
+        //        }
+        //        ((Range)ws.Cells[i + 3, 4]).Value2 = ratio_type;
+        //        ((Range)ws.Cells[i + 3, 5]).Value2 = ratio.value.ToString("F4");
+        //    }
+        //    ws.Columns.AutoFit();
+        //    excel.Interactive = true;
+        //}
+
+        private void btn_export2(object sender, EventArgs e)
+        {
+            //Path
+            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+            string fileName = string.Format("{0}Resources\\Excel\\new_ratios.xlsx", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
+
+            // Creating a Excel object. 
+            Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(fileName);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
             Models.Worker worker;
-            Models.Product product;
-            Models.Workstation workstation;
-            string ratio_type;
-            for (int i = 0; i < ratio_list.Count(); i++)
+            Models.Ratio ratio;
+            try
             {
-                ratio = ratio_list[i];
-                result = workerController.getWorker(ratio.worker_id);
-                if (result.success)
-                {
-                    worker = (Models.Worker)result.data;
-                    ((Range)ws.Cells[i + 3, 1]).Value2 = worker.Name + " " + worker.Paternal_name + " " + worker.Maternal_name;
-                }
-                result = productController.getProduct(ratio.product_id);
-                if (result.success)
-                {
-                    product = (Models.Product)result.data;
-                    ((Range)ws.Cells[i + 3, 2]).Value2 = product.Name;
-                }
 
-                result = workstationController.getWorkstation(ratio.workstation_id);
-                if (result.success)
+                worksheet = workbook.ActiveSheet;
+                int k = 0;
+                for (int i = 0; i < worker_list.Count(); i++)
                 {
-                    workstation = (Models.Workstation)result.data;
-                    ((Range)ws.Cells[i + 3, 3]).Value2 = workstation.Name;
+                    worker = worker_list[i];
+                    worksheet.Cells[i + 7, 1] = worker.Name + " " + worker.Paternal_name + " " + worker.Maternal_name;
+                    worksheet.Cells[i + 7, 1].BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin,
+                        XlColorIndex.xlColorIndexAutomatic, XlColorIndex.xlColorIndexAutomatic);
+                    for (int j = 0; j < 12; j++)
+                    {
+                        worksheet.Cells[i + 7, j + 2] = ratio_list_full[k].value.ToString("F4");
+                        worksheet.Cells[i + 7, j + 2].BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin,
+                        XlColorIndex.xlColorIndexAutomatic, XlColorIndex.xlColorIndexAutomatic);
+                        k++;
+                    }
+                
                 }
-                switch (ratio.ratio_type)
+                worksheet.Columns.AutoFit();
+                //Loop through each row and read value from each column. 
+
+                //Getting the location and file name of the excel to save from user. 
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                saveDialog.FilterIndex = 2;
+
+                if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    case 1:
-                        ratio_type = "%";
-                        break;
-                    case 2:
-                        ratio_type = "mins";
-                        break;
-                    default:
-                        ratio_type = "";
-                        break;
+                    workbook.SaveAs(saveDialog.FileName);
+                    MessageBox.Show("Exportado correctamente", "Notificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                ((Range)ws.Cells[i + 3, 4]).Value2 = ratio_type;
-                ((Range)ws.Cells[i + 3, 5]).Value2 = ratio.value.ToString("F4");
             }
-            ws.Columns.AutoFit();
-            excel.Interactive = true;
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                excel.Quit();
+                workbook = null;
+                excel = null;
+            }
+        }
+
+        private void btn_import2(object sender, EventArgs e)
+        {
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Filter = "Excel |*.xlsx;*.xls";
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                //MessageBox.Show(openDialog.FileName, "Ventana", MessageBoxButtons.OK);
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                if (excel == null)
+                {
+                    Console.WriteLine("EXCEL could not be started. Check that your office installation and project references are correct.");
+                    return;
+                }
+                Workbook wb = excel.Workbooks.Open(openDialog.FileName);
+                Worksheet ws = (Worksheet)wb.Worksheets[1];
+                Range range = ws.UsedRange;
+                int row_count = range.Rows.Count;
+                int column_count = range.Columns.Count;
+                Range datarange;
+                string worker = "", workstation = "", ratio_type = "";
+                double ratio_value = -1, number;
+                bool error; //error individual
+                int ratio_type_id = 0,workstation_id=0;
+
+                //En Interop Excel el indice comienza en 1
+                for (int i = 0; i <= worker_list.Count(); i++) //Fila 3 comienza las filas de materiales
+                {
+                    error = false;
+                    datarange = (Range)ws.Cells[i+7, 1];//Trabajador
+                    if (string.IsNullOrWhiteSpace((string)datarange.Text))
+                    {
+                        error = true;
+                    }
+                    else
+                    {
+                        worker = (string)datarange.Value2;
+                    }
+                    for (int j = 0; j < 12; j++)
+                    {
+                        datarange = (Range)ws.Cells[i+7, j+2];//Valor
+                        if (datarange.Value2 == null || !double.TryParse((string)datarange.Text, out number))
+                        {
+                            error = true;
+                        }
+                        else
+                        {
+                            ratio_value = (double)datarange.Value2;
+                            switch (j)
+                            {
+                                case 0: case 1:
+                                    workstation_id = 1;
+                                    break;
+                                case 2: case 3:
+                                    workstation_id = 2;
+                                    break;
+                                case 4: case 5:
+                                    workstation_id = 3;
+                                    break;
+                                case 6: case 7:
+                                    workstation_id = 4;
+                                    break;
+                                case 8: case 9:
+                                    workstation_id = 5;
+                                    break;
+                                case 10: case 11:
+                                    workstation_id = 6;
+                                    break;
+                            }
+                            ratio_type_id = j % 2;
+                        }
+                    }
+                    if (!error)
+                    {
+                        result = ratioController.updateRatio2(worker, workstation_id, ratio_type_id, ratio_value);
+                    }
+
+                }
+                
+            }
+            openDialog.Dispose();
         }
 
         private void btn_import_Click(object sender, EventArgs e)

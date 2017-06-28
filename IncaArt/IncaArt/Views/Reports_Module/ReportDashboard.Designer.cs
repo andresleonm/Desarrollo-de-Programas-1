@@ -34,6 +34,7 @@
             this.metroTile3 = new MetroFramework.Controls.MetroTile();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroTileLog = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
             // metroTile7
@@ -142,11 +143,30 @@
             this.metroTile1.UseSelectable = true;
             this.metroTile1.UseTileImage = true;
             // 
+            // metroTileLog
+            // 
+            this.metroTileLog.ActiveControl = null;
+            this.metroTileLog.BackColor = System.Drawing.Color.DarkCyan;
+            this.metroTileLog.Location = new System.Drawing.Point(468, 203);
+            this.metroTileLog.Name = "metroTileLog";
+            this.metroTileLog.PaintTileCount = false;
+            this.metroTileLog.Size = new System.Drawing.Size(177, 81);
+            this.metroTileLog.TabIndex = 31;
+            this.metroTileLog.Text = "Reporte de Log";
+            this.metroTileLog.TileImage = global::WindowsFormsApp1.Properties.Resources.User_Group_Man_Man_52px;
+            this.metroTileLog.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.metroTileLog.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.metroTileLog.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.metroTileLog.UseCustomBackColor = true;
+            this.metroTileLog.UseSelectable = true;
+            this.metroTileLog.UseTileImage = true;
+            // 
             // ReportDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.metroTileLog);
             this.Controls.Add(this.metroTile7);
             this.Controls.Add(this.metroTile8);
             this.Controls.Add(this.metroTile4);
@@ -166,5 +186,6 @@
         private MetroFramework.Controls.MetroTile metroTile3;
         private MetroFramework.Controls.MetroTile metroTile2;
         private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile metroTileLog;
     }
 }
