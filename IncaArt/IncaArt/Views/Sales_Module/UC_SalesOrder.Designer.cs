@@ -101,7 +101,6 @@
             this.btn_Add = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_order_lines = new MetroFramework.Controls.MetroGrid();
-            this.mbStyle = new MetroFramework.Components.MetroStyleManager(this.components);
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Product_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -115,6 +114,7 @@
             this.delivery_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mbStyle = new MetroFramework.Components.MetroStyleManager(this.components);
             this.panel1.SuspendLayout();
             this.tab_Order.SuspendLayout();
             this.order.SuspendLayout();
@@ -414,7 +414,7 @@
             // dt_iniDate
             // 
             this.dt_iniDate.Location = new System.Drawing.Point(562, 24);
-            this.dt_iniDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_iniDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_iniDate.Name = "dt_iniDate";
             this.dt_iniDate.Size = new System.Drawing.Size(209, 29);
             this.dt_iniDate.TabIndex = 49;
@@ -422,7 +422,7 @@
             // dt_endDate
             // 
             this.dt_endDate.Location = new System.Drawing.Point(562, 66);
-            this.dt_endDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_endDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_endDate.Name = "dt_endDate";
             this.dt_endDate.Size = new System.Drawing.Size(209, 29);
             this.dt_endDate.TabIndex = 48;
@@ -1177,10 +1177,6 @@
             this.grid_order_lines.TabIndex = 52;
             this.grid_order_lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_order_lines_CellValueChanged);
             // 
-            // mbStyle
-            // 
-            this.mbStyle.Owner = null;
-            // 
             // Id
             // 
             this.Id.DataPropertyName = "id";
@@ -1277,6 +1273,10 @@
             this.amount.HeaderText = "SubTotal";
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
+            // 
+            // mbStyle
+            // 
+            this.mbStyle.Owner = null;
             // 
             // UC_SalesOrder
             // 

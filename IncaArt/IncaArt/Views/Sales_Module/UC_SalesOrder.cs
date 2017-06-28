@@ -206,7 +206,7 @@ namespace WindowsFormsApp1.Views
             {
                 customer = customerL[0];
 
-                if (customer.Type.Equals("Extranjero"))
+                if (customer.Type.ToUpper().Equals("EXTRANJERO"))
                 {
                     var estimateL = new List<SalesEstimate>();
                     Sales_Module.SalesOrderEstimate search_view2 = new Sales_Module.SalesOrderEstimate(ref estimateL, user, password, customer.Id);
