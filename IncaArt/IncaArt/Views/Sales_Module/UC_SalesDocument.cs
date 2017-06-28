@@ -87,16 +87,11 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
         private void btn_Search_Documents_Click(object sender, EventArgs e)
         {
-           // if (String.IsNullOrWhiteSpace(ctxt_document_id.Text) && String.IsNullOrWhiteSpace(ctxt_customer.Text))
-            //{
-              //  fill_Sales_Documents();
-           // }
-           // else
-            //{
                 SalesDocument sales_doc = new SalesDocument();
                 DateTime init = dt_iniDate.Value.Date;
                 DateTime end = dt_endDate.Value.Date;
-
+                Boolean equals = false;
+                if (init == end) equals = true;
                 if (ctxt_document_id.Text != "")
                     sales_doc.Id = Int32.Parse((ctxt_document_id.Text));
                 else
@@ -104,17 +99,16 @@ namespace WindowsFormsApp1.Views.Sales_Module
 
                 sales_doc.Customer_name = ctxt_customer.Text;
 
-                Result result = sales_document_controller.getSalesDocuments_by_filter(sales_doc, init, end);
+                Result result = sales_document_controller.getSalesDocuments_by_filter(sales_doc, init, end,equals);
 
                 if (result.data == null)
-                    MessageBox.Show(result.message, "Error al buscar proveedor con filtros", MessageBoxButtons.OK);
+                    MessageBox.Show(result.message, "Error al buscar documentos con filtros", MessageBoxButtons.OK);
                 else
                 {
                     sales_documents = new List<SalesDocument>();
                     sales_documents = (List<SalesDocument>)result.data;
                     fill_gridView_Document(sales_documents);
                }
-          //  }
         }
 
         private void btn_View_Click(object sender, EventArgs e)
@@ -215,6 +209,22 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 worksheet.Name = "Ventas";
 
                 int cellRowIndex = 7;
+
+                // Formato
+           
+
+
+                Microsoft.Office.Interop.Excel.Range formatRange;
+                formatRange = worksheet.get_Range("a1","h1");
+                formatRange.EntireRow.Font.Bold = true;
+                worksheet.Cells[1, 5] = "Bold";
+
+                formatRange.Interior.Color = System.Drawing.
+                ColorTranslator.ToOle(System.Drawing.Color.DarkCyan);
+                formatRange.EntireRow.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.White); ;
+                worksheet.Cells[1, 5] = "DarkCyan";
+
+
 
                 //Loop through each row and read value from each column. 
                 for (int i = 0; i < grid_Documents.Rows.Count; i++)
