@@ -62,6 +62,9 @@
             this.amount2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gb_Filter = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.ccbo_document_type = new MetroFramework.Controls.MetroComboBox();
             this.btn_Excel = new MetroFramework.Controls.MetroTile();
             this.btn_Search_Documents = new System.Windows.Forms.Button();
             this.dt_iniDate = new MetroFramework.Controls.MetroDateTime();
@@ -130,9 +133,6 @@
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.ccbo_document_type = new MetroFramework.Controls.MetroComboBox();
             this.panel1.SuspendLayout();
             this.tab_Document.SuspendLayout();
             this.order.SuspendLayout();
@@ -294,7 +294,7 @@
             this.grid_Documents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_Documents.Size = new System.Drawing.Size(975, 255);
             this.grid_Documents.TabIndex = 52;
-            this.grid_Documents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Documents_CellContentClick);
+            this.grid_Documents.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Documents_CellDoubleClick);
             // 
             // currency_id
             // 
@@ -467,6 +467,44 @@
             this.gb_Filter.TabIndex = 40;
             this.gb_Filter.TabStop = false;
             this.gb_Filter.Text = "Filtros";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label19.Location = new System.Drawing.Point(14, 125);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(75, 13);
+            this.label19.TabIndex = 77;
+            this.label19.Text = "Documento:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label21.Location = new System.Drawing.Point(13, 107);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(50, 13);
+            this.label21.TabIndex = 76;
+            this.label21.Text = "Tipo de";
+            // 
+            // ccbo_document_type
+            // 
+            this.ccbo_document_type.FormattingEnabled = true;
+            this.ccbo_document_type.ItemHeight = 23;
+            this.ccbo_document_type.Items.AddRange(new object[] {
+            "Seleccionar",
+            "Factura",
+            "Boleta",
+            "Nota de Crédito"});
+            this.ccbo_document_type.Location = new System.Drawing.Point(125, 108);
+            this.ccbo_document_type.Name = "ccbo_document_type";
+            this.ccbo_document_type.Size = new System.Drawing.Size(214, 29);
+            this.ccbo_document_type.TabIndex = 75;
+            this.ccbo_document_type.UseCustomBackColor = true;
+            this.ccbo_document_type.UseSelectable = true;
             // 
             // btn_Excel
             // 
@@ -989,7 +1027,7 @@
             this.dt_IssueHour.Enabled = false;
             this.dt_IssueHour.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dt_IssueHour.Location = new System.Drawing.Point(543, 121);
-            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_IssueHour.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_IssueHour.Name = "dt_IssueHour";
             this.dt_IssueHour.Size = new System.Drawing.Size(87, 29);
             this.dt_IssueHour.TabIndex = 74;
@@ -1056,7 +1094,7 @@
             this.dt_IssueDate.Enabled = false;
             this.dt_IssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dt_IssueDate.Location = new System.Drawing.Point(432, 121);
-            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dt_IssueDate.MinimumSize = new System.Drawing.Size(4, 29);
             this.dt_IssueDate.Name = "dt_IssueDate";
             this.dt_IssueDate.Size = new System.Drawing.Size(105, 29);
             this.dt_IssueDate.TabIndex = 64;
@@ -1645,43 +1683,6 @@
             this.amount.HeaderText = "SubTotal";
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label19.Location = new System.Drawing.Point(14, 125);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(75, 13);
-            this.label19.TabIndex = 77;
-            this.label19.Text = "Documento:";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label21.Location = new System.Drawing.Point(13, 107);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(50, 13);
-            this.label21.TabIndex = 76;
-            this.label21.Text = "Tipo de";
-            // 
-            // ccbo_document_type
-            // 
-            this.ccbo_document_type.FormattingEnabled = true;
-            this.ccbo_document_type.ItemHeight = 23;
-            this.ccbo_document_type.Items.AddRange(new object[] {
-            "Factura",
-            "Boleta",
-            "Nota de Crédito"});
-            this.ccbo_document_type.Location = new System.Drawing.Point(125, 108);
-            this.ccbo_document_type.Name = "ccbo_document_type";
-            this.ccbo_document_type.Size = new System.Drawing.Size(214, 29);
-            this.ccbo_document_type.TabIndex = 75;
-            this.ccbo_document_type.UseCustomBackColor = true;
-            this.ccbo_document_type.UseSelectable = true;
             // 
             // UC_SalesDocument
             // 

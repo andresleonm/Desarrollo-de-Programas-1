@@ -43,7 +43,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             sales_document_controller = new SalesDocumentController(user, password);
             sales_document_line_controller = new SalesDocumentLineController(user, password);
             pmc = new ProductMovementController(user, password);
-
+            ccbo_document_type.SelectedIndex = 0;
             fill_Sales_Documents();
         }
 
@@ -90,6 +90,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
                 SalesDocument sales_doc = new SalesDocument();
                 DateTime init = dt_iniDate.Value.Date;
                 DateTime end = dt_endDate.Value.Date;
+                sales_doc.Type_document_id = ccbo_document_type.Text[0];
                 Boolean equals = false;
                 if (init == end) equals = true;
                 if (ctxt_document_id.Text != "")
@@ -129,7 +130,7 @@ namespace WindowsFormsApp1.Views.Sales_Module
             }
         }
 
-        private void grid_Documents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void grid_Documents_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             active_See();
         }
@@ -140,13 +141,11 @@ namespace WindowsFormsApp1.Views.Sales_Module
             int index = grid_Documents.SelectedRows[0].Index;
             var id = sales_documents[index].Id;
             sd_see = (Models.SalesDocument)sales_document_controller.getSalesDocument(id).data;
-            grid_Document_Lines.DataSource = sd_see.Lines;
-
-            refresh_amount(sd_see);
-
+      
             tab_Document.SelectedIndex = 1;
             manipulate_options(false);
             fill_Sales_Document_Form(sd_see);
+            refresh_amount(sd_see);
         }
 
         private void fill_Sales_Documents()
@@ -481,7 +480,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
         private void fill_Sales_Document_Form(SalesDocument sd)
         {
             Clean();
-            clean_gridView_DocumentLine();
             txt_name.Text = sd.Customer_name;
             txt_address.Text = sd.Customer_address;
             txt_Doi.Text = sd.Customer_doi;
@@ -849,7 +847,6 @@ namespace WindowsFormsApp1.Views.Sales_Module
            
 
         }
-
         
     }
 }

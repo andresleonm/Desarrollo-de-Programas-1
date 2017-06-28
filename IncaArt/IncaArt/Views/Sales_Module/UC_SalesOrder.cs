@@ -136,7 +136,7 @@ namespace WindowsFormsApp1.Views
             }
         }
 
-        private void grid_orders_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void grid_orders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             active_Edit();
         }
@@ -353,7 +353,6 @@ namespace WindowsFormsApp1.Views
                     MessageBox.Show(result.message);
                 }
             }
-
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
@@ -370,7 +369,7 @@ namespace WindowsFormsApp1.Views
                     data = data.Concat(new List<Models.SalesOrderLine>().ToList()).ToList();
                     grid_order_lines.DataSource = data;
                     AdjustColumnOrderLine();
-                    refresh_amount();
+                    update_amount();
                 }
                 catch
                 {
@@ -424,21 +423,20 @@ namespace WindowsFormsApp1.Views
             {
                 if (e.ColumnIndex == 6 || e.ColumnIndex == 7)
                 {
-                    double update_amount = double.Parse(grid_order_lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString()) * double.Parse(grid_order_lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
-                    grid_order_lines.Rows[e.RowIndex].Cells["amount"].Value = update_amount;
+                    double refresh_amount = double.Parse(grid_order_lines.Rows[e.RowIndex].Cells["quantity"].Value.ToString()) * double.Parse(grid_order_lines.Rows[e.RowIndex].Cells["unit_price"].Value.ToString());
+                    grid_order_lines.Rows[e.RowIndex].Cells["amount"].Value = refresh_amount;
 
-                    refresh_amount();
+                    update_amount();
                 }
             }
         }
 
-        private void refresh_amount()
+        private void update_amount()
         {
             double acumulate = 0;
-            for (int i = 0; i < grid_order_lines.RowCount; i++)
-            {
+            for (int i = 0; i < grid_order_lines.RowCount; i++)            
                 acumulate += double.Parse(grid_order_lines.Rows[i].Cells["amount"].Value.ToString());
-            }
+            
             txt_amount.Text = acumulate.ToString("0.00");
         }
 
@@ -589,8 +587,9 @@ namespace WindowsFormsApp1.Views
             grid_order_lines.Columns["unit"].DisplayIndex = 1;
             grid_order_lines.Columns["warehouse"].DisplayIndex = 2;
             grid_order_lines.Columns["quantity"].DisplayIndex = 3;
-            grid_order_lines.Columns["unit_price"].DisplayIndex = 4;
-            grid_order_lines.Columns["amount"].DisplayIndex = 5;
+            grid_order_lines.Columns["delivery_quantity"].DisplayIndex = 4;
+            grid_order_lines.Columns["unit_price"].DisplayIndex = 5;
+            grid_order_lines.Columns["amount"].DisplayIndex = 6;
         }
 
         private void manipulate_options(bool flag)
@@ -627,6 +626,7 @@ namespace WindowsFormsApp1.Views
 
 
         #endregion
+
 
         private void btn_Anulate_Click(object sender, EventArgs e)
         {

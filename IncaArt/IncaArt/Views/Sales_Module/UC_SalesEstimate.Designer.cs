@@ -278,7 +278,7 @@
             this.grid_estimates.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_estimates.Size = new System.Drawing.Size(792, 255);
             this.grid_estimates.TabIndex = 51;
-            this.grid_estimates.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_estimates_CellContentClick);
+            this.grid_estimates.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_estimates_CellDoubleClick);
             // 
             // currencyidDataGridViewTextBoxColumn
             // 

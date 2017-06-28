@@ -92,6 +92,7 @@ namespace WindowsFormsApp1.Controller
             {
                 if (end != null) parameters.Add(new Parameter("fend", end.ToString("MM/dd/yyyy")));
             }
+            if (sales_document.Type_document_id.CompareTo('S') != 0) parameters.Add(new Parameter("type", sales_document.Type_document_id.ToString()));
             GenericResult result = execute_function("get_sales_documents_by_filter", parameters);
             List<SalesDocument> sales_documents = new List<SalesDocument>();
             if (result.success)

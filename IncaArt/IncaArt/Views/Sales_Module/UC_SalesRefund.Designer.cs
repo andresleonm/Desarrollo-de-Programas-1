@@ -107,25 +107,24 @@
             this.gb_RefundLine = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid_Refund_Lines = new MetroFramework.Controls.MetroGrid();
+            this.salesRefundLineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.refund_id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.documenti_d_line = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.product_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitmeasureidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prodwarehouseidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_warehouse_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_measure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prodwarehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.warehouses = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.warehouses_origin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity_available = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.refund_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salesRefundLineBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.productWarehouseSBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.warehousesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.tab_Refund.SuspendLayout();
             this.refund.SuspendLayout();
@@ -142,8 +141,6 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_Refund_Lines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesRefundLineBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productWarehouseSBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.warehousesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -288,7 +285,7 @@
             this.grid_Refunds.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_Refunds.Size = new System.Drawing.Size(975, 255);
             this.grid_Refunds.TabIndex = 52;
-            this.grid_Refunds.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Refunds_CellContentClick);
+            this.grid_Refunds.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Refunds_CellDoubleClick);
             // 
             // currencyidDataGridViewTextBoxColumn
             // 
@@ -1339,12 +1336,13 @@
             this.documenti_d_line,
             this.product_id,
             this.unitmeasureidDataGridViewTextBoxColumn,
-            this.prodwarehouseidDataGridViewTextBoxColumn,
+            this.Prod_warehouse_id,
             this.statusDataGridViewTextBoxColumn,
             this.product,
             this.unit_measure,
             this.prodwarehouse,
             this.warehouses,
+            this.warehouses_origin,
             this.quantity_available,
             this.refund_quantity,
             this.quantity,
@@ -1378,9 +1376,12 @@
             this.grid_Refund_Lines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_Refund_Lines.Size = new System.Drawing.Size(984, 191);
             this.grid_Refund_Lines.TabIndex = 52;
-            this.grid_Refund_Lines.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Refund_Lines_CellContentClick);
             this.grid_Refund_Lines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Refund_Lines_CellValueChanged);
             this.grid_Refund_Lines.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.grid_Refund_Lines_DataError);
+            // 
+            // salesRefundLineBindingSource
+            // 
+            this.salesRefundLineBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesRefundLine);
             // 
             // id
             // 
@@ -1417,12 +1418,12 @@
             this.unitmeasureidDataGridViewTextBoxColumn.Name = "unitmeasureidDataGridViewTextBoxColumn";
             this.unitmeasureidDataGridViewTextBoxColumn.Visible = false;
             // 
-            // prodwarehouseidDataGridViewTextBoxColumn
+            // Prod_warehouse_id
             // 
-            this.prodwarehouseidDataGridViewTextBoxColumn.DataPropertyName = "Prod_warehouse_id";
-            this.prodwarehouseidDataGridViewTextBoxColumn.HeaderText = "Prod_warehouse_id";
-            this.prodwarehouseidDataGridViewTextBoxColumn.Name = "prodwarehouseidDataGridViewTextBoxColumn";
-            this.prodwarehouseidDataGridViewTextBoxColumn.Visible = false;
+            this.Prod_warehouse_id.DataPropertyName = "Prod_warehouse_id";
+            this.Prod_warehouse_id.HeaderText = "Prod_warehouse_id";
+            this.Prod_warehouse_id.Name = "Prod_warehouse_id";
+            this.Prod_warehouse_id.Visible = false;
             // 
             // statusDataGridViewTextBoxColumn
             // 
@@ -1437,7 +1438,6 @@
             this.product.HeaderText = "Producto";
             this.product.Name = "product";
             this.product.ReadOnly = true;
-            this.product.Width = 150;
             // 
             // unit_measure
             // 
@@ -1464,12 +1464,22 @@
             this.warehouses.Name = "warehouses";
             this.warehouses.Width = 150;
             // 
+            // warehouses_origin
+            // 
+            this.warehouses_origin.DataPropertyName = "warehouses_origin";
+            this.warehouses_origin.HeaderText = "Almacén de Destino";
+            this.warehouses_origin.Name = "warehouses_origin";
+            this.warehouses_origin.ReadOnly = true;
+            this.warehouses_origin.Visible = false;
+            this.warehouses_origin.Width = 150;
+            // 
             // quantity_available
             // 
             this.quantity_available.DataPropertyName = "Quantity_available";
             this.quantity_available.HeaderText = "Cantidad Disponible";
             this.quantity_available.Name = "quantity_available";
             this.quantity_available.ReadOnly = true;
+            this.quantity_available.Width = 90;
             // 
             // refund_quantity
             // 
@@ -1477,12 +1487,14 @@
             this.refund_quantity.HeaderText = "Cantidad Devuelta Física";
             this.refund_quantity.Name = "refund_quantity";
             this.refund_quantity.ReadOnly = true;
+            this.refund_quantity.Width = 90;
             // 
             // quantity
             // 
             this.quantity.DataPropertyName = "Quantity";
             this.quantity.HeaderText = "Cantidad a Devolver";
             this.quantity.Name = "quantity";
+            this.quantity.Width = 90;
             // 
             // unit_price
             // 
@@ -1498,19 +1510,6 @@
             this.amount.HeaderText = "SubTotal";
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
-            // 
-            // salesRefundLineBindingSource
-            // 
-            this.salesRefundLineBindingSource.DataSource = typeof(WindowsFormsApp1.Models.SalesRefundLine);
-            // 
-            // productWarehouseSBindingSource
-            // 
-            this.productWarehouseSBindingSource.DataSource = typeof(WindowsFormsApp1.Views.Sales_Module.ProductWarehouseS);
-            // 
-            // warehousesBindingSource
-            // 
-            this.warehousesBindingSource.DataMember = "warehouses";
-            this.warehousesBindingSource.DataSource = this.salesRefundLineBindingSource;
             // 
             // UC_SalesRefund
             // 
@@ -1540,8 +1539,6 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_Refund_Lines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesRefundLineBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productWarehouseSBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.warehousesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1621,19 +1618,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn observation;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private MetroFramework.Controls.MetroDateTime dt_IssueHour;
-        private System.Windows.Forms.BindingSource productWarehouseSBindingSource;
-        private System.Windows.Forms.BindingSource warehousesBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn refund_id2;
         private System.Windows.Forms.DataGridViewTextBoxColumn documenti_d_line;
         private System.Windows.Forms.DataGridViewTextBoxColumn product_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitmeasureidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prodwarehouseidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prod_warehouse_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn product;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_measure;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodwarehouse;
         private System.Windows.Forms.DataGridViewComboBoxColumn warehouses;
+        private System.Windows.Forms.DataGridViewTextBoxColumn warehouses_origin;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity_available;
         private System.Windows.Forms.DataGridViewTextBoxColumn refund_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;

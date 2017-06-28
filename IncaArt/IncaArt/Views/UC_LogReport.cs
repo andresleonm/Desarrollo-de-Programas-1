@@ -192,14 +192,17 @@ namespace WindowsFormsApp1.Views
 
         private void btn_expand_Click(object sender, EventArgs e)
         {
-            if (datagrid1.CurrentRow == null)
-            {
-                MessageBox.Show("Selecciona una fila");
-            }
-            else
+
+
+            if (datagrid1.CurrentRow != null)
             {
                 MessageBox.Show((string)datagrid1.CurrentRow.Cells[5].Value);
             }
+            else
+            {
+                MessageBox.Show("Selecciona una fila");
+            }
+
         }
     }
 }
