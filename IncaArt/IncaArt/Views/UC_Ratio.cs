@@ -353,7 +353,10 @@ namespace WindowsFormsApp1.Views
                         XlColorIndex.xlColorIndexAutomatic, XlColorIndex.xlColorIndexAutomatic);
                     for (int j = 0; j < 12; j++)
                     {
-                        worksheet.Cells[i + 7, j + 2] = ratio_list_full[k].value.ToString("F4");
+                        if (ratio_list_full[k].ratio_type==1)
+                            worksheet.Cells[i + 7, j + 2] = ratio_list_full[k].broken_quantity.ToString("F4");
+                        else
+                            worksheet.Cells[i + 7, j + 2] = ratio_list_full[k].value.ToString("F4");
                         worksheet.Cells[i + 7, j + 2].BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin,
                         XlColorIndex.xlColorIndexAutomatic, XlColorIndex.xlColorIndexAutomatic);
                         k++;
@@ -565,5 +568,9 @@ namespace WindowsFormsApp1.Views
             openDialog.Dispose();
         }
 
+        private void consulta_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
